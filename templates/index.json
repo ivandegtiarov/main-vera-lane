@@ -107,7 +107,7 @@
           "settings": {
             "product": "makeup-bag-1",
             "reviews_text": "180 Reviews",
-            "fallback_description": "Complex with 30 Billion CPU",
+            "fallback_description": "",
             "show_pill": false,
             "pill_text": "#Best Seller",
             "show_discount": false,
