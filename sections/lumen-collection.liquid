@@ -1,0 +1,945 @@
+{% comment %}
+  Lumen – Collection (Production Shopify Section)
+
+  Goals:
+  - Match the provided HTML/CSS 1:1 visually
+  - Use real collection products (image/title/price + add-to-cart)
+  - Scoped CSS (no global resets)
+  - Minimal, performant fade-in on scroll (IntersectionObserver)
+{% endcomment %}
+
+{%- liquid
+  assign section_id = 'lumen-collection-' | append: section.id
+  assign products_source = collection
+-%}
+
+<section
+  class="lumen-collection {{ section_id }}"
+  aria-label="{{ section.settings.aria_label | escape }}"
+>
+  <div class="lumen-collection__container">
+    <h2 class="lumen-collection__title lumen-collection__animate" data-lumen-collection-animate>
+      {{ section.settings.heading | escape }}
+    </h2>
+
+    <div class="lumen-collection__grid" aria-label="Product grid">
+      {%- comment -%}
+        If the merchant adds product blocks, render those (manual curation).
+        Otherwise, fall back to the current collection products (automatic).
+      {%- endcomment -%}
+
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign product = block.settings.product
+            if product != blank
+              assign v = product.selected_or_first_available_variant
+            else
+              assign v = blank
+            endif
+          -%}
+
+          <article class="lumen-collection__card lumen-collection__animate" data-lumen-collection-animate {{ block.shopify_attributes }}>
+            {%- if product != blank -%}
+              <a class="lumen-collection__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+                {%- if product.featured_image != blank -%}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 900 }}"
+                    srcset="
+                      {{ product.featured_image | image_url: width: 360 }} 360w,
+                      {{ product.featured_image | image_url: width: 540 }} 540w,
+                      {{ product.featured_image | image_url: width: 720 }} 720w,
+                      {{ product.featured_image | image_url: width: 900 }} 900w
+                    "
+                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                    loading="lazy"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  >
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'lumen-collection__placeholder' }}
+                {%- endif -%}
+              </a>
+            {%- else -%}
+              <div class="lumen-collection__media" aria-hidden="true">
+                {{ 'product-1' | placeholder_svg_tag: 'lumen-collection__placeholder' }}
+              </div>
+            {%- endif -%}
+
+            <div class="lumen-collection__overlay">
+              <div class="lumen-collection__overlayPad">
+                <div class="lumen-collection__overlayInner">
+                  <div class="lumen-collection__meta">
+                    <div class="lumen-collection__name">
+                      {%- if product != blank -%}
+                        {{ product.title | escape }}
+                      {%- else -%}
+                        Product
+                      {%- endif -%}
+                    </div>
+                    <div class="lumen-collection__price">
+                      {%- if v != blank -%}
+                        {{ v.price | money }}
+                      {%- else -%}
+                        $0.00
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lumen-collection__btnWrap">
+                {%- if v != blank -%}
+                  {%- assign product_form_id = 'LumenCollection-ProductForm-' | append: section.id | append: '-' | append: product.id -%}
+                  <product-form-component
+                    class="lumen-collection__productForm"
+                    data-section-id="{{ section.id }}"
+                    data-product-id="{{ product.id }}"
+                    data-product-url="{{ product.url }}"
+                    data-quantity-default="1"
+                    on:submit="/handleSubmit"
+                  >
+                    <div
+                      class="visually-hidden"
+                      aria-live="assertive"
+                      role="status"
+                      aria-atomic="true"
+                      ref="liveRegion"
+                    ></div>
+                    {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                      <input
+                        type="hidden"
+                        name="id"
+                        ref="variantId"
+                        value="{{ v.id }}"
+                      >
+                      <button
+                        type="submit"
+                        name="add"
+                        class="lumen-collection__btn"
+                        data-lumen-collection-atc
+                        {% unless v.available %}disabled aria-disabled="true"{% endunless %}
+                      >
+                        <span class="lumen-collection__btnLabel">{{ section.settings.button_label | escape }}</span>
+                        <span class="lumen-collection__btnSpinner" aria-hidden="true"></span>
+                      </button>
+                    {%- endform -%}
+                  </product-form-component>
+                {%- elsif product != blank -%}
+                  <a class="lumen-collection__btn" href="{{ product.url }}">
+                    {{ section.settings.button_label | escape }}
+                  </a>
+                {%- else -%}
+                  <a class="lumen-collection__btn" href="#">
+                    {{ section.settings.button_label | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+
+      {%- elsif products_source != blank and products_source.products_count > 0 -%}
+        {%- for product in products_source.products limit: 4 -%}
+          {%- assign v = product.selected_or_first_available_variant -%}
+          <article class="lumen-collection__card lumen-collection__animate" data-lumen-collection-animate>
+            <a class="lumen-collection__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+              {%- if product.featured_image != blank -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 900 }}"
+                  srcset="
+                    {{ product.featured_image | image_url: width: 360 }} 360w,
+                    {{ product.featured_image | image_url: width: 540 }} 540w,
+                    {{ product.featured_image | image_url: width: 720 }} 720w,
+                    {{ product.featured_image | image_url: width: 900 }} 900w
+                  "
+                  sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  width="{{ product.featured_image.width }}"
+                  height="{{ product.featured_image.height }}"
+                  loading="lazy"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                >
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'lumen-collection__placeholder' }}
+              {%- endif -%}
+            </a>
+
+            <div class="lumen-collection__overlay">
+              <div class="lumen-collection__overlayPad">
+                <div class="lumen-collection__overlayInner">
+                  <div class="lumen-collection__meta">
+                    <div class="lumen-collection__name">{{ product.title | escape }}</div>
+                    <div class="lumen-collection__price">
+                      {{ v.price | money }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lumen-collection__btnWrap">
+                {%- if v != blank -%}
+                  {%- assign product_form_id = 'LumenCollection-ProductForm-' | append: section.id | append: '-' | append: product.id -%}
+                  <product-form-component
+                    class="lumen-collection__productForm"
+                    data-section-id="{{ section.id }}"
+                    data-product-id="{{ product.id }}"
+                    data-product-url="{{ product.url }}"
+                    data-quantity-default="1"
+                    on:submit="/handleSubmit"
+                  >
+                    <div
+                      class="visually-hidden"
+                      aria-live="assertive"
+                      role="status"
+                      aria-atomic="true"
+                      ref="liveRegion"
+                    ></div>
+                    {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                      <input
+                        type="hidden"
+                        name="id"
+                        ref="variantId"
+                        value="{{ v.id }}"
+                      >
+                      <button
+                        type="submit"
+                        name="add"
+                        class="lumen-collection__btn"
+                        data-lumen-collection-atc
+                        {% unless v.available %}disabled aria-disabled="true"{% endunless %}
+                      >
+                        <span class="lumen-collection__btnLabel">{{ section.settings.button_label | escape }}</span>
+                        <span class="lumen-collection__btnSpinner" aria-hidden="true"></span>
+                      </button>
+                    {%- endform -%}
+                  </product-form-component>
+                {%- else -%}
+                  <a class="lumen-collection__btn" href="{{ product.url }}">
+                    {{ section.settings.button_label | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <article class="lumen-collection__card lumen-collection__animate" data-lumen-collection-animate>
+            <div class="lumen-collection__media" aria-hidden="true">
+              {{ 'product-1' | placeholder_svg_tag: 'lumen-collection__placeholder' }}
+            </div>
+            <div class="lumen-collection__overlay">
+              <div class="lumen-collection__overlayPad">
+                <div class="lumen-collection__overlayInner">
+                  <div class="lumen-collection__meta">
+                    <div class="lumen-collection__name">Product</div>
+                    <div class="lumen-collection__price">$0.00</div>
+                  </div>
+                </div>
+              </div>
+              <div class="lumen-collection__btnWrap">
+                <a class="lumen-collection__btn" href="#">
+                  {{ section.settings.button_label | escape }}
+                </a>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <style>
+    /* Load the same fonts used in the provided HTML to preserve 1:1 fidelity. */
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap");
+
+    .{{ section_id }} {
+      --lumen-collection-bg: {{ section.settings.background_color }};
+      --lumen-collection-gradient-start: {{ section.settings.background_gradient_start }};
+      --lumen-collection-gradient-end: {{ section.settings.background_gradient_end }};
+
+      --lumen-collection-title-color: {{ section.settings.heading_color }};
+      --lumen-collection-name-color: {{ section.settings.product_name_color }};
+      --lumen-collection-price-color: {{ section.settings.product_price_color }};
+      --lumen-collection-button-text-color: {{ section.settings.button_text_color }};
+
+      --lumen-collection-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+      --lumen-collection-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+      --lumen-collection-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+      --lumen-collection-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+
+      --lumen-collection-title-size-mobile: {{ section.settings.heading_font_size_mobile }}px;
+      --lumen-collection-title-size-desktop: {{ section.settings.heading_font_size_desktop }}px;
+      --lumen-collection-name-size-mobile: {{ section.settings.product_name_font_size_mobile }}px;
+      --lumen-collection-name-size-desktop: {{ section.settings.product_name_font_size_desktop }}px;
+      --lumen-collection-price-size-mobile: {{ section.settings.product_price_font_size_mobile }}px;
+      --lumen-collection-price-size-desktop: {{ section.settings.product_price_font_size_desktop }}px;
+      --lumen-collection-button-size-mobile: {{ section.settings.button_font_size_mobile }}px;
+      --lumen-collection-button-size-desktop: {{ section.settings.button_font_size_desktop }}px;
+
+      width: 100%;
+      /* If you want a solid background, set gradient start/end to the same color. */
+      background: linear-gradient(
+        180deg,
+        var(--lumen-collection-gradient-start),
+        var(--lumen-collection-gradient-end)
+      );
+      background-color: var(--lumen-collection-bg);
+    }
+
+    .{{ section_id }} * {
+      box-sizing: border-box;
+    }
+
+    .{{ section_id }} .lumen-collection__container {
+      width: 100%;
+      max-width: 1219px;
+      margin: 0 auto;
+      padding: var(--lumen-collection-padding-top-mobile) 14px var(--lumen-collection-padding-bottom-mobile);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .{{ section_id }} .lumen-collection__title {
+      width: 100%;
+      font-family: "Playfair Display";
+    font-style: italic;
+      font-weight: 700;
+      font-size: var(--lumen-collection-title-size-mobile);
+      line-height: 49px;
+      color: var(--lumen-collection-title-color);
+      text-align: center;
+    }
+
+    .{{ section_id }} .lumen-collection__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .{{ section_id }} .lumen-collection__card {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .{{ section_id }} .lumen-collection__media {
+      width: 100%;
+      border-radius: 9px;
+      background: #f9f9f9;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .{{ section_id }} .lumen-collection__media img,
+    .{{ section_id }} .lumen-collection__placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.95;
+    }
+
+    .{{ section_id }} .lumen-collection__overlay {
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .{{ section_id }} .lumen-collection__overlayInner {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 0;
+    }
+
+    .{{ section_id }} .lumen-collection__meta {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 0;
+    }
+
+    .{{ section_id }} .lumen-collection__name,
+    .{{ section_id }} .lumen-collection__price {
+      font-family: "Montserrat", sans-serif;
+      font-size: var(--lumen-collection-name-size-mobile);
+      line-height: 19px;
+      color: var(--lumen-collection-name-color);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .{{ section_id }} .lumen-collection__name {
+      font-weight: 400;
+      color: var(--lumen-collection-name-color);
+    }
+
+    .{{ section_id }} .lumen-collection__price {
+      font-weight: 600;
+      font-size: var(--lumen-collection-price-size-mobile);
+      color: var(--lumen-collection-price-color);
+    }
+
+    /* .{{ section_id }} .lumen-collection__overlayPad {
+      padding: 12px 12px 0 12px;
+    } */
+
+    .{{ section_id }} .lumen-collection__btnWrap {
+      width: 100%;
+    }
+
+    .{{ section_id }} .lumen-collection__form {
+      margin: 0;
+    }
+
+    .{{ section_id }} .lumen-collection__btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 17px;
+      border-radius: 88px;
+      /* Hover fill animation (matching lumen-beauty) */
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      background: transparent;
+      border: 1px solid rgba(122, 0, 54, 0.1);
+      color: var(--lumen-collection-button-text-color);
+      text-decoration: none;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: var(--lumen-collection-button-size-mobile);
+      line-height: 19px;
+      letter-spacing: 0px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .{{ section_id }} .lumen-collection__btn:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #000000;
+      border-radius: 88px;
+      z-index: -2;
+    }
+
+    .{{ section_id }} .lumen-collection__btn:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 0%;
+      background-color: #5A0028;
+      transition: all 0.3s;
+      border-radius: 88px;
+      z-index: -1;
+    }
+
+    .{{ section_id }} .lumen-collection__btn:hover:before {
+      width: 100%;
+    }
+
+    /* Loading state (spinner) */
+    .{{ section_id }} .lumen-collection__btnLabel {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .{{ section_id }} .lumen-collection__btnSpinner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: rgba(255, 255, 255, 0.95);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      animation: lumen-collection-spin 0.7s linear infinite;
+      pointer-events: none;
+    }
+
+    .{{ section_id }} .lumen-collection__btn.is-loading {
+      cursor: wait;
+    }
+
+    .{{ section_id }} .lumen-collection__btn.is-loading .lumen-collection__btnLabel {
+      opacity: 0;
+    }
+
+    .{{ section_id }} .lumen-collection__btn.is-loading .lumen-collection__btnSpinner {
+      opacity: 1;
+    }
+
+    @keyframes lumen-collection-spin {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .{{ section_id }} .lumen-collection__btn[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .{{ section_id }} .lumen-collection__btn:focus-visible {
+      outline: 2px solid #7a0036;
+      outline-offset: 2px;
+    }
+
+    /* Fade-in on scroll (default hidden state). */
+    .{{ section_id }} .lumen-collection__animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .{{ section_id }} .lumen-collection__animate.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .{{ section_id }} .lumen-collection__container {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      .{{ section_id }} .lumen-collection__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px;
+      }
+    }
+
+    /* Smaller desktop: 3 columns */
+    @media (min-width: 1024px) {
+      .{{ section_id }} .lumen-collection__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .{{ section_id }} .lumen-collection__container {
+        padding-top: var(--lumen-collection-padding-top-desktop);
+        padding-bottom: var(--lumen-collection-padding-bottom-desktop);
+        padding-left: 110px;
+        padding-right: 110px;
+        gap: 50px;
+      }
+
+      .{{ section_id }} .lumen-collection__title {
+        font-size: var(--lumen-collection-title-size-desktop);
+        line-height: 56px;
+      }
+
+      .{{ section_id }} .lumen-collection__card {
+        gap: 10px;
+      }
+
+      .{{ section_id }} .lumen-collection__media {
+        border-radius: 10px;
+        height: 343px;
+      }
+
+      .{{ section_id }} .lumen-collection__overlay {
+        border-radius: 6px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .{{ section_id }} .lumen-collection__overlayPad {
+        padding: 10px 0px 0 0px;
+      }
+
+      .{{ section_id }} .lumen-collection__name {
+        font-size: var(--lumen-collection-name-size-desktop);
+        line-height: 24px;
+      }
+
+      .{{ section_id }} .lumen-collection__price {
+        font-size: var(--lumen-collection-price-size-desktop);
+        line-height: 24px;
+      }
+
+      .{{ section_id }} .lumen-collection__btn {
+        padding: 8px 20px;
+        gap: 8px;
+        font-size: var(--lumen-collection-button-size-desktop);
+        line-height: 22px;
+        border-radius: 100px;
+      }
+
+      .{{ section_id }} .lumen-collection__btn:after,
+      .{{ section_id }} .lumen-collection__btn:before {
+        border-radius: 100px;
+      }
+    }
+
+    /* Desktop: 4 columns */
+    @media (min-width: 1280px) {
+      .{{ section_id }} .lumen-collection__container {
+        max-width: 1440px;
+        padding-left: 96px;
+        padding-right: 96px;
+      }
+
+      .{{ section_id }} .lumen-collection__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .{{ section_id }} .lumen-collection__animate {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var root = document.querySelector(".{{ section_id }}");
+      if (!root) return;
+
+      var targets = root.querySelectorAll("[data-lumen-collection-animate]");
+      if (!targets.length) return;
+
+      // Fallback: if IntersectionObserver isn't supported, show everything immediately.
+      if (!("IntersectionObserver" in window)) {
+        targets.forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+        return;
+      }
+
+      var io = new IntersectionObserver(
+        function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target); // single trigger (no repeat)
+          });
+        },
+        { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.15 }
+      );
+
+      targets.forEach(function (el) {
+        io.observe(el);
+      });
+
+      // Add-to-cart loading state for this section (works with product-form-component).
+      var pendingButtons = new Set();
+
+      function setLoading(btn, isLoading) {
+        if (!btn) return;
+        if (isLoading) {
+          pendingButtons.add(btn);
+          btn.classList.add("is-loading");
+          btn.setAttribute("disabled", "disabled");
+          btn.setAttribute("aria-busy", "true");
+        } else {
+          pendingButtons.delete(btn);
+          btn.classList.remove("is-loading");
+          btn.removeAttribute("aria-busy");
+          // Only re-enable if it wasn't originally disabled (e.g. sold out)
+          if (btn.dataset.lumenWasDisabled !== "true") {
+            btn.removeAttribute("disabled");
+          }
+        }
+      }
+
+      root.querySelectorAll("product-form-component").forEach(function (pfc) {
+        var btn = pfc.querySelector("[data-lumen-collection-atc]");
+        if (!btn) return;
+        if (btn.hasAttribute("disabled")) btn.dataset.lumenWasDisabled = "true";
+
+        // Show loading as soon as submit starts (product-form-component handles the async request).
+        pfc.addEventListener(
+          "submit",
+          function () {
+            setLoading(btn, true);
+            // Safety timeout in case events don't fire.
+            window.setTimeout(function () {
+              setLoading(btn, false);
+            }, 10000);
+          },
+          true
+        );
+      });
+
+      // Clear loading when the theme reports success/error.
+      root.addEventListener("cart:update", function () {
+        pendingButtons.forEach(function (btn) {
+          setLoading(btn, false);
+        });
+      });
+
+      root.addEventListener("cart:error", function () {
+        pendingButtons.forEach(function (btn) {
+          setLoading(btn, false);
+        });
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Lumen — Collection grid",
+  "tag": "section",
+  "class": "section lumen-collection-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "ARIA label",
+      "default": "Our products"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to bag"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_start",
+      "label": "Background gradient start",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_end",
+      "label": "Background gradient end",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_name_color",
+      "label": "Product name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Product price color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top — desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top — mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom — desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom — mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading font size — desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size — mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_name_font_size_desktop",
+      "label": "Product name font size — desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_name_font_size_mobile",
+      "label": "Product name font size — mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_price_font_size_desktop",
+      "label": "Product price font size — desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_price_font_size_mobile",
+      "label": "Product price font size — mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_desktop",
+      "label": "Button font size — desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "label": "Button font size — mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "default": 14,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen — Collection grid"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12
+}
+{% endschema %}
+
+

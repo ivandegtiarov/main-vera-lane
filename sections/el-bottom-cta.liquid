@@ -1,0 +1,401 @@
+{%- comment -%} ── EL - BOTTOM CTA ── {%- endcomment -%}
+<div class="el-bottom-cta" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--cta-bg: {{ section.settings.bg_color }}; --cta-text: {{ section.settings.text_color }};">
+  <div class="el-bottom-cta__container">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="el-bottom-cta__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+
+    <h2 class="el-bottom-cta__headline">{{ section.settings.headline }}</h2>
+
+    {%- if section.settings.subtext != blank -%}
+      <p class="el-bottom-cta__subtext">{{ section.settings.subtext }}</p>
+    {%- endif -%}
+
+    <div class="el-bottom-cta__card" style="--card-bg: {{ section.settings.card_bg }};">
+      {%- if section.settings.card_badge != blank -%}
+        <span class="el-bottom-cta__card-badge">{{ section.settings.card_badge }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.card_offer != blank -%}
+        <p class="el-bottom-cta__card-offer">{{ section.settings.card_offer }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.card_image != blank -%}
+        <img
+          src="{{ section.settings.card_image | image_url: width: 400 }}"
+          alt="{{ section.settings.card_image.alt | default: 'Product' }}"
+          class="el-bottom-cta__card-image"
+          loading="lazy"
+        >
+      {%- endif -%}
+
+      {%- if section.settings.card_description != blank -%}
+        <p class="el-bottom-cta__card-desc">{{ section.settings.card_description }}</p>
+      {%- endif -%}
+
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="el-bottom-cta__btn" style="--btn-bg: {{ section.settings.btn_bg }}; --btn-text: {{ section.settings.btn_text }};">
+        {{ section.settings.cta_label }}
+      </a>
+
+      {%- if section.settings.show_timer -%}
+        <div class="el-bottom-cta__timer" data-countdown="{{ section.settings.timer_minutes }}">
+          <span class="el-bottom-cta__timer-label">Offer expires in</span>
+          <span class="el-bottom-cta__timer-time">
+            <span data-hours>00</span>:<span data-minutes>00</span>:<span data-seconds>00</span>
+          </span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.trust_line != blank -%}
+        <p class="el-bottom-cta__trust-line">{{ section.settings.trust_line }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const timer = document.querySelector('.el-bottom-cta__timer');
+    if (!timer) return;
+
+    const minutes = parseInt(timer.dataset.countdown) || 120;
+    const storageKey = 'el_cta_countdown_end';
+
+    let endTime = localStorage.getItem(storageKey);
+    if (!endTime || parseInt(endTime) < Date.now()) {
+      endTime = Date.now() + (minutes * 60 * 1000);
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    const hoursEl = timer.querySelector('[data-hours]');
+    const minsEl = timer.querySelector('[data-minutes]');
+    const secsEl = timer.querySelector('[data-seconds]');
+
+    function update() {
+      const remaining = Math.max(0, parseInt(endTime) - Date.now());
+      const hours = Math.floor(remaining / 3600000);
+      const mins = Math.floor((remaining % 3600000) / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+
+      if (remaining <= 0) {
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
+</script>
+
+{% stylesheet %}
+.el-bottom-cta {
+  background: var(--cta-bg, #2D2D2D);
+  color: var(--cta-text, #fff);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.el-bottom-cta__container {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.el-bottom-cta__eyebrow {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D4A574;
+  margin-bottom: 1rem;
+}
+
+.el-bottom-cta__headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+}
+
+.el-bottom-cta__subtext {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0 0 2rem;
+}
+
+.el-bottom-cta__card {
+  background: var(--card-bg, #FAF9F7);
+  padding: 2rem;
+  text-align: center;
+  color: #2D2D2D;
+}
+
+.el-bottom-cta__card-badge {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  border: 1px solid #8B3A3A;
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.el-bottom-cta__card-offer {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #2D2D2D;
+  margin: 0 0 1.25rem;
+}
+
+.el-bottom-cta__card-image {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.25rem;
+  display: block;
+}
+
+.el-bottom-cta__card-desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 1.5rem;
+}
+
+.el-bottom-cta__btn {
+  display: block;
+  background: var(--btn-bg, #2D2D2D);
+  color: var(--btn-text, #fff);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  transition: opacity 200ms ease;
+}
+
+.el-bottom-cta__btn:hover {
+  opacity: 0.9;
+}
+
+.el-bottom-cta__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+}
+
+.el-bottom-cta__timer-label {
+  color: #888;
+}
+
+.el-bottom-cta__timer-time {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: #8B3A3A;
+  font-variant-numeric: tabular-nums;
+}
+
+.el-bottom-cta__trust-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: #888;
+  margin: 1rem 0 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - Bottom CTA",
+  "tag": "section",
+  "class": "el-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links",
+      "default": "offer"
+    },
+    {
+      "type": "header",
+      "content": "Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Header Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "EXCLUSIVE OFFER"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "You've Read This Far—Let Us Reward You"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "This exclusive discount is reserved for readers who truly understand quality."
+    },
+    {
+      "type": "header",
+      "content": "Offer Card"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "text",
+      "id": "card_badge",
+      "label": "Card badge",
+      "default": "LIMITED AVAILABILITY"
+    },
+    {
+      "type": "text",
+      "id": "card_offer",
+      "label": "Offer headline",
+      "default": "Save 40% on Your First Order"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "card_description",
+      "label": "Card description",
+      "default": "While supplies last"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "CLAIM YOUR DISCOUNT"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button background",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Timer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_timer",
+      "label": "Show countdown timer",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "timer_minutes",
+      "label": "Timer duration (minutes)",
+      "min": 30,
+      "max": 1440,
+      "step": 30,
+      "default": 180
+    },
+    {
+      "type": "header",
+      "content": "Trust Elements"
+    },
+    {
+      "type": "text",
+      "id": "trust_line",
+      "label": "Trust line",
+      "default": "Free shipping · 30-day guarantee · Secure checkout"
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - Bottom CTA",
+      "category": "t:categories.elegant_listicle"
+    }
+  ]
+}
+{% endschema %}

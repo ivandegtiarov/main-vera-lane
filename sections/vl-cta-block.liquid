@@ -1,0 +1,131 @@
+<div class="vl-cta-block" style="
+  --section-bg: {{ section.settings.bg_color }};
+  --text-color: {{ section.settings.text_color }};
+  --button-bg: {{ section.settings.button_bg_color }};
+  --button-text: {{ section.settings.button_text_color }};
+">
+  <div class="vl-cta-block__inner">
+    {% if section.settings.text != blank %}
+      <p class="vl-cta-block__text">{{ section.settings.text }}</p>
+    {% endif %}
+
+    <a href="{{ section.settings.button_url }}" class="vl-cta-block__button" target="_blank" rel="noopener">
+      {{ section.settings.button_text }}
+    </a>
+
+    {% if section.settings.subtext != blank %}
+      <p class="vl-cta-block__subtext">{{ section.settings.subtext }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-cta-block {
+    background-color: var(--section-bg, #ffffff);
+    padding: 32px 16px;
+  }
+
+  .vl-cta-block__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vl-cta-block__text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-color, #333333);
+    margin: 0 0 20px;
+  }
+
+  .vl-cta-block__button {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    background-color: var(--button-bg, #5C1A33);
+    color: var(--button-text, #ffffff);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: opacity 0.2s ease;
+  }
+
+  .vl-cta-block__button:hover {
+    opacity: 0.9;
+  }
+
+  .vl-cta-block__subtext {
+    font-size: 13px;
+    color: var(--text-color, #666666);
+    margin: 12px 0 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL CTA Block",
+  "tag": "section",
+  "class": "vl-cta-block-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text above button",
+      "info": "Optional supporting text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "CHECK IT OUT"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Text below button",
+      "info": "Optional (e.g., 'Free shipping')"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL CTA Block"
+    }
+  ]
+}
+{% endschema %}

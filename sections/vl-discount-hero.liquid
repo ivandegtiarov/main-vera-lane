@@ -1,0 +1,205 @@
+<div class="vl-discount-hero" style="
+  --hero-bg: {{ section.settings.bg_color }};
+  --text-color: {{ section.settings.text_color }};
+  --discount-color: {{ section.settings.discount_color }};
+">
+  <div class="vl-discount-hero__inner">
+    {% if section.settings.background_image != blank %}
+      <div class="vl-discount-hero__media">
+        <img
+          src="{{ section.settings.background_image | image_url: width: 800 }}"
+          alt="{{ section.settings.heading }}"
+          class="vl-discount-hero__bg-image"
+          loading="eager"
+        >
+        <div class="vl-discount-hero__overlay">
+          <span class="vl-discount-hero__prefix">{{ section.settings.prefix_text }}</span>
+          <span class="vl-discount-hero__discount">{{ section.settings.discount_text }}</span>
+          <span class="vl-discount-hero__suffix">{{ section.settings.suffix_text }}</span>
+        </div>
+      </div>
+    {% else %}
+      <div class="vl-discount-hero__text-only">
+        <span class="vl-discount-hero__prefix">{{ section.settings.prefix_text }}</span>
+        <span class="vl-discount-hero__discount">{{ section.settings.discount_text }}</span>
+        <span class="vl-discount-hero__suffix">{{ section.settings.suffix_text }}</span>
+      </div>
+    {% endif %}
+
+    {% if section.settings.product_image != blank and section.settings.background_image == blank %}
+      <div class="vl-discount-hero__product">
+        <img
+          src="{{ section.settings.product_image | image_url: width: 600 }}"
+          alt="Product"
+          class="vl-discount-hero__product-image"
+          loading="eager"
+        >
+      </div>
+    {% endif %}
+
+    {% if section.settings.intro_text != blank %}
+      <p class="vl-discount-hero__intro">{{ section.settings.intro_text }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-discount-hero {
+    background-color: var(--hero-bg, #ffffff);
+  }
+
+  .vl-discount-hero__inner {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .vl-discount-hero__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .vl-discount-hero__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .vl-discount-hero__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vl-discount-hero__text-only {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vl-discount-hero__prefix {
+    font-size: 16px;
+    color: var(--text-color, #ffffff);
+  }
+
+  .vl-discount-hero__text-only .vl-discount-hero__prefix {
+    color: #000000;
+  }
+
+  .vl-discount-hero__discount {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--discount-color, #5C1A33);
+    line-height: 1.1;
+  }
+
+  .vl-discount-hero__suffix {
+    font-size: 16px;
+    color: var(--text-color, #ffffff);
+  }
+
+  .vl-discount-hero__text-only .vl-discount-hero__suffix {
+    color: #000000;
+  }
+
+  .vl-discount-hero__product {
+    padding: 24px 16px;
+  }
+
+  .vl-discount-hero__product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vl-discount-hero__intro {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    padding: 0 16px 24px;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Discount Hero",
+  "tag": "section",
+  "class": "vl-discount-hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Leave empty for text-only style"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image",
+      "info": "Shows below text when no background image"
+    },
+    {
+      "type": "text",
+      "id": "prefix_text",
+      "label": "Prefix text",
+      "default": "Get with"
+    },
+    {
+      "type": "text",
+      "id": "discount_text",
+      "label": "Discount text",
+      "default": "30% OFF"
+    },
+    {
+      "type": "text",
+      "id": "suffix_text",
+      "label": "Suffix text",
+      "default": "On Your First Purchase"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro text",
+      "info": "Optional text below product image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color (overlay)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "discount_color",
+      "label": "Discount text color",
+      "default": "#5C1A33"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Discount Hero"
+    }
+  ]
+}
+{% endschema %}

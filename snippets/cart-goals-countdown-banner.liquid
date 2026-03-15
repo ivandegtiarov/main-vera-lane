@@ -1,0 +1,147 @@
+{%- comment -%}
+  Countdown Timer Banner for Cart Goals
+  Single banner with "Hurry up" text and countdown timer
+{%- endcomment -%}
+
+{% liquid
+  assign goal_1_exclude_value = settings.cart_goal_1_exclude_property_value | default: '' | strip
+  assign goal_2_exclude_value = settings.cart_goal_2_exclude_property_value | default: '' | strip
+  assign goal_3_exclude_value = settings.cart_goal_3_exclude_property_value | default: '' | strip
+
+  assign cart_has_goal_1_excluded_item = false
+  assign cart_has_goal_2_excluded_item = false
+  assign cart_has_goal_3_excluded_item = false
+
+  if goal_1_exclude_value != '' or goal_2_exclude_value != '' or goal_3_exclude_value != ''
+    for line_item in cart.items
+      if goal_1_exclude_value != '' and cart_has_goal_1_excluded_item == false
+        for property in line_item.properties
+          if property.first == 'bundle_id' and property.last == goal_1_exclude_value
+            assign cart_has_goal_1_excluded_item = true
+            break
+          endif
+        endfor
+      endif
+
+      if goal_2_exclude_value != '' and cart_has_goal_2_excluded_item == false
+        for property in line_item.properties
+          if property.first == 'bundle_id' and property.last == goal_2_exclude_value
+            assign cart_has_goal_2_excluded_item = true
+            break
+          endif
+        endfor
+      endif
+
+      if goal_3_exclude_value != '' and cart_has_goal_3_excluded_item == false
+        for property in line_item.properties
+          if property.first == 'bundle_id' and property.last == goal_3_exclude_value
+            assign cart_has_goal_3_excluded_item = true
+            break
+          endif
+        endfor
+      endif
+
+      if cart_has_goal_1_excluded_item and cart_has_goal_2_excluded_item and cart_has_goal_3_excluded_item
+        break
+      endif
+    endfor
+  endif
+
+  assign goal_1_effective_enabled = settings.cart_goal_1_enabled
+  assign goal_2_effective_enabled = settings.cart_goal_2_enabled
+  assign goal_3_effective_enabled = settings.cart_goal_3_enabled
+
+  if cart_has_goal_1_excluded_item and goal_1_effective_enabled
+    assign goal_1_effective_enabled = false
+  endif
+
+  if cart_has_goal_2_excluded_item and goal_2_effective_enabled
+    assign goal_2_effective_enabled = false
+  endif
+
+  if cart_has_goal_3_excluded_item and goal_3_effective_enabled
+    assign goal_3_effective_enabled = false
+  endif
+
+  assign enabled_goals_count = 0
+  if goal_1_effective_enabled
+    assign enabled_goals_count = enabled_goals_count | plus: 1
+  endif
+  if goal_2_effective_enabled
+    assign enabled_goals_count = enabled_goals_count | plus: 1
+  endif
+  if goal_3_effective_enabled
+    assign enabled_goals_count = enabled_goals_count | plus: 1
+  endif
+-%}
+
+{% if enabled_goals_count > 0 and settings.cart_goal_countdown_enabled %}
+  {% assign banner_text = settings.cart_goal_banner_text | default: 'Limited time offer - ends in' %}
+  {% assign banner_bg_color = settings.cart_goal_banner_bg_color | default: '#FFEEEB' %}
+  <div class="cart-goals-banner" style="background-color: {{ banner_bg_color }};">
+    <div class="cart-goals-banner__content">
+      <span class="cart-goals-banner__text">{{ banner_text }}</span>
+      <span
+        class="cart-goals-banner__countdown"
+        data-cart-goal-countdown
+        data-goal-index="1"
+        aria-live="polite"
+      ></span>
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .cart-goals-banner {
+    width: 100%;
+    border-top: 1px solid #E1DCD8;
+    padding: 6px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-goals-banner__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .cart-goals-banner__text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #000000;
+    letter-spacing: 0.5px;
+  }
+
+  .cart-goals-banner__countdown {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #7A0036;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cart-goals-banner {
+      padding: 6px 24px;
+    }
+
+    .cart-goals-banner__content {
+      gap: 10px;
+    }
+
+    .cart-goals-banner__text {
+      font-size: 16px;
+    }
+
+    .cart-goals-banner__countdown {
+      font-size: 16px;
+    }
+  }
+{% endstylesheet %}

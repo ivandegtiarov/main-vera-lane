@@ -1,0 +1,159 @@
+<div class="vl-sticky-cta" style="
+  --cta-bg: {{ section.settings.bg_color }};
+  --button-bg: {{ section.settings.button_bg_color }};
+  --button-text: {{ section.settings.button_text_color }};
+  --icon-bg: {{ section.settings.icon_bg_color }};
+">
+  <div class="vl-sticky-cta__inner">
+    <a href="{{ section.settings.url }}" class="vl-sticky-cta__button" target="_blank" rel="noopener">
+      {% if section.settings.icon != blank %}
+        <span class="vl-sticky-cta__icon">
+          <img src="{{ section.settings.icon | image_url: width: 80 }}" alt="" width="28" height="28">
+        </span>
+      {% elsif section.settings.show_amazon_icon %}
+        <span class="vl-sticky-cta__icon vl-sticky-cta__icon--amazon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.249.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007z"/>
+          </svg>
+        </span>
+      {% endif %}
+      <span class="vl-sticky-cta__text">{{ section.settings.button_text }}</span>
+    </a>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--cta-bg, #ffffff);
+    padding: 12px 16px;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .vl-sticky-cta__inner {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .vl-sticky-cta__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    background-color: var(--button-bg, #232F3E);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    position: relative;
+  }
+
+  .vl-sticky-cta__button:hover {
+    opacity: 0.9;
+  }
+
+  .vl-sticky-cta__icon {
+    position: absolute;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--icon-bg, #ffffff);
+    border-radius: 6px;
+  }
+
+  .vl-sticky-cta__icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .vl-sticky-cta__icon--amazon {
+    color: #FF9900;
+  }
+
+  .vl-sticky-cta__text {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--button-text, #ffffff);
+  }
+
+  /* Add padding to body to account for sticky CTA */
+  body:has(.vl-sticky-cta) {
+    padding-bottom: 80px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Sticky CTA",
+  "tag": "section",
+  "class": "vl-sticky-cta-section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "TRY IT TODAY"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_amazon_icon",
+      "label": "Show Amazon icon",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Custom icon",
+      "info": "Overrides Amazon icon if set"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#232F3E"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Sticky CTA"
+    }
+  ]
+}
+{% endschema %}

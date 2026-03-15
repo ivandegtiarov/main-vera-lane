@@ -1,0 +1,81 @@
+<div class="vl-product-image" style="
+  --image-bg: {{ section.settings.bg_color }};
+">
+  <div class="vl-product-image__inner">
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | image_url: width: 800 }}"
+        alt="{{ section.settings.image_alt | default: 'Product image' }}"
+        class="vl-product-image__img"
+        loading="eager"
+      >
+    {% else %}
+      <div class="vl-product-image__placeholder">
+        {{ 'product-1' | placeholder_svg_tag: 'vl-product-image__placeholder-svg' }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-product-image {
+    background-color: var(--image-bg, #ffffff);
+  }
+
+  .vl-product-image__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .vl-product-image__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vl-product-image__placeholder {
+    aspect-ratio: 1 / 1;
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vl-product-image__placeholder-svg {
+    width: 50%;
+    height: auto;
+    opacity: 0.3;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Product Image",
+  "tag": "section",
+  "class": "vl-product-image-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Product Image"
+    }
+  ]
+}
+{% endschema %}

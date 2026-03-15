@@ -1,0 +1,3742 @@
+{% liquid
+  assign section_product = section.settings.product
+
+  if section_product == blank
+    assign section_product = product
+  endif
+
+  if request.visual_preview_mode and section_product == blank
+    assign section_product = collections.all.products.first
+  endif
+
+  if section_product
+    assign selected_variant = section_product.selected_or_first_available_variant
+  endif
+%}
+
+<style>
+        [x-cloak] { display: none !important; }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .lumen-pdp-hero-wrapper {
+            width: 100%;
+            background-color: #FBF8F6;
+        }
+        
+        .lumen-pdp-hero {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 56px;
+            padding: 48px 96px 80px;
+            align-items: flex-start;
+        }
+        
+        .lumen-pdp-hero__left {
+            width: 50%;
+            max-width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .lumen-pdp-hero__gallery {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            align-items: stretch;
+            min-height: 500px;
+        }
+        
+        /* Main Swiper */
+        .lumen-pdp-hero__gallery-main-swiper {
+            flex: 1;
+            width: 100%;
+            aspect-ratio: 1;
+            position: relative;
+            min-height: 400px;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-slide {
+            width: 100%;
+            height: 100%;
+            background-color: #D9D9D9;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+        }
+        
+        .fit--cover {
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Navigation Arrows - Desktop Only */
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-next,
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-prev {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            color: #000000;
+            margin-top: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-next:hover,
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-prev:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-next {
+            right: 16px;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-prev {
+            left: 16px;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-next::after,
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-prev::after {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .lumen-pdp-hero__gallery-main-swiper .swiper-button-disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        /* Thumbnails Swiper */
+        .lumen-pdp-hero__gallery-thumbs-swiper {
+            width: 80px;
+            flex-shrink: 0;
+            height: 510px;
+            max-height: 100%;
+            overflow-y: auto;
+        }
+        
+        .lumen-pdp-hero__gallery-thumbs-swiper .swiper-slide {
+            width: 80px;
+            height: 80px;
+            background-color: #D9D9D9;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .lumen-pdp-hero__gallery-thumbs-swiper .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+        
+        .lumen-pdp-hero__gallery-thumbs-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .lumen-pdp-hero__content {
+            flex: 1;
+            max-width: 540px;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            min-width: 0;
+        }
+        
+        .lumen-pdp-hero__header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__rating {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lumen-pdp-hero__rating-stars {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px;
+        }
+        
+        .lumen-pdp-hero__rating-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 40px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__price-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__size {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__description {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__description-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__description-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            border-bottom: 1px solid #E1DCD8;
+        }
+        
+        .lumen-pdp-hero__description-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lumen-pdp-hero__description-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            cursor: pointer;
+            padding: 16px 0;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+        
+        .lumen-pdp-hero__description-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            flex: 1;
+        }
+
+        @media screen and (max-width: 768px) {
+            .lumen-pdp-hero__description-title {
+                font-size: 14px;
+                line-height: 22px;
+            }
+            .lumen-pdp-hero__description-content-inner {
+                font-size: 12px;
+                line-height: 22px;
+            }
+        }
+        
+        .lumen-pdp-hero__description-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .lumen-pdp-hero__description-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__description-icon svg path {
+            stroke: #000000;
+        }
+        
+        .lumen-pdp-hero__description-content {
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__description-content-inner {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+            width: 100%;
+            padding-bottom: 16px;
+        }
+        
+        .lumen-pdp-hero__variants {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__variant {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 12px;
+            background-color: #FFFFFF;
+            border: 2px solid #E1DCD8;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        
+        .lumen-pdp-hero__variant--selected {
+            border-color: #7A0036;
+            border-width: 1px;
+            box-shadow: 0 0 0 1px #7A0036;
+            background-color: #FFF9F8;
+        }
+        
+        .lumen-pdp-hero__variant:hover {
+            border-color: #7A0036;
+            background-color: #FFFBFA;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer {
+            overflow: hidden;
+            gap: 10px;
+        }
+
+        /* Bundle badges (pill, like screenshot) */
+        .lumen-pdp-hero__variant-header {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+          width: 100%;
+          position: relative;
+        }
+
+        .lumen-pdp-hero__variant-header-left {
+          flex: 1;
+          min-width: 0;
+          /* Reserve space so the badge can overlap without covering the title */
+          /* padding-right: 132px; */
+        }
+
+        .lumen-pdp-hero__variant-header-right {
+          flex-shrink: 0;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-end;
+          /* Pull the badge outside the card border (like reference) */
+          margin-top: 8px;
+          margin-right: -22px;
+        }
+
+        .lumen-pdp-hero__variant-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px 14px;
+          border-radius: 999px 329px 12px 999px;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          white-space: nowrap;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+          position: relative;
+          z-index: 1;
+          background-color: var(--badge-bg, #000000);
+          color: var(--badge-fg, #FFFFFF);
+        }
+
+        /* Badge folded corner (bottom-right) */
+        .badge-container {
+          position: relative;
+          display: inline-flex;
+          align-items: flex-start;
+          justify-content: flex-end;
+          overflow: visible;
+        }
+
+        .badge-container::after {
+          content: '';
+          position: absolute;
+          right: -0.4px;
+          bottom: -15px;
+          width: 12px;
+          height: 20px;
+          background-color: var(--badge-bg, #000000);
+          opacity: 0.6;
+          -webkit-mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M8%200H0V8L8%200Z%22%20fill%3D%22%23000%22/%3E%3C/svg%3E);
+          mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M8%200H0V8L8%200Z%22%20fill%3D%22%23000%22/%3E%3C/svg%3E);
+          -webkit-mask-repeat: no-repeat;
+          /* mask-repeat: no-repeat; */
+          -webkit-mask-size: 100% 100%;
+          /* mask-size: 100% 100%; */
+          /* transform: rotate(90deg); */
+          /* filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12)); */
+          /* z-index: 0; */
+          pointer-events: none;
+        }
+        
+        .lumen-pdp-hero__variant-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 16px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__variant-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            background-color: #D9D9D9;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .lumen-pdp-hero__variant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Smaller image and more compact layout for bundles with bundle products list */
+        .lumen-pdp-hero__variant--has-bundle-products {
+            padding: 10px;
+        }
+        
+        /* .lumen-pdp-hero__variant--has-bundle-products .lumen-pdp-hero__variant-image {
+            width: 45px;
+            height: 45px;
+        } */
+        
+        .lumen-pdp-hero__variant--has-bundle-products .lumen-pdp-hero__variant-content {
+            gap: 12px;
+        }
+        
+        .lumen-pdp-hero__variant-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__variant-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2px;
+        }
+        
+        .lumen-pdp-hero__variant-name-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .lumen-pdp-hero__variant-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__variant-price-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .lumen-pdp-hero__variant-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+        }
+        
+        .lumen-pdp-hero__variant-price-old {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            color: #000000;
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        .lumen-pdp-hero__variant-badge {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            background-color: transparent;
+            white-space: nowrap;
+        }
+        
+        .lumen-pdp-hero__variant-badge-icon {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+        
+        .lumen-pdp-hero__variant-badge-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__variant-badge-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 20px;
+            color: #7A0036;
+        }
+        
+        /* Legacy in-row label (kept for compatibility, but we now render pills) */
+        .lumen-pdp-hero__variant-label {
+            display: none;
+        }
+        
+        .lumen-pdp-hero__magazine-logos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            width: 100%;
+            padding: 24px 0 0;
+            flex-wrap: wrap;
+        }
+        
+        .lumen-pdp-hero__magazine-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lumen-pdp-hero__magazine-logo img {
+            width: 89px;
+            height: 27px;
+            object-fit: contain;
+        }
+        
+        .lumen-pdp-hero__variant-label--hidden {
+            opacity: 0;
+        }
+        
+        .lumen-pdp-hero__variant-label-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 22px;
+            color: {{ section.settings.badge_text_color | default: '#7A0036' }};
+        }
+        
+        .lumen-pdp-hero__button {
+            width: 100%;
+            padding: 16px 32px;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        
+        .lumen-pdp-hero__delivery {
+            font-family: 'Montserrat';
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__trust-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+        {% render 'lumen-ugc-video', mode: 'css' %}
+        
+        .lumen-pdp-hero__payment-methods {
+            display: flex;
+            flex-direction: row;
+            justify-content:center;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        .lumen-pdp-hero__payment-method {
+            width: 38px;
+            height: 26px;
+            flex-shrink: 0;
+            background-color: #FFFFFF;
+            border: 1px solid #D9D9D9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lumen-pdp-hero__trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            padding: 24px 20px;
+            background-color: #FFEEEB;
+            border-radius: 12px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__trust-badges-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__trust-badge {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        
+        .lumen-pdp-hero__trust-badge-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+        
+        .lumen-pdp-hero__trust-badge-icon svg,
+        .lumen-pdp-hero__trust-badge-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .lumen-pdp-hero__trust-badge-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            color: #000000;
+            text-align: left;
+        }
+        
+        .lumen-pdp-hero__accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__accordion-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            border-bottom: 1px solid #E1DCD8;
+        }
+        
+        .lumen-pdp-hero__accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lumen-pdp-hero__accordion-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            cursor: pointer;
+            padding: 16px 0;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+        
+        .lumen-pdp-hero__accordion-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            flex: 1;
+            text-transform: uppercase;
+        }
+        
+        .lumen-pdp-hero__accordion-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .lumen-pdp-hero__accordion-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .lumen-pdp-hero__accordion-icon svg path {
+            stroke: #000000;
+        }
+        
+        .lumen-pdp-hero__accordion-content {
+            width: 100%;
+        }
+        
+        .lumen-pdp-hero__accordion-content-inner {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+            width: 100%;
+            padding-bottom: 16px;
+        }
+
+        .lumen-pdp-hero__faq-popup-trigger {
+            appearance: none;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            margin-top: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .lumen-pdp-hero__faq-image {
+            margin-top: 14px;
+            width: 100%;
+        }
+
+        .lumen-pdp-hero__faq-image-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* FAQ popup modal */
+        html.lumen-faq-modal-open,
+        body.lumen-faq-modal-open {
+            overflow: hidden;
+        }
+
+        .lumen-faq-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lumen-faq-modal.is-open {
+            display: flex;
+        }
+
+        .lumen-faq-modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .lumen-faq-modal__panel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 28px 32px;
+            max-height: calc(100vh - 40px);
+            overflow: auto;
+        }
+
+        .lumen-faq-modal__close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .lumen-faq-modal__title {
+            margin: 0 40px 14px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            text-transform: uppercase;
+            color: #000000;
+        }
+
+        .lumen-faq-modal__divider {
+            height: 1px;
+            width: 100%;
+            background: #E1DCD8;
+            margin: 10px 0 18px;
+        }
+
+        .lumen-faq-modal__body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #000000;
+        }
+
+        /* Swiper base - minimal to avoid conflicts */
+        .lumen-pdp-hero .swiper {
+          /* width: 100%; */
+          position: relative;
+        }
+        
+        .lumen-pdp-hero .swiper-slide {
+          flex-shrink: 0;
+        }
+        
+        /* Screen reader only */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border-width: 0;
+        }
+        
+        /* PDP Hero Button with hover effect */
+        .lumen-pdp-hero__button {
+          display: inline-block;
+          padding: 16px 32px;
+          border-radius: 10rem;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 1rem;
+          letter-spacing: 0.15rem;
+          transition: all 0.3s;
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+        }
+        
+        .lumen-pdp-hero__button:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #000000;
+          border-radius: 10rem;
+          z-index: -2;
+        }
+        
+        .lumen-pdp-hero__button:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          background-color: #5A0028;
+          transition: all 0.3s;
+          border-radius: 10rem;
+          z-index: -1;
+        }
+        
+        .lumen-pdp-hero__button:hover {
+          color: #fff;
+        }
+        
+        .lumen-pdp-hero__button:hover:before {
+          width: 100%;
+        }
+        
+        /* Loading state for button */
+        .lumen-pdp-hero__button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+        
+        .lumen-pdp-hero__button--loading {
+          pointer-events: none;
+          opacity: 0.8;
+        }
+        
+        .lumen-pdp-hero__button-spinner {
+          display: none;
+          width: 16px;
+          height: 16px;
+          border: 2px solid #ffffff;
+          border-radius: 50%;
+          border-top-color: transparent;
+          animation: lumenSpinner 0.6s linear infinite;
+        }
+        
+        .lumen-pdp-hero__button--loading .lumen-pdp-hero__button-spinner {
+          display: block;
+        }
+        
+        @keyframes lumenSpinner {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
+        .lumen-pdp-hero__variant-badge--hidden {
+          display: none !important;
+        }
+        
+        /* Upsell (below UGC) - neutral styling */
+        .lumen-pdp-hero__upsell {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          padding-top: 8px;
+        }
+
+        .lumen-pdp-hero__upsell-heading {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 18px;
+          color: #000000;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+
+        .lumen-pdp-hero__upsell-list {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+        }
+
+        .lumen-pdp-hero__upsell-item {
+          display: grid;
+          grid-template-columns: 80px 1fr;
+          gap: 10px;
+          align-items: center;
+          width: 100%;
+        }
+
+        .lumen-pdp-hero__upsell-image {
+          /* width: 40px;
+          height: 40px; */
+          background-color: #F2F2F2;
+          border-radius: 6px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lumen-pdp-hero__upsell-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+        }
+
+        .lumen-pdp-hero__upsell-content {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          min-width: 0;
+          width: 100%;
+        }
+
+        .lumen-pdp-hero__upsell-title {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+          color: #000000;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .lumen-pdp-hero__upsell-price {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+          color: #000000;
+        }
+
+        .lumen-pdp-hero__upsell-button {
+          width: 100%;
+          display: block;
+          padding: 8px 12px;
+          border-radius: 8px;
+          border: 2px solid #000000;
+          background: transparent;
+          color: #000000;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 18px;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          cursor: pointer;
+          transition: background-color 200ms ease, color 200ms ease, transform 200ms ease, border-color 200ms ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+          .lumen-pdp-hero__upsell-button:not([disabled]):hover {
+            background-color: #000000;
+            color: #FFFFFF;
+            transform: translateY(-1px);
+          }
+        }
+
+        .lumen-pdp-hero__upsell-button:not([disabled]):active {
+          transform: translateY(0);
+        }
+
+        .lumen-pdp-hero__upsell-button:focus-visible {
+          outline: 2px solid #000000;
+          outline-offset: 2px;
+        }
+
+        .lumen-pdp-hero__upsell-button[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        /* Bundle Products List Styles */
+        .lumen-pdp-hero__bundle-products {
+          padding-top: 7px;
+          border-top: 1px solid #E1DCD8;
+          width: 100%;
+        }
+        
+        .lumen-pdp-hero__bundle-products-label {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          font-size: 11px;
+          line-height: 16px;
+          color: #666666;
+          margin-bottom: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        
+        .lumen-pdp-hero__bundle-products-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          width: 100%;
+        }
+        
+        .lumen-pdp-hero__bundle-product-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+        }
+        
+        .lumen-pdp-hero__bundle-product-image {
+          width: 40px;
+          height: 40px;
+          flex-shrink: 0;
+          background-color: #F5F5F5;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        
+        .lumen-pdp-hero__bundle-product-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        
+        .lumen-pdp-hero__bundle-product-info {
+          flex: 1;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          gap: 2px;
+          min-width: 0;
+        }
+        
+        .lumen-pdp-hero__bundle-product-name {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 18px;
+          color: #000000;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        
+        .lumen-pdp-hero__bundle-product-quantity {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          font-size: 11px;
+          line-height: 16px;
+          color: #666666;
+        }
+
+        /* Bundle with Amazon Offer Styling */
+        .lumen-pdp-hero__variant--amazon-offer {
+          border-color: #7A0036;
+          position: relative;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-content {
+          gap: 14px;
+          align-items: flex-start;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-info {
+          flex: 1;
+          gap: 0;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-details {
+          gap: 6px;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-header {
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 0;
+          margin-bottom: 0;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-header-left {
+          padding: 0;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-header-right {
+          position: absolute;
+          right: 12px;
+          top: 12px;
+          margin: 0;
+        }
+
+        .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-price-row {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          margin-top: 4px;
+        }
+
+        .lumen-pdp-hero__amazon-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          padding: 10px 18px;
+          border: 1px solid #000000;
+          border-radius: 999px;
+          background: #EFEFEF;
+          text-decoration: none;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 15px;
+          color: #000000;
+          white-space: nowrap;
+          transition: background-color 0.2s, color 0.2s;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+
+        .lumen-pdp-hero__amazon-button:hover {
+          background-color: #7a0036;
+          color: #FFFFFF;
+        }
+
+        .lumen-pdp-hero__amazon-button svg {
+          width: 20px;
+          height: 20px;
+          flex-shrink: 0;
+        }
+
+        .lumen-pdp-hero__amazon-button img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+
+        .lumen-pdp-hero__amazon-banner {
+          padding: 3px 14px;
+          margin: 0 -12px -12px -12px;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 20px;
+          text-align: center;
+          letter-spacing: 0.02em;
+          width: calc(100% + 24px);
+        }
+
+        /* Fade-in animation */
+        .lumen-pdp-hero--animate .lumen-pdp-hero__left,
+        .lumen-pdp-hero--animate .lumen-pdp-hero__content {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .lumen-pdp-hero--animate .lumen-pdp-hero__left.is-visible,
+        .lumen-pdp-hero--animate .lumen-pdp-hero__content.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        /* Staggered animation delays */
+        .lumen-pdp-hero--animate .lumen-pdp-hero__left {
+          transition-delay: 0.1s;
+        }
+        
+        .lumen-pdp-hero--animate .lumen-pdp-hero__content {
+          transition-delay: 0.2s;
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 768px) {
+            .lumen-pdp-hero {
+                flex-direction: column;
+                gap: 40px;
+                padding: 20px 20px 56px;
+            }
+            
+            .lumen-pdp-hero__left {
+                width: 100%;
+                gap: 16px;
+            }
+            
+            .lumen-pdp-hero__gallery {
+                width: 100%;
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+                min-height: auto;
+            }
+
+            .lumen-pdp-hero__upsell-heading {
+              font-size: 14px;
+            }
+            
+            .lumen-pdp-hero__gallery-thumbs-swiper {
+                width: 100%;
+                order: 2;
+                height: auto;
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .lumen-pdp-hero__gallery-thumbs-swiper .swiper-slide {
+                width: 59px;
+                height: 59px;
+                border-radius: 6px;
+            }
+            
+            .lumen-pdp-hero__gallery-main-swiper {
+                order: 1;
+                min-height: 300px;
+            }
+            
+            .lumen-pdp-hero__gallery-main-swiper .swiper-slide {
+                border-radius: 10px;
+            }
+            
+            /* Hide arrows on mobile */
+            .lumen-pdp-hero__gallery-main-swiper .swiper-button-next,
+            .lumen-pdp-hero__gallery-main-swiper .swiper-button-prev {
+                display: none;
+            }
+            
+            .lumen-pdp-hero__content {
+                max-width: 100%;
+            }
+            
+            .lumen-pdp-hero__title {
+                font-size: 30px;
+                line-height: 40px;
+            }
+            
+            .lumen-pdp-hero__variants {
+                gap: 10px;
+            }
+            
+            .lumen-pdp-hero__variant {
+                padding: 8px;
+                border-radius: 8px;
+            }
+            
+            .lumen-pdp-hero__variant-pill {
+              padding: 5px 12px;
+              font-size: 8px;
+              line-height: 12px;
+              letter-spacing: 0.06em;
+            }
+
+            .badge-container::after {
+              right: 0px;
+              bottom: -9px;
+              width: 9px;
+              height: 9px;
+            }
+
+            .lumen-pdp-hero__variant-header-left {
+              padding-right: 12px;
+            }
+
+            .lumen-pdp-hero__variant-header-right {
+              margin-top: 10px;
+              margin-right: -18px;
+            }
+            
+            .lumen-pdp-hero__variant-price {
+                font-size: 14px;
+                line-height: 22px;
+            }
+            
+            .lumen-pdp-hero__variant-price-old {
+                font-size: 12px;
+                line-height: 24px;
+            }
+            
+            .lumen-pdp-hero__payment-methods {
+                justify-content: center;
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+            
+            .lumen-pdp-hero__trust-badges {
+                gap: 16px;
+                padding: 16px;
+            }
+            
+            .lumen-pdp-hero__trust-badges-row {
+                gap: 12px;
+            }
+
+            .lumen-pdp-hero__trust-badge {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+            }
+            
+            .lumen-pdp-hero__trust-badge-text {
+                font-size: 12px;
+                line-height: 18px;
+                text-align: center;
+            }
+            
+            .lumen-pdp-hero__magazine-logos {
+                padding: 16px 0 0;
+                gap: 16px;
+            }
+            
+            .lumen-pdp-hero__magazine-logo img {
+                width: 54px;
+                height: 17px;
+            }
+            
+            /* Smaller main bundle image and more compact padding on mobile */
+            .lumen-pdp-hero__variant--has-bundle-products {
+                padding: 8px;
+                gap: 12px;
+            }
+            
+            .lumen-pdp-hero__variant--has-bundle-products .lumen-pdp-hero__variant-image {
+                /* width: 40px;
+                height: 40px; */
+            }
+            
+            .lumen-pdp-hero__variant--has-bundle-products .lumen-pdp-hero__variant-content {
+                gap: 10px;
+            }
+            
+            .lumen-pdp-hero__bundle-products {
+                padding-top: 5px;
+            }
+            
+            .lumen-pdp-hero__bundle-products-label {
+                font-size: 10px;
+                line-height: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .lumen-pdp-hero__bundle-products-list {
+                gap: 6px;
+            }
+            
+            .lumen-pdp-hero__bundle-product-item {
+                gap: 8px;
+            }
+            
+            .lumen-pdp-hero__bundle-product-image {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .lumen-pdp-hero__bundle-product-name {
+                font-size: 12px;
+                line-height: 16px;
+            }
+            
+            .lumen-pdp-hero__bundle-product-quantity {
+                font-size: 10px;
+                line-height: 14px;
+            }
+
+            .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-content {
+              gap: 10px;
+            }
+
+            .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-header-left {
+              padding-right: 80px;
+            }
+
+            .lumen-pdp-hero__variant--amazon-offer .lumen-pdp-hero__variant-header-right {
+              right: 10px;
+              top: 10px;
+            }
+
+            .lumen-pdp-hero__amazon-button {
+              padding: 8px 14px;
+              font-size: 12px;
+              gap: 5px;
+            }
+
+            .lumen-pdp-hero__amazon-button svg,
+            .lumen-pdp-hero__amazon-button img {
+              width: 16px;
+              height: 16px;
+            }
+
+            .lumen-pdp-hero__amazon-banner {
+              padding: 3px 5px;
+              margin: 0 -8px -8px -8px;
+              width: calc(100% + 16px);
+              font-size: 11px;
+              line-height: 16px;
+            }
+
+            .lumen-pdp-hero__upsell-item {
+                grid-template-columns: 75px 1fr;
+                gap: 10px;
+            }
+
+            .lumen-pdp-hero__upsell-image {
+                /* width: 38px;
+                height: 38px; */
+                border-radius: 6px;
+            }
+
+            .lumen-pdp-hero__upsell-title {
+                font-size: 13px;
+                line-height: 18px;
+            }
+
+            .lumen-pdp-hero__upsell-button {
+                padding: 8px 12px;
+                border-radius: 8px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+        
+        /* Tablet styles */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .lumen-pdp-hero {
+                gap: 40px;
+                padding: 40px 48px 60px;
+            }
+            
+            .lumen-pdp-hero__left {
+                width: 50%;
+            }
+        }
+</style>
+
+<div class="lumen-pdp-hero-wrapper">
+  <section
+    class="lumen-pdp-hero{% if section.settings.enable_animation %} lumen-pdp-hero--animate{% endif %}"
+    x-data="lumenPdpHero()"
+    data-section-id="{{ section.id }}"
+    data-animation-enabled="{{ section.settings.enable_animation }}"
+  >
+    <!-- Left Part: Media Gallery + Magazine Logos -->
+    <div class="lumen-pdp-hero__left">
+    {% if section_product %}
+      <!-- Image Gallery with Swiper -->
+      <div class="lumen-pdp-hero__gallery">
+        <!-- Thumbnails Swiper -->
+        <div class="swiper lumen-pdp-hero__gallery-thumbs-swiper">
+          <div class="swiper-wrapper">
+            <template x-for="(image, index) in currentImages" :key="index">
+              <div class="swiper-slide">
+                <img
+                  :src="image.thumb"
+                  :alt="image.alt"
+                  loading="lazy"
+                  width="320"
+                  height="320"
+                  class="fit--cover"
+                >
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- Main Swiper -->
+        <div class="swiper lumen-pdp-hero__gallery-main-swiper">
+          <div class="swiper-wrapper">
+            <template x-for="(image, index) in currentImages" :key="index">
+              <div class="swiper-slide">
+                <img
+                  :src="image.url"
+                  :alt="image.alt"
+                  loading="lazy"
+                  width="1200"
+                  height="1200"
+                  class="fit--cover"
+                >
+              </div>
+            </template>
+          </div>
+          <!-- Navigation arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Magazine Logos -->
+    <div class="lumen-pdp-hero__magazine-logos">
+      {% for block in section.blocks %}
+        {% if block.type == 'magazine_logo' %}
+          <div
+            class="lumen-pdp-hero__magazine-logo"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.logo_image != blank %}
+              <img src="{{ block.settings.logo_image | image_url: width: 200 }}" loading="lazy" alt="{{ block.settings.alt_text | default: 'Magazine logo' }}">
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Product Content -->
+  <div class="lumen-pdp-hero__content">
+    <!-- Header: Rating, Title, Price -->
+    <div class="lumen-pdp-hero__header">
+                <div class="lumen-pdp-hero__rating">
+                    <div class="lumen-pdp-hero__rating-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                    </div>
+                    <span class="lumen-pdp-hero__rating-text">
+                      {{ section.settings.rating_text }}
+                    </span>
+                </div>
+                <h1 class="lumen-pdp-hero__title" x-text="currentTitle">
+                  {% if section.settings.custom_title != blank %}
+                    {{ section.settings.custom_title }}
+                  {% elsif section_product %}
+                    {{ section_product.title }}
+                  {% else %}
+                    {{ 'products.product.title' | t }}
+                  {% endif %}
+                </h1>
+                <div class="lumen-pdp-hero__price-row">
+                  <span class="lumen-pdp-hero__price" x-text="formatMoney(currentPrice)">
+                    {% if section_product and selected_variant %}
+                      {{ selected_variant.price | money }}
+                    {% endif %}
+                  </span>
+                  {% if section.settings.size_text != blank %}
+                    <span class="lumen-pdp-hero__size">
+                      {{ section.settings.size_text }}
+                    </span>
+                  {% endif %}
+                </div>
+            </div>
+            
+            <!-- Description -->
+            {% assign description_blocks = section.blocks | where: 'type', 'description_item' %}
+            {% if description_blocks.size > 0 %}
+              <div class="lumen-pdp-hero__description">
+                  <div class="lumen-pdp-hero__description-accordion">
+                    {% for block in description_blocks %}
+                      <div class="lumen-pdp-hero__description-item" x-data="{ open: false }" {{ block.shopify_attributes }}>
+                          <div class="lumen-pdp-hero__description-header" @click="open = !open">
+                              <h3 class="lumen-pdp-hero__description-title">
+                                {{ block.settings.title }}
+                              </h3>
+                              <div class="lumen-pdp-hero__description-icon">
+                                  <svg x-show="!open" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M9 1.75V16.25M1.75 9H16.25" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                  <svg x-show="open" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M2.25 8.44H15.75" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                              </div>
+                          </div>
+                          <div x-collapse x-show="open" class="lumen-pdp-hero__description-content">
+                              <div class="lumen-pdp-hero__description-content-inner">
+                                  {{ block.settings.content }}
+                              </div>
+                          </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+              </div>
+            {% endif %}
+            
+            <!-- Bundle/Variant Selection -->
+            {% assign bundle_option_blocks = section.blocks | where: 'type', 'bundle_option' %}
+            {% assign bundle_blocks = section.blocks | where: 'type', 'bundle' %}
+            {% assign all_bundle_blocks = bundle_option_blocks | concat: bundle_blocks %}
+            
+            {% if all_bundle_blocks.size > 0 and section_product and selected_variant %}
+              <div class="lumen-pdp-hero__variants">
+                {% for block in section.blocks %}
+                  {% if block.type == 'bundle_option' or block.type == 'bundle' %}
+                    
+                    {% if block.type == 'bundle_option' %}
+                      {% comment %} Original bundle_option logic - single product with quantity {% endcomment %}
+                      {% assign bundle_quantity = block.settings.quantity | default: 1 %}
+                      
+                      {% assign unit_price = selected_variant.price %}
+                      {% assign compare_price = unit_price | times: bundle_quantity %}
+                      
+                      {% if block.settings.use_percentage %}
+                        {% assign discount_percentage = block.settings.discount_percentage | default: 0 %}
+                        {% assign discount_multiplier = 100 | minus: discount_percentage %}
+                        {% assign regular_price = compare_price | times: discount_multiplier | divided_by: 100 %}
+                      {% else %}
+                        {% assign regular_price = compare_price %}
+                      {% endif %}
+                      
+                      {% assign display_image = block.settings.bundle_image %}
+                      {% if display_image == blank %}
+                        {% assign variant_media = selected_variant.featured_media | default: section_product.featured_media %}
+                        {% assign display_image = variant_media %}
+                      {% endif %}
+                      
+                      {% assign display_title = block.settings.bundle_title %}
+                      {% if display_title == blank %}
+                        {% assign display_title = section_product.title %}
+                        {% if bundle_quantity > 1 %}
+                          {% assign display_title = display_title | append: ' (' | append: bundle_quantity | append: 'x)' %}
+                        {% endif %}
+                      {% endif %}
+                      
+                    {% elsif block.type == 'bundle' %}
+                      {% comment %} New bundle logic - uses bundle product for display, adds separate products to cart {% endcomment %}
+                      {% assign bundle_product = block.settings.bundle_product %}
+                      {% assign product_1 = block.settings.product_1 %}
+                      {% assign product_2 = block.settings.product_2 %}
+                      {% assign product_3 = block.settings.product_3 %}
+                      {% assign product_1_quantity = block.settings.product_1_quantity | default: 1 %}
+                      {% assign product_2_quantity = block.settings.product_2_quantity | default: 1 %}
+                      {% assign product_3_quantity = block.settings.product_3_quantity | default: 1 %}
+                      {% assign add_bundle_property = block.settings.add_bundle_property | default: false %}
+                      {% assign add_vera2_bundle_property = block.settings.add_vera2_bundle_property | default: false %}
+                      {% assign has_bundle_property = false %}
+                      {% if add_bundle_property or add_vera2_bundle_property %}
+                        {% assign has_bundle_property = true %}
+                      {% endif %}
+
+                      {%- comment -%}
+                        Theme editor "product" settings can sometimes surface as a handle string.
+                        Resolve handles to product objects so we don't render empty rows.
+                      {%- endcomment -%}
+                      {% if product_1 != blank and product_1.title == blank %}
+                        {% assign product_1_handle = product_1.handle | default: product_1 | handleize %}
+                        {% assign product_1 = all_products[product_1_handle] %}
+                      {% endif %}
+                      {% if product_2 != blank and product_2.title == blank %}
+                        {% assign product_2_handle = product_2.handle | default: product_2 | handleize %}
+                        {% assign product_2 = all_products[product_2_handle] %}
+                      {% endif %}
+                      {% if product_3 != blank and product_3.title == blank %}
+                        {% assign product_3_handle = product_3.handle | default: product_3 | handleize %}
+                        {% assign product_3 = all_products[product_3_handle] %}
+                      {% endif %}
+
+                      {% assign has_bundle_products = false %}
+                      {% if product_1 != blank and product_1.title != blank %}
+                        {% assign has_bundle_products = true %}
+                      {% endif %}
+                      {% if product_2 != blank and product_2.title != blank %}
+                        {% assign has_bundle_products = true %}
+                      {% endif %}
+                      {% if product_3 != blank and product_3.title != blank %}
+                        {% assign has_bundle_products = true %}
+                      {% endif %}
+                      
+                      {% if bundle_product %}
+                        {% assign bundle_variant = bundle_product.selected_or_first_available_variant %}
+                        {% assign regular_price = bundle_variant.price %}
+                        {% assign compare_price = bundle_variant.compare_at_price %}
+                        
+                        {% assign display_image = block.settings.bundle_image %}
+                        {% if display_image == blank and bundle_product.featured_media %}
+                          {% assign display_image = bundle_product.featured_media %}
+                        {% endif %}
+                        
+                        {% assign display_title = block.settings.bundle_title %}
+                        {% if display_title == blank %}
+                          {% assign display_title = bundle_product.title %}
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                    
+                    {%- comment -%} Liquid doesn't support parentheses in boolean expressions reliably; compute flag explicitly. {%- endcomment -%}
+                    {% assign has_pill_badge = false %}
+                    {% if block.type == 'bundle' and has_bundle_property and block.settings.show_corner_badge %}
+                      {% assign has_pill_badge = true %}
+                    {% elsif block.settings.show_badge and block.settings.badge_text != blank %}
+                      {% assign has_pill_badge = true %}
+                    {% endif %}
+
+                    <div
+                      class="lumen-pdp-hero__variant{% if block.type == 'bundle' and has_bundle_property %} lumen-pdp-hero__variant--has-bundle-products{% endif %}{% if block.type == 'bundle' and block.settings.show_amazon_offer %} lumen-pdp-hero__variant--amazon-offer{% endif %}"
+                      :class="{'lumen-pdp-hero__variant--selected': isSelected('{{ block.id }}')}"
+                      {% if block.type == 'bundle_option' %}
+                        @click="selectBundle('{{ block.id }}', {{ selected_variant.id }}, {{ bundle_quantity }}, 'bundle_option')"
+                      {% elsif block.type == 'bundle' %}
+                        @click="selectMultiProductBundle('{{ block.id }}', {{ product_1.variants.first.id | default: 0 }}, {{ product_1_quantity }}, {{ product_2.variants.first.id | default: 0 }}, {{ product_2_quantity }}, {{ product_3.variants.first.id | default: 0 }}, {{ product_3_quantity }}, {{ add_bundle_property }}, {{ add_vera2_bundle_property }})"
+                      {% endif %}
+                      {{ block.shopify_attributes }}
+                    >
+                      <div class="lumen-pdp-hero__variant-content">
+                        <div class="lumen-pdp-hero__variant-image">
+                          {% if display_image %}
+                            {{ display_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: display_title | escape }}
+                          {% endif %}
+                        </div>
+                        <div class="lumen-pdp-hero__variant-info">
+                          <div class="lumen-pdp-hero__variant-details">
+                            <div class="lumen-pdp-hero__variant-header">
+                              <div class="lumen-pdp-hero__variant-header-left">
+                                <div class="lumen-pdp-hero__variant-name">
+                                  {{ display_title }}
+                                </div>
+                              </div>
+                              {% if block.type == 'bundle' and block.settings.show_amazon_offer and block.settings.amazon_url != blank %}
+                                <div class="lumen-pdp-hero__variant-header-right">
+                                  <a href="{{ block.settings.amazon_url }}"
+                                     class="lumen-pdp-hero__amazon-button"
+                                     target="_blank"
+                                     rel="noopener noreferrer"
+                                     aria-label="Buy on Amazon">
+                                    {% if block.settings.amazon_icon != blank %}
+                                      <img src="{{ block.settings.amazon_icon | image_url: width: 40 }}" alt="Amazon" width="24" height="24" loading="lazy">
+                                    {% else %}
+                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                                        <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0z" fill="#FF9900"/>
+                                        <path d="M12 20.5c0-.45.366-.816.816-.816h14.368c.45 0 .816.366.816.816s-.366.816-.816.816H12.816c-.45 0-.816-.366-.816-.816zm7.5-8c0-.45.366-.816.816-.816h1.368c.45 0 .816.366.816.816v8.5h1.5c.45 0 .816.366.816.816s-.366.816-.816.816h-2.684c-.45 0-.816-.366-.816-.816v-8.5h-1.5c-.45 0-.816-.366-.816-.816zm8 11c0-.45.366-.816.816-.816h1.368c.45 0 .816.366.816.816s-.366.816-.816.816H28.316c-.45 0-.816-.366-.816-.816z" fill="#fff"/>
+                                      </svg>
+                                    {% endif %}
+                                    <span>BUY</span>
+                                  </a>
+                                </div>
+                              {% elsif has_pill_badge %}
+                                <div class="lumen-pdp-hero__variant-header-right">
+                                  {%- comment -%} Badge pill (right side, like screenshot). Corner badge takes priority. {%- endcomment -%}
+                                  {% if block.type == 'bundle' and has_bundle_property and block.settings.show_corner_badge %}
+                                    <div class="badge-container" style="--badge-bg: {% if block.settings.corner_badge_bg_color != blank %}{{ block.settings.corner_badge_bg_color }}{% else %}#000000{% endif %}; --badge-fg: {% if block.settings.corner_badge_text_color != blank %}{{ block.settings.corner_badge_text_color }}{% else %}#FFFFFF{% endif %};">
+                                      <div class="lumen-pdp-hero__variant-pill">
+                                        {{ block.settings.corner_badge_text | default: 'MOST POPULAR' }}
+                                      </div>
+                                    </div>
+                                  {% else %}
+                                    <div class="badge-container" style="--badge-bg: {% if block.settings.badge_bg_color != blank %}{{ block.settings.badge_bg_color }}{% else %}#000000{% endif %}; --badge-fg: {% if block.settings.badge_text_color != blank %}{{ block.settings.badge_text_color }}{% else %}#FFFFFF{% endif %};">
+                                      <div class="lumen-pdp-hero__variant-pill">
+                                        {{ block.settings.badge_text }}
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                </div>
+                              {% endif %}
+                            </div>
+                            <div class="lumen-pdp-hero__variant-price-row">
+                              <span class="lumen-pdp-hero__variant-price">
+                                {{ regular_price | money }}
+                              </span>
+                              {% if compare_price and compare_price > regular_price %}
+                                <span class="lumen-pdp-hero__variant-price-old">
+                                  {{ compare_price | money }}
+                                </span>
+                              {% endif %}
+                              {% if block.settings.show_free_delivery_badge and section.settings.free_delivery_text != blank %}
+                                <div class="lumen-pdp-hero__variant-badge">
+                                  <svg class="lumen-pdp-hero__variant-badge-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M12.25 7C12.25 7.11603 12.2039 7.22731 12.1219 7.30936C12.0398 7.39141 11.9285 7.4375 11.8125 7.4375H7.4375V11.8125C7.4375 11.9285 7.39141 12.0398 7.30936 12.1219C7.22731 12.2039 7.11603 12.25 7 12.25C6.88397 12.25 6.77269 12.2039 6.69064 12.1219C6.60859 12.0398 6.5625 11.9285 6.5625 11.8125V7.4375H2.1875C2.07147 7.4375 1.96019 7.39141 1.87814 7.30936C1.79609 7.22731 1.75 7.11603 1.75 7C1.75 6.88397 1.79609 6.77269 1.87814 6.69064C1.96019 6.60859 2.07147 6.5625 2.1875 6.5625H6.5625V2.1875C6.5625 2.07147 6.60859 1.96019 6.69064 1.87814C6.77269 1.79609 6.88397 1.75 7 1.75C7.11603 1.75 7.22731 1.79609 7.30936 1.87814C7.39141 1.96019 7.4375 2.07147 7.4375 2.1875V6.5625H11.8125C11.9285 6.5625 12.0398 6.60859 12.1219 6.69064C12.2039 6.77269 12.25 6.88397 12.25 7Z" fill="#7A0036"/>
+                                  </svg>
+                                  <span class="lumen-pdp-hero__variant-badge-text">
+                                    {{ section.settings.free_delivery_text }}
+                                  </span>
+                                </div>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% comment %} Bundle Products List - Show when add_bundle_property or add_vera2_bundle_property is enabled {% endcomment %}
+                          {% if block.type == 'bundle' and has_bundle_property and has_bundle_products %}
+                            <div class="lumen-pdp-hero__bundle-products">
+                              <div class="lumen-pdp-hero__bundle-products-label">
+                                Included in bundle
+                              </div>
+                              <div class="lumen-pdp-hero__bundle-products-list">
+                                {% if product_1 != blank and product_1.title != blank %}
+                                  <div class="lumen-pdp-hero__bundle-product-item">
+                                    <div class="lumen-pdp-hero__bundle-product-image">
+                                      {% if product_1.featured_media %}
+                                        {{ product_1.featured_media | image_url: width: 80 | image_tag: loading: 'lazy', alt: product_1.title | escape }}
+                                      {% endif %}
+                                    </div>
+                                    <div class="lumen-pdp-hero__bundle-product-info">
+                                      <div class="lumen-pdp-hero__bundle-product-name">{{ product_1.title }}</div>
+                                      <div class="lumen-pdp-hero__bundle-product-quantity">X{{ product_1_quantity }}</div>
+                                    </div>
+                                  </div>
+                                {% endif %}
+                                {% if product_2 != blank and product_2.title != blank %}
+                                  <div class="lumen-pdp-hero__bundle-product-item">
+                                    <div class="lumen-pdp-hero__bundle-product-image">
+                                      {% if product_2.featured_media %}
+                                        {{ product_2.featured_media | image_url: width: 80 | image_tag: loading: 'lazy', alt: product_2.title | escape }}
+                                      {% endif %}
+                                    </div>
+                                    <div class="lumen-pdp-hero__bundle-product-info">
+                                      <div class="lumen-pdp-hero__bundle-product-name">{{ product_2.title }}</div>
+                                      <div class="lumen-pdp-hero__bundle-product-quantity">X{{ product_2_quantity }}</div>
+                                    </div>
+                                  </div>
+                                {% endif %}
+                                {% if product_3 != blank and product_3.title != blank %}
+                                  <div class="lumen-pdp-hero__bundle-product-item">
+                                    <div class="lumen-pdp-hero__bundle-product-image">
+                                      {% if product_3.featured_media %}
+                                        {{ product_3.featured_media | image_url: width: 80 | image_tag: loading: 'lazy', alt: product_3.title | escape }}
+                                      {% endif %}
+                                    </div>
+                                    <div class="lumen-pdp-hero__bundle-product-info">
+                                      <div class="lumen-pdp-hero__bundle-product-name">{{ product_3.title }}</div>
+                                      <div class="lumen-pdp-hero__bundle-product-quantity">X{{ product_3_quantity }}</div>
+                                    </div>
+                                  </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                          {% endif %}
+                      {% if block.type == 'bundle' and block.settings.show_amazon_offer and block.settings.amazon_promo_text != blank %}
+                        <div class="lumen-pdp-hero__amazon-banner"
+                             style="background-color: {{ block.settings.amazon_banner_bg_color | default: '#7A0036' }}; color: {{ block.settings.amazon_banner_text_color | default: '#FFFFFF' }};">
+                          {{ block.settings.amazon_promo_text }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- Add to Bag Button -->
+            {% if section_product and selected_variant %}
+              {% assign form_id = 'LumenPdpHeroProductForm-' | append: section.id %}
+              <product-form-component
+                data-section-id="{{ section.id }}"
+                data-product-id="{{ section_product.id }}"
+                data-product-url="{{ section_product.url }}"
+                on:submit="/handleSubmit"
+                data-quantity-default="1"
+              >
+                <div class="sr-only" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+                {%- form 'product', section_product, id: form_id, data-type: 'add-to-cart-form' -%}
+                  <input type="hidden" name="id" ref="variantId" x-model="selectedVariantId">
+                  <input type="hidden" name="quantity" ref="quantityInput" x-model="selectedQuantity">
+                  <add-to-cart-component
+                    ref="addToCartButtonContainer"
+                    data-add-to-cart-animation="false"
+                  >
+                    <button
+                      type="submit"
+                      name="add"
+                      ref="addToCartButton"
+                      class="lumen-pdp-hero__button"
+                      :class="{'lumen-pdp-hero__button--loading': isLoading}"
+                      @click="handleAddToCart($event)"
+                    >
+                      <span class="lumen-pdp-hero__button-spinner"></span>
+                      <span x-text="isLoading ? addingToCartLabel : addToCartLabel"></span>
+                    </button>
+                  </add-to-cart-component>
+                {%- endform -%}
+              </product-form-component>
+            {% endif %}
+            
+            <!-- Delivery Info -->
+            {% if section.settings.delivery_text != blank %}
+              <p class="lumen-pdp-hero__delivery">
+                {{ section.settings.delivery_text }}
+              </p>
+            {% endif %}
+            
+            <!-- Trust Section: Payment Methods & Badges -->
+            <div class="lumen-pdp-hero__trust-section">
+                <!-- Payment Methods -->
+                {% if section.settings.show_payment_icons %}
+                  {% assign enabled_payment_types = shop.enabled_payment_types %}
+                  {% if enabled_payment_types != blank %}
+                    <div class="lumen-pdp-hero__payment-methods" aria-label="{{ 'sections.footer.payment' | t | default: 'Payment methods' }}">
+                      {% for type in enabled_payment_types %}
+                        <div class="lumen-pdp-hero__payment-method">
+                          {{ type | payment_type_svg_tag }}
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endif %}
+                
+                <!-- Trust Badges -->
+                <div class="lumen-pdp-hero__trust-badges">
+                    <div class="lumen-pdp-hero__trust-badges-row">
+                      {% for block in section.blocks %}
+                        {% if block.type == 'trust_badge' %}
+                          <div class="lumen-pdp-hero__trust-badge" {{ block.shopify_attributes }}>
+                              <div class="lumen-pdp-hero__trust-badge-icon">
+                                {% if block.settings.icon_image != blank %}
+                                  <img src="{{ block.settings.icon_image | image_url: width: 80 }}" loading="lazy" alt="{{ block.settings.text | strip_html | escape }}">
+                                {% endif %}
+                              </div>
+                              {% if block.settings.text != blank %}
+                                <div class="lumen-pdp-hero__trust-badge-text">
+                                  {{ block.settings.text }}
+                                </div>
+                              {% endif %}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            {% assign upsell_blocks = section.blocks | where: 'type', 'upsell_product' %}
+            {% if section.settings.show_upsell and upsell_blocks.size > 0 %}
+              <div class="lumen-pdp-hero__upsell" aria-label="{{ section.settings.upsell_heading | escape }}">
+                {% if section.settings.upsell_heading != blank %}
+                  <div class="lumen-pdp-hero__upsell-heading">
+                    {{ section.settings.upsell_heading }}
+                  </div>
+                {% endif %}
+                <div class="lumen-pdp-hero__upsell-list">
+                  {% for block in upsell_blocks limit: 3 %}
+                    {% assign upsell_product = block.settings.product %}
+                    {% if upsell_product == blank and request.visual_preview_mode %}
+                      {% assign upsell_product = collections.all.products[forloop.index0] %}
+                    {% endif %}
+                    {% if upsell_product != blank %}
+                      {% assign upsell_variant = upsell_product.selected_or_first_available_variant %}
+                      <div class="lumen-pdp-hero__upsell-item" {{ block.shopify_attributes }}>
+                        <div class="lumen-pdp-hero__upsell-image">
+                          {% if upsell_product.featured_media %}
+                            {{ upsell_product.featured_media | image_url: width: 240 | image_tag: loading: 'lazy', alt: upsell_product.title | escape }}
+                          {% endif %}
+                        </div>
+                        <div class="lumen-pdp-hero__upsell-content">
+                          <div class="lumen-pdp-hero__upsell-title">
+                            {{ block.settings.title_override | default: upsell_product.title }}
+                          </div>
+                          <div class="lumen-pdp-hero__upsell-price">
+                            {{ upsell_variant.price | money }}
+                          </div>
+                          {% assign upsell_form_id = 'LumenPdpHeroUpsellForm-' | append: section.id | append: '-' | append: block.id %}
+                          <product-form-component
+                            data-lumen-upsell-form
+                            data-section-id="{{ section.id }}"
+                            data-product-id="{{ upsell_product.id }}"
+                            data-product-url="{{ upsell_product.url }}"
+                            on:submit="/handleSubmit"
+                            data-quantity-default="1"
+                          >
+                            <div class="sr-only" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+                            {%- form 'product', upsell_product, id: upsell_form_id, data-type: 'add-to-cart-form' -%}
+                              <input type="hidden" name="id" ref="variantId" value="{{ upsell_variant.id }}">
+                              <input type="hidden" name="quantity" value="1">
+                              <add-to-cart-component ref="addToCartButtonContainer" data-add-to-cart-animation="false">
+                                <button
+                                  type="submit"
+                                  name="add"
+                                  ref="addToCartButton"
+                                  class="lumen-pdp-hero__upsell-button"
+                                  data-lumen-upsell-atc
+                                  data-lumen-upsell-default-label="{{ block.settings.button_label | default: section.settings.upsell_button_label | default: 'ADD TO BAG' | escape }}"
+                                  data-lumen-upsell-adding-label="{{ section.settings.adding_to_cart_label | default: 'ADDING...' | escape }}"
+                                  {% unless upsell_variant.available %}disabled{% endunless %}
+                                >
+                                  <span class="lumen-pdp-hero__upsell-button-label">
+                                    {{ block.settings.button_label | default: section.settings.upsell_button_label | default: 'ADD TO BAG' }}
+                                  </span>
+                                </button>
+                              </add-to-cart-component>
+                            {%- endform -%}
+                          </product-form-component>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            {% assign ugc_blocks = section.blocks | where: 'type', 'ugc_video' %}
+            {% render 'lumen-ugc-video', mode: 'slider', section: section, ugc_blocks: ugc_blocks %}
+
+            <!-- Accordion Section -->
+            <div class="lumen-pdp-hero__accordion">
+              {% for block in section.blocks %}
+                {% if block.type == 'faq_item' %}
+                <div class="lumen-pdp-hero__accordion-item" x-data="{ open: {{ forloop.first | json }} }" {{ block.shopify_attributes }}>
+                    <div class="lumen-pdp-hero__accordion-header" @click="open = !open">
+                        <h3 class="lumen-pdp-hero__accordion-title">
+                          {{ block.settings.title }}
+                        </h3>
+                        <div class="lumen-pdp-hero__accordion-icon">
+                            <svg x-show="!open" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 1.75V16.25M1.75 9H16.25" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <svg x-show="open" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 8.44H15.75" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div x-collapse x-show="open" class="lumen-pdp-hero__accordion-content">
+                        <div class="lumen-pdp-hero__accordion-content-inner">
+                            {{ block.settings.content }}
+
+                            {% if block.settings.faq_enable_popup and block.settings.faq_popup_content != blank %}
+                              <button
+                                type="button"
+                                class="lumen-pdp-hero__faq-popup-trigger"
+                                data-lumen-faq-popup-trigger
+                                data-lumen-faq-section-id="{{ section.id }}"
+                                data-lumen-faq-block-id="{{ block.id }}"
+                                data-lumen-faq-popup-title="{{ block.settings.faq_popup_title | default: block.settings.title | escape }}"
+                                aria-haspopup="dialog"
+                              >
+                                {{ block.settings.faq_popup_trigger_text | default: 'View full list' }}
+                              </button>
+                            {% endif %}
+
+                            {% if block.settings.faq_show_image and block.settings.faq_image != blank %}
+                              <div class="lumen-pdp-hero__faq-image">
+                                {{
+                                  block.settings.faq_image
+                                  | image_url: width: 1200
+                                  | image_tag:
+                                    loading: 'lazy',
+                                    widths: '320, 480, 640, 800, 1000, 1200',
+                                    class: 'lumen-pdp-hero__faq-image-img'
+                                }}
+                              </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    Render UGC modal OUTSIDE the animated content columns so it isn't constrained by
+    transform (which would break position:fixed and cause the modal to appear on the side).
+  {%- endcomment -%}
+  {% assign ugc_blocks = section.blocks | where: 'type', 'ugc_video' %}
+  {% render 'lumen-ugc-video', mode: 'modal', section: section, ugc_blocks: ugc_blocks %}
+
+  {%- comment -%} FAQ popup modal (per FAQ block) {%- endcomment -%}
+  <div class="lumen-faq-modal" data-lumen-faq-modal data-lumen-faq-section-id="{{ section.id }}" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lumen-faq-modal__backdrop" data-lumen-faq-close></div>
+    <div class="lumen-faq-modal__panel" role="document">
+      <button type="button" class="lumen-faq-modal__close" data-lumen-faq-close aria-label="Close">&times;</button>
+      <h3 class="lumen-faq-modal__title" data-lumen-faq-title></h3>
+      <div class="lumen-faq-modal__divider"></div>
+      <div class="lumen-faq-modal__body" data-lumen-faq-body></div>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' and block.settings.faq_enable_popup and block.settings.faq_popup_content != blank %}
+          <template data-lumen-faq-template="{{ block.id }}">
+            {{ block.settings.faq_popup_content }}
+          </template>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- Load product form script -->
+<script src="{{ 'product-form.js' | asset_url }}" type="module"></script>
+
+<!-- Alpine.js Component Registration -->
+<script>
+  // Utility function for money formatting
+  const formatMoney = (cents) => (cents / 100).toLocaleString('{{ request.locale.iso_code }}', {
+    style: 'currency',
+    currency: '{{ cart.currency.iso_code }}'
+  });
+
+  function lumenPdpHero() {
+    return {
+      // Store the selected bundle block ID, variant ID, and quantity
+      selectedBundleId: null,
+      selectedVariantId: {{ selected_variant.id | default: section_product.variants.first.id }},
+      selectedQuantity: 1,
+      isLoading: false,
+      bundleType: 'bundle_option', // 'bundle_option' or 'bundle'
+      // For multi-product bundles
+      product1VariantId: null,
+      product1Quantity: 1,
+      product2VariantId: null,
+      product2Quantity: 1,
+      product3VariantId: null,
+      product3Quantity: 1,
+      addBundleProperty: false, // Whether to add bundle property to cart items (vera_bundle)
+      addVera2BundleProperty: false, // Whether to add vera2_bundle property to cart items
+      // Current product images for gallery
+      currentImages: [],
+      // Bundle images data
+      bundleImagesData: {},
+      // Current product title and price
+      currentTitle: {{ section.settings.custom_title | default: section_product.title | json }},
+      currentPrice: {{ selected_variant.price | default: 0 }},
+      // Button labels
+      addToCartLabel: {{ section.settings.add_to_cart_label | json }},
+      addingToCartLabel: {{ section.settings.adding_to_cart_label | json }},
+      // Bundle product data
+      bundleProductData: {},
+      
+      init() {
+        // Initialize with default product images
+        {% if section_product %}
+          this.currentImages = [
+            {% for media in section_product.media %}
+              {% if media.media_type == 'image' %}
+                {
+                  url: "{{ media | image_url: width: 1200 }}",
+                  thumb: "{{ media | image_url: width: 320 }}",
+                  alt: "{{ media.alt | escape }}"
+                }{% unless forloop.last %},{% endunless %}
+              {% endif %}
+            {% endfor %}
+          ];
+        {% endif %}
+        
+        // Store bundle images and product data
+        {% for block in section.blocks %}
+          {% if block.type == 'bundle' %}
+            {% assign bundle_product = block.settings.bundle_product %}
+            {% assign bundle_title = block.settings.bundle_title %}
+            {% if bundle_product %}
+              {% assign bundle_variant = bundle_product.selected_or_first_available_variant %}
+              this.bundleImagesData['{{ block.id }}'] = [
+                {% for media in bundle_product.media %}
+                  {% if media.media_type == 'image' %}
+                    {
+                      url: "{{ media | image_url: width: 1200 }}",
+                      thumb: "{{ media | image_url: width: 320 }}",
+                      alt: "{{ media.alt | escape }}"
+                    }{% unless forloop.last %},{% endunless %}
+                  {% endif %}
+                {% endfor %}
+              ];
+              this.bundleProductData['{{ block.id }}'] = {
+                title: "{% if bundle_title != blank %}{{ bundle_title | escape }}{% else %}{{ bundle_product.title | escape }}{% endif %}",
+                price: {{ bundle_variant.price }}
+              };
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        // Auto-select the first bundle option if available
+        {% assign first_bundle_option = section.blocks | where: 'type', 'bundle_option' | first %}
+        {% assign first_bundle = section.blocks | where: 'type', 'bundle' | first %}
+        
+        {% if first_bundle_option %}
+          {% assign first_quantity = first_bundle_option.settings.quantity | default: 1 %}
+          this.selectedBundleId = '{{ first_bundle_option.id }}';
+          this.selectedVariantId = {{ selected_variant.id }};
+          this.selectedQuantity = {{ first_quantity }};
+          this.bundleType = 'bundle_option';
+        {% elsif first_bundle %}
+          {% assign product_1 = first_bundle.settings.product_1 %}
+          {% assign product_2 = first_bundle.settings.product_2 %}
+          {% assign product_3 = first_bundle.settings.product_3 %}
+          {% assign product_1_quantity = first_bundle.settings.product_1_quantity | default: 1 %}
+          {% assign product_2_quantity = first_bundle.settings.product_2_quantity | default: 1 %}
+          {% assign product_3_quantity = first_bundle.settings.product_3_quantity | default: 1 %}
+          {% assign first_bundle_property = first_bundle.settings.add_bundle_property | default: false %}
+          {% assign first_vera2_bundle_property = first_bundle.settings.add_vera2_bundle_property | default: false %}
+          this.selectedBundleId = '{{ first_bundle.id }}';
+          this.bundleType = 'bundle';
+          this.product1VariantId = {{ product_1.variants.first.id | default: 0 }};
+          this.product1Quantity = {{ product_1_quantity }};
+          this.product2VariantId = {{ product_2.variants.first.id | default: 0 }};
+          this.product2Quantity = {{ product_2_quantity }};
+          this.product3VariantId = {{ product_3.variants.first.id | default: 0 }};
+          this.product3Quantity = {{ product_3_quantity }};
+          this.addBundleProperty = {{ first_bundle_property }};
+          this.addVera2BundleProperty = {{ first_vera2_bundle_property }};
+          // Load bundle images, title, and price for first bundle
+          if (this.bundleImagesData['{{ first_bundle.id }}']) {
+            this.currentImages = this.bundleImagesData['{{ first_bundle.id }}'];
+          }
+          if (this.bundleProductData['{{ first_bundle.id }}']) {
+            this.currentTitle = this.bundleProductData['{{ first_bundle.id }}'].title;
+            this.currentPrice = this.bundleProductData['{{ first_bundle.id }}'].price;
+          }
+          this.$nextTick(() => this.reinitializeGallery());
+        {% endif %}
+        
+        // Listen for cart success/error to reset loading state
+        document.addEventListener('cart:updated', () => {
+          this.isLoading = false;
+        });
+        
+        document.addEventListener('cart:error', () => {
+          this.isLoading = false;
+        });
+        
+        // Reset loading after 3 seconds as fallback
+        this.$watch('isLoading', (value) => {
+          if (value) {
+            setTimeout(() => {
+              this.isLoading = false;
+            }, 3000);
+          }
+        });
+      },
+      
+      selectBundle(bundleId, variantId, quantity, type) {
+        this.selectedBundleId = bundleId;
+        this.selectedVariantId = variantId;
+        this.selectedQuantity = quantity;
+        this.bundleType = type || 'bundle_option';
+        // Bundle option uses main product, so reset to default
+        {% if section_product %}
+          this.currentImages = [
+            {% for media in section_product.media %}
+              {% if media.media_type == 'image' %}
+                {
+                  url: "{{ media | image_url: width: 1200 }}",
+                  thumb: "{{ media | image_url: width: 320 }}",
+                  alt: "{{ media.alt | escape }}"
+                }{% unless forloop.last %},{% endunless %}
+              {% endif %}
+            {% endfor %}
+          ];
+          this.currentTitle = {{ section.settings.custom_title | default: section_product.title | json }};
+          this.currentPrice = {{ selected_variant.price | default: 0 }};
+        {% endif %}
+        this.$nextTick(() => this.reinitializeGallery());
+      },
+      
+      selectMultiProductBundle(bundleId, product1VariantId, product1Quantity, product2VariantId, product2Quantity, product3VariantId, product3Quantity, addBundleProperty = false, addVera2BundleProperty = false) {
+        this.selectedBundleId = bundleId;
+        this.bundleType = 'bundle';
+        this.product1VariantId = product1VariantId;
+        this.product1Quantity = product1Quantity;
+        this.product2VariantId = product2VariantId;
+        this.product2Quantity = product2Quantity;
+        this.product3VariantId = product3VariantId;
+        this.product3Quantity = product3Quantity;
+        this.addBundleProperty = addBundleProperty;
+        this.addVera2BundleProperty = addVera2BundleProperty;
+        
+        // Update gallery images, title, and price for this bundle
+        if (this.bundleImagesData[bundleId] && this.bundleImagesData[bundleId].length > 0) {
+          this.currentImages = this.bundleImagesData[bundleId];
+        }
+        
+        if (this.bundleProductData[bundleId]) {
+          this.currentTitle = this.bundleProductData[bundleId].title;
+          this.currentPrice = this.bundleProductData[bundleId].price;
+        }
+        
+        this.$nextTick(() => this.reinitializeGallery());
+      },
+      
+      reinitializeGallery() {
+        // Dispatch event to reinitialize gallery
+        document.dispatchEvent(new CustomEvent('lumen:gallery:reinitialize'));
+        
+        // Also directly reinitialize if Swiper instances exist
+        setTimeout(() => {
+          if (window.lumenGalleryMain) {
+            window.lumenGalleryMain.update();
+            window.lumenGalleryMain.slideTo(0);
+          }
+          if (window.lumenGalleryThumbs) {
+            window.lumenGalleryThumbs.update();
+            window.lumenGalleryThumbs.slideTo(0);
+          }
+        }, 100);
+      },
+      
+      isSelected(bundleId) {
+        return this.selectedBundleId === bundleId;
+      },
+      
+      handleAddToCart(event) {
+        // Only intercept for multi-product bundles
+        if (this.bundleType === 'bundle') {
+          event.preventDefault();
+          this.isLoading = true;
+          this.addMultipleProductsToCart();
+        } else {
+          // For bundle_option, let the normal form submission work
+          this.isLoading = true;
+        }
+      },
+
+
+      
+      async addMultipleProductsToCart() {
+        const items = [];
+        
+        // Determine which bundle property to use (vera2_bundle takes priority)
+        const useBundleProperty = this.addVera2BundleProperty || this.addBundleProperty;
+        const bundleId = this.addVera2BundleProperty ? "vera2_bundle" : "vera_bundle";
+        
+        // Generate unique bundle timestamp to keep bundle items separate
+        const bundleTimestamp = useBundleProperty ? Date.now().toString() : null;
+        
+        if (this.product1VariantId && this.product1VariantId !== 0) {
+          const item = {
+            id: this.product1VariantId,
+            quantity: this.product1Quantity
+          };
+          if (useBundleProperty) {
+            item.properties = {
+              bundle_id: bundleId,
+              bundle_item_index: "1",
+              _bundle_key: bundleTimestamp
+            };
+          }
+          items.push(item);
+        }
+        
+        if (this.product2VariantId && this.product2VariantId !== 0) {
+          const item = {
+            id: this.product2VariantId,
+            quantity: this.product2Quantity
+          };
+          if (useBundleProperty) {
+            item.properties = {
+              bundle_id: bundleId,
+              bundle_item_index: "2",
+              _bundle_key: bundleTimestamp
+            };
+          }
+          items.push(item);
+        }
+        
+        if (this.product3VariantId && this.product3VariantId !== 0) {
+          const item = {
+            id: this.product3VariantId,
+            quantity: this.product3Quantity
+          };
+          if (useBundleProperty) {
+            item.properties = {
+              bundle_id: bundleId,
+              bundle_item_index: "3",
+              _bundle_key: bundleTimestamp
+            };
+          }
+          items.push(item);
+        }
+        
+        if (items.length === 0) {
+          console.error('No valid products to add');
+          this.isLoading = false;
+          return;
+        }
+        
+        const formData = { items };
+        
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            
+            // Fetch updated cart state
+            const cartResponse = await fetch('/cart.js');
+            const cart = await cartResponse.json();
+            
+            // Dispatch the proper cart:update event that the cart drawer listens for
+            const cartAddEvent = new CustomEvent('cart:update', {
+              bubbles: true,
+              detail: {
+                resource: cart,
+                sourceId: '{{ section.id }}',
+                data: {
+                  didError: false,
+                  itemCount: cart.item_count,
+                  source: 'bundle-add'
+                }
+              }
+            });
+            document.dispatchEvent(cartAddEvent);
+            
+          } else {
+            const errorData = await response.json();
+            throw new Error(errorData.description || 'Failed to add bundle to cart');
+          }
+        } catch (error) {
+          console.error('Error adding bundle to cart:', error);
+          
+          // Dispatch cart error event
+          const cartErrorEvent = new CustomEvent('cart:error', {
+            bubbles: true,
+            detail: {
+              sourceId: '{{ section.id }}',
+              data: {
+                message: error.message || 'Failed to add items to cart',
+                description: 'There was an error adding the bundle to your cart.',
+                errors: error
+              }
+            }
+          });
+          document.dispatchEvent(cartErrorEvent);
+          
+          alert('Sorry, there was an error adding items to your cart. Please try again.');
+        } finally {
+          this.isLoading = false;
+        }
+      }
+    };
+  }
+</script>
+
+<!-- Alpine.js (with collapse plugin) -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  function initLumenGallery() {
+    if (typeof Swiper === 'undefined') return;
+
+    // Destroy existing instances if they exist
+    if (window.lumenGalleryThumbs) {
+      window.lumenGalleryThumbs.destroy(true, true);
+    }
+    if (window.lumenGalleryMain) {
+      window.lumenGalleryMain.destroy(true, true);
+    }
+
+    // Initialize thumbnails swiper
+    window.lumenGalleryThumbs = new Swiper('.lumen-pdp-hero__gallery-thumbs-swiper', {
+      spaceBetween: 16,
+      slidesPerView: 'auto',
+      freeMode: true,
+      watchSlidesProgress: true,
+      direction: 'vertical',
+      mousewheel: {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+      },
+      breakpoints: {
+        0: {
+          direction: 'horizontal',
+          spaceBetween: 8,
+        },
+        769: {
+          direction: 'vertical',
+          spaceBetween: 16,
+        }
+      }
+    });
+    
+    // Initialize main swiper
+    window.lumenGalleryMain = new Swiper('.lumen-pdp-hero__gallery-main-swiper', {
+      spaceBetween: 0,
+      thumbs: {
+        swiper: window.lumenGalleryThumbs,
+      },
+      loop: false,
+      navigation: {
+        nextEl: '.lumen-pdp-hero__gallery-main-swiper .swiper-button-next',
+        prevEl: '.lumen-pdp-hero__gallery-main-swiper .swiper-button-prev',
+      },
+      breakpoints: {
+        0: {
+          spaceBetween: 12,
+        },
+        769: {
+          spaceBetween: 0,
+        }
+      }
+    });
+  }
+
+  function initLumenUgc(root) {
+    const scope = root || document;
+    if (!scope || typeof scope.querySelectorAll !== 'function') return;
+    if (typeof Swiper === 'undefined') return;
+
+    const ugcRoots = scope.querySelectorAll('[data-lumen-ugc]');
+    if (!ugcRoots || ugcRoots.length === 0) return;
+
+    const closeAllUgcModals = () => {
+      document.querySelectorAll('.lumen-ugc-modal.is-open').forEach((modalEl) => {
+        modalEl.classList.remove('is-open');
+        modalEl.setAttribute('aria-hidden', 'true');
+        const videoWrap = modalEl.querySelector('[data-lumen-ugc-video]');
+        if (videoWrap) videoWrap.innerHTML = '';
+      });
+    };
+
+    if (!window.__lumenUgcEscapeBound) {
+      window.__lumenUgcEscapeBound = true;
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAllUgcModals();
+      });
+    }
+
+    ugcRoots.forEach((ugcRoot) => {
+      const swiperEl = ugcRoot.querySelector('[data-lumen-ugc-swiper]');
+      const prevEl = ugcRoot.querySelector('[data-lumen-ugc-prev]');
+      const nextEl = ugcRoot.querySelector('[data-lumen-ugc-next]');
+      const sectionId = ugcRoot.getAttribute('data-lumen-ugc-section-id');
+      const modalEl = sectionId ? document.querySelector(`[data-lumen-ugc-modal][data-lumen-ugc-section-id="${sectionId}"]`) : null;
+      const modalVideoEl = modalEl ? modalEl.querySelector('[data-lumen-ugc-video]') : null;
+      const soundBtn = modalEl ? modalEl.querySelector('[data-lumen-ugc-sound]') : null;
+      const progressFillEl = modalEl ? modalEl.querySelector('[data-lumen-ugc-progress-fill]') : null;
+
+      if (!swiperEl || !prevEl || !nextEl || !modalEl || !modalVideoEl || !soundBtn || !progressFillEl) return;
+
+      // Swiper: destroy old instance (theme editor / reinit)
+      if (ugcRoot.__lumenUgcSwiper) {
+        try { ugcRoot.__lumenUgcSwiper.destroy(true, true); } catch (e) {}
+      }
+
+      ugcRoot.__lumenUgcSwiper = new Swiper(swiperEl, {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        navigation: {
+          nextEl,
+          prevEl,
+          disabledClass: 'is-disabled'
+        },
+        breakpoints: {
+          0: { slidesPerView: 3.5, spaceBetween: 10 },
+          768: { slidesPerView: 3.5, spaceBetween: 14 },
+          1024: { slidesPerView: 3.5, spaceBetween: 18 }
+        }
+      });
+
+      const closeModal = () => {
+        // Cleanup progress listeners
+        if (typeof modalEl.__lumenUgcProgressCleanup === 'function') {
+          try { modalEl.__lumenUgcProgressCleanup(); } catch (e) {}
+          modalEl.__lumenUgcProgressCleanup = null;
+        }
+        // Stop playback
+        const existingVideo = modalVideoEl.querySelector('video');
+        if (existingVideo && typeof existingVideo.pause === 'function') {
+          try { existingVideo.pause(); } catch (e) {}
+        }
+        modalEl.classList.remove('is-open');
+        modalEl.classList.remove('is-paused');
+        modalEl.setAttribute('aria-hidden', 'true');
+        modalVideoEl.innerHTML = '';
+        progressFillEl.style.width = '0%';
+      };
+
+      const openModalWithTemplate = (blockId) => {
+        const template = modalEl.querySelector(`[data-lumen-ugc-template="${blockId}"]`);
+        if (!template) return;
+        modalVideoEl.innerHTML = template.innerHTML;
+        const video = modalVideoEl.querySelector('video');
+        if (video) {
+          // Ensure no native controls
+          video.controls = false;
+          video.loop = true;
+          video.muted = false;
+          video.volume = 1;
+          soundBtn.classList.remove('is-muted');
+          modalEl.classList.remove('is-paused');
+
+          // Reset progress
+          progressFillEl.style.width = '0%';
+
+          // Bind progress updates (cleanup previous first)
+          if (typeof modalEl.__lumenUgcProgressCleanup === 'function') {
+            try { modalEl.__lumenUgcProgressCleanup(); } catch (e) {}
+          }
+          const updateProgress = () => {
+            const d = video.duration;
+            const t = video.currentTime;
+            if (!d || !isFinite(d) || d <= 0) {
+              progressFillEl.style.width = '0%';
+              return;
+            }
+            const pct = Math.max(0, Math.min(100, (t / d) * 100));
+            progressFillEl.style.width = pct + '%';
+          };
+          const syncPausedState = () => {
+            modalEl.classList.toggle('is-paused', video.paused);
+          };
+          const onEnded = () => {
+            // With looping, ended may fire briefly; keep UI sane.
+            updateProgress();
+          };
+          video.addEventListener('timeupdate', updateProgress);
+          video.addEventListener('durationchange', updateProgress);
+          video.addEventListener('loadedmetadata', updateProgress);
+          video.addEventListener('ended', onEnded);
+          video.addEventListener('pause', syncPausedState);
+          video.addEventListener('play', syncPausedState);
+          video.addEventListener('playing', syncPausedState);
+          modalEl.__lumenUgcProgressCleanup = () => {
+            video.removeEventListener('timeupdate', updateProgress);
+            video.removeEventListener('durationchange', updateProgress);
+            video.removeEventListener('loadedmetadata', updateProgress);
+            video.removeEventListener('ended', onEnded);
+            video.removeEventListener('pause', syncPausedState);
+            video.removeEventListener('play', syncPausedState);
+            video.removeEventListener('playing', syncPausedState);
+          };
+
+          const playPromise = video.play?.();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {
+              // Autoplay-with-sound can be blocked; fallback to muted playback.
+              video.muted = true;
+              soundBtn.classList.add('is-muted');
+              const retry = video.play?.();
+              if (retry && typeof retry.catch === 'function') retry.catch(() => {});
+            });
+          }
+        }
+        modalEl.classList.add('is-open');
+        modalEl.setAttribute('aria-hidden', 'false');
+      };
+
+      // Bind slider open handler once per UGC root
+      if (!ugcRoot.__lumenUgcBound) {
+        ugcRoot.__lumenUgcBound = true;
+
+        ugcRoot.addEventListener('click', (e) => {
+          const openBtn = e.target.closest?.('[data-lumen-ugc-open]');
+          if (openBtn && ugcRoot.contains(openBtn)) {
+            const blockId = openBtn.getAttribute('data-lumen-ugc-block-id');
+            if (blockId) openModalWithTemplate(blockId);
+            return;
+          }
+        });
+      }
+
+      // Bind modal handlers once per modal element (theme editor can replace DOM)
+      if (!modalEl.__lumenUgcModalBound) {
+        modalEl.__lumenUgcModalBound = true;
+
+        modalEl.addEventListener('click', (e) => {
+          const closeBtn = e.target.closest?.('[data-lumen-ugc-close]');
+          if (closeBtn && modalEl.contains(closeBtn)) {
+            e.preventDefault();
+            closeModal();
+            return;
+          }
+
+          const pauseOnClick = modalEl.getAttribute('data-lumen-ugc-pause-on-click') === 'true';
+          if (pauseOnClick) {
+            const videoEl = modalVideoEl.querySelector('video');
+            if (videoEl && (e.target === videoEl || e.target.closest?.('[data-lumen-ugc-video]') === modalVideoEl)) {
+              if (e.target.closest?.('.lumen-ugc-modal__controls')) return;
+              e.preventDefault();
+              if (videoEl.paused) {
+                const p = videoEl.play?.();
+                if (p && typeof p.catch === 'function') p.catch(() => {});
+              } else {
+                try { videoEl.pause(); } catch (err) {}
+              }
+              return;
+            }
+          }
+
+          const closeOnOutside = modalEl.getAttribute('data-lumen-ugc-close-on-outside') === 'true';
+          if (!closeOnOutside) return;
+
+          const panelEl = modalEl.querySelector('.lumen-ugc-modal__panel');
+          if (!panelEl) return;
+          // Close when clicking anywhere outside the panel (backdrop / empty area)
+          if (!panelEl.contains(e.target)) {
+            e.preventDefault();
+            closeModal();
+            return;
+          }
+        });
+
+        const modalSoundBtn = modalEl.querySelector('[data-lumen-ugc-sound]');
+        if (modalSoundBtn) {
+          modalSoundBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const video = modalVideoEl.querySelector('video');
+            if (!video) return;
+            video.muted = !video.muted;
+            if (!video.muted) video.volume = 1;
+            modalSoundBtn.classList.toggle('is-muted', video.muted);
+          });
+        }
+      }
+    });
+  }
+
+  function initLumenFaqPopups() {
+    const closeModal = (modalEl) => {
+      if (!modalEl) return;
+      modalEl.classList.remove('is-open');
+      modalEl.setAttribute('aria-hidden', 'true');
+      const bodyEl = modalEl.querySelector('[data-lumen-faq-body]');
+      const titleEl = modalEl.querySelector('[data-lumen-faq-title]');
+      if (bodyEl) bodyEl.innerHTML = '';
+      if (titleEl) titleEl.textContent = '';
+      document.documentElement.classList.remove('lumen-faq-modal-open');
+      document.body.classList.remove('lumen-faq-modal-open');
+    };
+
+    const closeAll = () => {
+      document.querySelectorAll('.lumen-faq-modal.is-open').forEach((modalEl) => closeModal(modalEl));
+    };
+
+    if (!window.__lumenFaqEscapeBound) {
+      window.__lumenFaqEscapeBound = true;
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAll();
+      });
+    }
+
+    if (!window.__lumenFaqClickBound) {
+      window.__lumenFaqClickBound = true;
+      document.addEventListener('click', (e) => {
+        const openBtn = e.target.closest?.('[data-lumen-faq-popup-trigger]');
+        if (openBtn) {
+          e.preventDefault();
+          const sectionId = openBtn.getAttribute('data-lumen-faq-section-id');
+          const blockId = openBtn.getAttribute('data-lumen-faq-block-id');
+          const title = openBtn.getAttribute('data-lumen-faq-popup-title') || '';
+          if (!sectionId || !blockId) return;
+
+          const modalEl = document.querySelector(`[data-lumen-faq-modal][data-lumen-faq-section-id="${sectionId}"]`);
+          if (!modalEl) return;
+
+          const template = modalEl.querySelector(`[data-lumen-faq-template="${blockId}"]`);
+          const bodyEl = modalEl.querySelector('[data-lumen-faq-body]');
+          const titleEl = modalEl.querySelector('[data-lumen-faq-title]');
+          if (!template || !bodyEl || !titleEl) return;
+
+          titleEl.textContent = title;
+          bodyEl.innerHTML = template.innerHTML;
+          modalEl.classList.add('is-open');
+          modalEl.setAttribute('aria-hidden', 'false');
+          document.documentElement.classList.add('lumen-faq-modal-open');
+          document.body.classList.add('lumen-faq-modal-open');
+          return;
+        }
+
+        const closeBtn = e.target.closest?.('[data-lumen-faq-close]');
+        if (closeBtn) {
+          e.preventDefault();
+          const modalEl = closeBtn.closest?.('[data-lumen-faq-modal]');
+          closeModal(modalEl);
+          return;
+        }
+      });
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initial gallery setup
+    initLumenGallery();
+    
+    // Listen for gallery reinitialize event
+    document.addEventListener('lumen:gallery:reinitialize', function() {
+      setTimeout(() => {
+        initLumenGallery();
+      }, 50);
+    });
+
+    // Init UGC within this section
+    initLumenUgc(document);
+
+    // Init FAQ popups (global delegated handlers)
+    initLumenFaqPopups();
+
+    // Upsell ATC: "ADDING..." state for upsell buttons
+    if (!window.__lumenUpsellAtcBound) {
+      window.__lumenUpsellAtcBound = true;
+
+      const setUpsellLoading = (btn, isLoading) => {
+        if (!btn) return;
+        const labelEl = btn.querySelector('.lumen-pdp-hero__upsell-button-label');
+        const defaultLabel = btn.getAttribute('data-lumen-upsell-default-label') || (labelEl ? labelEl.textContent : '');
+        const addingLabel = btn.getAttribute('data-lumen-upsell-adding-label') || 'ADDING...';
+
+        if (isLoading) {
+          btn.setAttribute('data-lumen-upsell-loading', 'true');
+          btn.setAttribute('aria-busy', 'true');
+          btn.disabled = true;
+          if (labelEl) labelEl.textContent = addingLabel;
+          btn.setAttribute('data-lumen-upsell-default-label', defaultLabel);
+        } else {
+          btn.removeAttribute('data-lumen-upsell-loading');
+          btn.removeAttribute('aria-busy');
+          // Only re-enable if originally available (Shopify will keep disabled for sold out)
+          btn.disabled = false;
+          if (labelEl) labelEl.textContent = defaultLabel;
+        }
+      };
+
+      document.addEventListener(
+        'submit',
+        (e) => {
+          const formEl = e.target;
+          if (!(formEl instanceof HTMLFormElement)) return;
+          const productForm = formEl.closest?.('product-form-component[data-lumen-upsell-form]');
+          if (!productForm) return;
+          const btn = productForm.querySelector?.('[data-lumen-upsell-atc]');
+          if (btn) setUpsellLoading(btn, true);
+        },
+        true
+      );
+
+      const resetAllUpsellButtons = () => {
+        document.querySelectorAll('[data-lumen-upsell-atc][data-lumen-upsell-loading="true"]').forEach((btn) => {
+          setUpsellLoading(btn, false);
+        });
+      };
+
+      document.addEventListener('cart:update', resetAllUpsellButtons, { capture: true });
+      document.addEventListener('cart:error', resetAllUpsellButtons, { capture: true });
+      // Support any legacy/custom event names
+      document.addEventListener('cart:updated', resetAllUpsellButtons, { capture: true });
+    }
+    
+    // Fade-in animation on scroll
+    const section = document.querySelector('.lumen-pdp-hero');
+    if (!section) return;
+    
+    const animationEnabled = section.getAttribute('data-animation-enabled') === 'true';
+    
+    if (animationEnabled && 'IntersectionObserver' in window) {
+      const animatedElements = section.querySelectorAll('.lumen-pdp-hero__left, .lumen-pdp-hero__content');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else if (animationEnabled) {
+      // Fallback for browsers without IntersectionObserver
+      const animatedElements = section.querySelectorAll('.lumen-pdp-hero__left, .lumen-pdp-hero__content');
+      animatedElements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  });
+
+  // Theme editor: re-init UGC + gallery on section reload
+  document.addEventListener('shopify:section:load', function(event) {
+    const sectionEl = event.target;
+    if (!sectionEl) return;
+    if (sectionEl.querySelector('.lumen-pdp-hero')) {
+      try { initLumenGallery(); } catch (e) {}
+      try { initLumenUgc(sectionEl); } catch (e) {}
+      try { initLumenFaqPopups(); } catch (e) {}
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "⚡ Lumen PDP Hero",
+  "class": "lumen-pdp-hero-section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (optional)",
+      "info": "Defaults to the current product."
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom title (optional)",
+      "info": "Leave empty to use the product title."
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "(4.6) 1,356 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "size_text",
+      "label": "Size text",
+      "default": "1 FL OZ / 30 ML"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart button label",
+      "default": "ADD TO BAG"
+    },
+    {
+      "type": "text",
+      "id": "adding_to_cart_label",
+      "label": "Adding to cart button label",
+      "default": "ADDING...",
+      "info": "Text shown while adding to cart"
+    },
+    {
+      "type": "text",
+      "id": "delivery_text",
+      "label": "Delivery text",
+      "default": "3-5 WORKING DAYS DELIVERY"
+    },
+    {
+      "type": "text",
+      "id": "free_delivery_text",
+      "label": "Free delivery badge text",
+      "default": "FREE DELIVERY",
+      "info": "Can be toggled per bundle option"
+    },
+    {
+      "type": "header",
+      "content": "Default Badge Colors"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Default badge background color",
+      "default": "#FFD4CD",
+      "info": "Used when bundle option doesn't have custom colors"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Default badge text color",
+      "default": "#7A0036",
+      "info": "Used when bundle option doesn't have custom colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true,
+      "info": "Show payment method icons from your store's payment settings"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Elements will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "UGC (Video Slider)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ugc",
+      "label": "Show UGC video slider",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "ugc_heading",
+      "label": "UGC heading",
+      "default": "SEE HOW IT WORKS ON DIFFERENT PEOPLE"
+    },
+    {
+      "type": "checkbox",
+      "id": "ugc_close_on_outside",
+      "label": "Close UGC popup when clicking outside the video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "ugc_pause_on_click",
+      "label": "Pause/play UGC video when clicking on the video",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Upsell (Below UGC)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_upsell",
+      "label": "Show upsell",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "upsell_heading",
+      "label": "Upsell heading",
+      "default": "Choose what works best for you"
+    },
+    {
+      "type": "text",
+      "id": "upsell_button_label",
+      "label": "Default upsell button label",
+      "default": "ADD TO BAG"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ugc_video",
+      "name": "UGC video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "upsell_product",
+      "name": "Upsell product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "title_override",
+          "label": "Title override (optional)",
+          "info": "Leave empty to use the product title."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label (optional)",
+          "info": "Leave empty to use section default label."
+        }
+      ]
+    },
+    {
+      "type": "bundle_option",
+      "name": "Bundle Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bundle_title",
+          "label": "Bundle Title",
+          "default": "Bundle",
+          "info": "Name for this bundle option (e.g., 'Single Item', 'Bundle of 2')"
+        },
+        {
+          "type": "image_picker",
+          "id": "bundle_image",
+          "label": "Bundle Image (optional)",
+          "info": "Custom image for this bundle (uses product image if not set)"
+        },
+        {
+          "type": "number",
+          "id": "quantity",
+          "label": "Quantity",
+          "default": 1,
+          "info": "Number of items in this bundle"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_percentage",
+          "label": "Use Percentage Discount",
+          "default": false,
+          "info": "Enable to show discounted price based on percentage off"
+        },
+        {
+          "type": "range",
+          "id": "discount_percentage",
+          "label": "Discount Percentage",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "%",
+          "info": "Discount percentage off the total (quantity × price)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_badge",
+          "label": "Show Badge",
+          "default": false,
+          "info": "Show a label badge on this bundle option"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "POPULAR",
+          "info": "Text to display in the badge (e.g., POPULAR, BEST VALUE, SAVE 10%)"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg_color",
+          "label": "Badge Background Color",
+          "info": "Leave empty to use section default color"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Badge Text Color",
+          "info": "Leave empty to use section default color"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_free_delivery_badge",
+          "label": "Show '+ Free Delivery' Badge",
+          "default": true,
+          "info": "Show the free delivery badge for this bundle option"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bundle (Multi-Product)",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Display Settings (UI Only)"
+        },
+        {
+          "type": "product",
+          "id": "bundle_product",
+          "label": "Bundle Product",
+          "info": "Used for displaying price and image. This product is NOT added to cart."
+        },
+        {
+          "type": "text",
+          "id": "bundle_title",
+          "label": "Bundle Title (optional)",
+          "info": "Leave empty to use bundle product title"
+        },
+        {
+          "type": "image_picker",
+          "id": "bundle_image",
+          "label": "Bundle Image (optional)",
+          "info": "Custom image for this bundle (uses bundle product image if not set)"
+        },
+        {
+          "type": "header",
+          "content": "Products Added to Cart"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1",
+          "info": "First product to add to cart"
+        },
+        {
+          "type": "number",
+          "id": "product_1_quantity",
+          "label": "Product 1 Quantity",
+          "default": 1,
+          "info": "Quantity of Product 1 to add"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2",
+          "info": "Second product to add to cart"
+        },
+        {
+          "type": "number",
+          "id": "product_2_quantity",
+          "label": "Product 2 Quantity",
+          "default": 1,
+          "info": "Quantity of Product 2 to add"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3",
+          "info": "Third product to add to cart (optional)"
+        },
+        {
+          "type": "number",
+          "id": "product_3_quantity",
+          "label": "Product 3 Quantity",
+          "default": 1,
+          "info": "Quantity of Product 3 to add"
+        },
+        {
+          "type": "header",
+          "content": "Cart Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "add_bundle_property",
+          "label": "Add bundle property (vera_bundle)",
+          "default": false,
+          "info": "Add bundle properties to cart items with 'vera_bundle' bundle_id. This keeps bundle items separate from regular products and allows bundle-specific discounts."
+        },
+        {
+          "type": "checkbox",
+          "id": "add_vera2_bundle_property",
+          "label": "Add bundle property (vera2_bundle)",
+          "default": false,
+          "info": "Add bundle properties to cart items with 'vera2_bundle' bundle_id. This keeps bundle items separate from regular products and allows bundle-specific discounts."
+        },
+        {
+          "type": "header",
+          "content": "Badge Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_badge",
+          "label": "Show Badge",
+          "default": false,
+          "info": "Show a label badge on this bundle option"
+        },
+        {
+          "type": "header",
+          "content": "Corner Badge Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_corner_badge",
+          "label": "Show Corner Badge",
+          "default": true,
+          "info": "Show the corner badge (e.g., 'MOST POPULAR') on this bundle option"
+        },
+        {
+          "type": "text",
+          "id": "corner_badge_text",
+          "label": "Corner Badge Text",
+          "default": "MOST POPULAR",
+          "info": "Text to display in the corner badge"
+        },
+        {
+          "type": "color",
+          "id": "corner_badge_bg_color",
+          "label": "Corner Badge Background Color",
+          "default": "#7A0036",
+          "info": "Background color for the corner badge"
+        },
+        {
+          "type": "color",
+          "id": "corner_badge_text_color",
+          "label": "Corner Badge Text Color",
+          "default": "#FFFFFF",
+          "info": "Text color for the corner badge"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "BUNDLE",
+          "info": "Text to display in the badge (e.g., BUNDLE, BEST VALUE, SAVE 20%)"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg_color",
+          "label": "Badge Background Color",
+          "info": "Leave empty to use section default color"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Badge Text Color",
+          "info": "Leave empty to use section default color"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_free_delivery_badge",
+          "label": "Show '+ Free Delivery' Badge",
+          "default": true,
+          "info": "Show the free delivery badge for this bundle"
+        },
+        {
+          "type": "header",
+          "content": "Amazon Offer"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_amazon_offer",
+          "label": "Show Amazon offer on this bundle",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "amazon_url",
+          "label": "Amazon product URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "amazon_icon",
+          "label": "Amazon icon/logo (optional)",
+          "info": "Leave empty to use default Amazon logo"
+        },
+        {
+          "type": "text",
+          "id": "amazon_promo_text",
+          "label": "Promo banner text",
+          "default": "Get a 50% Discount When You Buy On Amazon - 3 Days Only"
+        },
+        {
+          "type": "color",
+          "id": "amazon_banner_bg_color",
+          "label": "Promo banner background color",
+          "default": "#7A0036"
+        },
+        {
+          "type": "color",
+          "id": "amazon_banner_text_color",
+          "label": "Promo banner text color",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "type": "magazine_logo",
+      "name": "Magazine logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image",
+          "info": "Upload a magazine logo image (recommended size: 200px width)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Magazine logo",
+          "info": "Describe the logo for accessibility"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Image under text"
+        },
+        {
+          "type": "checkbox",
+          "id": "faq_show_image",
+          "label": "Show image under text",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "faq_image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Popup"
+        },
+        {
+          "type": "checkbox",
+          "id": "faq_enable_popup",
+          "label": "Enable popup link",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "faq_popup_trigger_text",
+          "label": "Popup link text",
+          "default": "View full list"
+        },
+        {
+          "type": "text",
+          "id": "faq_popup_title",
+          "label": "Popup title",
+          "default": "FULL LIST OF INGREDIENTS"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_popup_content",
+          "label": "Popup content"
+        }
+      ]
+    },
+    {
+      "type": "description_item",
+      "name": "Description item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡ Lumen PDP Hero",
+      "blocks": [
+        {
+          "type": "bundle_option",
+          "settings": {
+            "bundle_title": "1 Item",
+            "quantity": 1,
+            "use_percentage": false,
+            "discount_percentage": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "show_free_delivery_badge": false
+          }
+        },
+        {
+          "type": "bundle_option",
+          "settings": {
+            "bundle_title": "2 Items",
+            "quantity": 2,
+            "use_percentage": true,
+            "discount_percentage": 10,
+            "show_badge": true,
+            "badge_text": "SAVE 10%",
+            "badge_bg_color": "#FFD4CD",
+            "badge_text_color": "#7A0036",
+            "show_free_delivery_badge": true
+          }
+        },
+        {
+          "type": "bundle",
+          "settings": {
+            "bundle_title": "Product Bundle",
+            "product_1_quantity": 1,
+            "product_2_quantity": 1,
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "show_badge": true,
+            "badge_text": "BUNDLE DEAL",
+            "badge_bg_color": "#7A0036",
+            "badge_text_color": "#FFFFFF",
+            "show_free_delivery_badge": true
+          }
+        },
+        {
+          "type": "magazine_logo",
+          "settings": {
+            "alt_text": "Magazine logo"
+          }
+        },
+        {
+          "type": "magazine_logo",
+          "settings": {
+            "alt_text": "Magazine logo"
+          }
+        },
+        {
+          "type": "magazine_logo",
+          "settings": {
+            "alt_text": "Magazine logo"
+          }
+        },
+        {
+          "type": "magazine_logo",
+          "settings": {
+            "alt_text": "Magazine logo"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "text": "<p>30 Day Money Back Guarantee</p>"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "text": "<p>Free Shipping from<br>$35</p>"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "text": "<p>Free Return</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Description",
+            "content": "<p>Describe your product here.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "How does the guarantee work?",
+            "content": "<p>Explain your guarantee here.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Does this work for my skin?",
+            "content": "<p>Add details about skin compatibility.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>List key ingredients here.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Explain your shipping & returns policy.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

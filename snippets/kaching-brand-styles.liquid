@@ -1,0 +1,116 @@
+{% comment %}
+  Kaching Bundle Quantity Breaks - Vera Lane Brand Styling
+  Include this snippet in theme.liquid or product template if needed
+{% endcomment %}
+
+<style>
+  /* Vera Lane Kaching Brand Styling */
+  .kaching-widget,
+  .kaching-offer,
+  .kaching-bundle,
+  [class*="kaching"] {
+    font-family: var(--font-body--family), sans-serif;
+  }
+
+  /* Buttons */
+  .kaching-button,
+  .kaching-cta,
+  .kaching-add-btn,
+  [class*="kaching"] button,
+  [class*="kaching"] .btn {
+    background-color: #5C1A33 !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .kaching-button:hover,
+  .kaching-cta:hover,
+  [class*="kaching"] button:hover {
+    opacity: 0.9 !important;
+    background-color: #5C1A33 !important;
+  }
+
+  /* Discount badges */
+  .kaching-discount,
+  .kaching-badge,
+  .kaching-savings,
+  [class*="kaching"] .badge,
+  [class*="kaching"] .discount {
+    background-color: #F7A81B !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    border-radius: 4px !important;
+  }
+
+  /* Headings and titles */
+  .kaching-title,
+  .kaching-heading,
+  [class*="kaching"] h1,
+  [class*="kaching"] h2,
+  [class*="kaching"] h3,
+  [class*="kaching"] h4 {
+    color: #5C1A33 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Prices */
+  .kaching-price,
+  [class*="kaching"] .price {
+    color: #5C1A33 !important;
+    font-weight: 700 !important;
+  }
+
+  .kaching-compare-price,
+  .kaching-original-price,
+  [class*="kaching"] .compare-at-price {
+    color: #666666 !important;
+    text-decoration: line-through !important;
+  }
+
+  /* Widget containers */
+  .kaching-widget,
+  .kaching-container,
+  [class*="kaching-widget"] {
+    background-color: #ffffff !important;
+    border: 1px solid #E5E5E5 !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+  }
+
+  /* Quantity selectors */
+  [class*="kaching"] select,
+  [class*="kaching"] input[type="number"] {
+    border: 1px solid #E5E5E5 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Selected/active states */
+  .kaching-selected,
+  .kaching-active,
+  [class*="kaching"] .selected {
+    border-color: #5C1A33 !important;
+    background-color: rgba(92, 26, 51, 0.05) !important;
+  }
+
+  /* Popup/modal styling */
+  .kaching-popup,
+  .kaching-modal,
+  [class*="kaching-popup"],
+  [class*="kaching-modal"] {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+
+  .kaching-popup-header,
+  .kaching-modal-header {
+    background-color: #5C1A33 !important;
+    color: #ffffff !important;
+  }
+</style>

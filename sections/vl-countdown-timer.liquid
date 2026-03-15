@@ -1,0 +1,216 @@
+<div class="vl-countdown-timer" style="
+  --timer-bg: {{ section.settings.bg_color }};
+  --label-color: {{ section.settings.label_color }};
+  --digit-color: {{ section.settings.digit_color }};
+  --digit-bg: {{ section.settings.digit_bg_color }};
+  --text-color: {{ section.settings.text_color }};
+" data-countdown-section data-hours="{{ section.settings.hours }}" data-minutes="{{ section.settings.minutes }}">
+  <div class="vl-countdown-timer__inner">
+    <span class="vl-countdown-timer__label">{{ section.settings.label }}</span>
+
+    <div class="vl-countdown-timer__display">
+      <div class="vl-countdown-timer__unit">
+        <span class="vl-countdown-timer__digit" data-hours>{{ section.settings.hours | default: '01' }}</span>
+      </div>
+      <span class="vl-countdown-timer__separator">:</span>
+      <div class="vl-countdown-timer__unit">
+        <span class="vl-countdown-timer__digit" data-minutes>{{ section.settings.minutes | default: '30' }}</span>
+      </div>
+      <span class="vl-countdown-timer__separator">:</span>
+      <div class="vl-countdown-timer__unit">
+        <span class="vl-countdown-timer__digit" data-seconds>00</span>
+      </div>
+    </div>
+
+    <p class="vl-countdown-timer__text">{{ section.settings.urgency_text }}</p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('[data-countdown-section]');
+    if (!section) return;
+
+    const hoursEl = section.querySelector('[data-hours]');
+    const minutesEl = section.querySelector('[data-minutes]');
+    const secondsEl = section.querySelector('[data-seconds]');
+
+    const initialHours = parseInt(section.dataset.hours) || 1;
+    const initialMinutes = parseInt(section.dataset.minutes) || 30;
+
+    // Calculate end time from now
+    let totalSeconds = (initialHours * 3600) + (initialMinutes * 60);
+
+    // Check if we have a stored end time
+    const storageKey = 'vl_countdown_end_' + window.location.pathname;
+    let endTime = localStorage.getItem(storageKey);
+
+    if (!endTime || parseInt(endTime) < Date.now()) {
+      endTime = Date.now() + (totalSeconds * 1000);
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    function updateDisplay() {
+      const now = Date.now();
+      const remaining = Math.max(0, Math.floor((parseInt(endTime) - now) / 1000));
+
+      const hours = Math.floor(remaining / 3600);
+      const minutes = Math.floor((remaining % 3600) / 60);
+      const seconds = remaining % 60;
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+
+      if (remaining <= 0) {
+        // Reset timer when it expires
+        endTime = Date.now() + (totalSeconds * 1000);
+        localStorage.setItem(storageKey, endTime);
+      }
+    }
+
+    updateDisplay();
+    setInterval(updateDisplay, 1000);
+  });
+</script>
+
+{% stylesheet %}
+  .vl-countdown-timer {
+    background-color: var(--timer-bg, #ffffff);
+    padding: 24px 16px;
+  }
+
+  .vl-countdown-timer__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vl-countdown-timer__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--label-color, #000000);
+    margin-bottom: 12px;
+  }
+
+  .vl-countdown-timer__display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .vl-countdown-timer__unit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vl-countdown-timer__digit {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--digit-color, #000000);
+    background-color: var(--digit-bg, transparent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-width: 70px;
+    line-height: 1;
+  }
+
+  .vl-countdown-timer__separator {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--digit-color, #000000);
+    line-height: 1;
+  }
+
+  .vl-countdown-timer__text {
+    font-size: 14px;
+    color: var(--text-color, #666666);
+    margin: 0;
+    line-height: 1.4;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Countdown Timer",
+  "tag": "section",
+  "class": "vl-countdown-timer-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "COUNTDOWN TIMER:"
+    },
+    {
+      "type": "range",
+      "id": "hours",
+      "label": "Hours",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "minutes",
+      "label": "Minutes",
+      "min": 0,
+      "max": 59,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "textarea",
+      "id": "urgency_text",
+      "label": "Urgency text",
+      "default": "Limited-time offer! Grab your deal before time runs out."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "digit_color",
+      "label": "Digit color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "digit_bg_color",
+      "label": "Digit background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Countdown Timer"
+    }
+  ]
+}
+{% endschema %}

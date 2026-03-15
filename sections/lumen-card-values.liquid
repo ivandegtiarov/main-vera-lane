@@ -1,0 +1,580 @@
+{% comment %}
+  Lumen – Card Values
+  - Production-ready Shopify section
+  - Card content is managed via blocks (icon + text)
+  - Scroll fade-in animation via IntersectionObserver (no dependencies)
+{% endcomment %}
+
+<section
+  class="vl-lumen-card-values"
+  aria-label="{{ section.settings.aria_label | escape }}"
+  data-vl-lumen-card-values
+>
+  <div class="vl-lumen-card-values__inner">
+    <div class="vl-lumen-card-values__stack">
+      <header class="vl-lumen-card-values__heading vl-lumen-card-values__reveal">
+        {% if section.settings.title != blank %}
+          <h2 class="vl-lumen-card-values__title">
+            {{ section.settings.title | escape }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <p class="vl-lumen-card-values__subtitle">
+            {{ section.settings.subtitle | escape }}
+          </p>
+        {% endif %}
+      </header>
+
+      {% if section.blocks.size > 0 %}
+        <div class="vl-lumen-card-values__grid" role="list">
+          {% for block in section.blocks %}
+            <article
+              class="vl-lumen-card-values__card vl-lumen-card-values__reveal"
+              role="listitem"
+              {{ block.shopify_attributes }}
+            >
+              <div class="vl-lumen-card-values__cardHead">
+                {% if block.settings.icon != blank %}
+                  {{
+                    block.settings.icon
+                    | image_url: width: 124
+                    | image_tag:
+                      class: 'vl-lumen-card-values__icon',
+                      widths: '62,124',
+                      sizes: '62px',
+                      loading: 'lazy',
+                      alt: block.settings.icon_alt
+                  }}
+                {% else %}
+                  <span class="vl-lumen-card-values__iconPlaceholder" aria-hidden="true"></span>
+                {% endif %}
+
+                {% if block.settings.label != blank %}
+                  <h3 class="vl-lumen-card-values__label">
+                    {{ block.settings.label | escape }}
+                  </h3>
+                {% endif %}
+              </div>
+
+              {% if block.settings.body != blank %}
+                <p class="vl-lumen-card-values__body">
+                  {{ block.settings.body | escape }}
+                </p>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Montserrat (section-scoped) */
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap");
+
+  /* ================================
+     Lumen – Card Values (scoped)
+     ================================ */
+  #shopify-section-{{ section.id }} .vl-lumen-card-values {
+    /* Color controls */
+    --vl-lumen-card-values-bg: {{ section.settings.bg_color }};
+    --vl-lumen-card-values-bg-start: {{ section.settings.bg_gradient_start }};
+    --vl-lumen-card-values-bg-end: {{ section.settings.bg_gradient_end }};
+    --vl-lumen-card-values-title-color: {{ section.settings.title_color }};
+    --vl-lumen-card-values-subtitle-color: {{ section.settings.subtitle_color }};
+    --vl-lumen-card-values-label-color: {{ section.settings.card_label_color }};
+    --vl-lumen-card-values-body-color: {{ section.settings.card_body_color }};
+
+    /* Spacing controls */
+    --vl-lumen-card-values-pt: {{ section.settings.padding_top_mobile }}px;
+    --vl-lumen-card-values-pb: {{ section.settings.padding_bottom_mobile }}px;
+
+    /* Typography controls */
+    --vl-lumen-card-values-title-size: {{ section.settings.title_size_mobile }}px;
+    --vl-lumen-card-values-subtitle-size: {{ section.settings.subtitle_size_mobile }}px;
+    --vl-lumen-card-values-label-size: {{ section.settings.card_label_size_mobile }}px;
+    --vl-lumen-card-values-body-size: {{ section.settings.card_body_size_mobile }}px;
+
+    width: 100%;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Arial, sans-serif;
+
+    /* Gradient takes precedence; solid is the fallback */
+    background: linear-gradient(
+      180deg,
+      var(--vl-lumen-card-values-bg-start),
+      var(--vl-lumen-card-values-bg-end)
+    );
+    background-color: var(--vl-lumen-card-values-bg);
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    /* Horizontal padding matches provided layout */
+    padding-left: clamp(
+      24px,
+      calc(24px + (96px - 24px) * ((100vw - 375px) / 1065px)),
+      96px
+    );
+    padding-right: clamp(
+      24px,
+      calc(24px + (96px - 24px) * ((100vw - 375px) / 1065px)),
+      96px
+    );
+
+    padding-top: var(--vl-lumen-card-values-pt);
+    padding-bottom: var(--vl-lumen-card-values-pb);
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__stack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    /* Mobile gap: 40px | Desktop gap: 80px */
+    gap: clamp(
+      40px,
+      calc(40px + (80px - 40px) * ((100vw - 375px) / 1065px)),
+      80px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__heading {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__title {
+    margin: 0;
+    color: var(--vl-lumen-card-values-title-color);
+    font-weight: 700;
+    font-style: italic; /* Required */
+    text-align: left;
+    font-size: var(--vl-lumen-card-values-title-size);
+    line-height: 1.3;
+    font-family: "Playfair Display";
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__subtitle {
+    margin: 0;
+    color: var(--vl-lumen-card-values-subtitle-color);
+    font-weight: 500;
+    text-align: left;
+    font-size: var(--vl-lumen-card-values-subtitle-size);
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+
+    /* Provided layout: grouping frame (no visible background/border) */
+    background: transparent;
+    border: 0;
+    padding: 20px 24px;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__cardHead {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px; /* icon → title gap */
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__icon {
+    display: block;
+    width: 62px;
+    height: 62px;
+    flex: 0 0 auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    object-fit: contain;
+    padding: 12px;
+    border-radius: 99px;
+    background: #7A0036;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__iconPlaceholder {
+    display: block;
+    width: 62px;
+    height: 62px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__label {
+    margin: 0;
+    color: var(--vl-lumen-card-values-label-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    text-align: left;
+    font-size: var(--vl-lumen-card-values-label-size);
+    line-height: 1.4;
+    font-family: Montserrat;
+  }
+
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__body {
+    margin: 0;
+    color: var(--vl-lumen-card-values-body-color);
+    font-weight: 400;
+    font-size: var(--vl-lumen-card-values-body-size);
+    line-height: 1.5;
+  }
+
+  /* Fade-in on scroll (single trigger) */
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+  #shopify-section-{{ section.id }} .vl-lumen-card-values__reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .vl-lumen-card-values__reveal {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* Desktop layout */
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ section.id }} .vl-lumen-card-values {
+      --vl-lumen-card-values-pt: {{ section.settings.padding_top_desktop }}px;
+      --vl-lumen-card-values-pb: {{ section.settings.padding_bottom_desktop }}px;
+      --vl-lumen-card-values-title-size: {{ section.settings.title_size_desktop }}px;
+      --vl-lumen-card-values-subtitle-size: {{ section.settings.subtitle_size_desktop }}px;
+      --vl-lumen-card-values-label-size: {{ section.settings.card_label_size_desktop }}px;
+      --vl-lumen-card-values-body-size: {{ section.settings.card_body_size_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .vl-lumen-card-values__heading {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .vl-lumen-card-values__subtitle {
+      max-width: 347px;
+      text-align: right;
+    }
+
+    #shopify-section-{{ section.id }} .vl-lumen-card-values__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.getElementById("shopify-section-{{ section.id }}");
+    if (!root) return;
+
+    var items = root.querySelectorAll(".vl-lumen-card-values__reveal");
+    if (!items || items.length === 0) return;
+
+    // Fallback: reveal immediately
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // single trigger
+        });
+      },
+      { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+    );
+
+    items.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lumen – Card Values",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "ARIA label",
+      "default": "Our Values"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Values"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Created with intention, care, and respect for skin."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_start",
+      "label": "Background gradient start",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_end",
+      "label": "Background gradient end",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_label_color",
+      "label": "Card title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_body_color",
+      "label": "Card body color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "label": "Subtitle font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Subtitle font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_label_size_desktop",
+      "label": "Card title font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_label_size_mobile",
+      "label": "Card title font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_body_size_desktop",
+      "label": "Card body font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_body_size_mobile",
+      "label": "Card body font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_alt",
+          "label": "Icon alt text",
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Card title",
+          "default": "Uncomplicated"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Card body",
+          "default": "You deserve a routine that gives you mental bandwidth back, not one that adds another chore to your morning."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Lumen – Card Values",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

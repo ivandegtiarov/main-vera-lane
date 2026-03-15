@@ -1,0 +1,223 @@
+<div class="vl-subscribe-steps" style="
+  --steps-bg: {{ section.settings.bg_color }};
+  --step-label-color: {{ section.settings.step_label_color }};
+  --title-color: {{ section.settings.title_color }};
+  --text-color: {{ section.settings.text_color }};
+  --card-bg: {{ section.settings.card_bg_color }};
+  --info-bg: {{ section.settings.info_bg_color }};
+  --info-text: {{ section.settings.info_text_color }};
+">
+  <div class="vl-subscribe-steps__inner">
+    {% for block in section.blocks %}
+      <div class="vl-subscribe-steps__step" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          <div class="vl-subscribe-steps__card">
+            <img
+              src="{{ block.settings.image | image_url: width: 600 }}"
+              alt="{{ block.settings.title }}"
+              class="vl-subscribe-steps__image"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+
+        <div class="vl-subscribe-steps__content">
+          <span class="vl-subscribe-steps__label">STEP {{ forloop.index }}</span>
+          <h3 class="vl-subscribe-steps__title">{{ block.settings.title }}</h3>
+          <p class="vl-subscribe-steps__text">{{ block.settings.text }}</p>
+        </div>
+
+        {% if block.settings.info_text != blank %}
+          <div class="vl-subscribe-steps__info">
+            {{ block.settings.info_text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-subscribe-steps {
+    background-color: var(--steps-bg, #ffffff);
+    padding: 0 0 32px;
+  }
+
+  .vl-subscribe-steps__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-subscribe-steps__step {
+    margin-bottom: 32px;
+  }
+
+  .vl-subscribe-steps__step:last-child {
+    margin-bottom: 0;
+  }
+
+  .vl-subscribe-steps__card {
+    background-color: var(--card-bg, #F5EDE8);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vl-subscribe-steps__image {
+    max-width: 200px;
+    height: auto;
+    display: block;
+  }
+
+  .vl-subscribe-steps__content {
+    margin-bottom: 12px;
+  }
+
+  .vl-subscribe-steps__label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--step-label-color, #5C1A33);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .vl-subscribe-steps__title {
+    font-family: var(--font-heading--family, sans-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--title-color, #000000);
+    margin: 0 0 8px;
+  }
+
+  .vl-subscribe-steps__text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color, #666666);
+    margin: 0;
+  }
+
+  .vl-subscribe-steps__info {
+    background-color: var(--info-bg, #F5EDE8);
+    color: var(--info-text, #5C1A33);
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 12px 16px;
+    border-radius: 8px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Subscribe Steps",
+  "tag": "section",
+  "class": "vl-subscribe-steps-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "step_label_color",
+      "label": "Step label color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#F5EDE8"
+    },
+    {
+      "type": "color",
+      "id": "info_bg_color",
+      "label": "Info box background",
+      "default": "#F5EDE8"
+    },
+    {
+      "type": "color",
+      "id": "info_text_color",
+      "label": "Info box text color",
+      "default": "#5C1A33"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Choose Subscribe & Save"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "On the product page, select the Subscribe & Save option instead of the one-time purchase."
+        },
+        {
+          "type": "text",
+          "id": "info_text",
+          "label": "Info box text",
+          "info": "Optional highlighted info box"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Subscribe Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Choose Subscribe & Save",
+            "text": "On the product page, select the Subscribe & Save option instead of the one-time purchase.",
+            "info_text": "Save up to 20% instantly."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Clip The Coupon",
+            "text": "Tap the coupon box under the price. Amazon will automatically apply your extra discount at checkout.",
+            "info_text": "Enjoy an additional 10% off when the coupon is applied."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

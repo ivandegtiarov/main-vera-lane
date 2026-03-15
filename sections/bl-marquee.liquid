@@ -1,0 +1,116 @@
+{%- comment -%} ── BL - MARQUEE ── {%- endcomment -%}
+<div class="bl-marquee" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--marquee-bg: {{ section.settings.bg_color }}; --marquee-text: {{ section.settings.text_color }};">
+  <div class="bl-marquee__track bl-marquee__track--{{ section.settings.direction }}">
+    {%- for i in (1..15) -%}
+      <span class="bl-marquee__item">{{ section.settings.text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-marquee {
+  background: var(--marquee-bg, #2D2D2D);
+  color: var(--marquee-text, #fff);
+  padding: 0.625rem 0;
+  overflow: hidden;
+}
+
+.bl-marquee__track {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.bl-marquee__track--left {
+  animation: bl-marquee-left 50s linear infinite;
+}
+
+.bl-marquee__track--right {
+  animation: bl-marquee-right 50s linear infinite;
+}
+
+.bl-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-right: 4rem;
+}
+
+.bl-marquee__item::after {
+  content: '·';
+  margin-left: 4rem;
+  opacity: 0.5;
+}
+
+@keyframes bl-marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes bl-marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Marquee",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'marquee')"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee text",
+      "default": "Limited Time Offer — Up to 40% Off Today"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Scroll direction",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Marquee",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

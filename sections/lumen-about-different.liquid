@@ -1,0 +1,608 @@
+{% comment %}
+  Section: Lumen – About / What makes us different
+  Purpose: 1:1 conversion of provided HTML mock into a production-ready Shopify section
+  Notes:
+  - Styling is fully scoped to this section instance.
+  - Per-card content is configured via blocks (image/title/copy).
+  - Only the requested controls are exposed at the section level (colors/spacing/typography).
+{% endcomment %}
+
+{%- liquid
+  assign use_gradient = false
+  if section.settings.bg_gradient_start != section.settings.bg_gradient_end
+    assign use_gradient = true
+  endif
+-%}
+
+<section
+  class="vl-aboutDifferent"
+  aria-label="What makes Vera Lane different"
+  data-vl-about-different
+>
+  <div class="vl-aboutDifferent__inner">
+    <div class="vl-aboutDifferent__stack">
+      <h2 class="vl-aboutDifferent__title" data-vl-about-different-animate>
+        {{ section.settings.heading | escape }}
+      </h2>
+
+      <div class="vl-aboutDifferent__cards" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign img = block.settings.image
+            assign img_alt = block.settings.image_alt | default: block.settings.title
+          -%}
+          <article class="vl-aboutDifferent__card" role="listitem" {{ block.shopify_attributes }} data-vl-about-different-animate>
+            <div class="vl-aboutDifferent__media"{% if img == blank %} aria-hidden="true"{% endif %}>
+              {%- if img != blank -%}
+                <img
+                  class="vl-aboutDifferent__img"
+                  src="{{ img | image_url: width: 900 }}"
+                  alt="{{ img_alt | escape }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              {%- endif -%}
+            </div>
+
+            <div class="vl-aboutDifferent__text">
+              <h3 class="vl-aboutDifferent__cardTitle">{{ block.settings.title | escape }}</h3>
+              <p class="vl-aboutDifferent__copy">{{ block.settings.copy | escape }}</p>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================
+     Lumen – About / What makes us different
+     (scoped)
+     ========================================== */
+  #shopify-section-{{ section.id }} .vl-aboutDifferent,
+  #shopify-section-{{ section.id }} .vl-aboutDifferent * {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent {
+    /* Colors */
+    --vl-about-different-bg-solid: {{ section.settings.bg_color }};
+    --vl-about-different-bg-grad-start: {{ section.settings.bg_gradient_start }};
+    --vl-about-different-bg-grad-end: {{ section.settings.bg_gradient_end }};
+    --vl-about-different-heading-color: {{ section.settings.heading_color }};
+    --vl-about-different-card-title-color: {{ section.settings.card_title_color }};
+    --vl-about-different-card-copy-color: {{ section.settings.card_copy_color }};
+
+    /* Spacing controls (required defaults), applied as deltas to preserve the mock layout */
+    --vl-about-different-pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --vl-about-different-pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --vl-about-different-pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --vl-about-different-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    /* Typography controls */
+    --vl-about-different-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+    --vl-about-different-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --vl-about-different-card-title-size-desktop: {{ section.settings.card_title_size_desktop }}px;
+    --vl-about-different-card-title-size-mobile: {{ section.settings.card_title_size_mobile }}px;
+    --vl-about-different-card-copy-size-desktop: {{ section.settings.card_copy_size_desktop }}px;
+    --vl-about-different-card-copy-size-mobile: {{ section.settings.card_copy_size_mobile }}px;
+
+    /* Background paint (solid by default; gradient activates when start/end differ) */
+    {%- if use_gradient -%}
+      --vl-about-different-bg-paint: linear-gradient(
+        180deg,
+        var(--vl-about-different-bg-grad-start),
+        var(--vl-about-different-bg-grad-end)
+      );
+    {%- else -%}
+      --vl-about-different-bg-paint: var(--vl-about-different-bg-solid);
+    {%- endif -%}
+
+    width: 100%;
+    background: var(--vl-about-different-bg-paint);
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    /* Mock: Mobile 52.3256px 13.9535px | Desktop 120px 96px */
+    padding-left: clamp(
+      13.9535px,
+      calc(13.9535px + (96px - 13.9535px) * ((100vw - 375px) / 1065px)),
+      96px
+    );
+    padding-right: clamp(
+      13.9535px,
+      calc(13.9535px + (96px - 13.9535px) * ((100vw - 375px) / 1065px)),
+      96px
+    );
+
+    /* Preserve mock curve, with required setting applied as delta (default mobile 24px => no change) */
+    padding-top: max(
+      0px,
+      calc(
+        clamp(
+          52.3256px,
+          calc(52.3256px + (120px - 52.3256px) * ((100vw - 375px) / 1065px)),
+          120px
+        ) + (var(--vl-about-different-pt-mobile) - 24px)
+      )
+    );
+    padding-bottom: max(
+      0px,
+      calc(
+        clamp(
+          52.3256px,
+          calc(52.3256px + (120px - 52.3256px) * ((100vw - 375px) / 1065px)),
+          120px
+        ) + (var(--vl-about-different-pb-mobile) - 24px)
+      )
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__stack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* Mock: Mobile 69.7674px | Desktop 80px */
+    gap: clamp(
+      69.7674px,
+      calc(69.7674px + (80px - 69.7674px) * ((100vw - 375px) / 1065px)),
+      80px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__title {
+    margin: 0;
+    font-family: "Playfair Display";
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--vl-about-different-heading-color);
+    font-size: clamp(
+      var(--vl-about-different-heading-size-mobile),
+      calc(
+        var(--vl-about-different-heading-size-mobile) + (var(--vl-about-different-heading-size-desktop) - var(--vl-about-different-heading-size-mobile)) * ((100vw - 375px) / 1065px)
+      ),
+      var(--vl-about-different-heading-size-desktop)
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* Mock mobile column gap */
+    gap: 34.8837px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* Mock: Mobile 27.907px | Desktop 32px */
+    gap: clamp(
+      27.907px,
+      calc(27.907px + (32px - 27.907px) * ((100vw - 375px) / 1065px)),
+      32px
+    );
+  }
+
+  /* Mobile-only divider line (Figma has bottom-only stroke) */
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__card:not(:last-child) {
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width: 0px 0px 1px 0px;
+    padding-bottom: 27.907px; /* mock */
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__media {
+    width: 100%;
+
+    /* Mock: Mobile 251.16px | Desktop 288px */
+    height: clamp(
+      251.16px,
+      calc(251.16px + (288px - 251.16px) * ((100vw - 375px) / 1065px)),
+      288px
+    );
+    overflow: hidden;
+    background: #d9d9d9;
+    border-radius: clamp(
+      5.2326px,
+      calc(5.2326px + (6px - 5.2326px) * ((100vw - 375px) / 1065px)),
+      6px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* Mock: Mobile 5.2326px | Desktop 6px */
+    gap: clamp(
+      5.2326px,
+      calc(5.2326px + (6px - 5.2326px) * ((100vw - 375px) / 1065px)),
+      6px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__cardTitle {
+    margin: 0;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    color: var(--vl-about-different-card-title-color);
+    line-height: 1.5555556;
+
+    /*
+      Preserve mock fidelity while meeting required schema:
+      - Mock mobile was ~15.6977px, but sliders use integer px.
+      - Default mobile slider value is 16px, yielding 15.6977px (original).
+    */
+    --vl-about-different-card-title-min: calc(15.6977px + (var(--vl-about-different-card-title-size-mobile) - 16px));
+    --vl-about-different-card-title-max: calc(18px + (var(--vl-about-different-card-title-size-desktop) - 18px));
+    font-size: clamp(
+      var(--vl-about-different-card-title-min),
+      calc(var(--vl-about-different-card-title-min) + (var(--vl-about-different-card-title-max) - var(--vl-about-different-card-title-min)) * ((100vw - 375px) / 1065px)),
+      var(--vl-about-different-card-title-max)
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutDifferent__copy {
+    margin: 0;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--vl-about-different-card-copy-color);
+
+    /*
+      Preserve mock fidelity while meeting required schema:
+      - Mock mobile was ~13.9535px. Default mobile slider value is 14px.
+    */
+    --vl-about-different-card-copy-min: calc(13.9535px + (var(--vl-about-different-card-copy-size-mobile) - 14px));
+    --vl-about-different-card-copy-max: calc(16px + (var(--vl-about-different-card-copy-size-desktop) - 16px));
+    font-size: clamp(
+      var(--vl-about-different-card-copy-min),
+      calc(var(--vl-about-different-card-copy-min) + (var(--vl-about-different-card-copy-max) - var(--vl-about-different-card-copy-min)) * ((100vw - 375px) / 1065px)),
+      var(--vl-about-different-card-copy-max)
+    );
+  }
+
+  /* Scroll fade-in animation (initial state) */
+  #shopify-section-{{ section.id }} [data-vl-about-different-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+
+  #shopify-section-{{ section.id }} [data-vl-about-different-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} [data-vl-about-different-animate] {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* Desktop: cards become a 3-col row and dividers disappear */
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ section.id }} .vl-aboutDifferent__inner {
+      padding-top: max(
+        0px,
+        calc(
+          clamp(
+            52.3256px,
+            calc(52.3256px + (120px - 52.3256px) * ((100vw - 375px) / 1065px)),
+            120px
+          ) + (var(--vl-about-different-pt-desktop) - 40px)
+        )
+      );
+      padding-bottom: max(
+        0px,
+        calc(
+          clamp(
+            52.3256px,
+            calc(52.3256px + (120px - 52.3256px) * ((100vw - 375px) / 1065px)),
+            120px
+          ) + (var(--vl-about-different-pb-desktop) - 40px)
+        )
+      );
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutDifferent__cards {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutDifferent__card {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutDifferent__card:not(:last-child) {
+      border-width: 0px;
+      padding-bottom: 0px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-vl-about-different]');
+    if (!root) return;
+
+    var targets = root.querySelectorAll('[data-vl-about-different-animate]');
+    if (!targets.length) return;
+
+    // Fallback: no IntersectionObserver support => show immediately.
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target); // single trigger
+        });
+      },
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+    );
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lumen – About different",
+  "tag": "section",
+  "class": "section lumen-about-different",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Makes Us Different"
+    },
+    {
+      "type": "header",
+      "content": "Color controls"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_start",
+      "label": "Background gradient start",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_end",
+      "label": "Background gradient end",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_copy_color",
+      "label": "Card body text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top – desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top – mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom – desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom – mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography controls"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading font size – desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading font size – mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_desktop",
+      "label": "Card title font size – desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_mobile",
+      "label": "Card title font size – mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_copy_size_desktop",
+      "label": "Card body text font size – desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_copy_size_mobile",
+      "label": "Card body text font size – mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Identity Restored"
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Body text",
+          "default": "Vera Lane exists for the woman who has stopped wearing foundation because it started to feel like a betrayal..."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Lumen – About different",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Identity Restored",
+            "copy": "Vera Lane exists for the woman who has stopped wearing foundation because it started to feel like a betrayal. We believe your makeup should be infrastructure that stays out of the way, not a mask that hides who you are. We design for that moment of self-recognition—formulating products that disappear into your skin so that people notice your glow, not your makeup."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Texture-First Integrity",
+            "copy": "We reject the \"anti-aging\" shame of the beauty industry. Instead, we prioritize the physical reality of skin that has changed—skin that is more sensitive and where products often settle into lines. Our \"second skin\" formulas are engineered to float over texture rather than emphasizing it, giving you the invisible confidence of a healthy, \"lit-from-within\" radiance."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Certainty over Complexity",
+            "copy": "We believe your morning routine should give you mental bandwidth back, not take it away. By removing the \"shade guessing game\" and the anxiety of the wrong match, we provide a reliable standard for women who value presence over performance. We create simple, dependable tools that let you get ready in minutes and move through the world with self-respect."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

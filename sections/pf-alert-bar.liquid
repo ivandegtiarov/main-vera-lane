@@ -1,0 +1,132 @@
+{%- comment -%} ── PF - ALERT BAR ── {%- endcomment -%}
+<div class="pf-alert-bar" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--pf-alert-bg: {{ section.settings.bg_color }}; --pf-alert-text: {{ section.settings.text_color }}; --pf-alert-accent: {{ section.settings.accent_color }};">
+  <div class="pf-alert-bar__container">
+    {%- if section.settings.label != blank -%}
+      <span class="pf-alert-bar__label">{{ section.settings.label }}</span>
+    {%- endif -%}
+    <span class="pf-alert-bar__text">{{ section.settings.text }}</span>
+    {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
+      <a href="{{ section.settings.link_url }}" class="pf-alert-bar__link">{{ section.settings.link_text }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.pf-alert-bar {
+  background: var(--pf-alert-bg, #2A2A2A);
+  color: var(--pf-alert-text, #FAF9F6);
+  padding: 0.75rem 1.5rem;
+}
+
+.pf-alert-bar__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.pf-alert-bar__label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-alert-accent, #C9A67A);
+}
+
+.pf-alert-bar__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.pf-alert-bar__link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pf-alert-accent, #C9A67A);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pf-alert-bar__link:hover {
+  text-decoration: none;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Alert Bar",
+  "tag": "section",
+  "class": "pf-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FAF9F6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#C9A67A"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "UPDATE"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Main text",
+      "default": "This product is currently in high demand"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Alert Bar",
+      "category": "t:categories.pawfy_editorial"
+    }
+  ]
+}
+{% endschema %}

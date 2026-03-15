@@ -1,0 +1,210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lumen_hp_hero_9wBvQm": {
+      "type": "lumen-hp-hero",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_1321314816.png",
+            "icon_alt": "",
+            "text": "Clinically Proven"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_1321314816_1.png",
+            "icon_alt": "",
+            "text": "Made to GMP Standards"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_1321314816_2.png",
+            "icon_alt": "",
+            "text": "Non-GMO"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3"
+      ],
+      "name": "⚡ Lumen HP Hero",
+      "settings": {
+        "aria_label": "Homepage hero",
+        "heading": "Cosmetics Formulated For Mature Skin",
+        "subheading": "Target fine lines and restore hydration with high-performance ingredients that bring back your natural radiance.",
+        "cta_label": "SHOP NOW",
+        "cta_link": "shopify://products/color-changing-foundation",
+        "hero_image": "shopify://shop_images/image_588256408_1.png",
+        "hero_image_alt": "",
+        "background_color": "#f5e9e1",
+        "background_gradient_start": "#ffd6bb",
+        "background_gradient_end": "#f5e9e1",
+        "heading_color": "#000000",
+        "body_color": "#000000",
+        "cta_text_color": "#ffffff",
+        "badge_text_color": "#000000",
+        "padding_top_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 0,
+        "padding_bottom_mobile": 0,
+        "title_font_size_desktop": 72,
+        "title_font_size_mobile": 40,
+        "sub_font_size_desktop": 20,
+        "sub_font_size_mobile": 16,
+        "cta_font_size_desktop": 18,
+        "cta_font_size_mobile": 16,
+        "badge_font_size_desktop": 14,
+        "badge_font_size_mobile": 12,
+        "enable_animation": true
+      }
+    },
+    "lumen_featured_products_VLfp": {
+      "type": "lumen-featured",
+      "blocks": {
+        "card_jbyWAm": {
+          "type": "card",
+          "settings": {
+            "product": "color-changing-foundation",
+            "show_pill": true,
+            "pill_text": "#Best Seller",
+            "show_discount": false,
+            "discount_pct": "20%",
+            "discount_text": "Save with subscription"
+          }
+        },
+        "card_7A8Vx4": {
+          "type": "card",
+          "settings": {
+            "product": "makeup-brush",
+            "show_pill": false,
+            "pill_text": "#Best Seller",
+            "show_discount": false,
+            "discount_pct": "20%",
+            "discount_text": "Save with subscription"
+          }
+        },
+        "card_qWj3jw": {
+          "type": "card",
+          "settings": {
+            "product": "makeup-bag-1",
+            "show_pill": false,
+            "pill_text": "#Best Seller",
+            "show_discount": false,
+            "discount_pct": "20%",
+            "discount_text": "Save with subscription"
+          }
+        }
+      },
+      "block_order": [
+        "card_jbyWAm",
+        "card_7A8Vx4",
+        "card_qWj3jw"
+      ],
+      "name": "⚡ Lumen Featured Products",
+      "settings": {
+        "collection": "",
+        "title": "Recommended Products",
+        "description_desktop": "Handpicked formulas your skin will love.",
+        "description_mobile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "background_color": "#fbf8f6",
+        "background_gradient_start": "#fbf8f6",
+        "background_gradient_end": "#fbf8f6",
+        "heading_color": "#000000",
+        "subheading_color": "#141311",
+        "reviews_color": "#000000",
+        "name_color": "#000000",
+        "price_color": "#000000",
+        "description_color": "#000000",
+        "pill_bg_color": "#000000",
+        "pill_text_color": "#ffffff",
+        "discount_bg_color": "#7a0036",
+        "discount_text_color": "#ffffff",
+        "controls_icon_color": "#000000",
+        "controls_progress_bg_color": "#e5e5e5",
+        "controls_progress_fill_color": "#000000",
+        "padding_top_desktop": 100,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 40,
+        "padding_bottom_mobile": 24,
+        "title_font_size_desktop": 48,
+        "title_font_size_mobile": 32,
+        "sub_font_size_desktop": 18,
+        "sub_font_size_mobile": 16,
+        "reviews_font_size_desktop": 14,
+        "reviews_font_size_mobile": 12,
+        "name_font_size_desktop": 22,
+        "name_font_size_mobile": 18,
+        "price_font_size_desktop": 24,
+        "price_font_size_mobile": 20,
+        "desc_font_size_desktop": 16,
+        "desc_font_size_mobile": 14,
+        "pill_font_size_desktop": 16,
+        "pill_font_size_mobile": 14,
+        "discount_pct_font_size_desktop": 26,
+        "discount_pct_font_size_mobile": 20,
+        "discount_text_font_size_desktop": 12,
+        "discount_text_font_size_mobile": 12
+      }
+    },
+    "lumen_beauty_7kQp2T": {
+      "type": "lumen-beauty",
+      "settings": {
+        "aria_label": "Beauty section",
+        "heading": "Beauty That Grows With You",
+        "paragraph_1": "Effortlessly achieve nourished, healthy lashes and refreshed, radiant eyes with our expertly formulated solution.",
+        "paragraph_2": "Designed to deeply care for the delicate eye area, this product revitalizes your appearance, enhances natural beauty, and provides the nourishment your lashes need for strength and vitality.",
+        "cta_label": "SHOP NOW",
+        "cta_link": "shopify://products/color-changing-foundation",
+        "product_image": "shopify://shop_images/SCENE_4_1.png",
+        "product_image_alt": "Product image",
+        "subtitle": "Redefining what it means to age",
+        "bottom_text": "We know how frustrating it is to find products that actually work for thinning, dry, or changing skin. That is why we’ve created a selection specifically formulated to nourish your complexion, helping you embrace your authentic beauty with confidence and a natural glow.",
+        "bottom_photo": "shopify://shop_images/image_588256407.png",
+        "bg_texture_image": "shopify://shop_images/image_588256411.png",
+        "bg_blur_image": "shopify://shop_images/104810_1.png",
+        "background_color": "#ffffff",
+        "background_gradient_start": "#fbf8f6",
+        "background_gradient_end": "#fbf8f6",
+        "heading_color": "#000000",
+        "body_color": "#4c4c4c",
+        "cta_text_color": "#ffffff",
+        "subtitle_color": "#000000",
+        "bottom_text_color": "#4c4c4c",
+        "padding_top_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 40,
+        "padding_bottom_mobile": 24,
+        "title_font_size_desktop": 48,
+        "title_font_size_mobile": 32,
+        "body_font_size_desktop": 18,
+        "body_font_size_mobile": 18,
+        "cta_font_size_desktop": 18,
+        "cta_font_size_mobile": 14,
+        "subtitle_font_size_desktop": 48,
+        "subtitle_font_size_mobile": 32,
+        "bottom_font_size_desktop": 18,
+        "bottom_font_size_mobile": 18
+      }
+    }
+  },
+  "order": [
+    "lumen_hp_hero_9wBvQm",
+    "lumen_featured_products_VLfp",
+    "lumen_beauty_7kQp2T"
+  ]
+}

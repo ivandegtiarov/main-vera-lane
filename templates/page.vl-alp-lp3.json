@@ -1,0 +1,158 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "vl_header": {
+      "type": "vl-lp-header",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_58.png",
+        "logo_width": 80,
+        "bg_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "vl_trust_marquee": {
+      "type": "vl-trust-marquee",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "U.S. OWNED"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "100% MONEY BACK"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "CRUELTY FREE"
+          }
+        }
+      },
+      "block_order": ["item_1", "item_2", "item_3"],
+      "settings": {
+        "bg_color": "#5c1a33",
+        "text_color": "#ffffff",
+        "speed": 20,
+        "padding": 10
+      }
+    },
+    "vl_discount_hero": {
+      "type": "vl-discount-hero",
+      "settings": {
+        "prefix_text": "Get with",
+        "discount_text": "30% OFF",
+        "suffix_text": "On Your First Purchase",
+        "intro_text": "A quick, 3-step guide to get instant discounts and extra savings on every reorder.",
+        "bg_color": "#ffffff",
+        "text_color": "#ffffff",
+        "discount_color": "#5C1A33"
+      }
+    },
+    "vl_section_heading": {
+      "type": "vl-section-heading",
+      "settings": {
+        "heading": "Subscribe & Save Made Easy",
+        "italic": true,
+        "bg_color": "#ffffff",
+        "text_color": "#5C1A33"
+      }
+    },
+    "vl_subscribe_steps": {
+      "type": "vl-subscribe-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose Subscribe & Save",
+            "text": "On the product page, select the Subscribe & Save option instead of the one-time purchase.",
+            "info_text": "Save up to 20% instantly."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Clip The Coupon",
+            "text": "Tap the coupon box under the price. Amazon will automatically apply your extra discount at checkout.",
+            "info_text": "Enjoy an additional 10% off when the coupon is applied."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2"],
+      "settings": {
+        "bg_color": "#ffffff",
+        "step_label_color": "#5C1A33",
+        "title_color": "#000000",
+        "text_color": "#666666",
+        "card_bg_color": "#F5EDE8",
+        "info_bg_color": "#F5EDE8",
+        "info_text_color": "#5C1A33"
+      }
+    },
+    "vl_testimonial_list": {
+      "type": "vl-testimonial-list",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"I was skeptical at first, but this foundation truly adapts to my skin. No more guessing which shade to buy!\"",
+            "name": "Emily",
+            "title": "Marketing Manager"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"The SPF 15 is a bonus! My skin looks natural and protected all day long.\"",
+            "name": "Jessica",
+            "title": "Nurse"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"],
+      "settings": {
+        "heading": "What Our Customer Said",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "divider_color": "#E5E5E5",
+        "quote_icon_color": "#5C1A33",
+        "quote_text_color": "#333333",
+        "author_name_color": "#000000",
+        "author_title_color": "#666666"
+      }
+    },
+    "vl_sticky_cta": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "SUBSCRIBE NOW",
+        "show_amazon_icon": true,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#232f3e",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#232f3e"
+      }
+    }
+  },
+  "order": [
+    "vl_header",
+    "vl_trust_marquee",
+    "vl_discount_hero",
+    "vl_section_heading",
+    "vl_subscribe_steps",
+    "vl_testimonial_list",
+    "vl_sticky_cta"
+  ]
+}

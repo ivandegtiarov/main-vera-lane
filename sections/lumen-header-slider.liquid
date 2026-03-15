@@ -1,0 +1,368 @@
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+    .announcement-slider-{{ section.id }} {
+        width: 100%;
+        background-color: {{ section.settings.background_color }};
+        border-bottom: 1px solid {{ section.settings.border_color }};
+        overflow: hidden;
+    }
+    
+    /* Fade-in animation */
+    .announcement-slider--animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+            opacity 0.8s ease-out,
+            transform 0.8s ease-out;
+    }
+
+    .announcement-slider--animate.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-slider__container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Desktop: Show all items */
+    .announcement-slider-{{ section.id }} .announcement-slider__desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+    
+    /* Mobile: Hide desktop, show swiper */
+    .announcement-slider-{{ section.id }} .announcement-slider__mobile {
+        display: none;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-item__icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-item__icon svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-item__text {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: {{ section.settings.font_size }}px;
+        line-height: 22px;
+        color: {{ section.settings.text_color }};
+        text-align: center;
+        white-space: nowrap;
+        letter-spacing: 0;
+    }
+    
+    /* Swiper styles for mobile */
+    .announcement-slider-{{ section.id }} .announcement-slider__mobile {
+        width: 100%;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-slider__mobile .swiper {
+        width: 100%;
+        height: auto;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-slider__mobile .swiper-wrapper {
+        display: flex;
+    }
+    
+    .announcement-slider-{{ section.id }} .announcement-slider__mobile .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    
+    /* Responsive breakpoint - switch to mobile slider */
+    @media screen and (max-width: 768px) {
+        .announcement-slider-{{ section.id }} .announcement-slider__container {
+            padding: 10px 20px;
+        }
+        
+        .announcement-slider-{{ section.id }} .announcement-slider__desktop {
+            display: none;
+        }
+        
+        .announcement-slider-{{ section.id }} .announcement-slider__mobile {
+            display: block;
+        }
+    }
+    
+    /* Tablet adjustments */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .announcement-slider-{{ section.id }} .announcement-slider__container {
+            padding: 10px 60px;
+        }
+    }
+    
+    /* Large screens */
+    @media screen and (min-width: 1440px) {
+        .announcement-slider-{{ section.id }} .announcement-slider__container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+    }
+</style>
+
+<section class="announcement-slider-{{ section.id }}{% if section.settings.enable_animation %} announcement-slider--animate{% endif %}">
+    <div class="announcement-slider__container">
+        <!-- Desktop: Show all items -->
+        <div class="announcement-slider__desktop">
+            {%- for block in section.blocks -%}
+                <div class="announcement-item" {{ block.shopify_attributes }}>
+                    <div class="announcement-item__icon">
+                        {{ block.settings.icon }}
+                    </div>
+                    <span class="announcement-item__text">{{ block.settings.text }}</span>
+                </div>
+            {%- endfor -%}
+        </div>
+        
+        <!-- Mobile: Swiper slider -->
+        <div class="announcement-slider__mobile">
+            <div class="swiper announcement-swiper-{{ section.id }}">
+                <div class="swiper-wrapper">
+                    {%- for block in section.blocks -%}
+                        <div class="swiper-slide">
+                            <div class="announcement-item" {{ block.shopify_attributes }}>
+                                <div class="announcement-item__icon">
+                                    {{ block.settings.icon }}
+                                </div>
+                                <span class="announcement-item__text">{{ block.settings.text }}</span>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    (function() {
+        const sectionId = '{{ section.id }}';
+        let swiper = null;
+        const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+        
+        function initSwiper() {
+            // Don't initialize if already initialized
+            if (swiper) {
+                return;
+            }
+            
+            const swiperEl = document.querySelector('.announcement-swiper-' + sectionId);
+            if (!swiperEl) {
+                return;
+            }
+            
+            swiper = new Swiper('.announcement-swiper-' + sectionId, {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: true,
+                autoplay: {
+                    delay: {{ section.settings.autoplay_delay }},
+                    disableOnInteraction: false,
+                },
+                speed: {{ section.settings.transition_speed }},
+            });
+        }
+        
+        function handleMobileChange(e) {
+            if (e.matches) {
+                // Mobile view - initialize Swiper
+                setTimeout(initSwiper, 100);
+            } else {
+                // Desktop view - destroy Swiper
+                if (swiper) {
+                    swiper.destroy(true, true);
+                    swiper = null;
+                }
+            }
+        }
+        
+        // Listen for media query changes
+        mobileMediaQuery.addEventListener('change', handleMobileChange);
+        
+        // Initialize on page load if already on mobile
+        window.addEventListener('load', function() {
+            if (mobileMediaQuery.matches) {
+                setTimeout(initSwiper, 200);
+            }
+        });
+        
+        // Also check immediately if DOM is ready
+        if (document.readyState !== 'loading') {
+            if (mobileMediaQuery.matches) {
+                setTimeout(initSwiper, 200);
+            }
+        }
+    })();
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sectionEl = document.querySelector('.announcement-slider-{{ section.id }}');
+        if (!sectionEl || !sectionEl.classList.contains('announcement-slider--animate')) return;
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        sectionEl.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            observer.observe(sectionEl);
+        } else {
+            sectionEl.classList.add('is-visible');
+        }
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Lumen Header Slider",
+  "class": "lumen-header-slider-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#E1DCD8"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Autoplay Delay (Mobile)",
+      "default": 3000
+    },
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "min": 300,
+      "max": 1000,
+      "step": 100,
+      "unit": "ms",
+      "label": "Transition Speed (Mobile)",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon SVG",
+          "default": "<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M13.3333 4L6 11.3333L2.66667 8' stroke='#000000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "DEVELOPED IN AUSTRALIA"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen Header Slider",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "DEVELOPED IN AUSTRALIA"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE SHIPPING OVER $50"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "30 DAY RETURNS"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

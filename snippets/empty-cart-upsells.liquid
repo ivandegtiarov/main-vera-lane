@@ -1,0 +1,333 @@
+{%- comment -%}
+  Empty Cart Upsells (matches Figma design)
+
+  Render params (expected from cart-drawer):
+  - enabled: boolean
+  - heading: string (optional)
+  - product_1/product_2/product_3: product object or handle string
+
+  Notes:
+  - Uses the same `data-cart-upsell-add` hook as `cart-upsell.liquid`
+    so existing cart-drawer JS can add items.
+{%- endcomment -%}
+
+{%- liquid
+  assign upsell_enabled = false
+  if enabled != nil
+    assign upsell_enabled = enabled
+  endif
+
+  assign upsell_heading = heading | default: '' | strip
+
+  assign p1_ref = product_1
+  assign p2_ref = product_2
+  assign p3_ref = product_3
+
+  comment
+    Theme settings of type "product" can be exposed as:
+    - a product object (preferred)
+    - a handle string (common in settings_data.json)
+    Resolve each slot to a product object when possible.
+  endcomment
+  assign p1 = p1_ref
+  assign p2 = p2_ref
+  assign p3 = p3_ref
+
+  if p1 != blank and p1.title == blank
+    assign p1_handle = p1_ref.handle | default: p1_ref | handleize
+    assign p1 = all_products[p1_handle]
+  endif
+  if p2 != blank and p2.title == blank
+    assign p2_handle = p2_ref.handle | default: p2_ref | handleize
+    assign p2 = all_products[p2_handle]
+  endif
+  if p3 != blank and p3.title == blank
+    assign p3_handle = p3_ref.handle | default: p3_ref | handleize
+    assign p3 = all_products[p3_handle]
+  endif
+
+  assign visible_any = false
+  if p1 != blank
+    assign visible_any = true
+  endif
+  if p2 != blank
+    assign visible_any = true
+  endif
+  if p3 != blank
+    assign visible_any = true
+  endif
+-%}
+
+{% if upsell_enabled and visible_any %}
+  <div class="empty-cart-upsells" data-empty-cart-upsells>
+    {% if upsell_heading != blank %}
+      <div class="empty-cart-upsells__heading">{{ upsell_heading }}</div>
+    {% endif %}
+
+    <div class="empty-cart-upsells__list">
+      {%- comment -%} Slot 1 {%- endcomment -%}
+      {% if p1 != blank %}
+        {%- assign v1 = p1.selected_or_first_available_variant -%}
+        {%- if v1 == nil and p1.variants.size > 0 -%}{%- assign v1 = p1.variants.first -%}{%- endif -%}
+        {% if v1 %}
+          <div class="empty-cart-upsells__item" data-cart-upsell-item>
+            <div class="empty-cart-upsells__left">
+              <a class="empty-cart-upsells__media" href="{{ p1.url }}" aria-label="{{ p1.title | escape }}">
+                {% if p1.featured_image %}
+                  <img
+                    class="empty-cart-upsells__image"
+                    src="{{ p1.featured_image | image_url: width: 320 }}"
+                    alt="{{ p1.featured_image.alt | default: p1.title | escape }}"
+                    loading="lazy"
+                    width="159"
+                    height="159"
+                  >
+                {% endif %}
+              </a>
+
+              <div class="empty-cart-upsells__meta">
+                <a class="empty-cart-upsells__title" href="{{ p1.url }}">{{ p1.title }}</a>
+                <div class="empty-cart-upsells__price">{{ v1.price | money }}</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="empty-cart-upsells__atc button"
+              data-cart-upsell-add
+              data-variant-id="{{ v1.id }}"
+              {% unless v1.available %}disabled{% endunless %}
+            >
+              {% if v1.available %}Add To Cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {%- comment -%} Slot 2 {%- endcomment -%}
+      {% if p2 != blank %}
+        {%- assign v2 = p2.selected_or_first_available_variant -%}
+        {%- if v2 == nil and p2.variants.size > 0 -%}{%- assign v2 = p2.variants.first -%}{%- endif -%}
+        {% if v2 %}
+          <div class="empty-cart-upsells__item" data-cart-upsell-item>
+            <div class="empty-cart-upsells__left">
+              <a class="empty-cart-upsells__media" href="{{ p2.url }}" aria-label="{{ p2.title | escape }}">
+                {% if p2.featured_image %}
+                  <img
+                    class="empty-cart-upsells__image"
+                    src="{{ p2.featured_image | image_url: width: 320 }}"
+                    alt="{{ p2.featured_image.alt | default: p2.title | escape }}"
+                    loading="lazy"
+                    width="159"
+                    height="159"
+                  >
+                {% endif %}
+              </a>
+
+              <div class="empty-cart-upsells__meta">
+                <a class="empty-cart-upsells__title" href="{{ p2.url }}">{{ p2.title }}</a>
+                <div class="empty-cart-upsells__price">{{ v2.price | money }}</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="empty-cart-upsells__atc button"
+              data-cart-upsell-add
+              data-variant-id="{{ v2.id }}"
+              {% unless v2.available %}disabled{% endunless %}
+            >
+              {% if v2.available %}Add To Cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {%- comment -%} Slot 3 {%- endcomment -%}
+      {% if p3 != blank %}
+        {%- assign v3 = p3.selected_or_first_available_variant -%}
+        {%- if v3 == nil and p3.variants.size > 0 -%}{%- assign v3 = p3.variants.first -%}{%- endif -%}
+        {% if v3 %}
+          <div class="empty-cart-upsells__item" data-cart-upsell-item>
+            <div class="empty-cart-upsells__left">
+              <a class="empty-cart-upsells__media" href="{{ p3.url }}" aria-label="{{ p3.title | escape }}">
+                {% if p3.featured_image %}
+                  <img
+                    class="empty-cart-upsells__image"
+                    src="{{ p3.featured_image | image_url: width: 320 }}"
+                    alt="{{ p3.featured_image.alt | default: p3.title | escape }}"
+                    loading="lazy"
+                    width="159"
+                    height="159"
+                  >
+                {% endif %}
+              </a>
+
+              <div class="empty-cart-upsells__meta">
+                <a class="empty-cart-upsells__title" href="{{ p3.url }}">{{ p3.title }}</a>
+                <div class="empty-cart-upsells__price">{{ v3.price | money }}</div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="empty-cart-upsells__atc button"
+              data-cart-upsell-add
+              data-variant-id="{{ v3.id }}"
+              {% unless v3.available %}disabled{% endunless %}
+            >
+              {% if v3.available %}Add To Cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .empty-cart-upsells {
+    width: 100%;
+  }
+
+  .empty-cart-upsells__heading {
+    padding: 0 16px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .empty-cart-upsells__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .empty-cart-upsells__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .empty-cart-upsells__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .empty-cart-upsells__media {
+    display: block;
+    width: 75px;
+    height: 75px;
+    border-radius: 8px;
+    background: rgba(122, 0, 54, 0.04);
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+
+  .empty-cart-upsells__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .empty-cart-upsells__meta {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 134px;
+    text-align: left;
+  }
+
+  .empty-cart-upsells__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.375;
+    color: #000;
+    text-decoration: none;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .empty-cart-upsells__price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.571;
+    color: #000;
+    text-align: left;
+  }
+
+  .empty-cart-upsells__atc.button {
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: #000;
+    color: #fff;
+    border: 1px solid rgba(122, 0, 54, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.5;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  .empty-cart-upsells__atc.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (min-width: 750px) {
+    .empty-cart-upsells__heading {
+      padding: 0 40px 12px;
+    }
+
+    .empty-cart-upsells__list {
+      gap: 20px;
+    }
+
+    .empty-cart-upsells__item {
+      padding: 0 40px;
+      gap: 30px;
+    }
+
+    .empty-cart-upsells__left {
+      gap: 20px;
+    }
+
+    .empty-cart-upsells__media {
+      width: 75px;
+      height: 75px;
+    }
+
+    .empty-cart-upsells__meta {
+      width: 134px;
+      gap: 8px;
+    }
+
+    .empty-cart-upsells__price {
+      font-size: 16px;
+      line-height: 1.375;
+    }
+
+    .empty-cart-upsells__atc.button {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+{% endstylesheet %}
+

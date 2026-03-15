@@ -1,0 +1,174 @@
+{%- comment -%} ── EL - FOOTER ── {%- endcomment -%}
+<footer class="el-footer" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--footer-bg: {{ section.settings.bg_color }};">
+  <div class="el-footer__container">
+    {%- if section.settings.logo != blank -%}
+      <img
+        src="{{ section.settings.logo | image_url: width: 150 }}"
+        alt="{{ shop.name }}"
+        class="el-footer__logo"
+        loading="lazy"
+      >
+    {%- elsif section.settings.logo_text != blank -%}
+      <span class="el-footer__logo-text">{{ section.settings.logo_text }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.tagline != blank -%}
+      <p class="el-footer__tagline">{{ section.settings.tagline }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="el-footer__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.links != blank -%}
+      <div class="el-footer__links">
+        {{ section.settings.links }}
+      </div>
+    {%- endif -%}
+
+    <p class="el-footer__copyright">{{ section.settings.copyright }}</p>
+  </div>
+</footer>
+
+{% stylesheet %}
+.el-footer {
+  background: var(--footer-bg, #FAF9F7);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-block-start: 1px solid #E8E6E3;
+}
+
+.el-footer__container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.el-footer__logo {
+  height: 2rem;
+  width: auto;
+  margin-bottom: 1.25rem;
+}
+
+.el-footer__logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.el-footer__tagline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 1.25rem;
+}
+
+.el-footer__disclaimer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  color: #888;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+
+.el-footer__links {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.el-footer__links a {
+  color: #666;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.el-footer__links a:hover {
+  color: #2D2D2D;
+}
+
+.el-footer__copyright {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: #aaa;
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - Footer",
+  "tag": "footer",
+  "class": "el-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'footer')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text (if no image)",
+      "default": "Brand Name"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Beauty, refined."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer text"
+    },
+    {
+      "type": "richtext",
+      "id": "links",
+      "label": "Footer links",
+      "info": "Add links like Terms of Service, Privacy Policy",
+      "default": "<p><a href=\"/policies/terms-of-service\">Terms of Service</a> · <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2026 Brand Name. All rights reserved."
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - Footer",
+      "category": "t:categories.elegant_listicle"
+    }
+  ]
+}
+{% endschema %}

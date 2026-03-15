@@ -1,0 +1,169 @@
+<div class="vl-editorial-hero" style="
+  --hero-bg: {{ section.settings.bg_color }};
+  --headline-color: {{ section.settings.headline_color }};
+  --text-color: {{ section.settings.text_color }};
+  --meta-color: {{ section.settings.meta_color }};
+">
+  <div class="vl-editorial-hero__inner">
+    {% if section.settings.meta_text != blank %}
+      <p class="vl-editorial-hero__meta">{{ section.settings.meta_text }}</p>
+    {% endif %}
+
+    <h1 class="vl-editorial-hero__headline">{{ section.settings.headline }}</h1>
+
+    {% if section.settings.intro_text != blank %}
+      <p class="vl-editorial-hero__intro">{{ section.settings.intro_text }}</p>
+    {% endif %}
+
+    {% if section.settings.image != blank %}
+      <div class="vl-editorial-hero__image">
+        <img
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.image_alt | default: section.settings.headline }}"
+          loading="eager"
+          width="800"
+          height="{{ 800 | divided_by: section.settings.image.aspect_ratio | round }}"
+        >
+      </div>
+    {% endif %}
+
+    {% if section.settings.caption != blank %}
+      <p class="vl-editorial-hero__caption">{{ section.settings.caption }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-editorial-hero {
+    background-color: var(--hero-bg, #ffffff);
+    padding: 32px 16px;
+  }
+
+  .vl-editorial-hero__inner {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .vl-editorial-hero__meta {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--meta-color, #666666);
+    margin: 0 0 12px;
+  }
+
+  .vl-editorial-hero__headline {
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--headline-color, #000000);
+    margin: 0 0 16px;
+  }
+
+  .vl-editorial-hero__intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color, #333333);
+    margin: 0 0 24px;
+  }
+
+  .vl-editorial-hero__image {
+    margin: 0 0 12px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .vl-editorial-hero__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vl-editorial-hero__caption {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--meta-color, #666666);
+    margin: 0;
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Editorial Hero",
+  "tag": "section",
+  "class": "vl-editorial-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "meta_text",
+      "label": "Meta text",
+      "info": "Small text above headline (e.g., category or date)",
+      "default": "Skincare Secrets"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Why Foundation Suddenly Stops Working After 50"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Introduction text",
+      "default": "And the Korean skincare secret that changed everything for me."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption",
+      "info": "Optional caption below image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta/caption color",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Editorial Hero"
+    }
+  ]
+}
+{% endschema %}

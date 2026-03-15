@@ -1,0 +1,242 @@
+{%- comment -%} ── BL - ALERT BAR ── {%- endcomment -%}
+<div class="bl-alert-bar" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--alert-bg: {{ section.settings.bg_color }}; --alert-text: {{ section.settings.text_color }}; --alert-accent: {{ section.settings.accent_color }};">
+  <div class="bl-alert-bar__container">
+    {%- if section.settings.show_countdown -%}
+      <div class="bl-alert-bar__countdown" data-countdown="{{ section.settings.countdown_hours }}">
+        <span class="bl-alert-bar__countdown-label">{{ section.settings.countdown_prefix }}</span>
+        <span class="bl-alert-bar__countdown-time">
+          <span data-hours>00</span>:<span data-minutes>00</span>:<span data-seconds>00</span>
+        </span>
+      </div>
+    {%- endif -%}
+
+    <div class="bl-alert-bar__content">
+      {%- if section.settings.badge != blank -%}
+        <span class="bl-alert-bar__badge">{{ section.settings.badge }}</span>
+      {%- endif -%}
+      <span class="bl-alert-bar__text">{{ section.settings.text }}</span>
+      {%- if section.settings.code != blank -%}
+        <span class="bl-alert-bar__code">Use code <strong>{{ section.settings.code }}</strong> at checkout</span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const countdown = document.querySelector('.bl-alert-bar__countdown[data-countdown]');
+    if (!countdown) return;
+
+    const hours = parseInt(countdown.dataset.countdown) || 24;
+    const storageKey = 'bl_alert_countdown_end';
+    const hoursKey = 'bl_alert_countdown_hours';
+
+    let endTime = localStorage.getItem(storageKey);
+    const storedHours = localStorage.getItem(hoursKey);
+
+    // Reset timer if: no end time, expired, or hours setting changed
+    if (!endTime || parseInt(endTime) < Date.now() || parseInt(storedHours) !== hours) {
+      endTime = Date.now() + (hours * 60 * 60 * 1000);
+      localStorage.setItem(storageKey, endTime);
+      localStorage.setItem(hoursKey, hours);
+    }
+
+    function update() {
+      const now = Date.now();
+      const diff = Math.max(0, parseInt(endTime) - now);
+
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      countdown.querySelector('[data-hours]').textContent = String(h).padStart(2, '0');
+      countdown.querySelector('[data-minutes]').textContent = String(m).padStart(2, '0');
+      countdown.querySelector('[data-seconds]').textContent = String(s).padStart(2, '0');
+
+      if (diff > 0) requestAnimationFrame(update);
+    }
+    update();
+    setInterval(update, 1000);
+  })();
+</script>
+
+{% stylesheet %}
+.bl-alert-bar {
+  background: var(--alert-bg, #2D2D2D);
+  color: var(--alert-text, #fff);
+  padding: 0.625rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.bl-alert-bar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.bl-alert-bar__countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bl-alert-bar__countdown-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.bl-alert-bar__countdown-time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bl-alert-bar__content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bl-alert-bar__badge {
+  background: var(--alert-accent, #8B3A3A);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+}
+
+.bl-alert-bar__text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.bl-alert-bar__code {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.bl-alert-bar__code strong {
+  font-weight: 600;
+  color: var(--alert-accent, #D4A574);
+}
+
+@media (max-width: 600px) {
+  .bl-alert-bar__container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Alert Bar",
+  "tag": "section",
+  "class": "bl-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'alert')"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#8B3A3A"
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show countdown timer",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "countdown_prefix",
+      "label": "Countdown prefix",
+      "default": "Offer Ends In"
+    },
+    {
+      "type": "range",
+      "id": "countdown_hours",
+      "label": "Countdown hours",
+      "min": 1,
+      "max": 72,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text",
+      "default": "LIMITED TIME"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Main text",
+      "default": "Up to 40% Off Today"
+    },
+    {
+      "type": "text",
+      "id": "code",
+      "label": "Promo code",
+      "info": "Optional"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Alert Bar",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

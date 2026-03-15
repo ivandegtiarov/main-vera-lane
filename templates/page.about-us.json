@@ -1,0 +1,203 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lumen_about_hero": {
+      "type": "lumen-about-hero",
+      "settings": {
+        "bg_color": "#f6e8de",
+        "bg_gradient_start": "#f6e8de",
+        "bg_gradient_end": "#f6e8de",
+        "title_color": "#000000",
+        "quote_color": "#000000",
+        "padding_top_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 40,
+        "padding_bottom_mobile": 24,
+        "title_size_desktop": 56,
+        "title_size_mobile": 32,
+        "quote_size_desktop": 16,
+        "quote_size_mobile": 16,
+        "hero_image_desktop": "shopify://shop_images/image_588256402-removebg-preview_1.png",
+        "hero_image_mobile": "shopify://shop_images/image_588256402-removebg-preview_1.png",
+        "hero_image_alt": "Portrait of a mature woman with a soft glow."
+      }
+    },
+    "lumen_about_different": {
+      "type": "lumen-about-different",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_2147242684.png",
+            "image_alt": "",
+            "title": "Identity Restored",
+            "copy": "Vera Lane exists for the woman who has stopped wearing foundation because it started to feel like a betrayal. We believe your makeup should be infrastructure that stays out of the way, not a mask that hides who you are. We design for that moment of self-recognition—formulating products that disappear into your skin so that people notice your glow, not your makeup."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_2147242684_1.png",
+            "image_alt": "",
+            "title": "Texture-First Integrity",
+            "copy": "We reject the \"anti-aging\" shame of the beauty industry. Instead, we prioritize the physical reality of skin that has changed—skin that is more sensitive and where products often settle into lines. Our \"second skin\" formulas are engineered to float over texture rather than emphasizing it, giving you the invisible confidence of a healthy, \"lit-from-within\" radiance."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Frame_2147242684_2.png",
+            "image_alt": "",
+            "title": "Certainty over Complexity",
+            "copy": "We believe your morning routine should give you mental bandwidth back, not take it away. By removing the \"shade guessing game\" and the anxiety of the wrong match, we provide a reliable standard for women who value presence over performance. We create simple, dependable tools that let you get ready in minutes and move through the world with self-respect."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {
+        "heading": "What Makes Us Different",
+        "bg_color": "#fbf8f6",
+        "bg_gradient_start": "#fbf8f6",
+        "bg_gradient_end": "#fbf8f6",
+        "heading_color": "#000000",
+        "card_title_color": "#000000",
+        "card_copy_color": "#000000",
+        "padding_top_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 40,
+        "padding_bottom_mobile": 24,
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 32,
+        "card_title_size_desktop": 18,
+        "card_title_size_mobile": 16,
+        "card_copy_size_desktop": 16,
+        "card_copy_size_mobile": 16
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "disabled": true,
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{max-width: 800px; margin: auto;}"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "lumen_our_values_HxzBEj": {
+      "type": "lumen-our-values",
+      "blocks": {
+        "faq_AnLfYP": {
+          "type": "faq",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_6.svg",
+            "question": "Uncomplicated",
+            "answer": "You deserve a routine that gives you mental bandwidth back, not one that adds another chore to your morning. We believe in simple, dependable tools that remove the \"faff\" of complicated techniques and the anxiety of the \"shade guessing game\". Our products are designed to be intuitive, allowing you to get ready in minutes and focus on the day ahead."
+          }
+        },
+        "faq_CYL76n": {
+          "type": "faq",
+          "settings": {
+            "icon": "shopify://shop_images/Drop_1.svg",
+            "question": "Restorative",
+            "answer": "We believe makeup succeeds when it disappears. Our goal is not to \"fix\" your age or sell you a younger version of yourself, but to help you recognize the woman in the mirror again. We formulate for \"invisible confidence\"—coverage that is felt in your self-respect but imperceptible to the eye, ensuring people notice your healthy glow, not your makeup."
+          }
+        },
+        "faq_yxWy97": {
+          "type": "faq",
+          "settings": {
+            "icon": "shopify://shop_images/Flower_1.svg",
+            "question": "Forgiving",
+            "answer": "Mature skin has unique needs that the beauty industry often ignores. We prioritize the physical reality of skin that has changed, creating \"second-skin\" textures that float over fine lines rather than settling into them. We offer a reliable standard for those who have felt betrayed by products that make them look older, providing comfort and breathability that lasts all day."
+          }
+        }
+      },
+      "block_order": [
+        "faq_AnLfYP",
+        "faq_CYL76n",
+        "faq_yxWy97"
+      ],
+      "name": "Lumen – Our Values",
+      "settings": {
+        "bg_color": "#fbf8f6",
+        "bg_gradient_start": "#fbf8f6",
+        "bg_gradient_end": "#fbf8f6",
+        "title_color": "#000000",
+        "question_color": "#000000",
+        "answer_color": "#000000",
+        "padding_top_desktop": 120,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 120,
+        "padding_bottom_mobile": 24,
+        "title_size_desktop": 48,
+        "title_size_mobile": 32,
+        "question_size_desktop": 20,
+        "question_size_mobile": 18,
+        "answer_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "image": "shopify://shop_images/image_588256404.png",
+        "image_alt": "Our Values image"
+      }
+    }
+  },
+  "order": [
+    "lumen_about_hero",
+    "lumen_about_different",
+    "main",
+    "lumen_our_values_HxzBEj"
+  ]
+}

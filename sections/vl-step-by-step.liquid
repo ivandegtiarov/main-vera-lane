@@ -1,0 +1,207 @@
+<div class="vl-steps" style="
+  --steps-bg: {{ section.settings.bg_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --card-bg: {{ section.settings.card_bg_color }};
+  --number-bg: {{ section.settings.number_bg_color }};
+  --number-color: {{ section.settings.number_color }};
+  --step-title-color: {{ section.settings.step_title_color }};
+  --step-text-color: {{ section.settings.step_text_color }};
+">
+  <div class="vl-steps__inner">
+    <h2 class="vl-steps__heading">{{ section.settings.heading }}</h2>
+
+    <div class="vl-steps__list">
+      {% for block in section.blocks %}
+        <div class="vl-steps__card" {{ block.shopify_attributes }}>
+          <div class="vl-steps__number">{{ block.settings.number | default: forloop.index | prepend: '00' | slice: -2, 2 }}</div>
+          <h3 class="vl-steps__title">{{ block.settings.title }}</h3>
+          <p class="vl-steps__text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-steps {
+    background-color: var(--steps-bg, #ffffff);
+    padding: 40px 0;
+  }
+
+  .vl-steps__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-steps__heading {
+    font-family: var(--font-accent--family, 'Times New Roman', serif);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--heading-color, #5C1A33);
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  .vl-steps__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vl-steps__card {
+    background-color: var(--card-bg, #F5F5F5);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .vl-steps__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--number-bg, #5C1A33);
+    color: var(--number-color, #ffffff);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  .vl-steps__title {
+    font-family: var(--font-heading--family, serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--step-title-color, #000000);
+    margin: 0 0 8px;
+  }
+
+  .vl-steps__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--step-text-color, #666666);
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Step by Step",
+  "tag": "section",
+  "class": "vl-steps-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Step by Step"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "number_bg_color",
+      "label": "Number background",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "step_title_color",
+      "label": "Step title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "step_text_color",
+      "label": "Step text color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "01",
+          "info": "Leave blank to auto-number"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Apply The Foundation"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Take the desired amount of foundation and apply it to your skin using a beauty sponge or brush, just like you are used to with your previous foundation. This helps the formula blend evenly for a smooth, natural look."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Step by Step",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Apply The Foundation",
+            "text": "Take the desired amount of foundation and apply it to your skin using a beauty sponge or brush, just like you are used to with your previous foundation. This helps the formula blend evenly for a smooth, natural look."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Let It Set",
+            "text": "Allow the foundation to rest on your skin for a moment after applying it evenly with your preferred tool. This gives the tone-adapting formula time to adjust and match your complexion perfectly for a flawless finish."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Enjoy The Finish",
+            "text": "Once the foundation has fully set and blended with your skin tone, admire the smooth, natural-looking result. Enjoy long-lasting comfort and a radiant finish that keeps your complexion looking fresh all day."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

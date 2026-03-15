@@ -1,0 +1,359 @@
+<style>
+      /*
+        Vera Lane – Trustpilot Rating
+        Built from:
+        - Desktop: https://www.figma.com/design/1M8lKf2fVA2oaHmvrircEx/Vera-Lane---Website-Design?node-id=1-1148&m=dev
+        - Mobile:  https://www.figma.com/design/1M8lKf2fVA2oaHmvrircEx/Vera-Lane---Website-Design?node-id=1-1539&m=dev
+
+        Mobile‑first, fully fluid layout using px-based spacing & typography.
+        No fixed section widths: flexbox + gaps keep the badge layout responsive.
+      */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background-color: #ffffff;
+        color: #050505;
+      }
+
+      .trustpilot-section {
+        width: 100%;
+        background-color: #ffffff;
+        padding: {{ section.settings.padding_top }}px {{ section.settings.padding_left_right }}px {{ section.settings.padding_bottom }}px;
+      }
+
+      .trustpilot-inner {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 27px;
+      }
+
+      .trustpilot-badge {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Mobile: logo above stars */
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .trustpilot-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .trustpilot-logo-star {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 36px;
+        border-radius: 4px;
+        background-color: #00b67a;
+        box-shadow: inset 0 0 0 2px #005128;
+        color: #ffffff;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .trustpilot-logo-text {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #050505;
+      }
+
+      .trustpilot-stars-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .trustpilot-stars {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .trustpilot-stars img {
+        width: 288px;
+        height: auto;
+      }
+
+      .trustpilot-star-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        background-color: #219653;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .trustpilot-star-box--half {
+        background: linear-gradient(
+          90deg,
+          #219653 0%,
+          #219653 50%,
+          #d9d9d9 50%,
+          #d9d9d9 100%
+        );
+      }
+
+      .trustpilot-rating-text {
+        margin-top: 0;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.3;
+        text-transform: uppercase;
+        text-align: center;
+        color: #6a6a6a;
+      }
+
+      /* Fade-in animation */
+      .trustpilot-section--animate .trustpilot-badge,
+      .trustpilot-section--animate .trustpilot-rating-text {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      .trustpilot-section--animate .trustpilot-badge.is-visible,
+      .trustpilot-section--animate .trustpilot-rating-text.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Staggered animation delays */
+      .trustpilot-section--animate .trustpilot-badge {
+        transition-delay: 0.1s;
+      }
+
+      .trustpilot-section--animate .trustpilot-rating-text {
+        transition-delay: 0.2s;
+      }
+
+      /* Tablet and up – bring paddings closer to desktop frame */
+      @media (min-width: 768px) {
+        .trustpilot-section {
+          padding: {{ section.settings.padding_top }}px 40px {{ section.settings.padding_bottom }}px;
+        }
+      }
+
+      /* Desktop – horizontal logo + stars as in Figma */
+      @media (min-width: 1024px) {
+        .trustpilot-section {
+          padding: {{ section.settings.padding_top }}px 50px {{ section.settings.padding_bottom }}px;
+        }
+
+        .trustpilot-badge {
+          flex-direction: row;
+          text-align: left;
+        }
+
+        .trustpilot-stars-wrapper {
+          align-items: flex-start;
+        }
+      }
+    </style>
+
+<!--
+  Vera Lane – Trustpilot Rating
+  Matches the desktop & mobile Figma frames using a simple, semantic structure.
+-->
+<section
+      class="trustpilot-section{% if section.settings.enable_animation %} trustpilot-section--animate{% endif %}"
+      aria-label="Trustpilot rating summary"
+      role="region"
+      data-animation-enabled="{{ section.settings.enable_animation }}"
+    >
+      <div class="trustpilot-inner">
+        <div class="trustpilot-badge">
+          <div class="trustpilot-logo" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40" fill="none">
+              <g clip-path="url(#clip0_876_1860)">
+                <path d="M41.8637 13.8652H57.9933V16.8746H51.6512V33.7918H48.1637V16.8746H41.8496V13.8652H41.8637ZM57.3043 19.3637H60.2855V22.148H60.3418C60.4402 21.7543 60.623 21.3746 60.8902 21.009C61.1574 20.6434 61.4808 20.2918 61.8605 19.9965C62.2402 19.6871 62.6621 19.448 63.1262 19.2512C63.5902 19.0684 64.0683 18.9699 64.5465 18.9699C64.9121 18.9699 65.1793 18.984 65.3199 18.998C65.4605 19.0121 65.6012 19.0402 65.7558 19.0543V22.1199C65.5308 22.0777 65.3058 22.0496 65.0668 22.0215C64.8277 21.9934 64.6027 21.9793 64.3777 21.9793C63.8433 21.9793 63.3371 22.0918 62.859 22.3027C62.3808 22.5137 61.973 22.8371 61.6215 23.2449C61.2699 23.6668 60.9887 24.173 60.7777 24.7918C60.5668 25.4105 60.4683 26.1137 60.4683 26.9152V33.7777H57.2902V19.3637H57.3043ZM80.3668 33.7918H77.2449V31.7808H77.1887C76.7949 32.5121 76.2183 33.0886 75.4449 33.5246C74.6715 33.9605 73.884 34.1855 73.0824 34.1855C71.184 34.1855 69.8058 33.7215 68.9621 32.7793C68.1183 31.8371 67.6965 30.4168 67.6965 28.5183V19.3637H70.8746V28.209C70.8746 29.4746 71.1137 30.3746 71.6058 30.8949C72.084 31.4152 72.773 31.6824 73.6449 31.6824C74.3199 31.6824 74.8683 31.584 75.3183 31.373C75.7683 31.1621 76.134 30.8949 76.4011 30.5433C76.6824 30.2058 76.8793 29.784 77.0058 29.3058C77.1324 28.8277 77.1887 28.3074 77.1887 27.7449V19.3777H80.3668V33.7918ZM85.7808 29.1652C85.8793 30.0933 86.2308 30.7402 86.8355 31.1199C87.4543 31.4855 88.1855 31.6824 89.0433 31.6824C89.3386 31.6824 89.6761 31.6543 90.0558 31.6121C90.4355 31.5699 90.8011 31.4715 91.1246 31.3449C91.4621 31.2183 91.7293 31.0215 91.9543 30.7683C92.1652 30.5152 92.2636 30.1918 92.2496 29.784C92.2355 29.3762 92.0808 29.0387 91.7996 28.7855C91.5183 28.5183 91.1668 28.3215 90.7308 28.1527C90.2949 27.998 89.8027 27.8574 89.2402 27.7449C88.6777 27.6324 88.1152 27.5058 87.5386 27.3793C86.948 27.2527 86.3715 27.084 85.823 26.9012C85.2746 26.7183 84.7824 26.4652 84.3465 26.1418C83.9105 25.8324 83.559 25.4246 83.3058 24.9324C83.0387 24.4402 82.9121 23.8355 82.9121 23.1043C82.9121 22.3168 83.109 21.6699 83.4887 21.1355C83.8683 20.6012 84.3605 20.1793 84.9371 19.8559C85.5277 19.5324 86.1746 19.3074 86.8918 19.1668C87.609 19.0402 88.298 18.9699 88.9449 18.9699C89.6902 18.9699 90.4074 19.0543 91.0824 19.209C91.7574 19.3637 92.3761 19.6168 92.9246 19.9824C93.473 20.334 93.923 20.798 94.2886 21.3605C94.6543 21.923 94.8793 22.6121 94.9777 23.4137H91.659C91.5043 22.6543 91.1668 22.134 90.6183 21.8809C90.0699 21.6137 89.4371 21.4871 88.734 21.4871C88.509 21.4871 88.2418 21.5012 87.9324 21.5434C87.623 21.5855 87.3418 21.6558 87.0605 21.7543C86.7933 21.8527 86.5683 22.0074 86.3715 22.2043C86.1886 22.4012 86.0902 22.6543 86.0902 22.9777C86.0902 23.3715 86.2308 23.6808 86.498 23.9199C86.7652 24.159 87.1168 24.3558 87.5527 24.5246C87.9886 24.6793 88.4808 24.8199 89.0433 24.9324C89.6058 25.0449 90.1824 25.1715 90.773 25.298C91.3496 25.4246 91.9121 25.5933 92.4746 25.7762C93.0371 25.959 93.5293 26.2121 93.9652 26.5355C94.4011 26.859 94.7527 27.2527 95.0199 27.7308C95.2871 28.209 95.4277 28.8137 95.4277 29.5168C95.4277 30.3746 95.2308 31.0918 94.8371 31.6965C94.4433 32.2871 93.9371 32.7793 93.3183 33.1449C92.6996 33.5105 91.9965 33.7918 91.2371 33.9605C90.4777 34.1293 89.7183 34.2136 88.973 34.2136C88.059 34.2136 87.2152 34.1152 86.4418 33.9043C85.6683 33.6933 84.9933 33.384 84.4308 32.9761C83.8683 32.5543 83.4183 32.034 83.0949 31.4152C82.7715 30.7965 82.6027 30.0512 82.5746 29.1933H85.7808V29.1652ZM96.2715 19.3637H98.6761V15.0324H101.854V19.3637H104.723V21.7402H101.854V29.4465C101.854 29.784 101.868 30.0652 101.896 30.3183C101.925 30.5574 101.995 30.7683 102.093 30.9371C102.192 31.1058 102.346 31.2324 102.557 31.3168C102.768 31.4012 103.036 31.4433 103.401 31.4433C103.626 31.4433 103.851 31.4433 104.076 31.4293C104.301 31.4152 104.526 31.3871 104.751 31.3308V33.7918C104.4 33.834 104.048 33.8621 103.725 33.9043C103.387 33.9465 103.05 33.9605 102.698 33.9605C101.854 33.9605 101.179 33.8762 100.673 33.7215C100.167 33.5668 99.759 33.3277 99.4777 33.0183C99.1824 32.709 98.9996 32.3293 98.8871 31.8652C98.7886 31.4012 98.7183 30.8668 98.7043 30.2762V21.7684H96.2996V19.3637H96.2715ZM106.973 19.3637H109.982V21.3184H110.039C110.489 20.4746 111.107 19.884 111.909 19.5184C112.711 19.1527 113.568 18.9699 114.51 18.9699C115.65 18.9699 116.634 19.1668 117.478 19.5746C118.321 19.9684 119.025 20.5168 119.587 21.2199C120.15 21.923 120.557 22.7387 120.839 23.6668C121.12 24.5949 121.26 25.5933 121.26 26.648C121.26 27.6183 121.134 28.5605 120.881 29.4605C120.628 30.3746 120.248 31.1762 119.742 31.8793C119.236 32.5824 118.589 33.1308 117.801 33.5527C117.014 33.9746 116.1 34.1855 115.031 34.1855C114.567 34.1855 114.103 34.1433 113.639 34.059C113.175 33.9746 112.725 33.834 112.303 33.6511C111.881 33.4683 111.473 33.2293 111.121 32.934C110.756 32.6387 110.461 32.3011 110.207 31.9215H110.151V39.1215H106.973V19.3637ZM118.082 26.5918C118.082 25.9449 117.998 25.3121 117.829 24.6933C117.661 24.0746 117.407 23.5402 117.07 23.0621C116.732 22.584 116.311 22.2043 115.818 21.923C115.312 21.6418 114.736 21.4871 114.089 21.4871C112.753 21.4871 111.74 21.9512 111.065 22.8793C110.39 23.8074 110.053 25.0449 110.053 26.5918C110.053 27.323 110.137 27.998 110.32 28.6168C110.503 29.2355 110.756 29.7699 111.121 30.2199C111.473 30.6699 111.895 31.0215 112.387 31.2746C112.879 31.5418 113.456 31.6683 114.103 31.6683C114.834 31.6683 115.439 31.5137 115.945 31.2183C116.451 30.923 116.859 30.5293 117.182 30.0652C117.506 29.5871 117.745 29.0527 117.885 28.448C118.012 27.8433 118.082 27.2246 118.082 26.5918ZM123.693 13.8652H126.871V16.8746H123.693V13.8652ZM123.693 19.3637H126.871V33.7918H123.693V19.3637ZM129.712 13.8652H132.89V33.7918H129.712V13.8652ZM142.635 34.1855C141.482 34.1855 140.456 33.9886 139.556 33.609C138.656 33.2293 137.896 32.6949 137.264 32.034C136.645 31.359 136.167 30.5574 135.843 29.6293C135.52 28.7012 135.351 27.6746 135.351 26.5637C135.351 25.4668 135.52 24.4543 135.843 23.5262C136.167 22.598 136.645 21.7965 137.264 21.1215C137.882 20.4465 138.656 19.9262 139.556 19.5465C140.456 19.1668 141.482 18.9699 142.635 18.9699C143.789 18.9699 144.815 19.1668 145.715 19.5465C146.615 19.9262 147.375 20.4605 148.007 21.1215C148.626 21.7965 149.104 22.598 149.428 23.5262C149.751 24.4543 149.92 25.4668 149.92 26.5637C149.92 27.6746 149.751 28.7012 149.428 29.6293C149.104 30.5574 148.626 31.359 148.007 32.034C147.389 32.709 146.615 33.2293 145.715 33.609C144.815 33.9886 143.789 34.1855 142.635 34.1855ZM142.635 31.6683C143.339 31.6683 143.957 31.5137 144.478 31.2183C144.998 30.923 145.42 30.5293 145.757 30.0512C146.095 29.573 146.334 29.0246 146.503 28.4199C146.657 27.8152 146.742 27.1965 146.742 26.5637C146.742 25.9449 146.657 25.3402 146.503 24.7215C146.348 24.1027 146.095 23.5683 145.757 23.0902C145.42 22.6121 144.998 22.2324 144.478 21.9371C143.957 21.6418 143.339 21.4871 142.635 21.4871C141.932 21.4871 141.314 21.6418 140.793 21.9371C140.273 22.2324 139.851 22.6262 139.514 23.0902C139.176 23.5683 138.937 24.1027 138.768 24.7215C138.614 25.3402 138.529 25.9449 138.529 26.5637C138.529 27.1965 138.614 27.8152 138.768 28.4199C138.923 29.0246 139.176 29.573 139.514 30.0512C139.851 30.5293 140.273 30.923 140.793 31.2183C141.314 31.5277 141.932 31.6683 142.635 31.6683ZM150.848 19.3637H153.253V15.0324H156.431V19.3637H159.3V21.7402H156.431V29.4465C156.431 29.784 156.445 30.0652 156.473 30.3183C156.501 30.5574 156.571 30.7683 156.67 30.9371C156.768 31.1058 156.923 31.2324 157.134 31.3168C157.345 31.4012 157.612 31.4433 157.978 31.4433C158.203 31.4433 158.428 31.4433 158.653 31.4293C158.878 31.4152 159.103 31.3871 159.328 31.3308V33.7918C158.976 33.834 158.625 33.8621 158.301 33.9043C157.964 33.9465 157.626 33.9605 157.275 33.9605C156.431 33.9605 155.756 33.8762 155.25 33.7215C154.743 33.5668 154.335 33.3277 154.054 33.0183C153.759 32.709 153.576 32.3293 153.464 31.8652C153.365 31.4012 153.295 30.8668 153.281 30.2762V21.7684H150.876V19.3637H150.848Z" fill="#050505"/>
+                <path d="M38.1515 13.8656H23.5828L19.0828 0L14.5687 13.8656L0 13.8515L11.7984 22.4297L7.28437 36.2812L19.0828 27.7172L30.8672 36.2812L26.3672 22.4297L38.1515 13.8656Z" fill="#00B67A"/>
+                <path d="M27.3789 25.5656L26.3664 22.4297L19.082 27.7172L27.3789 25.5656Z" fill="#005128"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_876_1860">
+                  <rect width="159.3" height="39.1218" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="trustpilot-stars-wrapper">
+            <div class="trustpilot-stars" aria-hidden="true">
+              {% if section.settings.stars_image != blank %}
+                <img 
+                  src="{{ section.settings.stars_image | image_url: width: 400 }}" 
+                  alt="{{ section.settings.stars_image_alt | default: 'Trustpilot star rating' }}"
+                  loading="lazy"
+                  width="{{ section.settings.stars_image.width }}"
+                  height="{{ section.settings.stars_image.height }}"
+                >
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <p class="trustpilot-rating-text">
+          {{ section.settings.rating_text }}
+        </p>
+      </div>
+    </section>
+
+<script>
+  // Fade-in animation on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('.trustpilot-section');
+    if (!section) return;
+
+    const animationEnabled = section.getAttribute('data-animation-enabled') === 'true';
+    
+    if (animationEnabled && 'IntersectionObserver' in window) {
+      const animatedElements = section.querySelectorAll('.trustpilot-badge, .trustpilot-rating-text');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else if (animationEnabled) {
+      // Fallback for browsers without IntersectionObserver
+      const animatedElements = section.querySelectorAll('.trustpilot-badge, .trustpilot-rating-text');
+      animatedElements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "⚡Trustpilot Rating",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Trustpilot Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "trustpilot_logo",
+      "label": "Trustpilot Logo",
+      "info": "Upload custom Trustpilot logo (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Star Rating"
+    },
+    {
+      "type": "image_picker",
+      "id": "stars_image",
+      "label": "Stars Image",
+      "info": "Upload an image showing the star rating"
+    },
+    {
+      "type": "text",
+      "id": "stars_image_alt",
+      "label": "Stars Image Alt Text",
+      "default": "Trustpilot star rating"
+    },
+    {
+      "type": "header",
+      "content": "Rating Text"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "4.6 out of 5 based on 245 reviews"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Elements will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_left_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left/Right (Mobile)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡Trustpilot Rating"
+    }
+  ]
+}
+{% endschema %}

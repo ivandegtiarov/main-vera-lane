@@ -1,0 +1,160 @@
+{
+  "sections": {
+    "vl_header": {
+      "type": "vl-lp-header",
+      "settings": {
+        "logo_width": 140,
+        "bg_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "vl_product_intro": {
+      "type": "vl-product-intro",
+      "settings": {
+        "product_title": "TONE ADAPTING FOUNDATION",
+        "show_rating": true,
+        "rating_stars": 5,
+        "rating_text": "4.8/5 BY 9,000+ CUSTOMERS",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "star_color": "#F7A81B",
+        "rating_text_color": "#666666",
+        "image_bg_color": "#D4C4B5"
+      }
+    },
+    "vl_steps": {
+      "type": "vl-step-by-step",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Apply The Foundation",
+            "text": "Take the desired amount of foundation and apply it to your skin using a beauty sponge or brush, just like you are used to with your previous foundation. This helps the formula blend evenly for a smooth, natural look."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Let It Set",
+            "text": "Allow the foundation to rest on your skin for a moment after applying it evenly with your preferred tool. This gives the tone-adapting formula time to adjust and match your complexion perfectly for a flawless finish."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Enjoy The Finish",
+            "text": "Once the foundation has fully set and blended with your skin tone, admire the smooth, natural-looking result. Enjoy long-lasting comfort and a radiant finish that keeps your complexion looking fresh all day."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3"],
+      "settings": {
+        "heading": "Step by Step",
+        "bg_color": "#ffffff",
+        "heading_color": "#5C1A33",
+        "card_bg_color": "#F5F5F5",
+        "number_bg_color": "#5C1A33",
+        "number_color": "#ffffff",
+        "step_title_color": "#000000",
+        "step_text_color": "#666666"
+      }
+    },
+    "vl_benefit": {
+      "type": "vl-benefit",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Dermatologist Tested",
+            "text": "Your skin's health is our priority. Every product is rigorously tested by skincare experts to ensure it is gentle, non-irritating, and safe for even the most sensitive skin types."
+          }
+        }
+      },
+      "block_order": ["benefit_1"],
+      "settings": {
+        "heading": "Benefit",
+        "bg_color": "#ffffff",
+        "heading_color": "#5C1A33",
+        "title_color": "#000000",
+        "text_color": "#666666"
+      }
+    },
+    "vl_before_after": {
+      "type": "vl-before-after",
+      "blocks": {
+        "person_1": {
+          "type": "person",
+          "settings": {
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        "person_2": {
+          "type": "person",
+          "settings": {
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        }
+      },
+      "block_order": ["person_1", "person_2"],
+      "settings": {
+        "heading": "Before & After",
+        "bg_color": "#ffffff",
+        "heading_color": "#5C1A33",
+        "name_color": "#000000",
+        "title_color": "#666666",
+        "arrow_bg_color": "#F5F5F5",
+        "arrow_color": "#000000"
+      }
+    },
+    "vl_testimonial": {
+      "type": "vl-testimonial",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        }
+      },
+      "block_order": ["testimonial_1"],
+      "settings": {
+        "heading": "What Our Customer Said",
+        "bg_color": "#F5E6DC",
+        "heading_color": "#5C1A33",
+        "card_bg_color": "#ffffff",
+        "quote_icon_color": "#5C1A33",
+        "quote_text_color": "#333333",
+        "author_name_color": "#000000",
+        "author_title_color": "#666666"
+      }
+    },
+    "vl_sticky_cta": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": true,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#232F3E",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "vl_header",
+    "vl_product_intro",
+    "vl_steps",
+    "vl_benefit",
+    "vl_before_after",
+    "vl_testimonial",
+    "vl_sticky_cta"
+  ]
+}

@@ -1,0 +1,904 @@
+<!--
+  Vera Lane – Image Slider Section
+  Trusted by 1000s of Women - Marquee Slider
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+{% if section.settings.scroll_mode == 'arrows' %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% endif %}
+
+<section
+  class="image-slider section-{{ section.id }}-padding{% if section.settings.enable_animation %} image-slider--animate{% endif %}"
+  aria-label="{{ section.settings.section_label }}"
+  role="region"
+  data-animation-enabled="{{ section.settings.enable_animation }}"
+  data-block-count="{{ section.blocks.size }}"
+  data-image-slider
+  data-section-id="{{ section.id }}"
+  data-scroll-mode="{{ section.settings.scroll_mode }}"
+  style="--padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --padding-top-desktop: {{ section.settings.padding_top_desktop }}px; --padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px; --title-font-size-mobile: {{ section.settings.title_font_size_mobile }}px; --title-font-size-desktop: {{ section.settings.title_font_size_desktop }}px; --card-name-font-size-mobile: {{ section.settings.card_name_font_size_mobile }}px; --card-name-font-size-desktop: {{ section.settings.card_name_font_size_desktop }}px; --card-title-font-size-mobile: {{ section.settings.card_title_font_size_mobile }}px; --card-title-font-size-desktop: {{ section.settings.card_title_font_size_desktop }}px; --block-count: {{ section.blocks.size }}; --background-color: {{ section.settings.background_color }}; --title-color: {{ section.settings.title_color }}; --card-name-color: {{ section.settings.card_name_color }}; --card-subtitle-color: {{ section.settings.card_subtitle_color }}; --autoscroll-duration: {{ section.settings.autoscroll_duration }}s;"
+>
+  <div class="image-slider__inner">
+    <h2 class="slider-title">{{ section.settings.main_title }}</h2>
+    
+    <div class="slider-container{% if section.settings.scroll_mode == 'arrows' %} slider-container--swiper{% endif %}">
+      {% if section.settings.scroll_mode == 'autoscroll' %}
+        <div class="slider-track">
+          <!-- First set of cards -->
+          {%- for block in section.blocks -%}
+            <div class="slider-card" {{ block.shopify_attributes }} data-block-id="{{ block.id }}" style="{% if block.settings.video == blank %}background-image: url('{{ block.settings.image | image_url: width: 800 }}');{% endif %}">
+              {%- if block.settings.video != blank -%}
+                <div class="slider-card__video">
+                  {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                </div>
+              {%- endif -%}
+              
+              {%- if block.settings.image != blank or block.settings.video != blank -%}
+                <div class="slider-card__overlay"></div>
+              {%- endif -%}
+              
+              {%- if block.settings.show_speaker_icon and block.settings.video != blank -%}
+                <button class="speaker-icon is-muted" data-video-toggle aria-label="Turn on sound">
+                  <svg class="speaker-on" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9zm2.8 2.6c.2-.2.5-.2.7 0 2.1 2.1 2.1 5.5 0 7.6-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 1.7-1.7 1.7-4.5 0-6.2-.2-.2-.2-.5 0-.7zm2.1-2.1c.2-.2.5-.2.7 0 3.4 3.4 3.4 8.9 0 12.3-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 3-3 3-7.9 0-10.9-.2-.2-.2-.5 0-.7z" fill="white"/>
+                  </svg>
+                  <svg class="speaker-off" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9z" fill="white"/>
+                    <path d="M15 8l5 5m0-5l-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              {%- endif -%}
+              
+              <div class="card-content">
+                <div class="card-name">{{ block.settings.card_name }}</div>
+                <div class="card-title">{{ block.settings.card_subtitle }}</div>
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <!-- Duplicate set for seamless loop -->
+          {%- for block in section.blocks -%}
+            <div class="slider-card" style="{% if block.settings.video == blank %}background-image: url('{{ block.settings.image | image_url: width: 800 }}');{% endif %}">
+              {%- if block.settings.video != blank -%}
+                <div class="slider-card__video">
+                  {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                </div>
+              {%- endif -%}
+              
+              {%- if block.settings.image != blank or block.settings.video != blank -%}
+                <div class="slider-card__overlay"></div>
+              {%- endif -%}
+              
+              {%- if block.settings.show_speaker_icon and block.settings.video != blank -%}
+                <button class="speaker-icon is-muted" data-video-toggle aria-label="Turn on sound">
+                  <svg class="speaker-on" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9zm2.8 2.6c.2-.2.5-.2.7 0 2.1 2.1 2.1 5.5 0 7.6-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 1.7-1.7 1.7-4.5 0-6.2-.2-.2-.2-.5 0-.7zm2.1-2.1c.2-.2.5-.2.7 0 3.4 3.4 3.4 8.9 0 12.3-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 3-3 3-7.9 0-10.9-.2-.2-.2-.5 0-.7z" fill="white"/>
+                  </svg>
+                  <svg class="speaker-off" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9z" fill="white"/>
+                    <path d="M15 8l5 5m0-5l-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              {%- endif -%}
+              
+              <div class="card-content">
+                <div class="card-name">{{ block.settings.card_name }}</div>
+                <div class="card-title">{{ block.settings.card_subtitle }}</div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {% else %}
+        {% if section.settings.show_arrows %}
+          <button class="image-slider__arrow image-slider__arrow--prev" type="button" data-image-slider-prev aria-label="Scroll previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="image-slider__arrow image-slider__arrow--next" type="button" data-image-slider-next aria-label="Scroll next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        {% endif %}
+
+        <div class="swiper image-slider__swiper image-slider__swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {%- for block in section.blocks -%}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <div class="slider-card" style="{% if block.settings.video == blank %}background-image: url('{{ block.settings.image | image_url: width: 800 }}');{% endif %}">
+                  {%- if block.settings.video != blank -%}
+                    <div class="slider-card__video">
+                      {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.image != blank or block.settings.video != blank -%}
+                    <div class="slider-card__overlay"></div>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.show_speaker_icon and block.settings.video != blank -%}
+                    <button class="speaker-icon is-muted" data-video-toggle aria-label="Turn on sound">
+                      <svg class="speaker-on" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9zm2.8 2.6c.2-.2.5-.2.7 0 2.1 2.1 2.1 5.5 0 7.6-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 1.7-1.7 1.7-4.5 0-6.2-.2-.2-.2-.5 0-.7zm2.1-2.1c.2-.2.5-.2.7 0 3.4 3.4 3.4 8.9 0 12.3-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7 3-3 3-7.9 0-10.9-.2-.2-.2-.5 0-.7z" fill="white"/>
+                      </svg>
+                      <svg class="speaker-off" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path d="M11.7 3.45c.3-.2.7 0 .7.4v14.3c0 .4-.4.6-.7.4l-4.4-2.9H4c-.6 0-1-.4-1-1V7.3c0-.6.4-1 1-1h3.3l4.4-2.9z" fill="white"/>
+                        <path d="M15 8l5 5m0-5l-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                    </button>
+                  {%- endif -%}
+                  
+                  <div class="card-content">
+                    <div class="card-name">{{ block.settings.card_name }}</div>
+                    <div class="card-title">{{ block.settings.card_subtitle }}</div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  * {
+    box-sizing: border-box;
+  }
+
+  .image-slider {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .image-slider {
+      padding-top: var(--padding-top-desktop);
+      padding-bottom: var(--padding-bottom-desktop);
+    }
+  }
+
+  .image-slider__inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .slider-title {
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: var(--title-font-size-mobile);
+    line-height: 1.4;
+    text-align: center;
+    color: var(--title-color);
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    font-style: italic;
+  }
+
+  @media (min-width: 768px) {
+    .slider-title {
+      font-size: var(--title-font-size-desktop);
+    }
+  }
+
+  .slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 12px;
+    animation: marquee-mobile var(--autoscroll-duration) linear infinite;
+    width: max-content;
+  }
+
+  .slider-track:hover {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .slider-track {
+      gap: 16px;
+      animation: marquee-tablet var(--autoscroll-duration) linear infinite;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .slider-track {
+      gap: 20px;
+      animation: marquee var(--autoscroll-duration) linear infinite;
+    }
+  }
+
+  .slider-container--swiper {
+    position: relative;
+  }
+
+  .image-slider__swiper {
+    width: 100%;
+  }
+
+  .image-slider__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 200ms ease, background 200ms ease, opacity 200ms ease;
+  }
+
+  .image-slider__arrow.is-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .image-slider__arrow svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .image-slider__arrow--prev {
+    left: 12px;
+  }
+
+  .image-slider__arrow--next {
+    right: 12px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .image-slider__arrow:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(calc(-50% - 1px));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .image-slider__arrow {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .image-slider__arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .image-slider__arrow--prev {
+      left: 8px;
+    }
+
+    .image-slider__arrow--next {
+      right: 8px;
+    }
+  }
+
+  .slider-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 280 / 440;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #e5e5e5;
+  }
+
+  /* Auto-scroll (marquee) uses fixed card sizes */
+  .slider-track .slider-card {
+    width: 280px;
+    height: 440px;
+    aspect-ratio: auto;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .slider-track .slider-card {
+      width: 300px;
+      height: 460px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .slider-track .slider-card {
+      width: 320px;
+      height: 480px;
+      border-radius: 12px;
+    }
+  }
+
+  .slider-card__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .slider-card__video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slider-card__overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(121, 116, 111, 0) 44%, rgba(121, 116, 111, 1) 100%);
+    z-index: 1;
+  }
+
+  .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .card-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: var(--card-name-font-size-mobile);
+    line-height: 1.6;
+    color: var(--card-name-color);
+  }
+
+  @media (min-width: 768px) {
+    .card-name {
+      font-size: var(--card-name-font-size-desktop);
+    }
+  }
+
+  .card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: var(--card-title-font-size-mobile);
+    line-height: 1.5;
+    color: var(--card-subtitle-color);
+  }
+
+  @media (min-width: 768px) {
+    .card-title {
+      font-size: var(--card-title-font-size-desktop);
+    }
+  }
+
+  .speaker-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 36px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .speaker-icon:hover {
+    background: rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+  }
+
+  .speaker-icon:active {
+    transform: scale(0.95);
+  }
+
+  .speaker-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+  }
+
+  .speaker-icon.is-muted .speaker-on {
+    display: none;
+  }
+
+  .speaker-icon.is-muted .speaker-off {
+    display: block !important;
+  }
+
+  /* Animations */
+  @keyframes marquee-mobile {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-280px * var(--block-count) - 12px * var(--block-count)));
+    }
+  }
+
+  @keyframes marquee-tablet {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-300px * var(--block-count) - 16px * var(--block-count)));
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-320px * var(--block-count) - 20px * var(--block-count)));
+    }
+  }
+
+  /* Fade-in animation */
+  .image-slider--animate .slider-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .image-slider--animate .slider-title.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .image-slider--animate .slider-container {
+    opacity: 0;
+    transition: opacity 0.8s ease-out 0.2s;
+  }
+
+  .image-slider--animate .slider-container.is-visible {
+    opacity: 1;
+  }
+{% endstylesheet %}
+
+{% if section.settings.scroll_mode == 'arrows' %}
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% endif %}
+
+{% javascript %}
+  // Add fade-in animation on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const initImageSliders = (root) => {
+      const scope = root || document;
+      const sections = scope.querySelectorAll('.image-slider[data-image-slider]');
+      if (!sections || sections.length === 0) return;
+
+      sections.forEach((section) => {
+        const animationEnabled = section.getAttribute('data-animation-enabled') === 'true';
+
+        if (animationEnabled && 'IntersectionObserver' in window) {
+          const animatedElements = section.querySelectorAll('.slider-title, .slider-container');
+
+          const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+          };
+
+          const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          animatedElements.forEach(element => {
+            observer.observe(element);
+          });
+        } else if (animationEnabled) {
+          const animatedElements = section.querySelectorAll('.slider-title, .slider-container');
+          animatedElements.forEach(element => {
+            element.classList.add('is-visible');
+          });
+        }
+
+        // Handle video sound toggle (bind once per section)
+        if (!section.__imageSliderSoundBound) {
+          section.__imageSliderSoundBound = true;
+          section.addEventListener('click', (e) => {
+            const btn = e.target.closest?.('[data-video-toggle]');
+            if (!btn || !section.contains(btn)) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const card = btn.closest('.slider-card');
+            const video = card?.querySelector('video');
+            if (!video) return;
+            video.muted = !video.muted;
+            btn.classList.toggle('is-muted', video.muted);
+            btn.setAttribute('aria-label', video.muted ? 'Turn on sound' : 'Turn off sound');
+          });
+        }
+
+        // Swiper mode
+        const scrollMode = section.getAttribute('data-scroll-mode');
+        const swiperEl = section.querySelector('.image-slider__swiper');
+
+        if (scrollMode !== 'arrows') {
+          if (section.__imageSliderSwiper) {
+            try { section.__imageSliderSwiper.destroy(true, true); } catch (e) {}
+            section.__imageSliderSwiper = null;
+          }
+          return;
+        }
+
+        if (!swiperEl || typeof Swiper === 'undefined') return;
+
+        // Destroy existing instance (theme editor reload)
+        if (section.__imageSliderSwiper) {
+          try { section.__imageSliderSwiper.destroy(true, true); } catch (e) {}
+          section.__imageSliderSwiper = null;
+        }
+
+        const prevEl = section.querySelector('[data-image-slider-prev]');
+        const nextEl = section.querySelector('[data-image-slider-next]');
+
+        section.__imageSliderSwiper = new Swiper(swiperEl, {
+          slidesPerView: 1.7,
+          spaceBetween: 12,
+          grabCursor: true,
+          loop: true,
+          navigation: prevEl && nextEl ? { prevEl, nextEl, disabledClass: 'is-disabled' } : undefined,
+          breakpoints: {
+            768: { slidesPerView: 1.7, spaceBetween: 5 },
+            1025: { slidesPerView: 5, spaceBetween: 20 }
+          }
+        });
+      });
+    };
+
+    initImageSliders(document);
+
+    // Theme editor: re-init on section load
+    document.addEventListener('shopify:section:load', function(event) {
+      initImageSliders(event.target);
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Image Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label",
+      "default": "Trusted by 1000s of Women"
+    },
+    {
+      "type": "header",
+      "content": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Title",
+      "default": "Trusted by 1000s of Women"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_name_color",
+      "label": "Card Name Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_subtitle_color",
+      "label": "Card Subtitle Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Section will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Scroll Mode"
+    },
+    {
+      "type": "select",
+      "id": "scroll_mode",
+      "label": "Scroll mode",
+      "options": [
+        { "value": "autoscroll", "label": "Auto-scroll (marquee)" },
+        { "value": "arrows", "label": "Scroll with arrows (Swiper)" }
+      ],
+      "default": "autoscroll"
+    },
+    {
+      "type": "range",
+      "id": "autoscroll_duration",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-scroll duration",
+      "default": 30,
+      "visible_if": "{{ settings.scroll_mode == 'autoscroll' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrows",
+      "default": true,
+      "visible_if": "{{ settings.scroll_mode == 'arrows' }}"
+    },
+    {
+      "type": "header",
+      "content": "Typography - Section Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Mobile)",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 20,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Typography - Card Name"
+    },
+    {
+      "type": "range",
+      "id": "card_name_font_size_mobile",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Name Font Size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_name_font_size_desktop",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Name Font Size (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Typography - Card Title"
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Padding - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Mobile)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Mobile)",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Section Padding - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Desktop)",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Desktop)",
+      "default": 112
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider_card",
+      "name": "Slider Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image",
+          "info": "Used if no video is selected"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Card Video",
+          "info": "Video will autoplay muted without controls. Takes priority over image."
+        },
+        {
+          "type": "text",
+          "id": "card_name",
+          "label": "Name",
+          "default": "Dr Stephanie"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Subtitle/Title",
+          "default": "Dermatologist"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_speaker_icon",
+          "label": "Turn on sound inside the video",
+          "info": "Adds a button to toggle video sound on/off. Only appears when video is added.",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "blocks": [
+        {
+          "type": "slider_card",
+          "settings": {
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": false
+          }
+        },
+        {
+          "type": "slider_card",
+          "settings": {
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": false
+          }
+        },
+        {
+          "type": "slider_card",
+          "settings": {
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": false
+          }
+        },
+        {
+          "type": "slider_card",
+          "settings": {
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": true
+          }
+        },
+        {
+          "type": "slider_card",
+          "settings": {
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

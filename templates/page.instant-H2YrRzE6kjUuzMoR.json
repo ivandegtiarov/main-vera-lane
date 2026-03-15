@@ -1,0 +1,286 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "instant-H2YrRzE6kjUuzMoR": {
+      "type": "instant-H2YrRzE6kjUuzMoR",
+      "disabled": true,
+      "settings": {}
+    },
+    "bl_alert_bar_weAbKB": {
+      "type": "bl-alert-bar",
+      "name": "BL - Alert Bar",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#2d2d2d",
+        "text_color": "#ffffff",
+        "accent_color": "#8b3a3a",
+        "show_countdown": true,
+        "countdown_prefix": "Offer Ends In",
+        "countdown_hours": 72,
+        "badge": "LIMITED TIME",
+        "text": "Up to 50% Off For 3 Days Only",
+        "code": ""
+      }
+    },
+    "bl_hero_YYtBcL": {
+      "type": "bl-hero",
+      "name": "BL - Hero",
+      "settings": {
+        "section_id": "",
+        "bg_image": "shopify://shop_images/image_588256404.png",
+        "bg_color": "#2d2d2d",
+        "overlay_opacity": 75,
+        "category": "BEAUTY",
+        "headline": "5 Reasons Why Women Over 50 Are Switching to Tone-Adapting Foundation",
+        "subheadline": "",
+        "show_rating": true,
+        "review_count": "12,400+ Reviews",
+        "cta_text": "LEARN MORE",
+        "cta_type": "anchor",
+        "cta_anchor": "offer",
+        "cta_url": "",
+        "cta_text_color": "#ffffff",
+        "cta_border_color": "#ffffff"
+      }
+    },
+    "bl_press_quotes_ePQiit": {
+      "type": "bl-press-quotes",
+      "blocks": {
+        "quote_JnfFR8": {
+          "type": "quote",
+          "settings": {
+            "quote": "A foundation that understands mature skin and delivers flawless, natural coverage.",
+            "logo": "shopify://shop_images/vogue_magazine_logo_svg.svg",
+            "publication": "Vogue"
+          }
+        },
+        "quote_WFJxYy": {
+          "type": "quote",
+          "settings": {
+            "quote": "Finally, a formula that enhances rather than settles into fine lines.",
+            "logo": "shopify://shop_images/elle_magazine_logo_svg.svg",
+            "publication": "Elle"
+          }
+        },
+        "quote_xdVcn6": {
+          "type": "quote",
+          "settings": {
+            "quote": "The secret to effortless, age-defying coverage that lasts all day.",
+            "logo": "shopify://shop_images/cosmopolitan_logo_svg.svg",
+            "publication": "Cosmopolitan"
+          }
+        }
+      },
+      "block_order": [
+        "quote_JnfFR8",
+        "quote_WFJxYy",
+        "quote_xdVcn6"
+      ],
+      "name": "BL - Press Quotes",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7"
+      }
+    },
+    "bl_reason_item_YHthpP": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "1",
+        "title": "It Actually Matches Your Skin Tone — Every Time",
+        "body_text": "<p>Most foundations give you a shade range and wish you luck. And if your undertone doesn't cooperate? You're left looking too orange, too pink, or just off.</p><p>Tone-adapting foundation works differently. The formula reacts to your skin's own pH and adapts to your exact tone — light, medium, or deep — without guessing. No more buying three shades hoping one of them works.</p>",
+        "link_text": "Learn more",
+        "link_type": "anchor",
+        "link_anchor": "offer",
+        "link_url": "",
+        "image": "shopify://shop_images/5_Reasons_Why_Image_-_00001.webp",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_NRreri": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "2",
+        "title": "No More Cakey, Heavy Finish",
+        "body_text": "<p>Traditional foundations sit on top of your skin. By midday they've settled, creased, and somehow made everything you were trying to conceal more visible.</p><p>Tone-adapting formula melts in rather than piling on. The result is a second-skin finish that looks clean and natural — not like you're wearing a mask, but like you just happen to have really good skin.</p>",
+        "link_text": "learn more",
+        "link_type": "anchor",
+        "link_anchor": "offer",
+        "link_url": "",
+        "image": "shopify://shop_images/5_Reasons_Why_Image_-_00002.webp",
+        "image_position": "left"
+      }
+    },
+    "bl_reason_item_QcgMct": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "3",
+        "title": "Your Skin Shows Through — In a Good Way",
+        "body_text": "<p>Mature skin has character. Freckles. History. And heavy coverage that completely buries it tends to look exactly like what it is — heavy coverage.</p><p>Tone-adapting foundation enhances rather than conceals. You still look like you — just more even, more polished, more radiant. The kind of finish where people ask if you've been on vacation, not what foundation you're wearing.</p>",
+        "link_text": "learn more",
+        "link_type": "anchor",
+        "link_anchor": "offer",
+        "link_url": "",
+        "image": "shopify://shop_images/5_Reasons_Why_Image_-_00004.webp",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_NeYbkD": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "4",
+        "title": "It Lasts All Day Without Touch-Ups",
+        "body_text": "<p>Foundation that fades, patches, or oxidizes by noon is one of the most common complaints from women with mature skin. You spend 20 minutes getting ready and it's gone before lunch.</p><p>Because tone-adapting technology bonds with your skin rather than sitting on top of it, it stays put. Morning through evening. No midday touch-ups, no patchiness, no wondering why you bothered.</p>",
+        "link_text": "learn more",
+        "link_type": "anchor",
+        "link_anchor": "offer",
+        "link_url": "",
+        "image": "shopify://shop_images/5_Reasons_Why_Image_-_00005.webp",
+        "image_position": "left"
+      }
+    },
+    "bl_reason_item_j3QCcL": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "5",
+        "title": "It Was Designed for Mature Skin — Not as an Afterthought",
+        "body_text": "<p>Most foundations are built for 25-year-old skin and then marketed to everyone else. The formulas aren't designed for the way mature skin actually behaves — drier, more sensitive, more nuanced in tone.</p><p>Vera Lane Tone Adapting Foundation was built from the ground up for skin like yours. Hyaluronic acid, niacinamide, vitamin E, and squalane — skincare and foundation in one step. That's the difference.</p>",
+        "link_text": "learn more",
+        "link_type": "anchor",
+        "link_anchor": "offer",
+        "link_url": "",
+        "image": "shopify://shop_images/5_Reasons_Why_Image_-_00006.webp",
+        "image_position": "right"
+      }
+    },
+    "bl_customer_quote_ejK48z": {
+      "type": "bl-customer-quote",
+      "name": "BL - Customer Quote",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "eyebrow": "WHAT CUSTOMERS ARE SAYING",
+        "quote": "This foundation has genuinely transformed my makeup routine. It looks natural, feels lightweight, and doesn't settle into any lines. I've finally found my perfect match.",
+        "author": "Margaret B.",
+        "verified": true
+      }
+    },
+    "bl_marquee_BH3rnf": {
+      "type": "bl-marquee",
+      "name": "BL - Marquee",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#2d2d2d",
+        "text_color": "#ffffff",
+        "text": "Limited Time Offer — Up to 50% Off Today",
+        "direction": "left"
+      }
+    },
+    "bl_product_card_full_JhKCHd": {
+      "type": "bl-product-card-full",
+      "blocks": {
+        "trust_badge_7aM6cy": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Free Shipping"
+          }
+        },
+        "trust_badge_7UhgMq": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "30-Day Returns"
+          }
+        },
+        "trust_badge_Hq9Efq": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Secure Checkout"
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge_7aM6cy",
+        "trust_badge_7UhgMq",
+        "trust_badge_Hq9Efq"
+      ],
+      "name": "BL - Product Card Full",
+      "settings": {
+        "section_id": "offer",
+        "bg_color": "#2d2d2d",
+        "badge_text": "LIMITED TIME OFFER",
+        "badge_bg": "#8b3a3a",
+        "product_name": "Mature Skin Foundation",
+        "subtitle": "The foundation that works with your skin. Formulated for mature skin.",
+        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
+        "image_width_mobile": 100,
+        "image_width_desktop": 50,
+        "description": "",
+        "show_price": false,
+        "compare_price": "$39.99",
+        "price": "$19.00",
+        "savings_text": "Save 50%",
+        "cta_text": "Claim Your 50% Discount",
+        "cta_url": "shopify://products/color-changing-foundation",
+        "cta_bg": "#ffffff",
+        "cta_text_color": "#2d2d2d",
+        "urgency_text": "Only 47 left at this price"
+      }
+    },
+    "bl_footer_P9iXVc": {
+      "type": "bl-footer",
+      "name": "BL - Footer",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#2d2d2d",
+        "logo_text": "",
+        "tagline": "",
+        "disclaimer": "",
+        "copyright": "© 2026 Vera Lane Cosmetics. All rights reserved.",
+        "show_sticky_bar": true,
+        "sticky_text": "Limited Time Offer",
+        "sticky_label": "Shop Now",
+        "sticky_link_type": "anchor",
+        "sticky_anchor": "offer",
+        "sticky_url": "",
+        "sticky_bg": "#2D2D2D"
+      }
+    }
+  },
+  "order": [
+    "instant-H2YrRzE6kjUuzMoR",
+    "bl_alert_bar_weAbKB",
+    "bl_hero_YYtBcL",
+    "bl_press_quotes_ePQiit",
+    "bl_reason_item_YHthpP",
+    "bl_reason_item_NRreri",
+    "bl_reason_item_QcgMct",
+    "bl_reason_item_NeYbkD",
+    "bl_reason_item_j3QCcL",
+    "bl_customer_quote_ejK48z",
+    "bl_marquee_BH3rnf",
+    "bl_product_card_full_JhKCHd",
+    "bl_footer_P9iXVc"
+  ]
+}

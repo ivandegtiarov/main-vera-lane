@@ -1,0 +1,84 @@
+{%- comment -%} ── EL - TLDR INTRO ── {%- endcomment -%}
+<div class="el-tldr-intro" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--intro-bg: {{ section.settings.bg_color }};">
+  <div class="el-tldr-intro__container">
+    <p class="el-tldr-intro__text">
+      {%- if section.settings.prefix != blank -%}
+        <span class="el-tldr-intro__prefix">{{ section.settings.prefix }}</span>
+      {%- endif -%}
+      {{ section.settings.intro_text }}
+    </p>
+  </div>
+</div>
+
+{% stylesheet %}
+.el-tldr-intro {
+  background: var(--intro-bg, #fff);
+  padding: 1.5rem 2rem;
+}
+
+.el-tldr-intro__container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.el-tldr-intro__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+.el-tldr-intro__prefix {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  margin-right: 0.5rem;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - TLDR Intro",
+  "tag": "section",
+  "class": "el-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'intro')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "prefix",
+      "label": "Prefix",
+      "default": "In Brief:"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "Discover the reasons why thousands are making the switch to a better formula."
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - TLDR Intro",
+      "category": "t:categories.elegant_listicle"
+    }
+  ]
+}
+{% endschema %}

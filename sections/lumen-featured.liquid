@@ -1,0 +1,1325 @@
+{% comment %}
+  ---------------------------------------------------------------------------
+  Lumen Featured Products (production Shopify section)
+  - Mobile-first, scoped CSS
+  - CSS variables for all customizable properties
+  - IntersectionObserver fade-in animation (single trigger)
+  - Vanilla JS carousel controls (scoped per section instance)
+  ---------------------------------------------------------------------------
+{% endcomment %}
+
+<section
+  class="vl-fp vl-fp--{{ section.id }}"
+  aria-label="Recommended products"
+  data-vl-fp-section
+  data-section-id="{{ section.id }}"
+>
+  <style>
+    /* Section-scoped theme variables */
+    .vl-fp--{{ section.id }} {
+      --vl-fp-bg-solid: {{ section.settings.background_color }};
+      --vl-fp-bg-grad-start: {{ section.settings.background_gradient_start }};
+      --vl-fp-bg-grad-end: {{ section.settings.background_gradient_end }};
+
+      --vl-fp-heading-color: {{ section.settings.heading_color }};
+      --vl-fp-subheading-color: {{ section.settings.subheading_color }};
+      --vl-fp-reviews-color: {{ section.settings.reviews_color }};
+      --vl-fp-name-color: {{ section.settings.name_color }};
+      --vl-fp-price-color: {{ section.settings.price_color }};
+      --vl-fp-desc-color: {{ section.settings.description_color }};
+
+      --vl-fp-pill-bg: {{ section.settings.pill_bg_color }};
+      --vl-fp-pill-text: {{ section.settings.pill_text_color }};
+      --vl-fp-discount-bg: {{ section.settings.discount_bg_color }};
+      --vl-fp-discount-text: {{ section.settings.discount_text_color }};
+
+      --vl-fp-controls-icon: {{ section.settings.controls_icon_color }};
+      --vl-fp-controls-progress-bg: {{ section.settings.controls_progress_bg_color }};
+      --vl-fp-controls-progress-fill: {{ section.settings.controls_progress_fill_color }};
+
+      --vl-fp-pad-top-m: {{ section.settings.padding_top_mobile }}px;
+      --vl-fp-pad-bot-m: {{ section.settings.padding_bottom_mobile }}px;
+      --vl-fp-pad-top-d: {{ section.settings.padding_top_desktop }}px;
+      --vl-fp-pad-bot-d: {{ section.settings.padding_bottom_desktop }}px;
+
+      --vl-fp-title-size-m: {{ section.settings.title_font_size_mobile }}px;
+      --vl-fp-title-size-d: {{ section.settings.title_font_size_desktop }}px;
+      --vl-fp-sub-size-m: {{ section.settings.sub_font_size_mobile }}px;
+      --vl-fp-sub-size-d: {{ section.settings.sub_font_size_desktop }}px;
+      --vl-fp-reviews-size-m: {{ section.settings.reviews_font_size_mobile }}px;
+      --vl-fp-reviews-size-d: {{ section.settings.reviews_font_size_desktop }}px;
+      --vl-fp-name-size-m: {{ section.settings.name_font_size_mobile }}px;
+      --vl-fp-name-size-d: {{ section.settings.name_font_size_desktop }}px;
+      --vl-fp-price-size-m: {{ section.settings.price_font_size_mobile }}px;
+      --vl-fp-price-size-d: {{ section.settings.price_font_size_desktop }}px;
+      --vl-fp-desc-size-m: {{ section.settings.desc_font_size_mobile }}px;
+      --vl-fp-desc-size-d: {{ section.settings.desc_font_size_desktop }}px;
+      --vl-fp-pill-size-m: {{ section.settings.pill_font_size_mobile }}px;
+      --vl-fp-pill-size-d: {{ section.settings.pill_font_size_desktop }}px;
+      --vl-fp-disc-pct-size-m: {{ section.settings.discount_pct_font_size_mobile }}px;
+      --vl-fp-disc-pct-size-d: {{ section.settings.discount_pct_font_size_desktop }}px;
+      --vl-fp-disc-text-size-m: {{ section.settings.discount_text_font_size_mobile }}px;
+      --vl-fp-disc-text-size-d: {{ section.settings.discount_text_font_size_desktop }}px;
+    }
+
+    .vl-fp--{{ section.id }} {
+      width: 100%;
+      background: linear-gradient(180deg, var(--vl-fp-bg-grad-start), var(--vl-fp-bg-grad-end));
+      overflow: hidden;
+      color: #000000;
+      font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: var(--vl-fp-pad-top-m) 28px var(--vl-fp-pad-bot-m);
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__titleWrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__carousel {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__title {
+        font-family: "Playfair Display";
+      font-weight: 600;
+      font-size: var(--vl-fp-title-size-m);
+      line-height: 1.2;
+      color: var(--vl-fp-heading-color);
+      margin: 0;
+      font-style: italic;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__sub {
+      font-family: Satoshi, Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-weight: 400;
+      font-size: var(--vl-fp-sub-size-m);
+      line-height: 1.5;
+      color: var(--vl-fp-subheading-color);
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__sub--desktop {
+      display: none;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__products {
+      width: 100%;
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-padding-left: 0px;
+      justify-content: flex-start;
+      align-items: stretch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge legacy */
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__products::-webkit-scrollbar {
+      height: 0px;
+    }
+
+    /* Mobile: scroll-snap carousel */
+    @media screen and (max-width: 899px) {
+      .vl-fp--{{ section.id }} .vl-fp__products {
+        padding-bottom: 8px;
+      }
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__product {
+      min-width: 0;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      width: min(320px, calc(100% - 56px));
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      background: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__link {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      color: inherit;
+      text-decoration: none;
+      height: 100%;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__media {
+      position: relative;
+      width: 100%;
+      padding: 52px 0 24px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__mediaInner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 0 18px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__overlay {
+      width: min(200px, 78%);
+      height: auto;
+      display: block;
+      user-select: none;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__info {
+      width: 100%;
+      padding: 18px;
+      border-top: 1px dashed #E5E5E5;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__ratingRow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__stars {
+      /* width: 108px; */
+      height: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      flex: 0 0 auto;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__stars svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__reviews {
+      font-weight: 400;
+      font-size: var(--vl-fp-reviews-size-m);
+      line-height: 1.48;
+      color: var(--vl-fp-reviews-color);
+      white-space: nowrap;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__nameRow {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__name {
+      font-weight: 500;
+      font-size: var(--vl-fp-name-size-m);
+      line-height: 1.2;
+      color: var(--vl-fp-name-color);
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__price {
+      font-weight: 500;
+      font-size: var(--vl-fp-price-size-m);
+      line-height: 1.2;
+      color: var(--vl-fp-price-color);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__desc {
+      font-weight: 400;
+      font-size: var(--vl-fp-desc-size-m);
+      line-height: 1.48;
+      color: var(--vl-fp-desc-color);
+      min-width: 0;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__pill {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--vl-fp-pill-bg);
+      color: var(--vl-fp-pill-text);
+      font-family: "PP Neue Montreal", Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-weight: 500;
+      font-size: var(--vl-fp-pill-size-m);
+      line-height: 1.1;
+      letter-spacing: 0px;
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__discount {
+      position: absolute;
+      right: 18px;
+      bottom: 130px;
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      background: var(--vl-fp-discount-bg);
+      color: var(--vl-fp-discount-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 3;
+      padding: 14px;
+      transform: rotate(-16deg);
+      transform-origin: center;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__discountInner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__discountPct {
+      font-family: "PP Neue Montreal", Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-weight: 500;
+      font-size: var(--vl-fp-disc-pct-size-m);
+      line-height: 1;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-card__discountText {
+      font-family: "PP Neue Montreal", Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-weight: 500;
+      font-size: var(--vl-fp-disc-text-size-m);
+      line-height: 1.08;
+      max-width: 120px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__controls {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__dots {
+      width: 100%;
+      max-width: 1248px;
+      height: 18px;
+      display: none;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls__btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls__btn[disabled] {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls__icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+      fill: var(--vl-fp-controls-icon);
+      opacity: 0.5;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls__progress {
+      width: 100%;
+      max-width: 912px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--vl-fp-controls-progress-bg);
+      overflow: hidden;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp-controls__progressFill {
+      height: 100%;
+      width: 0%;
+      background: var(--vl-fp-controls-progress-fill);
+      border-radius: 3px;
+      transition: width 220ms ease;
+    }
+
+    /* Fade-in on scroll (single trigger) - animate whole section as one unit */
+    .vl-fp--{{ section.id }} .vl-fp__inner {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .vl-fp--{{ section.id }} .vl-fp__inner.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Desktop */
+    @media screen and (min-width: 900px) {
+      .vl-fp--{{ section.id }} .vl-fp__inner {
+        padding: var(--vl-fp-pad-top-d) 96px var(--vl-fp-pad-bot-d);
+        gap: 80px;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__title {
+        font-size: var(--vl-fp-title-size-d);
+        line-height: 0.9;
+        margin: 0;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__sub {
+        font-size: var(--vl-fp-sub-size-d);
+        margin: 0;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__sub--mobile {
+        display: none;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__sub--desktop {
+        display: block;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__products {
+        padding-bottom: 0px;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__carousel {
+        gap: 40px;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__product {
+        width: auto;
+        flex: 0 0 calc((100% - 32px) / 3);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__media {
+        padding: 68px 0 32px 0;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__info {
+        padding: 24px 18px;
+        gap: 10px;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__reviews {
+        font-size: var(--vl-fp-reviews-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__name {
+        font-size: var(--vl-fp-name-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__price {
+        font-size: var(--vl-fp-price-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__desc {
+        font-size: var(--vl-fp-desc-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__overlay {
+        width: min(254px, 78%);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__pill {
+        top: 20px;
+        left: 20px;
+        padding: 6px 16px;
+        font-size: var(--vl-fp-pill-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__discount {
+        right: 18px;
+        top: 210px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__discountPct {
+        font-size: var(--vl-fp-disc-pct-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-card__discountText {
+        font-size: var(--vl-fp-disc-text-size-d);
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp-controls {
+        display: flex;
+      }
+
+      .vl-fp--{{ section.id }} .vl-fp__dots {
+        display: none;
+      }
+    }
+  </style>
+
+  <div class="vl-fp__inner" data-vl-fp-animate>
+    <header class="vl-fp__titleWrap">
+      <h2 class="vl-fp__title">
+        {{ section.settings.title | default: 'Recommended Products' | escape }}
+      </h2>
+      <p class="vl-fp__sub vl-fp__sub--desktop">
+        {{ section.settings.description_desktop | default: 'Handpicked formulas your skin will love.' | escape }}
+      </p>
+      <p class="vl-fp__sub vl-fp__sub--mobile">
+        {{ section.settings.description_mobile | default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' | escape }}
+      </p>
+    </header>
+
+    <div class="vl-fp__carousel">
+      <ul class="vl-fp__products" aria-label="Product list" data-vl-fp-track id="vl-fp-track-{{ section.id }}">
+      {% comment %}
+        Cards are managed as blocks. If no blocks exist, we fall back to the selected collection.
+      {% endcomment %}
+      {% assign card_blocks = section.blocks | where: 'type', 'card' %}
+
+      {% if card_blocks.size > 0 %}
+        {% for block in card_blocks %}
+          {% assign product = block.settings.product %}
+          {% if product != blank %}
+            {% assign first_variant = product.selected_or_first_available_variant %}
+          {% endif %}
+
+          <li class="vl-fp__product">
+            <article class="vl-fp-card" {{ block.shopify_attributes }}>
+              {% if block.settings.show_pill and block.settings.pill_text != blank %}
+                <div class="vl-fp-card__pill">{{ block.settings.pill_text }}</div>
+              {% endif %}
+
+              {% if block.settings.show_discount %}
+                <div class="vl-fp-card__discount" aria-label="{{ block.settings.discount_text | escape }} {{ block.settings.discount_pct | escape }}">
+                  <div class="vl-fp-card__discountInner">
+                    <div class="vl-fp-card__discountPct">{{ block.settings.discount_pct }}</div>
+                    <div class="vl-fp-card__discountText">{{ block.settings.discount_text }}</div>
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if product != blank %}
+                <a class="vl-fp-card__link" href="{{ product.url }}" aria-label="{{ product.title }} - {{ first_variant.price | money }}">
+                  <div class="vl-fp-card__media">
+                    <div class="vl-fp-card__mediaInner">
+                      {% if product.featured_image != blank %}
+                        {{
+                          product.featured_image
+                          | image_url: width: 520
+                          | image_tag:
+                            class: 'vl-fp-card__overlay',
+                            loading: 'lazy',
+                            alt: product.featured_image.alt | default: product.title
+                        }}
+                      {% else %}
+                        <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="{{ product.title }}" focusable="false">
+                          <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
+                        </svg>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="vl-fp-card__info">
+                    <div class="vl-fp-card__ratingRow" aria-label="Product rating">
+                      <div class="vl-fp-card__stars" aria-hidden="true">
+                        {% for i in (1..5) %}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                        {% endfor %}
+                      </div>
+                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                    </div>
+
+                    <div class="vl-fp-card__nameRow">
+                      <div class="vl-fp-card__name">{{ product.title }}</div>
+                      <div class="vl-fp-card__price">{{ first_variant.price | money }}</div>
+                    </div>
+
+                    <div class="vl-fp-card__desc">
+                      {% if product.description != blank %}
+                        {{ product.description | strip_html | truncate: 46 }}
+                      {% else %}
+                        Complex with 30 Billion CPU
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              {% else %}
+                <a class="vl-fp-card__link" href="#" aria-label="Select a product">
+                  <div class="vl-fp-card__media">
+                    <div class="vl-fp-card__mediaInner">
+                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="Placeholder product" focusable="false">
+                        <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="vl-fp-card__info">
+                    <div class="vl-fp-card__ratingRow" aria-label="Product rating">
+                      <div class="vl-fp-card__stars" aria-hidden="true">
+                        {% for i in (1..5) %}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                        {% endfor %}
+                      </div>
+                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                    </div>
+
+                    <div class="vl-fp-card__nameRow">
+                      <div class="vl-fp-card__name">Select product</div>
+                      <div class="vl-fp-card__price">$0.00</div>
+                    </div>
+
+                    <div class="vl-fp-card__desc">Complex with 30 Billion CPU</div>
+                  </div>
+                </a>
+              {% endif %}
+            </article>
+          </li>
+        {% endfor %}
+      {% else %}
+        {% comment %} Collection fallback (defaults to All products when not set) {% endcomment %}
+        {% assign fp_collection = section.settings.collection %}
+        {% if fp_collection == blank %}
+          {% assign fp_collection = collections.all %}
+        {% endif %}
+
+        {% assign has_products = fp_collection.products_count | default: 0 %}
+
+        {% if has_products > 0 %}
+          {% for product in fp_collection.products limit: 5 %}
+            {% assign first_variant = product.selected_or_first_available_variant %}
+            <li class="vl-fp__product">
+              <article class="vl-fp-card">
+                {% if forloop.first %}
+                  <div class="vl-fp-card__pill">#Best Seller</div>
+                  <div class="vl-fp-card__discount" aria-label="Save with subscription 20%">
+                    <div class="vl-fp-card__discountInner">
+                      <div class="vl-fp-card__discountPct">20%</div>
+                      <div class="vl-fp-card__discountText">Save with subscription</div>
+                    </div>
+                  </div>
+                {% endif %}
+
+                <a class="vl-fp-card__link" href="{{ product.url }}" aria-label="{{ product.title }} - {{ first_variant.price | money }}">
+                  <div class="vl-fp-card__media">
+                    <div class="vl-fp-card__mediaInner">
+                      {% if product.featured_image != blank %}
+                        {{
+                          product.featured_image
+                          | image_url: width: 520
+                          | image_tag:
+                            class: 'vl-fp-card__overlay',
+                            loading: 'lazy',
+                            alt: product.featured_image.alt | default: product.title
+                        }}
+                      {% else %}
+                        <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="{{ product.title }}" focusable="false">
+                          <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
+                        </svg>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="vl-fp-card__info">
+                    <div class="vl-fp-card__ratingRow" aria-label="Product rating">
+                      <div class="vl-fp-card__stars" aria-hidden="true">
+                        {% for i in (1..5) %}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                        {% endfor %}
+                      </div>
+                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                    </div>
+
+                    <div class="vl-fp-card__nameRow">
+                      <div class="vl-fp-card__name">{{ product.title }}</div>
+                      <div class="vl-fp-card__price">{{ first_variant.price | money }}</div>
+                    </div>
+
+                    <div class="vl-fp-card__desc">
+                      {% if product.description != blank %}
+                        {{ product.description | strip_html | truncate: 46 }}
+                      {% else %}
+                        Complex with 30 Billion CPU
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </li>
+          {% endfor %}
+        {% else %}
+          {% comment %} Fallback placeholders when store has no products {% endcomment %}
+          {% for i in (1..5) %}
+            <li class="vl-fp__product">
+              <article class="vl-fp-card">
+                {% if forloop.first %}
+                  <div class="vl-fp-card__pill">#Best Seller</div>
+                  <div class="vl-fp-card__discount" aria-label="Save with subscription 20%">
+                    <div class="vl-fp-card__discountInner">
+                      <div class="vl-fp-card__discountPct">20%</div>
+                      <div class="vl-fp-card__discountText">Save with subscription</div>
+                    </div>
+                  </div>
+                {% endif %}
+                <a class="vl-fp-card__link" href="#" aria-label="Velvet Foundation - $32.00">
+                  <div class="vl-fp-card__media">
+                    <div class="vl-fp-card__mediaInner">
+                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="Placeholder product" focusable="false">
+                        <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="vl-fp-card__info">
+                    <div class="vl-fp-card__ratingRow" aria-label="Product rating">
+                      <div class="vl-fp-card__stars" aria-hidden="true">
+                        {% for j in (1..5) %}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z" fill="#EDB04F"/>
+                          </svg>
+                        {% endfor %}
+                      </div>
+                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                    </div>
+
+                    <div class="vl-fp-card__nameRow">
+                      <div class="vl-fp-card__name">Velvet Foundation</div>
+                      <div class="vl-fp-card__price">$32.00</div>
+                    </div>
+
+                    <div class="vl-fp-card__desc">Complex with 30 Billion CPU</div>
+                  </div>
+                </a>
+              </article>
+            </li>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+      </ul>
+
+      <div class="vl-fp__controls">
+      <div class="vl-fp-controls" aria-label="Featured products carousel controls">
+        <button class="vl-fp-controls__btn" type="button" data-dir="prev" aria-label="Previous products">
+          <svg class="vl-fp-controls__icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M10.2 2.2L4.4 8l5.8 5.8 1.1-1.1L6.6 8l4.7-4.7-1.1-1.1z"></path>
+          </svg>
+        </button>
+
+        <div class="vl-fp-controls__progress" aria-hidden="true">
+          <div class="vl-fp-controls__progressFill" data-vl-fp-progress-fill></div>
+        </div>
+
+        <button class="vl-fp-controls__btn" type="button" data-dir="next" aria-label="Next products">
+          <svg class="vl-fp-controls__icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M5.8 13.8L11.6 8 5.8 2.2 4.7 3.3 9.4 8l-4.7 4.7 1.1 1.1z"></path>
+          </svg>
+        </button>
+      </div>
+
+      {% comment %} Mobile-only dots indicator (inline SVG to avoid missing asset dependency) {% endcomment %}
+      <svg class="vl-fp__dots" viewBox="0 0 1248 18" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="1248" height="18" rx="9" fill="rgba(0,0,0,0.06)"></rect>
+        <circle cx="624" cy="9" r="4" fill="rgba(0,0,0,0.22)"></circle>
+        <circle cx="588" cy="9" r="3" fill="rgba(0,0,0,0.12)"></circle>
+        <circle cx="660" cy="9" r="3" fill="rgba(0,0,0,0.12)"></circle>
+      </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const sectionEl = document.querySelector('.vl-fp--{{ section.id }}[data-vl-fp-section]');
+      if (!sectionEl) return;
+
+      /* Fade-in animation on scroll (single trigger) */
+      const animateEl = sectionEl.querySelector('[data-vl-fp-animate]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            });
+          },
+          { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+        );
+        if (animateEl) io.observe(animateEl);
+      } else {
+        if (animateEl) animateEl.classList.add('is-visible');
+      }
+
+      /* Carousel controls */
+      const track = sectionEl.querySelector('[data-vl-fp-track]');
+      if (!track) return;
+
+      const fill = sectionEl.querySelector('[data-vl-fp-progress-fill]');
+      const prevBtn = sectionEl.querySelector('.vl-fp-controls__btn[data-dir="prev"]');
+      const nextBtn = sectionEl.querySelector('.vl-fp-controls__btn[data-dir="next"]');
+
+      const isDesktop = () => window.matchMedia('(min-width: 900px)').matches;
+
+      const getStep = () => {
+        const first = track.querySelector('.vl-fp__product');
+        if (!first) return 0;
+        const rect = first.getBoundingClientRect();
+        return rect.width + 16;
+      };
+
+      const getMaxIndex = () => {
+        const cards = track.querySelectorAll('.vl-fp__product').length;
+        if (!isDesktop()) return Math.max(0, cards - 1);
+        return Math.max(0, cards - 3);
+      };
+
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+      const getIndexFromScroll = () => {
+        const step = getStep();
+        if (!step) return 0;
+        return clamp(Math.round(track.scrollLeft / step), 0, getMaxIndex());
+      };
+
+      const setControls = () => {
+        const maxIndex = getMaxIndex();
+        const index = getIndexFromScroll();
+        const pages = maxIndex + 1;
+
+        if (prevBtn) prevBtn.disabled = index <= 0;
+        if (nextBtn) nextBtn.disabled = index >= maxIndex;
+
+        if (fill) {
+          fill.style.width = pages <= 1 ? '33.333%' : `${((index + 1) / pages) * 100}%`;
+        }
+      };
+
+      const scrollToIndex = (index, behavior) => {
+        const step = getStep();
+        const maxIndex = getMaxIndex();
+        const target = clamp(index, 0, maxIndex);
+        track.scrollTo({ left: target * step, behavior: behavior || 'smooth' });
+      };
+
+      const resetToFirstSlide = () => {
+        /* Force left-aligned first slide on mobile (some browsers restore scroll position) */
+        if (!isDesktop()) {
+          track.scrollTo({ left: 0, behavior: 'auto' });
+          requestAnimationFrame(() => track.scrollTo({ left: 0, behavior: 'auto' }));
+        }
+        setControls();
+      };
+
+      const onClick = (dir) => {
+        const index = getIndexFromScroll();
+        scrollToIndex(dir === 'next' ? index + 1 : index - 1, 'smooth');
+        setControls();
+      };
+
+      if (prevBtn) prevBtn.addEventListener('click', () => onClick('prev'));
+      if (nextBtn) nextBtn.addEventListener('click', () => onClick('next'));
+
+      let raf = 0;
+      track.addEventListener('scroll', () => {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(setControls);
+      });
+
+      window.addEventListener('resize', resetToFirstSlide);
+      window.addEventListener('load', resetToFirstSlide);
+      window.addEventListener('pageshow', resetToFirstSlide);
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "⚡ Lumen Featured Products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Recommended Products"
+    },
+    {
+      "type": "textarea",
+      "id": "description_desktop",
+      "label": "Description (desktop)",
+      "default": "Handpicked formulas your skin will love."
+    },
+    {
+      "type": "textarea",
+      "id": "description_mobile",
+      "label": "Description (mobile)",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "header",
+      "content": "Color controls"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_start",
+      "label": "Background gradient start",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient_end",
+      "label": "Background gradient end",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#141311"
+    },
+    {
+      "type": "color",
+      "id": "reviews_color",
+      "label": "Reviews text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Product name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "pill_bg_color",
+      "label": "Pill background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "pill_text_color",
+      "label": "Pill text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "discount_bg_color",
+      "label": "Discount badge background color",
+      "default": "#7A0036"
+    },
+    {
+      "type": "color",
+      "id": "discount_text_color",
+      "label": "Discount badge text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "controls_icon_color",
+      "label": "Controls icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "controls_progress_bg_color",
+      "label": "Controls progress background",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "color",
+      "id": "controls_progress_fill_color",
+      "label": "Controls progress fill",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography controls"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "sub_font_size_desktop",
+      "label": "Subheading font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "sub_font_size_mobile",
+      "label": "Subheading font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "reviews_font_size_desktop",
+      "label": "Reviews font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "reviews_font_size_mobile",
+      "label": "Reviews font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "name_font_size_desktop",
+      "label": "Product name font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "name_font_size_mobile",
+      "label": "Product name font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "price_font_size_desktop",
+      "label": "Price font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "price_font_size_mobile",
+      "label": "Price font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size_desktop",
+      "label": "Description font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size_mobile",
+      "label": "Description font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "pill_font_size_desktop",
+      "label": "Pill font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "pill_font_size_mobile",
+      "label": "Pill font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "discount_pct_font_size_desktop",
+      "label": "Discount percent font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "discount_pct_font_size_mobile",
+      "label": "Discount percent font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "discount_text_font_size_desktop",
+      "label": "Discount text font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "discount_text_font_size_mobile",
+      "label": "Discount text font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Badges"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_pill",
+          "label": "Show pill badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "pill_text",
+          "label": "Pill text",
+          "default": "#Best Seller"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_discount",
+          "label": "Show discount badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "discount_pct",
+          "label": "Discount percent",
+          "default": "20%"
+        },
+        {
+          "type": "text",
+          "id": "discount_text",
+          "label": "Discount text",
+          "default": "Save with subscription"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡ Lumen Featured Products",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

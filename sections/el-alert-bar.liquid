@@ -1,0 +1,201 @@
+{%- comment -%} ── EL - ALERT BAR ── {%- endcomment -%}
+<div class="el-alert-bar" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--alert-bg: {{ section.settings.bg_color }}; --alert-text: {{ section.settings.text_color }};">
+  <div class="el-alert-bar__container">
+    {%- if section.settings.badge_text != blank -%}
+      <span class="el-alert-bar__badge">{{ section.settings.badge_text }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.show_countdown -%}
+      <div class="el-alert-bar__countdown" data-countdown="{{ section.settings.countdown_minutes }}">
+        <span class="el-alert-bar__time" data-hours>00</span>
+        <span class="el-alert-bar__sep">:</span>
+        <span class="el-alert-bar__time" data-minutes>00</span>
+        <span class="el-alert-bar__sep">:</span>
+        <span class="el-alert-bar__time" data-seconds>00</span>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.promo_text != blank -%}
+      <span class="el-alert-bar__promo">{{ section.settings.promo_text }}</span>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function() {
+    const bar = document.querySelector('.el-alert-bar__countdown');
+    if (!bar) return;
+
+    const minutes = parseInt(bar.dataset.countdown) || 120;
+    const storageKey = 'el_countdown_end';
+
+    let endTime = localStorage.getItem(storageKey);
+    if (!endTime || parseInt(endTime) < Date.now()) {
+      endTime = Date.now() + (minutes * 60 * 1000);
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    const hoursEl = bar.querySelector('[data-hours]');
+    const minsEl = bar.querySelector('[data-minutes]');
+    const secsEl = bar.querySelector('[data-seconds]');
+
+    function update() {
+      const remaining = Math.max(0, parseInt(endTime) - Date.now());
+      const hours = Math.floor(remaining / 3600000);
+      const mins = Math.floor((remaining % 3600000) / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+
+      if (remaining <= 0) {
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
+</script>
+
+{% stylesheet %}
+.el-alert-bar {
+  background: var(--alert-bg, #2D2D2D);
+  color: var(--alert-text, #fff);
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.el-alert-bar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.el-alert-bar__badge {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.85;
+}
+
+.el-alert-bar__countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.el-alert-bar__time {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.el-alert-bar__sep {
+  opacity: 0.5;
+}
+
+.el-alert-bar__promo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .el-alert-bar__promo {
+    display: none;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - Alert Bar",
+  "tag": "section",
+  "class": "el-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'alert')"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "LIMITED TIME"
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show countdown timer",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "countdown_minutes",
+      "label": "Countdown duration (minutes)",
+      "min": 30,
+      "max": 1440,
+      "step": 30,
+      "default": 120,
+      "info": "Timer persists across page loads"
+    },
+    {
+      "type": "header",
+      "content": "Promo Text"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Promo text",
+      "default": "Exclusive savings on your first order"
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - Alert Bar",
+      "category": "t:categories.elegant_listicle"
+    }
+  ]
+}
+{% endschema %}

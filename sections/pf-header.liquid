@@ -1,0 +1,271 @@
+{%- comment -%} ── PF - HEADER ── {%- endcomment -%}
+<header class="pf-header" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--header-bg: {{ section.settings.bg_color }}; --header-padding: {{ section.settings.padding }}px; --header-padding-mobile: {{ section.settings.padding_mobile }}px; --logo-height: {{ section.settings.logo_height }}px; --logo-height-mobile: {{ section.settings.logo_height_mobile }}px;">
+  <div class="pf-header__container">
+    {%- if section.settings.back_link_text != blank -%}
+      <a href="{{ section.settings.back_link_url | default: '/' }}" class="pf-header__back">
+        <span class="pf-header__back-arrow">←</span>
+        {{ section.settings.back_link_text }}
+      </a>
+    {%- endif -%}
+
+    <div class="pf-header__center">
+      {%- if section.settings.logo != blank -%}
+        {%- assign logo_height_2x = section.settings.logo_height | times: 2 -%}
+        <a href="{{ section.settings.logo_link | default: '/' }}" class="pf-header__logo-link">
+          <img
+            src="{{ section.settings.logo | image_url: height: logo_height_2x }}"
+            alt="{{ section.settings.publication_name | escape }}"
+            class="pf-header__logo"
+          >
+        </a>
+      {%- elsif section.settings.publication_name != blank -%}
+        <a href="{{ section.settings.logo_link | default: '/' }}" class="pf-header__publication">
+          {{ section.settings.publication_name }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.tagline != blank -%}
+        <p class="pf-header__tagline">{{ section.settings.tagline }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.category != blank -%}
+      <span class="pf-header__category">{{ section.settings.category }}</span>
+    {%- endif -%}
+  </div>
+</header>
+
+{% stylesheet %}
+.pf-header {
+  background: var(--header-bg, #FAF9F6);
+  padding: var(--header-padding, 16px) 1.5rem;
+  border-bottom: 1px solid #E8E6E3;
+}
+
+.pf-header__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pf-header__back {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #666;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: color 200ms ease;
+}
+
+.pf-header__back:hover {
+  color: #1A1A1A;
+}
+
+.pf-header__back-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.pf-header__center {
+  text-align: center;
+  flex: 1;
+}
+
+.pf-header__logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.pf-header__logo {
+  display: block;
+  width: auto;
+  height: var(--logo-height, 40px);
+  vertical-align: middle;
+}
+
+.pf-header__publication {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+
+.pf-header__publication:hover {
+  opacity: 0.8;
+}
+
+.pf-header__tagline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #888;
+  margin: 0.25rem 0 0;
+}
+
+.pf-header__category {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  background: #F0EEEB;
+  padding: 0.375rem 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .pf-header {
+    padding: var(--header-padding-mobile, 12px) 1rem;
+  }
+
+  .pf-header__container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pf-header__back {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .pf-header__center {
+    order: 1;
+    width: 100%;
+  }
+
+  .pf-header__logo {
+    height: var(--logo-height-mobile, 30px);
+  }
+
+  .pf-header__category {
+    display: none;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Header",
+  "tag": "section",
+  "class": "pf-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F6"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding (desktop)",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "label": "Padding (mobile)",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Logo / Publication"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height (desktop)",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "label": "Logo height (mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "publication_name",
+      "label": "Publication name",
+      "default": "Pawfy Wellness",
+      "info": "Shown if no logo is set"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Expert Pet Health Insights"
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo/name link"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "text",
+      "id": "back_link_text",
+      "label": "Back link text",
+      "default": "Back to Articles"
+    },
+    {
+      "type": "url",
+      "id": "back_link_url",
+      "label": "Back link URL"
+    },
+    {
+      "type": "text",
+      "id": "category",
+      "label": "Category label",
+      "default": "Health & Wellness"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Header",
+      "category": "t:categories.pawfy_editorial"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,791 @@
+<!--
+  Vera Lane – Benefit Section
+  Built from:
+  - Desktop: https://www.figma.com/design/1M8lKf2fVA2oaHmvrircEx/Vera-Lane---Website-Design?node-id=1-1007&m=dev
+  - Mobile:  https://www.figma.com/design/1M8lKf2fVA2oaHmvrircEx/Vera-Lane---Website-Design?node-id=1-1416&m=dev
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<section
+  class="vera-benefits section-{{ section.id }}-padding{% if section.settings.enable_animation %} vera-benefits--animate{% endif %}"
+  aria-label="{{ section.settings.section_label }}"
+  role="region"
+  data-animation-enabled="{{ section.settings.enable_animation }}"
+  style="--padding-top-mobile: {{ section.settings.padding_top_mobile }}px; --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px; --padding-top-desktop: {{ section.settings.padding_top_desktop }}px; --padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px; --pointer-display-mobile: {{ section.settings.show_pointers_mobile }}; --pointer-display-tablet: {{ section.settings.show_pointers_tablet }}; --pointer-display-desktop: {{ section.settings.show_pointers_desktop }}; --title-font-size-mobile: {{ section.settings.title_font_size_mobile }}px; --title-font-size-desktop: {{ section.settings.title_font_size_desktop }}px; --text-font-size-mobile: {{ section.settings.text_font_size_mobile }}px; --text-font-size-desktop: {{ section.settings.text_font_size_desktop }}px;"
+>
+  <div class="vera-benefits__inner">
+    <div class="vera-benefits__grid">
+      <!-- Left column: Benefit One & Three -->
+      <div class="vera-benefits__column vera-benefits__column--left">
+        <article class="vera-benefits__item" data-pointer="top-left">
+          <h3 class="vera-benefits__title">{{ section.settings.benefit_1_title }}</h3>
+          <p class="vera-benefits__text">
+            {{ section.settings.benefit_1_text }}
+          </p>
+        </article>
+
+        <article class="vera-benefits__item" data-pointer="bottom-left">
+          <h3 class="vera-benefits__title">{{ section.settings.benefit_3_title }}</h3>
+          <p class="vera-benefits__text">
+            {{ section.settings.benefit_3_text }}
+          </p>
+        </article>
+      </div>
+
+      <!-- Center image with desktop-only pointer lines -->
+      <div class="vera-benefits__image-wrapper" aria-hidden="true">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'lazy',
+              class: 'vera-benefits__image',
+              widths: '294, 420, 800, 1200, 1600',
+              sizes: '(max-width: 767px) 294px, (max-width: 1023px) 420px, 800px'
+          }}
+        {%- else -%}
+          <div class="vera-benefits__image placeholder-svg">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+
+        <div class="vera-benefits__pointers">
+          <div class="vera-pointer vera-pointer--top-left">
+            <span class="vera-pointer__line"></span>
+            <span class="vera-pointer__ring"></span>
+            <span class="vera-pointer__dot"></span>
+          </div>
+          <div class="vera-pointer vera-pointer--bottom-left">
+            <span class="vera-pointer__line"></span>
+            <span class="vera-pointer__ring"></span>
+            <span class="vera-pointer__dot"></span>
+          </div>
+          <div class="vera-pointer vera-pointer--top-right">
+            <span class="vera-pointer__line"></span>
+            <span class="vera-pointer__ring"></span>
+            <span class="vera-pointer__dot"></span>
+          </div>
+          <div class="vera-pointer vera-pointer--bottom-right">
+            <span class="vera-pointer__line"></span>
+            <span class="vera-pointer__ring"></span>
+            <span class="vera-pointer__dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: Benefit Two & Four -->
+      <div class="vera-benefits__column vera-benefits__column--right">
+        <article class="vera-benefits__item" data-pointer="top-right">
+          <h3 class="vera-benefits__title">{{ section.settings.benefit_2_title }}</h3>
+          <p class="vera-benefits__text">
+            {{ section.settings.benefit_2_text }}
+          </p>
+        </article>
+
+        <article class="vera-benefits__item" data-pointer="bottom-right">
+          <h3 class="vera-benefits__title">{{ section.settings.benefit_4_title }}</h3>
+          <p class="vera-benefits__text">
+            {{ section.settings.benefit_4_text }}
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  /*
+    Mobile-first, fluid layout with px-based measurements.
+    Uses flex/grid and percentages instead of fixed-width columns so the
+    section stays responsive while preserving 1:1 proportions.
+  */
+
+  .vera-benefits {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    padding-top: var(--padding-top-mobile);
+    padding-bottom: var(--padding-bottom-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .vera-benefits {
+      padding-top: var(--padding-top-desktop);
+      padding-bottom: var(--padding-bottom-desktop);
+    }
+  }
+
+  .vera-benefits__inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 768px) {
+    .vera-benefits__inner {
+      padding: 0 40px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .vera-benefits__inner {
+      padding: 0 80px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .vera-benefits__inner {
+      padding: 0 96px;
+    }
+  }
+
+  .vera-benefits__grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 26px;
+  }
+
+  .vera-benefits__column {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 100%;
+  }
+
+  .vera-benefits__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    padding: 16px;
+    margin: -16px;
+    border-radius: 12px;
+  }
+
+  .vera-benefits__item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(122, 0, 54, 0.15);
+  }
+
+  /* Fade-in animation */
+  .vera-benefits--animate .vera-benefits__item,
+  .vera-benefits--animate .vera-benefits__image-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .vera-benefits--animate .vera-benefits__item.is-visible,
+  .vera-benefits--animate .vera-benefits__image-wrapper.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .vera-benefits--animate .vera-benefits__item:hover.is-visible {
+    transform: translateY(0) scale(1.08);
+  }
+
+  /* Staggered animation delays */
+  .vera-benefits--animate .vera-benefits__item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .vera-benefits--animate .vera-benefits__item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .vera-benefits--animate .vera-benefits__image-wrapper {
+    transition-delay: 0.15s;
+  }
+
+  .vera-benefits__title {
+    margin: 0;
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 700;
+    font-size: var(--title-font-size-mobile);
+    line-height: 1.45;
+    color: #7a0036;
+    font-style: italic;
+  }
+
+  .vera-benefits__text {
+    margin: 0;
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-weight: 400;
+    font-size: var(--text-font-size-mobile);
+    line-height: 1.57;
+    color: #000000;
+  }
+
+  .vera-benefits__image-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vera-benefits__image {
+    display: block;
+    width: 100%;
+    max-width: 294px;
+    height: auto;
+    border-radius: 32px;
+    object-fit: cover;
+    width: 294px;
+    height: 506px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .vera-benefits__image:hover {
+    transform: scale(1.05) translateY(-5px);
+  }
+
+  /*
+    Pointer lines – desktop only
+    Four independent lines with:
+    - magenta dot at the text side
+    - gradient line
+    - circular marker close to the bottle
+    Hidden on mobile.
+  */
+  .vera-benefits__pointers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: var(--pointer-display-mobile, none);
+  }
+
+  .vera-pointer {
+    position: absolute;
+    width: 183px;
+    height: 2px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .vera-pointer.active {
+    opacity: 1;
+  }
+
+  .vera-pointer__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      90deg,
+      #7a0036 0%,
+      #c6aa98 100%
+    );
+    transition: height 0.3s ease;
+  }
+
+  .vera-pointer__dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background-color: #7a0036;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .vera-pointer.active .vera-pointer__dot {
+    box-shadow: 0 0 12px rgba(122, 0, 54, 0.6);
+  }
+
+  .vera-pointer__ring {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    border: 2px solid #c6aa98;
+    background-color: #f7efe8;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .vera-pointer.active .vera-pointer__ring {
+    transform: scale(1.3);
+    border-color: #7a0036;
+  }
+
+  .vera-pointer__ring::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 999px;
+    border: 2px solid #c6aa98;
+  }
+
+  /* Left side pointers */
+  .vera-pointer--top-left {
+    top: 22%;
+    left: -14%;
+    transform: rotate(20deg);
+    transform-origin: 0 50%;
+  }
+
+  .vera-pointer--bottom-left {
+    top: 81%;
+    left: -12%;
+    transform: rotate(335deg);
+    transform-origin: 0 50%;
+  }
+
+  .vera-pointer--top-left .vera-pointer__dot,
+  .vera-pointer--bottom-left .vera-pointer__dot {
+    left: -5px;
+    top: 50%;
+    margin-top: -5px;
+  }
+
+  .vera-pointer--top-left .vera-pointer__ring,
+  .vera-pointer--bottom-left .vera-pointer__ring {
+    right: -6px;
+    top: 50%;
+    margin-top: -13px;
+  }
+
+  /* Right side pointers */
+  .vera-pointer--top-right {
+    top: 22%;
+    right: -8%;
+    transform: rotate(339deg);
+    transform-origin: 100% 50%;
+  }
+
+  .vera-pointer--bottom-right {
+    top: 81%;
+    right: -8%;
+    transform: rotate(25deg);
+    transform-origin: 100% 50%;
+  }
+
+  .vera-pointer--top-right .vera-pointer__dot,
+  .vera-pointer--bottom-right .vera-pointer__dot {
+    right: -5px;
+    top: 50%;
+    margin-top: -5px;
+  }
+
+  .vera-pointer--top-right .vera-pointer__ring,
+  .vera-pointer--bottom-right .vera-pointer__ring {
+    left: -6px;
+    top: 50%;
+    margin-top: -13px;
+  }
+
+  /* Tablet and up: start transitioning toward the desktop composition */
+  @media (min-width: 768px) {
+    .vera-benefits__inner {
+      gap: 40px;
+    }
+
+    .vera-benefits__grid {
+      gap: 32px;
+    }
+
+    .vera-benefits__image {
+      max-width: 420px;
+    }
+
+    .vera-benefits__pointers {
+      display: var(--pointer-display-tablet, none);
+    }
+
+    .vera-benefits__title {
+      font-size: var(--title-font-size-desktop);
+    }
+
+    .vera-benefits__text {
+      font-size: var(--text-font-size-desktop);
+    }
+  }
+
+  /* Desktop layout: two benefit columns with the image in the center */
+  @media (min-width: 1024px) {
+    .vera-benefits__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+      align-items: center;
+      column-gap: 40px;
+    }
+
+    .vera-benefits__column {
+      gap: 215px;
+    }
+
+    .vera-benefits__item {
+      max-width: 324px;
+    }
+
+    .vera-benefits__image-wrapper {
+      align-self: stretch;
+      min-height: 0;
+    }
+
+    .vera-benefits__image {
+      max-width: 800px;
+    }
+
+    .vera-benefits__pointers {
+      display: var(--pointer-display-desktop, block);
+    }
+  }
+
+  /* Full desktop frame alignment at 1440px */
+  @media (min-width: 1440px) {
+    .vera-benefits__inner {
+      gap: 56px;
+    }
+
+    .vera-benefits__grid {
+      column-gap: 72px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  // Add hover interactions between benefit items and pointer lines
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('.vera-benefits');
+    if (!section) return;
+
+    const benefitItems = section.querySelectorAll('.vera-benefits__item[data-pointer]');
+    const imageWrapper = section.querySelector('.vera-benefits__image-wrapper');
+    const allPointers = section.querySelectorAll('.vera-pointer');
+    const animationEnabled = section.getAttribute('data-animation-enabled') === 'true';
+    
+    // Individual benefit hover → highlight corresponding pointer
+    benefitItems.forEach(item => {
+      const pointerType = item.getAttribute('data-pointer');
+      const pointer = section.querySelector('.vera-pointer--' + pointerType);
+      
+      if (pointer) {
+        item.addEventListener('mouseenter', function() {
+          pointer.classList.add('active');
+        });
+        
+        item.addEventListener('mouseleave', function() {
+          pointer.classList.remove('active');
+        });
+      }
+    });
+    
+    // Image hover → highlight all pointers
+    if (imageWrapper && allPointers.length) {
+      imageWrapper.addEventListener('mouseenter', function() {
+        allPointers.forEach(pointer => {
+          pointer.classList.add('active');
+        });
+      });
+      
+      imageWrapper.addEventListener('mouseleave', function() {
+        allPointers.forEach(pointer => {
+          pointer.classList.remove('active');
+        });
+      });
+    }
+
+    // Fade-in animation on scroll
+    if (animationEnabled && 'IntersectionObserver' in window) {
+      const animatedElements = section.querySelectorAll('.vera-benefits__item, .vera-benefits__image-wrapper');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else if (animationEnabled) {
+      // Fallback for browsers without IntersectionObserver
+      const animatedElements = section.querySelectorAll('.vera-benefits__item, .vera-benefits__image-wrapper');
+      animatedElements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Benefits Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label",
+      "default": "Key benefits of Vera Lane"
+    },
+    {
+      "type": "header",
+      "content": "Center Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "header",
+      "content": "Benefit One (Top Left)"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Title",
+      "default": "Benefit One"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_text",
+      "label": "Description",
+      "default": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non, condimentum vel mauris."
+    },
+    {
+      "type": "header",
+      "content": "Benefit Two (Top Right)"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Title",
+      "default": "Benefit Two"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_text",
+      "label": "Description",
+      "default": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non, condimentum vel mauris."
+    },
+    {
+      "type": "header",
+      "content": "Benefit Three (Bottom Left)"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Title",
+      "default": "Benefit Three"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_text",
+      "label": "Description",
+      "default": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non, condimentum vel mauris."
+    },
+    {
+      "type": "header",
+      "content": "Benefit Four (Bottom Right)"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4_title",
+      "label": "Title",
+      "default": "Benefit Four"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_4_text",
+      "label": "Description",
+      "default": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non, condimentum vel mauris."
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Elements will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography - Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Mobile)",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 16,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size (Desktop)",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Typography - Description"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Desktop)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Pointer Lines Visibility"
+    },
+    {
+      "type": "select",
+      "id": "show_pointers_mobile",
+      "label": "Show pointers on mobile",
+      "info": "Control pointer line visibility on mobile devices (< 768px)",
+      "options": [
+        {
+          "value": "none",
+          "label": "Hidden"
+        },
+        {
+          "value": "block",
+          "label": "Visible"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "show_pointers_tablet",
+      "label": "Show pointers on tablet",
+      "info": "Control pointer line visibility on tablets (768px - 1023px)",
+      "options": [
+        {
+          "value": "none",
+          "label": "Hidden"
+        },
+        {
+          "value": "block",
+          "label": "Visible"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "show_pointers_desktop",
+      "label": "Show pointers on desktop",
+      "info": "Control pointer line visibility on desktop devices (≥ 1024px)",
+      "options": [
+        {
+          "value": "none",
+          "label": "Hidden"
+        },
+        {
+          "value": "block",
+          "label": "Visible"
+        }
+      ],
+      "default": "block"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Mobile)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Mobile)",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Section Padding - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Desktop)",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Section"
+    }
+  ]
+}
+{% endschema %}

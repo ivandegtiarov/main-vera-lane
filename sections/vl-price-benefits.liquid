@@ -1,0 +1,259 @@
+<div class="vl-price-benefits" style="
+  --pb-bg: {{ section.settings.bg_color }};
+  --original-price-color: {{ section.settings.original_price_color }};
+  --current-price-color: {{ section.settings.current_price_color }};
+  --badge-bg: {{ section.settings.badge_bg_color }};
+  --badge-text: {{ section.settings.badge_text_color }};
+  --checkmark-color: {{ section.settings.checkmark_color }};
+  --benefit-color: {{ section.settings.benefit_color }};
+">
+  <div class="vl-price-benefits__inner">
+    {% if section.settings.show_price %}
+      <div class="vl-price-benefits__price-row">
+        {% if section.settings.original_price != blank %}
+          <span class="vl-price-benefits__original-price">{{ section.settings.original_price }}</span>
+        {% endif %}
+        <span class="vl-price-benefits__current-price">{{ section.settings.current_price }}</span>
+        {% if section.settings.discount_badge != blank %}
+          <span class="vl-price-benefits__badge">{{ section.settings.discount_badge }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% assign benefits = section.blocks | where: "type", "benefit" %}
+    {% if benefits.size > 0 and section.settings.show_benefits %}
+      <ul class="vl-price-benefits__list">
+        {% for block in benefits %}
+          <li class="vl-price-benefits__item" {{ block.shopify_attributes }}>
+            <span class="vl-price-benefits__checkmark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="vl-price-benefits__text">{{ block.settings.text }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-price-benefits {
+    background-color: var(--pb-bg, #ffffff);
+    padding: 24px 0;
+  }
+
+  .vl-price-benefits__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-price-benefits__price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .vl-price-benefits__original-price {
+    font-size: 14px;
+    color: var(--original-price-color, #999999);
+    text-decoration: line-through;
+  }
+
+  .vl-price-benefits__current-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--current-price-color, #000000);
+  }
+
+  .vl-price-benefits__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background-color: var(--badge-bg, #2a7d4f);
+    color: var(--badge-text, #ffffff);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+  }
+
+  .vl-price-benefits__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .vl-price-benefits__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .vl-price-benefits__checkmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--checkmark-color, #2a7d4f);
+  }
+
+  .vl-price-benefits__checkmark svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .vl-price-benefits__text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--benefit-color, #333333);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Price & Benefits",
+  "tag": "section",
+  "class": "vl-price-benefits-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Price Display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original price",
+      "default": "$29.95"
+    },
+    {
+      "type": "text",
+      "id": "current_price",
+      "label": "Current price",
+      "default": "$29.95"
+    },
+    {
+      "type": "text",
+      "id": "discount_badge",
+      "label": "Discount badge",
+      "default": "50% OFF"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show benefits",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "original_price_color",
+      "label": "Original price color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "current_price_color",
+      "label": "Current price color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge background",
+      "default": "#2a7d4f"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "checkmark_color",
+      "label": "Checkmark color",
+      "default": "#2a7d4f"
+    },
+    {
+      "type": "color",
+      "id": "benefit_color",
+      "label": "Benefit text color",
+      "default": "#333333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "default": "Adapts perfectly to fair to medium skin tones"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Price & Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Adapts perfectly to fair to medium skin tones"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "For sensitive skin + SPF 15"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "A natural look for 16 hours"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Evens out the skin and hides redness"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

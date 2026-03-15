@@ -1,0 +1,145 @@
+<div class="vl-benefit" style="
+  --benefit-bg: {{ section.settings.bg_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --title-color: {{ section.settings.title_color }};
+  --text-color: {{ section.settings.text_color }};
+">
+  <div class="vl-benefit__inner">
+    <h2 class="vl-benefit__heading">{{ section.settings.heading }}</h2>
+
+    <div class="vl-benefit__list">
+      {% for block in section.blocks %}
+        <div class="vl-benefit__item" {{ block.shopify_attributes }}>
+          <h3 class="vl-benefit__title">{{ block.settings.title }}</h3>
+          <p class="vl-benefit__text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-benefit {
+    background-color: var(--benefit-bg, #ffffff);
+    padding: 40px 0;
+  }
+
+  .vl-benefit__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-benefit__heading {
+    font-family: var(--font-accent--family, 'Times New Roman', serif);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--heading-color, #5C1A33);
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  .vl-benefit__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .vl-benefit__item {
+    text-align: left;
+  }
+
+  .vl-benefit__title {
+    font-family: var(--font-heading--family, serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--title-color, #000000);
+    margin: 0 0 8px;
+  }
+
+  .vl-benefit__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-color, #666666);
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Benefit",
+  "tag": "section",
+  "class": "vl-benefit-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Benefit"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Benefit title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Benefit text color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Dermatologist Tested"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Your skin's health is our priority. Every product is rigorously tested by skincare experts to ensure it is gentle, non-irritating, and safe for even the most sensitive skin types."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Benefit",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Dermatologist Tested",
+            "text": "Your skin's health is our priority. Every product is rigorously tested by skincare experts to ensure it is gentle, non-irritating, and safe for even the most sensitive skin types."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

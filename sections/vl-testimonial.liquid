@@ -1,0 +1,236 @@
+<div class="vl-testimonial" style="
+  --testimonial-bg: {{ section.settings.bg_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --card-bg: {{ section.settings.card_bg_color }};
+  --quote-icon-color: {{ section.settings.quote_icon_color }};
+  --quote-text-color: {{ section.settings.quote_text_color }};
+  --author-name-color: {{ section.settings.author_name_color }};
+  --author-title-color: {{ section.settings.author_title_color }};
+">
+  <div class="vl-testimonial__inner">
+    <h2 class="vl-testimonial__heading">{{ section.settings.heading }}</h2>
+
+    <div class="vl-testimonial__list">
+      {% for block in section.blocks %}
+        <div class="vl-testimonial__card" {{ block.shopify_attributes }}>
+          <div class="vl-testimonial__quote-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <p class="vl-testimonial__quote">{{ block.settings.quote }}</p>
+          <div class="vl-testimonial__author">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 80 }}"
+                alt="{{ block.settings.name }}"
+                class="vl-testimonial__avatar"
+                width="40"
+                height="40"
+                loading="lazy"
+              >
+            {% endif %}
+            <div class="vl-testimonial__author-info">
+              <span class="vl-testimonial__name">{{ block.settings.name }}</span>
+              <span class="vl-testimonial__title">{{ block.settings.title }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-testimonial {
+    background-color: var(--testimonial-bg, #F5E6DC);
+    padding: 40px 0;
+  }
+
+  .vl-testimonial__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-testimonial__heading {
+    font-family: var(--font-accent--family, 'Times New Roman', serif);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--heading-color, #5C1A33);
+    text-align: center;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+
+  .vl-testimonial__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vl-testimonial__card {
+    background-color: var(--card-bg, #ffffff);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .vl-testimonial__quote-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(92, 26, 51, 0.1);
+    color: var(--quote-icon-color, #5C1A33);
+    margin-bottom: 16px;
+  }
+
+  .vl-testimonial__quote {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--quote-text-color, #333333);
+    margin: 0 0 20px;
+  }
+
+  .vl-testimonial__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vl-testimonial__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .vl-testimonial__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vl-testimonial__name {
+    font-family: var(--font-heading--family, serif);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--author-name-color, #000000);
+  }
+
+  .vl-testimonial__title {
+    font-size: 12px;
+    color: var(--author-title-color, #666666);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Testimonial",
+  "tag": "section",
+  "class": "vl-testimonial-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customer Said"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5E6DC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "quote_icon_color",
+      "label": "Quote icon color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "quote_text_color",
+      "label": "Quote text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "author_name_color",
+      "label": "Author name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "author_title_color",
+      "label": "Author title color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\""
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Author photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sarah"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title/Occupation",
+          "default": "Art Teacher"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Testimonial",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

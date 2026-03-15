@@ -1,0 +1,375 @@
+{%- comment -%} ── JV - HERO COMPARISON ── {%- endcomment -%}
+<div class="jv-hero-comparison" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %}>
+  <div class="jv-hero-comparison__container">
+    <h1 class="jv-hero-comparison__headline">{{ section.settings.headline }}</h1>
+
+    {%- if section.settings.author != blank or section.settings.date != blank -%}
+      <div class="jv-hero-comparison__byline">
+        {%- if section.settings.author != blank -%}
+          <span class="jv-hero-comparison__author">{{ section.settings.author }}</span>
+        {%- endif -%}
+        {%- if section.settings.date != blank -%}
+          <span class="jv-hero-comparison__date">{{ section.settings.date }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.hook_text != blank -%}
+      <p class="jv-hero-comparison__hook">{{ section.settings.hook_text }}</p>
+    {%- endif -%}
+
+    <div class="jv-hero-comparison__table-wrap">
+      <table class="jv-hero-comparison__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="jv-hero-comparison__th--highlight">
+              {%- if section.settings.product_logo != blank -%}
+                <img
+                  src="{{ section.settings.product_logo | image_url: width: 100 }}"
+                  alt="{{ section.settings.col1_header }}"
+                  class="jv-hero-comparison__logo"
+                >
+              {%- else -%}
+                {{ section.settings.col1_header }}
+              {%- endif -%}
+            </th>
+            <th>{{ section.settings.col2_header }}</th>
+            <th>{{ section.settings.col3_header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="jv-hero-comparison__label">
+              <span class="jv-hero-comparison__icon">🔥</span> Calories
+            </td>
+            <td class="jv-hero-comparison__td--highlight">{{ section.settings.col1_calories }}</td>
+            <td>{{ section.settings.col2_calories }}</td>
+            <td>{{ section.settings.col3_calories }}</td>
+          </tr>
+          <tr>
+            <td class="jv-hero-comparison__label">
+              <span class="jv-hero-comparison__icon">💪</span> Protein
+            </td>
+            <td class="jv-hero-comparison__td--highlight">{{ section.settings.col1_protein }}</td>
+            <td>{{ section.settings.col2_protein }}</td>
+            <td>{{ section.settings.col3_protein }}</td>
+          </tr>
+          <tr>
+            <td class="jv-hero-comparison__label">
+              <span class="jv-hero-comparison__icon">🍬</span> Sugar
+            </td>
+            <td class="jv-hero-comparison__td--highlight">{{ section.settings.col1_sugar }}</td>
+            <td>{{ section.settings.col2_sugar }}</td>
+            <td>{{ section.settings.col3_sugar }}</td>
+          </tr>
+          <tr>
+            <td class="jv-hero-comparison__label">
+              <span class="jv-hero-comparison__icon">💵</span> Price
+            </td>
+            <td class="jv-hero-comparison__td--highlight">{{ section.settings.col1_price }}</td>
+            <td>{{ section.settings.col2_price }}</td>
+            <td>{{ section.settings.col3_price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.jv-hero-comparison {
+  background: #fff;
+  padding-block: 2rem 1.5rem;
+}
+
+.jv-hero-comparison__container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.jv-hero-comparison__headline {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 1rem;
+}
+
+.jv-hero-comparison__byline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.jv-hero-comparison__author {
+  font-weight: 600;
+}
+
+.jv-hero-comparison__date {
+  opacity: 0.7;
+}
+
+.jv-hero-comparison__hook {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9375rem;
+  color: #e63946;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #fff5f5;
+  border-left: 3px solid #e63946;
+  border-radius: 0 4px 4px 0;
+}
+
+.jv-hero-comparison__table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.jv-hero-comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.jv-hero-comparison__table th,
+.jv-hero-comparison__table td {
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jv-hero-comparison__table th {
+  background: #f9f9f9;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.jv-hero-comparison__table th:first-child,
+.jv-hero-comparison__table td:first-child {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.jv-hero-comparison__th--highlight {
+  background: #FFF8E7 !important;
+  color: #1a1a1a !important;
+}
+
+.jv-hero-comparison__td--highlight {
+  background: #FFF8E7;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.jv-hero-comparison__logo {
+  height: 1.5rem;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.jv-hero-comparison__label {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.jv-hero-comparison__icon {
+  margin-right: 0.375rem;
+}
+
+.jv-hero-comparison__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (min-width: 600px) {
+  .jv-hero-comparison__table th,
+  .jv-hero-comparison__table td {
+    padding: 1rem 0.75rem;
+    font-size: 0.9375rem;
+  }
+
+  .jv-hero-comparison__table th {
+    font-size: 0.8125rem;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "JV - Hero Comparison",
+  "tag": "section",
+  "class": "jv-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'comparison')"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "11 Reasons Why This High-Protein Iced Coffee is the #1 Trending Drink for 2026"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "By Julia M."
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "Date",
+      "default": "Last Updated: Mar 1, 2026"
+    },
+    {
+      "type": "text",
+      "id": "hook_text",
+      "label": "Hook text",
+      "default": "\"Read this BEFORE your next coffee run!\""
+    },
+    {
+      "type": "header",
+      "content": "Comparison Table"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_logo",
+      "label": "Product logo (column 1)"
+    },
+    {
+      "type": "text",
+      "id": "col1_header",
+      "label": "Column 1 header",
+      "default": "javvy"
+    },
+    {
+      "type": "text",
+      "id": "col2_header",
+      "label": "Column 2 header",
+      "default": "Mainstream Coffees"
+    },
+    {
+      "type": "text",
+      "id": "col3_header",
+      "label": "Column 3 header",
+      "default": "Protein Drinks"
+    },
+    {
+      "type": "header",
+      "content": "Calories Row"
+    },
+    {
+      "type": "text",
+      "id": "col1_calories",
+      "label": "Product calories",
+      "default": "120cal"
+    },
+    {
+      "type": "text",
+      "id": "col2_calories",
+      "label": "Competitor 1 calories",
+      "default": "150-400cal"
+    },
+    {
+      "type": "text",
+      "id": "col3_calories",
+      "label": "Competitor 2 calories",
+      "default": "160-200cal"
+    },
+    {
+      "type": "header",
+      "content": "Protein Row"
+    },
+    {
+      "type": "text",
+      "id": "col1_protein",
+      "label": "Product protein",
+      "default": "20g"
+    },
+    {
+      "type": "text",
+      "id": "col2_protein",
+      "label": "Competitor 1 protein",
+      "default": "2-12g"
+    },
+    {
+      "type": "text",
+      "id": "col3_protein",
+      "label": "Competitor 2 protein",
+      "default": "25g"
+    },
+    {
+      "type": "header",
+      "content": "Sugar Row"
+    },
+    {
+      "type": "text",
+      "id": "col1_sugar",
+      "label": "Product sugar",
+      "default": "<1g"
+    },
+    {
+      "type": "text",
+      "id": "col2_sugar",
+      "label": "Competitor 1 sugar",
+      "default": "20-30g"
+    },
+    {
+      "type": "text",
+      "id": "col3_sugar",
+      "label": "Competitor 2 sugar",
+      "default": "varies"
+    },
+    {
+      "type": "header",
+      "content": "Price Row"
+    },
+    {
+      "type": "text",
+      "id": "col1_price",
+      "label": "Product price",
+      "default": "💰"
+    },
+    {
+      "type": "text",
+      "id": "col2_price",
+      "label": "Competitor 1 price",
+      "default": "💰💰"
+    },
+    {
+      "type": "text",
+      "id": "col3_price",
+      "label": "Competitor 2 price",
+      "default": "💰💰💰"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JV - Hero Comparison",
+      "category": "t:categories.reasons_listicle"
+    }
+  ]
+}
+{% endschema %}

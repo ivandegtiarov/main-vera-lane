@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "instant-H2YrRzE6kjUuzMoR": {
+      "type": "instant-H2YrRzE6kjUuzMoR",
+      "disabled": true,
+      "settings": {}
+    },
+    "bl_hero_kXiaDr": {
+      "type": "bl-hero",
+      "name": "BL - Hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/image_588256407.png",
+        "bg_color": "#2d2d2d",
+        "overlay_opacity": 80,
+        "category": "BEAUTY",
+        "headline": "The Foundation That Works With Your Skin, Not Against It",
+        "subheadline": "",
+        "show_rating": true,
+        "review_count": "12,400+ Reviews",
+        "cta_text": "LEARN MORE",
+        "cta_type": "anchor",
+        "cta_anchor": "offer",
+        "cta_url": "",
+        "cta_text_color": "#ffffff",
+        "cta_border_color": "#ffffff"
+      }
+    },
+    "bl_reason_item_zBrcYz": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "bg_color": "#faf9f7",
+        "number": "1",
+        "title": "It Works With Your Skin, Not Against It",
+        "body_text": "<p>As we age, our skin requires more thoughtful care. This foundation was developed specifically for mature skin, with ingredients that hydrate and nourish while providing flawless coverage.</p><p>Unlike traditional formulas that can settle into fine lines, this lightweight formula glides on smoothly and actually improves the appearance of skin over time.</p>",
+        "link_text": "",
+        "link_url": "",
+        "image": "shopify://shop_images/ef0b3849e1fd685449d94e9211ad7068c064e1db.png",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_dQbhbJ": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "bg_color": "#faf9f7",
+        "number": "2",
+        "title": "It Works With Your Skin, Not Against It",
+        "body_text": "<p>As we age, our skin requires more thoughtful care. This foundation was developed specifically for mature skin, with ingredients that hydrate and nourish while providing flawless coverage.</p><p>Unlike traditional formulas that can settle into fine lines, this lightweight formula glides on smoothly and actually improves the appearance of skin over time.</p>",
+        "link_text": "",
+        "link_url": "",
+        "image": "shopify://shop_images/ef0b3849e1fd685449d94e9211ad7068c064e1db.png",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_yCx7Kk": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "bg_color": "#faf9f7",
+        "number": "3",
+        "title": "It Works With Your Skin, Not Against It",
+        "body_text": "<p>As we age, our skin requires more thoughtful care. This foundation was developed specifically for mature skin, with ingredients that hydrate and nourish while providing flawless coverage.</p><p>Unlike traditional formulas that can settle into fine lines, this lightweight formula glides on smoothly and actually improves the appearance of skin over time.</p>",
+        "link_text": "",
+        "link_url": "",
+        "image": "shopify://shop_images/ef0b3849e1fd685449d94e9211ad7068c064e1db.png",
+        "image_position": "right"
+      }
+    },
+    "bl_product_card_split_aBVKyx": {
+      "type": "bl-product-card-split",
+      "blocks": {
+        "feature_PYtAwc": {
+          "type": "feature",
+          "settings": {
+            "label": "Moisture-Wicking"
+          }
+        },
+        "feature_Gc6eWN": {
+          "type": "feature",
+          "settings": {
+            "label": "Temperature Regulating"
+          }
+        },
+        "feature_TxxqEq": {
+          "type": "feature",
+          "settings": {
+            "label": "Nontoxic Dyes"
+          }
+        },
+        "feature_f8WDiQ": {
+          "type": "feature",
+          "settings": {
+            "label": "Hypoallergenic"
+          }
+        },
+        "feature_6dEihk": {
+          "type": "feature",
+          "settings": {
+            "label": "Anti-Aging"
+          }
+        }
+      },
+      "block_order": [
+        "feature_PYtAwc",
+        "feature_Gc6eWN",
+        "feature_TxxqEq",
+        "feature_f8WDiQ",
+        "feature_6dEihk"
+      ],
+      "name": "BL - Product Card Split",
+      "settings": {
+        "section_id": "offer",
+        "bg_color": "#FAF9F7",
+        "sale_badge": "VIP SALE — Up to 40% Off",
+        "badge_bg": "#D4A574",
+        "badge_text": "#2D2D2D",
+        "product_name": "Mature Skin Foundation",
+        "description": "<p>A lightweight, buildable formula designed specifically for mature skin. Hydrates, smooths, and delivers natural-looking coverage that lasts all day.</p>",
+        "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+        "more_colors_text": "+12 More Shades",
+        "cta_text": "Check Availability",
+        "cta_url": "",
+        "cta_bg": "#D4A574",
+        "cta_text_color": "#2D2D2D"
+      }
+    }
+  },
+  "order": [
+    "instant-H2YrRzE6kjUuzMoR",
+    "bl_hero_kXiaDr",
+    "bl_reason_item_zBrcYz",
+    "bl_reason_item_dQbhbJ",
+    "bl_reason_item_yCx7Kk",
+    "bl_product_card_split_aBVKyx"
+  ]
+}

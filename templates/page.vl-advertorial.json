@@ -1,0 +1,297 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "vl_header": {
+      "type": "vl-lp-header",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_58.png",
+        "logo_width": 80,
+        "bg_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "vl_editorial_hero": {
+      "type": "vl-editorial-hero",
+      "settings": {
+        "meta_text": "Beauty Breakthrough",
+        "headline": "Why Foundation Suddenly Stops Working After 50",
+        "intro_text": "And the tone-adapting discovery that finally solved shade matching for mature skin.",
+        "bg_color": "#ffffff",
+        "headline_color": "#000000",
+        "text_color": "#333333",
+        "meta_color": "#666666"
+      }
+    },
+    "vl_intro_text": {
+      "type": "vl-rich-text",
+      "settings": {
+        "content": "<p>For years, foundation was simple.</p><p>Pick a shade. Apply. Done.</p><p>Then somewhere after 50, everything changed.</p><p>The shade that matched perfectly in winter looked orange by summer. The formula that once blended seamlessly now clung to every fine line. And that \"natural finish\"? It started looking like a mask by noon.</p><p>I tried switching brands. Adjusting shades. Mixing products. Nothing worked.</p><p>Until I discovered why foundation was failing me — and found a completely different approach.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_problem_section": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "The Real Problem Isn't Your Shade — It's That Your Skin Keeps Changing",
+        "content": "<p>Here's what nobody tells you about mature skin:</p><p>It doesn't stay one color.</p><p>Your skin tone shifts with the seasons. Changes with sun exposure. Looks different in the morning than it does by afternoon.</p><p>Traditional foundations can't keep up. They're made to match <strong>one</strong> static shade. But your skin is dynamic.</p><p>As skin matures, this gets worse:</p><ul><li>Undertones shift as skin thins</li><li>Age spots create uneven coloring</li><li>Redness becomes more prominent</li><li>The wrong shade amplifies every flaw</li></ul><p>You're not bad at picking shades. The shades just can't adapt to you.</p><p>That's why I spent months searching for something different. And what I found changed everything.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_korean_insight": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "The Science That Finally Solved Shade Matching",
+        "content": "<p>The breakthrough came from an unexpected place: <strong>tone-adapting technology</strong>.</p><p>Instead of picking from 15, 20, or even 40 static shades and hoping one matches — what if the foundation itself could adjust?</p><p>That's exactly what tone-adapting foundations do.</p><p>They use <strong>color-adjusting pigments</strong> that respond to your unique skin chemistry. The formula literally shifts to match your undertone as it absorbs.</p><p>No more oxidizing orange. No more too-light, too-dark guessing games.</p><p>One product. Infinite adjustment. Your perfect shade, every single time.</p><p>When I first heard about this, I was skeptical. How could one foundation work on everyone?</p><p>Then I tried it.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_product_intro": {
+      "type": "vl-image-text",
+      "settings": {
+        "heading": "The Foundation That Matches Itself to You",
+        "text": "<p>It's called <strong>Vera Lane Tone Adapting Foundation</strong>.</p><p>And it's not like any foundation I've used before.</p><p>Instead of a heavy, one-shade formula that sits on top of skin, this is lightweight and breathable. It absorbs into skin and <strong>adjusts to match your exact undertone</strong> as it sets.</p><p>The result? A flawless match that looks like your skin — just smoother, more even, and naturally radiant.</p><p>Plus, it has <strong>SPF 15</strong> built in. So you're protected while you perfect.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
+      }
+    },
+    "vl_before_after": {
+      "type": "vl-before-after",
+      "blocks": {
+        "before_1": {
+          "type": "person",
+          "settings": {
+            "name": "BEFORE",
+            "title": "Wrong Shade Struggle"
+          }
+        },
+        "after_1": {
+          "type": "person",
+          "settings": {
+            "name": "AFTER",
+            "title": "Vera Lane Tone Adapting"
+          }
+        }
+      },
+      "block_order": ["before_1", "after_1"],
+      "settings": {
+        "heading": "",
+        "bg_color": "#ffffff"
+      }
+    },
+    "vl_benefits_list": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "Why Women Over 50 Are Making the Switch",
+        "content": "<p><strong>No More Shade Guessing</strong></p><p>Stop standing in the makeup aisle wondering which shade you are today. Vera Lane adapts to you — whether your skin is lighter in winter or darker in summer.</p><p><strong>Lightweight, Not Cakey</strong></p><p>Forget thick formulas that settle into fine lines. This breathable formula feels like wearing nothing at all, while still providing buildable coverage.</p><p><strong>Looks Better By Afternoon</strong></p><p>Unlike traditional foundations that oxidize and turn orange, Vera Lane actually improves as it wears. It melts with your natural oils instead of separating.</p><p><strong>Built-In SPF 15</strong></p><p>Daily sun protection without adding another product. Your skin stays shielded while looking naturally flawless.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_1": {
+      "type": "vl-cta-block",
+      "settings": {
+        "button_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "TRY VERA LANE NOW",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_pull_quote": {
+      "type": "vl-pull-quote",
+      "settings": {
+        "quote": "Finally — A Foundation That Actually Matches My Skin",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_quote_text": {
+      "type": "vl-rich-text",
+      "settings": {
+        "content": "<p>That's what I keep hearing from women who try Vera Lane.</p><p>After years of frustration — wrong shades, cakey textures, foundation that looked worse than bare skin — they finally found something that <em>works</em>.</p><p>The tone-adapting formula means no more returns. No more drawer full of wrong-shade mistakes.</p><p>Just one product that matches you perfectly. Every time. All year round.</p><p>And because it's so lightweight and breathable, you forget you're even wearing it.</p><p>Until someone asks what you did to make your skin look so good.</p>",
+        "bg_color": "#F5EDE8",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_feature_table": {
+      "type": "vl-feature-table",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Tone-adapting formula matches any skin tone",
+            "has_feature": true
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Lightweight, breathable feel",
+            "has_feature": true
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Won't settle into fine lines",
+            "has_feature": true
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "SPF 15 sun protection",
+            "has_feature": true
+          }
+        },
+        "feature_5": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Buildable, natural coverage",
+            "has_feature": true
+          }
+        },
+        "feature_6": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Dermatologist tested",
+            "has_feature": true
+          }
+        },
+        "feature_7": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Works from fair to deep skin tones",
+            "has_feature": true
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4", "feature_5", "feature_6", "feature_7"],
+      "settings": {
+        "heading": "Made for Mature Skin",
+        "subheading": "Everything you need. Nothing you don't.",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "check_color": "#5C1A33",
+        "row_border_color": "#E5E5E5"
+      }
+    },
+    "vl_icon_grid": {
+      "type": "vl-icon-grid",
+      "blocks": {
+        "icon_1": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "shield",
+            "label": "SPF 15",
+            "description": "Daily sun protection"
+          }
+        },
+        "icon_2": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "droplet",
+            "label": "Lightweight",
+            "description": "Breathable formula"
+          }
+        },
+        "icon_3": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "heart",
+            "label": "Dermatologist Tested",
+            "description": "Safe for sensitive skin"
+          }
+        },
+        "icon_4": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "award",
+            "label": "100% Money Back",
+            "description": "Risk-free guarantee"
+          }
+        }
+      },
+      "block_order": ["icon_1", "icon_2", "icon_3", "icon_4"],
+      "settings": {
+        "bg_color": "#F5F5F5",
+        "icon_color": "#5C1A33",
+        "icon_bg_color": "#ffffff",
+        "label_color": "#000000",
+        "text_color": "#666666"
+      }
+    },
+    "vl_selling_out": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "Why Vera Lane Keeps Selling Out",
+        "content": "<p>When word spread about a foundation that actually matches every skin tone, demand exceeded supply.</p><p>Women tired of the shade-matching struggle found Vera Lane — and they're not going back.</p><p>We've restocked, but availability can still be limited.</p><p>The good news? Every purchase comes with a <strong>100% money-back guarantee</strong>. If you're not amazed by how well it matches your skin, just return it.</p><p>But based on what we're hearing, you won't want to.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_final_cta": {
+      "type": "vl-cta-block",
+      "settings": {
+        "button_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "CHECK AVAILABILITY",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_sticky_cta": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "CHECK AVAILABILITY",
+        "show_amazon_icon": true,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#5C1A33"
+      }
+    }
+  },
+  "order": [
+    "vl_header",
+    "vl_editorial_hero",
+    "vl_intro_text",
+    "vl_problem_section",
+    "vl_korean_insight",
+    "vl_product_intro",
+    "vl_before_after",
+    "vl_benefits_list",
+    "vl_cta_1",
+    "vl_pull_quote",
+    "vl_quote_text",
+    "vl_feature_table",
+    "vl_icon_grid",
+    "vl_selling_out",
+    "vl_final_cta",
+    "vl_sticky_cta"
+  ]
+}

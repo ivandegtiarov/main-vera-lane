@@ -1,0 +1,398 @@
+{%- comment -%} ── PF - PRODUCT OFFER ── {%- endcomment -%}
+<section class="pf-product-offer" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--pf-offer-bg: {{ section.settings.bg_color }};">
+  <div class="pf-product-offer__container">
+    <div class="pf-product-offer__card">
+      {%- if section.settings.badge != blank -%}
+        <span class="pf-product-offer__badge" style="--badge-bg: {{ section.settings.badge_bg_color }}; --badge-text: {{ section.settings.badge_text_color }};">{{ section.settings.badge }}</span>
+      {%- endif -%}
+
+      <h2 class="pf-product-offer__title">{{ section.settings.product_name }}</h2>
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="pf-product-offer__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.image != blank -%}
+        <figure class="pf-product-offer__figure">
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image.alt | default: section.settings.product_name | escape }}"
+            class="pf-product-offer__image"
+            loading="lazy"
+            style="max-width: var(--pf-offer-image-width, 100%);"
+          >
+        </figure>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <div class="pf-product-offer__desc">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      {%- assign trust_blocks = section.blocks | where: 'type', 'trust_point' -%}
+      {%- if trust_blocks.size > 0 -%}
+        <ul class="pf-product-offer__trust">
+          {%- for block in trust_blocks -%}
+            <li class="pf-product-offer__trust-item" {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.show_pricing -%}
+        <div class="pf-product-offer__pricing">
+          {%- if section.settings.compare_price != blank -%}
+            <span class="pf-product-offer__compare-price">{{ section.settings.compare_price }}</span>
+          {%- endif -%}
+          <span class="pf-product-offer__price">{{ section.settings.price }}</span>
+          {%- if section.settings.savings != blank -%}
+            <span class="pf-product-offer__savings">{{ section.settings.savings }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_text != blank -%}
+        {%- liquid
+          if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+            assign cta_href = '#' | append: section.settings.cta_anchor
+          else
+            assign cta_href = section.settings.cta_url
+          endif
+        -%}
+        <a href="{{ cta_href }}" class="pf-product-offer__cta" style="--cta-bg: {{ section.settings.cta_bg }}; --cta-text: {{ section.settings.cta_text_color }};">
+          {{ section.settings.cta_text }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.guarantee != blank -%}
+        <p class="pf-product-offer__guarantee">{{ section.settings.guarantee }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.pf-product-offer {
+  background: var(--pf-offer-bg, #2A2A2A);
+  padding: 4rem 1.5rem;
+}
+
+.pf-product-offer__container {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.pf-product-offer__card {
+  background: #FAF9F6;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid #E8E6E3;
+}
+
+.pf-product-offer__badge {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--badge-text, #fff);
+  background: var(--badge-bg, #C9A67A);
+  padding: 0.375rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pf-product-offer__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin: 0 0 0.5rem;
+}
+
+.pf-product-offer__subtitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 2rem;
+}
+
+.pf-product-offer__figure {
+  margin: 0 0 2rem;
+}
+
+.pf-product-offer__image {
+  display: block;
+  max-width: var(--pf-offer-image-width, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.pf-product-offer__desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.pf-product-offer__trust {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.pf-product-offer__trust-item {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pf-product-offer__trust-item::before {
+  content: '✓';
+  color: #7BA05B;
+  font-weight: 700;
+}
+
+.pf-product-offer__pricing {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.pf-product-offer__compare-price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.pf-product-offer__price {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #1A1A1A;
+}
+
+.pf-product-offer__savings {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7BA05B;
+}
+
+.pf-product-offer__cta {
+  display: block;
+  background: var(--cta-bg, #2A2A2A);
+  color: var(--cta-text, #fff);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.125rem 2rem;
+  margin-bottom: 1rem;
+  transition: opacity 200ms ease;
+}
+
+.pf-product-offer__cta:hover {
+  opacity: 0.9;
+}
+
+.pf-product-offer__guarantee {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: #888;
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Product Offer",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "offer"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text",
+      "default": "20% OFF Your First Order"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge background",
+      "default": "#C9A67A"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Allergy & Immune Chews"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 80
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pricing",
+      "label": "Show pricing",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare at price"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$29.99"
+    },
+    {
+      "type": "text",
+      "id": "savings",
+      "label": "Savings text",
+      "default": "Save 20%"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Check Availability"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg",
+      "label": "Button background",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "guarantee",
+      "label": "Guarantee text",
+      "default": "60-day money back guarantee"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_point",
+      "name": "Trust Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "100% Natural Ingredients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Product Offer",
+      "category": "t:categories.pawfy_editorial",
+      "blocks": [
+        { "type": "trust_point", "settings": { "text": "100% Natural Ingredients" } },
+        { "type": "trust_point", "settings": { "text": "60-day money back guarantee" } },
+        { "type": "trust_point", "settings": { "text": "Free shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

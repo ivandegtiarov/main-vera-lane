@@ -1,0 +1,197 @@
+<style>
+  .lumen-banner-{{ section.id }} {
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-left: 8px;
+    padding-right: 8px;
+    gap: 8px;
+  }
+
+  /* Fade-in animation */
+  .lumen-banner--animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .lumen-banner--animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lumen-banner-{{ section.id }} .lumen-banner__text {
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    white-space: nowrap;
+    font-size: {{ section.settings.font_size_desktop }}px;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 768px) {
+    .lumen-banner-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .lumen-banner-{{ section.id }} .lumen-banner__text {
+      font-size: {{ section.settings.font_size_mobile }}px;
+    }
+  }
+</style>
+
+<section class="lumen-banner lumen-banner-{{ section.id }}{% if section.settings.enable_animation %} lumen-banner--animate{% endif %}">
+  <span class="lumen-banner__text">
+    {{ section.settings.text }}
+  </span>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionEl = document.querySelector('.lumen-banner-{{ section.id }}.lumen-banner--animate');
+    if (!sectionEl) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            sectionEl.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      observer.observe(sectionEl);
+    } else {
+      sectionEl.classList.add('is-visible');
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Lumen Banner",
+  "class": "lumen-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Banner text",
+      "default": "NEW YEAR SALE: 20% OFF WITH CODE NEW20"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#7A0036"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (desktop)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom (desktop)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (desktop)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom (mobile)",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,137 @@
+{%- comment -%} ── BL - CUSTOMER QUOTE ── {%- endcomment -%}
+<div class="bl-customer-quote" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--quote-bg: {{ section.settings.bg_color }};">
+  <div class="bl-customer-quote__container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="bl-customer-quote__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    <blockquote class="bl-customer-quote__text">
+      "{{ section.settings.quote }}"
+    </blockquote>
+
+    {%- if section.settings.author != blank -%}
+      <footer class="bl-customer-quote__footer">
+        <cite class="bl-customer-quote__author">{{ section.settings.author }}</cite>
+        {%- if section.settings.verified -%}
+          <span class="bl-customer-quote__verified">Verified Customer</span>
+        {%- endif -%}
+      </footer>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-customer-quote {
+  background: var(--quote-bg, #FAF9F7);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-block: 1px solid #E8E6E3;
+}
+
+.bl-customer-quote__container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.bl-customer-quote__eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+  margin: 0 0 1.5rem;
+}
+
+.bl-customer-quote__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #2D2D2D;
+  margin: 0 0 1.75rem;
+  quotes: none;
+}
+
+.bl-customer-quote__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bl-customer-quote__author {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 0.02em;
+}
+
+.bl-customer-quote__verified {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+  padding: 0.3125rem 0.625rem;
+  border: 1px solid #ddd;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Customer Quote",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'testimonial')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "WHAT CUSTOMERS ARE SAYING"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "This foundation has genuinely transformed my makeup routine. It looks natural, feels lightweight, and doesn't settle into any lines. I've finally found my perfect match."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author name",
+      "default": "Margaret S."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified",
+      "label": "Show verified badge",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Customer Quote",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

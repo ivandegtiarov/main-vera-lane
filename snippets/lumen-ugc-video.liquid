@@ -1,0 +1,417 @@
+{%- liquid
+  assign mode = mode | default: 'slider'
+  assign section_id = section.id | default: section_id
+  assign ugc_blocks = ugc_blocks | default: section.blocks | where: 'type', 'ugc_video'
+-%}
+
+{%- if mode == 'css' -%}
+  /* UGC (Video Slider) */
+  .lumen-ugc {
+    width: 100%;
+    padding: 22px 0 0;
+  }
+
+  .lumen-ugc__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .lumen-ugc__slider {
+    position: relative;
+    width: 100%;
+  }
+
+  .lumen-ugc__swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .lumen-ugc__slide {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #EDEDED;
+    position: relative;
+    aspect-ratio: 9 / 16;
+  }
+
+  .lumen-ugc__slide-button {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    position: relative;
+  }
+
+  .lumen-ugc__slide-button:focus-visible {
+    outline: 2px solid #7A0036;
+    outline-offset: 4px;
+  }
+
+  .lumen-ugc__thumb,
+  .lumen-ugc__slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #EDEDED;
+  }
+
+  .lumen-ugc__play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: transform 0.18s ease, background-color 0.18s ease;
+  }
+
+  .lumen-ugc__play svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 2px;
+    transition: transform 0.18s ease;
+  }
+
+  .lumen-ugc__slide-button:hover .lumen-ugc__play {
+    background: rgba(255, 255, 255, 0.92);
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  .lumen-ugc__slide-button:hover .lumen-ugc__play svg {
+    transform: scale(1.08);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lumen-ugc__play,
+    .lumen-ugc__play svg {
+      transition: none;
+    }
+  }
+
+  .lumen-ugc__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    user-select: none;
+  }
+
+  .lumen-ugc__nav svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .lumen-ugc__nav--prev {
+    left: 10px;
+  }
+
+  .lumen-ugc__nav--next {
+    right: 10px;
+  }
+
+  .lumen-ugc:hover .lumen-ugc__nav {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .lumen-ugc__nav.is-disabled {
+    opacity: 0.25 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* UGC Modal */
+  .lumen-ugc-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+  }
+
+  .lumen-ugc-modal.is-open {
+    display: block;
+  }
+
+  .lumen-ugc-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .lumen-ugc-modal__dialog {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .lumen-ugc-modal__panel {
+    width: min(520px, 100%);
+    border-radius: 18px;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    max-height: calc(100vh - 48px);
+  }
+
+  .lumen-ugc-modal__video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: calc(100vh - 48px);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  .lumen-ugc-modal__video video {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lumen-ugc-modal__progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.22);
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .lumen-ugc-modal__progress-fill {
+    height: 100%;
+    width: 0%;
+    background: rgba(255, 255, 255, 0.9);
+    transform-origin: left center;
+  }
+
+  .lumen-ugc-modal__pause-indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .lumen-ugc-modal__pause-indicator svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .lumen-ugc-modal.is-paused .lumen-ugc-modal__pause-indicator {
+    opacity: 1;
+  }
+
+  .lumen-ugc-modal__controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 3;
+    pointer-events: auto;
+  }
+
+  .lumen-ugc-modal__icon-btn {
+    pointer-events: auto;
+    appearance: none;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 4;
+    touch-action: manipulation;
+  }
+
+  .lumen-ugc-modal__icon-btn:focus-visible {
+    outline: 2px solid #7A0036;
+    outline-offset: 2px;
+  }
+
+  .lumen-ugc-modal__icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .lumen-ugc-modal__icon-btn[data-lumen-ugc-sound] .lumen-ugc-icon--muted {
+    display: none;
+  }
+
+  .lumen-ugc-modal__icon-btn[data-lumen-ugc-sound].is-muted .lumen-ugc-icon--unmuted {
+    display: none;
+  }
+
+  .lumen-ugc-modal__icon-btn[data-lumen-ugc-sound].is-muted .lumen-ugc-icon--muted {
+    display: block;
+  }
+
+{%- elsif mode == 'slider' -%}
+  {%- if section.settings.show_ugc and ugc_blocks.size > 0 -%}
+    <div class="lumen-ugc" data-lumen-ugc data-lumen-ugc-section-id="{{ section_id }}">
+      {%- if section.settings.ugc_heading != blank -%}
+        <h2 class="lumen-ugc__heading">{{ section.settings.ugc_heading }}</h2>
+      {%- endif -%}
+
+      <div class="lumen-ugc__slider">
+        <button type="button" class="lumen-ugc__nav lumen-ugc__nav--prev" aria-label="Previous" data-lumen-ugc-prev>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M12.5 4.5L7 10l5.5 5.5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button type="button" class="lumen-ugc__nav lumen-ugc__nav--next" aria-label="Next" data-lumen-ugc-next>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="swiper lumen-ugc__swiper" data-lumen-ugc-swiper>
+          <div class="swiper-wrapper">
+            {%- for block in ugc_blocks -%}
+              <div class="swiper-slide">
+                <div class="lumen-ugc__slide" {{ block.shopify_attributes }}>
+                  <button
+                    type="button"
+                    class="lumen-ugc__slide-button"
+                    data-lumen-ugc-open
+                    data-lumen-ugc-block-id="{{ block.id }}"
+                    data-lumen-ugc-section-id="{{ section_id }}"
+                    aria-label="Play video"
+                  >
+                    {%- if block.settings.video != blank -%}
+                      {{ block.settings.video | video_tag: class: 'lumen-ugc__thumb', image_size: '900x', playsinline: true, muted: true, controls: false, autoplay: false, loop: true }}
+                    {%- endif -%}
+                    <span class="lumen-ugc__play" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M9 7v10l8-5-8-5z" fill="#000"/>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+{%- elsif mode == 'modal' -%}
+  {%- if section.settings.show_ugc and ugc_blocks.size > 0 -%}
+    <div
+      class="lumen-ugc-modal"
+      data-lumen-ugc-modal
+      data-lumen-ugc-section-id="{{ section_id }}"
+      data-lumen-ugc-close-on-outside="{{ section.settings.ugc_close_on_outside | default: true }}"
+      data-lumen-ugc-pause-on-click="{{ section.settings.ugc_pause_on_click | default: true }}"
+      aria-hidden="true"
+    >
+      <div class="lumen-ugc-modal__backdrop" data-lumen-ugc-backdrop></div>
+      <div class="lumen-ugc-modal__dialog" role="dialog" aria-modal="true" aria-label="Video">
+        <div class="lumen-ugc-modal__panel">
+          <div class="lumen-ugc-modal__controls">
+            <button type="button" class="lumen-ugc-modal__icon-btn" data-lumen-ugc-sound aria-label="Toggle sound">
+              <svg class="lumen-ugc-icon--unmuted" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M11 5L6.5 9H3v6h3.5L11 19V5z" fill="#000"/>
+                <path d="M15.5 8.5c1 .9 1.5 2.1 1.5 3.5s-.5 2.6-1.5 3.5" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17.5 6.5c1.8 1.6 2.7 3.4 2.7 5.5s-.9 3.9-2.7 5.5" stroke="#000" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+              </svg>
+              <svg class="lumen-ugc-icon--muted" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M11 5L6.5 9H3v6h3.5L11 19V5z" fill="#000"/>
+                <path d="M16 9l5 6" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                <path d="M21 9l-5 6" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button type="button" class="lumen-ugc-modal__icon-btn" data-lumen-ugc-close aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="lumen-ugc-modal__video" data-lumen-ugc-video></div>
+          <div class="lumen-ugc-modal__progress" aria-hidden="true">
+            <div class="lumen-ugc-modal__progress-fill" data-lumen-ugc-progress-fill></div>
+          </div>
+          <div class="lumen-ugc-modal__pause-indicator" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 6h3v12H7V6zm7 0h3v12h-3V6z" fill="#000"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Hidden templates for modal playback (with sound) {%- endcomment -%}
+      {%- for block in ugc_blocks -%}
+        {%- if block.settings.video != blank -%}
+          <template data-lumen-ugc-template="{{ block.id }}" data-lumen-ugc-section-id="{{ section_id }}">
+            {{ block.settings.video | video_tag: class: 'lumen-ugc-modal__video-el', image_size: '1200x', playsinline: true, muted: false, controls: false, autoplay: true, loop: true }}
+          </template>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+

@@ -1,0 +1,301 @@
+{%- comment -%}
+  Cart Drawer Upsell
+  - Configured via theme settings (max 3 products)
+  - Renders: image, title, price, Add to cart button
+
+  Optional render params (used for Empty Cart Upsell, etc):
+  - enabled: boolean
+  - heading: string
+  - product_1/product_2/product_3: product object or handle string
+{%- endcomment -%}
+
+{%- liquid
+  assign upsell_enabled = settings.cart_upsell_enabled | default: false
+  if enabled != nil
+    assign upsell_enabled = enabled
+  endif
+
+  assign upsell_heading = settings.cart_upsell_heading | default: 'A perfect match with:' | strip
+  if heading != nil
+    assign upsell_heading = heading | default: '' | strip
+  endif
+
+  assign p1_ref = settings.cart_upsell_product_1
+  assign p2_ref = settings.cart_upsell_product_2
+  assign p3_ref = settings.cart_upsell_product_3
+
+  if product_1 != nil
+    assign p1_ref = product_1
+  endif
+  if product_2 != nil
+    assign p2_ref = product_2
+  endif
+  if product_3 != nil
+    assign p3_ref = product_3
+  endif
+
+  comment
+    Theme settings of type "product" can be exposed as:
+    - a product object (preferred)
+    - a handle string (common in settings_data.json)
+    We resolve each slot to a product object when possible.
+  endcomment
+
+  assign p1 = p1_ref
+  assign p2 = p2_ref
+  assign p3 = p3_ref
+
+  if p1 != blank and p1.title == blank
+    assign p1_handle = p1_ref.handle | default: p1_ref | handleize
+    assign p1 = all_products[p1_handle]
+  endif
+  if p2 != blank and p2.title == blank
+    assign p2_handle = p2_ref.handle | default: p2_ref | handleize
+    assign p2 = all_products[p2_handle]
+  endif
+  if p3 != blank and p3.title == blank
+    assign p3_handle = p3_ref.handle | default: p3_ref | handleize
+    assign p3 = all_products[p3_handle]
+  endif
+
+  assign resolved_any = false
+  if p1 != blank or p2 != blank or p3 != blank
+    assign resolved_any = true
+  endif
+
+  comment
+    Liquid doesn't allow applying filters (like `| json`) directly to comparison expressions.
+    Precompute booleans for debug output.
+  endcomment
+  assign p1_resolved_bool = false
+  assign p2_resolved_bool = false
+  assign p3_resolved_bool = false
+  if p1 != blank
+    assign p1_resolved_bool = true
+  endif
+  if p2 != blank
+    assign p2_resolved_bool = true
+  endif
+  if p3 != blank
+    assign p3_resolved_bool = true
+  endif
+
+  comment
+    Hide upsell items that are already present in the cart.
+    We compare by product.id (any variant in cart hides the upsell product).
+  endcomment
+  assign p1_in_cart = false
+  assign p2_in_cart = false
+  assign p3_in_cart = false
+
+  if cart != blank and cart.items != blank and resolved_any
+    for line_item in cart.items
+      if p1 != blank and p1_in_cart == false and line_item.product_id == p1.id
+        assign p1_in_cart = true
+      endif
+      if p2 != blank and p2_in_cart == false and line_item.product_id == p2.id
+        assign p2_in_cart = true
+      endif
+      if p3 != blank and p3_in_cart == false and line_item.product_id == p3.id
+        assign p3_in_cart = true
+      endif
+
+      if p1_in_cart and p2_in_cart and p3_in_cart
+        break
+      endif
+    endfor
+  endif
+
+  assign visible_any = false
+  if p1 != blank and p1_in_cart == false
+    assign visible_any = true
+  endif
+  if p2 != blank and p2_in_cart == false
+    assign visible_any = true
+  endif
+  if p3 != blank and p3_in_cart == false
+    assign visible_any = true
+  endif
+-%}
+
+{%- comment -%}
+  Debug note:
+  This snippet intentionally outputs NOTHING unless:
+  - `settings.cart_upsell_enabled` is true AND
+  - at least one of the configured products resolves to a valid product object.
+
+  If theme settings_data.json contains a handle string, we resolve via `all_products[handle]`.
+  If that lookup fails, `resolved_any` stays false and the upsell will not exist in the DOM.
+{%- endcomment -%}
+
+{% if upsell_enabled and resolved_any == false %}
+  {% if p1_ref != blank or p2_ref != blank or p3_ref != blank %}
+    <!-- cart-upsell-snippet-debug: enabled=true but no products resolved
+      p1_ref={{ p1_ref | json }} p1_title={{ p1_ref.title | default: '' | json }} p1_handle={{ p1_handle | default: '' | json }} p1_resolved={{ p1_resolved_bool | json }}
+      p2_ref={{ p2_ref | json }} p2_title={{ p2_ref.title | default: '' | json }} p2_handle={{ p2_handle | default: '' | json }} p2_resolved={{ p2_resolved_bool | json }}
+      p3_ref={{ p3_ref | json }} p3_title={{ p3_ref.title | default: '' | json }} p3_handle={{ p3_handle | default: '' | json }} p3_resolved={{ p3_resolved_bool | json }}
+    -->
+  {% endif %}
+{% endif %}
+
+{% if upsell_enabled and visible_any %}
+  <div class="cart-upsell" data-cart-upsell>
+    {% if upsell_heading != blank %}
+      <div class="cart-upsell__heading">{{ upsell_heading }}</div>
+    {% endif %}
+
+    <div class="cart-upsell__list">
+      {%- comment -%} Slot 1 {%- endcomment -%}
+      {% if p1 != blank and p1_in_cart == false %}
+        {%- assign v1 = p1.selected_or_first_available_variant -%}
+        {%- if v1 == nil and p1.variants.size > 0 -%}{%- assign v1 = p1.variants.first -%}{%- endif -%}
+        {% if v1 %}
+          <div class="cart-upsell__item" data-cart-upsell-item>
+            <a class="cart-upsell__image-link" href="{{ p1.url }}" aria-label="{{ p1.title | escape }}">
+              {% if p1.featured_image %}
+                <img class="cart-upsell__image" src="{{ p1.featured_image | image_url: width: 160 }}" alt="{{ p1.featured_image.alt | default: p1.title | escape }}" loading="lazy" width="56" height="56">
+              {% endif %}
+            </a>
+            <div class="cart-upsell__meta">
+              <a class="cart-upsell__title" href="{{ p1.url }}">{{ p1.title }}</a>
+              <div class="cart-upsell__price">{{ v1.price | money }}</div>
+            </div>
+            <button type="button" class="button cart-upsell__atc" data-cart-upsell-add data-variant-id="{{ v1.id }}" {% unless v1.available %}disabled{% endunless %}>
+              {% if v1.available %}Add to cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {%- comment -%} Slot 2 {%- endcomment -%}
+      {% if p2 != blank and p2_in_cart == false %}
+        {%- assign v2 = p2.selected_or_first_available_variant -%}
+        {%- if v2 == nil and p2.variants.size > 0 -%}{%- assign v2 = p2.variants.first -%}{%- endif -%}
+        {% if v2 %}
+          <div class="cart-upsell__item" data-cart-upsell-item>
+            <a class="cart-upsell__image-link" href="{{ p2.url }}" aria-label="{{ p2.title | escape }}">
+              {% if p2.featured_image %}
+                <img class="cart-upsell__image" src="{{ p2.featured_image | image_url: width: 160 }}" alt="{{ p2.featured_image.alt | default: p2.title | escape }}" loading="lazy" width="56" height="56">
+              {% endif %}
+            </a>
+            <div class="cart-upsell__meta">
+              <a class="cart-upsell__title" href="{{ p2.url }}">{{ p2.title }}</a>
+              <div class="cart-upsell__price">{{ v2.price | money }}</div>
+            </div>
+            <button type="button" class="button cart-upsell__atc" data-cart-upsell-add data-variant-id="{{ v2.id }}" {% unless v2.available %}disabled{% endunless %}>
+              {% if v2.available %}Add to cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {%- comment -%} Slot 3 {%- endcomment -%}
+      {% if p3 != blank and p3_in_cart == false %}
+        {%- assign v3 = p3.selected_or_first_available_variant -%}
+        {%- if v3 == nil and p3.variants.size > 0 -%}{%- assign v3 = p3.variants.first -%}{%- endif -%}
+        {% if v3 %}
+          <div class="cart-upsell__item" data-cart-upsell-item>
+            <a class="cart-upsell__image-link" href="{{ p3.url }}" aria-label="{{ p3.title | escape }}">
+              {% if p3.featured_image %}
+                <img class="cart-upsell__image" src="{{ p3.featured_image | image_url: width: 160 }}" alt="{{ p3.featured_image.alt | default: p3.title | escape }}" loading="lazy" width="56" height="56">
+              {% endif %}
+            </a>
+            <div class="cart-upsell__meta">
+              <a class="cart-upsell__title" href="{{ p3.url }}">{{ p3.title }}</a>
+              <div class="cart-upsell__price">{{ v3.price | money }}</div>
+            </div>
+            <button type="button" class="button cart-upsell__atc" data-cart-upsell-add data-variant-id="{{ v3.id }}" {% unless v3.available %}disabled{% endunless %}>
+              {% if v3.available %}Add to cart{% else %}Sold out{% endif %}
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .cart-upsell {
+    border-top: 1px solid #E1DCD8;
+    padding: 14px 16px 6px;
+  }
+
+  .cart-upsell__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  .cart-upsell__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart-upsell__item {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .cart-upsell__image {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .cart-upsell__meta {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+  }
+
+  .cart-upsell__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.25;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cart-upsell__price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000;
+  }
+
+  .cart-upsell__atc.button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #7A0036;
+    border: 1px solid #7A0036;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .cart-upsell__atc.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+{% endstylesheet %}
+

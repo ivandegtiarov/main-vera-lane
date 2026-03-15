@@ -1,0 +1,658 @@
+{%- doc -%}
+  Renders the cart drawer, a slide-out panel that displays the contents of the cart. It includes the cart icon that acts as a trigger.
+
+  @param {object} [settings] - An object containing theme settings.
+
+  @param {boolean} [settings.auto_open_cart_drawer] - If `true`, the cart drawer opens automatically after an item is
+  added.
+  @param {string} [settings.drawer_color_scheme] - The color scheme for the drawer.
+{%- enddoc -%}
+
+<script
+  src="{{ 'cart-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<cart-drawer-component
+  class="cart-drawer"
+  {{ block.shopify_attributes }}
+  {% if settings.auto_open_cart_drawer %}
+    auto-open
+  {% endif %}
+>
+  <button
+    class="button header-actions__action button-unstyled"
+    on:click="/open"
+    aria-label="{{ 'accessibility.open_cart_drawer' | t }} {{ 'accessibility.cart_count' | t}}: {{ cart.item_count }}"
+  >
+    {% render 'cart-icon-component' %}
+  </button>
+
+  <dialog
+    ref="dialog"
+    class="cart-drawer__dialog dialog-modal dialog-drawer color-{{ settings.drawer_color_scheme }}{% if cart.empty? %} cart-drawer--empty{%endif%}"
+    scroll-lock
+  >
+    <div class="cart-drawer__inner">
+      <div class="cart-drawer__loading" aria-hidden="true">
+        <div class="cart-drawer__loading-spinner"></div>
+      </div>
+      <cart-items-component
+        class="cart-items-component"
+        data-section-id="{{ section.id }}"
+      >
+        {%- if cart.empty? -%}
+          <div class="cart-drawer__header">
+            <button
+              ref="closeButton"
+              on:click="cart-drawer-component/close"
+              class="button close-button cart-drawer__close-button button-unstyled"
+              aria-label="{{ 'actions.close_dialog' | t }}"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-close.svg' | inline_asset_content -}}
+              </span>
+            </button>
+          </div>
+
+          <div
+            class="cart-drawer__content motion-reduce"
+            aria-label="{{ 'accessibility.cart' | t }}"
+          >
+            <div class="cart-drawer__empty-main">
+              <span class="cart-drawer__heading h3 cart-drawer__heading--empty">
+                {{ 'content.your_cart_is_empty' | t }}
+              </span>
+
+              <div class="cart-drawer__items">
+                {% render 'cart-products' %}
+              </div>
+            </div>
+
+            {% if settings.empty_cart_upsell_enabled %}
+              <div class="cart-drawer__empty-upsell">
+                {% render 'empty-cart-upsells',
+                  enabled: settings.empty_cart_upsell_enabled,
+                  heading: settings.empty_cart_upsell_heading,
+                  product_1: settings.empty_cart_upsell_product_1,
+                  product_2: settings.empty_cart_upsell_product_2,
+                  product_3: settings.empty_cart_upsell_product_3
+                %}
+              </div>
+            {% endif %}
+          </div>
+        {%- else -%}
+          <div
+            class="cart-drawer__header"
+            id="cart-drawer-header"
+          >
+            <span class="cart-drawer__heading h3">
+              {% comment %} {{ 'content.cart_title' | t }} {% endcomment %}
+               Shipping Cart
+              {% comment %} {% render 'cart-bubble' %} {% endcomment %}
+            </span>
+
+            <button
+              ref="closeButton"
+              on:click="cart-drawer-component/close"
+              class="button close-button cart-drawer__close-button button-unstyled"
+              aria-label="{{ 'actions.close_dialog' | t }}"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-close.svg' | inline_asset_content -}}
+              </span>
+            </button>
+          </div>
+
+          <div
+            class="cart-drawer__content motion-reduce"
+            aria-label="{{ 'accessibility.cart' | t }}"
+            style="--header-height: 60px;"
+          >
+              <scroll-hint
+              class="cart-drawer__items"
+            >
+              {%- comment -%} Rewards Progress Section {%- endcomment -%}
+              <div
+                class="cart-drawer__rewards"
+                style="--cart-goal-text-padding-mobile: {{ settings.cart_goal_text_padding_mobile | default: 0 }}px; --cart-goal-text-padding-desktop: {{ settings.cart_goal_text_padding_desktop | default: 0 }}px;"
+              >
+              {% liquid
+                  comment
+                    Cart goals thresholds are stored in theme settings
+                    as dollar amounts (e.g. "30"). Convert them to cents
+                    so they can be compared directly to cart.total_price,
+                    which is also in cents.
+                  endcomment
+
+                  assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 30 | times: 100
+                  assign free_bag_threshold = settings.cart_goal_2_threshold | default: 45 | times: 100
+                  assign free_mascara_threshold = settings.cart_goal_3_threshold | default: 60 | times: 100
+
+                  assign cart_total_cents = cart.total_price
+                  
+                  assign shipping_progress = cart_total_cents | times: 100 | divided_by: free_shipping_threshold
+                  if shipping_progress > 100
+                    assign shipping_progress = 100
+                  endif
+                  
+                  assign bag_progress = cart_total_cents | times: 100 | divided_by: free_bag_threshold
+                  if bag_progress > 100
+                    assign bag_progress = 100
+                  endif
+                  
+                  assign mascara_progress = cart_total_cents | times: 100 | divided_by: free_mascara_threshold
+                  if mascara_progress > 100
+                    assign mascara_progress = 100
+                  endif
+
+                  comment
+                    Determine if any cart items should disable specific goals
+                    based on a line-item property `bundle_id` matching a
+                    value configured in theme settings (for example `vera_bundle`).
+                  endcomment
+
+                  assign goal_1_exclude_value = settings.cart_goal_1_exclude_property_value | default: '' | strip
+                  assign goal_2_exclude_value = settings.cart_goal_2_exclude_property_value | default: '' | strip
+                  assign goal_3_exclude_value = settings.cart_goal_3_exclude_property_value | default: '' | strip
+
+                  assign cart_has_goal_1_excluded_item = false
+                  assign cart_has_goal_2_excluded_item = false
+                  assign cart_has_goal_3_excluded_item = false
+
+                  if goal_1_exclude_value != '' or goal_2_exclude_value != '' or goal_3_exclude_value != ''
+                    for line_item in cart.items
+                      if goal_1_exclude_value != '' and cart_has_goal_1_excluded_item == false
+                        for property in line_item.properties
+                          if property.first == 'bundle_id' and property.last == goal_1_exclude_value
+                            assign cart_has_goal_1_excluded_item = true
+                            break
+                          endif
+                        endfor
+                      endif
+
+                      if goal_2_exclude_value != '' and cart_has_goal_2_excluded_item == false
+                        for property in line_item.properties
+                          if property.first == 'bundle_id' and property.last == goal_2_exclude_value
+                            assign cart_has_goal_2_excluded_item = true
+                            break
+                          endif
+                        endfor
+                      endif
+
+                      if goal_3_exclude_value != '' and cart_has_goal_3_excluded_item == false
+                        for property in line_item.properties
+                          if property.first == 'bundle_id' and property.last == goal_3_exclude_value
+                            assign cart_has_goal_3_excluded_item = true
+                            break
+                          endif
+                        endfor
+                      endif
+
+                      if cart_has_goal_1_excluded_item and cart_has_goal_2_excluded_item and cart_has_goal_3_excluded_item
+                        break
+                      endif
+                    endfor
+                  endif
+
+                  comment
+                    Always exclude goal_2 (Free Travel Bag/Free makeup bag) when cart has vera2_bundle items
+                  endcomment
+                  if cart_has_goal_2_excluded_item == false
+                    for line_item in cart.items
+                      for property in line_item.properties
+                        if property.first == 'bundle_id' and property.last == 'vera2_bundle'
+                          assign cart_has_goal_2_excluded_item = true
+                          break
+                        endif
+                      endfor
+                      if cart_has_goal_2_excluded_item
+                        break
+                      endif
+                    endfor
+                  endif
+
+                  assign goal_1_effective_enabled = settings.cart_goal_1_enabled
+                  assign goal_2_effective_enabled = settings.cart_goal_2_enabled
+                  assign goal_3_effective_enabled = settings.cart_goal_3_enabled
+
+                  assign goal_1_reward_text = settings.cart_goal_1_text | default: 'Free Shipping <strong class="cart-drawer__reward-amount">$30</strong>'
+                  assign goal_2_reward_text = settings.cart_goal_2_text | default: 'Free Travel Bag <strong class="cart-drawer__reward-amount">$45</strong>'
+                  assign goal_3_reward_text = settings.cart_goal_3_text | default: 'Free Mini Mascara <strong class="cart-drawer__reward-amount">$60</strong>'
+
+                  if cart_has_goal_1_excluded_item and goal_1_effective_enabled
+                    assign goal_1_effective_enabled = false
+                  endif
+
+                  if cart_has_goal_2_excluded_item and goal_2_effective_enabled
+                    assign goal_2_effective_enabled = false
+                  endif
+
+                  if cart_has_goal_3_excluded_item and goal_3_effective_enabled
+                    assign goal_3_effective_enabled = false
+                  endif
+                %}
+
+                {% if goal_1_effective_enabled %}
+                  <div class="cart-drawer__reward-item">
+                    <svg class="cart-drawer__reward-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M23.667 10.418L22.658 7.394C22.18 5.962 20.846 5 19.338 5H16.95C16.698 2.756 14.811 1 12.501 1H4.5C2.445 1 0.653 2.388 0.142 4.375C0.074 4.643 0.234 4.915 0.501 4.984C0.772 5.052 1.041 4.891 1.11 4.625C1.507 3.079 2.902 2 4.5 2H12.5C14.43 2 16 3.57 16 5.5V18H3.5C2.121 18 1 16.879 1 15.5C1 15.224 0.776 15 0.5 15C0.224 15 0 15.224 0 15.5C0 16.891 0.822 18.085 2 18.649V20C2 21.654 3.346 23 5 23C6.654 23 8 21.654 8 20V19H16V20C16 21.654 17.346 23 19 23C20.654 23 22 21.654 22 20V18.649C23.178 18.085 24 16.891 24 15.5V12.474C24 11.774 23.888 11.081 23.667 10.418ZM21.709 7.71L22.718 10.734C22.747 10.821 22.759 10.912 22.783 11H17V6H19.338C20.416 6 21.368 6.688 21.709 7.71ZM7 20C7 21.103 6.103 22 5 22C3.897 22 3 21.103 3 20V18.949C3.165 18.973 3.329 19 3.5 19H7V20ZM21 20C21 21.103 20.103 22 19 22C17.897 22 17 21.103 17 20V19H20.5C20.671 19 20.835 18.973 21 18.949V20ZM23 15.5C23 16.879 21.879 18 20.5 18H17V12H22.962C22.976 12.158 23 12.314 23 12.474V15.5ZM9 8V9.5H10C10.276 9.5 10.5 9.724 10.5 10C10.5 10.276 10.276 10.5 10 10.5H9V12H10C10.276 12 10.5 12.224 10.5 12.5C10.5 12.776 10.276 13 10 13H9C8.448 13 8 12.552 8 12V8C8 7.448 8.448 7 9 7H10C10.276 7 10.5 7.224 10.5 7.5C10.5 7.776 10.276 8 10 8H9ZM12.5 8V9.5H13.5C13.776 9.5 14 9.724 14 10C14 10.276 13.776 10.5 13.5 10.5H12.5V12H13.5C13.776 12 14 12.224 14 12.5C14 12.776 13.776 13 13.5 13H12.5C11.948 13 11.5 12.552 11.5 12V8C11.5 7.448 11.948 7 12.5 7H13.5C13.776 7 14 7.224 14 7.5C14 7.776 13.776 8 13.5 8H12.5ZM7 9C7 7.916 6.104 7 5.042 7H4.5C3.948 7 3.5 7.448 3.5 8V12.5C3.5 12.776 3.724 13 4 13C4.276 13 4.5 12.776 4.5 12.5V11H5.042C5.155 11 5.265 10.985 5.373 10.965L6.033 12.68C6.109 12.878 6.299 13 6.5 13C6.56 13 6.62 12.989 6.68 12.967C6.938 12.867 7.066 12.578 6.967 12.321L6.277 10.528C6.712 10.158 7 9.609 7 9.001V9ZM4.5 10V8H5.042C5.562 8 6 8.458 6 9C6 9.542 5.562 10 5.042 10H4.5ZM0 12.5V8C0 7.448 0.448 7 1 7H2C2.276 7 2.5 7.224 2.5 7.5C2.5 7.776 2.276 8 2 8H1V9.5H2C2.276 9.5 2.5 9.724 2.5 10C2.5 10.276 2.276 10.5 2 10.5H1V12.5C1 12.776 0.776 13 0.5 13C0.224 13 0 12.776 0 12.5Z" fill="#7A0036"/>
+                    </svg>
+                    <div class="cart-drawer__reward-content">
+                      <span class="cart-drawer__reward-text">{{ goal_1_reward_text | raw }}</span>
+                    </div>
+                    <div class="cart-drawer__reward-progress">
+                      <div class="cart-drawer__reward-progress-bar" style="width: {{ shipping_progress }}%;"></div>
+                    </div>
+                  </div>
+                {% endif %}
+
+                {% if goal_2_effective_enabled %}
+                  <div class="cart-drawer__reward-item">
+                    <svg class="cart-drawer__reward-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <g clip-path="url(#clip0_1_2081)">
+                        <path d="M23.552 9.862C23.077 9.314 22.388 9 21.663 9H21C21 4.038 16.962 0 12 0C7.038 0 3 4.038 3 9H2.5C1.774 9 1.086 9.314 0.611001 9.862C0.136001 10.41 -0.0769989 11.136 0.0250011 11.854L1.208 20.137C1.523 22.34 3.438 24 5.663 24H18.499C20.724 24 22.639 22.339 22.954 20.137L24.137 11.854C24.24 11.136 24.027 10.41 23.552 9.862ZM12 1C16.411 1 20 4.589 20 9H4C4 4.589 7.589 1 12 1ZM23.148 11.712L21.965 19.995C21.72 21.708 20.231 23 18.5 23H5.664C3.934 23 2.444 21.708 2.199 19.995L1.016 11.712C0.954001 11.281 1.082 10.846 1.368 10.518C1.653 10.189 2.066 10 2.501 10H21.663C22.098 10 22.511 10.188 22.796 10.517C23.081 10.846 23.21 11.281 23.148 11.712ZM16 16C16 16.276 15.776 16.5 15.5 16.5H8.5C8.224 16.5 8 16.276 8 16C8 15.724 8.224 15.5 8.5 15.5H15.5C15.776 15.5 16 15.724 16 16Z" fill="#7A0036"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_1_2081">
+                          <rect width="24" height="24" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <div class="cart-drawer__reward-content">
+                      <span class="cart-drawer__reward-text">{{ goal_2_reward_text | raw }}</span>
+                    </div>
+                    <div class="cart-drawer__reward-progress">
+                      <div class="cart-drawer__reward-progress-bar" style="width: {{ bag_progress }}%;"></div>
+                    </div>
+                  </div>
+                {% endif %}
+
+                {% if goal_3_effective_enabled %}
+                  <div class="cart-drawer__reward-item">
+                    <svg class="cart-drawer__reward-icon"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M22.2422 12.702L23.7442 14.937C23.8982 15.166 23.8372 15.477 23.6082 15.631C23.3822 15.784 23.0692 15.725 22.9142 15.495L21.4142 13.263C21.0492 13.465 20.6352 13.625 20.1902 13.752L20.7822 16.391C20.8432 16.661 20.6732 16.928 20.4042 16.988C20.1412 17.049 19.8662 16.881 19.8072 16.61L19.2082 13.942C18.9762 13.968 18.7502 14.001 18.4992 14.001C18.2372 14.001 17.9992 13.968 17.7582 13.939L17.1782 16.607C17.1202 16.879 16.8462 17.048 16.5832 16.99C16.3132 16.931 16.1422 16.665 16.2002 16.395L16.7762 13.745C16.3442 13.619 15.9402 13.463 15.5842 13.265L14.0852 15.496C13.9302 15.727 13.6182 15.785 13.3912 15.632C13.1622 15.478 13.1012 15.167 13.2552 14.938L14.7572 12.703C13.9602 12.068 13.4062 11.323 13.0692 10.755C12.9282 10.518 13.0072 10.211 13.2442 10.07C13.4812 9.92901 13.7872 10.007 13.9292 10.245C14.5392 11.274 15.9442 13 18.4992 13C21.0542 13 22.4582 11.274 23.0692 10.245C23.2112 10.007 23.5182 9.93001 23.7542 10.07C23.9922 10.211 24.0702 10.518 23.9292 10.755C23.5922 11.323 23.0382 12.067 22.2412 12.702H22.2422ZM10.7552 10.07C10.5182 9.93001 10.2122 10.007 10.0702 10.245C9.46019 11.274 8.05419 13 5.50019 13C2.94619 13 1.54019 11.274 0.930194 10.245C0.789194 10.007 0.481194 9.92901 0.245194 10.07C0.0071943 10.211 -0.0708057 10.518 0.0701943 10.755C0.407194 11.323 0.961194 12.068 1.75819 12.703L0.256194 14.938C0.102194 15.167 0.163194 15.478 0.392194 15.632C0.618194 15.785 0.931194 15.726 1.08619 15.496L2.58519 13.265C2.94119 13.463 3.34519 13.619 3.77719 13.745L3.20119 16.395C3.14219 16.665 3.31419 16.931 3.58419 16.99C3.84719 17.049 4.12119 16.879 4.17919 16.607L4.75919 13.939C5.00119 13.967 5.23819 14.001 5.50019 14.001C5.75019 14.001 5.97719 13.968 6.20919 13.942L6.80819 16.61C6.86719 16.882 7.14319 17.049 7.40519 16.988C7.67519 16.927 7.84419 16.66 7.78319 16.391L7.19119 13.753C7.63519 13.626 8.05019 13.467 8.41519 13.264L9.91519 15.496C10.0702 15.727 10.3822 15.785 10.6092 15.632C10.8382 15.478 10.8992 15.167 10.7452 14.938L9.24319 12.703C10.0402 12.068 10.5942 11.324 10.9312 10.756C11.0722 10.519 10.9932 10.212 10.7562 10.071L10.7552 10.07Z" fill="#7A0036"/>
+                    </svg>
+                    <div class="cart-drawer__reward-content">
+                      <span class="cart-drawer__reward-text">{{ goal_3_reward_text | raw }}</span>
+                    </div>
+                    <div class="cart-drawer__reward-progress">
+                      <div class="cart-drawer__reward-progress-bar" style="width: {{ mascara_progress }}%;"></div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+
+              {% render 'cart-goals-countdown-banner' %}
+
+              <!-- cart-upsell-debug enabled={{ settings.cart_upsell_enabled | json }}
+                p1={{ settings.cart_upsell_product_1 | json }} p1_title={{ settings.cart_upsell_product_1.title | default: '' | json }}
+                p2={{ settings.cart_upsell_product_2 | json }} p2_title={{ settings.cart_upsell_product_2.title | default: '' | json }}
+                p3={{ settings.cart_upsell_product_3 | json }} p3_title={{ settings.cart_upsell_product_3.title | default: '' | json }}
+              -->
+
+              {% render 'cart-products' %}
+              {% render 'cart-upsell' %}
+            </scroll-hint>
+
+            <div
+              class="cart-drawer__summary"
+            >
+              {% render 'cart-summary', is_cart_drawer: true %}
+            </div>
+          </div>
+        {%- endif -%}
+      </cart-items-component>
+    </div>
+  </dialog>
+</cart-drawer-component>
+
+{%- comment -%}
+  Cart goals data for cart-drawer.js
+
+  Thresholds are output in cents so that they can be
+  compared directly against cart.total_price (which is
+  also in cents in the AJAX cart API).
+{%- endcomment -%}
+{%- liquid
+  assign goal_1_product = settings.cart_goal_1_product
+  assign goal_2_product = settings.cart_goal_2_product
+  assign goal_3_product = settings.cart_goal_3_product
+
+  assign goal_1_threshold_cents = settings.cart_goal_1_threshold | default: 30 | times: 100
+  assign goal_2_threshold_cents = settings.cart_goal_2_threshold | default: 45 | times: 100
+  assign goal_3_threshold_cents = settings.cart_goal_3_threshold | default: 60 | times: 100
+
+  comment
+    Use the same effective enabled flags that account for bundle
+    exclusions when outputting data for cart-drawer.js. This keeps
+    the visual goals and the auto-add logic in sync.
+  endcomment
+  
+  if goal_1_effective_enabled == nil
+    assign goal_1_enabled_effective_for_js = settings.cart_goal_1_enabled
+  else
+    assign goal_1_enabled_effective_for_js = goal_1_effective_enabled
+  endif
+
+  if goal_2_effective_enabled == nil
+    assign goal_2_enabled_effective_for_js = settings.cart_goal_2_enabled
+  else
+    assign goal_2_enabled_effective_for_js = goal_2_effective_enabled
+  endif
+
+  if goal_3_effective_enabled == nil
+    assign goal_3_enabled_effective_for_js = settings.cart_goal_3_enabled
+  else
+    assign goal_3_enabled_effective_for_js = goal_3_effective_enabled
+  endif
+
+  if goal_1_product
+    assign goal_1_product_id = goal_1_product.id
+    assign goal_1_variant_id = goal_1_product.selected_or_first_available_variant.id
+  endif
+
+  if goal_2_product
+    assign goal_2_product_id = goal_2_product.id
+    assign goal_2_variant_id = goal_2_product.selected_or_first_available_variant.id
+  endif
+
+  if goal_3_product
+    assign goal_3_product_id = goal_3_product.id
+    assign goal_3_variant_id = goal_3_product.selected_or_first_available_variant.id
+  endif
+-%}
+<script id="cart-goals-data" type="application/json">
+  {
+    "countdown": {
+      "enabled": {{ settings.cart_goal_countdown_enabled | default: false | json }},
+      "durationMs": {{ settings.cart_goal_countdown_duration_minutes | default: 15 | times: 60000 | json }}
+    },
+    "goals": [
+      {
+        "name": "Free Shipping",
+        "enabled": {{ goal_1_enabled_effective_for_js | default: false | json }},
+        "threshold": {{ goal_1_threshold_cents | json }},
+        "excludePropertyValue": {{ settings.cart_goal_1_exclude_property_value | default: '' | json }},
+        "productId": {{ goal_1_product_id | default: nil | json }},
+        "variantId": {{ goal_1_variant_id | default: nil | json }}
+      },
+      {
+        "name": "Free Travel Bag",
+        "enabled": {{ goal_2_enabled_effective_for_js | default: false | json }},
+        "threshold": {{ goal_2_threshold_cents | json }},
+        "excludePropertyValue": {{ settings.cart_goal_2_exclude_property_value | default: '' | json }},
+        "productId": {{ goal_2_product_id | default: nil | json }},
+        "variantId": {{ goal_2_variant_id | default: nil | json }}
+      },
+      {
+        "name": "Free Mini Mascara",
+        "enabled": {{ goal_3_enabled_effective_for_js | default: false | json }},
+        "threshold": {{ goal_3_threshold_cents | json }},
+        "excludePropertyValue": {{ settings.cart_goal_3_exclude_property_value | default: '' | json }},
+        "productId": {{ goal_3_product_id | default: nil | json }},
+        "variantId": {{ goal_3_variant_id | default: nil | json }}
+      }
+    ]
+  }
+</script>
+
+{% stylesheet %}
+  .cart-items-component {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-drawer__heading .cart-bubble {
+    width: fit-content;
+    border-radius: var(--style-border-radius-buttons-primary);
+    aspect-ratio: auto;
+    padding: var(--cart-padding);
+  }
+
+  .cart-drawer__heading .cart-bubble[data-maintain-ratio] {
+    aspect-ratio: 1;
+    min-width: 26px;
+  }
+
+  .cart-drawer__header {
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--cart-drawer-padding);
+    border-bottom: var(--style-border-width) solid none;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: #7A0036;
+    font-family: "Playfair Display" !important;
+    font-style: italic !important;
+
+    @media screen and (min-width: 750px) {
+      padding: var(--cart-drawer-padding-desktop);
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart-drawer__header .h3 {
+      font-size: 20px;
+    }
+
+    .cart-drawer__close-button {
+      display: none;
+    }
+  }
+
+  .cart-drawer__header .cart-drawer__heading h3 {
+    font-family: "Playfair Display" !important;
+    font-style: italic !important;
+  }
+
+  .cart-drawer__dialog {
+    overflow: hidden;
+
+    @media screen and (max-width: 749px) {
+      --animation-speed: 0.24s;
+      --dialog-drawer-opening-animation: cart-drawer-slide-in-vertical;
+      --dialog-drawer-closing-animation: cart-drawer-slide-out-vertical;
+
+      width: 100%;
+      max-height: 90vh;
+      height: fit-content;
+      margin: auto 0 0 0;
+      inset-block-end: 0;
+      inset-block-start: auto;
+      border-radius: 16px 16px 0 0;
+    }
+
+    @media screen and (min-width: 750px) {
+      width: 540px !important;
+      max-width: 540px;
+      border-radius: 16px 0 0 16px !important;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart-drawer__dialog:modal::backdrop {
+      background: transparent;
+      animation: none;
+    }
+  }
+
+  /* Ensure the dialog inner content respects border radius */
+  .cart-drawer__dialog .cart-drawer__inner {
+    @media screen and (min-width: 750px) {
+      border-radius: 16px 0 0 16px;
+    }
+  }
+
+  .cart-drawer__inner {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cart-drawer__loading {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 10;
+  }
+
+  .cart-drawer__loading--active {
+    display: flex;
+  }
+
+  .cart-drawer__loading-spinner {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid #f3e8ef;
+    border-top-color: #7A0036;
+    animation: cartDrawerSpinner 0.6s linear infinite;
+  }
+
+  @keyframes cartDrawerSpinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .cart-drawer__content {
+    --header-height: 60px;
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Empty cart layout: keep CTAs in the main area, push upsell to the bottom */
+  .cart-drawer__empty-upsell {
+    padding-top: 24px;
+    padding-bottom: 24px;
+        border-top: 1px solid #DADADA;
+  }
+
+  .cart-drawer__summary {
+    background-color: var(--color-background);
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  /* Rewards Progress Section */
+  .cart-drawer__rewards {
+    background-color: #FFFFFF;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    border-bottom: 1px solid #E1DCD8;
+  }
+
+  .cart-drawer__reward-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* Make each reward item stretch to fill available width
+       on all viewports so that if only one reward is visible,
+       it will take the full width (matches desktop behavior). */
+    flex: 1;
+  }
+
+  .cart-drawer__reward-icon {
+    width: 24px;
+    height: 24px;
+    color: #000000;
+    flex-shrink: 0;
+  }
+
+  .cart-drawer__reward-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-drawer__reward-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.667em;
+    color: #000000;
+    text-align: center;
+    padding: var(--cart-goal-text-padding-mobile, 0);
+  }
+
+
+  .cart-drawer__reward-amount {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.571em;
+    color: #000000;
+  }
+
+  .cart-drawer__reward-progress {
+    width: 100%;
+    height: 6px;
+    background-color: #EEE8E3;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .cart-drawer__reward-progress-bar {
+    height: 100%;
+    background: #7A0036;
+    transition: width 0.3s ease;
+  }
+
+  @keyframes cart-drawer-slide-in-vertical {
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cart-drawer-slide-out-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  /* Desktop Layout for Rewards */
+  @media screen and (min-width: 750px) {
+    .cart-drawer__rewards {
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    .cart-drawer__reward-text {
+      font-size: 14px;
+      line-height: 1.571em;
+      padding: var(--cart-goal-text-padding-desktop, 0);
+    }
+
+  }
+{% endstylesheet %}

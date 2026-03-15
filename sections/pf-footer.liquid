@@ -1,0 +1,143 @@
+{%- comment -%} ── PF - FOOTER ── {%- endcomment -%}
+<footer class="pf-footer" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %}>
+  <div class="pf-footer__container">
+    {%- if section.settings.disclaimer != blank -%}
+      <div class="pf-footer__disclaimer">{{ section.settings.disclaimer }}</div>
+    {%- endif -%}
+
+    <div class="pf-footer__bottom">
+      {%- if section.settings.copyright != blank -%}
+        <p class="pf-footer__copyright">{{ section.settings.copyright }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <nav class="pf-footer__links">
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.url }}" class="pf-footer__link" {{ block.shopify_attributes }}>{{ block.settings.text }}</a>
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+.pf-footer {
+  background: #FAF9F6;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid #E8E6E3;
+}
+
+.pf-footer__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pf-footer__disclaimer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  line-height: 1.7;
+  color: #888;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #E8E6E3;
+}
+
+.pf-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .pf-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.pf-footer__copyright {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  color: #888;
+  margin: 0;
+}
+
+.pf-footer__links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pf-footer__link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  color: #666;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.pf-footer__link:hover {
+  color: #1A1A1A;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Footer",
+  "tag": "section",
+  "class": "pf-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer text",
+      "default": "This is an advertorial for educational purposes and does not constitute medical advice. Individual results may vary."
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2026 Pawfy. All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text",
+          "default": "Privacy Policy"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Footer",
+      "category": "t:categories.pawfy_editorial",
+      "blocks": [
+        { "type": "link", "settings": { "text": "Privacy Policy" } },
+        { "type": "link", "settings": { "text": "Terms of Service" } },
+        { "type": "link", "settings": { "text": "Contact Us" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

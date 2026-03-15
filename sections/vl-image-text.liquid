@@ -1,0 +1,171 @@
+<div class="vl-image-text" style="
+  --section-bg: {{ section.settings.bg_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --text-color: {{ section.settings.text_color }};
+">
+  <div class="vl-image-text__inner">
+    {% if section.settings.image != blank %}
+      <div class="vl-image-text__image">
+        <img
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.image_alt | default: 'Product image' }}"
+          loading="lazy"
+          width="800"
+          height="{{ 800 | divided_by: section.settings.image.aspect_ratio | round }}"
+        >
+        {% if section.settings.image_caption != blank %}
+          <p class="vl-image-text__caption">{{ section.settings.image_caption }}</p>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="vl-image-text__placeholder">
+        {{ 'product-1' | placeholder_svg_tag: 'vl-image-text__placeholder-svg' }}
+      </div>
+    {% endif %}
+
+    <div class="vl-image-text__content">
+      {% if section.settings.heading != blank %}
+        <h3 class="vl-image-text__heading">{{ section.settings.heading }}</h3>
+      {% endif %}
+
+      <div class="vl-image-text__text">
+        {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-image-text {
+    background-color: var(--section-bg, #ffffff);
+    padding: 24px 16px;
+  }
+
+  .vl-image-text__inner {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .vl-image-text__image {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .vl-image-text__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vl-image-text__caption {
+    font-size: 13px;
+    font-style: italic;
+    color: #666666;
+    margin: 8px 0 0;
+    text-align: center;
+  }
+
+  .vl-image-text__placeholder {
+    aspect-ratio: 4 / 3;
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .vl-image-text__placeholder-svg {
+    width: 40%;
+    height: auto;
+    opacity: 0.3;
+  }
+
+  .vl-image-text__heading {
+    font-family: var(--font-heading--family, sans-serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading-color, #000000);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .vl-image-text__text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-color, #333333);
+  }
+
+  .vl-image-text__text p {
+    margin: 0 0 12px;
+  }
+
+  .vl-image-text__text p:last-child {
+    margin-bottom: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Image + Text",
+  "tag": "section",
+  "class": "vl-image-text-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "text",
+      "id": "image_caption",
+      "label": "Image caption",
+      "info": "Optional caption below image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text content",
+      "default": "<p>Describe your product or feature here. This section is perfect for showcasing product images alongside descriptive text.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Image + Text"
+    }
+  ]
+}
+{% endschema %}

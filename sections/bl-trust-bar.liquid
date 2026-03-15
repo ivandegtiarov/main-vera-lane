@@ -1,0 +1,195 @@
+{%- comment -%} ── BL - TRUST BAR ── {%- endcomment -%}
+<div class="bl-trust-bar" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--trust-bg: {{ section.settings.bg_color }};">
+  <div class="bl-trust-bar__container">
+    {%- if section.settings.headline != blank -%}
+      <h3 class="bl-trust-bar__headline">{{ section.settings.headline }}</h3>
+    {%- endif -%}
+
+    <div class="bl-trust-bar__badges">
+      {%- for block in section.blocks -%}
+        <div class="bl-trust-bar__badge" {{ block.shopify_attributes }}>
+          <span class="bl-trust-bar__badge-title">{{ block.settings.title }}</span>
+          {%- if block.settings.description != blank -%}
+            <span class="bl-trust-bar__badge-desc">{{ block.settings.description }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank -%}
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="bl-trust-bar__btn">
+        {{ section.settings.cta_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-trust-bar {
+  background: var(--trust-bg, #2D2D2D);
+  padding: 3.5rem 2rem;
+  text-align: center;
+}
+
+.bl-trust-bar__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bl-trust-bar__headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: #fff;
+  margin: 0 0 2.5rem;
+}
+
+.bl-trust-bar__badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.bl-trust-bar__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+}
+
+.bl-trust-bar__badge-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bl-trust-bar__badge-desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  opacity: 0.75;
+  max-width: 200px;
+  line-height: 1.5;
+}
+
+.bl-trust-bar__btn {
+  display: inline-block;
+  background: #fff;
+  color: #2D2D2D;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  transition: opacity 200ms ease;
+}
+
+.bl-trust-bar__btn:hover {
+  opacity: 0.9;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Trust Bar",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Used for anchor links from other sections"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Your Satisfaction, Guaranteed"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL",
+      "info": "Used when link type is 'Link to URL'"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "30-Day Returns"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Trust Bar",
+      "category": "t:categories.blissy_listicle",
+      "blocks": [
+        { "type": "badge", "settings": { "title": "30-Day Returns", "description": "Full refund if you're not completely satisfied" } },
+        { "type": "badge", "settings": { "title": "Free Shipping", "description": "Complimentary shipping on all orders" } },
+        { "type": "badge", "settings": { "title": "Secure Checkout", "description": "Your information is always protected" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

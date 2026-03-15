@@ -1,0 +1,220 @@
+<div class="vl-product-intro" style="
+  --intro-bg: {{ section.settings.bg_color }};
+  --title-color: {{ section.settings.title_color }};
+  --star-color: {{ section.settings.star_color }};
+  --rating-text-color: {{ section.settings.rating_text_color }};
+  --image-bg: {{ section.settings.image_bg_color }};
+">
+  <div class="vl-product-intro__inner">
+    <!-- Header content -->
+    <div class="vl-product-intro__header">
+      <h1 class="vl-product-intro__title">{{ section.settings.product_title }}</h1>
+
+      {% if section.settings.show_rating %}
+        <div class="vl-product-intro__rating">
+          <div class="vl-product-intro__stars">
+            {% for i in (1..5) %}
+              {% if i <= section.settings.rating_stars %}
+                <svg class="vl-product-intro__star vl-product-intro__star--filled" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {% else %}
+                <svg class="vl-product-intro__star" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="vl-product-intro__rating-text">{{ section.settings.rating_text }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Product Image -->
+    <div class="vl-product-intro__image-wrap">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.image_alt | default: section.settings.product_title }}"
+          class="vl-product-intro__image"
+          width="402"
+          height="auto"
+          loading="lazy"
+        >
+      {% else %}
+        <div class="vl-product-intro__placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'vl-product-intro__placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-product-intro {
+    background-color: var(--intro-bg, #ffffff);
+  }
+
+  .vl-product-intro__inner {
+    max-width: 402px;
+    margin: 0 auto;
+  }
+
+  .vl-product-intro__header {
+    padding: 20px 16px;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .vl-product-intro__title {
+    font-family: var(--font-heading--family, serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--title-color, #000000);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+
+  .vl-product-intro__rating {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .vl-product-intro__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .vl-product-intro__star {
+    color: #CCCCCC;
+  }
+
+  .vl-product-intro__star--filled {
+    color: var(--star-color, #F7A81B);
+  }
+
+  .vl-product-intro__rating-text {
+    font-size: 12px;
+    color: var(--rating-text-color, #666666);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .vl-product-intro__image-wrap {
+    background-color: var(--image-bg, #D4C4B5);
+  }
+
+  .vl-product-intro__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vl-product-intro__placeholder {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vl-product-intro__placeholder-svg {
+    width: 50%;
+    height: auto;
+    opacity: 0.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Product Intro",
+  "tag": "section",
+  "class": "vl-product-intro-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Info"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product title",
+      "default": "TONE ADAPTING FOUNDATION"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "label": "Star rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.8/5 BY 9,000+ CUSTOMERS"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#F7A81B"
+    },
+    {
+      "type": "color",
+      "id": "rating_text_color",
+      "label": "Rating text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "image_bg_color",
+      "label": "Image background",
+      "default": "#D4C4B5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Product Intro"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,518 @@
+{% comment %}
+  Section: Lumen – About Hero
+  Purpose: 1:1 conversion of provided HTML mock into a production-ready Shopify section
+  Notes:
+  - Styling is fully scoped to this section instance.
+  - Only the controls requested are exposed in the schema (colors/spacing/typography).
+  - Images are referenced via Shopify Files by filename (upload these to Settings → Files):
+    - about-hero-image-desktop-56586a.png
+    - about-hero-image-mobile-133135.png
+{% endcomment %}
+
+{%- liquid
+  assign use_gradient = false
+  if section.settings.bg_gradient_start != section.settings.bg_gradient_end
+    assign use_gradient = true
+  endif
+
+  assign hero_image_desktop = section.settings.hero_image_desktop
+  assign hero_image_mobile = section.settings.hero_image_mobile
+  if hero_image_mobile == blank
+    assign hero_image_mobile = hero_image_desktop
+  endif
+-%}
+
+<section
+  class="vl-aboutHero"
+  aria-label="About Vera Lane"
+  data-vl-about-hero
+>
+  <div class="vl-aboutHero__inner">
+    <div class="vl-aboutHero__grid">
+      <div class="vl-aboutHero__content" data-vl-about-hero-animate>
+        <div class="vl-aboutHero__stack">
+          <h2 class="vl-aboutHero__title">
+            We formulate beauty products that restore the identity of mature women.
+          </h2>
+
+          <p class="vl-aboutHero__quote">
+            “You are at a stage where you no longer chase approval, yet you still value the version of yourself that feels polished and presentable. For too long, you’ve been told to ‘try harder’ with products that only seem to expose the texture they were meant to soften. You deserve a routine that honors your skin exactly as it is today—providing a quiet, healthy glow that lets you recognize yourself in the mirror again.”
+          </p>
+        </div>
+      </div>
+
+      <div class="vl-aboutHero__media" data-vl-about-hero-animate>
+        <div class="vl-aboutHero__glow" aria-hidden="true"></div>
+
+        <picture class="vl-aboutHero__picture">
+          <source
+            media="(min-width: 900px)"
+            srcset="{% if hero_image_desktop != blank %}{{ hero_image_desktop | image_url: width: 1400 }}{% else %}{{ 'about-hero-image-desktop-56586a.png' | file_url }}{% endif %}"
+          >
+          <img
+            class="vl-aboutHero__image"
+            src="{% if hero_image_mobile != blank %}{{ hero_image_mobile | image_url: width: 900 }}{% else %}{{ 'about-hero-image-mobile-133135.png' | file_url }}{% endif %}"
+            alt="{{ section.settings.hero_image_alt | default: 'Portrait of a mature woman with a soft glow.' | escape }}"
+            loading="eager"
+            decoding="async"
+          >
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ================================
+     Lumen – About Hero (scoped)
+     ================================ */
+  #shopify-section-{{ section.id }} .vl-aboutHero,
+  #shopify-section-{{ section.id }} .vl-aboutHero * {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero {
+    /* Colors */
+    --vl-about-hero-bg-solid: {{ section.settings.bg_color }};
+    --vl-about-hero-bg-grad-start: {{ section.settings.bg_gradient_start }};
+    --vl-about-hero-bg-grad-end: {{ section.settings.bg_gradient_end }};
+    --vl-about-hero-title-color: {{ section.settings.title_color }};
+    --vl-about-hero-quote-color: {{ section.settings.quote_color }};
+
+    /* Spacing controls (required defaults), applied as deltas to preserve the mock layout */
+    --vl-about-hero-pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --vl-about-hero-pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --vl-about-hero-pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --vl-about-hero-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    /* Typography controls */
+    --vl-about-hero-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --vl-about-hero-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --vl-about-hero-quote-size-desktop: {{ section.settings.quote_size_desktop }}px;
+    --vl-about-hero-quote-size-mobile: {{ section.settings.quote_size_mobile }}px;
+
+    /* Background paint (solid by default; gradient activates when start/end differ) */
+    {%- if use_gradient -%}
+      --vl-about-hero-bg-paint: linear-gradient(180deg, var(--vl-about-hero-bg-grad-start), var(--vl-about-hero-bg-grad-end));
+    {%- else -%}
+      --vl-about-hero-bg-paint: var(--vl-about-hero-bg-solid);
+    {%- endif -%}
+
+    width: 100%;
+    background: var(--vl-about-hero-bg-paint);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+
+    /* Mobile: x=13.95, y=32.83 | Desktop: x=92, y=136 */
+    padding-left: clamp(
+      13.95px,
+      calc(13.95px + (92px - 13.95px) * ((100vw - 375px) / 1065px)),
+      92px
+    );
+    padding-right: clamp(
+      13.95px,
+      calc(13.95px + (92px - 13.95px) * ((100vw - 375px) / 1065px)),
+      92px
+    );
+
+    /* Preserve mock padding-top curve, with required setting as delta (default 24px => no change) */
+    padding-top: max(
+      0px,
+      calc(
+        clamp(
+          32.83px,
+          calc(32.83px + (136px - 32.83px) * ((100vw - 375px) / 1065px)),
+          136px
+        ) + (var(--vl-about-hero-pt-mobile) - 24px)
+      )
+    );
+
+    /* Mock uses 0 on mobile; apply delta safely (default 24px => no change) */
+    padding-bottom: max(0px, calc(0px + (var(--vl-about-hero-pb-mobile) - 24px)));
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: clamp(24px, calc(24px + (72px - 24px) * ((100vw - 375px) / 1065px)), 72px);
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__content {
+    width: 100%;
+    max-width: clamp(
+      347.09px,
+      calc(347.09px + (834px - 347.09px) * ((100vw - 375px) / 1065px)),
+      834px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__title {
+    margin: 0;
+    font-family: "Playfair Display";
+    font-style: italic;
+    font-weight: 700;
+    color: var(--vl-about-hero-title-color);
+    font-size: clamp(
+      var(--vl-about-hero-title-size-mobile),
+      calc(
+        var(--vl-about-hero-title-size-mobile) + (var(--vl-about-hero-title-size-desktop) - var(--vl-about-hero-title-size-mobile)) * ((100vw - 375px) / 1065px)
+      ),
+      var(--vl-about-hero-title-size-desktop)
+    );
+    line-height: 1.2;
+    letter-spacing: 0px;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__quote {
+    margin: 0;
+    color: var(--vl-about-hero-quote-color);
+    opacity: 0.8;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 400;
+
+    /*
+      Preserve mock fidelity while meeting required schema min=12px:
+      - Mock mobile was ~10.4651px. We apply the slider as a delta from 12px.
+      - Default mobile slider value is 12px, resulting in 10.4651px (original).
+    */
+    --vl-about-hero-quote-min: calc(10.4651px + (var(--vl-about-hero-quote-size-mobile) - 12px));
+    --vl-about-hero-quote-max: calc(16px + (var(--vl-about-hero-quote-size-desktop) - 16px));
+    font-size: clamp(
+      var(--vl-about-hero-quote-min),
+      calc(var(--vl-about-hero-quote-min) + (var(--vl-about-hero-quote-max) - var(--vl-about-hero-quote-min)) * ((100vw - 375px) / 1065px)),
+      var(--vl-about-hero-quote-max)
+    );
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: clamp(
+      34.8837px,
+      calc(34.8837px + (40px - 34.8837px) * ((100vw - 375px) / 1065px)),
+      40px
+    );
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__media {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__glow {
+    position: absolute;
+    z-index: 0;
+    border-radius: 9999px;
+    background: #fbf8f6;
+    opacity: 0.8;
+    width: clamp(
+      201.45px,
+      calc(201.45px + (678px - 201.45px) * ((100vw - 375px) / 1065px)),
+      678px
+    );
+    height: clamp(
+      413.37px,
+      calc(413.37px + (785px - 413.37px) * ((100vw - 375px) / 1065px)),
+      785px
+    );
+    filter: blur(
+      clamp(
+        261.6279px,
+        calc(261.6279px + (300px - 261.6279px) * ((100vw - 375px) / 1065px)),
+        300px
+      )
+    );
+    left: clamp(
+      -67px,
+      calc(52.33px + (-119.33px) * ((100vw - 375px) / 1065px)),
+      52.33px
+    );
+    top: clamp(
+      -80px,
+      calc(-22.68px + (-57.32px) * ((100vw - 375px) / 1065px)),
+      -22.68px
+    );
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__picture {
+    width: 100%;
+    max-width: clamp(
+      306.98px,
+      calc(306.98px + (582px - 306.98px) * ((100vw - 375px) / 1065px)),
+      582px
+    );
+    position: relative;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .vl-aboutHero__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Scroll fade-in animation (initial state) */
+  #shopify-section-{{ section.id }} [data-vl-about-hero-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+
+  #shopify-section-{{ section.id }} [data-vl-about-hero-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} [data-vl-about-hero-animate] {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* Desktop layout: side-by-side, image anchored to bottom */
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ section.id }} .vl-aboutHero__inner {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutHero__content {
+      padding-top: calc(136px + (var(--vl-about-hero-pt-desktop) - 40px));
+      padding-bottom: calc(136px + (var(--vl-about-hero-pb-desktop) - 40px));
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutHero__grid {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0px;
+      align-items: stretch;
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutHero__media {
+      justify-content: flex-end;
+      align-self: stretch;
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutHero__picture {
+      width: 582px;
+      height: 582px;
+      max-width: 582px;
+      aspect-ratio: 1 / 1;
+      margin-left: clamp(-34px, calc(0px + (-34px) * ((100vw - 375px) / 1065px)), 0px);
+      transform: translateY(clamp(-3px, calc(0px + (-3px) * ((100vw - 375px) / 1065px)), 0px));
+    }
+
+    #shopify-section-{{ section.id }} .vl-aboutHero__image {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ section.id }} [data-vl-about-hero]');
+    if (!root) return;
+
+    var targets = root.querySelectorAll('[data-vl-about-hero-animate]');
+    if (!targets.length) return;
+
+    // Fallback: no IntersectionObserver support => show immediately.
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target); // single trigger
+        });
+      },
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+    );
+
+    targets.forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lumen – About hero",
+  "tag": "section",
+  "class": "section lumen-about-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color controls"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f6e8de"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_start",
+      "label": "Background gradient start",
+      "default": "#f6e8de"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_end",
+      "label": "Background gradient end",
+      "default": "#f6e8de"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Body text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top – desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top – mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom – desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom – mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography controls"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Heading font size – desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Heading font size – mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "quote_size_desktop",
+      "label": "Body text font size – desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "quote_size_mobile",
+      "label": "Body text font size – mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_desktop",
+      "label": "Hero image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero image (mobile)"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero image alt text",
+      "default": "Portrait of a mature woman with a soft glow."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen – About hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+<div class="vl-pull-quote" style="
+  --section-bg: {{ section.settings.bg_color }};
+  --quote-color: {{ section.settings.quote_color }};
+  --accent-color: {{ section.settings.accent_color }};
+  --attribution-color: {{ section.settings.attribution_color }};
+">
+  <div class="vl-pull-quote__inner">
+    <div class="vl-pull-quote__icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+      </svg>
+    </div>
+
+    <blockquote class="vl-pull-quote__text">
+      {{ section.settings.quote }}
+    </blockquote>
+
+    {% if section.settings.attribution != blank %}
+      <cite class="vl-pull-quote__attribution">
+        — {{ section.settings.attribution }}
+      </cite>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-pull-quote {
+    background-color: var(--section-bg, #F5EDE8);
+    padding: 40px 16px;
+  }
+
+  .vl-pull-quote__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vl-pull-quote__icon {
+    color: var(--accent-color, #5C1A33);
+    margin-bottom: 16px;
+  }
+
+  .vl-pull-quote__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .vl-pull-quote__text {
+    font-family: var(--font-heading--family, Georgia, serif);
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--quote-color, #333333);
+    margin: 0 0 16px;
+    quotes: none;
+  }
+
+  .vl-pull-quote__attribution {
+    font-family: var(--font-body--family, sans-serif);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--attribution-color, #666666);
+    display: block;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Pull Quote",
+  "tag": "section",
+  "class": "vl-pull-quote-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "I Switched to Skincare That Just Happens to Cover"
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution",
+      "info": "Optional author/source",
+      "default": "Sarah, 54"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5EDE8"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Quote icon color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "attribution_color",
+      "label": "Attribution color",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Pull Quote"
+    }
+  ]
+}
+{% endschema %}

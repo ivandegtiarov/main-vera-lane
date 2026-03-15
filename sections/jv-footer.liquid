@@ -1,0 +1,103 @@
+{%- comment -%} ── JV - FOOTER ── {%- endcomment -%}
+<footer class="jv-footer" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %}
+  <div class="jv-footer__container">
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="jv-footer__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.links != blank -%}
+      <div class="jv-footer__links">
+        {{ section.settings.links }}
+      </div>
+    {%- endif -%}
+
+    <p class="jv-footer__copyright">{{ section.settings.copyright }}</p>
+  </div>
+</footer>
+
+{% stylesheet %}
+.jv-footer {
+  background: #f5f5f5;
+  border-block-start: 1px solid #e5e5e5;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.jv-footer__container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.jv-footer__disclaimer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  color: #888;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.jv-footer__links {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.jv-footer__links a {
+  color: #666;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.jv-footer__links a:hover {
+  color: #1a1a1a;
+}
+
+.jv-footer__copyright {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "JV - Footer",
+  "tag": "footer",
+  "class": "jv-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'footer')"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Special sale discount is only on the first delivery as a new Javvy Coffee subscription customer at https://www.javvycoffee.com/. Cannot be combined with any other offer or sales. *and restocking time which may be 14 or more weeks."
+    },
+    {
+      "type": "richtext",
+      "id": "links",
+      "label": "Footer links",
+      "info": "Add links like Terms of Service, Privacy Policy",
+      "default": "<p><a href=\"/policies/terms-of-service\">Terms of Service</a> | <a href=\"/policies/privacy-policy\">Privacy Policy</a></p>"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2026 Javvy Coffee Company. All rights reserved."
+    }
+  ],
+  "presets": [
+    {
+      "name": "JV - Footer",
+      "category": "t:categories.reasons_listicle"
+    }
+  ]
+}
+{% endschema %}

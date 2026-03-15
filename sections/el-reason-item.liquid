@@ -1,0 +1,284 @@
+{%- comment -%} ── EL - REASON ITEM ── {%- endcomment -%}
+<div class="el-reason-item el-reason-item--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--item-bg: {{ section.settings.bg_color }};">
+  <div class="el-reason-item__container">
+    <div class="el-reason-item__content">
+      <h2 class="el-reason-item__title">
+        <span class="el-reason-item__number">Reason {{ section.settings.number }}</span>
+        {{ section.settings.title }}
+      </h2>
+
+      <div class="el-reason-item__body">
+        {{ section.settings.body_text }}
+      </div>
+
+      {%- if section.settings.badge_text != blank -%}
+        <div class="el-reason-item__badge" style="--badge-border: {{ section.settings.badge_border }};">
+          <span class="el-reason-item__badge-label">{{ section.settings.badge_text }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.link_text != blank -%}
+        {%- liquid
+          if section.settings.link_type == 'anchor' and section.settings.link_anchor != blank
+            assign link_href = '#' | append: section.settings.link_anchor
+          else
+            assign link_href = section.settings.link_url
+          endif
+        -%}
+        {%- if link_href != blank -%}
+          <a href="{{ link_href }}" class="el-reason-item__link">
+            {{ section.settings.link_text }}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.image != blank -%}
+      <figure class="el-reason-item__figure">
+        <img
+          src="{{ section.settings.image | image_url: width: 500 }}"
+          alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+          loading="lazy"
+          class="el-reason-item__image"
+        >
+      </figure>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.el-reason-item {
+  background: var(--item-bg, #fff);
+  padding: 3rem 2rem;
+  border-block-end: 1px solid #E8E6E3;
+}
+
+.el-reason-item__container {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .el-reason-item--left .el-reason-item__container,
+  .el-reason-item--right .el-reason-item__container {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .el-reason-item--right .el-reason-item__figure {
+    order: 2;
+  }
+
+  .el-reason-item--right .el-reason-item__content {
+    order: 1;
+  }
+
+  .el-reason-item--left .el-reason-item__figure {
+    order: 1;
+  }
+
+  .el-reason-item--left .el-reason-item__content {
+    order: 2;
+  }
+}
+
+.el-reason-item__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: #2D2D2D;
+  margin: 0 0 1.25rem;
+}
+
+.el-reason-item__number {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  margin-bottom: 0.5rem;
+}
+
+.el-reason-item__body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555;
+}
+
+.el-reason-item__body p {
+  margin-bottom: 1rem;
+}
+
+.el-reason-item__body p:last-child {
+  margin-bottom: 0;
+}
+
+.el-reason-item__body strong {
+  font-weight: 600;
+  color: #2D2D2D;
+}
+
+.el-reason-item__badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--badge-border, #E8E6E3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.el-reason-item__link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9375rem;
+  color: #8B3A3A;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 200ms ease;
+}
+
+.el-reason-item__link:hover {
+  color: #2D2D2D;
+}
+
+.el-reason-item__figure {
+  margin: 0;
+}
+
+.el-reason-item__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - Reason Item",
+  "tag": "section",
+  "class": "el-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'reason-1')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Item number",
+      "default": "1"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "A Formula Designed for Mature Skin"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>Unlike conventional formulas that can emphasize fine lines, this lightweight foundation was specifically developed to <strong>hydrate, smooth, and enhance your natural beauty</strong> without settling into wrinkles.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Optional label below content"
+    },
+    {
+      "type": "color",
+      "id": "badge_border",
+      "label": "Badge border color",
+      "default": "#E8E6E3"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "info": "Optional link below content"
+    },
+    {
+      "type": "select",
+      "id": "link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "anchor"
+    },
+    {
+      "type": "text",
+      "id": "link_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section (e.g., 'offer')"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "full", "label": "Full width below" }
+      ],
+      "default": "right"
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - Reason Item",
+      "category": "t:categories.elegant_listicle"
+    }
+  ]
+}
+{% endschema %}

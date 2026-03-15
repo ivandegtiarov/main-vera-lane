@@ -1,0 +1,250 @@
+{%- comment -%} ── BL - FOOTER ── {%- endcomment -%}
+<footer class="bl-footer" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--footer-bg: {{ section.settings.bg_color }};">
+  <div class="bl-footer__container">
+    {%- if section.settings.logo != blank -%}
+      <img
+        src="{{ section.settings.logo | image_url: width: 150 }}"
+        alt="{{ shop.name }}"
+        class="bl-footer__logo"
+        loading="lazy"
+      >
+    {%- elsif section.settings.logo_text != blank -%}
+      <span class="bl-footer__logo-text">{{ section.settings.logo_text }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.tagline != blank -%}
+      <p class="bl-footer__tagline">{{ section.settings.tagline }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="bl-footer__disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+
+    <p class="bl-footer__copyright">{{ section.settings.copyright }}</p>
+  </div>
+
+  {%- if section.settings.show_sticky_bar -%}
+    <div class="bl-footer__sticky" style="--sticky-bg: {{ section.settings.sticky_bg }};">
+      <span class="bl-footer__sticky-text">{{ section.settings.sticky_text }}</span>
+      {%- liquid
+          if section.settings.sticky_link_type == 'anchor' and section.settings.sticky_anchor != blank
+            assign sticky_href = '#' | append: section.settings.sticky_anchor
+          else
+            assign sticky_href = section.settings.sticky_url
+          endif
+        -%}
+        <a href="{{ sticky_href }}" class="bl-footer__sticky-btn">
+        {{ section.settings.sticky_label }}
+      </a>
+    </div>
+  {%- endif -%}
+</footer>
+
+{% stylesheet %}
+.bl-footer {
+  background: var(--footer-bg, #FAF9F7);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-block-start: 1px solid #E8E6E3;
+}
+
+.bl-footer__container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bl-footer__logo {
+  height: 2rem;
+  width: auto;
+  margin-bottom: 1.25rem;
+}
+
+.bl-footer__logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #2D2D2D;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.bl-footer__tagline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 1.25rem;
+}
+
+.bl-footer__disclaimer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  color: #888;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+
+.bl-footer__copyright {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Sticky bottom bar */
+.bl-footer__sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--sticky-bg, #2D2D2D);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 99;
+}
+
+.bl-footer__sticky-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.bl-footer__sticky-btn {
+  background: #fff;
+  color: #2D2D2D;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.625rem 1.25rem;
+  white-space: nowrap;
+  transition: opacity 200ms ease;
+}
+
+.bl-footer__sticky-btn:hover {
+  opacity: 0.9;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Footer",
+  "tag": "footer",
+  "class": "bl-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'footer')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text (if no image)",
+      "default": "Brand Name"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer text"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2026 Brand Name. All rights reserved."
+    },
+    {
+      "type": "header",
+      "content": "Sticky Bottom Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sticky_bar",
+      "label": "Show sticky bottom bar",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sticky_text",
+      "label": "Sticky bar text",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "sticky_label",
+      "label": "Sticky button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "select",
+      "id": "sticky_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "anchor"
+    },
+    {
+      "type": "text",
+      "id": "sticky_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section (e.g., 'offer')"
+    },
+    {
+      "type": "url",
+      "id": "sticky_url",
+      "label": "Sticky button URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "color",
+      "id": "sticky_bg",
+      "label": "Sticky bar background",
+      "default": "#2D2D2D"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Footer",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

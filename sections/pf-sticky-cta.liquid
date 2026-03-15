@@ -1,0 +1,133 @@
+{%- comment -%} ── PF - STICKY CTA ── {%- endcomment -%}
+<div class="pf-sticky-cta" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--pf-sticky-bg: {{ section.settings.bg_color }};">
+  <div class="pf-sticky-cta__container">
+    <span class="pf-sticky-cta__text">{{ section.settings.text }}</span>
+    {%- if section.settings.cta_text != blank -%}
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="pf-sticky-cta__btn">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.pf-sticky-cta {
+  background: var(--pf-sticky-bg, #2A2A2A);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  bottom: 0;
+  z-index: 99;
+}
+
+.pf-sticky-cta__container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pf-sticky-cta__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pf-sticky-cta__btn {
+  display: inline-block;
+  background: #fff;
+  color: #2A2A2A;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  transition: opacity 200ms ease;
+}
+
+.pf-sticky-cta__btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 500px) {
+  .pf-sticky-cta__container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pf-sticky-cta__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Sticky CTA",
+  "tag": "section",
+  "class": "pf-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "This is an advertorial for educational purposes"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Check Availability"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Sticky CTA",
+      "category": "t:categories.pawfy_editorial"
+    }
+  ]
+}
+{% endschema %}

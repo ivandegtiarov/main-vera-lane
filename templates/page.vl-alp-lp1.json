@@ -1,0 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "vl_header": {
+      "type": "vl-lp-header",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_58.png",
+        "logo_width": 80,
+        "bg_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "vl_trust_marquee": {
+      "type": "vl-trust-marquee",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "U.S. OWNED"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "100% MONEY BACK"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "CRUELTY FREE"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "bg_color": "#5c1a33",
+        "text_color": "#ffffff",
+        "speed": 20,
+        "padding": 10
+      }
+    },
+    "vl_product_hero": {
+      "type": "vl-product-hero",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Generated_Image_March_03_2026_-_3_57PM_jpg.jpg",
+            "image_alt": ""
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+            "image_alt": ""
+          }
+        },
+        "image_QCwkWd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_3.jpg",
+            "image_alt": ""
+          }
+        },
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Adapts perfectly to fair to medium skin tones"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "For sensitive skin + SPF 15"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "A natural look for 16 hours"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "text": "Evens out the skin and hides redness"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_QCwkWd",
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "product_title": "TONE ADAPTING FOUNDATION",
+        "original_price": "$39.95",
+        "current_price": "$19.95",
+        "discount_badge": "50% OFF",
+        "show_rating": true,
+        "rating_stars": 5,
+        "rating_text": "4.8/5 BY 9,000+ CUSTOMERS",
+        "cta_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "cta_text": "BUY NOW ON AMAZON",
+        "show_amazon_icon": true,
+        "cta_icon": "shopify://shop_images/Symbol_svg.png",
+        "image_bg_color": "#ffffff",
+        "content_bg_color": "#ffffff",
+        "title_color": "#000000",
+        "price_color": "#2a7d4f",
+        "original_price_color": "#999999",
+        "benefit_color": "#333333",
+        "checkmark_color": "#2a7d4f",
+        "cta_bg_color": "#232f3e",
+        "cta_text_color": "#ffffff",
+        "cta_icon_bg_color": "#232f3e"
+      }
+    },
+    "vl_sticky_cta": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "BUY NOW ON AMAZON",
+        "show_amazon_icon": true,
+        "icon": "shopify://shop_images/Symbol_svg.png",
+        "bg_color": "#ffffff",
+        "button_bg_color": "#232f3e",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#212c3d"
+      }
+    }
+  },
+  "order": [
+    "vl_header",
+    "vl_trust_marquee",
+    "vl_product_hero",
+    "vl_sticky_cta"
+  ]
+}

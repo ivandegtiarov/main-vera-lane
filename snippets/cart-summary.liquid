@@ -1,0 +1,436 @@
+{%- doc -%}
+  Renders the cart summary totals.
+{%- enddoc -%}
+
+<div class="cart__summary-totals">
+  {% # We need to keep this node in place to allow morphing to work properly # %}
+  <div class="cart__original-total-container cart-primary-typography">
+    {%- if cart.cart_level_discount_applications.size > 0 -%}
+      <span class="cart__summary-item cart__original-total">
+        <span class="cart__original-total-label">{{ 'content.cart_subtotal' | t }}</span>
+        <span class="cart__original-total-value cart-secondary-typography">
+          {{- cart.original_total_price | money -}}
+        </span>
+      </span>
+      <div class="cart__summary-discounts">
+        <ul
+          class="discounts list-unstyled"
+          role="list"
+          aria-label="{{ 'content.discounts' | t }}"
+        >
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <li class="cart__summary-item cart__discount">
+              <span class="cart__discount-label">
+                {{- 'icon-discount.svg' | inline_asset_content -}}
+                {{ discount.title | escape }}
+              </span>
+              <span class="cart__discount-value cart-secondary-typography"
+                >-{{ discount.total_allocated_amount | money -}}
+              </span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {% if settings.show_cart_note or settings.show_add_discount_code %}
+    <div class="cart-actions">
+      {% if settings.show_cart_note %}
+        {% render 'cart-note' %}
+      {% endif %}
+      {% if settings.show_cart_note and settings.show_add_discount_code %}
+        <div class="cart-actions__divider"></div>
+      {% endif %}
+      {% if settings.show_add_discount_code %}
+        {% render 'cart-discount', section_id: section.id %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- liquid
+    if settings.currency_code_enabled_cart_total
+      assign total_price = cart.total_price | money_with_currency
+    else
+      assign total_price = cart.total_price | money
+    endif
+  -%}
+
+  {%- liquid
+    assign has_non_free_cart_item = false
+    for item in cart.items
+      assign has_free_gift_flag = false
+      for property in item.properties
+        if property.first == '_is_free_gift' and property.last == 'true'
+          assign has_free_gift_flag = true
+          break
+        endif
+      endfor
+
+      comment
+        Treat an item as a "free gift" ONLY if it has the _is_free_gift flag
+        AND it matches one of the configured cart goal products. This prevents
+        other apps (e.g. bundle builders) from accidentally hiding shipping
+        protection by setting the same property on normal items.
+      endcomment
+      assign is_free_gift = false
+      if has_free_gift_flag
+        if settings.cart_goal_1_product and item.product_id == settings.cart_goal_1_product.id
+          assign is_free_gift = true
+        elsif settings.cart_goal_2_product and item.product_id == settings.cart_goal_2_product.id
+          assign is_free_gift = true
+        elsif settings.cart_goal_3_product and item.product_id == settings.cart_goal_3_product.id
+          assign is_free_gift = true
+        endif
+      endif
+
+      assign is_shipping_protection_item = false
+      if settings.shipping_protection_enabled and settings.shipping_protection_product
+        if item.product_id == settings.shipping_protection_product.id
+          assign is_shipping_protection_item = true
+        endif
+      endif
+
+      if is_free_gift == false and is_shipping_protection_item == false
+        assign has_non_free_cart_item = true
+        break
+      endif
+    endfor
+  -%}
+
+  {%- liquid
+    assign shipping_protection_enabled = false
+    assign is_cart_drawer = is_cart_drawer | default: false
+
+    if is_cart_drawer and settings.shipping_protection_enabled and settings.shipping_protection_product and has_non_free_cart_item
+      assign shipping_protection_enabled = true
+      assign shipping_protection_product = settings.shipping_protection_product
+      assign shipping_protection_variant = shipping_protection_product.selected_or_first_available_variant
+      assign shipping_protection_in_cart = false
+      assign shipping_protection_item_key = nil
+
+      for item in cart.items
+        if item.product_id == shipping_protection_product.id
+          assign shipping_protection_in_cart = true
+          assign shipping_protection_item_key = item.key
+          break
+        endif
+      endfor
+    endif
+  -%}
+
+  <div class="cart__total-container">
+    {% if shipping_protection_enabled %}
+      <div
+        class="cart__summary-item cart__shipping-protection"
+        data-shipping-protection
+        data-sp-variant-id="{{ shipping_protection_variant.id }}"
+        data-sp-in-cart="{{ shipping_protection_in_cart }}"
+        data-sp-default-on="{{ settings.shipping_protection_default_on | default: false }}"
+      >
+        <div class="cart__shipping-protection-left">
+          <label class="cart__shipping-protection-toggle">
+            <input
+              type="checkbox"
+              class="cart__shipping-protection-checkbox"
+              {% if shipping_protection_in_cart %}
+                checked
+              {% endif %}
+            >
+            <span class="cart__shipping-protection-toggle-slider"></span>
+          </label>
+
+          <div class="cart__shipping-protection-copy">
+            <div class="cart__shipping-protection-title">
+              {{ settings.shipping_protection_text | default: 'Shipping Protection' }}
+            </div>
+            {% if settings.shipping_protection_description != blank %}
+              <div class="cart__shipping-protection-description">
+                {{ settings.shipping_protection_description }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="cart__shipping-protection-right">
+          <span class="cart__shipping-protection-price">
+            {{ shipping_protection_variant.price | money }}
+          </span>
+        </div>
+      </div>
+    {% endif %}
+
+    <span
+      class="cart__summary-item cart__total"
+      role="status"
+    >
+      <span class="cart__total-label cart-primary-typography">{{ 'content.cart_estimated_total' | t }}</span>
+      <text-component
+        ref="cartTotal"
+        value="{{ total_price | strip_html }}"
+        class="cart__total-value cart-secondary-typography"
+        {% comment %} Used by payment_terms web component {% endcomment %}
+        data-cart-subtotal
+      >
+        {{ total_price }}
+      </text-component>
+    </span>
+    {% if settings.show_installments %}
+      <span class="cart__summary-item cart__installments">
+        {% form 'cart', cart %}
+          {{ form | payment_terms }}
+        {% endform %}
+      </span>
+    {% endif %}
+
+    <div class="cart__summary-item tax-note cart-primary-typography">
+      {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
+    </div>
+  </div>
+</div>
+
+<div class="cart__ctas">
+  <button
+    type="submit"
+    id="checkout"
+    class="cart__checkout-button button"
+    name="checkout"
+      {% if cart == empty or has_non_free_cart_item == false %}
+      disabled
+    {% endif %}
+    form="cart-form"
+  >
+    {{ 'content.checkout' | t }}
+  </button>
+
+  {%- comment -%} Payment Methods {%- endcomment -%}
+  {%- if shop.enabled_payment_types.size > 0 -%}
+    <div class="cart__payment-methods">
+      {%- for type in shop.enabled_payment_types -%}
+        {{ type | payment_type_svg_tag: class: 'cart__payment-icon' }}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons and has_non_free_cart_item %}
+    <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    border-block: 1px solid var(--color-border);
+    padding-block: var(--padding-sm);
+    margin-block-start: var(--margin-3xs);
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart-actions {
+      padding-block: 0;
+    }
+  }
+
+  .cart-actions__divider {
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .cart__summary-totals:not(:has(.cart-actions)) {
+    margin-block-start: var(--margin-3xs);
+    border-block-start: 1px solid var(--color-border);
+    padding-block-start: var(--margin-xl);
+  }
+
+  .cart__installments {
+    color: var(--color-foreground);
+  }
+
+  /* Subtotal label text style */
+  .cart__original-total-label {
+    color: #000;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  /* Total label text style */
+  .cart__total-label {
+    color: #000;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  /* Total price value style */
+  .cart__total-value {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  /* Subtotal price value style */
+  .cart__original-total-value {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .cart__payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cart__payment-icon {
+    width: 23px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cart__payment-icon {
+      width: 38px;
+      height: 26px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart__checkout-button {
+      border-radius: 48px;
+      background-color: #000;
+    }
+  }
+
+  .cart__shipping-protection {
+    padding-block: var(--padding-xs);
+    /* border-block: 1px solid var(--color-border);
+    margin-block-start: var(--margin-xs); */
+    gap: var(--gap-xs);
+  }
+
+  .cart__shipping-protection-left {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    max-width: 75%;
+  }
+
+  .cart__shipping-protection-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cart__shipping-protection-title {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .cart__shipping-protection-description {
+    color: #8A8A8A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .cart__shipping-protection-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap-xs);
+  }
+
+  .cart__shipping-protection-price {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .cart__shipping-protection-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .cart__shipping-protection-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .cart__shipping-protection-toggle-slider {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 24px;
+    background-color: #E1DCD8;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+  }
+
+  .cart__shipping-protection-toggle-slider::before {
+    content: '';
+    position: absolute;
+    inset-block: 3px;
+    inset-inline-start: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+  }
+
+  .cart__shipping-protection-checkbox:checked + .cart__shipping-protection-toggle-slider {
+    background-color: #000;
+  }
+
+  .cart__shipping-protection-checkbox:checked + .cart__shipping-protection-toggle-slider::before {
+    transform: translateX(20px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart__shipping-protection-title {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .cart__shipping-protection-description {
+      font-size: 10px;
+      line-height: 16px;
+    }
+  }
+{% endstylesheet %}

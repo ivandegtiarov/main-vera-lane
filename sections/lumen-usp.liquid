@@ -1,0 +1,450 @@
+<style>
+      /*
+        Velora – USP Section
+        Built from:
+        - Desktop: https://www.figma.com/design/dx31DlRXqhRw8yiaiVgank/Sana---Velora?node-id=860-391&m=dev
+        - Mobile:  https://www.figma.com/design/dx31DlRXqhRw8yiaiVgank/Sana---Velora?node-id=876-1877&m=dev
+
+        Mobile-first, fully fluid layout using px-based spacing & typography.
+        No fixed section widths – flexbox + gaps keep the badges responsive.
+      */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+      }
+
+      .usp-wrapper {
+        width: 100%;
+        background-color: {{ section.settings.background_color }};
+      }
+
+      .usp-section {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_left_right_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+      }
+
+      .usp-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .usp-row {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .usp-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+      }
+
+      .usp-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 999px;
+        background-color: #fbf8f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .usp-icon svg {
+        display: block;
+      }
+
+      .usp-text-block {
+        width: 100%;
+        text-align: center;
+      }
+
+      .usp-title {
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 1.55;
+        text-align: center;
+        color: #000000;
+        font-family: Montserrat;
+      }
+
+      .usp-body {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.57;
+        text-align: center;
+        color: #000000;
+      }
+
+      /* Fade-in animation */
+      .usp-wrapper--animate .usp-card {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      .usp-wrapper--animate .usp-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Staggered animation delays */
+      .usp-wrapper--animate .usp-card:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+
+      .usp-wrapper--animate .usp-card:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      .usp-wrapper--animate .usp-card:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      /* Tablet – increase side padding to move towards desktop frame */
+      @media (min-width: 768px) {
+        .usp-section {
+          padding: {{ section.settings.padding_top_tablet }}px {{ section.settings.padding_left_right_tablet }}px {{ section.settings.padding_bottom_tablet }}px;
+        }
+      }
+
+      /* Desktop – horizontal row of three cards, matching Frame 50 layout */
+      @media (min-width: 1024px) {
+        .usp-section {
+          padding: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_left_right_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+        }
+
+        .usp-row {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: stretch;
+        }
+
+        .usp-card {
+          flex: 1 1 0;
+          max-width: none;
+        }
+      }
+    </style>
+
+<!--
+  Velora – USP Section
+  Matches the desktop & mobile Figma frames using a simple, semantic structure.
+  Desktop layout: three cards in a row with equal spacing.
+  Mobile layout: three stacked cards.
+-->
+<div class="usp-wrapper{% if section.settings.enable_animation %} usp-wrapper--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+  <section class="usp-section" aria-label="{{ section.settings.aria_label }}" role="region">
+    <div class="usp-inner">
+      <div class="usp-row">
+        {% for block in section.blocks %}
+          <article class="usp-card" {{ block.shopify_attributes }}>
+            <div class="usp-icon" aria-hidden="true">
+              {% if block.settings.icon_image != blank %}
+                <img 
+                  src="{{ block.settings.icon_image | image_url: width: 64 }}" 
+                  alt="{{ block.settings.icon_alt | default: '' }}"
+                  loading="lazy"
+                  width="32"
+                  height="32"
+                >
+              {% elsif block.settings.icon_svg != blank %}
+                {{ block.settings.icon_svg }}
+              {% else %}
+                <!-- Default placeholder icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 2.5L6 6v9.4c0 6 4.3 11.3 10 12.6 5.7-1.3 10-6.6 10-12.6V6L16 2.5z"
+                    fill="#7a0036"
+                  />
+                  <path
+                    d="M14.1 20.2l-3.1-3.1 1.6-1.6 1.5 1.5 5.3-5.3 1.6 1.6-6.9 6.9z"
+                    fill="#ffffff"
+                  />
+                </svg>
+              {% endif %}
+            </div>
+            <div class="usp-text-block">
+              <h3 class="usp-title">{{ block.settings.title }}</h3>
+              <p class="usp-body">
+                {{ block.settings.description }}
+              </p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Fade-in animation on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.querySelector('.usp-wrapper');
+    if (!wrapper) return;
+
+    const animationEnabled = wrapper.getAttribute('data-animation-enabled') === 'true';
+    
+    if (animationEnabled && 'IntersectionObserver' in window) {
+      const animatedElements = wrapper.querySelectorAll('.usp-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else if (animationEnabled) {
+      // Fallback for browsers without IntersectionObserver
+      const animatedElements = wrapper.querySelectorAll('.usp-card');
+      animatedElements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "⚡USP Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility Label",
+      "default": "Reasons to choose us"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Elements will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_left_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left/Right",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Tablet Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_left_right_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left/Right",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_left_right_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left/Right",
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image",
+          "info": "Upload an icon image (recommended: 64x64px)"
+        },
+        {
+          "type": "text",
+          "id": "icon_alt",
+          "label": "Icon Alt Text"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG Code",
+          "info": "Paste SVG code here if not using an image"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "USP Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add your unique selling point description here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡USP Section",
+      "blocks": [
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "100% MONEY BACK",
+            "description": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M16 2.5L6 6v9.4c0 6 4.3 11.3 10 12.6 5.7-1.3 10-6.6 10-12.6V6L16 2.5z\" fill=\"#7a0036\"/><path d=\"M14.1 20.2l-3.1-3.1 1.6-1.6 1.5 1.5 5.3-5.3 1.6 1.6-6.9 6.9z\" fill=\"#ffffff\"/></svg>"
+          }
+        },
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "CRUELTY FREE & VEGAN",
+            "description": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M26 6C19.5 6 13.9 8.9 10.3 13.6 7.6 17.1 6 21.6 6 26h3.2c0-3.7 1.3-7.2 3.5-10.1 2.2-2.9 5.3-5 8.9-6l-3.4 3.4 2.3 2.3L28 8.1 26 6z\" fill=\"#7a0036\"/><path d=\"M10 24c0-4.4 3.6-8 8-8\" stroke=\"#ffffff\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "400.000+ HAPPY CUSTOMERS",
+            "description": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"13\" r=\"4\" fill=\"#7a0036\"/><circle cx=\"21\" cy=\"13\" r=\"3.5\" fill=\"#c6aa98\"/><path d=\"M6 24c0-3.3 2.7-6 6-6s6 2.7 6 6\" fill=\"#7a0036\"/><path d=\"M17 22c.6-1.9 2.3-3.2 4.3-3.2 2.5 0 4.5 2 4.5 4.5\" fill=\"#c6aa98\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+

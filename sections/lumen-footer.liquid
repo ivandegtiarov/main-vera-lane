@@ -1,0 +1,888 @@
+<style>
+  .lumen-footer-wrapper-{{ section.id }} {
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .lumen-footer-{{ section.id }} {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding: {{ section.settings.padding_vertical_desktop }}px
+      {{ section.settings.padding_horizontal_desktop }}px;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    /* width: 216px; */
+    flex-shrink: 0;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__logo {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 999px;
+    background-color: #333232;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__address {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__social {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__social-icon {
+    padding: 8px;
+    border-radius: 28px;
+    background: #7a0036;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__social-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex: 1;
+    max-width: 814px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link-heading {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: left;
+    transition: opacity 0.2s ease;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link-label {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link-label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s ease-out;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__link:hover {
+    opacity: 0.7;
+  }
+
+  .lumen-footer-{{ section.id }}
+    .lumen-footer__link:hover
+    .lumen-footer__link-label::after {
+    transform: scaleX(1);
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 219px;
+    flex-shrink: 0;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-heading {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 20px;
+    background-color: #333232;
+    border-radius: 44px;
+    width: 100%;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-input input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #79746f;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+
+  .lumen-footer-{{ section.id }}
+    .lumen-footer__newsletter-input
+    input::placeholder {
+    color: #79746f;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 20px;
+    background-color: #ffffff;
+    border-radius: 48px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-button-text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #222222;
+    text-align: left;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__newsletter-button:hover {
+    background-color: transparent;
+    box-shadow: 0 0 0 1px #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .lumen-footer-{{ section.id }}
+    .lumen-footer__newsletter-button:hover
+    .lumen-footer__newsletter-button-text {
+    color: #ffffff;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__divider {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #3f3d3a;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__copyright {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__copyright-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__copyright-link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: left;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__copyright-link:hover {
+    text-decoration: underline;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__payments {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    /* width: 540px; */
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__payment-icon {
+    width: 38px;
+    height: 26px;
+    flex-shrink: 0;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__payment-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lumen-footer-{{ section.id }} .lumen-footer__payment-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Fade-in animation */
+  .lumen-footer-wrapper--animate .lumen-footer-{{ section.id }} {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .lumen-footer-wrapper--animate .lumen-footer-{{ section.id }}.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .lumen-footer-{{ section.id }} {
+      padding: {{ section.settings.padding_vertical_mobile }}px
+        {{ section.settings.padding_horizontal_mobile }}px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__main {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__brand {
+      width: 100%;
+      gap: 16px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__logo {
+      width: 72px;
+      height: 72px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__links {
+      flex-direction: column;
+      gap: 24px;
+      max-width: 100%;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__link-column {
+      gap: 12px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__link-list {
+      gap: 8px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__newsletter {
+      width: 100%;
+      gap: 12px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__newsletter-form {
+      gap: 10px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__bottom {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__payments {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 6px;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .lumen-footer-{{ section.id }} {
+      padding: 64px 48px;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__links {
+      max-width: 100%;
+    }
+
+    .lumen-footer-{{ section.id }} .lumen-footer__payments {
+      width: 100%;
+      max-width: 540px;
+    }
+  }
+</style>
+
+<div class="lumen-footer-wrapper-{{ section.id }}{% if section.settings.enable_animation %} lumen-footer-wrapper--animate{% endif %}">
+  <footer
+    class="lumen-footer lumen-footer-{{ section.id }}"
+    role="contentinfo"
+    aria-label="{{ section.settings.aria_label | escape }}"
+  >
+    <!-- Main footer content -->
+    <div class="lumen-footer__main">
+      <!-- Brand section (left) -->
+      <div class="lumen-footer__brand">
+        <div class="lumen-footer__logo">
+          {% if section.settings.logo != blank %}
+            {{ section.settings.logo | image_url: width: 180 | image_tag: alt: section.settings.logo_alt | default: shop.name, loading: 'lazy' }}
+          {% else %}
+            <div class="lumen-footer__logo-placeholder">
+              {{ shop.name | slice: 0, 2 | upcase }}
+            </div>
+          {% endif %}
+        </div>
+        {% if section.settings.address_text != blank %}
+          <p class="lumen-footer__address">
+            {{ section.settings.address_text }}
+          </p>
+        {% endif %}
+        <div class="lumen-footer__social">
+          {% if section.settings.instagram_url != blank %}
+            <a
+              href="{{ section.settings.instagram_url }}"
+              class="lumen-footer__social-icon"
+              aria-label="Instagram"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10.0013 7.49984C8.62015 7.49984 7.5013 8.61909 7.5013 9.99984C7.5013 11.3809 8.62057 12.4998 10.0013 12.4998C11.3824 12.4998 12.5013 11.3806 12.5013 9.99984C12.5013 8.61875 11.3821 7.49984 10.0013 7.49984ZM10.0013 5.83317C12.3017 5.83317 14.168 7.69742 14.168 9.99984C14.168 12.3003 12.3037 14.1665 10.0013 14.1665C7.70091 14.1665 5.83464 12.3023 5.83464 9.99984C5.83464 7.69945 7.69889 5.83317 10.0013 5.83317ZM15.418 5.62413C15.418 6.19922 14.9507 6.66581 14.3763 6.66581C13.8012 6.66581 13.3347 6.1985 13.3347 5.62413C13.3347 5.04975 13.8019 4.58317 14.3763 4.58317C14.9499 4.58245 15.418 5.04975 15.418 5.62413ZM10.0013 3.33317C7.93924 3.33317 7.60314 3.33863 6.64404 3.38134C5.99061 3.41201 5.55259 3.4999 5.14562 3.6579C4.78395 3.79816 4.52306 3.96565 4.24509 4.24363C3.96604 4.52267 3.79885 4.78286 3.65915 5.1447C3.50079 5.5526 3.41293 5.98993 3.3828 6.64246C3.33968 7.5625 3.33464 7.88405 3.33464 9.99984C3.33464 12.0619 3.34009 12.398 3.38279 13.357C3.41349 14.0102 3.50149 14.4488 3.6591 14.8548C3.79974 15.217 3.96757 15.4785 4.2442 15.7552C4.52434 16.0349 4.78531 16.2027 5.14371 16.341C5.55564 16.5003 5.99339 16.5883 6.64392 16.6183C7.56397 16.6614 7.88551 16.6665 10.0013 16.6665C12.0634 16.6665 12.3995 16.661 13.3585 16.6183C14.0102 16.5878 14.4492 16.4995 14.8563 16.342C15.2175 16.2018 15.4798 16.0333 15.7567 15.7569C16.0368 15.4763 16.2042 15.216 16.3427 14.8568C16.5016 14.4463 16.5897 14.008 16.6198 13.3573C16.6629 12.4372 16.668 12.1156 16.668 9.99984C16.668 7.93777 16.6625 7.60168 16.6198 6.64265C16.5892 5.99072 16.5009 5.55108 16.3432 5.14415C16.2033 4.78349 16.0352 4.5218 15.7575 4.24363C15.478 3.96413 15.2185 3.79728 14.8564 3.65769C14.4488 3.49945 14.0108 3.41147 13.3587 3.38135C12.4387 3.33821 12.1171 3.33317 10.0013 3.33317ZM10.0013 1.6665C12.2652 1.6665 12.5478 1.67484 13.4367 1.7165C14.3235 1.75748 14.9284 1.89775 15.4597 2.104C16.0089 2.31581 16.4728 2.60192 16.936 3.06511C17.3985 3.52831 17.6847 3.99359 17.8972 4.5415C18.1027 5.07206 18.243 5.67761 18.2847 6.56442C18.3242 7.45331 18.3347 7.73595 18.3347 9.99984C18.3347 12.2638 18.3263 12.5463 18.2847 13.4353C18.2437 14.3221 18.1027 14.9269 17.8972 15.4582C17.6853 16.0075 17.3985 16.4713 16.936 16.9346C16.4728 17.3971 16.0068 17.6832 15.4597 17.8957C14.9284 18.1013 14.3235 18.2415 13.4367 18.2832C12.5478 18.3228 12.2652 18.3332 10.0013 18.3332C7.73741 18.3332 7.45477 18.3248 6.56589 18.2832C5.67908 18.2422 5.07491 18.1013 4.54297 17.8957C3.99435 17.6838 3.52977 17.3971 3.06658 16.9346C2.60339 16.4713 2.31797 16.0054 2.10547 15.4582C1.89922 14.9269 1.75964 14.3221 1.71797 13.4353C1.67839 12.5463 1.66797 12.2638 1.66797 9.99984C1.66797 7.73595 1.6763 7.45331 1.71797 6.56442C1.75894 5.67692 1.89922 5.07275 2.10547 4.5415C2.31727 3.9929 2.60339 3.52831 3.06658 3.06511C3.52977 2.60192 3.99505 2.3165 4.54297 2.104C5.07422 1.89775 5.67839 1.75817 6.56589 1.7165C7.45477 1.67692 7.73741 1.6665 10.0013 1.6665Z" fill="#FFD4CD"/>
+          </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.tiktok_url != blank %}
+            <a
+              href="{{ section.settings.tiktok_url }}"
+              class="lumen-footer__social-icon"
+              aria-label="TikTok"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M13.3333 6.87098V12.9165C13.3333 15.9081 10.9082 18.3332 7.91667 18.3332C4.92512 18.3332 2.5 15.9081 2.5 12.9165C2.5 9.92492 4.92512 7.49984 7.91667 7.49984C8.34692 7.49984 8.76542 7.55 9.16667 7.64478V10.2805C8.78783 10.1005 8.364 9.99984 7.91667 9.99984C6.30583 9.99984 5 11.3057 5 12.9165C5 14.5273 6.30583 15.8332 7.91667 15.8332C9.5275 15.8332 10.8333 14.5273 10.8333 12.9165V1.6665H13.3333C13.3333 3.96769 15.1988 5.83317 17.5 5.83317V8.33317C15.9234 8.33317 14.4747 7.7859 13.3333 6.87098Z" fill="#FFD4CD"/>
+              </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.facebook_url != blank %}
+            <a
+              href="{{ section.settings.facebook_url }}"
+              class="lumen-footer__social-icon"
+              aria-label="Facebook"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M11.6663 11.2498H13.7497L14.583 7.9165H11.6663V6.24984C11.6663 5.39202 11.6663 4.58317 13.333 4.58317H14.583V1.78325C14.3116 1.74721 13.2855 1.6665 12.2021 1.6665C9.94001 1.6665 8.33301 3.04722 8.33301 5.58293V7.9165H5.83301V11.2498H8.33301V18.3332H11.6663V11.2498Z" fill="#FFD4CD"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Links section (right) -->
+      <div class="lumen-footer__links">
+        <!-- PRODUCT column -->
+        <div class="lumen-footer__link-column">
+          {% if section.settings.column_1_heading != blank %}
+            <h3 class="lumen-footer__link-heading">
+              {{ section.settings.column_1_heading }}
+            </h3>
+          {% endif %}
+          {% if section.settings.menu_1 != blank %}
+            <div class="lumen-footer__link-list">
+              {% for link in section.settings.menu_1.links %}
+                <a href="{{ link.url }}" class="lumen-footer__link">
+                  <span class="lumen-footer__link-label">
+                    {{ link.title }}
+                  </span>
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- About column -->
+        <div class="lumen-footer__link-column">
+          {% if section.settings.column_2_heading != blank %}
+            <h3 class="lumen-footer__link-heading">
+              {{ section.settings.column_2_heading }}
+            </h3>
+          {% endif %}
+          {% if section.settings.menu_2 != blank %}
+            <div class="lumen-footer__link-list">
+              {% for link in section.settings.menu_2.links %}
+                <a href="{{ link.url }}" class="lumen-footer__link">
+                  <span class="lumen-footer__link-label">
+                    {{ link.title }}
+                  </span>
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- HELP & support column -->
+        <div class="lumen-footer__link-column">
+          {% if section.settings.column_3_heading != blank %}
+            <h3 class="lumen-footer__link-heading">
+              {{ section.settings.column_3_heading }}
+            </h3>
+          {% endif %}
+          {% if section.settings.menu_3 != blank %}
+            <div class="lumen-footer__link-list">
+              {% for link in section.settings.menu_3.links %}
+                <a href="{{ link.url }}" class="lumen-footer__link">
+                  <span class="lumen-footer__link-label">
+                    {{ link.title }}
+                  </span>
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Newsletter column -->
+        <div class="lumen-footer__newsletter">
+          {% if section.settings.newsletter_heading != blank %}
+            <h3 class="lumen-footer__newsletter-heading">
+              {{ section.settings.newsletter_heading }}
+            </h3>
+          {% endif %}
+          {% form 'customer', id: 'ContactFooter', class: 'lumen-footer__newsletter-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="lumen-footer__newsletter-input">
+              <input
+                type="email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                placeholder="{{ section.settings.newsletter_placeholder }}"
+                aria-label="{{ section.settings.newsletter_placeholder }}"
+                required
+              >
+            </div>
+            <button type="submit" class="lumen-footer__newsletter-button">
+              <span class="lumen-footer__newsletter-button-text">
+                {{ section.settings.newsletter_button_label }}
+              </span>
+            </button>
+            {% if form.posted_successfully? %}
+              <p class="lumen-footer__newsletter-success">
+                {{ 'newsletter.form.confirmation' | t }}
+              </p>
+            {% elsif form.errors %}
+              <p class="lumen-footer__newsletter-error">
+                {{ form.errors.translated_fields['email'] | capitalize }}
+                {{ form.errors.messages['email'] }}
+              </p>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="lumen-footer__divider"></div>
+
+    <!-- Bottom section -->
+    <div class="lumen-footer__bottom">
+      <div class="lumen-footer__copyright">
+        {% if section.settings.copyright_text != blank %}
+          <span class="lumen-footer__copyright-text">
+            {{ section.settings.copyright_text }}
+          </span>
+        {% else %}
+          <span class="lumen-footer__copyright-text">
+            &copy; {{ 'now' | date: '%Y' }}, {{ shop.name }}
+          </span>
+        {% endif %}
+
+        {% if section.settings.privacy_link != blank %}
+          <a
+            href="{{ section.settings.privacy_link }}"
+            class="lumen-footer__copyright-link"
+          >
+            {{ section.settings.privacy_label | default: 'Privacy Policy' }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.terms_link != blank %}
+          <a
+            href="{{ section.settings.terms_link }}"
+            class="lumen-footer__copyright-link"
+          >
+            {{ section.settings.terms_label | default: 'Terms of Service' }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_payment_icons %}
+        {% assign enabled_payment_types = shop.enabled_payment_types %}
+        {% if enabled_payment_types != blank %}
+          <div class="lumen-footer__payments" aria-label="Payment methods">
+            {% for type in enabled_payment_types %}
+              <div class="lumen-footer__payment-icon">
+                {{ type | payment_type_svg_tag }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.querySelector('.lumen-footer-wrapper-{{ section.id }}');
+    if (!wrapper || !wrapper.classList.contains('lumen-footer-wrapper--animate')) return;
+
+    const footer = wrapper.querySelector('.lumen-footer-{{ section.id }}');
+    if (!footer) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            footer.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      observer.observe(footer);
+    } else {
+      footer.classList.add('is-visible');
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Lumen Footer",
+  "class": "lumen-footer-section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Footer aria label",
+      "default": "Site footer"
+    },
+    {
+      "type": "header",
+      "content": "Layout & colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#222222"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 24,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical padding (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 16,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding (desktop)",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 16,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical padding (mobile)",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding (mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "Store logo"
+    },
+    {
+      "type": "textarea",
+      "id": "address_text",
+      "label": "Address",
+      "default": "2972 Westheimer Rd. Santa Ana, Illinois 85486"
+    },
+    {
+      "type": "header",
+      "content": "Social links"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "text",
+      "id": "column_1_heading",
+      "label": "Heading",
+      "default": "PRODUCT"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "text",
+      "id": "column_2_heading",
+      "label": "Heading",
+      "default": "About"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "text",
+      "id": "column_3_heading",
+      "label": "Heading",
+      "default": "HELP & support"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Heading",
+      "default": "Never Miss an Update"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter email address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Button label",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "richtext",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "<p>© 2024, Sana</p>"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy policy link"
+    },
+    {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Privacy policy label",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms of service link"
+    },
+    {
+      "type": "text",
+      "id": "terms_label",
+      "label": "Terms of service label",
+      "default": "Terms of Service"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons from payment settings",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen Footer"
+    }
+  ]
+}
+{% endschema %}

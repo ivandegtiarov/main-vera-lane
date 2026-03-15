@@ -1,0 +1,432 @@
+{%- comment -%} ── JV - BOTTOM CTA ── {%- endcomment -%}
+<div class="jv-bottom-cta" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--cta-bg: {{ section.settings.bg_color }}; --cta-text: {{ section.settings.text_color }};">
+  <div class="jv-bottom-cta__container">
+    <h2 class="jv-bottom-cta__headline">{{ section.settings.headline }}</h2>
+    <p class="jv-bottom-cta__subtext">{{ section.settings.subtext }}</p>
+
+    {%- if section.settings.badge_text != blank -%}
+      <div class="jv-bottom-cta__badge">
+        {%- if section.settings.badge_icon != blank -%}
+          <span>{{ section.settings.badge_icon }}</span>
+        {%- endif -%}
+        {{ section.settings.badge_text }}
+        {%- if section.settings.badge_icon != blank -%}
+          <span>{{ section.settings.badge_icon }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="jv-bottom-cta__card" style="--card-bg: {{ section.settings.card_bg }};">
+      {%- if section.settings.card_eyebrow != blank -%}
+        <span class="jv-bottom-cta__card-eyebrow">{{ section.settings.card_eyebrow }}</span>
+      {%- endif -%}
+
+      <p class="jv-bottom-cta__card-offer">{{ section.settings.card_offer }}</p>
+
+      {%- if section.settings.card_image != blank -%}
+        <img
+          src="{{ section.settings.card_image | image_url: width: 400 }}"
+          alt="{{ section.settings.card_image.alt | default: 'Product offer' }}"
+          class="jv-bottom-cta__card-image"
+          loading="lazy"
+        >
+      {%- endif -%}
+
+      {%- if section.settings.card_urgency != blank -%}
+        <p class="jv-bottom-cta__card-urgency">{{ section.settings.card_urgency }}</p>
+      {%- endif -%}
+
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="jv-bottom-cta__btn" style="--btn-bg: {{ section.settings.btn_bg }}; --btn-text: {{ section.settings.btn_text }};">
+        {{ section.settings.cta_label }}
+      </a>
+
+      {%- if section.settings.show_timer -%}
+        <div class="jv-bottom-cta__timer" data-countdown="{{ section.settings.timer_minutes }}">
+          <span class="jv-bottom-cta__timer-label">DEAL ENDING IN:</span>
+          <span class="jv-bottom-cta__timer-time">
+            <span data-hours>00</span>:<span data-minutes>00</span>:<span data-seconds>00</span>
+          </span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.trust_line != blank -%}
+        <p class="jv-bottom-cta__trust-line">{{ section.settings.trust_line }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.guarantee_text != blank -%}
+        <p class="jv-bottom-cta__guarantee">{{ section.settings.guarantee_text }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const timer = document.querySelector('.jv-bottom-cta__timer');
+    if (!timer) return;
+
+    const minutes = parseInt(timer.dataset.countdown) || 120;
+    const storageKey = 'jv_cta_countdown_end';
+
+    let endTime = localStorage.getItem(storageKey);
+    if (!endTime || parseInt(endTime) < Date.now()) {
+      endTime = Date.now() + (minutes * 60 * 1000);
+      localStorage.setItem(storageKey, endTime);
+    }
+
+    const hoursEl = timer.querySelector('[data-hours]');
+    const minsEl = timer.querySelector('[data-minutes]');
+    const secsEl = timer.querySelector('[data-seconds]');
+
+    function update() {
+      const remaining = Math.max(0, parseInt(endTime) - Date.now());
+      const hours = Math.floor(remaining / 3600000);
+      const mins = Math.floor((remaining % 3600000) / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+
+      if (remaining <= 0) {
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
+</script>
+
+{% stylesheet %}
+.jv-bottom-cta {
+  background: var(--cta-bg, #1E1B4B);
+  color: var(--cta-text, #fff);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.jv-bottom-cta__container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.jv-bottom-cta__headline {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+}
+
+.jv-bottom-cta__subtext {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0 0 1.5rem;
+}
+
+.jv-bottom-cta__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F5A623;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.jv-bottom-cta__card {
+  background: var(--card-bg, #FFF8E7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.jv-bottom-cta__card-eyebrow {
+  display: inline-block;
+  background: #1E1B4B;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.jv-bottom-cta__card-offer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 800;
+  color: #1E1B4B;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.jv-bottom-cta__card-image {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.jv-bottom-cta__card-urgency {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  color: #666;
+  font-style: italic;
+  margin: 0 0 1rem;
+}
+
+.jv-bottom-cta__btn {
+  display: block;
+  background: var(--btn-bg, #1E1B4B);
+  color: var(--btn-text, #fff);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.jv-bottom-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.jv-bottom-cta__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+}
+
+.jv-bottom-cta__timer-label {
+  color: #666;
+}
+
+.jv-bottom-cta__timer-time {
+  font-weight: 700;
+  color: #e63946;
+  font-variant-numeric: tabular-nums;
+}
+
+.jv-bottom-cta__trust-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0.75rem 0 0;
+}
+
+.jv-bottom-cta__guarantee {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0.5rem 0 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "JV - Bottom CTA",
+  "tag": "section",
+  "class": "jv-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'offer')"
+    },
+    {
+      "type": "header",
+      "content": "Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1E1B4B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Header Content"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Reaching #11 means one thing: you're truly serious about a better morning coffee routine."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "We don't hand these out every day... consider this an exclusive Javvy hookup just for you."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "SPRING SPECIAL"
+    },
+    {
+      "type": "text",
+      "id": "badge_icon",
+      "label": "Badge icon (emoji)",
+      "default": "🌸"
+    },
+    {
+      "type": "header",
+      "content": "Offer Card"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#FFF8E7"
+    },
+    {
+      "type": "text",
+      "id": "card_eyebrow",
+      "label": "Card eyebrow",
+      "default": "⭐ FREE GIFTS WITH YOUR ORDER"
+    },
+    {
+      "type": "text",
+      "id": "card_offer",
+      "label": "Offer headline",
+      "default": "UP TO 58% OFF FOR A LIMITED TIME ONLY!"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "card_urgency",
+      "label": "Urgency text",
+      "default": "This limited-time deal is in high demand and stock selling out fast."
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "GET 58% OFF →"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button background",
+      "default": "#1E1B4B"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Timer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_timer",
+      "label": "Show countdown timer",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "timer_minutes",
+      "label": "Timer duration (minutes)",
+      "min": 30,
+      "max": 1440,
+      "step": 30,
+      "default": 180
+    },
+    {
+      "type": "header",
+      "content": "Trust Elements"
+    },
+    {
+      "type": "text",
+      "id": "trust_line",
+      "label": "Trust line",
+      "default": "Sell Out Risk: High | FREE shipping"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "Try it today with a 30-Day Money-Back Guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JV - Bottom CTA",
+      "category": "t:categories.reasons_listicle"
+    }
+  ]
+}
+{% endschema %}

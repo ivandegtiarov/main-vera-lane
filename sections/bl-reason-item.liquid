@@ -1,0 +1,270 @@
+{%- comment -%} ── BL - REASON ITEM ── {%- endcomment -%}
+<article class="bl-reason-item bl-reason-item--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--reason-bg: {{ section.settings.bg_color }};">
+  <div class="bl-reason-item__container">
+    <div class="bl-reason-item__content">
+      <header class="bl-reason-item__header">
+        <span class="bl-reason-item__number">{{ section.settings.number }}</span>
+        <h2 class="bl-reason-item__title">{{ section.settings.title }}</h2>
+      </header>
+
+      <div class="bl-reason-item__body">
+        {{ section.settings.body_text }}
+      </div>
+
+      {%- if section.settings.link_text != blank -%}
+        {%- liquid
+          if section.settings.link_type == 'anchor' and section.settings.link_anchor != blank
+            assign link_href = '#' | append: section.settings.link_anchor
+          else
+            assign link_href = section.settings.link_url
+          endif
+        -%}
+        {%- if link_href != blank -%}
+          <a href="{{ link_href }}" class="bl-reason-item__link">
+            {{ section.settings.link_text }}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.image != blank -%}
+      <figure class="bl-reason-item__figure">
+        <img
+          src="{{ section.settings.image | image_url: width: 700 }}"
+          alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+          loading="lazy"
+          class="bl-reason-item__image"
+        >
+      </figure>
+    {%- endif -%}
+  </div>
+</article>
+
+{% stylesheet %}
+.bl-reason-item {
+  background: var(--reason-bg, #FAF9F7);
+  padding: 3.5rem 2rem;
+  border-block-end: 1px solid #E8E6E3;
+}
+
+.bl-reason-item__container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .bl-reason-item--left .bl-reason-item__container,
+  .bl-reason-item--right .bl-reason-item__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .bl-reason-item--right .bl-reason-item__figure {
+    order: 2;
+  }
+
+  .bl-reason-item--right .bl-reason-item__content {
+    order: 1;
+  }
+
+  .bl-reason-item--left .bl-reason-item__figure {
+    order: 1;
+  }
+
+  .bl-reason-item--left .bl-reason-item__content {
+    order: 2;
+  }
+}
+
+.bl-reason-item__header {
+  margin-bottom: 1.25rem;
+}
+
+.bl-reason-item__number {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #8B3A3A;
+  margin-bottom: 0.75rem;
+}
+
+.bl-reason-item__number::before {
+  content: 'Reason ';
+}
+
+.bl-reason-item__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #2D2D2D;
+  margin: 0;
+}
+
+.bl-reason-item__body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+}
+
+.bl-reason-item__body p {
+  margin-bottom: 1.25rem;
+}
+
+.bl-reason-item__body p:last-child {
+  margin-bottom: 0;
+}
+
+.bl-reason-item__body strong {
+  font-weight: 600;
+  color: #2D2D2D;
+}
+
+.bl-reason-item__body a {
+  color: #8B3A3A;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bl-reason-item__body a:hover {
+  color: #6B2A2A;
+}
+
+.bl-reason-item__link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 200ms ease;
+}
+
+.bl-reason-item__link:hover {
+  color: #6B2A2A;
+}
+
+.bl-reason-item__figure {
+  margin: 0;
+}
+
+.bl-reason-item__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Reason Item",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'reason-1')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Reason number",
+      "default": "1"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "It Works With Your Skin, Not Against It"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>As we age, our skin requires more thoughtful care. This foundation was developed specifically for mature skin, with ingredients that hydrate and nourish while providing flawless coverage.</p><p>Unlike traditional formulas that can settle into fine lines, this lightweight formula glides on smoothly and actually improves the appearance of skin over time.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Link (optional)"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "select",
+      "id": "link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "anchor"
+    },
+    {
+      "type": "text",
+      "id": "link_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section (e.g., 'offer')"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "full", "label": "Full width below" }
+      ],
+      "default": "right"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Reason Item",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

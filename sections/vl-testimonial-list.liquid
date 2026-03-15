@@ -1,0 +1,250 @@
+<div class="vl-testimonial-list" style="
+  --list-bg: {{ section.settings.bg_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --divider-color: {{ section.settings.divider_color }};
+  --quote-icon-color: {{ section.settings.quote_icon_color }};
+  --quote-text-color: {{ section.settings.quote_text_color }};
+  --author-name-color: {{ section.settings.author_name_color }};
+  --author-title-color: {{ section.settings.author_title_color }};
+">
+  <div class="vl-testimonial-list__inner">
+    <h2 class="vl-testimonial-list__heading">{{ section.settings.heading }}</h2>
+
+    <div class="vl-testimonial-list__items">
+      {% for block in section.blocks %}
+        <div class="vl-testimonial-list__item" {{ block.shopify_attributes }}>
+          <div class="vl-testimonial-list__quote-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <p class="vl-testimonial-list__quote">{{ block.settings.quote }}</p>
+          <div class="vl-testimonial-list__author">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 80 }}"
+                alt="{{ block.settings.name }}"
+                class="vl-testimonial-list__avatar"
+                width="36"
+                height="36"
+                loading="lazy"
+              >
+            {% endif %}
+            <div class="vl-testimonial-list__author-info">
+              <span class="vl-testimonial-list__name">{{ block.settings.name }}</span>
+              <span class="vl-testimonial-list__title">{{ block.settings.title }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-testimonial-list {
+    background-color: var(--list-bg, #ffffff);
+    padding: 40px 0;
+  }
+
+  .vl-testimonial-list__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .vl-testimonial-list__heading {
+    font-family: var(--font-heading--family, serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--heading-color, #000000);
+    margin: 0 0 24px;
+  }
+
+  .vl-testimonial-list__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vl-testimonial-list__item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--divider-color, #E5E5E5);
+  }
+
+  .vl-testimonial-list__item:first-child {
+    padding-top: 0;
+  }
+
+  .vl-testimonial-list__item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .vl-testimonial-list__quote-icon {
+    color: var(--quote-icon-color, #5C1A33);
+    margin-bottom: 12px;
+  }
+
+  .vl-testimonial-list__quote {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--quote-text-color, #333333);
+    margin: 0 0 16px;
+  }
+
+  .vl-testimonial-list__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vl-testimonial-list__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .vl-testimonial-list__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .vl-testimonial-list__name {
+    font-family: var(--font-heading--family, serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--author-name-color, #000000);
+  }
+
+  .vl-testimonial-list__title {
+    font-size: 12px;
+    color: var(--author-title-color, #666666);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Testimonial List",
+  "tag": "section",
+  "class": "vl-testimonial-list-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customer Said"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "color",
+      "id": "quote_icon_color",
+      "label": "Quote icon color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "quote_text_color",
+      "label": "Quote text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "author_name_color",
+      "label": "Author name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "author_title_color",
+      "label": "Author title color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\""
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Author photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sarah"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title/Occupation",
+          "default": "Art Teacher"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Testimonial List",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

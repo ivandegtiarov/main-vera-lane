@@ -1,0 +1,560 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+    #lumen-faq-{{ section.id }} {
+        max-width: 1440px;
+        margin: 0 auto;
+        background-color: {{ section.settings.background_color }};
+        padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-heading {
+        font-family: "Playfair Display", Georgia, 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-size: {{ section.settings.heading_font_size_mobile }}px;
+        line-height: 1.2;
+        color: {{ section.settings.heading_color }};
+        font-weight: 400;
+    }
+
+    /* Fade-in animation */
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-heading,
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-heading.is-visible,
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Staggered animation delays */
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-heading {
+        transition-delay: 0.1s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(1) {
+        transition-delay: 0.2s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(2) {
+        transition-delay: 0.3s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(3) {
+        transition-delay: 0.4s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(4) {
+        transition-delay: 0.5s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(5) {
+        transition-delay: 0.6s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(6) {
+        transition-delay: 0.7s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(7) {
+        transition-delay: 0.8s;
+    }
+
+    #lumen-faq-{{ section.id }}.lumen-faq--animate .faq-item:nth-child(8) {
+        transition-delay: 0.9s;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-item {
+        border-bottom: 1px solid {{ section.settings.border_color }};
+    }
+
+    #lumen-faq-{{ section.id }} .faq-item:last-child {
+        border-bottom: none;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: inherit;
+        transition: all 0.3s ease;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-question:hover {
+        opacity: 0.7;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-question-text {
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: {{ section.settings.question_font_size_mobile }}px;
+        font-weight: 600;
+        color: {{ section.settings.question_color }};
+        letter-spacing: 0.5px;
+        text-transform: {{ section.settings.question_text_transform }};
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 300;
+        color: {{ section.settings.icon_color }};
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-answer {
+        overflow: hidden;
+    }
+
+    #lumen-faq-{{ section.id }} .faq-answer-content {
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        padding: 0 0 24px 0;
+        font-size: {{ section.settings.answer_font_size_mobile }}px;
+        line-height: 1.6;
+        color: {{ section.settings.answer_color }};
+    }
+
+    /* Desktop layout - two columns */
+    @media (min-width: 768px) {
+        #lumen-faq-{{ section.id }} {
+            padding: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_horizontal_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+        }
+
+        #lumen-faq-{{ section.id }} .faq-container {
+            grid-template-columns: 35% 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        #lumen-faq-{{ section.id }} .faq-heading {
+            font-size: {{ section.settings.heading_font_size_desktop }}px;
+            {% if section.settings.sticky_heading %}
+            position: sticky;
+            top: 20px;
+            {% endif %}
+        }
+
+        #lumen-faq-{{ section.id }} .faq-question-text {
+            font-size: {{ section.settings.question_font_size_desktop }}px;
+        }
+
+        #lumen-faq-{{ section.id }} .faq-answer-content {
+            font-size: {{ section.settings.answer_font_size_desktop }}px;
+            padding-right: 40px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        #lumen-faq-{{ section.id }} .faq-container {
+            gap: 80px;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('lumen-faq-{{ section.id }}');
+    if (!section) return;
+
+    const animationEnabled = section.getAttribute('data-animation-enabled') === 'true';
+    
+    // Fade-in animation on scroll
+    if (animationEnabled && 'IntersectionObserver' in window) {
+        const animatedElements = section.querySelectorAll('.faq-heading, .faq-item');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    } else if (animationEnabled) {
+        // Fallback for browsers without IntersectionObserver
+        const animatedElements = section.querySelectorAll('.faq-heading, .faq-item');
+        animatedElements.forEach(element => {
+            element.classList.add('is-visible');
+        });
+    }
+});
+</script>
+
+<div id="lumen-faq-{{ section.id }}" class="faq-section{% if section.settings.enable_animation %} lumen-faq--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+    <div class="faq-container">
+        {% if section.settings.main_heading != blank %}
+        <h2 class="faq-heading">{{ section.settings.main_heading }}</h2>
+        {% endif %}
+        
+        <div class="faq-list" x-data="{ activeItem: {{ section.settings.first_item_open | default: 0 }} }">
+            {% for block in section.blocks %}
+                <div class="faq-item" {{ block.shopify_attributes }}>
+                    <button 
+                        class="faq-question" 
+                        @click="activeItem = activeItem === {{ forloop.index0 }} ? null : {{ forloop.index0 }}"
+                        :aria-expanded="activeItem === {{ forloop.index0 }}"
+                    >
+                        <span class="faq-question-text">{{ block.settings.question }}</span>
+                        <span class="faq-icon" x-text="activeItem === {{ forloop.index0 }} ? '−' : '+'"></span>
+                    </button>
+                    <div 
+                        class="faq-answer" 
+                        x-show="activeItem === {{ forloop.index0 }}" 
+                        x-collapse
+                    >
+                        <div class="faq-answer-content">
+                            {{ block.settings.answer }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "⚡FAQ Section",
+  "tag": "section",
+  "class": "lumen-faq-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label",
+      "default": "FAQ Section"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_heading",
+      "label": "Sticky Heading (Desktop)",
+      "default": true,
+      "info": "Makes the heading stick to the top when scrolling on desktop"
+    },
+    {
+      "type": "number",
+      "id": "first_item_open",
+      "label": "First Item Open by Default",
+      "default": 0,
+      "info": "Enter 0 for first item, 1 for second, etc. Enter -1 for all closed."
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Elements will fade in when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "question_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Question Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "question_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Question Font Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "question_text_transform",
+      "label": "Question Text Transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Horizontal",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Spacing - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Horizontal",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Lorem ipsum dolor sit amet?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Nunc imperdiet posuere tempus. Aenean dictum congue nulla, eu dapibus ipsum tincidunt in. Vestibulum diam orci, ultricies in congue non, condimentum vel mauris."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "⚡FAQ Section",
+      "settings": {
+        "enable_animation": true
+      },
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee on all products. If you're not completely satisfied with your purchase, contact us for a full refund."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Standard shipping takes 4-5 business days. Express shipping is available for 2-3 business day delivery."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this product suitable for sensitive skin?",
+            "answer": "Yes, our products are dermatologist-tested and formulated for all skin types, including sensitive skin."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to choose?",
+            "answer": "Our foundation adapts to your skin tone within seconds. It works for fair to medium skin tones."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

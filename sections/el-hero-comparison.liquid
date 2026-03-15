@@ -1,0 +1,325 @@
+{%- comment -%} ── EL - HERO COMPARISON ── {%- endcomment -%}
+<div class="el-hero-comparison" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--hero-bg: {{ section.settings.bg_color }};">
+  <div class="el-hero-comparison__container">
+    {%- if section.settings.category != blank -%}
+      <span class="el-hero-comparison__category">{{ section.settings.category }}</span>
+    {%- endif -%}
+
+    <h1 class="el-hero-comparison__headline">{{ section.settings.headline }}</h1>
+
+    {%- if section.settings.author != blank or section.settings.date != blank -%}
+      <div class="el-hero-comparison__byline">
+        {%- if section.settings.author != blank -%}
+          <span class="el-hero-comparison__author">{{ section.settings.author }}</span>
+        {%- endif -%}
+        {%- if section.settings.author != blank and section.settings.date != blank -%}
+          <span class="el-hero-comparison__divider">·</span>
+        {%- endif -%}
+        {%- if section.settings.date != blank -%}
+          <span class="el-hero-comparison__date">{{ section.settings.date }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.hook_text != blank -%}
+      <p class="el-hero-comparison__hook">{{ section.settings.hook_text }}</p>
+    {%- endif -%}
+
+    <div class="el-hero-comparison__table-wrap">
+      <table class="el-hero-comparison__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="el-hero-comparison__th--highlight">
+              {%- if section.settings.product_logo != blank -%}
+                <img
+                  src="{{ section.settings.product_logo | image_url: width: 100 }}"
+                  alt="{{ section.settings.col1_header }}"
+                  class="el-hero-comparison__logo"
+                >
+              {%- else -%}
+                {{ section.settings.col1_header }}
+              {%- endif -%}
+            </th>
+            <th>{{ section.settings.col2_header }}</th>
+            <th>{{ section.settings.col3_header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="el-hero-comparison__label">{{ block.settings.label }}</td>
+              <td class="el-hero-comparison__td--highlight">{{ block.settings.col1_value }}</td>
+              <td>{{ block.settings.col2_value }}</td>
+              <td>{{ block.settings.col3_value }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.el-hero-comparison {
+  background: var(--hero-bg, #fff);
+  padding: 3rem 2rem 2rem;
+}
+
+.el-hero-comparison__container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.el-hero-comparison__category {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  margin-bottom: 1rem;
+}
+
+.el-hero-comparison__headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #2D2D2D;
+  margin: 0 0 1.25rem;
+}
+
+.el-hero-comparison__byline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.el-hero-comparison__author {
+  font-weight: 500;
+  color: #666;
+}
+
+.el-hero-comparison__divider {
+  opacity: 0.5;
+}
+
+.el-hero-comparison__hook {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #8B3A3A;
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  background: #FAF9F7;
+  border-left: 2px solid #8B3A3A;
+}
+
+.el-hero-comparison__table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.el-hero-comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  border: 1px solid #E8E6E3;
+}
+
+.el-hero-comparison__table th,
+.el-hero-comparison__table td {
+  padding: 0.875rem 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #E8E6E3;
+}
+
+.el-hero-comparison__table th {
+  background: #FAF9F7;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: #666;
+}
+
+.el-hero-comparison__table th:first-child,
+.el-hero-comparison__table td:first-child {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.el-hero-comparison__th--highlight {
+  background: #F5F0E8 !important;
+  color: #2D2D2D !important;
+}
+
+.el-hero-comparison__td--highlight {
+  background: #F5F0E8;
+  font-weight: 600;
+  color: #2D2D2D;
+}
+
+.el-hero-comparison__logo {
+  height: 1.5rem;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.el-hero-comparison__label {
+  font-weight: 500;
+  color: #2D2D2D;
+  white-space: nowrap;
+}
+
+.el-hero-comparison__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+@media (min-width: 600px) {
+  .el-hero-comparison__table th,
+  .el-hero-comparison__table td {
+    padding: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .el-hero-comparison__table th {
+    font-size: 0.8125rem;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "EL - Hero Comparison",
+  "tag": "section",
+  "class": "el-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'comparison')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "category",
+      "label": "Category label",
+      "default": "COMPARISON"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Why This Formula Outperforms Every Alternative on the Market"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "By Editorial Team"
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "Date",
+      "default": "Updated March 2026"
+    },
+    {
+      "type": "text",
+      "id": "hook_text",
+      "label": "Hook text",
+      "default": "\"The difference is remarkable—see for yourself.\""
+    },
+    {
+      "type": "header",
+      "content": "Table Headers"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_logo",
+      "label": "Product logo (column 1)"
+    },
+    {
+      "type": "text",
+      "id": "col1_header",
+      "label": "Column 1 header",
+      "default": "Our Formula"
+    },
+    {
+      "type": "text",
+      "id": "col2_header",
+      "label": "Column 2 header",
+      "default": "Drugstore Brands"
+    },
+    {
+      "type": "text",
+      "id": "col3_header",
+      "label": "Column 3 header",
+      "default": "Luxury Brands"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Row label",
+          "default": "Coverage"
+        },
+        {
+          "type": "text",
+          "id": "col1_value",
+          "label": "Product value",
+          "default": "Full"
+        },
+        {
+          "type": "text",
+          "id": "col2_value",
+          "label": "Competitor 1 value",
+          "default": "Light-Medium"
+        },
+        {
+          "type": "text",
+          "id": "col3_value",
+          "label": "Competitor 2 value",
+          "default": "Full"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL - Hero Comparison",
+      "category": "t:categories.elegant_listicle",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Coverage", "col1_value": "Buildable", "col2_value": "Light", "col3_value": "Heavy" } },
+        { "type": "row", "settings": { "label": "Hydration", "col1_value": "12 Hours", "col2_value": "4 Hours", "col3_value": "6 Hours" } },
+        { "type": "row", "settings": { "label": "Finish", "col1_value": "Natural", "col2_value": "Matte", "col3_value": "Dewy" } },
+        { "type": "row", "settings": { "label": "Price", "col1_value": "$49", "col2_value": "$15-25", "col3_value": "$65+" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

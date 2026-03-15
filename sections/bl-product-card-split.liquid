@@ -1,0 +1,377 @@
+{%- comment -%} ── BL - PRODUCT CARD SPLIT ── {%- endcomment -%}
+<div class="bl-card-split" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--split-bg: {{ section.settings.bg_color }};">
+  <div class="bl-card-split__container">
+    {%- if section.settings.sale_badge != blank -%}
+      <div class="bl-card-split__badge" style="--badge-bg: {{ section.settings.badge_bg }}; --badge-text: {{ section.settings.badge_text }};">
+        {{ section.settings.sale_badge }}
+      </div>
+    {%- endif -%}
+
+    <div class="bl-card-split__grid">
+      <div class="bl-card-split__content">
+        <h2 class="bl-card-split__title">{{ section.settings.product_name }}</h2>
+
+        {%- if section.settings.description != blank -%}
+          <div class="bl-card-split__desc">{{ section.settings.description }}</div>
+        {%- endif -%}
+
+        {%- assign feature_blocks = section.blocks | where: 'type', 'feature' -%}
+        {%- if feature_blocks.size > 0 -%}
+          <div class="bl-card-split__features">
+            {%- for block in feature_blocks -%}
+              <div class="bl-card-split__feature" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                  <img src="{{ block.settings.icon | image_url: width: 48 }}" alt="" class="bl-card-split__feature-icon" loading="lazy">
+                {%- else -%}
+                  <span class="bl-card-split__feature-dot"></span>
+                {%- endif -%}
+                <span class="bl-card-split__feature-label">{{ block.settings.label }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="bl-card-split__media">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image.alt | default: section.settings.product_name | escape }}"
+            class="bl-card-split__image"
+            loading="lazy"
+          >
+        {%- endif -%}
+
+        {%- assign swatch_blocks = section.blocks | where: 'type', 'swatch' -%}
+        {%- if swatch_blocks.size > 0 -%}
+          <div class="bl-card-split__swatches">
+            {%- for block in swatch_blocks -%}
+              {%- if block.settings.swatch_image != blank -%}
+                <img
+                  src="{{ block.settings.swatch_image | image_url: width: 80 }}"
+                  alt="{{ block.settings.swatch_label | escape }}"
+                  class="bl-card-split__swatch"
+                  {{ block.shopify_attributes }}
+                  loading="lazy"
+                >
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if section.settings.more_colors_text != blank -%}
+            <p class="bl-card-split__more-colors">{{ section.settings.more_colors_text }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <a href="{{ section.settings.cta_url }}" class="bl-card-split__cta" style="--cta-bg: {{ section.settings.cta_bg }}; --cta-text: {{ section.settings.cta_text_color }};">
+        {{ section.settings.cta_text }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-card-split {
+  background: var(--split-bg, #FAF9F7);
+  padding: 3rem 2rem;
+}
+
+.bl-card-split__container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.bl-card-split__badge {
+  display: inline-block;
+  background: var(--badge-bg, #D4A574);
+  color: var(--badge-text, #2D2D2D);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bl-card-split__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.bl-card-split__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #2D2D2D;
+  margin: 0 0 1.25rem;
+}
+
+.bl-card-split__desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.bl-card-split__features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 2rem;
+}
+
+.bl-card-split__feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bl-card-split__feature-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.bl-card-split__feature-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #D4A574;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bl-card-split__feature-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2D2D2D;
+}
+
+.bl-card-split__media {
+  text-align: center;
+}
+
+.bl-card-split__image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.bl-card-split__swatches {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bl-card-split__swatch {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border: 1px solid #E8E6E3;
+  cursor: pointer;
+  transition: border-color 200ms ease;
+}
+
+.bl-card-split__swatch:hover {
+  border-color: #2D2D2D;
+}
+
+.bl-card-split__more-colors {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  color: #888;
+  margin: 0;
+}
+
+.bl-card-split__cta {
+  display: block;
+  background: var(--cta-bg, #D4A574);
+  color: var(--cta-text, #2D2D2D);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+  padding: 1.25rem 2rem;
+  border: 2px solid transparent;
+  transition: opacity 200ms ease;
+}
+
+.bl-card-split__cta:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .bl-card-split__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bl-card-split__media {
+    order: -1;
+  }
+
+  .bl-card-split__features {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Product Card Split",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Used for anchor links from other sections",
+      "default": "offer"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Sale Badge"
+    },
+    {
+      "type": "text",
+      "id": "sale_badge",
+      "label": "Badge text",
+      "default": "VIP SALE — Up to 40% Off"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Badge background",
+      "default": "#D4A574"
+    },
+    {
+      "type": "color",
+      "id": "badge_text",
+      "label": "Badge text color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Mature Skin Foundation"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A lightweight, buildable formula designed specifically for mature skin. Hydrates, smooths, and delivers natural-looking coverage that lasts all day.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "more_colors_text",
+      "label": "More colors text",
+      "info": "Shows below color swatches",
+      "default": "+12 More Shades"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Check Availability"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg",
+      "label": "Button background",
+      "default": "#D4A574"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button text color",
+      "default": "#2D2D2D"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Optional. Small icon (48x48 recommended)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Feature text",
+          "default": "Hydrating"
+        }
+      ]
+    },
+    {
+      "type": "swatch",
+      "name": "Color Swatch",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swatch_image",
+          "label": "Swatch image"
+        },
+        {
+          "type": "text",
+          "id": "swatch_label",
+          "label": "Color name",
+          "default": "Natural"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Product Card Split",
+      "category": "t:categories.blissy_listicle",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "Moisture-Wicking" } },
+        { "type": "feature", "settings": { "label": "Temperature Regulating" } },
+        { "type": "feature", "settings": { "label": "Nontoxic Dyes" } },
+        { "type": "feature", "settings": { "label": "Hypoallergenic" } },
+        { "type": "feature", "settings": { "label": "Anti-Aging" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

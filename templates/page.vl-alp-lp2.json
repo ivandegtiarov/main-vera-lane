@@ -1,0 +1,279 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "vl_header": {
+      "type": "vl-lp-header",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_58.png",
+        "logo_width": 80,
+        "bg_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "vl_trust_marquee": {
+      "type": "vl-trust-marquee",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "U.S. OWNED"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "100% MONEY BACK"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "CRUELTY FREE"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "bg_color": "#5c1a33",
+        "text_color": "#ffffff",
+        "speed": 20,
+        "padding": 10
+      }
+    },
+    "vl_product_intro": {
+      "type": "vl-product-intro",
+      "settings": {
+        "product_title": "Tone Adapting Foundation",
+        "image": "shopify://shop_images/Generated_Image_March_03_2026_-_3_57PM_jpg.jpg",
+        "image_alt": "",
+        "show_rating": true,
+        "rating_stars": 5,
+        "rating_text": "4.8/5 BY 9,000+ CUSTOMERS",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "star_color": "#f7a81b",
+        "rating_text_color": "#666666",
+        "image_bg_color": "#d4c4b5"
+      }
+    },
+    "vl_price_benefits_F4wXbe": {
+      "type": "vl-price-benefits",
+      "blocks": {
+        "benefit_UbG8U9": {
+          "type": "benefit",
+          "settings": {
+            "text": "Adapts perfectly to fair to medium skin tones"
+          }
+        },
+        "benefit_PiyrRJ": {
+          "type": "benefit",
+          "settings": {
+            "text": "For sensitive skin + SPF 15"
+          }
+        },
+        "benefit_4Rj89q": {
+          "type": "benefit",
+          "settings": {
+            "text": "A natural look for 16 hours"
+          }
+        },
+        "benefit_p8eTGJ": {
+          "type": "benefit",
+          "settings": {
+            "text": "Evens out the skin and hides redness"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_UbG8U9",
+        "benefit_PiyrRJ",
+        "benefit_4Rj89q",
+        "benefit_p8eTGJ"
+      ],
+      "name": "VL Price & Benefits",
+      "settings": {
+        "show_price": true,
+        "original_price": "$39.95",
+        "current_price": "$19.95",
+        "discount_badge": "50% OFF",
+        "show_benefits": true,
+        "bg_color": "#ffffff",
+        "original_price_color": "#999999",
+        "current_price_color": "#000000",
+        "badge_bg_color": "#2a7d4f",
+        "badge_text_color": "#ffffff",
+        "checkmark_color": "#2a7d4f",
+        "benefit_color": "#333333"
+      }
+    },
+    "vl_step_visual": {
+      "type": "vl-step-visual",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Generated_Image_March_07_2026_-_10_42PM.jpg",
+            "title": "Prep Your Skin",
+            "text": "Cleanse and moisturize your skin to create a smooth, hydrated base for the foundation."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Generated_Image_March_07_2026_-_10_44PM.jpg",
+            "title": "Apply The Foundation",
+            "text": "Take the desired amount of foundation and apply it to your skin using a beauty sponge or brush for even coverage."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Generated_Image_March_07_2026_-_10_45PM.jpg",
+            "title": "Enjoy The Finish",
+            "text": "Let the tone-adapting formula blend with your skin for a natural, radiant finish that lasts all day."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "heading": "Step By Step",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "label_color": "#5c1a33",
+        "title_color": "#000000",
+        "text_color": "#666666",
+        "arrow_bg_color": "#f5f5f5",
+        "arrow_color": "#cccccc",
+        "arrow_active_bg_color": "#f7a81b",
+        "arrow_active_color": "#000000"
+      }
+    },
+    "vl_before_after": {
+      "type": "vl-before-after",
+      "blocks": {
+        "person_1": {
+          "type": "person",
+          "settings": {
+            "image": "shopify://shop_images/3_40ef056f-d9f9-4202-9d96-3347bb0adc52.png",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        "person_2": {
+          "type": "person",
+          "settings": {
+            "image": "shopify://shop_images/woman-10.jpg",
+            "name": "Anna",
+            "title": "Accountant"
+          }
+        },
+        "person_3": {
+          "type": "person",
+          "settings": {
+            "image": "shopify://shop_images/6.png",
+            "name": "Jessica",
+            "title": "Office Admin"
+          }
+        }
+      },
+      "block_order": [
+        "person_1",
+        "person_2",
+        "person_3"
+      ],
+      "settings": {
+        "heading": "BEFORE & AFTER",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "name_color": "#000000",
+        "title_color": "#666666",
+        "arrow_bg_color": "#f5f5f5",
+        "arrow_color": "#000000"
+      }
+    },
+    "vl_testimonial_list": {
+      "type": "vl-testimonial-list",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Sarah",
+            "title": "Art Teacher"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Anna",
+            "title": "Accountant"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Surprisingly lightweight but gives amazing coverage! It blends so easily and really adjusts to my skin tone. My makeup looks smoother and more even throughout the day.\"",
+            "name": "Jessica",
+            "title": "Office Admin"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ],
+      "settings": {
+        "heading": "What Our Customer Said",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "divider_color": "#e5e5e5",
+        "quote_icon_color": "#5c1a33",
+        "quote_text_color": "#333333",
+        "author_name_color": "#000000",
+        "author_title_color": "#666666"
+      }
+    },
+    "vl_sticky_cta": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+        "button_text": "Save 50% On Amazon Today",
+        "show_amazon_icon": true,
+        "icon": "shopify://shop_images/Symbol_svg.png",
+        "bg_color": "#ffffff",
+        "button_bg_color": "#232f3e",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#222d3e"
+      }
+    }
+  },
+  "order": [
+    "vl_header",
+    "vl_trust_marquee",
+    "vl_product_intro",
+    "vl_price_benefits_F4wXbe",
+    "vl_step_visual",
+    "vl_before_after",
+    "vl_testimonial_list",
+    "vl_sticky_cta"
+  ]
+}

@@ -1,0 +1,154 @@
+<div class="vl-trust-marquee" style="
+  --marquee-bg: {{ section.settings.bg_color }};
+  --marquee-text: {{ section.settings.text_color }};
+  --marquee-speed: {{ section.settings.speed }}s;
+  --marquee-padding: {{ section.settings.padding }}px;
+">
+  <div class="vl-trust-marquee__track">
+    <div class="vl-trust-marquee__content">
+      {% for block in section.blocks %}
+        <span class="vl-trust-marquee__item">{{ block.settings.text }}</span>
+        <span class="vl-trust-marquee__separator">•</span>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <span class="vl-trust-marquee__item">{{ block.settings.text }}</span>
+        <span class="vl-trust-marquee__separator">•</span>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <span class="vl-trust-marquee__item">{{ block.settings.text }}</span>
+        <span class="vl-trust-marquee__separator">•</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vl-trust-marquee {
+    background-color: var(--marquee-bg, #5C1A33);
+    overflow: hidden;
+    padding: var(--marquee-padding, 10px) 0;
+  }
+
+  .vl-trust-marquee__track {
+    display: flex;
+    width: 100%;
+  }
+
+  .vl-trust-marquee__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    animation: vl-marquee-scroll var(--marquee-speed, 20s) linear infinite;
+  }
+
+  .vl-trust-marquee__item {
+    color: var(--marquee-text, #ffffff);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .vl-trust-marquee__separator {
+    color: var(--marquee-text, #ffffff);
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  @keyframes vl-marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vl-trust-marquee__content {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VL Trust Marquee",
+  "tag": "section",
+  "class": "vl-trust-marquee-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#5C1A33"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Animation speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 20,
+      "unit": "s"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Vertical padding",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "100% MONEY BACK"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Trust Marquee",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "text": "U.S. OWNED"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "100% MONEY BACK"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "CRUELTY FREE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

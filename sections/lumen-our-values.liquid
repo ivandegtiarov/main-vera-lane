@@ -1,0 +1,716 @@
+{% comment %}
+  Lumen – Our Values (Accordion + Image)
+  - Production-ready Shopify section
+  - Scoped CSS + CSS variables for editor-controlled values
+  - Vanilla JS accordion + scroll fade-in (IntersectionObserver)
+{% endcomment %}
+
+{%- liquid
+  assign default_open_index = 1
+-%}
+
+<section
+  id="lumen-our-values-{{ section.id }}"
+  class="lumen-our-values"
+  aria-label="Our Values"
+  data-default-open-index="{{ default_open_index }}"
+>
+  <div class="lumen-our-values__inner">
+    <div class="lumen-our-values__stack">
+      <h2 class="lumen-our-values__title lumen-our-values__anim">Our Values</h2>
+
+      <div class="lumen-our-values__content">
+        <div class="lumen-our-values__media lumen-our-values__anim" aria-hidden="{% if section.settings.image == blank %}true{% else %}false{% endif %}">
+          {%- if section.settings.image != blank -%}
+            <img
+              class="lumen-our-values__img"
+              src="{{ section.settings.image | image_url: width: 1600 }}"
+              alt="{{ section.settings.image_alt | escape }}"
+              loading="lazy"
+              decoding="async"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+            >
+          {%- endif -%}
+        </div>
+
+        <div class="lumen-our-values__accordion" role="list">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign is_open = false
+              if forloop.index0 == default_open_index
+                assign is_open = true
+              endif
+              assign trigger_id = 'lumen-our-values-trigger-' | append: section.id | append: '-' | append: block.id
+              assign panel_id = 'lumen-our-values-panel-' | append: section.id | append: '-' | append: block.id
+            -%}
+
+            <div
+              class="lumen-our-values__item lumen-our-values__anim {% if is_open %}is-open{% endif %}"
+              role="listitem"
+              {{ block.shopify_attributes }}
+            >
+              <button
+                id="{{ trigger_id }}"
+                class="lumen-our-values__trigger"
+                type="button"
+                aria-controls="{{ panel_id }}"
+                aria-expanded="{% if is_open %}true{% else %}false{% endif %}"
+              >
+                <span class="lumen-our-values__triggerRow">
+                  <span class="lumen-our-values__iconWrap" aria-hidden="true">
+                    {%- if block.settings.icon != blank -%}
+                      <img
+                        class="lumen-our-values__icon"
+                        src="{{ block.settings.icon | image_url: width: 64 }}"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        width="{{ block.settings.icon.width }}"
+                        height="{{ block.settings.icon.height }}"
+                        draggable="false"
+                      >
+                    {%- endif -%}
+                  </span>
+
+                  <span class="lumen-our-values__label">{{ block.settings.question | escape }}</span>
+                </span>
+              </button>
+
+              <div
+                id="{{ panel_id }}"
+                class="lumen-our-values__panel"
+                role="region"
+                aria-labelledby="{{ trigger_id }}"
+                aria-hidden="{% if is_open %}false{% else %}true{% endif %}"
+              >
+                <p class="lumen-our-values__body">
+                  {{ block.settings.answer | escape }}
+                </p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Lumen – Our Values */
+  #lumen-our-values-{{ section.id }}{
+    --lumen-our-values-bg-color: {{ section.settings.bg_color }};
+    --lumen-our-values-bg-gradient-start: {{ section.settings.bg_gradient_start }};
+    --lumen-our-values-bg-gradient-end: {{ section.settings.bg_gradient_end }};
+
+    --lumen-our-values-title-color: {{ section.settings.title_color }};
+    --lumen-our-values-question-color: {{ section.settings.question_color }};
+    --lumen-our-values-answer-color: {{ section.settings.answer_color }};
+
+    --lumen-our-values-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --lumen-our-values-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --lumen-our-values-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --lumen-our-values-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+
+    --lumen-our-values-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --lumen-our-values-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --lumen-our-values-question-size-mobile: {{ section.settings.question_size_mobile }}px;
+    --lumen-our-values-question-size-desktop: {{ section.settings.question_size_desktop }}px;
+    --lumen-our-values-answer-size-mobile: {{ section.settings.answer_size_mobile }}px;
+    --lumen-our-values-answer-size-desktop: {{ section.settings.answer_size_desktop }}px;
+  }
+
+  #lumen-our-values-{{ section.id }}{
+    width: 100%;
+    background-color: var(--lumen-our-values-bg-color);
+    background-image: linear-gradient(180deg, var(--lumen-our-values-bg-gradient-start), var(--lumen-our-values-bg-gradient-end));
+    /* Apply vertical spacing on the section wrapper to avoid theme overrides on inner containers */
+    padding-top: var(--lumen-our-values-padding-top-mobile) !important;
+    padding-bottom: var(--lumen-our-values-padding-bottom-mobile) !important;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }}{
+      padding-top: var(--lumen-our-values-padding-top-desktop) !important;
+      padding-bottom: var(--lumen-our-values-padding-bottom-desktop) !important;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} *,
+  #lumen-our-values-{{ section.id }} *::before,
+  #lumen-our-values-{{ section.id }} *::after{
+    box-sizing: border-box;
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__inner{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    /* Vertical spacing is applied on the section wrapper */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__inner{
+      padding-left: 96px;
+      padding-right: 96px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__stack{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__stack{
+      gap: 80px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__title{
+    margin: 0;
+    width: 100%;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+    text-align: left;
+    color: var(--lumen-our-values-title-color);
+    font-size: var(--lumen-our-values-title-size-mobile);
+    line-height: 1.3;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__title{
+      font-size: var(--lumen-our-values-title-size-desktop);
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 35px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__content{
+      gap: 40px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__media{
+    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    background: #d9d9d9;
+    display: block;
+    border-radius: 10.5px;
+  }
+
+  @media (max-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__media{
+      border-radius: 12px;
+      /* height: 603px; */
+      flex:auto;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__accordion{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__accordion{
+      gap: 24px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__item{
+    width: 100%;
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width: 0.8721px;
+    border-radius: 10.5px;
+    background: #ffffff;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__item{
+      border-width: 1px;
+      border-radius: 12px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__trigger{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0;
+    padding: 20.9302px;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__trigger{
+      padding: 24px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__trigger:focus-visible{
+    outline: 2px solid #7A0036;
+    outline-offset: 2px;
+    border-radius: 10.5px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__trigger:focus-visible{
+      border-radius: 12px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__triggerRow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__triggerRow{
+      gap: 16px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__iconWrap{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #7A0036;
+    padding: 10.5px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__iconWrap{
+      padding: 12px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__icon{
+    display: block;
+    width: 24.42px;
+    height: 24.42px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__icon{
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__label{
+    margin: 0;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--lumen-our-values-question-color);
+    font-size: var(--lumen-our-values-question-size-mobile);
+    line-height: 1.4;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__label{
+      font-size: var(--lumen-our-values-question-size-desktop);
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__panel{
+    padding-top: 0;
+    padding-left: 20.9302px;
+    padding-right: 20.9302px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__panel{
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__item.is-open .lumen-our-values__panel{
+    max-height: 800px;
+    opacity: 1;
+  }
+
+  #lumen-our-values-{{ section.id }} .lumen-our-values__body{
+    margin: 0;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 400;
+    font-size: var(--lumen-our-values-answer-size-mobile);
+    line-height: 1.5;
+    color: var(--lumen-our-values-answer-color);
+    padding-bottom: 20.9302px;
+  }
+
+  @media (min-width: 769px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__body{
+      font-size: var(--lumen-our-values-answer-size-desktop);
+      padding-bottom: 24px;
+    }
+  }
+
+  /* Desktop: image + accordion side-by-side */
+  @media (min-width: 900px){
+    #lumen-our-values-{{ section.id }} .lumen-our-values__content{
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: stretch;
+    }
+
+    #lumen-our-values-{{ section.id }} .lumen-our-values__accordion{
+      flex: 0 1 540px;
+    }
+  }
+
+  /* Scroll fade-in (enabled only when JS marks section) */
+  #lumen-our-values-{{ section.id }}.lumen-our-values--js .lumen-our-values__anim{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+
+  #lumen-our-values-{{ section.id }}.lumen-our-values--js .lumen-our-values__anim.is-inview{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #lumen-our-values-{{ section.id }}.lumen-our-values--js .lumen-our-values__anim{
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+
+    #lumen-our-values-{{ section.id }} .lumen-our-values__panel{
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById('lumen-our-values-{{ section.id }}');
+    if (!section) return;
+
+    // Mark JS-enabled so CSS animations don't hide content without JS.
+    section.classList.add('lumen-our-values--js');
+
+    // Accordion (single-open)
+    const items = Array.from(section.querySelectorAll('.lumen-our-values__item'));
+    const triggers = Array.from(section.querySelectorAll('.lumen-our-values__trigger'));
+
+    const openItem = (nextItem) => {
+      items.forEach((item) => {
+        const trigger = item.querySelector('.lumen-our-values__trigger');
+        const panel = item.querySelector('.lumen-our-values__panel');
+        const isTarget = item === nextItem;
+
+        item.classList.toggle('is-open', isTarget);
+        if (trigger) trigger.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+        if (panel) panel.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+      });
+    };
+
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.lumen-our-values__item');
+        if (!item) return;
+        openItem(item);
+      });
+    });
+
+    // Ensure one default open (matches prototype: 2nd item)
+    const defaultIndex = Number(section.getAttribute('data-default-open-index') || '0');
+    if (items.length) openItem(items[Math.min(Math.max(defaultIndex, 0), items.length - 1)]);
+
+    // Fade-in on scroll (single trigger)
+    const animated = Array.from(section.querySelectorAll('.lumen-our-values__anim'));
+    if (!animated.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      animated.forEach((el) => el.classList.add('is-inview'));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-inview');
+          observer.unobserve(entry.target);
+        });
+      },
+      { root: null, threshold: 0.15 }
+    );
+
+    animated.forEach((el) => io.observe(el));
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lumen – Our Values",
+  "tag": "section",
+  "class": "section section--lumen-our-values",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color controls"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_start",
+      "label": "Background gradient start",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_end",
+      "label": "Background gradient end",
+      "default": "#fbf8f6"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "FAQ question color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "FAQ answer color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top - Desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top - Mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom - Desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom - Mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography controls"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Heading font size - Desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Heading font size - Mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "question_size_desktop",
+      "label": "FAQ question font size - Desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "question_size_mobile",
+      "label": "FAQ question font size - Mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "answer_size_desktop",
+      "label": "FAQ answer font size - Desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "answer_size_mobile",
+      "label": "FAQ answer font size - Mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Main image alt text",
+      "default": "Our Values image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Uncomplicated"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "You deserve a routine that gives you mental bandwidth back, not one that adds another chore to your morning. We believe in simple, dependable tools that remove the \"faff\" of complicated techniques and the anxiety of the \"shade guessing game\". Our products are designed to be intuitive, allowing you to get ready in minutes and focus on the day ahead."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Lumen – Our Values",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Uncomplicated",
+            "answer": "You deserve a routine that gives you mental bandwidth back, not one that adds another chore to your morning. We believe in simple, dependable tools that remove the \"faff\" of complicated techniques and the anxiety of the \"shade guessing game\". Our products are designed to be intuitive, allowing you to get ready in minutes and focus on the day ahead."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Restorative",
+            "answer": "We believe makeup succeeds when it disappears. Our goal is not to \"fix\" your age or sell you a younger version of yourself, but to help you recognize the woman in the mirror again. We formulate for \"invisible confidence\"—coverage that is felt in your self-respect but imperceptible to the eye, ensuring people notice your healthy glow, not your makeup."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Forgiving",
+            "answer": "Mature skin has unique needs that the beauty industry often ignores. We prioritize the physical reality of skin that has changed, creating \"second-skin\" textures that float over fine lines rather than settling into them. We offer a reliable standard for those who have felt betrayed by products that make them look older, providing comfort and breathability that lasts all day."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

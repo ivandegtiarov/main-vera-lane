@@ -1,0 +1,254 @@
+{%- comment -%} ── PF - CONTENT SECTION ── {%- endcomment -%}
+<section class="pf-content-section" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--pf-content-bg: {{ section.settings.bg_color }};">
+  <div class="pf-content-section__container">
+    {%- if section.settings.eyebrow != blank or section.settings.headline != blank -%}
+      <header class="pf-content-section__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="pf-content-section__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        {%- if section.settings.headline != blank -%}
+          <h2 class="pf-content-section__headline">{{ section.settings.headline }}</h2>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- if section.settings.body_text != blank -%}
+      <div class="pf-content-section__body">{{ section.settings.body_text }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.bullet_list != blank -%}
+      <div class="pf-content-section__bullets">{{ section.settings.bullet_list }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.callout_text != blank -%}
+      <blockquote class="pf-content-section__callout" style="--callout-border: {{ section.settings.callout_border_color }};">
+        {{ section.settings.callout_text }}
+      </blockquote>
+    {%- endif -%}
+
+    {%- if section.settings.cta_text != blank -%}
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="pf-content-section__cta">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.pf-content-section {
+  background: var(--pf-content-bg, #fff);
+  padding: 3rem 1.5rem;
+}
+
+.pf-content-section__container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.pf-content-section__header {
+  margin-bottom: 2rem;
+}
+
+.pf-content-section__eyebrow {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #C9A67A;
+  margin-bottom: 0.75rem;
+}
+
+.pf-content-section__headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.pf-content-section__body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #444;
+}
+
+.pf-content-section__body p {
+  margin-bottom: 1.5rem;
+}
+
+.pf-content-section__body p:last-child {
+  margin-bottom: 0;
+}
+
+.pf-content-section__body strong {
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.pf-content-section__bullets {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-top: 1.5rem;
+}
+
+.pf-content-section__bullets ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pf-content-section__bullets li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pf-content-section__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: #C9A67A;
+  border-radius: 50%;
+}
+
+.pf-content-section__callout {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #1A1A1A;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: #FAF9F6;
+  border-left: 3px solid var(--callout-border, #C9A67A);
+}
+
+.pf-content-section__cta {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1A1A1A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 1.5rem;
+  transition: color 200ms ease;
+}
+
+.pf-content-section__cta:hover {
+  color: #C9A67A;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PF - Content Section",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text"
+    },
+    {
+      "type": "richtext",
+      "id": "bullet_list",
+      "label": "Bullet list"
+    },
+    {
+      "type": "header",
+      "content": "Callout"
+    },
+    {
+      "type": "textarea",
+      "id": "callout_text",
+      "label": "Callout text"
+    },
+    {
+      "type": "color",
+      "id": "callout_border_color",
+      "label": "Callout border color",
+      "default": "#C9A67A"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Link text"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "anchor"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF - Content Section",
+      "category": "t:categories.pawfy_editorial"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,766 @@
+{%- comment -%}
+  Lumen – Contact Form
+  Shopify native contact form (no custom POST).
+{%- endcomment -%}
+
+{%- liquid
+  assign section_root_class = 'vl-contact--' | append: section.id
+  assign form_id = 'vlContactForm-' | append: section.id
+-%}
+
+<section
+  class="vl-contact {{ section_root_class }}"
+  aria-label="Contact"
+  data-vl-contact-section
+  data-section-id="{{ section.id }}"
+>
+  <div class="vl-contact__inner">
+    <div class="vl-contact__grid">
+      <div class="vl-contact__media vl-contact__fade" aria-hidden="true" data-vl-contact-animate>
+        {%- if section.settings.image_desktop != blank or section.settings.image_mobile != blank -%}
+          <picture>
+            <source
+              media="(min-width: 900px)"
+              srcset="{% if section.settings.image_desktop != blank %}{{ section.settings.image_desktop | image_url: width: 1400 }}{% else %}{{ section.settings.image_mobile | image_url: width: 1400 }}{% endif %}"
+            />
+            <img
+              class="vl-contact__mediaImg"
+              src="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | image_url: width: 800 }}{% else %}{{ section.settings.image_desktop | image_url: width: 800 }}{% endif %}"
+              alt="{{ section.settings.image_alt | escape }}"
+              draggable="false"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'vl-contact__mediaImg' }}
+        {%- endif -%}
+        <div class="vl-contact__mediaOverlay"></div>
+      </div>
+
+      <div class="vl-contact__content vl-contact__fade" data-vl-contact-animate>
+        <header class="vl-contact__header">
+          <h2 class="vl-contact__title">{{ section.settings.title | escape }}</h2>
+          <p class="vl-contact__subtitle">
+            {{ section.settings.subtitle_prefix | escape }}
+            <a href="mailto:{{ section.settings.support_email | strip | escape }}">{{ section.settings.support_email | strip | escape }}</a>
+          </p>
+        </header>
+
+        {%- form 'contact', id: form_id, class: 'vl-contact__form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="vl-contact__notice" role="status" tabindex="-1">
+              Thanks for reaching out — we'll get back to you soon.
+            </p>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="vl-contact__errors" role="alert" tabindex="-1">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="vl-contact__field">
+            <label class="vl-contact__label" for="vlContactName-{{ section.id }}">Your Name</label>
+            <div class="vl-contact__control">
+              <input
+                class="vl-contact__input"
+                id="vlContactName-{{ section.id }}"
+                name="contact[name]"
+                type="text"
+                placeholder="John Doe"
+                autocomplete="name"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="vl-contact__row">
+            <div class="vl-contact__field">
+              <label class="vl-contact__label" for="vlContactEmail-{{ section.id }}">Email</label>
+              <div class="vl-contact__control">
+                <input
+                  class="vl-contact__input"
+                  id="vlContactEmail-{{ section.id }}"
+                  name="contact[email]"
+                  type="email"
+                  placeholder="example@email.com"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="vl-contact__field">
+              <label class="vl-contact__label" for="vlContactNumber-{{ section.id }}">Number</label>
+              <div class="vl-contact__control">
+                <input
+                  class="vl-contact__input"
+                  id="vlContactNumber-{{ section.id }}"
+                  name="contact[phone]"
+                  type="tel"
+                  placeholder="(+111)"
+                  autocomplete="tel"
+                  pattern="[0-9\\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="vl-contact__field">
+            <label class="vl-contact__label" for="vlContactMessage-{{ section.id }}">Message</label>
+            <div class="vl-contact__control">
+              <textarea
+                class="vl-contact__textarea"
+                id="vlContactMessage-{{ section.id }}"
+                name="contact[body]"
+                placeholder="Write your message here"
+                required
+              >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+          </div>
+
+          <button class="vl-contact__cta" type="submit">
+            {{ section.settings.button_label | escape }}
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Lumen – Contact Form (scoped) */
+  .vl-contact.{{ section_root_class }},
+  .vl-contact.{{ section_root_class }} * {
+    box-sizing: border-box;
+  }
+
+  .vl-contact.{{ section_root_class }} {
+    width: 100%;
+    font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--vl-contact-body-color);
+    background-color: var(--vl-contact-bg-color);
+    background-image: linear-gradient(180deg, var(--vl-contact-bg-gradient-start), var(--vl-contact-bg-gradient-end));
+  }
+
+  /* Section-scoped design tokens */
+  .vl-contact.{{ section_root_class }} {
+    --vl-contact-bg-color: {{ section.settings.bg_color }};
+    --vl-contact-bg-gradient-start: {{ section.settings.bg_gradient_start }};
+    --vl-contact-bg-gradient-end: {{ section.settings.bg_gradient_end }};
+
+    --vl-contact-title-color: {{ section.settings.title_color }};
+    --vl-contact-body-color: {{ section.settings.body_color }};
+    --vl-contact-label-color: {{ section.settings.label_color }};
+    --vl-contact-input-color: {{ section.settings.input_color | color_modify: 'alpha', 0.9 }};
+    --vl-contact-placeholder-color: {{ section.settings.placeholder_color | color_modify: 'alpha', 0.32 }};
+    --vl-contact-button-text-color: {{ section.settings.button_text_color }};
+
+    --vl-contact-title-size: {{ section.settings.title_size_mobile }}px;
+    --vl-contact-body-size: {{ section.settings.body_size_mobile }}px;
+    --vl-contact-label-size: {{ section.settings.label_size_mobile }}px;
+    --vl-contact-input-size: {{ section.settings.input_size_mobile }}px;
+    --vl-contact-button-size: {{ section.settings.button_size_mobile }}px;
+
+    --vl-contact-padding-top: {{ section.settings.padding_top_mobile }}px;
+    --vl-contact-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    /* Mobile: 40px 24px | Desktop: 80px 96px (1:1 with original clamp) */
+    padding-left: clamp(24px, calc(24px + (96px - 24px) * ((100vw - 375px) / 1065px)), 96px);
+    padding-right: clamp(24px, calc(24px + (96px - 24px) * ((100vw - 375px) / 1065px)), 96px);
+    padding-top: var(--vl-contact-padding-top);
+    padding-bottom: var(--vl-contact-padding-bottom);
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    /* Mobile gap: 40px | Desktop gap: 57px (1:1 with original clamp) */
+    gap: clamp(40px, calc(40px + (57px - 40px) * ((100vw - 375px) / 1065px)), 57px);
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__media {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #d9d9d9;
+    border-radius: 12px;
+
+    /* Mobile: 327px | Desktop: 631px (1:1 with original clamp) */
+    height: clamp(327px, calc(327px + (631px - 327px) * ((100vw - 375px) / 1065px)), 631px);
+  }
+
+  /* Ensure image fills full container height (no leftover gray area) */
+  .vl-contact.{{ section_root_class }} .vl-contact__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__mediaImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__mediaOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 214, 187, 0.2);
+    pointer-events: none;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__title {
+    width: 100%;
+    margin: 0;
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 700;
+    text-align: left;
+    color: var(--vl-contact-title-color);
+    font-size: var(--vl-contact-title-size);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__subtitle {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    color: var(--vl-contact-body-color);
+    font-weight: 400;
+    font-size: var(--vl-contact-body-size);
+    line-height: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__subtitle a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__subtitle a:hover {
+    text-decoration: underline;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__notice,
+  .vl-contact.{{ section_root_class }} .vl-contact__errors {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: var(--vl-contact-body-size);
+    line-height: 1.4;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__notice {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__errors {
+    background: rgba(255, 0, 0, 0.07);
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__label {
+    margin: 0;
+    font-weight: 400;
+    color: var(--vl-contact-label-color);
+    font-size: var(--vl-contact-label-size);
+    line-height: 1.5;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__control {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    background: #FBF8F6;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__input,
+  .vl-contact.{{ section_root_class }} .vl-contact__textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    font-family: inherit;
+    font-weight: 400;
+    color: var(--vl-contact-input-color);
+    font-size: var(--vl-contact-input-size);
+    line-height: 1;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__input::placeholder,
+  .vl-contact.{{ section_root_class }} .vl-contact__textarea::placeholder {
+    color: var(--vl-contact-placeholder-color);
+    opacity: 1;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    cursor: pointer;
+    color: var(--vl-contact-button-text-color);
+    border-radius: 100px;
+    padding: 16px 48px;
+    height: 48px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: var(--vl-contact-button-size);
+    line-height: 1.3125;
+    letter-spacing: 0px;
+
+    /* Hover fill animation (match `lumen-hp-hero`) */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: transparent;
+    transition: color 0.3s ease;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    border-radius: 100px;
+    z-index: -2;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #5A0028;
+    transition: all 0.3s;
+    border-radius: 100px;
+    z-index: -1;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:hover {
+    color: var(--vl-contact-button-text-color);
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:hover:before {
+    width: 100%;
+  }
+
+  /* Remove focus styles (per request) */
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:focus,
+  .vl-contact.{{ section_root_class }} .vl-contact__cta:focus-visible,
+  .vl-contact.{{ section_root_class }} .vl-contact__input:focus,
+  .vl-contact.{{ section_root_class }} .vl-contact__input:focus-visible,
+  .vl-contact.{{ section_root_class }} .vl-contact__textarea:focus,
+  .vl-contact.{{ section_root_class }} .vl-contact__textarea:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Fade-in animation (applied on scroll) */
+  .vl-contact.{{ section_root_class }} .vl-contact__fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .vl-contact.{{ section_root_class }} .vl-contact__fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vl-contact.{{ section_root_class }} .vl-contact__fade {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  /* Desktop: image + form side-by-side, email/number in a row */
+  @media screen and (min-width: 900px) {
+    .vl-contact.{{ section_root_class }} {
+      --vl-contact-title-size: {{ section.settings.title_size_desktop }}px;
+      --vl-contact-body-size: {{ section.settings.body_size_desktop }}px;
+      --vl-contact-label-size: {{ section.settings.label_size_desktop }}px;
+      --vl-contact-input-size: {{ section.settings.input_size_desktop }}px;
+      --vl-contact-button-size: {{ section.settings.button_size_desktop }}px;
+      --vl-contact-padding-top: {{ section.settings.padding_top_desktop }}px;
+      --vl-contact-padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+    .vl-contact.{{ section_root_class }} .vl-contact__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 640px);
+    }
+
+    .vl-contact.{{ section_root_class }} .vl-contact__row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const sectionEl = document.querySelector('[data-vl-contact-section][data-section-id="{{ section.id }}"]');
+    if (!sectionEl) return;
+
+    // Scroll animation
+    const targets = sectionEl.querySelectorAll('[data-vl-contact-animate]');
+    if (targets.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        },
+        { root: null, threshold: 0.15 }
+      );
+      targets.forEach((el) => io.observe(el));
+    } else {
+      targets.forEach((el) => el.classList.add('is-visible'));
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lumen – Contact Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Let's Get In Touch."
+    },
+    {
+      "type": "text",
+      "id": "subtitle_prefix",
+      "label": "Subtitle text (before email)",
+      "default": "Or just reach out manually to"
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support email (shown publicly)",
+      "default": "support@leaderhealth.com",
+      "info": "This email is displayed on the page"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Send Message"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image - mobile"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "header",
+      "content": "Color controls"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_start",
+      "label": "Background gradient start",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_end",
+      "label": "Background gradient end",
+      "default": "#FBF8F6"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#6E5555"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "input_color",
+      "label": "Input text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Spacing controls"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom - desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom - mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Typography controls"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "body_size_desktop",
+      "label": "Body font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "body_size_mobile",
+      "label": "Body font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "label_size_desktop",
+      "label": "Label font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "label_size_mobile",
+      "label": "Label font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "input_size_desktop",
+      "label": "Input font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "input_size_mobile",
+      "label": "Input font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size_desktop",
+      "label": "Button font size - desktop",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Button font size - mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumen – Contact Form"
+    }
+  ]
+}
+{% endschema %}

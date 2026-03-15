@@ -1,0 +1,159 @@
+{%- comment -%} ── BL - PRESS QUOTES ── {%- endcomment -%}
+<div class="bl-press-quotes" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--quotes-bg: {{ section.settings.bg_color }};">
+  <div class="bl-press-quotes__container">
+    <div class="bl-press-quotes__grid">
+      {%- for block in section.blocks -%}
+        <div class="bl-press-quotes__card" {{ block.shopify_attributes }}>
+          <blockquote class="bl-press-quotes__text">"{{ block.settings.quote }}"</blockquote>
+          {%- if block.settings.logo != blank -%}
+            <img
+              src="{{ block.settings.logo | image_url: width: 160 }}"
+              alt="{{ block.settings.publication | escape }}"
+              class="bl-press-quotes__logo"
+              loading="lazy"
+            >
+          {%- else -%}
+            <cite class="bl-press-quotes__source">{{ block.settings.publication }}</cite>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-press-quotes {
+  background: var(--quotes-bg, #FAF9F7);
+  padding: 4rem 2rem;
+}
+
+.bl-press-quotes__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bl-press-quotes__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 700px) {
+  .bl-press-quotes__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.bl-press-quotes__card {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.bl-press-quotes__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #2D2D2D;
+  margin: 0 0 1.5rem;
+  quotes: none;
+}
+
+.bl-press-quotes__logo {
+  display: block;
+  height: 1.375rem;
+  width: auto;
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+.bl-press-quotes__source {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Press Quotes",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'press')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Publication Quote",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote text",
+          "default": "A foundation that understands mature skin and delivers flawless, natural coverage."
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Publication logo"
+        },
+        {
+          "type": "text",
+          "id": "publication",
+          "label": "Publication name",
+          "default": "Allure",
+          "info": "Used if no logo is provided"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Press Quotes",
+      "category": "t:categories.blissy_listicle",
+      "blocks": [
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "A foundation that understands mature skin and delivers flawless, natural coverage.",
+            "publication": "Allure"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "Finally, a formula that enhances rather than settles into fine lines.",
+            "publication": "Good Housekeeping"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "The secret to effortless, age-defying coverage that lasts all day.",
+            "publication": "Vogue"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,678 @@
+<!--
+  Vera Lane – Before & After Section
+  Clean rebuild based on HTML structure
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<section class="before-after-section before-after-{{ section.id }}{% if section.settings.enable_animation %} before-after--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+  <div class="section-container">
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+    
+    <div class="cards-wrapper">
+      <button class="scroll-arrow prev" data-prev-{{ section.id }} aria-label="Scroll previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button class="scroll-arrow next" data-next-{{ section.id }} aria-label="Scroll next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Desktop Grid -->
+      <div class="cards-container">
+        {%- for block in section.blocks -%}
+          <div class="card" {{ block.shopify_attributes }}>
+            <div class="card-image-container{% if block.settings.image_mode == 'single' %} single-image-mode{% endif %}">
+              {%- if block.settings.image_mode == 'single' -%}
+                {%- if block.settings.image_single != blank -%}
+                  <img 
+                    src="{{ block.settings.image_single | image_url: width: 400 }}"
+                    alt="{{ block.settings.card_name }}"
+                    class="card-image single"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <img 
+                    src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop"
+                    alt="{{ block.settings.card_name }}"
+                    class="card-image single"
+                  >
+                {%- endif -%}
+              {%- else -%}
+                {%- if block.settings.image_before != blank -%}
+                  <img 
+                    src="{{ block.settings.image_before | image_url: width: 400 }}"
+                    alt="{{ block.settings.card_name }} - Before"
+                    class="card-image before"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <img 
+                    src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop"
+                    alt="Before"
+                    class="card-image before"
+                  >
+                {%- endif -%}
+                
+                {%- if block.settings.image_after != blank -%}
+                  <img 
+                    src="{{ block.settings.image_after | image_url: width: 400 }}"
+                    alt="{{ block.settings.card_name }} - After"
+                    class="card-image after"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <img 
+                    src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&h=400&fit=crop"
+                    alt="After"
+                    class="card-image after"
+                  >
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+            <div class="lumen-card-content">
+              <h3 class="card-name">{{ block.settings.card_name }}</h3>
+              <p class="card-description">{{ block.settings.card_description }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Mobile Swiper -->
+      <div class="swiper beforeAfterSwiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            <div class="swiper-slide">
+              <div class="card">
+                <div class="card-image-container{% if block.settings.image_mode == 'single' %} single-image-mode{% endif %}">
+                  {%- if block.settings.image_mode == 'single' -%}
+                    {%- if block.settings.image_single != blank -%}
+                      <img 
+                        src="{{ block.settings.image_single | image_url: width: 400 }}"
+                        alt="{{ block.settings.card_name }}"
+                        class="card-image single"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      <img 
+                        src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop"
+                        alt="{{ block.settings.card_name }}"
+                        class="card-image single"
+                      >
+                    {%- endif -%}
+                  {%- else -%}
+                    {%- if block.settings.image_before != blank -%}
+                      <img 
+                        src="{{ block.settings.image_before | image_url: width: 400 }}"
+                        alt="{{ block.settings.card_name }} - Before"
+                        class="card-image before"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      <img 
+                        src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop"
+                        alt="Before"
+                        class="card-image before"
+                      >
+                    {%- endif -%}
+                    
+                    {%- if block.settings.image_after != blank -%}
+                      <img 
+                        src="{{ block.settings.image_after | image_url: width: 400 }}"
+                        alt="{{ block.settings.card_name }} - After"
+                        class="card-image after"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      <img 
+                        src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=400&h=400&fit=crop"
+                        alt="After"
+                        class="card-image after"
+                      >
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+                <div class="lumen-card-content">
+                  <h3 class="card-name">{{ block.settings.card_name }}</h3>
+                  <p class="card-description">{{ block.settings.card_description }}</p>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .before-after-{{ section.id }} * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .before-after-{{ section.id }} {
+    width: 100%;
+    padding: 104px 96px;
+    background-color: #ffffff;
+  }
+
+  .before-after-{{ section.id }} .section-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .before-after-{{ section.id }} .section-title {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 48px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #000000;
+  }
+
+  .before-after-{{ section.id }} .cards-wrapper {
+    position: relative;
+    overflow: visible;
+  }
+
+  .before-after-{{ section.id }} .cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .before-after-{{ section.id }} .swiper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+  }
+
+  .before-after-{{ section.id }} .swiper-slide {
+    height: auto;
+  }
+
+  .before-after-{{ section.id }} .swiper-wrapper {
+    display: flex;
+  }
+
+  .before-after-{{ section.id }} .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .before-after-{{ section.id }} .card-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 288 / 222;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+  }
+
+  .before-after-{{ section.id }} .card-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .before-after-{{ section.id }} .card-image.before {
+    border-right: 2px solid #ffffff;
+  }
+
+  .before-after-{{ section.id }} .card-image-container.single-image-mode {
+    display: block;
+  }
+
+  .before-after-{{ section.id }} .card-image.single {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .before-after-{{ section.id }} .lumen-card-content {
+    display: flex !important;
+    flex-direction: column;
+    padding: 0 4px;
+  }
+
+  .before-after-{{ section.id }} .card-name {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 12px;
+  }
+
+  .before-after-{{ section.id }} .card-description {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    font-weight: 400;
+  }
+
+  /* Scroll arrows - hidden on desktop */
+  .before-after-{{ section.id }} .scroll-arrow {
+    display: none;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .before-after-{{ section.id }} .scroll-arrow.next {
+    right: 16px;
+  }
+
+  .before-after-{{ section.id }} .scroll-arrow.prev {
+    left: 16px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .before-after-{{ section.id }} .scroll-arrow:hover {
+    background-color: #f5f5f5;
+    border-color: #000000;
+  }
+
+  .before-after-{{ section.id }} .scroll-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .before-after-{{ section.id }} .scroll-arrow svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Tablet styles */
+  @media (max-width: 1024px) {
+    .before-after-{{ section.id }} .section-title {
+      font-size: 40px;
+      margin-bottom: 48px;
+    }
+
+    .before-after-{{ section.id }} .cards-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .before-after-{{ section.id }} {
+      padding: 60px 20px;
+    }
+
+    .before-after-{{ section.id }} .section-title {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .before-after-{{ section.id }} .cards-wrapper {
+      position: relative;
+      padding: 0;
+      overflow: visible;
+    }
+
+    .before-after-{{ section.id }} .cards-container {
+      display: none;
+    }
+
+    .before-after-{{ section.id }} .swiper {
+      display: block;
+      overflow: hidden;
+    }
+
+    .before-after-{{ section.id }} .card-image-container {
+      margin-bottom: 16px;
+    }
+
+    .before-after-{{ section.id }} .card-name {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .before-after-{{ section.id }} .card-description {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .before-after-{{ section.id }} {
+      padding: 40px 16px;
+    }
+
+    .before-after-{{ section.id }} .section-title {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow {
+      width: 40px;
+      height: 40px;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow.next {
+      right: 12px;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow.prev {
+      left: 12px;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /* Desktop: hide swiper, show grid */
+  @media (min-width: 769px) {
+    .before-after-{{ section.id }} .swiper {
+      display: none;
+    }
+
+    .before-after-{{ section.id }} .cards-container {
+      display: grid;
+    }
+
+    .before-after-{{ section.id }} .scroll-arrow {
+      display: none !important;
+    }
+  }
+
+  /* Fade-in animation */
+  .before-after-{{ section.id }}.before-after--animate .card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation delays */
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(6) {
+    transition-delay: 0.6s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(7) {
+    transition-delay: 0.7s;
+  }
+
+  .before-after-{{ section.id }}.before-after--animate .cards-container .card:nth-child(8) {
+    transition-delay: 0.8s;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const section = document.querySelector('.before-after-' + sectionId);
+    const animationEnabled = section ? section.getAttribute('data-animation-enabled') === 'true' : false;
+    let swiper;
+    const scrollPrev = document.querySelector('[data-prev-' + sectionId + ']');
+    const scrollNext = document.querySelector('[data-next-' + sectionId + ']');
+
+    // Initialize Swiper for mobile
+    function initSwiper() {
+      if (window.innerWidth <= 768) {
+        if (!swiper) {
+          swiper = new Swiper('.beforeAfterSwiper-' + sectionId, {
+            slidesPerView: 1.3,
+            spaceBetween: 16,
+            grabCursor: true,
+            watchOverflow: true,
+            on: {
+              slideChange: function () {
+                updateArrows();
+              },
+              init: function () {
+                updateArrows();
+              }
+            }
+          });
+
+          // Connect custom navigation arrows
+          if (scrollPrev && scrollNext) {
+            scrollPrev.addEventListener('click', () => {
+              swiper.slidePrev();
+            });
+
+            scrollNext.addEventListener('click', () => {
+              swiper.slideNext();
+            });
+          }
+        }
+      } else {
+        // Destroy swiper on desktop
+        if (swiper) {
+          swiper.destroy(true, true);
+          swiper = null;
+        }
+      }
+    }
+
+    // Update arrows visibility based on Swiper position
+    function updateArrows() {
+      if (!swiper || !scrollPrev || !scrollNext) return;
+
+      // Show prev arrow if not at the beginning
+      if (swiper.isBeginning) {
+        scrollPrev.style.opacity = '0';
+        scrollPrev.style.pointerEvents = 'none';
+      } else {
+        scrollPrev.style.opacity = '1';
+        scrollPrev.style.pointerEvents = 'auto';
+      }
+
+      // Show next arrow if not at the end
+      if (swiper.isEnd) {
+        scrollNext.style.opacity = '0.3';
+        scrollNext.style.pointerEvents = 'none';
+      } else {
+        scrollNext.style.opacity = '1';
+        scrollNext.style.pointerEvents = 'auto';
+      }
+    }
+
+    // Initialize on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSwiper);
+    } else {
+      initSwiper();
+    }
+
+    // Reinitialize on resize
+    window.addEventListener('resize', () => {
+      initSwiper();
+    });
+
+    // Fade-in animation on scroll
+    if (animationEnabled && 'IntersectionObserver' in window) {
+      const animatedElements = document.querySelectorAll('.before-after-' + sectionId + ' .card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else if (animationEnabled) {
+      // Fallback for browsers without IntersectionObserver
+      const animatedElements = document.querySelectorAll('.before-after-' + sectionId + ' .card');
+      animatedElements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Before & After Section",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Before & After"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable fade-in animation",
+      "info": "Cards will fade in when scrolled into view",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial_card",
+      "name": "Before & After Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_mode",
+          "label": "Image Display Mode",
+          "options": [
+            {
+              "value": "before_after",
+              "label": "Before & After (Two Images)"
+            },
+            {
+              "value": "single",
+              "label": "Single Image"
+            }
+          ],
+          "default": "before_after"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_single",
+          "label": "Single Image",
+          "info": "Used when 'Single Image' mode is selected"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_before",
+          "label": "Before Image",
+          "info": "Used when 'Before & After' mode is selected"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_after",
+          "label": "After Image",
+          "info": "Used when 'Before & After' mode is selected"
+        },
+        {
+          "type": "text",
+          "id": "card_name",
+          "label": "Name",
+          "default": "Michelle, 27"
+        },
+        {
+          "type": "textarea",
+          "id": "card_description",
+          "label": "Description",
+          "default": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis erat ut metus rhoncus. Ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis erat ut metus rhoncus mattis.\""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before & After Section",
+      "blocks": [
+        {
+          "type": "testimonial_card"
+        },
+        {
+          "type": "testimonial_card"
+        },
+        {
+          "type": "testimonial_card"
+        },
+        {
+          "type": "testimonial_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

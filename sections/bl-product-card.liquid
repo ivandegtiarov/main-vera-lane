@@ -1,0 +1,306 @@
+{%- comment -%} ── BL - PRODUCT CARD ── {%- endcomment -%}
+<div class="bl-product-card" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--card-bg: {{ section.settings.bg_color }};">
+  <div class="bl-product-card__container">
+    {%- if section.settings.header_text != blank -%}
+      <div class="bl-product-card__header" style="--header-bg: {{ section.settings.header_bg }};">
+        {%- if section.settings.header_badge != blank -%}
+          <span class="bl-product-card__badge">{{ section.settings.header_badge }}</span>
+        {%- endif -%}
+        <p class="bl-product-card__header-text">{{ section.settings.header_text }}</p>
+      </div>
+    {%- endif -%}
+
+    <div class="bl-product-card__body">
+      <h3 class="bl-product-card__name">{{ section.settings.product_name }}</h3>
+
+      {%- if section.settings.description != blank -%}
+        <div class="bl-product-card__desc">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.image != blank -%}
+        <figure class="bl-product-card__image-wrap">
+          <img
+            src="{{ section.settings.image | image_url: width: 500 }}"
+            alt="{{ section.settings.image.alt | default: section.settings.product_name | escape }}"
+            class="bl-product-card__image"
+            loading="lazy"
+          >
+        </figure>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="bl-product-card__features">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature' -%}
+              <li class="bl-product-card__feature" {{ block.shopify_attributes }}>
+                {{ block.settings.label }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- liquid
+        if section.settings.cta_link_type == 'anchor' and section.settings.cta_anchor != blank
+          assign cta_href = '#' | append: section.settings.cta_anchor
+        else
+          assign cta_href = section.settings.cta_url
+        endif
+      -%}
+      <a href="{{ cta_href }}" class="bl-product-card__btn" style="--btn-bg: {{ section.settings.btn_bg }}; --btn-text: {{ section.settings.btn_text }};">
+        {{ section.settings.cta_label }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-product-card {
+  background: var(--card-bg, #FAF9F7);
+  padding: 3rem 2rem;
+}
+
+.bl-product-card__container {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #E8E6E3;
+  overflow: hidden;
+}
+
+.bl-product-card__header {
+  background: var(--header-bg, #2D2D2D);
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.bl-product-card__badge {
+  display: inline-block;
+  background: #8B3A3A;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.bl-product-card__header-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+.bl-product-card__body {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.bl-product-card__name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #2D2D2D;
+  margin: 0 0 1rem;
+}
+
+.bl-product-card__desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.bl-product-card__image-wrap {
+  margin: 0 0 1.5rem;
+}
+
+.bl-product-card__image {
+  max-width: 100%;
+  height: auto;
+}
+
+.bl-product-card__features {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.bl-product-card__feature {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #E8E6E3;
+}
+
+.bl-product-card__btn {
+  display: block;
+  background: var(--btn-bg, #2D2D2D);
+  color: var(--btn-text, #fff);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem;
+  transition: opacity 200ms ease;
+}
+
+.bl-product-card__btn:hover {
+  opacity: 0.9;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Product Card",
+  "tag": "section",
+  "class": "bl-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Used for anchor links from other sections (e.g., 'offer')",
+      "default": "offer"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Card Header"
+    },
+    {
+      "type": "color",
+      "id": "header_bg",
+      "label": "Header background",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "text",
+      "id": "header_badge",
+      "label": "Header badge",
+      "default": "LIMITED TIME OFFER"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header text",
+      "default": "Up to 40% Off Today Only"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Mature Skin Foundation"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A lightweight, buildable formula designed specifically for mature skin. Hydrates, smooths, and delivers natural-looking coverage.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "select",
+      "id": "cta_link_type",
+      "label": "Link type",
+      "options": [
+        { "value": "anchor", "label": "Scroll to section on page" },
+        { "value": "url", "label": "Link to URL" }
+      ],
+      "default": "url"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Section ID to scroll to",
+      "info": "Enter the Section ID from the target section"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL",
+      "info": "Used when link type is 'Link to URL'"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button background",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Feature text",
+          "default": "Hydrating"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Product Card",
+      "category": "t:categories.blissy_listicle",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "Hydrating" } },
+        { "type": "feature", "settings": { "label": "Lightweight" } },
+        { "type": "feature", "settings": { "label": "Buildable" } },
+        { "type": "feature", "settings": { "label": "Long-lasting" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
