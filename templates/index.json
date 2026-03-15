@@ -81,6 +81,7 @@
           "settings": {
             "product": "color-changing-foundation",
             "reviews_text": "247 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": true,
             "pill_text": "#Best Seller",
@@ -94,6 +95,7 @@
           "settings": {
             "product": "makeup-brush",
             "reviews_text": "58 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": false,
             "pill_text": "#Best Seller",
@@ -107,6 +109,7 @@
           "settings": {
             "product": "makeup-bag-1",
             "reviews_text": "32 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": false,
             "pill_text": "#Best Seller",
@@ -120,6 +123,7 @@
           "settings": {
             "product": "bundle-tone-adapting-foundation-makeup-brush",
             "reviews_text": "18 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": true,
             "pill_text": "",
@@ -142,6 +146,7 @@
         "description_desktop": "Handpicked formulas your skin will love.",
         "description_mobile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "reviews_text": "180 Reviews",
+        "hide_description": false,
         "fallback_description": "Complex with 30 Billion CPU",
         "placeholder_name": "Velvet Foundation",
         "placeholder_price": "$32.00",
