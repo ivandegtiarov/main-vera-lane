@@ -114,12 +114,26 @@
             "discount_pct": "20%",
             "discount_text": "Save with subscription"
           }
+        },
+        "card_njP8qb": {
+          "type": "card",
+          "settings": {
+            "product": "bundle-tone-adapting-foundation-makeup-brush",
+            "reviews_text": "18 Reviews",
+            "fallback_description": "",
+            "show_pill": true,
+            "pill_text": "",
+            "show_discount": true,
+            "discount_pct": "20%",
+            "discount_text": "Save with subscription"
+          }
         }
       },
       "block_order": [
         "card_jbyWAm",
         "card_7A8Vx4",
-        "card_qWj3jw"
+        "card_qWj3jw",
+        "card_njP8qb"
       ],
       "name": "⚡ Lumen Featured Products",
       "settings": {
