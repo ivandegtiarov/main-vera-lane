@@ -123,7 +123,7 @@
             "fallback_description": "",
             "show_pill": true,
             "pill_text": "",
-            "show_discount": true,
+            "show_discount": false,
             "discount_pct": "20%",
             "discount_text": "Save with subscription"
           }
