@@ -600,13 +600,15 @@
                       <div class="vl-fp-card__price">{{ first_variant.price | money }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">
-                      {% if product.description != blank %}
-                        {{ product.description | strip_html | truncate: 46 }}
-                      {% else %}
-                        {{ block.settings.fallback_description }}
-                      {% endif %}
-                    </div>
+                    {% unless block.settings.hide_description %}
+                      <div class="vl-fp-card__desc">
+                        {% if product.description != blank %}
+                          {{ product.description | strip_html | truncate: 46 }}
+                        {% else %}
+                          {{ block.settings.fallback_description }}
+                        {% endif %}
+                      </div>
+                    {% endunless %}
                   </div>
                 </a>
               {% else %}
@@ -636,7 +638,9 @@
                       <div class="vl-fp-card__price">{{ section.settings.placeholder_price | default: '$0.00' }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">{{ block.settings.fallback_description }}</div>
+                    {% unless block.settings.hide_description %}
+                      <div class="vl-fp-card__desc">{{ block.settings.fallback_description }}</div>
+                    {% endunless %}
                   </div>
                 </a>
               {% endif %}
@@ -708,13 +712,15 @@
                       <div class="vl-fp-card__price">{{ first_variant.price | money }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">
-                      {% if product.description != blank %}
-                        {{ product.description | strip_html | truncate: 46 }}
-                      {% else %}
-                        {{ section.settings.fallback_description }}
-                      {% endif %}
-                    </div>
+                    {% unless section.settings.hide_description %}
+                      <div class="vl-fp-card__desc">
+                        {% if product.description != blank %}
+                          {{ product.description | strip_html | truncate: 46 }}
+                        {% else %}
+                          {{ section.settings.fallback_description }}
+                        {% endif %}
+                      </div>
+                    {% endunless %}
                   </div>
                 </a>
               </article>
@@ -764,7 +770,9 @@
                       <div class="vl-fp-card__price">{{ section.settings.placeholder_price | default: '$32.00' }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">{{ section.settings.fallback_description }}</div>
+                    {% unless section.settings.hide_description %}
+                      <div class="vl-fp-card__desc">{{ section.settings.fallback_description }}</div>
+                    {% endunless %}
                   </div>
                 </a>
               </article>
@@ -949,6 +957,12 @@
       "id": "reviews_text",
       "label": "Reviews text (collection & placeholder cards)",
       "default": "180 Reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_description",
+      "label": "Hide description",
+      "default": false
     },
     {
       "type": "text",
@@ -1348,6 +1362,12 @@
         {
           "type": "header",
           "content": "Fallback text"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_description",
+          "label": "Hide description",
+          "default": false
         },
         {
           "type": "text",
