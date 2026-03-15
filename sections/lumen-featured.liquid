@@ -592,7 +592,7 @@
                           </svg>
                         {% endfor %}
                       </div>
-                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                      <div class="vl-fp-card__reviews">{{ block.settings.reviews_text | default: '180 Reviews' }}</div>
                     </div>
 
                     <div class="vl-fp-card__nameRow">
@@ -604,16 +604,16 @@
                       {% if product.description != blank %}
                         {{ product.description | strip_html | truncate: 46 }}
                       {% else %}
-                        Complex with 30 Billion CPU
+                        {{ block.settings.fallback_description | default: 'Complex with 30 Billion CPU' }}
                       {% endif %}
                     </div>
                   </div>
                 </a>
               {% else %}
-                <a class="vl-fp-card__link" href="#" aria-label="Select a product">
+                <a class="vl-fp-card__link" href="#" aria-label="{{ section.settings.placeholder_name | default: 'Select product' | escape }}">
                   <div class="vl-fp-card__media">
                     <div class="vl-fp-card__mediaInner">
-                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="Placeholder product" focusable="false">
+                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="{{ section.settings.placeholder_name | default: 'Placeholder product' | escape }}" focusable="false">
                         <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
                       </svg>
                     </div>
@@ -628,15 +628,15 @@
                           </svg>
                         {% endfor %}
                       </div>
-                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                      <div class="vl-fp-card__reviews">{{ block.settings.reviews_text | default: '180 Reviews' }}</div>
                     </div>
 
                     <div class="vl-fp-card__nameRow">
-                      <div class="vl-fp-card__name">Select product</div>
-                      <div class="vl-fp-card__price">$0.00</div>
+                      <div class="vl-fp-card__name">{{ section.settings.placeholder_name | default: 'Select product' }}</div>
+                      <div class="vl-fp-card__price">{{ section.settings.placeholder_price | default: '$0.00' }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">Complex with 30 Billion CPU</div>
+                    <div class="vl-fp-card__desc">{{ block.settings.fallback_description | default: 'Complex with 30 Billion CPU' }}</div>
                   </div>
                 </a>
               {% endif %}
@@ -658,13 +658,17 @@
             <li class="vl-fp__product">
               <article class="vl-fp-card">
                 {% if forloop.first %}
-                  <div class="vl-fp-card__pill">#Best Seller</div>
-                  <div class="vl-fp-card__discount" aria-label="Save with subscription 20%">
-                    <div class="vl-fp-card__discountInner">
-                      <div class="vl-fp-card__discountPct">20%</div>
-                      <div class="vl-fp-card__discountText">Save with subscription</div>
+                  {% if section.settings.collection_pill_text != blank %}
+                    <div class="vl-fp-card__pill">{{ section.settings.collection_pill_text }}</div>
+                  {% endif %}
+                  {% if section.settings.collection_show_discount %}
+                    <div class="vl-fp-card__discount" aria-label="{{ section.settings.collection_discount_text | escape }} {{ section.settings.collection_discount_pct | escape }}">
+                      <div class="vl-fp-card__discountInner">
+                        <div class="vl-fp-card__discountPct">{{ section.settings.collection_discount_pct | default: '20%' }}</div>
+                        <div class="vl-fp-card__discountText">{{ section.settings.collection_discount_text | default: 'Save with subscription' }}</div>
+                      </div>
                     </div>
-                  </div>
+                  {% endif %}
                 {% endif %}
 
                 <a class="vl-fp-card__link" href="{{ product.url }}" aria-label="{{ product.title }} - {{ first_variant.price | money }}">
@@ -696,7 +700,7 @@
                           </svg>
                         {% endfor %}
                       </div>
-                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                      <div class="vl-fp-card__reviews">{{ section.settings.reviews_text | default: '180 Reviews' }}</div>
                     </div>
 
                     <div class="vl-fp-card__nameRow">
@@ -708,7 +712,7 @@
                       {% if product.description != blank %}
                         {{ product.description | strip_html | truncate: 46 }}
                       {% else %}
-                        Complex with 30 Billion CPU
+                        {{ section.settings.fallback_description | default: 'Complex with 30 Billion CPU' }}
                       {% endif %}
                     </div>
                   </div>
@@ -722,18 +726,22 @@
             <li class="vl-fp__product">
               <article class="vl-fp-card">
                 {% if forloop.first %}
-                  <div class="vl-fp-card__pill">#Best Seller</div>
-                  <div class="vl-fp-card__discount" aria-label="Save with subscription 20%">
-                    <div class="vl-fp-card__discountInner">
-                      <div class="vl-fp-card__discountPct">20%</div>
-                      <div class="vl-fp-card__discountText">Save with subscription</div>
+                  {% if section.settings.collection_pill_text != blank %}
+                    <div class="vl-fp-card__pill">{{ section.settings.collection_pill_text }}</div>
+                  {% endif %}
+                  {% if section.settings.collection_show_discount %}
+                    <div class="vl-fp-card__discount" aria-label="{{ section.settings.collection_discount_text | escape }} {{ section.settings.collection_discount_pct | escape }}">
+                      <div class="vl-fp-card__discountInner">
+                        <div class="vl-fp-card__discountPct">{{ section.settings.collection_discount_pct | default: '20%' }}</div>
+                        <div class="vl-fp-card__discountText">{{ section.settings.collection_discount_text | default: 'Save with subscription' }}</div>
+                      </div>
                     </div>
-                  </div>
+                  {% endif %}
                 {% endif %}
-                <a class="vl-fp-card__link" href="#" aria-label="Velvet Foundation - $32.00">
+                <a class="vl-fp-card__link" href="#" aria-label="{{ section.settings.placeholder_name | default: 'Velvet Foundation' | escape }} - {{ section.settings.placeholder_price | default: '$32.00' | escape }}">
                   <div class="vl-fp-card__media">
                     <div class="vl-fp-card__mediaInner">
-                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="Placeholder product" focusable="false">
+                      <svg class="vl-fp-card__overlay" viewBox="0 0 254 254" role="img" aria-label="{{ section.settings.placeholder_name | default: 'Placeholder product' | escape }}" focusable="false">
                         <rect width="254" height="254" rx="16" fill="#F3F3F3"></rect>
                       </svg>
                     </div>
@@ -748,15 +756,15 @@
                           </svg>
                         {% endfor %}
                       </div>
-                      <div class="vl-fp-card__reviews">180 Reviews</div>
+                      <div class="vl-fp-card__reviews">{{ section.settings.reviews_text | default: '180 Reviews' }}</div>
                     </div>
 
                     <div class="vl-fp-card__nameRow">
-                      <div class="vl-fp-card__name">Velvet Foundation</div>
-                      <div class="vl-fp-card__price">$32.00</div>
+                      <div class="vl-fp-card__name">{{ section.settings.placeholder_name | default: 'Velvet Foundation' }}</div>
+                      <div class="vl-fp-card__price">{{ section.settings.placeholder_price | default: '$32.00' }}</div>
                     </div>
 
-                    <div class="vl-fp-card__desc">Complex with 30 Billion CPU</div>
+                    <div class="vl-fp-card__desc">{{ section.settings.fallback_description | default: 'Complex with 30 Billion CPU' }}</div>
                   </div>
                 </a>
               </article>
@@ -931,6 +939,62 @@
       "id": "description_mobile",
       "label": "Description (mobile)",
       "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "header",
+      "content": "Collection / fallback card text"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Reviews text (collection & placeholder cards)",
+      "default": "180 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "fallback_description",
+      "label": "Fallback description (no product description)",
+      "default": "Complex with 30 Billion CPU"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Placeholder product name",
+      "default": "Velvet Foundation"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_price",
+      "label": "Placeholder product price",
+      "default": "$32.00"
+    },
+    {
+      "type": "header",
+      "content": "Collection fallback badge (first card)"
+    },
+    {
+      "type": "text",
+      "id": "collection_pill_text",
+      "label": "Pill text (leave blank to hide)",
+      "default": "#Best Seller"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_show_discount",
+      "label": "Show discount badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "collection_discount_pct",
+      "label": "Discount percent",
+      "default": "20%"
+    },
+    {
+      "type": "text",
+      "id": "collection_discount_text",
+      "label": "Discount text",
+      "default": "Save with subscription"
     },
     {
       "type": "header",
@@ -1271,6 +1335,26 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Reviews"
+        },
+        {
+          "type": "text",
+          "id": "reviews_text",
+          "label": "Reviews text",
+          "default": "180 Reviews"
+        },
+        {
+          "type": "header",
+          "content": "Fallback text"
+        },
+        {
+          "type": "text",
+          "id": "fallback_description",
+          "label": "Fallback description (no product description)",
+          "default": "Complex with 30 Billion CPU"
         },
         {
           "type": "header",
