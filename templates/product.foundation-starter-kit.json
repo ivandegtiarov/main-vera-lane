@@ -1,0 +1,1058 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Browse our latest products</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "lumen_pdp_hero_WWxn3E": {
+      "type": "lumen-pdp-hero",
+      "blocks": {
+        "magazine_logo_7qjcEx": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/cosmopolitan_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_NxJ67z": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/grazia_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_7MRWYQ": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/elle_magazine_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_4XVyTp": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue_magazine_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "trust_badge_hYWKi7": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1.svg",
+            "text": "<p>30 Day Money Back Guarantee</p>"
+          }
+        },
+        "trust_badge_wT3BMT": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1_1.svg",
+            "text": "<p>Free Shipping from<br/>$60</p>"
+          }
+        },
+        "trust_badge_KVy3Dw": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1_2.svg",
+            "text": "<p>Free Return</p>"
+          }
+        },
+        "bundle_KbEXwe": {
+          "type": "bundle",
+          "disabled": true,
+          "settings": {
+            "bundle_product": "color-changing-foundation",
+            "bundle_title": "",
+            "product_1": "color-changing-foundation",
+            "product_1_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 1,
+            "product_3": "",
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BUNDLE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_rkAfB6": {
+          "type": "bundle",
+          "disabled": true,
+          "settings": {
+            "bundle_product": "makeup-brush",
+            "bundle_title": "",
+            "product_1": "makeup-brush",
+            "product_1_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 1,
+            "product_3": "",
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BUNDLE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_fyxzq3": {
+          "type": "bundle",
+          "disabled": true,
+          "settings": {
+            "bundle_product": "bundle-tone-adapting-foundation-makeup-brush",
+            "bundle_title": "",
+            "bundle_image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+            "product_1": "color-changing-foundation",
+            "product_1_quantity": 1,
+            "product_2": "makeup-brush",
+            "product_2_quantity": 1,
+            "product_3": "",
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": true,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "GREAT DEAL",
+            "corner_badge_bg_color": "#000000",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BEST",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_MdzXij": {
+          "type": "bundle",
+          "disabled": true,
+          "settings": {
+            "bundle_product": "makeup-bag-bundle",
+            "bundle_title": "Bundle: Foundation, Makeup Brush & Makeup Bag",
+            "bundle_image": "shopify://shop_images/Gemini_Generated_Image_7hejds7hejds7hej.png",
+            "product_1": "color-changing-foundation",
+            "product_1_quantity": 1,
+            "product_2": "makeup-brush",
+            "product_2_quantity": 1,
+            "product_3": "makeup-bag-1",
+            "product_3_quantity": 1,
+            "add_bundle_property": true,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "MOST POPULAR",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": true,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_option_HyygYU": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "1 Piece",
+            "quantity": 1,
+            "use_percentage": false,
+            "discount_percentage": 0,
+            "show_badge": false,
+            "badge_text": "POPULAR",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false
+          }
+        },
+        "bundle_option_GXBwQL": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "2 Pieces",
+            "quantity": 2,
+            "use_percentage": true,
+            "discount_percentage": 10,
+            "show_badge": true,
+            "badge_text": "",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false
+          }
+        },
+        "bundle_option_VnCjay": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "3 Pieces",
+            "quantity": 3,
+            "use_percentage": true,
+            "discount_percentage": 40,
+            "show_badge": true,
+            "badge_text": "BEST VALUE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": true
+          }
+        },
+        "upsell_product_KVyK9f": {
+          "type": "upsell_product",
+          "settings": {
+            "product": "color-changing-foundation",
+            "title_override": "",
+            "button_label": ""
+          }
+        },
+        "upsell_product_3DPeqL": {
+          "type": "upsell_product",
+          "disabled": true,
+          "settings": {
+            "product": "makeup-bag-1",
+            "title_override": "",
+            "button_label": ""
+          }
+        },
+        "faq_item_BaHyjk": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Description",
+            "content": "<p>The bag your routine deserves. Crafted in soft pebbled vegan leather with a structured silhouette that holds its shape whether it's sitting on your vanity or tucked inside a carry-on. The gold-tone zipper opens wide for easy access, and the interior fits your Vera Lane essentials — foundation, brush, and then some — without the bulk.</p><p>Embossed with the Vera Lane logo for a quietly luxurious finish. Because even the in-between moments of your routine should feel intentional.</p><ul><li>Pebbled vegan leather, soft to the touch</li><li>Gold-tone metal zipper with branded pull</li><li>Compact enough for travel, roomy enough for your daily kit</li><li>Easy-wipe interior lining</li></ul>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "faq_item_U8Vae4": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How does the guarantee work?",
+            "content": "<p>We stand behind everything we make. If your Makeup Bag arrives damaged or doesn't meet your expectations, reach out within 30 days and we'll make it right — full refund, no questions asked.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "faq_item_m8GzcM": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How long does shipping take?",
+            "content": "<p>Standard shipping: 4–5 business days. Free shipping on orders over $60. Returns accepted within 30 days of delivery.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "magazine_logo_7qjcEx",
+        "magazine_logo_NxJ67z",
+        "magazine_logo_7MRWYQ",
+        "magazine_logo_4XVyTp",
+        "trust_badge_hYWKi7",
+        "trust_badge_wT3BMT",
+        "trust_badge_KVy3Dw",
+        "bundle_KbEXwe",
+        "bundle_rkAfB6",
+        "bundle_fyxzq3",
+        "bundle_MdzXij",
+        "bundle_option_HyygYU",
+        "bundle_option_GXBwQL",
+        "bundle_option_VnCjay",
+        "upsell_product_KVyK9f",
+        "upsell_product_3DPeqL",
+        "faq_item_BaHyjk",
+        "faq_item_U8Vae4",
+        "faq_item_m8GzcM"
+      ],
+      "custom_css": [],
+      "name": "⚡ Lumen PDP Hero",
+      "settings": {
+        "product": "",
+        "custom_title": "",
+        "rating_text": "(4.6) 256 Reviews",
+        "size_text": "",
+        "description": "<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li></ul>",
+        "add_to_cart_label": "ADD TO BAG",
+        "adding_to_cart_label": "ADDING...",
+        "delivery_text": "3-5 WORKING DAYS DELIVERY",
+        "free_delivery_text": "FREE DELIVERY",
+        "badge_bg_color": "#ffd4cd",
+        "badge_text_color": "#7a0036",
+        "show_payment_icons": true,
+        "enable_animation": true,
+        "show_ugc": true,
+        "ugc_heading": "SEE HOW IT WORKS ON DIFFERENT PEOPLE",
+        "ugc_close_on_outside": true,
+        "ugc_pause_on_click": true,
+        "show_upsell": true,
+        "upsell_heading": "Choose what works best for you",
+        "upsell_button_label": "ADD TO BAG"
+      }
+    },
+    "lumen_benefits_section": {
+      "type": "lumen-benefits",
+      "disabled": true,
+      "name": "⚡Benefits Section",
+      "settings": {
+        "section_label": "Key benefits of Vera Lane",
+        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
+        "benefit_1_title": "Custom-Fit Color Technology",
+        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
+        "benefit_2_title": "Flawless, Ageless Finish",
+        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
+        "benefit_3_title": "Protective Skincare Hybrid",
+        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
+        "benefit_4_title": "16-Hour Weightless Wear",
+        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
+        "enable_animation": true,
+        "title_font_size_mobile": 22,
+        "title_font_size_desktop": 28,
+        "text_font_size_mobile": 14,
+        "text_font_size_desktop": 14,
+        "show_pointers_mobile": "none",
+        "show_pointers_tablet": "none",
+        "show_pointers_desktop": "block",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80
+      }
+    },
+    "lumen_grid_benefits_section": {
+      "type": "lumen-grid-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Suitable For Your Skin Color",
+            "description": "Expertly formulated to adapt to your unique undertones. Our pigment technology ensures a seamless blend that enhances your natural complexion rather than masking it."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Long-Lasting Formula",
+            "description": "Go from morning coffee to evening dinner without a touch-up. Our resilient formula resists fading and settling into fine lines, keeping you looking radiant all day."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Dermatologist Tested",
+            "description": "Your skin’s health is our priority. Every product is rigorously tested by skincare experts to ensure it is gentle, non-irritating, and safe for even the most sensitive skin types."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Natural Ingredients",
+            "description": "Powered by nature, not chemicals. We infuse our cosmetics with high-quality botanicals and skin-loving vitamins to nourish your complexion while you wear them."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Eco-Friendly Packaging",
+            "description": "Beauty shouldn't cost the earth. We are committed to sustainability, using recyclable materials and responsible sourcing to minimize our environmental footprint."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ],
+      "disabled": true,
+      "name": "⚡Grid Benefits Section",
+      "settings": {
+        "section_label": "Grid benefits section",
+        "main_title": "Beautiful Benefits",
+        "image": "shopify://shop_images/Untitled_design_62.png",
+        "enable_animation": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "item_title_font_size_mobile": 16,
+        "item_title_font_size_desktop": 18,
+        "item_text_font_size_mobile": 14,
+        "item_text_font_size_desktop": 14,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 96
+      }
+    },
+    "lumen_image_slider_section": {
+      "type": "lumen-image-slider",
+      "blocks": {
+        "slider_card_1": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_64.png",
+            "card_name": "Ivana",
+            "card_subtitle": "Copywriter",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_2": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_66.png",
+            "card_name": "Sarah",
+            "card_subtitle": "Art Teacher",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_3": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_67.png",
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_4": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_60.png",
+            "card_name": "Anastasia",
+            "card_subtitle": "Marketing Manager",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_5": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/freepik__generate-a-new-aspect-ratio__35285.png",
+            "card_name": "Jessica",
+            "card_subtitle": "Makeup Artist",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_tnKajB": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_64.png",
+            "card_name": "Ivana",
+            "card_subtitle": "Copywriter",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_RetchT": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_66.png",
+            "card_name": "Sarah",
+            "card_subtitle": "Art Teacher",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_PnCdCC": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_67.png",
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_bBGcit": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_60.png",
+            "card_name": "Anastasia",
+            "card_subtitle": "Marketing Manager",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_C7PMnL": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/freepik__generate-a-new-aspect-ratio__35285.png",
+            "card_name": "Jessica",
+            "card_subtitle": "Makeup Artist",
+            "show_speaker_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "slider_card_1",
+        "slider_card_2",
+        "slider_card_3",
+        "slider_card_4",
+        "slider_card_5",
+        "slider_card_tnKajB",
+        "slider_card_RetchT",
+        "slider_card_PnCdCC",
+        "slider_card_bBGcit",
+        "slider_card_C7PMnL"
+      ],
+      "disabled": true,
+      "name": "⚡Image Slider Section",
+      "settings": {
+        "section_label": "Trusted by 1000s of Women",
+        "main_title": "Trusted by 1000s of Women",
+        "background_color": "#fbf8f6",
+        "title_color": "#000000",
+        "card_name_color": "#ffffff",
+        "card_subtitle_color": "#ffffff",
+        "enable_animation": true,
+        "scroll_mode": "arrows",
+        "autoscroll_duration": 30,
+        "show_arrows": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "card_name_font_size_mobile": 18,
+        "card_name_font_size_desktop": 20,
+        "card_title_font_size_mobile": 14,
+        "card_title_font_size_desktop": 16,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 112,
+        "padding_bottom_desktop": 112
+      }
+    },
+    "lumen_before_after_section": {
+      "type": "lumen-before-after",
+      "blocks": {
+        "before_after_card_1": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/Untitled_design_68.png",
+            "image_before": "shopify://shop_images/Untitled_design_68.png",
+            "card_name": "Linda, 54",
+            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color—usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
+          }
+        },
+        "testimonial_card_WAUUWU": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/2.png",
+            "image_before": "shopify://shop_images/2.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Michelle, 27",
+            "card_description": "I have tricky undertones and struggling with redness, so buying makeup online terrified me. I took a chance on this, and I'm shocked. It neutralized my redness immediately and blended right into my neck. No more 'floating head' effect!"
+          }
+        },
+        "testimonial_card_pkT3Gh": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/3.png",
+            "image_before": "shopify://shop_images/3.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Diane, 49",
+            "card_description": "Being very fair, 'universal' shades usually turn dark or orange on me within an hour. This one actually stayed true to my pale complexion. It gives me a healthy, warm glow without looking fake. Finally, a perfect match for fair skin."
+          }
+        },
+        "testimonial_card_BGPEhn": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/1.png",
+            "image_before": "shopify://shop_images/1.png",
+            "image_after": "shopify://shop_images/CleanShot2025-09-11at22.41.55_2x_58285bd6-1b08-4051-8b2c-b005b1881927.png",
+            "card_name": "Amanda, 42",
+            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly—no orange line, just calm, even skin."
+          }
+        }
+      },
+      "block_order": [
+        "before_after_card_1",
+        "testimonial_card_WAUUWU",
+        "testimonial_card_pkT3Gh",
+        "testimonial_card_BGPEhn"
+      ],
+      "disabled": true,
+      "name": "⚡Before & After Section",
+      "settings": {
+        "section_title": "Before & After",
+        "enable_animation": true
+      }
+    },
+    "lumen_faq_section": {
+      "type": "lumen-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee on all products. If you're not completely satisfied with your purchase, contact us for a full refund."
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Standard shipping takes 4-5 business days. Express shipping is available for 2-3 business day delivery."
+          }
+        },
+        "faq_item_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this product suitable for sensitive skin?",
+            "answer": "Yes, our products are dermatologist-tested and formulated for all skin types, including sensitive skin."
+          }
+        },
+        "faq_item_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to choose?",
+            "answer": "Our foundation adapts to your skin tone within seconds. It works for fair to medium skin tones."
+          }
+        },
+        "faq_item_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What ingredients are in this product?",
+            "answer": "Our products contain nourishing ingredients like Glycerin, Sodium Hyaluronate, and Vitamin E for healthy, hydrated skin."
+          }
+        },
+        "faq_item_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "Yes, we offer free shipping on all orders over $49. Orders under $49 have a flat shipping rate."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4",
+        "faq_item_5",
+        "faq_item_6"
+      ],
+      "disabled": true,
+      "name": "⚡FAQ Section",
+      "settings": {
+        "section_label": "FAQ Section",
+        "main_heading": "Frequently Asked Questions",
+        "sticky_heading": true,
+        "first_item_open": 0,
+        "enable_animation": true,
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "question_color": "#000000",
+        "answer_color": "#333333",
+        "icon_color": "#000000",
+        "border_color": "#e5e5e5",
+        "heading_font_size_mobile": 40,
+        "heading_font_size_desktop": 64,
+        "question_font_size_mobile": 16,
+        "question_font_size_desktop": 18,
+        "question_text_transform": "uppercase",
+        "answer_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal_mobile": 24,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_horizontal_desktop": 80
+      }
+    },
+    "lumen_trustpilot_section": {
+      "type": "lumen-trustpilot",
+      "name": "⚡Trustpilot Section",
+      "settings": {
+        "stars_image": "shopify://shop_images/Frame_523.png",
+        "stars_image_alt": "Trustpilot star rating",
+        "rating_text": "4.6 OUT OF 5 BASED ON 245 REVIEWS",
+        "enable_animation": true,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_left_right": 20
+      }
+    },
+    "lumen_usp_mjAcCK": {
+      "type": "lumen-usp",
+      "blocks": {
+        "usp_item_gyk4tj": {
+          "type": "usp_item",
+          "settings": {
+            "icon_alt": "",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"52\" height=\"52\" viewbox=\"0 0 52 52\" fill=\"none\">\n  <path d=\"M30.209 10.856C31.2266 10.856 32.0547 11.6841 32.0547 12.7017C32.0547 13.1157 32.3906 13.4517 32.8047 13.4517C33.2188 13.4517 33.5547 13.1157 33.5547 12.7017C33.5547 11.1157 32.4425 9.79028 30.959 9.44788V8.61182C30.959 8.19775 30.623 7.86182 30.209 7.86182C29.7949 7.86182 29.459 8.19775 29.459 8.61182V9.44867C27.9814 9.79199 26.874 11.1165 26.874 12.7017C26.874 14.5405 28.3701 16.0366 30.209 16.0366C31.2266 16.0366 32.0547 16.8647 32.0547 17.8823C32.0547 18.894 31.2266 19.7173 30.209 19.7173C29.1973 19.7173 28.374 18.894 28.374 17.8823C28.374 17.4683 28.0381 17.1323 27.624 17.1323C27.21 17.1323 26.874 17.4683 26.874 17.8823C26.874 19.4624 27.9814 20.7827 29.459 21.1249V21.9614C29.459 22.3755 29.7949 22.7114 30.209 22.7114C30.623 22.7114 30.959 22.3755 30.959 21.9614V21.1257C32.4425 20.7844 33.5547 19.4633 33.5547 17.8823C33.5547 16.0376 32.0537 14.5366 30.209 14.5366C29.1973 14.5366 28.374 13.7134 28.374 12.7017C28.374 11.6841 29.1973 10.856 30.209 10.856Z\" fill=\"#7A0036\"></path>\n  <path d=\"M35.1016 8.61182C35.1016 9.02588 35.4375 9.36182 35.8516 9.36182H40.165C40.5405 9.36182 40.915 9.01569 40.915 8.61182V4.29834C40.915 3.88428 40.5791 3.54834 40.165 3.54834C39.751 3.54834 39.415 3.88428 39.415 4.29834V6.51501C37.0309 4.01245 33.7299 2.5498 30.2119 2.5498C23.1895 2.5498 17.4766 8.2627 17.4766 15.2852C17.4766 22.3071 23.1895 28.02 30.2119 28.02C37.2344 28.02 42.9473 22.3071 42.9473 15.2852C42.9473 14.4946 42.875 13.7056 42.7314 12.939C42.6553 12.5312 42.2637 12.2627 41.8564 12.3394C41.4492 12.4155 41.1807 12.8071 41.2568 13.2144C41.3828 13.8901 41.4473 14.5869 41.4473 15.2852C41.4473 21.48 36.4072 26.52 30.2119 26.52C24.0166 26.52 18.9766 21.48 18.9766 15.2852C18.9766 9.08984 24.0166 4.0498 30.2119 4.0498C33.465 4.0498 36.5186 5.45453 38.6393 7.86182H35.8516C35.4375 7.86182 35.1016 8.19775 35.1016 8.61182Z\" fill=\"#7A0036\"></path>\n  <path d=\"M2.57441 37.9486L10.2795 48.7211C10.8607 49.5359 12.0205 49.6979 12.8049 49.0516L15.1017 47.1522C15.4924 46.8885 15.7541 46.4886 15.84 46.0258C15.925 45.5624 15.8234 45.0951 15.5529 44.7094L15.4963 44.6285C17.2741 43.6736 19.359 43.4009 21.3342 43.8915C25.7462 44.3619 31.025 48.1758 36.5793 44.118L48.3517 35.5194C49.8586 34.4188 50.1984 32.2909 49.1076 30.7762C48.0226 29.2675 45.9016 28.9076 44.3791 29.9794L36.5408 35.52C36.2985 34.1735 35.3231 33.0441 33.9416 32.661L19.8674 28.7587C17.9162 28.2157 15.8557 28.5868 14.2121 29.7748L8.15778 34.1544L7.92499 33.8221C7.40265 33.0757 6.33533 32.7934 5.43866 33.4403L2.87128 35.6024C2.17987 36.1835 2.04999 37.2137 2.57441 37.9486ZM15.091 30.9906C16.3615 30.0717 17.9533 29.7845 19.467 30.204L33.5412 34.1063C34.5568 34.3881 35.2111 35.3529 35.0978 36.4008C34.9596 37.7002 33.6963 38.5308 32.5539 38.2762L24.4689 35.8256C24.0764 35.7064 23.6545 35.9296 23.5334 36.3256C23.4133 36.722 23.6369 37.141 24.0334 37.2611L32.1721 39.726C33.8529 40.1026 35.6492 39.2665 36.3451 37.4946L45.2434 31.2054C46.0959 30.6063 47.2824 30.8075 47.8908 31.6522C48.5012 32.5004 48.3107 33.6918 47.467 34.3085L35.6945 42.9071C31.1028 46.2597 26.8198 43.243 21.6955 42.4354C19.3025 41.8405 16.7712 42.1985 14.6342 43.398L9.01874 35.3832L15.091 30.9906ZM3.8371 36.7499L6.35859 34.6244C6.46491 34.5472 6.61737 34.5707 6.69648 34.6825L14.3244 45.5702C14.3752 45.6425 14.3713 45.7157 14.3644 45.7528C14.3566 45.7982 14.3312 45.8622 14.2043 45.952L11.8498 47.8949C11.7432 47.9832 11.5819 47.964 11.5002 47.849L3.79511 37.0761C3.72187 36.974 3.74042 36.8309 3.8371 36.7499Z\" fill=\"#7A0036\"></path>\n</svg>",
+            "title": "100% MONEY BACK",
+            "description": "Try Vera Lane risk-free. We are confident you will love your new look, but if you aren't completely satisfied with the shade or finish, simply return it within 30 days for a full refund—no questions asked."
+          }
+        },
+        "usp_item_7d6Cgf": {
+          "type": "usp_item",
+          "settings": {
+            "icon_alt": "",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"52\" height=\"52\" viewbox=\"0 0 52 52\" fill=\"none\">\n  <path d=\"M27.3979 2H24.6079C23.6592 2 22.8877 2.76709 22.8877 3.70996V5.44238H10.7896C8.78223 5.44238 7.14941 7.0752 7.14941 9.08203V30.1265C7.14941 32.1333 8.78223 33.7661 10.7896 33.7661H22.8877V48.499H17.5557C17.1416 48.499 16.8057 48.835 16.8057 49.249C16.8057 49.6631 17.1416 49.999 17.5557 49.999C39.3434 50.001 12.6763 49.9992 34.4443 49.999C34.8584 49.999 35.1943 49.6631 35.1943 49.249C35.1943 48.835 34.8584 48.499 34.4443 48.499H29.1079V33.7661H41.2104C43.2173 33.7661 44.8501 32.1333 44.8501 30.1265V9.08203C44.8501 7.0752 43.2173 5.44238 41.2104 5.44238H29.1079V3.70996C29.1079 2.76709 28.3408 2 27.3979 2ZM24.3877 3.70996C24.3877 3.59229 24.4844 3.5 24.6079 3.5H27.3979C27.5137 3.5 27.6079 3.59424 27.6079 3.70996V5.44238H24.3877V3.70996ZM27.6079 48.499H24.3877V33.7661H27.6079V48.499ZM41.2104 6.94238C42.3901 6.94238 43.3501 7.90234 43.3501 9.08203V30.1265C43.3501 31.3062 42.3901 32.2661 41.2104 32.2661H10.7896C9.60938 32.2661 8.64941 31.3062 8.64941 30.1265V9.08203C8.64941 7.90234 9.60938 6.94238 10.7896 6.94238H41.2104Z\" fill=\"#7A0036\"></path>\n  <path d=\"M21.5649 21.3979C19.8228 22.0229 18.6123 23.6978 18.6123 25.5874C18.6123 28.0405 20.6064 30.0366 23.0576 30.0366C24.1582 30.0366 25.1934 29.6392 26.0005 28.9253C26.8057 29.6396 27.8398 30.0366 28.9419 30.0366C31.3931 30.0366 33.3872 28.0405 33.3872 25.5874C33.3872 23.6978 32.1768 22.0229 30.4346 21.3979C30.2642 19.0806 28.3433 17.2856 26.0015 17.2856C23.6606 17.2856 21.7363 19.1016 21.5649 21.3979ZM26.0015 18.7856C27.6396 18.7856 29.0364 20.1268 28.9409 21.9253C28.9209 22.2949 29.1743 22.624 29.5371 22.6997C30.8989 22.9829 31.8872 24.1973 31.8872 25.5874C31.8872 27.2134 30.5659 28.5366 28.9419 28.5366C28.0161 28.5366 27.1616 28.1128 26.5977 27.3735C26.4561 27.188 26.2358 27.0791 26.0024 27.0786C26.002 27.0786 26.0029 27.0786 26.0024 27.0786C25.769 27.0786 25.5483 27.187 25.4062 27.3721C24.8389 28.1123 23.9829 28.5366 23.0576 28.5366C21.4336 28.5366 20.1123 27.2134 20.1123 25.5874C20.1123 24.1973 21.1006 22.9829 22.4624 22.6997C22.8223 22.6245 23.0752 22.2993 23.0586 21.9321L23.0527 21.731C23.0527 20.1069 24.3755 18.7856 26.0015 18.7856Z\" fill=\"#7A0036\"></path>\n  <path d=\"M22.1499 16.7739C23.8696 16.7739 25.269 15.0688 25.269 12.9731C25.269 10.8774 23.8696 9.17236 22.1499 9.17236C20.4297 9.17236 19.0303 10.8774 19.0303 12.9731C19.0303 15.0688 20.4297 16.7739 22.1499 16.7739ZM22.1499 10.6724C23.0273 10.6724 23.769 11.7261 23.769 12.9731C23.769 14.2202 23.0273 15.2739 22.1499 15.2739C21.272 15.2739 20.5303 14.2202 20.5303 12.9731C20.5303 11.7261 21.272 10.6724 22.1499 10.6724Z\" fill=\"#7A0036\"></path>\n  <path d=\"M29.4836 16.7687C31.3133 16.8631 32.6991 15.1048 32.8073 13.1452C32.9226 11.0524 31.6188 9.27314 29.9011 9.17792C28.194 9.10126 26.6931 10.7092 26.5773 12.8019C26.4626 14.8942 27.7663 16.6735 29.4836 16.7687ZM29.7585 10.674C29.7785 10.674 29.7985 10.6745 29.8186 10.676C30.6955 10.7243 31.3781 11.8171 31.3093 13.0622C31.2409 14.3078 30.4519 15.3449 29.5661 15.2707C28.6896 15.2224 28.007 14.1296 28.0754 12.8845C28.1423 11.6677 28.906 10.674 29.7585 10.674Z\" fill=\"#7A0036\"></path>\n  <path d=\"M17.4946 21.4907C19.0157 21.1391 20.0304 19.3576 19.561 17.334C19.0872 15.2851 17.3768 14.1572 15.8779 14.5083C14.3832 14.8539 13.335 16.6101 13.8115 18.6655C14.2377 20.5056 15.8505 21.8745 17.4946 21.4907ZM16.2163 15.9692C17.108 15.7635 17.8898 16.767 18.1001 17.6719C18.3079 18.5702 18.0499 19.8229 17.1562 20.0298C16.3921 20.1997 15.5278 19.4272 15.2724 18.3272C15.0646 17.4288 15.3226 16.1761 16.2163 15.9692Z\" fill=\"#7A0036\"></path>\n  <path d=\"M34.5049 21.4906C36.2117 21.8876 37.7727 20.4628 38.1885 18.6649C38.659 16.6366 37.6413 14.8595 36.1226 14.5082C34.6011 14.1559 32.9073 15.3092 32.439 17.3339C31.9686 19.3622 32.9863 21.1393 34.5049 21.4906ZM33.9 17.6718C34.1094 16.7705 34.8898 15.7627 35.7842 15.9691C36.6591 16.1719 36.9428 17.3967 36.7276 18.327C36.5186 19.2265 35.7397 20.2357 34.8433 20.0297C33.9685 19.8269 33.6848 18.6021 33.9 17.6718Z\" fill=\"#7A0036\"></path>\n</svg>",
+            "title": "CRUELTY FREE & VEGAN",
+            "description": "Beauty with a conscience. We are committed to ethical practices, which means our premium formulas are never tested on animals at any stage of production."
+          }
+        },
+        "usp_item_qbxPXp": {
+          "type": "usp_item",
+          "settings": {
+            "icon_alt": "",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"52\" height=\"52\" viewbox=\"0 0 52 52\" fill=\"none\">\n  <path d=\"M36.1353 31.7904C30.9961 33.4919 28.9226 37.0834 29.95 42.4699C28.7087 42.5432 27.7188 43.5668 27.7188 44.826V47.6302C27.7188 48.9369 28.7817 49.9998 30.0884 49.9998H41.1621C42.4688 49.9998 43.5317 48.9369 43.5317 47.6302V44.826C43.5317 43.5194 42.4688 42.4559 41.1621 42.4559H41.0125C40.9656 41.0814 41.8916 39.8222 43.3726 38.304L48.9531 32.5008C49.7114 31.7113 50.0869 30.6336 49.9824 29.5448L48.9668 18.9247C48.8403 17.6068 47.8926 16.5125 46.6621 16.264C44.8152 15.8918 43.1309 17.2726 43.1309 19.138L43.1592 25.5887C42.3804 25.638 41.6626 25.973 41.1191 26.5443L36.1353 31.7904ZM41.1621 43.9559C41.6416 43.9559 42.0317 44.346 42.0317 44.826V47.6302C42.0317 48.1097 41.6416 48.4998 41.1621 48.4998H30.0884C29.6089 48.4998 29.2188 48.1097 29.2188 47.6302V44.826C29.2188 44.346 29.6089 43.9559 30.0884 43.9559H41.1621ZM44.5171 27.5794C45.1206 28.2166 45.0928 29.2264 44.4556 29.8299L39.249 34.7596C38.9482 35.0443 38.9351 35.5189 39.2202 35.8197C39.5049 36.1205 39.9795 36.1346 40.2803 35.8485L45.4868 30.9188C46.7246 29.7469 46.7783 27.786 45.606 26.5482C45.3311 26.2577 45.0107 26.0282 44.6606 25.8656L44.6309 19.1239C44.6309 18.2516 45.425 17.5399 46.3652 17.7347C46.9541 17.8534 47.4097 18.4017 47.4736 19.0677L48.4893 29.6878C48.5518 30.3412 48.3267 30.9876 47.8716 31.4613L42.2949 37.2601C40.8984 38.6922 39.457 40.3695 39.5088 42.4559H31.4717C30.4487 37.5931 32.144 34.6312 36.7744 33.1595C36.895 33.1209 37.0039 33.0531 37.0908 32.9613L42.2065 27.5775C42.8359 26.9157 43.8885 26.9166 44.5171 27.5794Z\" fill=\"#7A0036\"></path>\n  <path d=\"M31.3262 47.2529H31.7827C32.1968 47.2529 32.5327 46.917 32.5327 46.5029C32.5327 46.0889 32.1968 45.7529 31.7827 45.7529H31.3262C30.9121 45.7529 30.5762 46.0889 30.5762 46.5029C30.5762 46.917 30.9121 47.2529 31.3262 47.2529Z\" fill=\"#7A0036\"></path>\n  <path d=\"M8.63047 38.308C10.1083 39.8227 11.034 41.0815 10.9872 42.456H10.8375C9.53086 42.456 8.46787 43.5194 8.46787 44.8261V47.6303C8.46787 48.9369 9.53086 49.9999 10.8375 49.9999H21.9107C23.2179 49.9999 24.2809 48.9369 24.2809 47.6303V44.8261C24.2809 43.5669 23.2909 42.5434 22.0494 42.4699C23.077 37.0835 21.0035 33.4919 15.8644 31.79L10.88 26.5443C10.337 25.9726 9.61924 25.6381 8.84043 25.5888L8.86875 19.1239C8.86875 17.2884 7.19468 15.8897 5.3375 16.2641C4.10703 16.5126 3.15928 17.6068 3.03281 18.9252L2.01719 29.5443C1.9127 30.6337 2.28818 31.7113 3.04697 32.5014L8.63047 38.308ZM22.7809 44.8261V47.6303C22.7809 48.1098 22.3907 48.4999 21.9107 48.4999H10.8375C10.358 48.4999 9.96787 48.1098 9.96787 47.6303V44.8261C9.96787 44.3461 10.358 43.956 10.8375 43.956H21.9107C22.3907 43.956 22.7809 44.3461 22.7809 44.8261ZM4.52598 19.0683C4.58994 18.4018 5.04551 17.8534 5.63438 17.7348C6.5665 17.5399 7.36875 18.2433 7.36875 19.1313L7.33896 25.8656C6.98887 26.0282 6.66855 26.2577 6.39365 26.5483C5.22129 27.786 5.275 29.747 6.51279 30.9189L11.7193 35.8485C12.0201 36.1347 12.4947 36.1205 12.7794 35.8197C13.0646 35.519 13.0514 35.0443 12.7506 34.7597L7.54404 29.83C6.90684 29.2265 6.879 28.2167 7.48252 27.5795C8.11167 26.9159 9.16477 26.9165 9.79258 27.5775L14.9078 32.9618C14.9952 33.0536 15.1041 33.1215 15.2247 33.1601C19.8556 34.6317 21.5509 37.5932 20.5274 42.456H12.4908C12.5426 40.3695 11.1017 38.6928 9.70811 37.2641L4.12852 31.4618C3.67295 30.9877 3.44785 30.3412 3.51035 29.6874L4.52598 19.0683Z\" fill=\"#7A0036\"></path>\n  <path d=\"M20.2188 47.2529H20.6753C21.0894 47.2529 21.4253 46.917 21.4253 46.5029C21.4253 46.0889 21.0894 45.7529 20.6753 45.7529H20.2188C19.8047 45.7529 19.4688 46.0889 19.4688 46.5029C19.4688 46.917 19.8047 47.2529 20.2188 47.2529Z\" fill=\"#7A0036\"></path>\n  <path d=\"M25.8608 27.7962C33.1002 27.872 38.9014 22.0117 38.9014 14.9014C38.9014 7.7876 33.1138 2 25.9995 2C18.8853 2 13.0977 7.7876 13.0977 14.9014C13.0977 22.108 19.0302 27.7787 25.8608 27.7962ZM25.6121 26.2836C22.1075 26.1647 19.0771 24.3587 17.249 21.8247C19.2173 18.9175 22.449 17.1961 25.9885 17.1926C25.9929 17.1926 25.9971 17.1938 26.0015 17.1938C26.0054 17.1938 26.0088 17.1927 26.0127 17.1927C29.5476 17.1971 32.7812 18.9163 34.7583 21.8193C32.6523 24.7602 29.3293 26.362 25.6121 26.2836ZM22.4907 12.1826C22.4907 10.2466 24.0654 8.67139 26.0015 8.67139C27.9375 8.67139 29.5127 10.2466 29.5127 12.1826C29.5127 14.1149 27.9434 15.6865 26.0125 15.6927C26.0081 15.6927 26.0039 15.6919 25.9995 15.6919C25.9958 15.6919 25.9924 15.6926 25.9888 15.6926C24.0588 15.6855 22.4907 14.1143 22.4907 12.1826ZM14.5977 14.9014C14.5977 8.61475 19.7124 3.5 25.9995 3.5C32.2866 3.5 37.4014 8.61475 37.4014 14.9014C37.4014 17.0275 36.8057 19.0125 35.7883 20.718C34.1304 18.4197 31.7825 16.794 29.0996 16.0906C30.2559 15.1719 31.0127 13.7708 31.0127 12.1826C31.0127 9.41943 28.7646 7.17139 26.0015 7.17139C23.2388 7.17139 20.9907 9.41943 20.9907 12.1826C20.9907 13.77 21.7468 15.1705 22.9021 16.0894C20.2158 16.793 17.8684 18.4224 16.2158 20.7265C15.1953 19.019 14.5977 17.0311 14.5977 14.9014Z\" fill=\"#7A0036\"></path>\n</svg>",
+            "title": "1000+ HAPPY CUSTOMERS",
+            "description": "Join a growing community of women worldwide who have rediscovered their radiance. With 1000s of bottles sold, we are the trusted choice for mature skin looking for a flawless, natural finish."
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_gyk4tj",
+        "usp_item_7d6Cgf",
+        "usp_item_qbxPXp"
+      ],
+      "name": "⚡USP Section",
+      "settings": {
+        "aria_label": "Reasons to choose us",
+        "background_color": "#fbf8f6",
+        "enable_animation": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_left_right_mobile": 20,
+        "padding_top_tablet": 56,
+        "padding_bottom_tablet": 56,
+        "padding_left_right_tablet": 40,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_right_desktop": 72
+      }
+    }
+  },
+  "order": [
+    "hero_jVaWmY",
+    "product_list_fa6P9H",
+    "lumen_pdp_hero_WWxn3E",
+    "lumen_benefits_section",
+    "lumen_grid_benefits_section",
+    "lumen_image_slider_section",
+    "lumen_before_after_section",
+    "lumen_faq_section",
+    "lumen_trustpilot_section",
+    "lumen_usp_mjAcCK"
+  ]
+}
