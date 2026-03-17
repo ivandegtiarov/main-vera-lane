@@ -80,6 +80,7 @@
           "type": "card",
           "settings": {
             "product": "color-changing-foundation",
+            "custom_name": "",
             "reviews_text": "247 Reviews",
             "hide_description": true,
             "fallback_description": "",
@@ -94,6 +95,7 @@
           "type": "card",
           "settings": {
             "product": "makeup-brush",
+            "custom_name": "",
             "reviews_text": "58 Reviews",
             "hide_description": true,
             "fallback_description": "",
@@ -108,6 +110,7 @@
           "type": "card",
           "settings": {
             "product": "makeup-bag-1",
+            "custom_name": "",
             "reviews_text": "32 Reviews",
             "hide_description": true,
             "fallback_description": "",
@@ -122,6 +125,7 @@
           "type": "card",
           "settings": {
             "product": "bundle-tone-adapting-foundation-makeup-brush",
+            "custom_name": "",
             "reviews_text": "18 Reviews",
             "hide_description": true,
             "fallback_description": "",
@@ -141,6 +145,7 @@
       ],
       "name": "⚡ Lumen Featured Products",
       "settings": {
+        "columns_desktop": "3",
         "collection": "",
         "title": "Recommended Products",
         "description_desktop": "Handpicked formulas your skin will love.",
