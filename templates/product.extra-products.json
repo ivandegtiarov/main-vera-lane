@@ -948,6 +948,7 @@
         "faq_item_5",
         "faq_item_6"
       ],
+      "disabled": true,
       "name": "⚡FAQ Section",
       "settings": {
         "section_label": "FAQ Section",
