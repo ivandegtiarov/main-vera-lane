@@ -324,7 +324,7 @@
           "type": "trust_badge",
           "settings": {
             "icon_image": "shopify://shop_images/Layer_1_1.svg",
-            "text": "<p>Free Shipping from<br/>$35</p>"
+            "text": "<p>Free Shipping from<br/>$60</p>"
           }
         },
         "trust_badge_KVy3Dw": {
@@ -356,7 +356,12 @@
             "badge_text": "BUNDLE",
             "badge_bg_color": "",
             "badge_text_color": "",
-            "show_free_delivery_badge": false
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
           }
         },
         "bundle_rkAfB6": {
@@ -381,7 +386,12 @@
             "badge_text": "BUNDLE",
             "badge_bg_color": "",
             "badge_text_color": "",
-            "show_free_delivery_badge": false
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
           }
         },
         "bundle_fyxzq3": {
@@ -407,7 +417,12 @@
             "badge_text": "BEST",
             "badge_bg_color": "",
             "badge_text_color": "",
-            "show_free_delivery_badge": false
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
           }
         },
         "bundle_MdzXij": {
@@ -433,7 +448,12 @@
             "badge_text": "MOST POPULAR",
             "badge_bg_color": "",
             "badge_text_color": "",
-            "show_free_delivery_badge": true
+            "show_free_delivery_badge": true,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
           }
         },
         "bundle_option_HyygYU": {
@@ -502,35 +522,60 @@
           "type": "faq_item",
           "settings": {
             "title": "Description",
-            "content": "<p>Describe your product here.</p>"
+            "content": "<p>Describe your product here.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
           }
         },
         "faq_item_U8Vae4": {
           "type": "faq_item",
           "settings": {
             "title": "How does the guarantee work?",
-            "content": "<p>Explain your guarantee here.</p>"
+            "content": "<p>Explain your guarantee here.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
           }
         },
         "faq_item_m8GzcM": {
           "type": "faq_item",
           "settings": {
             "title": "Does this work for my skin?",
-            "content": "<p>Add details about skin compatibility.</p>"
+            "content": "<p>Add details about skin compatibility.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
           }
         },
         "faq_item_fkJYQr": {
           "type": "faq_item",
           "settings": {
             "title": "Ingredients",
-            "content": "<p>List key ingredients here.</p>"
+            "content": "<p>List key ingredients here.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
           }
         },
         "faq_item_TgaEiB": {
           "type": "faq_item",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p>Explain your shipping & returns policy.</p>"
+            "content": "<p>Explain your shipping & returns policy.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
           }
         },
         "ugc_video_iWF9GK": {
