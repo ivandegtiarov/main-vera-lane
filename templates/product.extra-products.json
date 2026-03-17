@@ -522,7 +522,7 @@
           "type": "faq_item",
           "settings": {
             "title": "Description",
-            "content": "<p>Describe your product here.</p>",
+            "content": "<p>The bag your routine deserves. Crafted in soft pebbled vegan leather with a structured silhouette that holds its shape whether it's sitting on your vanity or tucked inside a carry-on. The gold-tone zipper opens wide for easy access, and the interior fits your Vera Lane essentials — foundation, brush, and then some — without the bulk.</p><p>Embossed with the Vera Lane logo for a quietly luxurious finish. Because even the in-between moments of your routine should feel intentional.</p><ul><li>Pebbled vegan leather, soft to the touch</li><li>Gold-tone metal zipper with branded pull</li><li>Compact enough for travel, roomy enough for your daily kit</li><li>Easy-wipe interior lining</li></ul>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -534,7 +534,7 @@
           "type": "faq_item",
           "settings": {
             "title": "How does the guarantee work?",
-            "content": "<p>Explain your guarantee here.</p>",
+            "content": "<p>We stand behind everything we make. If your Makeup Bag arrives damaged or doesn't meet your expectations, reach out within 30 days and we'll make it right — full refund, no questions asked.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -546,78 +546,12 @@
           "type": "faq_item",
           "settings": {
             "title": "Does this work for my skin?",
-            "content": "<p>Add details about skin compatibility.</p>",
+            "content": "<p>Standard shipping: 4–5 business days. Free shipping on orders over $60. Returns accepted within 30 days of delivery.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
             "faq_popup_title": "FULL LIST OF INGREDIENTS",
             "faq_popup_content": ""
-          }
-        },
-        "faq_item_fkJYQr": {
-          "type": "faq_item",
-          "settings": {
-            "title": "Ingredients",
-            "content": "<p>List key ingredients here.</p>",
-            "faq_show_image": false,
-            "faq_enable_popup": false,
-            "faq_popup_trigger_text": "View full list",
-            "faq_popup_title": "FULL LIST OF INGREDIENTS",
-            "faq_popup_content": ""
-          }
-        },
-        "faq_item_TgaEiB": {
-          "type": "faq_item",
-          "settings": {
-            "title": "Shipping & Returns",
-            "content": "<p>Explain your shipping & returns policy.</p>",
-            "faq_show_image": false,
-            "faq_enable_popup": false,
-            "faq_popup_trigger_text": "View full list",
-            "faq_popup_title": "FULL LIST OF INGREDIENTS",
-            "faq_popup_content": ""
-          }
-        },
-        "ugc_video_iWF9GK": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/HOOK 3 Ondertiteling.mov"
-          }
-        },
-        "ugc_video_LcRNAT": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
-          }
-        },
-        "ugc_video_nddcgM": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
-          }
-        },
-        "ugc_video_D6aqDY": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
-          }
-        },
-        "ugc_video_DwBbJX": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
-          }
-        },
-        "ugc_video_kqgQKE": {
-          "type": "ugc_video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
           }
         }
       },
@@ -640,15 +574,7 @@
         "upsell_product_3DPeqL",
         "faq_item_BaHyjk",
         "faq_item_U8Vae4",
-        "faq_item_m8GzcM",
-        "faq_item_fkJYQr",
-        "faq_item_TgaEiB",
-        "ugc_video_iWF9GK",
-        "ugc_video_LcRNAT",
-        "ugc_video_nddcgM",
-        "ugc_video_D6aqDY",
-        "ugc_video_DwBbJX",
-        "ugc_video_kqgQKE"
+        "faq_item_m8GzcM"
       ],
       "custom_css": [],
       "name": "⚡ Lumen PDP Hero",
@@ -1081,7 +1007,7 @@
             "icon_alt": "",
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"52\" height=\"52\" viewbox=\"0 0 52 52\" fill=\"none\">\n  <path d=\"M27.3979 2H24.6079C23.6592 2 22.8877 2.76709 22.8877 3.70996V5.44238H10.7896C8.78223 5.44238 7.14941 7.0752 7.14941 9.08203V30.1265C7.14941 32.1333 8.78223 33.7661 10.7896 33.7661H22.8877V48.499H17.5557C17.1416 48.499 16.8057 48.835 16.8057 49.249C16.8057 49.6631 17.1416 49.999 17.5557 49.999C39.3434 50.001 12.6763 49.9992 34.4443 49.999C34.8584 49.999 35.1943 49.6631 35.1943 49.249C35.1943 48.835 34.8584 48.499 34.4443 48.499H29.1079V33.7661H41.2104C43.2173 33.7661 44.8501 32.1333 44.8501 30.1265V9.08203C44.8501 7.0752 43.2173 5.44238 41.2104 5.44238H29.1079V3.70996C29.1079 2.76709 28.3408 2 27.3979 2ZM24.3877 3.70996C24.3877 3.59229 24.4844 3.5 24.6079 3.5H27.3979C27.5137 3.5 27.6079 3.59424 27.6079 3.70996V5.44238H24.3877V3.70996ZM27.6079 48.499H24.3877V33.7661H27.6079V48.499ZM41.2104 6.94238C42.3901 6.94238 43.3501 7.90234 43.3501 9.08203V30.1265C43.3501 31.3062 42.3901 32.2661 41.2104 32.2661H10.7896C9.60938 32.2661 8.64941 31.3062 8.64941 30.1265V9.08203C8.64941 7.90234 9.60938 6.94238 10.7896 6.94238H41.2104Z\" fill=\"#7A0036\"></path>\n  <path d=\"M21.5649 21.3979C19.8228 22.0229 18.6123 23.6978 18.6123 25.5874C18.6123 28.0405 20.6064 30.0366 23.0576 30.0366C24.1582 30.0366 25.1934 29.6392 26.0005 28.9253C26.8057 29.6396 27.8398 30.0366 28.9419 30.0366C31.3931 30.0366 33.3872 28.0405 33.3872 25.5874C33.3872 23.6978 32.1768 22.0229 30.4346 21.3979C30.2642 19.0806 28.3433 17.2856 26.0015 17.2856C23.6606 17.2856 21.7363 19.1016 21.5649 21.3979ZM26.0015 18.7856C27.6396 18.7856 29.0364 20.1268 28.9409 21.9253C28.9209 22.2949 29.1743 22.624 29.5371 22.6997C30.8989 22.9829 31.8872 24.1973 31.8872 25.5874C31.8872 27.2134 30.5659 28.5366 28.9419 28.5366C28.0161 28.5366 27.1616 28.1128 26.5977 27.3735C26.4561 27.188 26.2358 27.0791 26.0024 27.0786C26.002 27.0786 26.0029 27.0786 26.0024 27.0786C25.769 27.0786 25.5483 27.187 25.4062 27.3721C24.8389 28.1123 23.9829 28.5366 23.0576 28.5366C21.4336 28.5366 20.1123 27.2134 20.1123 25.5874C20.1123 24.1973 21.1006 22.9829 22.4624 22.6997C22.8223 22.6245 23.0752 22.2993 23.0586 21.9321L23.0527 21.731C23.0527 20.1069 24.3755 18.7856 26.0015 18.7856Z\" fill=\"#7A0036\"></path>\n  <path d=\"M22.1499 16.7739C23.8696 16.7739 25.269 15.0688 25.269 12.9731C25.269 10.8774 23.8696 9.17236 22.1499 9.17236C20.4297 9.17236 19.0303 10.8774 19.0303 12.9731C19.0303 15.0688 20.4297 16.7739 22.1499 16.7739ZM22.1499 10.6724C23.0273 10.6724 23.769 11.7261 23.769 12.9731C23.769 14.2202 23.0273 15.2739 22.1499 15.2739C21.272 15.2739 20.5303 14.2202 20.5303 12.9731C20.5303 11.7261 21.272 10.6724 22.1499 10.6724Z\" fill=\"#7A0036\"></path>\n  <path d=\"M29.4836 16.7687C31.3133 16.8631 32.6991 15.1048 32.8073 13.1452C32.9226 11.0524 31.6188 9.27314 29.9011 9.17792C28.194 9.10126 26.6931 10.7092 26.5773 12.8019C26.4626 14.8942 27.7663 16.6735 29.4836 16.7687ZM29.7585 10.674C29.7785 10.674 29.7985 10.6745 29.8186 10.676C30.6955 10.7243 31.3781 11.8171 31.3093 13.0622C31.2409 14.3078 30.4519 15.3449 29.5661 15.2707C28.6896 15.2224 28.007 14.1296 28.0754 12.8845C28.1423 11.6677 28.906 10.674 29.7585 10.674Z\" fill=\"#7A0036\"></path>\n  <path d=\"M17.4946 21.4907C19.0157 21.1391 20.0304 19.3576 19.561 17.334C19.0872 15.2851 17.3768 14.1572 15.8779 14.5083C14.3832 14.8539 13.335 16.6101 13.8115 18.6655C14.2377 20.5056 15.8505 21.8745 17.4946 21.4907ZM16.2163 15.9692C17.108 15.7635 17.8898 16.767 18.1001 17.6719C18.3079 18.5702 18.0499 19.8229 17.1562 20.0298C16.3921 20.1997 15.5278 19.4272 15.2724 18.3272C15.0646 17.4288 15.3226 16.1761 16.2163 15.9692Z\" fill=\"#7A0036\"></path>\n  <path d=\"M34.5049 21.4906C36.2117 21.8876 37.7727 20.4628 38.1885 18.6649C38.659 16.6366 37.6413 14.8595 36.1226 14.5082C34.6011 14.1559 32.9073 15.3092 32.439 17.3339C31.9686 19.3622 32.9863 21.1393 34.5049 21.4906ZM33.9 17.6718C34.1094 16.7705 34.8898 15.7627 35.7842 15.9691C36.6591 16.1719 36.9428 17.3967 36.7276 18.327C36.5186 19.2265 35.7397 20.2357 34.8433 20.0297C33.9685 19.8269 33.6848 18.6021 33.9 17.6718Z\" fill=\"#7A0036\"></path>\n</svg>",
             "title": "CRUELTY FREE & VEGAN",
-            "description": "Beauty with a conscience. We are committed to ethical practices, which means our premium formulas are 100% plant-based and never tested on animals at any stage of production."
+            "description": "Beauty with a conscience. We are committed to ethical practices, which means our premium formulas are never tested on animals at any stage of production."
           }
         },
         "usp_item_qbxPXp": {
@@ -1089,8 +1015,8 @@
           "settings": {
             "icon_alt": "",
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"52\" height=\"52\" viewbox=\"0 0 52 52\" fill=\"none\">\n  <path d=\"M36.1353 31.7904C30.9961 33.4919 28.9226 37.0834 29.95 42.4699C28.7087 42.5432 27.7188 43.5668 27.7188 44.826V47.6302C27.7188 48.9369 28.7817 49.9998 30.0884 49.9998H41.1621C42.4688 49.9998 43.5317 48.9369 43.5317 47.6302V44.826C43.5317 43.5194 42.4688 42.4559 41.1621 42.4559H41.0125C40.9656 41.0814 41.8916 39.8222 43.3726 38.304L48.9531 32.5008C49.7114 31.7113 50.0869 30.6336 49.9824 29.5448L48.9668 18.9247C48.8403 17.6068 47.8926 16.5125 46.6621 16.264C44.8152 15.8918 43.1309 17.2726 43.1309 19.138L43.1592 25.5887C42.3804 25.638 41.6626 25.973 41.1191 26.5443L36.1353 31.7904ZM41.1621 43.9559C41.6416 43.9559 42.0317 44.346 42.0317 44.826V47.6302C42.0317 48.1097 41.6416 48.4998 41.1621 48.4998H30.0884C29.6089 48.4998 29.2188 48.1097 29.2188 47.6302V44.826C29.2188 44.346 29.6089 43.9559 30.0884 43.9559H41.1621ZM44.5171 27.5794C45.1206 28.2166 45.0928 29.2264 44.4556 29.8299L39.249 34.7596C38.9482 35.0443 38.9351 35.5189 39.2202 35.8197C39.5049 36.1205 39.9795 36.1346 40.2803 35.8485L45.4868 30.9188C46.7246 29.7469 46.7783 27.786 45.606 26.5482C45.3311 26.2577 45.0107 26.0282 44.6606 25.8656L44.6309 19.1239C44.6309 18.2516 45.425 17.5399 46.3652 17.7347C46.9541 17.8534 47.4097 18.4017 47.4736 19.0677L48.4893 29.6878C48.5518 30.3412 48.3267 30.9876 47.8716 31.4613L42.2949 37.2601C40.8984 38.6922 39.457 40.3695 39.5088 42.4559H31.4717C30.4487 37.5931 32.144 34.6312 36.7744 33.1595C36.895 33.1209 37.0039 33.0531 37.0908 32.9613L42.2065 27.5775C42.8359 26.9157 43.8885 26.9166 44.5171 27.5794Z\" fill=\"#7A0036\"></path>\n  <path d=\"M31.3262 47.2529H31.7827C32.1968 47.2529 32.5327 46.917 32.5327 46.5029C32.5327 46.0889 32.1968 45.7529 31.7827 45.7529H31.3262C30.9121 45.7529 30.5762 46.0889 30.5762 46.5029C30.5762 46.917 30.9121 47.2529 31.3262 47.2529Z\" fill=\"#7A0036\"></path>\n  <path d=\"M8.63047 38.308C10.1083 39.8227 11.034 41.0815 10.9872 42.456H10.8375C9.53086 42.456 8.46787 43.5194 8.46787 44.8261V47.6303C8.46787 48.9369 9.53086 49.9999 10.8375 49.9999H21.9107C23.2179 49.9999 24.2809 48.9369 24.2809 47.6303V44.8261C24.2809 43.5669 23.2909 42.5434 22.0494 42.4699C23.077 37.0835 21.0035 33.4919 15.8644 31.79L10.88 26.5443C10.337 25.9726 9.61924 25.6381 8.84043 25.5888L8.86875 19.1239C8.86875 17.2884 7.19468 15.8897 5.3375 16.2641C4.10703 16.5126 3.15928 17.6068 3.03281 18.9252L2.01719 29.5443C1.9127 30.6337 2.28818 31.7113 3.04697 32.5014L8.63047 38.308ZM22.7809 44.8261V47.6303C22.7809 48.1098 22.3907 48.4999 21.9107 48.4999H10.8375C10.358 48.4999 9.96787 48.1098 9.96787 47.6303V44.8261C9.96787 44.3461 10.358 43.956 10.8375 43.956H21.9107C22.3907 43.956 22.7809 44.3461 22.7809 44.8261ZM4.52598 19.0683C4.58994 18.4018 5.04551 17.8534 5.63438 17.7348C6.5665 17.5399 7.36875 18.2433 7.36875 19.1313L7.33896 25.8656C6.98887 26.0282 6.66855 26.2577 6.39365 26.5483C5.22129 27.786 5.275 29.747 6.51279 30.9189L11.7193 35.8485C12.0201 36.1347 12.4947 36.1205 12.7794 35.8197C13.0646 35.519 13.0514 35.0443 12.7506 34.7597L7.54404 29.83C6.90684 29.2265 6.879 28.2167 7.48252 27.5795C8.11167 26.9159 9.16477 26.9165 9.79258 27.5775L14.9078 32.9618C14.9952 33.0536 15.1041 33.1215 15.2247 33.1601C19.8556 34.6317 21.5509 37.5932 20.5274 42.456H12.4908C12.5426 40.3695 11.1017 38.6928 9.70811 37.2641L4.12852 31.4618C3.67295 30.9877 3.44785 30.3412 3.51035 29.6874L4.52598 19.0683Z\" fill=\"#7A0036\"></path>\n  <path d=\"M20.2188 47.2529H20.6753C21.0894 47.2529 21.4253 46.917 21.4253 46.5029C21.4253 46.0889 21.0894 45.7529 20.6753 45.7529H20.2188C19.8047 45.7529 19.4688 46.0889 19.4688 46.5029C19.4688 46.917 19.8047 47.2529 20.2188 47.2529Z\" fill=\"#7A0036\"></path>\n  <path d=\"M25.8608 27.7962C33.1002 27.872 38.9014 22.0117 38.9014 14.9014C38.9014 7.7876 33.1138 2 25.9995 2C18.8853 2 13.0977 7.7876 13.0977 14.9014C13.0977 22.108 19.0302 27.7787 25.8608 27.7962ZM25.6121 26.2836C22.1075 26.1647 19.0771 24.3587 17.249 21.8247C19.2173 18.9175 22.449 17.1961 25.9885 17.1926C25.9929 17.1926 25.9971 17.1938 26.0015 17.1938C26.0054 17.1938 26.0088 17.1927 26.0127 17.1927C29.5476 17.1971 32.7812 18.9163 34.7583 21.8193C32.6523 24.7602 29.3293 26.362 25.6121 26.2836ZM22.4907 12.1826C22.4907 10.2466 24.0654 8.67139 26.0015 8.67139C27.9375 8.67139 29.5127 10.2466 29.5127 12.1826C29.5127 14.1149 27.9434 15.6865 26.0125 15.6927C26.0081 15.6927 26.0039 15.6919 25.9995 15.6919C25.9958 15.6919 25.9924 15.6926 25.9888 15.6926C24.0588 15.6855 22.4907 14.1143 22.4907 12.1826ZM14.5977 14.9014C14.5977 8.61475 19.7124 3.5 25.9995 3.5C32.2866 3.5 37.4014 8.61475 37.4014 14.9014C37.4014 17.0275 36.8057 19.0125 35.7883 20.718C34.1304 18.4197 31.7825 16.794 29.0996 16.0906C30.2559 15.1719 31.0127 13.7708 31.0127 12.1826C31.0127 9.41943 28.7646 7.17139 26.0015 7.17139C23.2388 7.17139 20.9907 9.41943 20.9907 12.1826C20.9907 13.77 21.7468 15.1705 22.9021 16.0894C20.2158 16.793 17.8684 18.4224 16.2158 20.7265C15.1953 19.019 14.5977 17.0311 14.5977 14.9014Z\" fill=\"#7A0036\"></path>\n</svg>",
-            "title": "50,000+ HAPPY CUSTOMERS",
-            "description": "Join a growing community of women worldwide who have rediscovered their radiance. With over 50,000 bottles sold, we are the trusted choice for mature skin looking for a flawless, natural finish."
+            "title": "1000+ HAPPY CUSTOMERS",
+            "description": "Join a growing community of women worldwide who have rediscovered their radiance. With 1000s of bottles sold, we are the trusted choice for mature skin looking for a flawless, natural finish."
           }
         }
       },
