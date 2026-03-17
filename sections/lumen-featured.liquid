@@ -37,6 +37,8 @@
       --vl-fp-controls-progress-bg: {{ section.settings.controls_progress_bg_color }};
       --vl-fp-controls-progress-fill: {{ section.settings.controls_progress_fill_color }};
 
+      --vl-fp-cols: {{ section.settings.columns_desktop | default: 3 }};
+
       --vl-fp-pad-top-m: {{ section.settings.padding_top_mobile }}px;
       --vl-fp-pad-bot-m: {{ section.settings.padding_bottom_mobile }}px;
       --vl-fp-pad-top-d: {{ section.settings.padding_top_desktop }}px;
@@ -195,14 +197,14 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      padding: 0 18px;
     }
 
     .vl-fp--{{ section.id }} .vl-fp-card__overlay {
-      width: min(200px, 78%);
+      width: 100%;
       height: auto;
       display: block;
       user-select: none;
+      object-fit: cover;
     }
 
     .vl-fp--{{ section.id }} .vl-fp-card__info {
@@ -260,9 +262,6 @@
       line-height: 1.2;
       color: var(--vl-fp-name-color);
       min-width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .vl-fp--{{ section.id }} .vl-fp-card__price {
@@ -456,7 +455,7 @@
 
       .vl-fp--{{ section.id }} .vl-fp__product {
         width: auto;
-        flex: 0 0 calc((100% - 32px) / 3);
+        flex: 0 0 calc((100% - (var(--vl-fp-cols) - 1) * 16px) / var(--vl-fp-cols));
       }
 
       .vl-fp--{{ section.id }} .vl-fp-card__media {
@@ -485,7 +484,7 @@
       }
 
       .vl-fp--{{ section.id }} .vl-fp-card__overlay {
-        width: min(254px, 78%);
+        width: 100%;
       }
 
       .vl-fp--{{ section.id }} .vl-fp-card__pill {
@@ -596,14 +595,14 @@
                     </div>
 
                     <div class="vl-fp-card__nameRow">
-                      <div class="vl-fp-card__name">{{ product.title }}</div>
+                      <div class="vl-fp-card__name">{% if block.settings.custom_name != blank %}{{ block.settings.custom_name }}{% else %}{{ product.title }}{% endif %}</div>
                       <div class="vl-fp-card__price">{{ first_variant.price | money }}</div>
                     </div>
 
                     {% unless block.settings.hide_description %}
                       <div class="vl-fp-card__desc">
                         {% if product.description != blank %}
-                          {{ product.description | strip_html | truncate: 46 }}
+                          {{ product.description | strip_html }}
                         {% else %}
                           {{ block.settings.fallback_description }}
                         {% endif %}
@@ -715,7 +714,7 @@
                     {% unless section.settings.hide_description %}
                       <div class="vl-fp-card__desc">
                         {% if product.description != blank %}
-                          {{ product.description | strip_html | truncate: 46 }}
+                          {{ product.description | strip_html }}
                         {% else %}
                           {{ section.settings.fallback_description }}
                         {% endif %}
@@ -852,10 +851,11 @@
         return rect.width + 16;
       };
 
+      const desktopCols = parseInt('{{ section.settings.columns_desktop | default: 3 }}', 10) || 3;
       const getMaxIndex = () => {
         const cards = track.querySelectorAll('.vl-fp__product').length;
         if (!isDesktop()) return Math.max(0, cards - 1);
-        return Math.max(0, cards - 3);
+        return Math.max(0, cards - desktopCols);
       };
 
       const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
@@ -921,6 +921,20 @@
 {
   "name": "⚡ Lumen Featured Products",
   "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ],
+      "default": "3"
+    },
     {
       "type": "header",
       "content": "Content"
@@ -1348,6 +1362,11 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom product name (overrides product title)"
         },
         {
           "type": "header",
