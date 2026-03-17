@@ -324,7 +324,7 @@
           "type": "trust_badge",
           "settings": {
             "icon_image": "shopify://shop_images/Layer_1_1.svg",
-            "text": "<p>Free Shipping from<br/>$60</p>"
+            "text": "<p>Free Shipping from $60</p>"
           }
         },
         "trust_badge_KVy3Dw": {
