@@ -81,6 +81,7 @@
           "settings": {
             "product": "color-changing-foundation",
             "reviews_text": "247 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": true,
             "pill_text": "#Best Seller",
@@ -94,6 +95,7 @@
           "settings": {
             "product": "makeup-brush",
             "reviews_text": "58 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": false,
             "pill_text": "#Best Seller",
@@ -107,6 +109,7 @@
           "settings": {
             "product": "makeup-bag-1",
             "reviews_text": "32 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": false,
             "pill_text": "#Best Seller",
@@ -120,6 +123,7 @@
           "settings": {
             "product": "bundle-tone-adapting-foundation-makeup-brush",
             "reviews_text": "18 Reviews",
+            "hide_description": true,
             "fallback_description": "",
             "show_pill": true,
             "pill_text": "",
@@ -142,6 +146,7 @@
         "description_desktop": "Handpicked formulas your skin will love.",
         "description_mobile": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "reviews_text": "180 Reviews",
+        "hide_description": false,
         "fallback_description": "Complex with 30 Billion CPU",
         "placeholder_name": "Velvet Foundation",
         "placeholder_price": "$32.00",
@@ -193,7 +198,7 @@
       "type": "lumen-beauty",
       "settings": {
         "aria_label": "Beauty section",
-        "heading": "The Foundation 1,300+ Women Swear By",
+        "heading": "The Foundation 1000+ Women Swear By",
         "paragraph_1": "One shade. Every skin tone. Our color-adapting formula has earned 4.6 stars from women who    finally found a foundation that actually matches.",
         "paragraph_2": "Specifically made for mature skin — it glides over fine lines, neutralizes redness, and       stays flawless for up to 16 hours. No touch-ups needed.",
         "cta_label": "JOIN 1000+ HAPPY CUSTOMERS",
