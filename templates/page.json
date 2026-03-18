@@ -48,7 +48,6 @@
         "heading",
         "page-content"
       ],
-      "disabled": true,
       "custom_css": [
         "{max-width: 800px; margin: auto;}"
       ],
@@ -59,60 +58,9 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
-    },
-    "bl_marquee_XWAn3Y": {
-      "type": "bl-marquee",
-      "name": "BL - Marquee",
-      "settings": {
-        "section_id": "",
-        "bg_color": "#ffffff",
-        "text_color": "#000000",
-        "text": "Limited Time Offer — Up to 50% Off Today",
-        "direction": "left"
-      }
-    },
-    "bl_alert_bar_cejPLU": {
-      "type": "bl-alert-bar",
-      "name": "BL - Alert Bar",
-      "settings": {
-        "section_id": "",
-        "bg_color": "#2D2D2D",
-        "text_color": "#ffffff",
-        "accent_color": "#8B3A3A",
-        "show_countdown": true,
-        "countdown_prefix": "Offer Ends In",
-        "countdown_hours": 24,
-        "badge": "LIMITED TIME",
-        "text": "Up to 50% Off Today",
-        "code": ""
-      }
-    },
-    "bl_hero_Nbqew6": {
-      "type": "bl-hero",
-      "name": "BL - Hero",
-      "settings": {
-        "section_id": "",
-        "bg_image": "shopify://shop_images/advertorial_-_00005.jpg",
-        "bg_color": "#2D2D2D",
-        "overlay_opacity": 75,
-        "category": "BEAUTY",
-        "headline": "I've Been a Beauty Editor for 20 Years. This Is the Only Foundation I Recommend to Women Over 50",
-        "subheadline": "",
-        "show_rating": false,
-        "review_count": "12,400+ Reviews",
-        "cta_text": "DISCOVER MORE",
-        "cta_type": "anchor",
-        "cta_anchor": "offer",
-        "cta_url": "",
-        "cta_text_color": "#ffffff",
-        "cta_border_color": "#ffffff"
-      }
     }
   },
   "order": [
-    "main",
-    "bl_marquee_XWAn3Y",
-    "bl_alert_bar_cejPLU",
-    "bl_hero_Nbqew6"
+    "main"
   ]
 }
