@@ -13,7 +13,6 @@
   "sections": {
     "lumen-footer": {
       "type": "lumen-footer",
-      "disabled": true,
       "settings": {
         "aria_label": "Site footer",
         "background_color": "#222222",

@@ -92,7 +92,6 @@
     },
     "lumin_header_B89riJ": {
       "type": "lumin-header",
-      "disabled": true,
       "name": "Lumin Header",
       "settings": {
         "logo": "shopify://shop_images/Untitled_design_58.png",
@@ -139,7 +138,6 @@
         "announcement_anmXhJ",
         "announcement_Bkr4DN"
       ],
-      "disabled": true,
       "name": "Lumen Header Slider",
       "settings": {
         "background_color": "#ffffff",
