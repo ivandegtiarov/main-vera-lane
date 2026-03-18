@@ -1,1 +1,160 @@
-{"name":"Header","type":"header","sections":{"header_default":{"type":"header","blocks":{"header-logo":{"type":"_header-logo","static":true,"settings":{"hide_logo_on_home_page":false,"custom_height":20,"custom_height_mobile":20,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"header-menu":{"type":"_header-menu","static":true,"settings":{"menu":"main-menu","menu_style":"collection_images","featured_products_aspect_ratio":"4 \/ 5","featured_collections_aspect_ratio":"16 \/ 9","image_border_radius":0,"product_title_case":"default","collection_title_case":"default","color_scheme":"","menu_font_style":"inverse","type_font_primary_link":"heading","type_font_primary_size":"1rem","type_case_primary_link":"none","type_font_secondary_link":"subheading","type_case_secondary_link":"none","type_font_tertiary_link":"body","type_case_tertiary_link":"none","navigation_bar":false,"color_scheme_navigation_bar":"","drawer_accordion":false,"drawer_accordion_expand_first":false,"drawer_dividers":false},"blocks":{}}},"disabled":true,"name":"Default header","settings":{"logo_position":"center","menu_position":"left","menu_row":"top","show_search":true,"search_position":"right","search_row":"top","show_country":true,"country_selector_style":true,"show_language":true,"localization_font":"heading","localization_font_size":"1rem","localization_position":"right","localization_row":"top","section_width":"page-width","section_height":"standard","enable_sticky_header":"always","divider_width":0,"divider_size":"page-width","border_width":0,"color_scheme_top":"","color_scheme_bottom":"","color_scheme_transparent":"","enable_transparent_header_home":false,"home_color_scheme":"default","enable_transparent_header_product":false,"product_color_scheme":"default","enable_transparent_header_collection":false,"collection_color_scheme":"default"}},"lumin_header_B89riJ":{"type":"lumin-header","name":"Lumin Header","settings":{"logo":"shopify:\/\/shop_images\/Untitled_design_58.png","logo_width":200,"menu":"main-menu","show_account_icon":false,"background_color":"#ffffff","text_color":"#000000","border_color":"#e1dcd8","padding_top_desktop":12,"padding_bottom_desktop":12,"padding_top_mobile":20,"padding_bottom_mobile":20,"enable_sticky_header":"always"}},"lumen_header_slider_WibVFN":{"type":"lumen-header-slider","blocks":{"announcement_9HzRxD":{"type":"announcement","settings":{"icon":"<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"><\/path><\/svg>","text":"DEVELOPED IN USA"}},"announcement_anmXhJ":{"type":"announcement","settings":{"icon":"<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"><\/path><\/svg>","text":"FREE SHIPPING OVER $60"}},"announcement_Bkr4DN":{"type":"announcement","settings":{"icon":"<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"><\/path><\/svg>","text":"30 DAY RETURNS"}}},"block_order":["announcement_9HzRxD","announcement_anmXhJ","announcement_Bkr4DN"],"name":"Lumen Header Slider","settings":{"background_color":"#ffffff","border_color":"#e1dcd8","text_color":"#000000","font_size":14,"autoplay_delay":3000,"transition_speed":500,"enable_animation":true}}},"order":["header_default","lumin_header_B89riJ","lumen_header_slider_WibVFN"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "header_default": {
+      "type": "header",
+      "blocks": {
+        "header-logo": {
+          "type": "_header-logo",
+          "static": true,
+          "settings": {
+            "hide_logo_on_home_page": false,
+            "custom_height": 20,
+            "custom_height_mobile": 20,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "header-menu": {
+          "type": "_header-menu",
+          "static": true,
+          "settings": {
+            "menu": "main-menu",
+            "menu_style": "collection_images",
+            "featured_products_aspect_ratio": "4 / 5",
+            "featured_collections_aspect_ratio": "16 / 9",
+            "image_border_radius": 0,
+            "product_title_case": "default",
+            "collection_title_case": "default",
+            "color_scheme": "",
+            "menu_font_style": "inverse",
+            "type_font_primary_link": "heading",
+            "type_font_primary_size": "1rem",
+            "type_case_primary_link": "none",
+            "type_font_secondary_link": "subheading",
+            "type_case_secondary_link": "none",
+            "type_font_tertiary_link": "body",
+            "type_case_tertiary_link": "none",
+            "navigation_bar": false,
+            "color_scheme_navigation_bar": "",
+            "drawer_accordion": false,
+            "drawer_accordion_expand_first": false,
+            "drawer_dividers": false
+          },
+          "blocks": {}
+        }
+      },
+      "disabled": true,
+      "name": "Default header",
+      "settings": {
+        "logo_position": "center",
+        "menu_position": "left",
+        "menu_row": "top",
+        "show_search": true,
+        "search_position": "right",
+        "search_row": "top",
+        "show_country": true,
+        "country_selector_style": true,
+        "show_language": true,
+        "localization_font": "heading",
+        "localization_font_size": "1rem",
+        "localization_position": "right",
+        "localization_row": "top",
+        "section_width": "page-width",
+        "section_height": "standard",
+        "enable_sticky_header": "always",
+        "divider_width": 0,
+        "divider_size": "page-width",
+        "border_width": 0,
+        "color_scheme_top": "",
+        "color_scheme_bottom": "",
+        "color_scheme_transparent": "",
+        "enable_transparent_header_home": false,
+        "home_color_scheme": "default",
+        "enable_transparent_header_product": false,
+        "product_color_scheme": "default",
+        "enable_transparent_header_collection": false,
+        "collection_color_scheme": "default"
+      }
+    },
+    "lumin_header_B89riJ": {
+      "type": "lumin-header",
+      "disabled": true,
+      "name": "Lumin Header",
+      "settings": {
+        "logo": "shopify://shop_images/Untitled_design_58.png",
+        "logo_width": 200,
+        "menu": "main-menu",
+        "show_account_icon": false,
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "border_color": "#e1dcd8",
+        "padding_top_desktop": 12,
+        "padding_bottom_desktop": 12,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "enable_sticky_header": "always"
+      }
+    },
+    "lumen_header_slider_WibVFN": {
+      "type": "lumen-header-slider",
+      "blocks": {
+        "announcement_9HzRxD": {
+          "type": "announcement",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
+            "text": "DEVELOPED IN USA"
+          }
+        },
+        "announcement_anmXhJ": {
+          "type": "announcement",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
+            "text": "FREE SHIPPING OVER $60"
+          }
+        },
+        "announcement_Bkr4DN": {
+          "type": "announcement",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
+            "text": "30 DAY RETURNS"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_9HzRxD",
+        "announcement_anmXhJ",
+        "announcement_Bkr4DN"
+      ],
+      "disabled": true,
+      "name": "Lumen Header Slider",
+      "settings": {
+        "background_color": "#ffffff",
+        "border_color": "#e1dcd8",
+        "text_color": "#000000",
+        "font_size": 14,
+        "autoplay_delay": 3000,
+        "transition_speed": 500,
+        "enable_animation": true
+      }
+    }
+  },
+  "order": [
+    "header_default",
+    "lumin_header_B89riJ",
+    "lumen_header_slider_WibVFN"
+  ]
+}
