@@ -173,9 +173,9 @@
         "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
         "more_colors_text": "+12 More Shades",
         "cta_text": "Check Availability",
-        "cta_url": "",
-        "cta_bg": "#d4a574",
-        "cta_text_color": "#2d2d2d"
+        "cta_url": "shopify://products/color-changing-foundation",
+        "cta_bg": "#000000",
+        "cta_text_color": "#ffffff"
       }
     }
   },
