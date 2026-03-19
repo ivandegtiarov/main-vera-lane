@@ -98,12 +98,12 @@
     <input
       type="tel"
       id="ContactForm-phone"
-      class="contact-form__input"
+      class="contact-form__input contact-form__input--phone"
       autocomplete="tel"
       name="contact[phone]"
-      pattern="[0-9\-]*"
+      maxlength="14"
       value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-      placeholder="{{ 'blocks.contact_form.phone' | t }}"
+      placeholder="(555) 555-5555"
     >
 
     <label
@@ -168,3 +168,73 @@
     gap: var(--gap-xs);
   }
 {% endstylesheet %}
+
+{% javascript %}
+  /**
+   * US Phone Number Formatter
+   * Formats input as (XXX) XXX-XXXX
+   */
+  (function() {
+    function formatUSPhone(value) {
+      // Remove all non-digits
+      const digits = value.replace(/\D/g, '');
+
+      // Limit to 10 digits
+      const limited = digits.substring(0, 10);
+
+      // Format based on length
+      if (limited.length === 0) {
+        return '';
+      } else if (limited.length <= 3) {
+        return '(' + limited;
+      } else if (limited.length <= 6) {
+        return '(' + limited.substring(0, 3) + ') ' + limited.substring(3);
+      } else {
+        return '(' + limited.substring(0, 3) + ') ' + limited.substring(3, 6) + '-' + limited.substring(6);
+      }
+    }
+
+    function initPhoneFormatting() {
+      const phoneInputs = document.querySelectorAll('.contact-form__input--phone');
+
+      phoneInputs.forEach(function(input) {
+        // Format on input
+        input.addEventListener('input', function(e) {
+          const cursorPos = e.target.selectionStart;
+          const oldValue = e.target.value;
+          const newValue = formatUSPhone(oldValue);
+
+          e.target.value = newValue;
+
+          // Try to maintain cursor position intelligently
+          if (cursorPos < oldValue.length) {
+            const digitsBeforeCursor = oldValue.substring(0, cursorPos).replace(/\D/g, '').length;
+            let newCursorPos = 0;
+            let digitCount = 0;
+
+            for (let i = 0; i < newValue.length && digitCount < digitsBeforeCursor; i++) {
+              if (/\d/.test(newValue[i])) {
+                digitCount++;
+              }
+              newCursorPos = i + 1;
+            }
+
+            e.target.setSelectionRange(newCursorPos, newCursorPos);
+          }
+        });
+
+        // Format existing value on page load
+        if (input.value) {
+          input.value = formatUSPhone(input.value);
+        }
+      });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPhoneFormatting);
+    } else {
+      initPhoneFormatting();
+    }
+  })();
+{% endjavascript %}
