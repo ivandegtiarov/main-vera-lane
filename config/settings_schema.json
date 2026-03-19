@@ -2117,6 +2117,81 @@
     ]
   },
   {
+    "name": "USP Section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Global USP (Unique Selling Proposition) content. Changes here reflect across all pages using the USP section."
+      },
+      {
+        "type": "header",
+        "content": "USP 1"
+      },
+      {
+        "type": "text",
+        "id": "usp_1_title",
+        "label": "Title",
+        "default": "100% MONEY BACK"
+      },
+      {
+        "type": "textarea",
+        "id": "usp_1_description",
+        "label": "Description",
+        "default": "Try Vera Lane risk-free. We are confident you will love your new look, but if you aren't completely satisfied with the shade or finish, simply return it within 30 days for a full refund—no questions asked."
+      },
+      {
+        "type": "html",
+        "id": "usp_1_icon_svg",
+        "label": "Icon SVG",
+        "info": "Paste SVG code for the icon"
+      },
+      {
+        "type": "header",
+        "content": "USP 2"
+      },
+      {
+        "type": "text",
+        "id": "usp_2_title",
+        "label": "Title",
+        "default": "CRUELTY FREE & VEGAN"
+      },
+      {
+        "type": "textarea",
+        "id": "usp_2_description",
+        "label": "Description",
+        "default": "Beauty with a conscience. We are committed to ethical practices, which means our premium formulas are never tested on animals at any stage of production."
+      },
+      {
+        "type": "html",
+        "id": "usp_2_icon_svg",
+        "label": "Icon SVG",
+        "info": "Paste SVG code for the icon"
+      },
+      {
+        "type": "header",
+        "content": "USP 3"
+      },
+      {
+        "type": "text",
+        "id": "usp_3_title",
+        "label": "Title",
+        "default": "1000+ HAPPY CUSTOMERS"
+      },
+      {
+        "type": "textarea",
+        "id": "usp_3_description",
+        "label": "Description",
+        "default": "Join a growing community of women worldwide who have rediscovered their radiance. With thousands of bottles sold, we are the trusted choice for mature skin looking for a flawless, natural finish."
+      },
+      {
+        "type": "html",
+        "id": "usp_3_icon_svg",
+        "label": "Icon SVG",
+        "info": "Paste SVG code for the icon"
+      }
+    ]
+  },
+  {
     "name": "t:names.drawers",
     "settings": [
       {
