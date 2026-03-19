@@ -949,7 +949,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes, we offer free shipping on all orders over $60. Orders under $60 have a flat shipping rate."
+            "answer": "Yes, we offer free shipping on all orders over ${{threshold}}. Orders under ${{threshold}} have a flat shipping rate."
           }
         }
       },
