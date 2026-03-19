@@ -135,29 +135,37 @@
 
 <section class="announcement-slider-{{ section.id }}{% if section.settings.enable_animation %} announcement-slider--animate{% endif %}">
     <div class="announcement-slider__container">
+        {%- comment -%}
+          Get the free shipping threshold for dynamic replacement.
+          Use {{threshold}} in announcement text to insert this value.
+        {%- endcomment -%}
+        {%- assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round -%}
+
         <!-- Desktop: Show all items -->
         <div class="announcement-slider__desktop">
             {%- for block in section.blocks -%}
+                {%- assign announcement_text = block.settings.text | replace: '{{threshold}}', free_shipping_threshold -%}
                 <div class="announcement-item" {{ block.shopify_attributes }}>
                     <div class="announcement-item__icon">
                         {{ block.settings.icon }}
                     </div>
-                    <span class="announcement-item__text">{{ block.settings.text }}</span>
+                    <span class="announcement-item__text">{{ announcement_text }}</span>
                 </div>
             {%- endfor -%}
         </div>
-        
+
         <!-- Mobile: Swiper slider -->
         <div class="announcement-slider__mobile">
             <div class="swiper announcement-swiper-{{ section.id }}">
                 <div class="swiper-wrapper">
                     {%- for block in section.blocks -%}
+                        {%- assign announcement_text = block.settings.text | replace: '{{threshold}}', free_shipping_threshold -%}
                         <div class="swiper-slide">
                             <div class="announcement-item" {{ block.shopify_attributes }}>
                                 <div class="announcement-item__icon">
                                     {{ block.settings.icon }}
                                 </div>
-                                <span class="announcement-item__text">{{ block.settings.text }}</span>
+                                <span class="announcement-item__text">{{ announcement_text }}</span>
                             </div>
                         </div>
                     {%- endfor -%}
@@ -334,7 +342,8 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "DEVELOPED IN AUSTRALIA"
+          "default": "DEVELOPED IN AUSTRALIA",
+          "info": "Use {{threshold}} to insert the free shipping threshold (e.g., FREE SHIPPING OVER ${{threshold}})"
         }
       ]
     }
@@ -352,7 +361,7 @@
         {
           "type": "announcement",
           "settings": {
-            "text": "FREE SHIPPING OVER $60"
+            "text": "FREE SHIPPING OVER ${{threshold}}"
           }
         },
         {
