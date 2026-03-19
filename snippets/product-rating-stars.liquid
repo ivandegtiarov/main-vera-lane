@@ -1,0 +1,65 @@
+{% comment %}
+  Product Rating Stars Snippet
+
+  Renders dynamic star ratings from product metafields.
+  Outputs only SVGs (no wrapper) for easy integration with existing CSS.
+
+  Usage:
+    {% render 'product-rating-stars', product: product %}
+
+  Parameters:
+    - product: The product object (required)
+    - star_color: Color for filled stars (default: #EDB04F)
+    - empty_color: Color for empty stars (default: #D1D1D1)
+    - size: Size of star SVGs in pixels (default: 18)
+    - fallback_rating: Rating to use if metafield not set (default: 4.5)
+
+  Metafields expected:
+    - product.metafields.custom.star_rating (decimal, e.g., 4.6)
+{% endcomment %}
+
+{%- liquid
+  assign star_color = star_color | default: '#EDB04F'
+  assign empty_color = empty_color | default: '#D1D1D1'
+  assign size = size | default: 18
+  assign fallback_rating = fallback_rating | default: 4.5
+
+  # Get rating from metafield or fallback
+  assign rating = product.metafields.custom.star_rating.value | default: fallback_rating | times: 1.0
+
+  # Calculate full stars, partial star, and empty stars
+  assign full_stars = rating | floor
+  assign decimal_part = rating | modulo: 1
+
+  # Determine if we need a half star (anything from 0.25 to 0.75 shows as half)
+  assign has_half_star = false
+  if decimal_part >= 0.25 and decimal_part < 0.75
+    assign has_half_star = true
+  elsif decimal_part >= 0.75
+    assign full_stars = full_stars | plus: 1
+  endif
+
+  # Calculate empty stars
+  assign stars_used = full_stars
+  if has_half_star
+    assign stars_used = stars_used | plus: 1
+  endif
+  assign empty_stars = 5 | minus: stars_used
+-%}
+
+{%- capture star_path -%}M16.4735 8.07538L13.3095 10.8056L14.2735 14.8887C14.3266 15.1103 14.3129 15.3428 14.2341 15.5566C14.1552 15.7705 14.0148 15.9562 13.8304 16.0903C13.6461 16.2244 13.4262 16.3008 13.1984 16.3099C12.9706 16.3191 12.7453 16.2605 12.5508 16.1416L9.00002 13.9563L5.44713 16.1416C5.25266 16.2598 5.02757 16.3178 4.80021 16.3084C4.57284 16.2989 4.35336 16.2223 4.16941 16.0884C3.98546 15.9544 3.84525 15.769 3.76645 15.5555C3.68765 15.342 3.67378 15.11 3.72658 14.8887L4.69408 10.8056L1.53002 8.07538C1.35796 7.92668 1.23353 7.73058 1.17225 7.51158C1.11098 7.29258 1.11559 7.06038 1.1855 6.84398C1.2554 6.62758 1.38752 6.43657 1.56533 6.29481C1.74315 6.15304 1.95879 6.06681 2.18533 6.04687L6.33377 5.71218L7.93408 1.83937C8.0207 1.6283 8.16813 1.44776 8.35762 1.3207C8.54711 1.19364 8.77011 1.12579 8.99826 1.12579C9.22641 1.12579 9.4494 1.19364 9.6389 1.3207C9.82839 1.44776 9.97582 1.6283 10.0624 1.83937L11.662 5.71218L15.8105 6.04687C16.0375 6.06606 16.2537 6.15182 16.4322 6.29339C16.6107 6.43496 16.7434 6.62604 16.8137 6.8427C16.8841 7.05937 16.8889 7.29197 16.8277 7.51137C16.7664 7.73077 16.6417 7.92721 16.4693 8.07609L16.4735 8.07538Z{%- endcapture -%}
+
+{%- capture unique_id -%}star-grad-{{ product.id | default: 'default' }}-{{ 'now' | date: '%N' }}{%- endcapture -%}
+
+{%- comment -%} Full stars {%- endcomment -%}
+{%- for i in (1..full_stars) -%}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ size }}" height="{{ size }}" viewBox="0 0 18 18" fill="none"><path d="{{ star_path }}" fill="{{ star_color }}"/></svg>
+{%- endfor -%}
+{%- comment -%} Half star {%- endcomment -%}
+{%- if has_half_star -%}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ size }}" height="{{ size }}" viewBox="0 0 18 18" fill="none"><defs><linearGradient id="{{ unique_id }}"><stop offset="50%" stop-color="{{ star_color }}"/><stop offset="50%" stop-color="{{ empty_color }}"/></linearGradient></defs><path d="{{ star_path }}" fill="url(#{{ unique_id }})"/></svg>
+{%- endif -%}
+{%- comment -%} Empty stars {%- endcomment -%}
+{%- for i in (1..empty_stars) -%}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ size }}" height="{{ size }}" viewBox="0 0 18 18" fill="none"><path d="{{ star_path }}" fill="{{ empty_color }}"/></svg>
+{%- endfor -%}

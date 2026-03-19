@@ -937,7 +937,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes, we offer free shipping on all orders over $49. Orders under $49 have a flat shipping rate."
+            "answer": "Yes, we offer free shipping on all orders over $60. Orders under $60 have a flat shipping rate."
           }
         }
       },
@@ -997,109 +997,145 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Patricia M.",
+            "image": "",
+            "name": "Patricia M.",
             "rating": 5,
-            "review_text": "Getting the foundation and brush together was the best decision! They work perfectly as a pair and the results are flawless."
+            "title": "Complete morning routine",
+            "date": "Mar 11, 2025",
+            "quote": "Having everything in one kit makes my mornings so much easier. The bag sits on my counter, I grab the brush, apply the foundation, and I'm ready. Takes me five minutes now instead of twenty.",
+            "verified": true
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Sandra K.",
+            "image": "",
+            "name": "Sandra L.",
             "rating": 5,
-            "review_text": "This starter kit has everything you need. The foundation adapts beautifully and the brush applies it like a dream."
+            "title": "Bought this for my cruise",
+            "date": "Mar 5, 2025",
+            "quote": "Took this on a two-week cruise last month. The bag kept everything organized in my suitcase and I looked put together for every dinner. My cabin mate asked where I got it.",
+            "verified": true
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Diana R.",
+            "image": "",
+            "name": "Dorothy R.",
             "rating": 5,
-            "review_text": "I bought the kit as a gift for my sister and she absolutely loves it. Now I need to get one for myself!"
+            "title": "Treat for myself",
+            "date": "Feb 28, 2025",
+            "quote": "My daughter bought this for my 60th birthday. I wasn't expecting much but now I use it every single day. The foundation actually looks natural on my skin, not cakey.",
+            "verified": true
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Catherine L.",
+            "image": "",
+            "name": "Catherine H.",
             "rating": 5,
-            "review_text": "Great value for the quality. The bundle price is much better than buying separately. Highly recommend!"
+            "title": "Everything works together",
+            "date": "Feb 22, 2025",
+            "quote": "You can tell these products were designed to work as a set. The brush is exactly right for this formula, and the bag fits both perfectly. Thoughtful design.",
+            "verified": true
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Elizabeth W.",
+            "image": "",
+            "name": "Betty W.",
             "rating": 5,
-            "review_text": "The perfect combination for achieving that professional makeup look at home. Love everything about this kit."
+            "title": "Simplified my routine",
+            "date": "Feb 15, 2025",
+            "quote": "I used to have makeup scattered all over my bathroom. Now I just have this little bag with everything I need. My husband appreciates the tidier counter too.",
+            "verified": true
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Margaret T.",
+            "image": "",
+            "name": "Margaret T.",
             "rating": 5,
-            "review_text": "Finally found my holy grail foundation routine. This kit makes my morning routine so much simpler."
+            "title": "All I need",
+            "date": "Feb 8, 2025",
+            "quote": "After years of buying different products that don't work together, this kit gives me exactly what I need. Foundation, brush, bag. Simple and it works.",
+            "verified": true
           }
         },
         "review_7": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Helen S.",
+            "image": "",
+            "name": "Helen S.",
             "rating": 5,
-            "review_text": "The foundation is incredible on its own, but paired with this brush? Next level! So glad I got the bundle."
+            "title": "Perfect pairing",
+            "date": "Feb 1, 2025",
+            "quote": "The brush makes all the difference with this foundation. I tried using my old brushes and it's not the same. These two are meant for each other.",
+            "verified": true
           }
         },
         "review_8": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Ruth B.",
+            "image": "",
+            "name": "Ruth B.",
             "rating": 5,
-            "review_text": "My skin has never looked better. The foundation matches perfectly and the brush blends without any streaks."
+            "title": "Ready to go",
+            "date": "Jan 25, 2025",
+            "quote": "I keep this packed and ready by the door. When my grandkids call to say they're picking me up, I can do my face in the car. That bag is so handy.",
+            "verified": true
           }
         },
         "review_9": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Sharon P.",
+            "image": "",
+            "name": "Shirley P.",
             "rating": 5,
-            "review_text": "Worth every penny! The savings on the bundle are great and the products work beautifully together."
+            "title": "Good value",
+            "date": "Jan 18, 2025",
+            "quote": "I did the math and the kit saves you money compared to buying each item separately. Plus the bag is included. Smart shopping for us practical types.",
+            "verified": true
           }
         },
         "review_10": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Carol A.",
+            "image": "",
+            "name": "Carol A.",
             "rating": 5,
-            "review_text": "I've recommended this kit to all my friends. The quality is outstanding and the results speak for themselves."
+            "title": "My daughter was right",
+            "date": "Jan 11, 2025",
+            "quote": "My daughter saw this online and insisted I try it. I'm 67 and had given up on foundation, but this actually looks good on my skin. Should have listened to her sooner.",
+            "verified": true
           }
         },
         "review_11": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Donna J.",
+            "image": "",
+            "name": "Donna J.",
             "rating": 5,
-            "review_text": "Makes a wonderful gift! The packaging is beautiful and the products inside are even better."
+            "title": "Gave one to my sister",
+            "date": "Jan 5, 2025",
+            "quote": "Bought one for myself and one for my sister's birthday. We both love it. She texted me photos after her first time using it. We look like ourselves again.",
+            "verified": true
           }
         },
         "review_12": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Janet H.",
+            "image": "",
+            "name": "Janet H.",
             "rating": 5,
-            "review_text": "Professional quality at home. This starter kit is all you need for a flawless complexion every day."
+            "title": "My travel companion",
+            "date": "Jan 2, 2025",
+            "quote": "This goes with me everywhere now. Visiting the kids in California, weekends at the lake house, even just day trips. The bag keeps everything together and clean.",
+            "verified": true
           }
         }
       },
@@ -1119,17 +1155,13 @@
       ],
       "settings": {
         "section_id": "reviews",
-        "heading": "What Our Customers Say",
-        "subheading": "Join 804+ happy customers who love our Starter Kit",
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
+        "headline": "What Our Customers Say",
+        "show_rating_summary": true,
+        "rating_summary_text": "Based on 804 reviews",
         "initial_count": 8,
         "load_more_text": "Load More Reviews",
         "see_all_text": "See All 804 Reviews",
-        "see_all_url": "#judgeme_product_reviews",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "see_all_url": "#judgeme_product_reviews"
       }
     },
     "lumen_usp_mjAcCK": {

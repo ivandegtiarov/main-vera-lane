@@ -1,0 +1,17 @@
+{% comment %}
+  Free Shipping Threshold Snippet
+
+  Outputs the free shipping threshold as a formatted dollar amount.
+  Pulls from Theme Settings cart_goal_1_threshold.
+
+  Usage:
+    {% render 'free-shipping-threshold' %}
+    Output: $60
+
+  The threshold is set in Theme Settings > Cart Goals > Goal 1 Threshold
+{% endcomment %}
+
+{%- liquid
+  assign threshold_dollars = settings.cart_goal_1_threshold | default: 60 | round
+-%}
+${{ threshold_dollars -}}

@@ -937,7 +937,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes, we offer free shipping on all orders over $49. Orders under $49 have a flat shipping rate."
+            "answer": "Yes, we offer free shipping on all orders over $60. Orders under $60 have a flat shipping rate."
           }
         }
       },
@@ -997,109 +997,145 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Patricia M.",
+            "image": "",
+            "name": "Patricia M.",
             "rating": 5,
-            "review_text": "This brush makes applying foundation so much easier. The dual ends are perfect - one for overall application and one for hard-to-reach areas around my nose."
+            "title": "My new morning essential",
+            "date": "Mar 12, 2025",
+            "quote": "After 30 years of using different brushes, this one actually works with my mature skin. The big end blends quickly and the small end gets into all those tricky spots around my nose.",
+            "verified": true
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Karen L.",
+            "image": "",
+            "name": "Karen L.",
             "rating": 5,
-            "review_text": "The bristles are incredibly soft and don't irritate my sensitive skin. Best brush I've ever owned!"
+            "title": "So gentle on my skin",
+            "date": "Mar 9, 2025",
+            "quote": "I have sensitive skin that's gotten more delicate as I've gotten older. These bristles are soft enough that I don't get any irritation, even around my eyes.",
+            "verified": true
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Susan T.",
+            "image": "",
+            "name": "Susan T.",
             "rating": 5,
-            "review_text": "Finally a brush that buffs foundation seamlessly. No streaks, no patches - just flawless skin every time."
+            "title": "No more streaky foundation",
+            "date": "Mar 5, 2025",
+            "quote": "I used to struggle with foundation settling into my smile lines. This brush buffs everything in so smoothly that my skin just looks like skin again.",
+            "verified": true
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Jennifer W.",
+            "image": "",
+            "name": "Donna W.",
             "rating": 5,
-            "review_text": "The weighted handle makes it so comfortable to hold. I can do my whole face without my hand getting tired."
+            "title": "Easy on arthritic hands",
+            "date": "Feb 28, 2025",
+            "quote": "The weighted handle is perfect for my hands. I have some arthritis in my fingers and this brush is so comfortable to hold. Makes my morning routine much easier.",
+            "verified": true
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Barbara R.",
+            "image": "",
+            "name": "Barbara R.",
             "rating": 5,
-            "review_text": "Pairs perfectly with the Vera Lane foundation. The brush helps the formula blend right into my skin."
+            "title": "Perfect match for the foundation",
+            "date": "Feb 24, 2025",
+            "quote": "Got this with the Vera Lane foundation and they work beautifully together. My daughter thought I had my makeup done professionally when I showed her.",
+            "verified": true
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Linda S.",
+            "image": "",
+            "name": "Linda S.",
             "rating": 5,
-            "review_text": "I've tried so many brushes over the years. This one is truly different - professional quality at a great price."
+            "title": "Wish I'd found this sooner",
+            "date": "Feb 18, 2025",
+            "quote": "I'm 63 and have been doing my makeup the same way for decades. This brush has completely changed how my foundation looks. Should have tried something new years ago!",
+            "verified": true
           }
         },
         "review_7": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Mary K.",
+            "image": "",
+            "name": "Mary K.",
             "rating": 5,
-            "review_text": "Love how easy it is to clean. The synthetic bristles dry quickly and stay soft wash after wash."
+            "title": "Cleans up beautifully",
+            "date": "Feb 12, 2025",
+            "quote": "I wash this once a week and it dries overnight. Still as soft as the day I bought it two months ago. The bristles haven't shed at all.",
+            "verified": true
           }
         },
         "review_8": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Dorothy P.",
+            "image": "",
+            "name": "Dorothy P.",
             "rating": 5,
-            "review_text": "The precision tip is a game-changer for getting foundation along my jawline and hairline perfectly."
+            "title": "Gets all the tricky spots",
+            "date": "Feb 5, 2025",
+            "quote": "The small end is perfect for blending along my jawline where my skin meets my neck. No more makeup line! My husband says I look ten years younger.",
+            "verified": true
           }
         },
         "review_9": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Nancy H.",
+            "image": "",
+            "name": "Nancy H.",
             "rating": 5,
-            "review_text": "This brush applies foundation so evenly. My makeup looks like I had it professionally done!"
+            "title": "Like a mini facial",
+            "date": "Jan 30, 2025",
+            "quote": "Applying foundation has become the relaxing part of my morning now. The soft bristles feel lovely on my face and the results look so natural.",
+            "verified": true
           }
         },
         "review_10": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Carol A.",
+            "image": "",
+            "name": "Carol A.",
             "rating": 5,
-            "review_text": "Worth every penny. Dense bristles that don't shed and give an airbrushed finish."
+            "title": "Better than department store brushes",
+            "date": "Jan 25, 2025",
+            "quote": "I've spent a lot more on brushes from fancy counters. This one outperforms all of them. Dense enough to really work the product in without wasting any.",
+            "verified": true
           }
         },
         "review_11": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Betty J.",
+            "image": "",
+            "name": "Betty J.",
             "rating": 5,
-            "review_text": "I bought one for myself and another as a gift. My sister loved it too!"
+            "title": "Bought extras for my book club",
+            "date": "Jan 18, 2025",
+            "quote": "After showing my friends at book club how well this works, three of them wanted one. Ordered them as birthday gifts. Everyone loves it.",
+            "verified": true
           }
         },
         "review_12": {
           "type": "review",
           "settings": {
-            "reviewer_image": "",
-            "reviewer_name": "Margaret D.",
+            "image": "",
+            "name": "Margaret D.",
             "rating": 5,
-            "review_text": "The dual-ended design is so practical. No more switching between brushes mid-routine."
+            "title": "One brush does it all",
+            "date": "Jan 12, 2025",
+            "quote": "I used to have a whole collection of brushes cluttering my bathroom counter. Now I just need this one. The two ends handle everything.",
+            "verified": true
           }
         }
       },
@@ -1119,17 +1155,13 @@
       ],
       "settings": {
         "section_id": "reviews",
-        "heading": "What Our Customers Say",
-        "subheading": "Join 591+ happy customers who love our Makeup Brush",
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
+        "headline": "What Our Customers Say",
+        "show_rating_summary": true,
+        "rating_summary_text": "Based on 591 reviews",
         "initial_count": 8,
         "load_more_text": "Load More Reviews",
         "see_all_text": "See All 591 Reviews",
-        "see_all_url": "#judgeme_product_reviews",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "see_all_url": "#judgeme_product_reviews"
       }
     },
     "lumen_usp_mjAcCK": {
