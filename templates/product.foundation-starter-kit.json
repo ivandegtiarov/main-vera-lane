@@ -324,7 +324,7 @@
           "type": "trust_badge",
           "settings": {
             "icon_image": "shopify://shop_images/Layer_1_1.svg",
-            "text": "<p>Free Shipping from ${{threshold}}</p>"
+            "text": "<p>Free Shipping from $[threshold]</p>"
           }
         },
         "trust_badge_KVy3Dw": {
@@ -546,7 +546,7 @@
           "type": "faq_item",
           "settings": {
             "title": "How long does shipping take?",
-            "content": "<p>Standard shipping: 4–5 business days. Free shipping on orders over ${{threshold}}. Returns accepted within 30 days of delivery.</p>",
+            "content": "<p>Standard shipping: 4–5 business days. Free shipping on orders over $[threshold]. Returns accepted within 30 days of delivery.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -937,7 +937,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes, we offer free shipping on all orders over ${{threshold}}. Orders under ${{threshold}} have a flat shipping rate."
+            "answer": "Yes, we offer free shipping on all orders over $[threshold]. Orders under $[threshold] have a flat shipping rate."
           }
         }
       },

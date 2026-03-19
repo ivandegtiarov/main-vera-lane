@@ -137,14 +137,14 @@
     <div class="announcement-slider__container">
         {%- comment -%}
           Get the free shipping threshold for dynamic replacement.
-          Use {{threshold}} in announcement text to insert this value.
+          Use [threshold] in announcement text to insert this value.
         {%- endcomment -%}
         {%- assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round -%}
 
         <!-- Desktop: Show all items -->
         <div class="announcement-slider__desktop">
             {%- for block in section.blocks -%}
-                {%- assign announcement_text = block.settings.text | replace: '{{threshold}}', free_shipping_threshold -%}
+                {%- assign announcement_text = block.settings.text | replace: '[threshold]', free_shipping_threshold -%}
                 <div class="announcement-item" {{ block.shopify_attributes }}>
                     <div class="announcement-item__icon">
                         {{ block.settings.icon }}
@@ -159,7 +159,7 @@
             <div class="swiper announcement-swiper-{{ section.id }}">
                 <div class="swiper-wrapper">
                     {%- for block in section.blocks -%}
-                        {%- assign announcement_text = block.settings.text | replace: '{{threshold}}', free_shipping_threshold -%}
+                        {%- assign announcement_text = block.settings.text | replace: '[threshold]', free_shipping_threshold -%}
                         <div class="swiper-slide">
                             <div class="announcement-item" {{ block.shopify_attributes }}>
                                 <div class="announcement-item__icon">
@@ -343,7 +343,7 @@
           "id": "text",
           "label": "Text",
           "default": "DEVELOPED IN AUSTRALIA",
-          "info": "Use {{threshold}} to insert the free shipping threshold (e.g., FREE SHIPPING OVER ${{threshold}})"
+          "info": "Use [threshold] to insert the free shipping threshold (e.g., FREE SHIPPING OVER $[threshold])"
         }
       ]
     }
@@ -361,7 +361,7 @@
         {
           "type": "announcement",
           "settings": {
-            "text": "FREE SHIPPING OVER ${{threshold}}"
+            "text": "FREE SHIPPING OVER $[threshold]"
           }
         },
         {

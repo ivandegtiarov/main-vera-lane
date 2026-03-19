@@ -345,7 +345,7 @@
           "type": "trust_badge",
           "settings": {
             "icon_image": "shopify://shop_images/Layer_1_1.svg",
-            "text": "<p>Free Shipping from ${{threshold}}</p>"
+            "text": "<p>Free Shipping from $[threshold]</p>"
           }
         },
         "trust_badge_KVy3Dw": {
@@ -588,7 +588,7 @@
           "type": "faq_item",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p><strong>Love It or It's Free.</strong> Try it for 30 days. If it doesn't float over your lines or match your shade exactly as promised, just let us know for a full refund.</p><p><strong>Fast & Secure Delivery.</strong> We ship your order within 1 business day. Free shipping on all orders over ${{threshold}}. Tracked shipping so you know exactly when your glow arrives.</p><p><strong>Zero-Stress Returns.</strong> No complicated forms. No hidden fees. If you aren't happy, we aren't happy. Just reach out to our friendly support team for a quick resolution.</p>",
+            "content": "<p><strong>Love It or It's Free.</strong> Try it for 30 days. If it doesn't float over your lines or match your shade exactly as promised, just let us know for a full refund.</p><p><strong>Fast & Secure Delivery.</strong> We ship your order within 1 business day. Free shipping on all orders over $[threshold]. Tracked shipping so you know exactly when your glow arrives.</p><p><strong>Zero-Stress Returns.</strong> No complicated forms. No hidden fees. If you aren't happy, we aren't happy. Just reach out to our friendly support team for a quick resolution.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -1201,7 +1201,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "Yes, we offer free shipping on all orders over ${{threshold}}. Orders under ${{threshold}} have a flat shipping rate across the US."
+            "answer": "Yes, we offer free shipping on all orders over $[threshold]. Orders under $[threshold] have a flat shipping rate across the US."
           }
         }
       },

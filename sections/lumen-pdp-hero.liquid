@@ -15,7 +15,7 @@
 
   comment
     Free shipping threshold for dynamic replacement.
-    Use {{threshold}} in text fields to insert this value.
+    Use [threshold] in text fields to insert this value.
   endcomment
   assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round
 %}
@@ -2075,7 +2075,7 @@
                     <div class="lumen-pdp-hero__trust-badges-row">
                       {% for block in section.blocks %}
                         {% if block.type == 'trust_badge' %}
-                          {%- assign badge_text = block.settings.text | replace: '{{threshold}}', free_shipping_threshold -%}
+                          {%- assign badge_text = block.settings.text | replace: '[threshold]', free_shipping_threshold -%}
                           <div class="lumen-pdp-hero__trust-badge" {{ block.shopify_attributes }}>
                               <div class="lumen-pdp-hero__trust-badge-icon">
                                 {% if block.settings.icon_image != blank %}
@@ -2169,8 +2169,8 @@
             <div class="lumen-pdp-hero__accordion">
               {% for block in section.blocks %}
                 {% if block.type == 'faq_item' %}
-                {%- assign faq_title = block.settings.title | replace: '{{threshold}}', free_shipping_threshold -%}
-                {%- assign faq_content = block.settings.content | replace: '{{threshold}}', free_shipping_threshold -%}
+                {%- assign faq_title = block.settings.title | replace: '[threshold]', free_shipping_threshold -%}
+                {%- assign faq_content = block.settings.content | replace: '[threshold]', free_shipping_threshold -%}
                 <div class="lumen-pdp-hero__accordion-item" x-data="{ open: {{ forloop.first | json }} }" {{ block.shopify_attributes }}>
                     <div class="lumen-pdp-hero__accordion-header" @click="open = !open">
                         <h3 class="lumen-pdp-hero__accordion-title">

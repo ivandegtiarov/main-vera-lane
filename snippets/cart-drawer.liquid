@@ -218,7 +218,7 @@
                   assign goal_3_effective_enabled = settings.cart_goal_3_enabled
 
                   assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round
-                  assign goal_1_reward_text = settings.cart_goal_1_text | default: 'Free Shipping <strong class="cart-drawer__reward-amount">$30</strong>' | replace: '{{threshold}}', free_shipping_threshold
+                  assign goal_1_reward_text = settings.cart_goal_1_text | default: 'Free Shipping <strong class="cart-drawer__reward-amount">$30</strong>' | replace: '[threshold]', free_shipping_threshold
                   assign goal_2_reward_text = settings.cart_goal_2_text | default: 'Free Travel Bag <strong class="cart-drawer__reward-amount">$45</strong>'
                   assign goal_3_reward_text = settings.cart_goal_3_text | default: 'Free Mini Mascara <strong class="cart-drawer__reward-amount">$60</strong>'
 
