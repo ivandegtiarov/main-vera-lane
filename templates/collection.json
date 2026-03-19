@@ -1,1 +1,322 @@
-{"sections":{"main":{"type":"main-collection","blocks":{"filters":{"type":"filters","static":true,"settings":{"enable_filtering":true,"filter_style":"horizontal","filter_width":"centered","text_label_case":"default","show_swatch_label":false,"show_filter_label":false,"enable_sorting":true,"enable_grid_density":true,"inherit_color_scheme":true,"color_scheme":"","padding-block-start":8,"padding-block-end":8,"padding-inline-start":0,"padding-inline-end":0,"facets_margin_bottom":8,"facets_margin_right":20},"blocks":{}},"product-card":{"type":"_product-card","static":true,"settings":{"product_card_gap":4,"inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"card-gallery":{"type":"_product-card-gallery","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_title_4nY4eT":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"price_EzJzMm":{"type":"price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","color":"var(--color-foreground)","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["card-gallery","product_title_4nY4eT","price_EzJzMm"]}},"disabled":true,"settings":{"layout_type":"grid","product_card_size":"medium","mobile_product_card_size":"small","product_grid_width":"centered","full_width_on_mobile":true,"columns_gap_horizontal":16,"columns_gap_vertical":24,"padding-inline-start":0,"padding-inline-end":0,"color_scheme":"scheme-1","padding-block-start":0,"padding-block-end":32}},"lumen_collection_Ftyi3R":{"type":"lumen-collection","blocks":{"product_xW3RpP":{"type":"product","settings":{"product":"color-changing-foundation"}},"product_UKtKpE":{"type":"product","settings":{"product":"makeup-brush"}},"product_RCGHYJ":{"type":"product","settings":{"product":"makeup-bag-1"}},"product_rwcNiC":{"type":"product","settings":{"product":"bundle-tone-adapting-foundation-makeup-brush"}}},"block_order":["product_xW3RpP","product_UKtKpE","product_RCGHYJ","product_rwcNiC"],"name":"Lumen — Collection grid","settings":{"aria_label":"Our products","heading":"Our Products","button_label":"Add to bag","background_color":"#ffffff","background_gradient_start":"#ffffff","background_gradient_end":"#ffffff","heading_color":"#000000","product_name_color":"#000000","product_price_color":"#000000","button_text_color":"#ffffff","padding_top_desktop":40,"padding_top_mobile":24,"padding_bottom_desktop":40,"padding_bottom_mobile":24,"heading_font_size_desktop":48,"heading_font_size_mobile":36,"product_name_font_size_desktop":16,"product_name_font_size_mobile":12,"product_price_font_size_desktop":16,"product_price_font_size_mobile":12,"button_font_size_desktop":18,"button_font_size_mobile":14}},"lumen_faq_xKXAnP":{"type":"lumen-faq","blocks":{"faq_item_kJT7jT":{"type":"faq_item","settings":{"question":"What is your return policy?","answer":"We offer a 60-day money-back guarantee on all products. If you're not completely satisfied with your purchase, contact us for a full refund."}},"faq_item_wei8bi":{"type":"faq_item","settings":{"question":"How long does shipping take?","answer":"Standard shipping takes 4-5 business days. Express shipping is available for 2-3 business day delivery."}},"faq_item_RBkpfh":{"type":"faq_item","settings":{"question":"Is this product suitable for sensitive skin?","answer":"Yes, our products are dermatologist-tested and formulated for all skin types, including sensitive skin."}},"faq_item_iatPU8":{"type":"faq_item","settings":{"question":"How do I know which shade to choose?","answer":"Our foundation adapts to your skin tone within seconds. It works for fair to medium skin tones."}},"faq_item_gVTkNq":{"type":"faq_item","settings":{"question":"What ingredients are in this product?","answer":"Our products contain nourishing ingredients like Glycerin, Sodium Hyaluronate, and Vitamin E for healthy, hydrated skin."}},"faq_item_YJJ4p4":{"type":"faq_item","settings":{"question":"Do you offer free shipping?","answer":"Yes, we offer free shipping on all orders over $[threshold]. Orders under $[threshold] have a flat shipping rate."}}},"block_order":["faq_item_kJT7jT","faq_item_wei8bi","faq_item_RBkpfh","faq_item_iatPU8","faq_item_gVTkNq","faq_item_YJJ4p4"],"name":"⚡FAQ Section","settings":{"section_label":"FAQ Section","main_heading":"Frequently Asked Questions","sticky_heading":true,"first_item_open":0,"enable_animation":true,"background_color":"#ffffff","heading_color":"#000000","question_color":"#000000","answer_color":"#333333","icon_color":"#000000","border_color":"#e5e5e5","heading_font_size_mobile":40,"heading_font_size_desktop":64,"question_font_size_mobile":16,"question_font_size_desktop":18,"question_text_transform":"uppercase","answer_font_size_mobile":16,"answer_font_size_desktop":16,"padding_top_mobile":40,"padding_bottom_mobile":40,"padding_horizontal_mobile":24,"padding_top_desktop":100,"padding_bottom_desktop":100,"padding_horizontal_desktop":80}},"lumen_trustpilot_EQq4iC":{"type":"lumen-trustpilot","name":"⚡Trustpilot Section","settings":{"stars_image":"shopify:\/\/shop_images\/Frame_523.png","stars_image_alt":"Trustpilot star rating","rating_text":"4.6 OUT OF 5 BASED ON 245 REVIEWS","enable_animation":true,"padding_top":56,"padding_bottom":56,"padding_left_right":20}},"lumen_usp_8FXm3y":{"type":"lumen-usp","name":"⚡USP Section","settings":{"aria_label":"Reasons to choose us","background_color":"#fbf8f6","enable_animation":true,"padding_top_mobile":56,"padding_bottom_mobile":56,"padding_left_right_mobile":20,"padding_top_tablet":56,"padding_bottom_tablet":56,"padding_left_right_tablet":40,"padding_top_desktop":80,"padding_bottom_desktop":80,"padding_left_right_desktop":72}}},"order":["main","lumen_collection_Ftyi3R","lumen_faq_xKXAnP","lumen_trustpilot_EQq4iC","lumen_usp_8FXm3y"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 24,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    },
+    "lumen_collection_Ftyi3R": {
+      "type": "lumen-collection",
+      "blocks": {
+        "product_xW3RpP": {
+          "type": "product",
+          "settings": {
+            "product": "color-changing-foundation"
+          }
+        },
+        "product_UKtKpE": {
+          "type": "product",
+          "settings": {
+            "product": "makeup-brush"
+          }
+        },
+        "product_RCGHYJ": {
+          "type": "product",
+          "settings": {
+            "product": "makeup-bag-1"
+          }
+        },
+        "product_rwcNiC": {
+          "type": "product",
+          "settings": {
+            "product": "bundle-tone-adapting-foundation-makeup-brush"
+          }
+        }
+      },
+      "block_order": [
+        "product_xW3RpP",
+        "product_UKtKpE",
+        "product_RCGHYJ",
+        "product_rwcNiC"
+      ],
+      "name": "Lumen — Collection grid",
+      "settings": {
+        "aria_label": "Our products",
+        "heading": "Our Products",
+        "button_label": "Add to bag",
+        "background_color": "#ffffff",
+        "background_gradient_start": "#ffffff",
+        "background_gradient_end": "#ffffff",
+        "heading_color": "#000000",
+        "product_name_color": "#000000",
+        "product_price_color": "#000000",
+        "button_text_color": "#ffffff",
+        "padding_top_desktop": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_desktop": 40,
+        "padding_bottom_mobile": 24,
+        "heading_font_size_desktop": 48,
+        "heading_font_size_mobile": 36,
+        "product_name_font_size_desktop": 16,
+        "product_name_font_size_mobile": 12,
+        "product_price_font_size_desktop": 16,
+        "product_price_font_size_mobile": 12,
+        "button_font_size_desktop": 18,
+        "button_font_size_mobile": 14
+      }
+    },
+    "lumen_faq_xKXAnP": {
+      "type": "lumen-faq",
+      "blocks": {
+        "faq_item_kJT7jT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee on all products. If you're not completely satisfied with your purchase, contact us for a full refund."
+          }
+        },
+        "faq_item_wei8bi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Standard shipping takes 4-5 business days. Express shipping is available for 2-3 business day delivery."
+          }
+        },
+        "faq_item_RBkpfh": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this product suitable for sensitive skin?",
+            "answer": "Yes, our products are dermatologist-tested and formulated for all skin types, including sensitive skin."
+          }
+        },
+        "faq_item_iatPU8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to choose?",
+            "answer": "Our foundation adapts to your skin tone within seconds. It works for fair to medium skin tones."
+          }
+        },
+        "faq_item_gVTkNq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What ingredients are in this product?",
+            "answer": "Our products contain nourishing ingredients like Glycerin, Sodium Hyaluronate, and Vitamin E for healthy, hydrated skin."
+          }
+        },
+        "faq_item_YJJ4p4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "Yes, we offer free shipping on all orders over $[threshold]. Orders under $[threshold] have a flat shipping rate."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_kJT7jT",
+        "faq_item_wei8bi",
+        "faq_item_RBkpfh",
+        "faq_item_iatPU8",
+        "faq_item_gVTkNq",
+        "faq_item_YJJ4p4"
+      ],
+      "name": "⚡FAQ Section",
+      "settings": {
+        "section_label": "FAQ Section",
+        "main_heading": "Frequently Asked Questions",
+        "sticky_heading": true,
+        "first_item_open": 0,
+        "enable_animation": true,
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "question_color": "#000000",
+        "answer_color": "#333333",
+        "icon_color": "#000000",
+        "border_color": "#e5e5e5",
+        "heading_font_size_mobile": 40,
+        "heading_font_size_desktop": 64,
+        "question_font_size_mobile": 16,
+        "question_font_size_desktop": 18,
+        "question_text_transform": "uppercase",
+        "answer_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal_mobile": 24,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_horizontal_desktop": 80
+      }
+    },
+    "lumen_trustpilot_EQq4iC": {
+      "type": "lumen-trustpilot",
+      "name": "⚡Trustpilot Section",
+      "settings": {
+        "stars_image": "shopify://shop_images/Frame_523.png",
+        "stars_image_alt": "Trustpilot star rating",
+        "rating_text": "4.6 OUT OF 5 BASED ON 245 REVIEWS",
+        "enable_animation": true,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_left_right": 20
+      }
+    },
+    "lumen_usp_8FXm3y": {
+      "type": "lumen-usp",
+      "name": "⚡USP Section",
+      "settings": {
+        "aria_label": "Reasons to choose us",
+        "background_color": "#fbf8f6",
+        "enable_animation": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_left_right_mobile": 20,
+        "padding_top_tablet": 56,
+        "padding_bottom_tablet": 56,
+        "padding_left_right_tablet": 40,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_right_desktop": 72
+      }
+    }
+  },
+  "order": [
+    "main",
+    "lumen_collection_Ftyi3R",
+    "lumen_faq_xKXAnP",
+    "lumen_trustpilot_EQq4iC",
+    "lumen_usp_8FXm3y"
+  ]
+}
