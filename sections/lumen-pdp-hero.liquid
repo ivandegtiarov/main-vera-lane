@@ -14,6 +14,19 @@
   endif
 
   comment
+    Selling plans (subscriptions) detection
+  endcomment
+  assign has_selling_plans = false
+  assign selling_plan_group = nil
+  assign selling_plans = nil
+
+  if section_product.selling_plan_groups.size > 0
+    assign has_selling_plans = true
+    assign selling_plan_group = section_product.selling_plan_groups.first
+    assign selling_plans = selling_plan_group.selling_plans
+  endif
+
+  comment
     Free shipping threshold for dynamic replacement.
     Use [threshold] in text fields to insert this value.
   endcomment
@@ -1326,6 +1339,53 @@
           width: calc(100% + 24px);
         }
 
+        /* Subscribe & Save Styles */
+        .lumen-pdp-hero__variant--subscription {
+          border-color: #7A0036;
+        }
+
+        .lumen-pdp-hero__subscription-label {
+          color: #7A0036;
+          font-weight: 600;
+        }
+
+        .lumen-pdp-hero__frequency {
+          display: none;
+          margin-top: 12px;
+          position: relative;
+        }
+
+        .lumen-pdp-hero__variant--selected .lumen-pdp-hero__frequency {
+          display: block;
+        }
+
+        .lumen-pdp-hero__frequency-select {
+          width: 100%;
+          padding: 12px 40px 12px 16px;
+          font-size: 14px;
+          font-family: 'Montserrat', sans-serif;
+          color: #333333;
+          background-color: #fff;
+          border: 1px solid #e5e5e5;
+          border-radius: 6px;
+          appearance: none;
+          cursor: pointer;
+        }
+
+        .lumen-pdp-hero__frequency-select:focus {
+          outline: none;
+          border-color: #7A0036;
+        }
+
+        .lumen-pdp-hero__frequency-arrow {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+          color: #333333;
+        }
+
         /* Fade-in animation */
         .lumen-pdp-hero--animate .lumen-pdp-hero__left,
         .lumen-pdp-hero--animate .lumen-pdp-hero__content {
@@ -1869,12 +1929,12 @@
                     {% endif %}
 
                     <div
-                      class="lumen-pdp-hero__variant{% if block.type == 'bundle' and has_bundle_property %} lumen-pdp-hero__variant--has-bundle-products{% endif %}{% if block.type == 'bundle' and block.settings.show_amazon_offer %} lumen-pdp-hero__variant--amazon-offer{% endif %}"
+                      class="lumen-pdp-hero__variant{% if block.type == 'bundle' and has_bundle_property %} lumen-pdp-hero__variant--has-bundle-products{% endif %}{% if block.type == 'bundle' and block.settings.show_amazon_offer %} lumen-pdp-hero__variant--amazon-offer{% endif %}{% if block.type == 'bundle' and block.settings.is_subscription %} lumen-pdp-hero__variant--subscription{% endif %}"
                       :class="{'lumen-pdp-hero__variant--selected': isSelected('{{ block.id }}')}"
                       {% if block.type == 'bundle_option' %}
                         @click="selectBundle('{{ block.id }}', {{ selected_variant.id }}, {{ bundle_quantity }}, 'bundle_option')"
                       {% elsif block.type == 'bundle' %}
-                        @click="selectMultiProductBundle('{{ block.id }}', {{ product_1.variants.first.id | default: 0 }}, {{ product_1_quantity }}, {{ product_2.variants.first.id | default: 0 }}, {{ product_2_quantity }}, {{ product_3.variants.first.id | default: 0 }}, {{ product_3_quantity }}, {{ add_bundle_property }}, {{ add_vera2_bundle_property }})"
+                        @click="selectMultiProductBundle('{{ block.id }}', {{ product_1.variants.first.id | default: 0 }}, {{ product_1_quantity }}, {{ product_2.variants.first.id | default: 0 }}, {{ product_2_quantity }}, {{ product_3.variants.first.id | default: 0 }}, {{ product_3_quantity }}, {{ add_bundle_property }}, {{ add_vera2_bundle_property }}, {{ block.settings.is_subscription | default: false }})"
                       {% endif %}
                       {{ block.shopify_attributes }}
                     >
@@ -1890,6 +1950,9 @@
                               <div class="lumen-pdp-hero__variant-header-left">
                                 <div class="lumen-pdp-hero__variant-name">
                                   {{ display_title }}
+                                  {% if block.type == 'bundle' and block.settings.is_subscription and block.settings.subscription_discount_label != blank %}
+                                    <span class="lumen-pdp-hero__subscription-label">({{ block.settings.subscription_discount_label }})</span>
+                                  {% endif %}
                                 </div>
                               </div>
                               {% if block.type == 'bundle' and block.settings.show_amazon_offer and block.settings.amazon_url != blank %}
@@ -2005,6 +2068,25 @@
                         <div class="lumen-pdp-hero__amazon-banner"
                              style="background-color: {{ block.settings.amazon_banner_bg_color | default: '#7A0036' }}; color: {{ block.settings.amazon_banner_text_color | default: '#FFFFFF' }};">
                           {{ block.settings.amazon_promo_text }}
+                        </div>
+                      {% endif %}
+                      {% comment %} Subscription Frequency Selector {% endcomment %}
+                      {% if block.type == 'bundle' and block.settings.is_subscription and has_selling_plans and block.settings.show_frequency_selector %}
+                        <div class="lumen-pdp-hero__frequency" x-show="isSelected('{{ block.id }}')">
+                          <select
+                            class="lumen-pdp-hero__frequency-select"
+                            x-model="selectedSellingPlanId"
+                            @change="updateSellingPlan($event.target.value)"
+                          >
+                            {% for plan in selling_plans %}
+                              <option value="{{ plan.id }}" {% if forloop.first %}selected{% endif %}>
+                                {{ plan.name }}
+                              </option>
+                            {% endfor %}
+                          </select>
+                          <svg class="lumen-pdp-hero__frequency-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
                         </div>
                       {% endif %}
                     </div>
@@ -2283,6 +2365,22 @@
       product3Quantity: 1,
       addBundleProperty: false, // Whether to add bundle property to cart items (vera_bundle)
       addVera2BundleProperty: false, // Whether to add vera2_bundle property to cart items
+      // Subscription / Selling Plan
+      isSubscription: false,
+      selectedSellingPlanId: {% if selling_plans.first %}{{ selling_plans.first.id }}{% else %}null{% endif %},
+      // Selling plan prices (for updating price when frequency changes)
+      sellingPlanPrices: {
+        {% if has_selling_plans %}
+          {% for plan in selling_plans %}
+            {{ plan.id }}: {
+              price: {{ plan.price_adjustments.first.value | default: 0 }},
+              adjustmentType: "{{ plan.price_adjustments.first.value_type | default: 'percentage' }}",
+              name: "{{ plan.name | escape }}"
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        {% endif %}
+      },
+      baseProductPrice: {{ selected_variant.price | default: 0 }},
       // Current product images for gallery
       currentImages: [],
       // Bundle images data
@@ -2421,7 +2519,7 @@
         this.$nextTick(() => this.reinitializeGallery());
       },
       
-      selectMultiProductBundle(bundleId, product1VariantId, product1Quantity, product2VariantId, product2Quantity, product3VariantId, product3Quantity, addBundleProperty = false, addVera2BundleProperty = false) {
+      selectMultiProductBundle(bundleId, product1VariantId, product1Quantity, product2VariantId, product2Quantity, product3VariantId, product3Quantity, addBundleProperty = false, addVera2BundleProperty = false, isSubscription = false) {
         this.selectedBundleId = bundleId;
         this.bundleType = 'bundle';
         this.product1VariantId = product1VariantId;
@@ -2432,18 +2530,62 @@
         this.product3Quantity = product3Quantity;
         this.addBundleProperty = addBundleProperty;
         this.addVera2BundleProperty = addVera2BundleProperty;
-        
+        this.isSubscription = isSubscription;
+
+        // Reset selling plan if not a subscription
+        if (!isSubscription) {
+          this.selectedSellingPlanId = null;
+        } else {
+          // Set default selling plan and update price
+          this.selectedSellingPlanId = {% if selling_plans.first %}{{ selling_plans.first.id }}{% else %}null{% endif %};
+          // Update price for the subscription plan
+          if (this.selectedSellingPlanId && this.sellingPlanPrices[this.selectedSellingPlanId]) {
+            const plan = this.sellingPlanPrices[this.selectedSellingPlanId];
+            if (plan.adjustmentType === 'percentage') {
+              const discount = plan.price / 100;
+              this.currentPrice = Math.round(this.baseProductPrice * (1 - discount));
+            } else if (plan.adjustmentType === 'fixed_amount') {
+              this.currentPrice = this.baseProductPrice - plan.price;
+            } else if (plan.adjustmentType === 'price') {
+              this.currentPrice = plan.price;
+            }
+          }
+        }
+
         // Update gallery images, title, and price for this bundle
         if (this.bundleImagesData[bundleId] && this.bundleImagesData[bundleId].length > 0) {
           this.currentImages = this.bundleImagesData[bundleId];
         }
-        
+
         if (this.bundleProductData[bundleId]) {
           this.currentTitle = this.bundleProductData[bundleId].title;
           this.currentPrice = this.bundleProductData[bundleId].price;
         }
-        
+
         this.$nextTick(() => this.reinitializeGallery());
+      },
+
+      updateSellingPlan(planId) {
+        this.selectedSellingPlanId = parseInt(planId);
+
+        // Update the displayed price based on the selling plan
+        const plan = this.sellingPlanPrices[planId];
+        if (plan) {
+          if (plan.adjustmentType === 'percentage') {
+            // Percentage discount
+            const discount = plan.price / 100;
+            this.currentPrice = Math.round(this.baseProductPrice * (1 - discount));
+          } else if (plan.adjustmentType === 'fixed_amount') {
+            // Fixed amount discount
+            this.currentPrice = this.baseProductPrice - plan.price;
+          } else if (plan.adjustmentType === 'price') {
+            // Fixed price
+            this.currentPrice = plan.price;
+          } else {
+            // Default to base price
+            this.currentPrice = this.baseProductPrice;
+          }
+        }
       },
       
       reinitializeGallery() {
@@ -2503,9 +2645,13 @@
               _bundle_key: bundleTimestamp
             };
           }
+          // Add selling plan for subscriptions
+          if (this.isSubscription && this.selectedSellingPlanId) {
+            item.selling_plan = this.selectedSellingPlanId;
+          }
           items.push(item);
         }
-        
+
         if (this.product2VariantId && this.product2VariantId !== 0) {
           const item = {
             id: this.product2VariantId,
@@ -2518,9 +2664,13 @@
               _bundle_key: bundleTimestamp
             };
           }
+          // Add selling plan for subscriptions
+          if (this.isSubscription && this.selectedSellingPlanId) {
+            item.selling_plan = this.selectedSellingPlanId;
+          }
           items.push(item);
         }
-        
+
         if (this.product3VariantId && this.product3VariantId !== 0) {
           const item = {
             id: this.product3VariantId,
@@ -2532,6 +2682,10 @@
               bundle_item_index: "3",
               _bundle_key: bundleTimestamp
             };
+          }
+          // Add selling plan for subscriptions
+          if (this.isSubscription && this.selectedSellingPlanId) {
+            item.selling_plan = this.selectedSellingPlanId;
           }
           items.push(item);
         }
@@ -3523,6 +3677,44 @@
           "id": "amazon_banner_text_color",
           "label": "Promo banner text color",
           "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "Subscribe & Save"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_subscription",
+          "label": "This is a subscription offer",
+          "default": false,
+          "info": "Enable to show subscription-specific UI (discount label, frequency selector)"
+        },
+        {
+          "type": "text",
+          "id": "subscription_discount_label",
+          "label": "Discount label",
+          "default": "15%",
+          "info": "Shows next to title, e.g. 'Subscribe & Save (15%)'"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_frequency_selector",
+          "label": "Show delivery frequency selector",
+          "default": true,
+          "info": "Show a dropdown to select delivery frequency"
+        },
+        {
+          "type": "text",
+          "id": "frequency_options",
+          "label": "Frequency options",
+          "default": "Delivery every 1 month, Delivery every 2 months, Delivery every 3 months",
+          "info": "Comma-separated list of frequency options"
+        },
+        {
+          "type": "url",
+          "id": "subscription_url",
+          "label": "Subscription URL",
+          "info": "Where to redirect when this subscription option is selected and user clicks buy"
         }
       ]
     },
