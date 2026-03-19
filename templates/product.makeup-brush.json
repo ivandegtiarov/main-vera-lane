@@ -582,6 +582,7 @@
         "product": "",
         "custom_title": "",
         "rating_text": "(4.7) 591 Reviews",
+        "rating_link": "#reviews",
         "size_text": "",
         "description": "<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li></ul>",
         "add_to_cart_label": "ADD TO BAG",
@@ -990,6 +991,147 @@
         "padding_left_right": 20
       }
     },
+    "vl_review_cards_section": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Patricia M.",
+            "rating": 5,
+            "review_text": "This brush makes applying foundation so much easier. The dual ends are perfect - one for overall application and one for hard-to-reach areas around my nose."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Karen L.",
+            "rating": 5,
+            "review_text": "The bristles are incredibly soft and don't irritate my sensitive skin. Best brush I've ever owned!"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Susan T.",
+            "rating": 5,
+            "review_text": "Finally a brush that buffs foundation seamlessly. No streaks, no patches - just flawless skin every time."
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Jennifer W.",
+            "rating": 5,
+            "review_text": "The weighted handle makes it so comfortable to hold. I can do my whole face without my hand getting tired."
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Barbara R.",
+            "rating": 5,
+            "review_text": "Pairs perfectly with the Vera Lane foundation. The brush helps the formula blend right into my skin."
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Linda S.",
+            "rating": 5,
+            "review_text": "I've tried so many brushes over the years. This one is truly different - professional quality at a great price."
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Mary K.",
+            "rating": 5,
+            "review_text": "Love how easy it is to clean. The synthetic bristles dry quickly and stay soft wash after wash."
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Dorothy P.",
+            "rating": 5,
+            "review_text": "The precision tip is a game-changer for getting foundation along my jawline and hairline perfectly."
+          }
+        },
+        "review_9": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Nancy H.",
+            "rating": 5,
+            "review_text": "This brush applies foundation so evenly. My makeup looks like I had it professionally done!"
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Carol A.",
+            "rating": 5,
+            "review_text": "Worth every penny. Dense bristles that don't shed and give an airbrushed finish."
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Betty J.",
+            "rating": 5,
+            "review_text": "I bought one for myself and another as a gift. My sister loved it too!"
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Margaret D.",
+            "rating": 5,
+            "review_text": "The dual-ended design is so practical. No more switching between brushes mid-routine."
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12"
+      ],
+      "settings": {
+        "section_id": "reviews",
+        "heading": "What Our Customers Say",
+        "subheading": "Join 591+ happy customers who love our Makeup Brush",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "See All 591 Reviews",
+        "see_all_url": "#judgeme_product_reviews",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "lumen_usp_mjAcCK": {
       "type": "lumen-usp",
       "blocks": {
@@ -1051,6 +1193,7 @@
     "lumen_grid_benefits_section",
     "lumen_image_slider_section",
     "lumen_before_after_section",
+    "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
     "lumen_usp_mjAcCK"

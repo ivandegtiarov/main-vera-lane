@@ -988,6 +988,177 @@
         "enable_animation": true
       }
     },
+    "vl_review_cards_section": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 14, 2025",
+            "title": "Finally found my perfect match",
+            "quote": "I'm 58 and have tried everything. This actually blends into my skin without settling into lines. My daughter asked what I was doing differently!",
+            "name": "Margaret S.",
+            "verified": true,
+            "review_image": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 11, 2025",
+            "title": "No more orange face!",
+            "quote": "The color-matching is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
+            "name": "Patricia L.",
+            "verified": true,
+            "review_image": "shopify://shop_images/6.png"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 8, 2025",
+            "title": "Worth every penny",
+            "quote": "I've wasted so much money on foundations that cake or crease. This one doesn't. It just works. Finally.",
+            "name": "Linda K.",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Mar 5, 2025",
+            "title": "Good but wish it had more shades",
+            "quote": "At 62, I'd given up on foundation. This changed that. Lightweight and natural. Would love to see more shade options for deeper skin tones.",
+            "name": "Susan M.",
+            "verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 28, 2025",
+            "title": "Finally something for rosacea",
+            "quote": "My rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer.",
+            "name": "Carol B.",
+            "verified": true,
+            "review_image": "shopify://shop_images/woman-13.jpg"
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 22, 2025",
+            "title": "Skeptic turned believer",
+            "quote": "Rolled my eyes at 'adapts to your skin tone' but it actually does. Perfect match every time. Bought 3 more for backup.",
+            "name": "Barbara R.",
+            "verified": true
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 18, 2025",
+            "title": "Perfect for hot flashes",
+            "quote": "At 55, hot flashes were melting my makeup off by noon. This stays put even when I'm having a moment. Absolute lifesaver.",
+            "name": "Nancy W.",
+            "verified": true
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 15, 2025",
+            "title": "My go-to now",
+            "quote": "Threw out my other foundations. This is the only one I need. Matches perfectly, doesn't cake, and my skin can breathe.",
+            "name": "Dorothy H.",
+            "verified": true
+          }
+        },
+        "review_9": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 10, 2025",
+            "title": "Finally looks natural",
+            "quote": "I've always looked 'made up' with foundation. This actually looks like my skin, just better. My husband noticed immediately!",
+            "name": "Helen J.",
+            "verified": true,
+            "review_image": "shopify://shop_images/8_460d018c-39c2-4345-baba-bbf6b6e2a747.png"
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Feb 5, 2025",
+            "title": "Great coverage",
+            "quote": "Covers my age spots without looking heavy. Takes a minute to blend but once it sets, it's gorgeous. Would love SPF added.",
+            "name": "Ruth T.",
+            "verified": true
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Jan 28, 2025",
+            "title": "Daughter bought it for me",
+            "quote": "My daughter surprised me with this. Best gift ever! At 67, I'd given up on foundation. Now I wear it every day.",
+            "name": "Mary E.",
+            "verified": true
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Jan 20, 2025",
+            "title": "Ordering more for friends",
+            "quote": "This is what mature skin needs. Light, breathable, and somehow makes wrinkles less visible. Already ordered gifts for my book club!",
+            "name": "Jean M.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12"
+      ],
+      "name": "VL - Review Cards",
+      "settings": {
+        "section_id": "reviews",
+        "headline": "Customer Reviews",
+        "show_rating_summary": true,
+        "rating_summary_text": "Based on 1,247 reviews",
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "See All 1,247 Reviews",
+        "see_all_url": "#judgeme_product_reviews",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "star_color": "#fbbf24",
+        "text_color": "#4b5563",
+        "name_color": "#374151"
+      }
+    },
     "lumen_faq_section": {
       "type": "lumen-faq",
       "blocks": {
@@ -1206,6 +1377,7 @@
     "lumen_grid_benefits_section",
     "lumen_image_slider_section",
     "lumen_before_after_section",
+    "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
     "lumen_usp_mjAcCK",

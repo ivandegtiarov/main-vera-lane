@@ -582,6 +582,7 @@
         "product": "",
         "custom_title": "",
         "rating_text": "(4.5) 256 Reviews",
+        "rating_link": "#reviews",
         "size_text": "",
         "description": "<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li></ul>",
         "add_to_cart_label": "ADD TO BAG",
@@ -990,6 +991,147 @@
         "padding_left_right": 20
       }
     },
+    "vl_review_cards_section": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Michelle R.",
+            "rating": 5,
+            "review_text": "This bag is the perfect size for my essentials. Fits my foundation, brush, and a few lipsticks without being bulky."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Rachel T.",
+            "rating": 5,
+            "review_text": "The vegan leather feels so luxurious. Love the gold zipper detail - it looks way more expensive than it is!"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Amanda K.",
+            "rating": 5,
+            "review_text": "Perfect travel companion. Compact enough for my carry-on but holds everything I need for a weekend away."
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Christina L.",
+            "rating": 5,
+            "review_text": "The easy-wipe interior is a lifesaver. Had a lipstick lid come off and it cleaned up in seconds!"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Jennifer H.",
+            "rating": 5,
+            "review_text": "Love the embossed logo - subtle and elegant. This bag sits beautifully on my bathroom counter."
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Sarah M.",
+            "rating": 5,
+            "review_text": "Bought this to go with my Vera Lane foundation and brush. The whole set looks so chic together!"
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Lisa P.",
+            "rating": 5,
+            "review_text": "Finally a makeup bag that holds its shape! Tired of floppy pouches. This one stays standing."
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Diana W.",
+            "rating": 5,
+            "review_text": "The pebbled texture hides any scratches. Still looks brand new after months of daily use."
+          }
+        },
+        "review_9": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Nancy C.",
+            "rating": 5,
+            "review_text": "Got one for myself and two more as gifts. Everyone loves them!"
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Paula S.",
+            "rating": 5,
+            "review_text": "The zipper opens wide so I can actually see everything inside. Such a practical design."
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Emily B.",
+            "rating": 5,
+            "review_text": "Worth every penny. Quality is amazing and it photographs beautifully for my vanity setup."
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Victoria J.",
+            "rating": 5,
+            "review_text": "Sleek, functional, and beautiful. Everything I want in a makeup bag. Highly recommend!"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12"
+      ],
+      "settings": {
+        "section_id": "reviews",
+        "heading": "What Our Customers Say",
+        "subheading": "Join 256+ happy customers who love our Makeup Bag",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "See All 256 Reviews",
+        "see_all_url": "#judgeme_product_reviews",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "lumen_usp_mjAcCK": {
       "type": "lumen-usp",
       "blocks": {
@@ -1051,6 +1193,7 @@
     "lumen_grid_benefits_section",
     "lumen_image_slider_section",
     "lumen_before_after_section",
+    "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
     "lumen_usp_mjAcCK"

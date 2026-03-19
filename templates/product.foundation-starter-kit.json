@@ -582,6 +582,7 @@
         "product": "",
         "custom_title": "",
         "rating_text": "(4.5) 804 Reviews",
+        "rating_link": "#reviews",
         "size_text": "",
         "description": "<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li></ul>",
         "add_to_cart_label": "ADD TO BAG",
@@ -990,6 +991,147 @@
         "padding_left_right": 20
       }
     },
+    "vl_review_cards_section": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Patricia M.",
+            "rating": 5,
+            "review_text": "Getting the foundation and brush together was the best decision! They work perfectly as a pair and the results are flawless."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Sandra K.",
+            "rating": 5,
+            "review_text": "This starter kit has everything you need. The foundation adapts beautifully and the brush applies it like a dream."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Diana R.",
+            "rating": 5,
+            "review_text": "I bought the kit as a gift for my sister and she absolutely loves it. Now I need to get one for myself!"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Catherine L.",
+            "rating": 5,
+            "review_text": "Great value for the quality. The bundle price is much better than buying separately. Highly recommend!"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Elizabeth W.",
+            "rating": 5,
+            "review_text": "The perfect combination for achieving that professional makeup look at home. Love everything about this kit."
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Margaret T.",
+            "rating": 5,
+            "review_text": "Finally found my holy grail foundation routine. This kit makes my morning routine so much simpler."
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Helen S.",
+            "rating": 5,
+            "review_text": "The foundation is incredible on its own, but paired with this brush? Next level! So glad I got the bundle."
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Ruth B.",
+            "rating": 5,
+            "review_text": "My skin has never looked better. The foundation matches perfectly and the brush blends without any streaks."
+          }
+        },
+        "review_9": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Sharon P.",
+            "rating": 5,
+            "review_text": "Worth every penny! The savings on the bundle are great and the products work beautifully together."
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Carol A.",
+            "rating": 5,
+            "review_text": "I've recommended this kit to all my friends. The quality is outstanding and the results speak for themselves."
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Donna J.",
+            "rating": 5,
+            "review_text": "Makes a wonderful gift! The packaging is beautiful and the products inside are even better."
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "reviewer_image": "",
+            "reviewer_name": "Janet H.",
+            "rating": 5,
+            "review_text": "Professional quality at home. This starter kit is all you need for a flawless complexion every day."
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12"
+      ],
+      "settings": {
+        "section_id": "reviews",
+        "heading": "What Our Customers Say",
+        "subheading": "Join 804+ happy customers who love our Starter Kit",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "See All 804 Reviews",
+        "see_all_url": "#judgeme_product_reviews",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "lumen_usp_mjAcCK": {
       "type": "lumen-usp",
       "blocks": {
@@ -1051,6 +1193,7 @@
     "lumen_grid_benefits_section",
     "lumen_image_slider_section",
     "lumen_before_after_section",
+    "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
     "lumen_usp_mjAcCK"
