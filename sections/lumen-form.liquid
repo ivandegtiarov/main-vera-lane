@@ -99,13 +99,13 @@
               <label class="vl-contact__label" for="vlContactNumber-{{ section.id }}">Number</label>
               <div class="vl-contact__control">
                 <input
-                  class="vl-contact__input"
+                  class="vl-contact__input vl-contact__input--phone"
                   id="vlContactNumber-{{ section.id }}"
                   name="contact[phone]"
                   type="tel"
-                  placeholder="(+111)"
+                  placeholder="(555) 555-5555"
                   autocomplete="tel"
-                  pattern="[0-9\\-]*"
+                  maxlength="14"
                   value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
                 >
               </div>
@@ -492,6 +492,50 @@
       targets.forEach((el) => io.observe(el));
     } else {
       targets.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // US Phone Number Formatter - formats as (XXX) XXX-XXXX
+    function formatUSPhone(value) {
+      const digits = value.replace(/\D/g, '');
+      const limited = digits.substring(0, 10);
+      if (limited.length === 0) {
+        return '';
+      } else if (limited.length <= 3) {
+        return '(' + limited;
+      } else if (limited.length <= 6) {
+        return '(' + limited.substring(0, 3) + ') ' + limited.substring(3);
+      } else {
+        return '(' + limited.substring(0, 3) + ') ' + limited.substring(3, 6) + '-' + limited.substring(6);
+      }
+    }
+
+    const phoneInput = sectionEl.querySelector('.vl-contact__input--phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function(e) {
+        const cursorPos = e.target.selectionStart;
+        const oldValue = e.target.value;
+        const newValue = formatUSPhone(oldValue);
+        e.target.value = newValue;
+
+        // Maintain cursor position intelligently
+        if (cursorPos < oldValue.length) {
+          const digitsBeforeCursor = oldValue.substring(0, cursorPos).replace(/\D/g, '').length;
+          let newCursorPos = 0;
+          let digitCount = 0;
+          for (let i = 0; i < newValue.length && digitCount < digitsBeforeCursor; i++) {
+            if (/\d/.test(newValue[i])) {
+              digitCount++;
+            }
+            newCursorPos = i + 1;
+          }
+          e.target.setSelectionRange(newCursorPos, newCursorPos);
+        }
+      });
+
+      // Format existing value on page load
+      if (phoneInput.value) {
+        phoneInput.value = formatUSPhone(phoneInput.value);
+      }
     }
   })();
 </script>
