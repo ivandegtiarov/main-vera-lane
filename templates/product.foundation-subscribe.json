@@ -413,9 +413,7 @@
             "amazon_banner_bg_color": "#7a0036",
             "amazon_banner_text_color": "#ffffff",
             "is_subscription": true,
-            "show_frequency_selector": true,
-            "frequency_options": "Delivery every 1 month, Delivery every 2 months, Delivery every 3 months",
-            "subscription_url": ""
+            "show_frequency_selector": true
           }
         },
         "upsell_product_KVyK9f": {
