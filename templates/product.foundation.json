@@ -1000,7 +1000,7 @@
             "quote": "I'm 58 and have tried everything. This actually blends into my skin without settling into lines. My daughter asked what I was doing differently!",
             "name": "Margaret S.",
             "verified": true,
-            "review_image": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png"
+            "review_image": ""
           }
         },
         "review_2": {
@@ -1012,7 +1012,7 @@
             "quote": "The color-matching is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
             "name": "Patricia L.",
             "verified": true,
-            "review_image": "shopify://shop_images/6.png"
+            "review_image": ""
           }
         },
         "review_3": {
@@ -1046,7 +1046,7 @@
             "quote": "My rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer.",
             "name": "Carol B.",
             "verified": true,
-            "review_image": "shopify://shop_images/woman-13.jpg"
+            "review_image": ""
           }
         },
         "review_6": {
@@ -1091,7 +1091,7 @@
             "quote": "I've always looked 'made up' with foundation. This actually looks like my skin, just better. My husband noticed immediately!",
             "name": "Helen J.",
             "verified": true,
-            "review_image": "shopify://shop_images/8_460d018c-39c2-4345-baba-bbf6b6e2a747.png"
+            "review_image": ""
           }
         },
         "review_10": {
@@ -1306,68 +1306,6 @@
         "padding_left_right_desktop": 72
       }
     },
-    "17739135971a13f0d3": {
-      "type": "_blocks",
-      "blocks": {
-        "judge_me_reviews_reviews_grid_widget_qmeAXV": {
-          "type": "shopify://apps/judge-me-reviews/blocks/reviews_grid_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "show_sample_reviews": true,
-            "review_selection": "all",
-            "products": [],
-            "show_media_only": false,
-            "display_order": "media_first",
-            "columns_desktop": 3,
-            "rows_desktop": 3,
-            "columns_mobile": "2",
-            "rows_mobile": 6,
-            "show_stars": true,
-            "show_reviewer_name": true,
-            "show_review_title_on_hover_desktop": true,
-            "max_width": 1100,
-            "corner_styling": "soft",
-            "card_spacing": "medium",
-            "header_text_color": "#000000",
-            "star_and_reviewer_name_color": "#F9F9F9",
-            "drop_shadow_color": "#000000",
-            "overlay_and_background_color": "#000000",
-            "content_color": "#F9F9F9",
-            "header_text": "From our customers",
-            "show_average_rating": true
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_reviews_grid_widget_qmeAXV"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    }
   },
   "order": [
     "hero_jVaWmY",
@@ -1380,7 +1318,6 @@
     "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
-    "lumen_usp_mjAcCK",
-    "17739135971a13f0d3"
+    "lumen_usp_mjAcCK"
   ]
 }
