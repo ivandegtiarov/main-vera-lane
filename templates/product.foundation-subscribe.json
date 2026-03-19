@@ -283,7 +283,6 @@
       }
     },
     "lumen_pdp_hero_WWxn3E": {
-      "type": "lumen-pdp-hero",
       "blocks": {
         "description_item_3PU4Mz": {
           "type": "description_item",
@@ -413,7 +412,6 @@
             "amazon_banner_bg_color": "#7a0036",
             "amazon_banner_text_color": "#ffffff",
             "is_subscription": true,
-            "subscription_discount_label": "15% OFF",
             "show_frequency_selector": true,
             "frequency_options": "Delivery every 1 month, Delivery every 2 months, Delivery every 3 months",
             "subscription_url": ""

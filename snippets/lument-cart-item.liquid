@@ -74,6 +74,18 @@
         {% if is_free_gift %}
           <span class="lument-cart-item__free-badge">FREE GIFT 🎁</span>
         {% endif %}
+        {% if item.selling_plan_allocation %}
+          <div class="lument-cart-item__subscription-badge">
+            <svg class="lument-cart-item__subscription-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 7C13 10.3137 10.3137 13 7 13C3.68629 13 1 10.3137 1 7C1 3.68629 3.68629 1 7 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M10 1L13 1L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 4V7L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="lument-cart-item__subscription-text">
+              Subscribe & Save: {{ item.selling_plan_allocation.selling_plan.name }}
+            </span>
+          </div>
+        {% endif %}
       </div>
 
       <div class="lument-cart-item__price-wrapper">
@@ -553,6 +565,48 @@
     color: #7A0036;
     font-weight: 700;
     font-size: 16px;
+  }
+
+  /* Subscription Badge */
+  .lument-cart-item__subscription-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background-color: rgba(122, 0, 54, 0.08);
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: 8px;
+  }
+
+  .lument-cart-item__subscription-icon {
+    width: 14px;
+    height: 14px;
+    color: #7A0036;
+    flex-shrink: 0;
+  }
+
+  .lument-cart-item__subscription-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.4em;
+    color: #7A0036;
+  }
+
+  @media screen and (max-width: 749px) {
+    .lument-cart-item__subscription-badge {
+      padding: 4px 8px;
+    }
+
+    .lument-cart-item__subscription-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .lument-cart-item__subscription-text {
+      font-size: 11px;
+    }
   }
 
   /* Animation for item removal */
