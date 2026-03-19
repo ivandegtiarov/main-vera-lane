@@ -1,3 +1,8 @@
+{%- liquid
+  assign logo_width = section.settings.logo_width
+  assign logo_width_2x = logo_width | times: 2
+  assign logo_width_3x = logo_width | times: 3
+-%}
 <div class="vl-lp-header" style="
   --header-padding-top: {{ section.settings.padding_top }}px;
   --header-padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -6,19 +11,21 @@
   <div class="vl-lp-header__inner">
     {% if section.settings.logo != blank %}
       <img
-        src="{{ section.settings.logo | image_url: width: 400 }}"
+        src="{{ section.settings.logo | image_url: width: logo_width }}"
+        srcset="{{ section.settings.logo | image_url: width: logo_width }} 1x, {{ section.settings.logo | image_url: width: logo_width_2x }} 2x, {{ section.settings.logo | image_url: width: logo_width_3x }} 3x"
         alt="{{ shop.name }}"
         class="vl-lp-header__logo"
-        width="{{ section.settings.logo_width }}"
+        width="{{ logo_width }}"
         height="auto"
         loading="eager"
       >
     {% elsif settings.logo != blank %}
       <img
-        src="{{ settings.logo | image_url: width: 400 }}"
+        src="{{ settings.logo | image_url: width: logo_width }}"
+        srcset="{{ settings.logo | image_url: width: logo_width }} 1x, {{ settings.logo | image_url: width: logo_width_2x }} 2x, {{ settings.logo | image_url: width: logo_width_3x }} 3x"
         alt="{{ shop.name }}"
         class="vl-lp-header__logo"
-        width="{{ section.settings.logo_width }}"
+        width="{{ logo_width }}"
         height="auto"
         loading="eager"
       >

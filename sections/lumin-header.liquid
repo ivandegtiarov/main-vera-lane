@@ -1,6 +1,8 @@
 {% liquid
   assign logo = section.settings.logo
   assign logo_width = section.settings.logo_width
+  assign logo_width_2x = logo_width | times: 2
+  assign logo_width_3x = logo_width | times: 3
   assign menu = section.settings.menu
   assign background_color = section.settings.background_color
   assign text_color = section.settings.text_color
@@ -26,7 +28,14 @@
       <!-- Logo -->
       <a href="{{ routes.root_url }}" class="lumen-header__logo">
         {% if logo %}
-          <img src="{{ logo | image_url: width: logo_width }}" alt="{{ shop.name }}" width="{{ logo_width }}" height="auto" loading="eager">
+          <img
+            src="{{ logo | image_url: width: logo_width }}"
+            srcset="{{ logo | image_url: width: logo_width }} 1x, {{ logo | image_url: width: logo_width_2x }} 2x, {{ logo | image_url: width: logo_width_3x }} 3x"
+            alt="{{ shop.name }}"
+            width="{{ logo_width }}"
+            height="auto"
+            loading="eager"
+          >
         {% else %}
           <span class="lumen-header__logo-text">{{ shop.name }}</span>
         {% endif %}
