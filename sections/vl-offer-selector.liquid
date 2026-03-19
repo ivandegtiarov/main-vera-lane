@@ -1,0 +1,660 @@
+{%- comment -%}
+  VL Offer Selector
+  A buy box with multiple purchase options (one-time, subscribe & save, bundles)
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = 'vl-offer-' | append: section.id
+  assign offers = section.blocks | where: "type", "offer"
+-%}
+
+<div id="{{ section_id }}" class="vl-offer-selector" style="
+  --offer-bg: {{ section.settings.background_color }};
+  --offer-border: {{ section.settings.border_color }};
+  --offer-title-color: {{ section.settings.title_color }};
+  --offer-price-color: {{ section.settings.price_color }};
+  --offer-text-color: {{ section.settings.text_color }};
+  --offer-accent: {{ section.settings.accent_color }};
+  --offer-banner-bg: {{ section.settings.banner_bg_color }};
+  --offer-banner-text: {{ section.settings.banner_text_color }};
+  --offer-cta-bg: {{ section.settings.cta_bg_color }};
+  --offer-cta-text: {{ section.settings.cta_text_color }};
+  --offer-radio-active: {{ section.settings.accent_color }};
+">
+  <div class="vl-offer-selector__inner">
+    <!-- Header: Product + Buy Button -->
+    <div class="vl-offer-selector__header">
+      <div class="vl-offer-selector__product">
+        {% if section.settings.product_image != blank %}
+          <img
+            src="{{ section.settings.product_image | image_url: width: 120 }}"
+            alt="{{ section.settings.product_title }}"
+            class="vl-offer-selector__product-image"
+            width="60"
+            height="60"
+            loading="lazy"
+          >
+        {% endif %}
+        <div class="vl-offer-selector__product-info">
+          <h3 class="vl-offer-selector__product-title">{{ section.settings.product_title }}</h3>
+          <p class="vl-offer-selector__product-price">{{ section.settings.product_price }}</p>
+        </div>
+      </div>
+
+      <a href="{{ section.settings.cta_url }}" class="vl-offer-selector__cta" target="_blank" rel="noopener" data-offer-cta>
+        {% if section.settings.show_amazon_icon %}
+          <span class="vl-offer-selector__cta-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.249.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007z"/>
+            </svg>
+          </span>
+        {% endif %}
+        <span class="vl-offer-selector__cta-text">{{ section.settings.cta_text }}</span>
+      </a>
+    </div>
+
+    <!-- Promotional Banner -->
+    {% if section.settings.banner_text != blank %}
+      <div class="vl-offer-selector__banner">
+        {{ section.settings.banner_text }}
+      </div>
+    {% endif %}
+
+    <!-- Offer Options -->
+    {% if offers.size > 0 %}
+      <div class="vl-offer-selector__options" data-offer-options>
+        {% for block in offers %}
+          <div
+            class="vl-offer-selector__option {% if forloop.first %}is-selected{% endif %}"
+            data-offer-option="{{ forloop.index0 }}"
+            data-offer-url="{{ block.settings.offer_url }}"
+            {{ block.shopify_attributes }}
+          >
+            <label class="vl-offer-selector__option-label">
+              <input
+                type="radio"
+                name="offer-{{ section.id }}"
+                value="{{ forloop.index0 }}"
+                {% if forloop.first %}checked{% endif %}
+                class="vl-offer-selector__radio"
+                data-offer-radio
+              >
+              <span class="vl-offer-selector__radio-custom"></span>
+
+              <span class="vl-offer-selector__option-text">
+                <span class="vl-offer-selector__option-title">
+                  {{ block.settings.offer_title }}
+                  {% if block.settings.discount_label != blank %}
+                    <span class="vl-offer-selector__discount-label">({{ block.settings.discount_label }})</span>
+                  {% endif %}
+                </span>
+              </span>
+
+              <span class="vl-offer-selector__option-prices">
+                {% if block.settings.original_price != blank %}
+                  <span class="vl-offer-selector__price-original">{{ block.settings.original_price }}</span>
+                {% endif %}
+                <span class="vl-offer-selector__price-current">{{ block.settings.sale_price }}</span>
+              </span>
+            </label>
+
+            <!-- Subscription Options (if this is a subscription offer) -->
+            {% if block.settings.show_frequency_selector %}
+              <div class="vl-offer-selector__frequency" data-frequency-selector>
+                <select class="vl-offer-selector__frequency-select" data-frequency-select>
+                  {% assign frequencies = block.settings.frequency_options | split: ',' %}
+                  {% for freq in frequencies %}
+                    <option value="{{ freq | strip | downcase | replace: ' ', '-' }}">{{ freq | strip }}</option>
+                  {% endfor %}
+                </select>
+                <svg class="vl-offer-selector__frequency-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            {% endif %}
+
+            {% if block.settings.details_text != blank %}
+              <button type="button" class="vl-offer-selector__details-toggle" data-details-toggle>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>{{ block.settings.details_text }}</span>
+              </button>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  #{{ section_id }} {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  #{{ section_id }} .vl-offer-selector__inner {
+    max-width: 402px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* Header */
+  #{{ section_id }} .vl-offer-selector__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--offer-bg);
+    border: 1px solid var(--offer-border);
+    border-radius: 12px 12px 0 0;
+  }
+
+  #{{ section_id }} .vl-offer-selector__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #{{ section_id }} .vl-offer-selector__product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  #{{ section_id }} .vl-offer-selector__product-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--offer-title-color);
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+
+  #{{ section_id }} .vl-offer-selector__product-price {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--offer-text-color);
+    margin: 0;
+  }
+
+  /* CTA Button */
+  #{{ section_id }} .vl-offer-selector__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--offer-cta-bg);
+    color: var(--offer-cta-text);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  #{{ section_id }} .vl-offer-selector__cta:hover {
+    opacity: 0.9;
+  }
+
+  #{{ section_id }} .vl-offer-selector__cta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Banner */
+  #{{ section_id }} .vl-offer-selector__banner {
+    background-color: var(--offer-banner-bg);
+    color: var(--offer-banner-text);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* Options Container */
+  #{{ section_id }} .vl-offer-selector__options {
+    background-color: var(--offer-bg);
+    border: 1px solid var(--offer-border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+
+  /* Single Option */
+  #{{ section_id }} .vl-offer-selector__option {
+    padding: 16px;
+    border-bottom: 1px solid var(--offer-border);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  #{{ section_id }} .vl-offer-selector__option:last-child {
+    border-bottom: none;
+  }
+
+  #{{ section_id }} .vl-offer-selector__option:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  #{{ section_id }} .vl-offer-selector__option.is-selected {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  /* Option Label */
+  #{{ section_id }} .vl-offer-selector__option-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Custom Radio Button */
+  #{{ section_id }} .vl-offer-selector__radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #{{ section_id }} .vl-offer-selector__radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.2s ease;
+  }
+
+  #{{ section_id }} .vl-offer-selector__radio:checked + .vl-offer-selector__radio-custom {
+    border-color: var(--offer-radio-active);
+  }
+
+  #{{ section_id }} .vl-offer-selector__radio:checked + .vl-offer-selector__radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--offer-radio-active);
+    border-radius: 50%;
+  }
+
+  /* Option Text */
+  #{{ section_id }} .vl-offer-selector__option-text {
+    flex: 1;
+  }
+
+  #{{ section_id }} .vl-offer-selector__option-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--offer-title-color);
+  }
+
+  #{{ section_id }} .vl-offer-selector__discount-label {
+    color: var(--offer-accent);
+    font-weight: 600;
+  }
+
+  /* Prices */
+  #{{ section_id }} .vl-offer-selector__option-prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  #{{ section_id }} .vl-offer-selector__price-original {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  #{{ section_id }} .vl-offer-selector__price-current {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--offer-price-color);
+  }
+
+  /* Frequency Selector */
+  #{{ section_id }} .vl-offer-selector__frequency {
+    position: relative;
+    margin-top: 12px;
+    margin-left: 32px;
+    display: none;
+  }
+
+  #{{ section_id }} .vl-offer-selector__option.is-selected .vl-offer-selector__frequency {
+    display: block;
+  }
+
+  #{{ section_id }} .vl-offer-selector__frequency-select {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--offer-text-color);
+    background-color: #fff;
+    border: 1px solid var(--offer-border);
+    border-radius: 6px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  #{{ section_id }} .vl-offer-selector__frequency-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--offer-text-color);
+  }
+
+  /* Details Toggle */
+  #{{ section_id }} .vl-offer-selector__details-toggle {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    margin-left: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--offer-text-color);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  #{{ section_id }} .vl-offer-selector__option.is-selected .vl-offer-selector__details-toggle {
+    display: inline-flex;
+  }
+
+  #{{ section_id }} .vl-offer-selector__details-toggle:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  (function() {
+    const section = document.getElementById('{{ section_id }}');
+    if (!section) return;
+
+    const options = section.querySelectorAll('[data-offer-option]');
+    const ctaButton = section.querySelector('[data-offer-cta]');
+    const radios = section.querySelectorAll('[data-offer-radio]');
+
+    // Handle option selection
+    options.forEach(option => {
+      option.addEventListener('click', function(e) {
+        // Don't trigger if clicking on the radio itself, select, or details toggle
+        if (e.target.closest('[data-frequency-select]') || e.target.closest('[data-details-toggle]')) {
+          return;
+        }
+
+        // Update selected state
+        options.forEach(opt => opt.classList.remove('is-selected'));
+        this.classList.add('is-selected');
+
+        // Check the radio
+        const radio = this.querySelector('[data-offer-radio]');
+        if (radio) {
+          radio.checked = true;
+        }
+
+        // Update CTA URL
+        const offerUrl = this.getAttribute('data-offer-url');
+        if (offerUrl && ctaButton) {
+          ctaButton.href = offerUrl;
+        }
+      });
+    });
+
+    // Handle radio change (for keyboard navigation)
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        const option = this.closest('[data-offer-option]');
+        if (option) {
+          options.forEach(opt => opt.classList.remove('is-selected'));
+          option.classList.add('is-selected');
+
+          const offerUrl = option.getAttribute('data-offer-url');
+          if (offerUrl && ctaButton) {
+            ctaButton.href = offerUrl;
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "VL Offer Selector",
+  "tag": "section",
+  "class": "vl-offer-selector-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Info"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product title",
+      "default": "Tone Adapting Foundation"
+    },
+    {
+      "type": "text",
+      "id": "product_price",
+      "label": "Display price",
+      "default": "$39.95"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Default button URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "BUY"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_amazon_icon",
+      "label": "Show Amazon icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Promotional Banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Banner text",
+      "default": "Get a 50% Discount When You Buy On Amazon - 3 Days Only"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (discount labels)",
+      "default": "#7a0036"
+    },
+    {
+      "type": "color",
+      "id": "banner_bg_color",
+      "label": "Banner background",
+      "default": "#7a0036"
+    },
+    {
+      "type": "color",
+      "id": "banner_text_color",
+      "label": "Banner text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Button background",
+      "default": "#F7A81B"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button text color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "offer",
+      "name": "Purchase Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "offer_title",
+          "label": "Offer title",
+          "default": "One-Time Purchase"
+        },
+        {
+          "type": "text",
+          "id": "discount_label",
+          "label": "Discount label",
+          "info": "e.g., '15%' - leave blank to hide"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price",
+          "info": "Shows crossed out - leave blank to hide"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale/Current price",
+          "default": "$68.00"
+        },
+        {
+          "type": "url",
+          "id": "offer_url",
+          "label": "Offer URL",
+          "info": "Where this option links to when selected"
+        },
+        {
+          "type": "header",
+          "content": "Subscription Options"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_frequency_selector",
+          "label": "Show delivery frequency selector",
+          "default": false,
+          "info": "Enable for subscription offers"
+        },
+        {
+          "type": "text",
+          "id": "frequency_options",
+          "label": "Frequency options",
+          "default": "Delivery every 1 month, Delivery every 2 months, Delivery every 3 months",
+          "info": "Comma-separated list of options"
+        },
+        {
+          "type": "text",
+          "id": "details_text",
+          "label": "Details link text",
+          "default": "Subscription details",
+          "info": "Leave blank to hide"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Offer Selector",
+      "blocks": [
+        {
+          "type": "offer",
+          "settings": {
+            "offer_title": "One-Time Purchase",
+            "sale_price": "$68.00",
+            "show_frequency_selector": false,
+            "details_text": ""
+          }
+        },
+        {
+          "type": "offer",
+          "settings": {
+            "offer_title": "Subscribe & Save",
+            "discount_label": "15%",
+            "original_price": "$68.00",
+            "sale_price": "$57.80",
+            "show_frequency_selector": true,
+            "frequency_options": "Delivery every 1 month, Delivery every 2 months, Delivery every 3 months",
+            "details_text": "Subscription details"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
