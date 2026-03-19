@@ -1000,7 +1000,8 @@
             "quote": "I'm 58 and have tried everything. This actually blends into my skin without settling into lines. My daughter asked what I was doing differently!",
             "name": "Margaret S.",
             "verified": true,
-            "review_image": ""
+            "review_image": "",
+            "review_image_asset": "review-image-7.jpg"
           }
         },
         "review_2": {
@@ -1009,10 +1010,11 @@
             "rating": 5,
             "date": "Mar 11, 2025",
             "title": "No more orange face!",
-            "quote": "The color-matching is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
+            "quote": "At 52, I've tried every foundation that promises to match. The color-matching on this one is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
             "name": "Patricia L.",
             "verified": true,
-            "review_image": ""
+            "review_image": "",
+            "review_image_asset": "review-image-2.jpg"
           }
         },
         "review_3": {
@@ -1021,9 +1023,10 @@
             "rating": 5,
             "date": "Mar 8, 2025",
             "title": "Worth every penny",
-            "quote": "I've wasted so much money on foundations that cake or crease. This one doesn't. It just works. Finally.",
+            "quote": "At 50, I've wasted so much money on foundations that cake or crease. This one doesn't. It just works. Finally found something that makes my skin look natural.",
             "name": "Linda K.",
-            "verified": true
+            "verified": true,
+            "review_image_asset": "review-image-3.jpg"
           }
         },
         "review_4": {
@@ -1032,9 +1035,10 @@
             "rating": 4,
             "date": "Mar 5, 2025",
             "title": "Good but wish it had more shades",
-            "quote": "At 62, I'd given up on foundation. This changed that. Lightweight and natural. Would love to see more shade options for deeper skin tones.",
+            "quote": "At 60, I'd given up on foundation. This changed that. Lightweight and natural. Would love to see more shade options for deeper skin tones.",
             "name": "Susan M.",
-            "verified": true
+            "verified": true,
+            "review_image_asset": "review-image-1.jpg"
           }
         },
         "review_5": {
@@ -1043,10 +1047,11 @@
             "rating": 5,
             "date": "Feb 28, 2025",
             "title": "Finally something for rosacea",
-            "quote": "My rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer.",
+            "quote": "At 52, my rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer for mature skin.",
             "name": "Carol B.",
             "verified": true,
-            "review_image": ""
+            "review_image": "",
+            "review_image_asset": "review-image-4.jpg"
           }
         },
         "review_6": {
@@ -1055,9 +1060,10 @@
             "rating": 5,
             "date": "Feb 22, 2025",
             "title": "Skeptic turned believer",
-            "quote": "Rolled my eyes at 'adapts to your skin tone' but it actually does. Perfect match every time. Bought 3 more for backup.",
+            "quote": "At 55, I rolled my eyes at 'adapts to your skin tone' but it actually does. Perfect match every time. Bought 3 more for backup.",
             "name": "Barbara R.",
-            "verified": true
+            "verified": true,
+            "review_image_asset": "review-image-5.jpg"
           }
         },
         "review_7": {
@@ -1068,7 +1074,8 @@
             "title": "Perfect for hot flashes",
             "quote": "At 55, hot flashes were melting my makeup off by noon. This stays put even when I'm having a moment. Absolute lifesaver.",
             "name": "Nancy W.",
-            "verified": true
+            "verified": true,
+            "review_image_asset": "review-image-6.jpg"
           }
         },
         "review_8": {

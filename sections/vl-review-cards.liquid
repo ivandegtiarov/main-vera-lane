@@ -22,11 +22,20 @@
       {%- assign hidden_count = section.blocks.size | minus: initial_count -%}
       <div class="vl-review-cards__grid" data-initial-count="{{ initial_count }}">
         {%- for block in section.blocks -%}
-          <article class="vl-review-cards__card {% if block.settings.review_image != blank %}vl-review-cards__card--has-image{% endif %}{% if forloop.index > initial_count %} vl-review-cards__card--hidden{% endif %}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
-            {%- if block.settings.review_image != blank -%}
+          {%- assign has_review_image = false -%}
+          {%- assign review_img_src = '' -%}
+          {%- if block.settings.review_image != blank -%}
+            {%- assign has_review_image = true -%}
+            {%- assign review_img_src = block.settings.review_image | image_url: width: 600 -%}
+          {%- elsif block.settings.review_image_asset != blank -%}
+            {%- assign has_review_image = true -%}
+            {%- assign review_img_src = block.settings.review_image_asset | asset_url -%}
+          {%- endif -%}
+          <article class="vl-review-cards__card {% if has_review_image %}vl-review-cards__card--has-image{% endif %}{% if forloop.index > initial_count %} vl-review-cards__card--hidden{% endif %}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+            {%- if has_review_image -%}
               <div class="vl-review-cards__review-image">
                 <img
-                  src="{{ block.settings.review_image | image_url: width: 600 }}"
+                  src="{{ review_img_src }}"
                   alt="Customer photo"
                   loading="lazy"
                   class="vl-review-cards__review-img"
@@ -528,6 +537,12 @@
           "id": "review_image",
           "label": "Customer photo",
           "info": "Photo uploaded by customer (product shot, selfie, etc.)"
+        },
+        {
+          "type": "text",
+          "id": "review_image_asset",
+          "label": "Customer photo (asset filename)",
+          "info": "Alternative: enter asset filename e.g. review-image-1.jpg"
         },
         {
           "type": "range",
