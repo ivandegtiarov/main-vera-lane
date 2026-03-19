@@ -355,36 +355,6 @@
             "text": "<p>Free Return</p>"
           }
         },
-        "bundle_KbEXwe": {
-          "type": "bundle",
-          "settings": {
-            "bundle_product": "color-changing-foundation",
-            "bundle_title": "",
-            "product_1": "color-changing-foundation",
-            "product_1_quantity": 1,
-            "product_2": "",
-            "product_2_quantity": 1,
-            "product_3": "",
-            "product_3_quantity": 1,
-            "add_bundle_property": false,
-            "add_vera2_bundle_property": false,
-            "show_badge": false,
-            "show_corner_badge": true,
-            "corner_badge_text": "MOST POPULAR",
-            "corner_badge_bg_color": "#7a0036",
-            "corner_badge_text_color": "#ffffff",
-            "badge_text": "BUNDLE",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": false,
-            "show_amazon_offer": true,
-            "amazon_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
-            "amazon_icon": "shopify://shop_images/amazon_icon_logo-logo_brandlogos.net_fgndw-200x200_1_4e9b7b8f-a922-468f-b049-0c8146a90fe5.png",
-            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
-            "amazon_banner_bg_color": "#7a0036",
-            "amazon_banner_text_color": "#ffffff"
-          }
-        },
         "bundle_subscribe_save": {
           "type": "bundle",
           "settings": {
@@ -412,140 +382,6 @@
             "amazon_promo_text": "",
             "amazon_banner_bg_color": "#7a0036",
             "amazon_banner_text_color": "#ffffff"
-          }
-        },
-        "bundle_rkAfB6": {
-          "type": "bundle",
-          "settings": {
-            "bundle_product": "makeup-brush",
-            "bundle_title": "",
-            "product_1": "makeup-brush",
-            "product_1_quantity": 1,
-            "product_2": "",
-            "product_2_quantity": 1,
-            "product_3": "",
-            "product_3_quantity": 1,
-            "add_bundle_property": false,
-            "add_vera2_bundle_property": false,
-            "show_badge": false,
-            "show_corner_badge": true,
-            "corner_badge_text": "MOST POPULAR",
-            "corner_badge_bg_color": "#7a0036",
-            "corner_badge_text_color": "#ffffff",
-            "badge_text": "BUNDLE",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": false,
-            "show_amazon_offer": false,
-            "amazon_url": "",
-            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
-            "amazon_banner_bg_color": "#7a0036",
-            "amazon_banner_text_color": "#ffffff"
-          }
-        },
-        "bundle_fyxzq3": {
-          "type": "bundle",
-          "settings": {
-            "bundle_product": "bundle-tone-adapting-foundation-makeup-brush",
-            "bundle_title": "",
-            "bundle_image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
-            "product_1": "color-changing-foundation",
-            "product_1_quantity": 1,
-            "product_2": "makeup-brush",
-            "product_2_quantity": 1,
-            "product_3": "",
-            "product_3_quantity": 1,
-            "add_bundle_property": false,
-            "add_vera2_bundle_property": true,
-            "show_badge": false,
-            "show_corner_badge": true,
-            "corner_badge_text": "GREAT DEAL",
-            "corner_badge_bg_color": "#000000",
-            "corner_badge_text_color": "#ffffff",
-            "badge_text": "BEST",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": false,
-            "show_amazon_offer": false,
-            "amazon_url": "",
-            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
-            "amazon_banner_bg_color": "#7a0036",
-            "amazon_banner_text_color": "#ffffff"
-          }
-        },
-        "bundle_MdzXij": {
-          "type": "bundle",
-          "settings": {
-            "bundle_product": "makeup-bag-bundle",
-            "bundle_title": "Bundle: Foundation, Makeup Brush & Makeup Bag",
-            "bundle_image": "shopify://shop_images/Gemini_Generated_Image_7hejds7hejds7hej.png",
-            "product_1": "color-changing-foundation",
-            "product_1_quantity": 1,
-            "product_2": "makeup-brush",
-            "product_2_quantity": 1,
-            "product_3": "makeup-bag-1",
-            "product_3_quantity": 1,
-            "add_bundle_property": true,
-            "add_vera2_bundle_property": false,
-            "show_badge": false,
-            "show_corner_badge": true,
-            "corner_badge_text": "MOST POPULAR",
-            "corner_badge_bg_color": "#7a0036",
-            "corner_badge_text_color": "#ffffff",
-            "badge_text": "MOST POPULAR",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": true,
-            "show_amazon_offer": false,
-            "amazon_url": "",
-            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
-            "amazon_banner_bg_color": "#7a0036",
-            "amazon_banner_text_color": "#ffffff"
-          }
-        },
-        "bundle_option_HyygYU": {
-          "type": "bundle_option",
-          "disabled": true,
-          "settings": {
-            "bundle_title": "1 Piece",
-            "quantity": 1,
-            "use_percentage": false,
-            "discount_percentage": 0,
-            "show_badge": false,
-            "badge_text": "POPULAR",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": false
-          }
-        },
-        "bundle_option_GXBwQL": {
-          "type": "bundle_option",
-          "disabled": true,
-          "settings": {
-            "bundle_title": "2 Pieces",
-            "quantity": 2,
-            "use_percentage": true,
-            "discount_percentage": 10,
-            "show_badge": true,
-            "badge_text": "",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": false
-          }
-        },
-        "bundle_option_VnCjay": {
-          "type": "bundle_option",
-          "disabled": true,
-          "settings": {
-            "bundle_title": "3 Pieces",
-            "quantity": 3,
-            "use_percentage": true,
-            "discount_percentage": 40,
-            "show_badge": true,
-            "badge_text": "BEST VALUE",
-            "badge_bg_color": "",
-            "badge_text_color": "",
-            "show_free_delivery_badge": true
           }
         },
         "upsell_product_KVyK9f": {
@@ -673,14 +509,7 @@
         "trust_badge_hYWKi7",
         "trust_badge_wT3BMT",
         "trust_badge_KVy3Dw",
-        "bundle_KbEXwe",
         "bundle_subscribe_save",
-        "bundle_rkAfB6",
-        "bundle_fyxzq3",
-        "bundle_MdzXij",
-        "bundle_option_HyygYU",
-        "bundle_option_GXBwQL",
-        "bundle_option_VnCjay",
         "upsell_product_KVyK9f",
         "upsell_product_3DPeqL",
         "faq_item_U8Vae4",
