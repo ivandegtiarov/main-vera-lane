@@ -283,6 +283,7 @@
       }
     },
     "lumen_pdp_hero_WWxn3E": {
+      "type": "lumen-pdp-hero-subscribe",
       "blocks": {
         "description_item_3PU4Mz": {
           "type": "description_item",
