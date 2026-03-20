@@ -1,0 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "bl_hero_N6fT0F": {
+      "type": "bl-hero",
+      "name": "BL - Hero",
+      "settings": {
+        "section_id": "",
+        "bg_image_asset": "lp-derm-foundation-hero.jpg",
+        "bg_color": "#2d2d2d",
+        "overlay_opacity": 80,
+        "category": "BEAUTY",
+        "headline": "5 Things Dermatologists Wish You Knew About Foundation After 40",
+        "subheadline": "",
+        "show_rating": true,
+        "review_count": "12,400+ Reviews",
+        "cta_text": "Read More",
+        "cta_type": "anchor",
+        "cta_anchor": "offer",
+        "cta_url": "",
+        "cta_text_color": "#ffffff",
+        "cta_border_color": "#ffffff"
+      }
+    },
+    "bl_reason_item_VqzS5L": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "1",
+        "title": "Your Skin Barrier Is Thinner Than You Think — And Most Foundations Damage It Further",
+        "body_text": "<p>After 40, the outermost layer of your skin — the stratum corneum — begins to thin. It loses roughly 10% of its protective capacity every decade. This barrier is what keeps moisture in and irritants out. When it weakens, everything changes: your skin becomes more reactive, drier, and far less forgiving of what you put on it.</p><p>Most foundations contain ingredients that actively compromise this already fragile barrier. Denatured alcohol evaporates moisture. Synthetic fragrances trigger low-grade inflammation. Heavy silicones create an occlusive seal that traps bacteria against skin that can no longer defend itself as efficiently. Dermatologists see the results in their clinics every week — women who think they have a \"skin condition\" when what they actually have is a foundation problem.</p><p>What dermatologists recommend instead is a formula that treats the skin barrier as something to protect, not override. Foundations with hyaluronic acid, ceramides, and vitamin E don't just sit on top of your skin — they reinforce the barrier while providing coverage. Your foundation should be the best thing you put on your face, not the worst.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-derm-foundation-reason-1.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_PHB3Br": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "2",
+        "title": "The SPF in Your Foundation Isn't Doing What You Think It Is",
+        "body_text": "<p>Dermatologists have a phrase they use behind closed doors: \"SPF theatre.\" It describes the false sense of security most women get from the SPF rating printed on their foundation bottle. SPF 15. SPF 20. It sounds protective. It isn't — at least not the way you're using it.</p><p>To achieve the SPF level advertised on a foundation, you would need to apply roughly seven times the amount any normal person uses. A thin, blended layer of SPF 20 foundation delivers, in practice, an SPF of about 2 to 4. That's functionally useless against UVA rays — the ones that cause the deep collagen breakdown responsible for wrinkles, sagging, and age spots. You're getting a tan through your makeup and don't even know it.</p><p>The solution isn't to stop wearing SPF foundation — it's to choose a foundation that treats sun protection seriously. Look for broad-spectrum UVA/UVB filters combined with physical blockers like zinc oxide in concentrations that actually work at normal application thickness. A properly formulated foundation should deliver real protection without requiring you to cake it on.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-derm-foundation-reason-2.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_tZHzTH": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "3",
+        "title": "\"Anti-Aging\" Foundations Are Usually Just Marketing — Here's What Actually Works",
+        "body_text": "<p>The beauty industry discovered something lucrative about fifteen years ago: put \"anti-aging\" on the label and women over 40 will pay 30% more for essentially the same formula. Dermatologists will tell you that the vast majority of foundations labelled \"anti-aging\" contain active ingredients in concentrations too low to have any measurable effect on skin. It's a label, not a treatment.</p><p>Real anti-aging results from a foundation require specific ingredients at specific concentrations. Retinol needs to be stabilised and present at 0.1% minimum to stimulate collagen production. Niacinamide works at 2-5% concentration. Peptides need to be bioavailable, not just listed on the back of a box. Most \"anti-aging\" foundations contain trace amounts of these ingredients — enough to justify the claim legally, not enough to change your skin.</p><p>The foundations dermatologists actually recommend to their patients blur the line between makeup and skincare. They contain clinical-grade concentrations of active ingredients that deliver visible results over weeks of wear. Your foundation is on your face for 10-14 hours a day — that's an enormous treatment window being wasted by formulas that promise everything and deliver nothing.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-derm-foundation-reason-3.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_99oVyF": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "4",
+        "title": "You're Probably Allergic to Your Foundation and Don't Realise It",
+        "body_text": "<p>Dermatologists report that low-grade contact dermatitis from cosmetics is one of the most underdiagnosed conditions in women over 40. The symptoms don't look like a typical allergic reaction — there's no dramatic rash or swelling. Instead, there's persistent dryness that no moisturiser fixes. A slight roughness to the texture. Occasional redness that comes and goes. Skin that just never looks \"right\" no matter what you do.</p><p>The culprits are usually preservatives (methylisothiazolinone, formaldehyde releasers), fragrance compounds (which can contain up to 200 individual chemicals under a single label listing), and certain dyes. Your skin tolerated these ingredients at 25 because your barrier was strong enough to handle them. After 40, that tolerance drops. You're not developing sensitive skin — you're developing a sensitivity to ingredients your skin can no longer process.</p><p>Switching to a hypoallergenic, fragrance-free foundation formulated specifically for mature skin is one of the single biggest improvements dermatologists see in their patients' skin. Within two weeks, the persistent dryness often resolves. The texture improves. The redness fades. It looks like a skincare miracle, but it's actually just removing the thing that was causing the problem.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-derm-foundation-reason-4.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_CtN9zQ": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "5",
+        "title": "The Right Foundation Can Actually Improve Your Skin — Not Just Cover It",
+        "body_text": "<p>There's a belief that foundation is inherently bad for your skin. That wearing it every day clogs pores, accelerates ageing, and prevents your skin from \"breathing.\" Dermatologists hear this constantly — and they'll tell you it's outdated thinking based on formulas that haven't existed for a decade.</p><p>Modern foundations, when properly formulated, can function as a leave-on treatment. A foundation containing hyaluronic acid at effective concentrations will measurably increase skin hydration over the course of a wearing day. Niacinamide strengthens the skin barrier and reduces hyperpigmentation. Antioxidants like vitamin C and E neutralise free radical damage from UV exposure and pollution. Your skin doesn't need to be bare to be healthy — it needs to be protected.</p><p>The women who visit dermatologists looking ten years younger than their age often share one thing in common: they wear foundation every day, but they wear the right one. A formula that hydrates, protects, and treats their skin while providing natural-looking coverage. It's the most powerful anti-aging tool hiding in plain sight — a product you already use every day, working for you instead of against you.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-derm-foundation-reason-5.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_product_card_split_GffaQl": {
+      "type": "bl-product-card-split",
+      "blocks": {
+        "feature_S98rP3": {
+          "type": "feature",
+          "settings": {
+            "label": "Dermatologist-Tested"
+          }
+        },
+        "feature_Xa6l7M": {
+          "type": "feature",
+          "settings": {
+            "label": "Hydrating Formula"
+          }
+        },
+        "feature_LRbyU5": {
+          "type": "feature",
+          "settings": {
+            "label": "Broad-Spectrum SPF"
+          }
+        },
+        "feature_C8xBQe": {
+          "type": "feature",
+          "settings": {
+            "label": "Tone-Adapting"
+          }
+        },
+        "feature_WJp2sC": {
+          "type": "feature",
+          "settings": {
+            "label": "Anti-Aging Actives"
+          }
+        }
+      },
+      "block_order": [
+        "feature_S98rP3",
+        "feature_Xa6l7M",
+        "feature_LRbyU5",
+        "feature_C8xBQe",
+        "feature_WJp2sC"
+      ],
+      "name": "BL - Product Card Split",
+      "settings": {
+        "section_id": "offer",
+        "bg_color": "#faf9f7",
+        "sale_badge": "VIP SALE — Up to 50% Off",
+        "badge_bg": "#d4a574",
+        "badge_text": "#2d2d2d",
+        "product_name": "Tone-Adapting Foundation",
+        "description": "<p>Dermatologist-informed. Clinically hydrating. A lightweight, buildable formula with tone-adapting pigments, broad-spectrum protection, and skincare-grade actives that improve your skin with every wear.</p>",
+        "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+        "more_colors_text": "+12 More Shades",
+        "cta_text": "Check Availability",
+        "cta_url": "shopify://products/color-changing-foundation",
+        "cta_bg": "#000000",
+        "cta_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "bl_hero_N6fT0F",
+    "bl_reason_item_VqzS5L",
+    "bl_reason_item_PHB3Br",
+    "bl_reason_item_tZHzTH",
+    "bl_reason_item_99oVyF",
+    "bl_reason_item_CtN9zQ",
+    "bl_product_card_split_GffaQl"
+  ]
+}
