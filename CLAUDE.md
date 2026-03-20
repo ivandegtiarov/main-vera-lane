@@ -35,7 +35,9 @@
 3. Generate images via fal.ai and save to `assets/`
 4. Push theme: `shopify theme push --store 1cw77g-ef --theme 185429229846 --allow-live`
 5. Commit and push to git
-6. User creates page in Shopify admin (Online Store → Pages → Add page, assign template)
+6. Create page via Shopify Admin API (token in `.env` as `SHOPIFY_ACCESS_TOKEN`)
+   - `POST /admin/api/2024-01/pages.json` with `template_suffix` matching template filename
+   - Store: `1cw77g-ef`, scopes: `read_content,write_content,read_themes,write_themes`
 
 ### Image Generation (fal.ai)
 - Always use fal.ai, never MCP tools for image generation

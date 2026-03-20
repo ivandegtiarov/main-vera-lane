@@ -1,0 +1,40 @@
+{
+  "slug": "lp-4-questions-before-buying-foundation-over-40",
+  "hero": {
+    "headline": "The 4 Questions To Ask Before Buying Any Foundation Over 40",
+    "category": "BEAUTY",
+    "bg_image_asset": "lp-questions-foundation-hero.jpg",
+    "review_count": "12,400+ Reviews"
+  },
+  "reasons": [
+    {
+      "title": "\"Will This Actually Work With My Skin — Or Just Sit On Top Of It?\"",
+      "body": "<p>This is the question that separates women who love their foundation from women who've given up on it entirely. Most foundations are designed to create a layer on top of your skin. A coating. A mask. And for women over 40, whose skin texture, moisture levels, and elasticity have fundamentally changed, that approach is a recipe for disappointment.</p><p>A foundation that sits on the surface will settle into fine lines within hours. It will slide off areas where your skin produces less oil. It will cling to dry patches and skip over the spots that actually need coverage. You'll spend the day checking mirrors and wondering why it looked fine at 7am and terrible by noon.</p><p>The right foundation bonds with your skin rather than sitting on it. It uses micro-pigment technology that flexes with your facial movements instead of cracking. It works with your skin's natural moisture rather than fighting it. Before you buy anything, ask the brand: does this formula work differently on mature skin, or is it just the same formula with different marketing?</p>",
+      "image_asset": "lp-questions-foundation-reason-1.jpg"
+    },
+    {
+      "title": "\"What Happens To This Foundation After 4 Hours?\"",
+      "body": "<p>Every foundation looks acceptable at the moment of application. The real test is what happens at hour four, hour six, hour ten. And this is where the vast majority of foundations designed for younger skin completely fall apart on women over 40.</p><p>Here's what typically happens: the formula oxidises, shifting to a darker or more orange shade as it reacts with your skin's pH. The pigments migrate into fine lines, making them appear deeper. Any areas of dryness — which become more common with age — start to show through as the formula loses adhesion. By late afternoon, you're not wearing the foundation you applied that morning. You're wearing a degraded version of it.</p><p>A foundation worth buying should look better at 6pm than it did at 8am. That's not a fantasy — it's what happens when the formula contains hydrating ingredients that actually improve your skin throughout the day. Hyaluronic acid draws moisture in. Vitamin E protects against environmental damage. The foundation doesn't just hold up — it actively works for you while you wear it.</p>",
+      "image_asset": "lp-questions-foundation-reason-2.jpg"
+    },
+    {
+      "title": "\"Does This Foundation Match Me — Or Just Match One Version Of Me?\"",
+      "body": "<p>You've been shade-matched at a counter. You've held bottles up to your jawline under shop lighting. You've ordered samples online and tested them in your bathroom mirror. And somehow, every shade you choose looks wrong at some point during the day, in some type of light, in some room.</p><p>That's because traditional foundations use a single, static pigment. One fixed colour mixed in a lab and poured into a bottle. But your skin doesn't have one fixed shade. Your undertone shifts with blood flow, temperature, hormones, and the light you're standing in. A static pigment can match you in one moment — but it cannot match you in every moment.</p><p>The question to ask isn't \"which shade am I?\" It's \"does this foundation adapt to my shade?\" Tone-adapting pigment technology reads your unique undertone and adjusts in real time. It looks right in fluorescent office light, in warm restaurant light, in natural daylight, and in photos. You stop thinking about your shade entirely — because it's always correct.</p>",
+      "image_asset": "lp-questions-foundation-reason-3.jpg"
+    },
+    {
+      "title": "\"Is This Foundation Helping My Skin — Or Slowly Damaging It?\"",
+      "body": "<p>This is the question almost nobody asks. And it might be the most important one of all. Because the foundation you wear for 10 to 14 hours a day, five to seven days a week, is either the best skincare product in your routine — or the worst.</p><p>Most foundations contain ingredients that actively work against mature skin. Denatured alcohol strips moisture. Heavy silicones prevent your skin from regulating itself. Synthetic fragrances — which can contain hundreds of undisclosed chemical compounds — trigger chronic low-grade inflammation that accelerates ageing. You're literally paying to make your skin worse while trying to make it look better.</p><p>A foundation designed properly for women over 40 should function as a leave-on treatment. Clinical-grade hydrating ingredients that increase moisture levels throughout the day. Antioxidants that neutralise free radical damage from UV and pollution. Niacinamide that strengthens your skin barrier and fades hyperpigmentation. Ask yourself: when I take this foundation off tonight, will my skin be better or worse than when I put it on this morning?</p>",
+      "image_asset": "lp-questions-foundation-reason-4.jpg"
+    }
+  ],
+  "product": {
+    "name": "Tone-Adapting Foundation",
+    "description": "<p>Finally, a foundation that answers all four questions right. Tone-adapting pigments that match every light. Skincare-grade actives that improve your skin while you wear it. A lightweight, buildable formula that looks better at 6pm than it did at 8am.</p>",
+    "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+    "badge": "VIP SALE — Up to 50% Off",
+    "cta_text": "Check Availability",
+    "cta_url": "shopify://products/color-changing-foundation",
+    "features": ["Tone-Adapting", "Hydrating Formula", "Broad-Spectrum SPF", "Lightweight Feel", "Anti-Aging Actives"]
+  }
+}
