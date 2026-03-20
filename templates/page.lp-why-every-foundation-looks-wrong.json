@@ -1,0 +1,178 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "bl_hero_kje7mk": {
+      "type": "bl-hero",
+      "name": "BL - Hero",
+      "settings": {
+        "section_id": "",
+        "bg_image_asset": "lp-foundation-wrong-hero.jpg",
+        "bg_color": "#2d2d2d",
+        "overlay_opacity": 80,
+        "category": "BEAUTY",
+        "headline": "Why Every Foundation You've Tried Looks Wrong (It's Not You, It's The Formula)",
+        "subheadline": "",
+        "show_rating": true,
+        "review_count": "12,400+ Reviews",
+        "cta_text": "Read More",
+        "cta_type": "anchor",
+        "cta_anchor": "offer",
+        "cta_url": "",
+        "cta_text_color": "#ffffff",
+        "cta_border_color": "#ffffff"
+      }
+    },
+    "bl_reason_item_Srqk8o": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "1",
+        "title": "Traditional Foundations Were Never Designed for Your Skin",
+        "body_text": "<p>Walk into any department store and pick up a foundation. Read the back. \"For all skin types.\" That phrase should be your first warning sign. Because the skin you had at 30 is not the skin you have now — and a formula engineered for a 28-year-old with oily T-zone concerns has no business sitting on mature skin.</p><p>As skin ages, it loses moisture, elasticity, and the ability to hold pigment evenly. The sebum production that once kept foundation \"locked in\" slows dramatically. So when you apply a traditional formula, it doesn't bond to your skin the way the adverts promise. It sits on the surface. It moves. It cracks. And by midday, you look like you're wearing a mask that's slowly peeling off.</p><p>What works instead is a formula specifically engineered for the way mature skin behaves — one that uses micro-pigments designed to flex with facial movement rather than fight against it. The difference isn't subtle. It's the difference between foundation that looks like makeup and foundation that looks like skin.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-foundation-wrong-reason-1.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_aGv7ag": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "2",
+        "title": "You've Been Shade-Matched Using an Outdated System",
+        "body_text": "<p>Think about the last time you were shade-matched. Someone held a strip of colour against your jawline under fluorescent shop lighting, declared you a \"warm beige,\" and sent you home with a bottle that looked completely different by the time you got to your bathroom mirror.</p><p>This system is fundamentally broken. Your skin doesn't have one fixed shade. It shifts constantly — with the seasons, with your circulation, with the temperature, with the light you're standing in. A single static pigment will always look wrong somewhere, at some point during the day.</p><p>The breakthrough that women over 50 are discovering is tone-adapting pigment technology. Instead of matching a shade to one moment in one lighting condition, these intelligent pigments read your unique undertone and adjust in real time. The result is foundation that looks correct in every room, at every hour, without you ever second-guessing your shade choice again.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-foundation-wrong-reason-2.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_8rJibh": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "3",
+        "title": "The \"Full Coverage\" Trap Is Making You Look Older",
+        "body_text": "<p>It seems logical. You want to cover age spots, redness, and uneven tone — so you reach for the heaviest coverage you can find. Full coverage. Maximum pigment. Total concealment. And in doing so, you've fallen into the single biggest mistake women over 50 make with foundation.</p><p>Full coverage formulas are loaded with dense pigments and binding agents that create an opaque, mask-like layer. On younger skin with minimal texture, this can look passable. On mature skin — where there are fine lines, pores, and natural changes in surface texture — it amplifies every single detail you were trying to hide. It's like putting a magnifying glass on your face.</p><p>The women who get compliments on their skin have learned a counterintuitive truth: less coverage, applied correctly, looks far more flawless than heavy coverage ever could. A sheer, buildable formula lets your natural skin show through in the places where it looks good, while allowing you to layer more coverage only where you actually need it.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-foundation-wrong-reason-3.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_ckcgFw": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "4",
+        "title": "Your Foundation Is Actually Drying Out Your Skin",
+        "body_text": "<p>Here's something no beauty counter will tell you: most foundations are actively dehydrating your skin while you wear them. The alcohols, silicones, and setting agents that keep foundation \"matte\" and \"long-wearing\" are pulling moisture out of your skin hour by hour. For women over 50, whose skin is already producing less natural moisture, this is a disaster.</p><p>By afternoon, your foundation hasn't just faded — your skin underneath has become drier. Fine lines appear deeper because the skin has contracted. That \"cakey\" look isn't too much product. It's product sitting on top of dehydrated skin that can no longer support it.</p><p>The new generation of foundations designed for mature skin take the opposite approach. They contain skincare-grade hydrating ingredients — hyaluronic acid, vitamin E, plant-based oils — that actually improve your skin's moisture levels while you wear them. Instead of your foundation looking worse as the day goes on, it genuinely looks better. Your skin is being nourished, not punished.</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-foundation-wrong-reason-4.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_reason_item_fbicjy": {
+      "type": "bl-reason-item",
+      "name": "BL - Reason Item",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#faf9f7",
+        "number": "5",
+        "title": "The Right Foundation Doesn't Just Cover — It Transforms",
+        "body_text": "<p>If your current foundation routine feels like damage control — covering, concealing, hiding — then you haven't yet experienced what a properly formulated foundation can do. Because the best foundations for women over 50 don't just sit on your skin. They change how your skin looks, feels, and behaves.</p><p>Imagine a foundation that adapts to your exact skin tone so you never worry about shade matching again. That hydrates while it covers, so your skin looks better at 6pm than it did at 8am. That uses flexible micro-pigments to create the kind of natural, lit-from-within glow that makes people say \"you look amazing\" — not \"your makeup looks nice.\"</p><p>That foundation exists. It was developed specifically for women over 50 who had given up on finding something that actually works. And the reviews speak for themselves — over 12,000 women have rated it 5 stars, with most saying the same thing: \"I wish I'd found this years ago.\"</p>",
+        "link_text": "",
+        "link_type": "anchor",
+        "link_anchor": "",
+        "link_url": "",
+        "image_asset": "lp-foundation-wrong-reason-5.jpg",
+        "image_position": "right"
+      }
+    },
+    "bl_product_card_split_8ba1cx": {
+      "type": "bl-product-card-split",
+      "blocks": {
+        "feature_RytCiG": {
+          "type": "feature",
+          "settings": {
+            "label": "Tone-Adapting"
+          }
+        },
+        "feature_k0kr5g": {
+          "type": "feature",
+          "settings": {
+            "label": "Hydrating Formula"
+          }
+        },
+        "feature_KXAUAY": {
+          "type": "feature",
+          "settings": {
+            "label": "SPF 15 Protection"
+          }
+        },
+        "feature_CDWoml": {
+          "type": "feature",
+          "settings": {
+            "label": "Lightweight Feel"
+          }
+        },
+        "feature_Jhgpmc": {
+          "type": "feature",
+          "settings": {
+            "label": "Anti-Aging"
+          }
+        }
+      },
+      "block_order": [
+        "feature_RytCiG",
+        "feature_k0kr5g",
+        "feature_KXAUAY",
+        "feature_CDWoml",
+        "feature_Jhgpmc"
+      ],
+      "name": "BL - Product Card Split",
+      "settings": {
+        "section_id": "offer",
+        "bg_color": "#faf9f7",
+        "sale_badge": "VIP SALE — Up to 50% Off",
+        "badge_bg": "#d4a574",
+        "badge_text": "#2d2d2d",
+        "product_name": "Tone-Adapting Foundation",
+        "description": "<p>A revolutionary lightweight formula that reads your unique skin tone and adjusts its shade in real time. Hydrates, smooths, and delivers natural-looking coverage that actually improves throughout the day.</p>",
+        "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+        "more_colors_text": "+12 More Shades",
+        "cta_text": "Check Availability",
+        "cta_url": "shopify://products/color-changing-foundation",
+        "cta_bg": "#000000",
+        "cta_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "bl_hero_kje7mk",
+    "bl_reason_item_Srqk8o",
+    "bl_reason_item_aGv7ag",
+    "bl_reason_item_8rJibh",
+    "bl_reason_item_ckcgFw",
+    "bl_reason_item_fbicjy",
+    "bl_product_card_split_8ba1cx"
+  ]
+}
