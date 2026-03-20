@@ -27,11 +27,20 @@
       {%- endif -%}
     </div>
 
-    {%- if section.settings.image != blank -%}
+    {%- liquid
+      if section.settings.image != blank
+        assign reason_img_url = section.settings.image | image_url: width: 700
+        assign reason_img_alt = section.settings.image.alt | default: section.settings.title | escape
+      elsif section.settings.image_asset != blank
+        assign reason_img_url = section.settings.image_asset | asset_url
+        assign reason_img_alt = section.settings.title | escape
+      endif
+    -%}
+    {%- if reason_img_url -%}
       <figure class="bl-reason-item__figure">
         <img
-          src="{{ section.settings.image | image_url: width: 700 }}"
-          alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+          src="{{ reason_img_url }}"
+          alt="{{ reason_img_alt }}"
           loading="lazy"
           class="bl-reason-item__image"
         >
@@ -247,6 +256,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image (asset filename)",
+      "info": "Use instead of image picker for theme asset images (e.g., 'my-image.jpg')"
     },
     {
       "type": "select",
