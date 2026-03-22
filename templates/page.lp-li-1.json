@@ -178,6 +178,23 @@
         "cta_bg": "#000000",
         "cta_text_color": "#ffffff"
       }
+    },
+    "bl_sticky_cta_Li1aXq": {
+      "type": "bl-sticky-cta",
+      "settings": {
+        "badge_text": "LIMITED TIME",
+        "promo_text": "Up to 50% Off Today",
+        "button_text": "Check Availability",
+        "link_url": "shopify://products/color-changing-foundation",
+        "show_after_scroll": true,
+        "dismiss_enabled": false,
+        "bg_color": "#2D2D2D",
+        "text_color": "#ffffff",
+        "button_bg": "#D4A574",
+        "button_text_color": "#2D2D2D",
+        "badge_bg": "#8B3A3A",
+        "badge_text_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -188,6 +205,7 @@
     "bl_reason_item_yCx7Kk",
     "bl_reason_item_RU6hyt",
     "bl_reason_item_EGXpYa",
-    "bl_product_card_split_aBVKyx"
+    "bl_product_card_split_aBVKyx",
+    "bl_sticky_cta_Li1aXq"
   ]
 }

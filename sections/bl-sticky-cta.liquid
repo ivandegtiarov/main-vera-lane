@@ -1,0 +1,308 @@
+{%- liquid
+  assign cta_href = section.settings.link_url
+-%}
+<div
+  class="bl-sticky-cta bl-sticky-cta--hidden"
+  {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %}
+  style="
+    --sticky-bg: {{ section.settings.bg_color }};
+    --sticky-text: {{ section.settings.text_color }};
+    --sticky-btn-bg: {{ section.settings.button_bg }};
+    --sticky-btn-text: {{ section.settings.button_text_color }};
+    --sticky-badge-bg: {{ section.settings.badge_bg }};
+    --sticky-badge-text: {{ section.settings.badge_text_color }};
+  "
+  data-show-on-scroll="{{ section.settings.show_after_scroll }}"
+>
+  <div class="bl-sticky-cta__inner">
+    {%- if section.settings.dismiss_enabled -%}
+      <button class="bl-sticky-cta__dismiss" aria-label="Close" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    <div class="bl-sticky-cta__content">
+      {%- if section.settings.badge_text != blank -%}
+        <span class="bl-sticky-cta__badge">{{ section.settings.badge_text }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.promo_text != blank -%}
+        <span class="bl-sticky-cta__promo">{{ section.settings.promo_text }}</span>
+      {%- endif -%}
+    </div>
+
+    <a href="{{ cta_href }}" class="bl-sticky-cta__button">
+      {{ section.settings.button_text }}
+    </a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var el = document.querySelector('.bl-sticky-cta');
+    if (!el) return;
+
+    var showOnScroll = el.getAttribute('data-show-on-scroll') === 'true';
+    var dismissBtn = el.querySelector('.bl-sticky-cta__dismiss');
+
+    if (sessionStorage.getItem('bl_sticky_cta_dismissed') === '1') {
+      return;
+    }
+
+    if (!showOnScroll) {
+      el.classList.remove('bl-sticky-cta--hidden');
+    }
+
+    function onScroll() {
+      if (window.scrollY > 400) {
+        el.classList.remove('bl-sticky-cta--hidden');
+      } else {
+        el.classList.add('bl-sticky-cta--hidden');
+      }
+    }
+
+    if (showOnScroll) {
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            onScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', function() {
+        el.classList.add('bl-sticky-cta--hidden');
+        sessionStorage.setItem('bl_sticky_cta_dismissed', '1');
+      });
+    }
+  })();
+</script>
+
+{% stylesheet %}
+  .bl-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--sticky-bg, #2D2D2D);
+    padding: 0.75rem 1rem 0.875rem;
+    z-index: 100;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+    transition: transform 350ms ease, opacity 350ms ease;
+  }
+
+  .bl-sticky-cta--hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .bl-sticky-cta__inner {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .bl-sticky-cta__dismiss {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    background: none;
+    border: none;
+    color: var(--sticky-text, #fff);
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: opacity 200ms ease;
+  }
+
+  .bl-sticky-cta__dismiss:hover {
+    opacity: 1;
+  }
+
+  .bl-sticky-cta__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin-bottom: 0.625rem;
+    flex-wrap: wrap;
+  }
+
+  .bl-sticky-cta__badge {
+    display: inline-block;
+    background: var(--sticky-badge-bg, #8B3A3A);
+    color: var(--sticky-badge-text, #fff);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.1875rem 0.5rem;
+  }
+
+  .bl-sticky-cta__promo {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--sticky-text, #fff);
+  }
+
+  .bl-sticky-cta__button {
+    display: block;
+    width: 100%;
+    background: var(--sticky-btn-bg, #D4A574);
+    color: var(--sticky-btn-text, #2D2D2D);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem 2rem;
+    border: none;
+    transition: opacity 200ms ease;
+  }
+
+  .bl-sticky-cta__button:hover {
+    opacity: 0.9;
+  }
+
+  body:has(.bl-sticky-cta:not(.bl-sticky-cta--hidden)) {
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 600px) {
+    .bl-sticky-cta {
+      padding: 0.625rem 0.75rem 0.75rem;
+    }
+
+    .bl-sticky-cta__button {
+      font-size: 1rem;
+      padding: 0.875rem 1.5rem;
+    }
+
+    body:has(.bl-sticky-cta:not(.bl-sticky-cta--hidden)) {
+      padding-bottom: 90px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Sticky CTA",
+  "tag": "section",
+  "class": "bl-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "LIMITED TIME"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Promo text",
+      "default": "Up to 50% Off Today"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Check Availability"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_after_scroll",
+      "label": "Show only after scrolling",
+      "info": "Bar appears after user scrolls past the hero section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dismiss_enabled",
+      "label": "Show dismiss button",
+      "info": "Allow users to close the sticky bar",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bar background",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#D4A574"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#2D2D2D"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Badge background",
+      "default": "#8B3A3A"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Sticky CTA"
+    }
+  ]
+}
+{% endschema %}
