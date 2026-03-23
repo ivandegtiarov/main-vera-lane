@@ -10,7 +10,7 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "bl_hero_cyQSa2": {
+    "bl_hero_1Q4gvD": {
       "type": "bl-hero",
       "name": "BL - Hero",
       "settings": {
@@ -31,46 +31,46 @@
         "cta_border_color": "#ffffff"
       }
     },
-    "bl_brand_review_xL0mqp": {
+    "bl_brand_review_GYhW1g": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_iO0ESI": {
+        "pro_Tr1Jj0": {
           "type": "pro",
           "settings": {
             "text": "Most accurate shade-matching of the five tested"
           }
         },
-        "pro_hxGlCI": {
+        "pro_Jfbbe6": {
           "type": "pro",
           "settings": {
             "text": "Hydrating formula with hyaluronic acid and vitamin E"
           }
         },
-        "pro_OtT6qX": {
+        "pro_4SuQFL": {
           "type": "pro",
           "settings": {
             "text": "Doesn't settle into fine lines — even after 8 hours"
           }
         },
-        "pro_TCwWI7": {
+        "pro_TNACMl": {
           "type": "pro",
           "settings": {
             "text": "Lightweight, buildable coverage"
           }
         },
-        "pro_JH658p": {
+        "pro_lqYU2Y": {
           "type": "pro",
           "settings": {
             "text": "Mid-range price for premium performance"
           }
         },
-        "con_9LXnKn": {
+        "con_kL2OVM": {
           "type": "con",
           "settings": {
             "text": "Only available online — no in-store option"
           }
         },
-        "con_VUkUdv": {
+        "con_r4ds8b": {
           "type": "con",
           "settings": {
             "text": "Frequently goes out of stock"
@@ -78,13 +78,13 @@
         }
       },
       "block_order": [
-        "pro_iO0ESI",
-        "pro_hxGlCI",
-        "pro_OtT6qX",
-        "pro_TCwWI7",
-        "pro_JH658p",
-        "con_9LXnKn",
-        "con_VUkUdv"
+        "pro_Tr1Jj0",
+        "pro_Jfbbe6",
+        "pro_4SuQFL",
+        "pro_TNACMl",
+        "pro_lqYU2Y",
+        "con_kL2OVM",
+        "con_r4ds8b"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -92,6 +92,8 @@
         "bg_color": "#faf9f7",
         "number": "#1",
         "badge_text": "BEST OVERALL",
+        "highlight": true,
+        "highlight_label": "EDITOR'S CHOICE — BEST OVERALL",
         "brand_name": "Vera Lane Color Changing Foundation",
         "rating": "4.6",
         "price_text": "$39.99",
@@ -101,52 +103,52 @@
         "image_position": "right"
       }
     },
-    "bl_brand_review_rgIGpJ": {
+    "bl_brand_review_IHYcRK": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_9rawCv": {
+        "pro_6XF5cE": {
           "type": "pro",
           "settings": {
             "text": "Designed specifically for mature skin"
           }
         },
-        "pro_5D5k8X": {
+        "pro_ug1gVi": {
           "type": "pro",
           "settings": {
             "text": "Smooth, creamy application"
           }
         },
-        "pro_jImD66": {
+        "pro_WGQe93": {
           "type": "pro",
           "settings": {
             "text": "Contains quality skincare ingredients"
           }
         },
-        "pro_9uDfSu": {
+        "pro_UKvUhq": {
           "type": "pro",
           "settings": {
             "text": "Strong brand reputation and loyal customer base"
           }
         },
-        "con_zPehrn": {
+        "con_RzRgwP": {
           "type": "con",
           "settings": {
             "text": "Leans warm — may not suit cool undertones"
           }
         },
-        "con_9lzhiK": {
+        "con_gsTTbD": {
           "type": "con",
           "settings": {
             "text": "Feels noticeably heavier by afternoon"
           }
         },
-        "con_ccnde7": {
+        "con_2tIGSC": {
           "type": "con",
           "settings": {
             "text": "Can emphasize skin texture as the day goes on"
           }
         },
-        "con_yV8ysb": {
+        "con_CIYaDw": {
           "type": "con",
           "settings": {
             "text": "Higher price point at $44.00"
@@ -154,14 +156,14 @@
         }
       },
       "block_order": [
-        "pro_9rawCv",
-        "pro_5D5k8X",
-        "pro_jImD66",
-        "pro_9uDfSu",
-        "con_zPehrn",
-        "con_9lzhiK",
-        "con_ccnde7",
-        "con_yV8ysb"
+        "pro_6XF5cE",
+        "pro_ug1gVi",
+        "pro_WGQe93",
+        "pro_UKvUhq",
+        "con_RzRgwP",
+        "con_gsTTbD",
+        "con_2tIGSC",
+        "con_CIYaDw"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -169,6 +171,8 @@
         "bg_color": "#faf9f7",
         "number": "#2",
         "badge_text": "",
+        "highlight": false,
+        "highlight_label": "",
         "brand_name": "Prime Prometics",
         "rating": "4.1",
         "price_text": "$44.00",
@@ -178,52 +182,52 @@
         "image_position": "left"
       }
     },
-    "bl_brand_review_itT177": {
+    "bl_brand_review_Q9Il3V": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_6FgJU2": {
+        "pro_4pHQA9": {
           "type": "pro",
           "settings": {
             "text": "Most dramatic and impressive color-change effect"
           }
         },
-        "pro_hu1fUL": {
+        "pro_tlncFC": {
           "type": "pro",
           "settings": {
             "text": "Lightweight, easy-to-apply formula"
           }
         },
-        "pro_Ab5H6y": {
+        "pro_DxvqBN": {
           "type": "pro",
           "settings": {
             "text": "Most affordable option at $36.00"
           }
         },
-        "pro_VLouMU": {
+        "pro_wG07OI": {
           "type": "pro",
           "settings": {
             "text": "Entertaining to use — great visual transformation"
           }
         },
-        "con_FOZb6J": {
+        "con_XnFYpj": {
           "type": "con",
           "settings": {
             "text": "Shade matching is inconsistent — slightly ashy finish"
           }
         },
-        "con_Qjvo4N": {
+        "con_8Zf3PT": {
           "type": "con",
           "settings": {
             "text": "Oxidizes and darkens noticeably after 4-5 hours"
           }
         },
-        "con_ReTBAX": {
+        "con_R4gPfG": {
           "type": "con",
           "settings": {
             "text": "Too sheer for age spots and discoloration"
           }
         },
-        "con_nRu1Sg": {
+        "con_QLf60r": {
           "type": "con",
           "settings": {
             "text": "Needs powder to correct the finish"
@@ -231,14 +235,14 @@
         }
       },
       "block_order": [
-        "pro_6FgJU2",
-        "pro_hu1fUL",
-        "pro_Ab5H6y",
-        "pro_VLouMU",
-        "con_FOZb6J",
-        "con_Qjvo4N",
-        "con_ReTBAX",
-        "con_nRu1Sg"
+        "pro_4pHQA9",
+        "pro_tlncFC",
+        "pro_DxvqBN",
+        "pro_wG07OI",
+        "con_XnFYpj",
+        "con_8Zf3PT",
+        "con_R4gPfG",
+        "con_QLf60r"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -246,6 +250,8 @@
         "bg_color": "#faf9f7",
         "number": "#3",
         "badge_text": "",
+        "highlight": false,
+        "highlight_label": "",
         "brand_name": "Meroda Cosmetics",
         "rating": "4.2",
         "price_text": "$36.00",
@@ -255,52 +261,52 @@
         "image_position": "right"
       }
     },
-    "bl_brand_review_moKlF9": {
+    "bl_brand_review_dtH83b": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_va9eRd": {
+        "pro_vy9E1H": {
           "type": "pro",
           "settings": {
             "text": "SPF 50 — highest sun protection on this list"
           }
         },
-        "pro_4AauMZ": {
+        "pro_wE4Hzg": {
           "type": "pro",
           "settings": {
             "text": "Strong initial application and coverage"
           }
         },
-        "pro_gCGWTo": {
+        "pro_QB5Y2F": {
           "type": "pro",
           "settings": {
             "text": "Highly rated on Amazon (4.3 stars, 1000+ reviews)"
           }
         },
-        "pro_eQvKB2": {
+        "pro_BJSGqd": {
           "type": "pro",
           "settings": {
             "text": "Decent color-matching technology"
           }
         },
-        "con_9OH4I7": {
+        "con_OkylZj": {
           "type": "con",
           "settings": {
             "text": "Settles into fine lines after 2-3 hours"
           }
         },
-        "con_ofvXvw": {
+        "con_KCa9JI": {
           "type": "con",
           "settings": {
             "text": "Oxidizes to a warmer tone by afternoon"
           }
         },
-        "con_cPcStB": {
+        "con_CbB6Z5": {
           "type": "con",
           "settings": {
             "text": "Early promise fades as the day goes on"
           }
         },
-        "con_sF0Zfw": {
+        "con_K2Byob": {
           "type": "con",
           "settings": {
             "text": "Premium pricing at $42.49"
@@ -308,14 +314,14 @@
         }
       },
       "block_order": [
-        "pro_va9eRd",
-        "pro_4AauMZ",
-        "pro_gCGWTo",
-        "pro_eQvKB2",
-        "con_9OH4I7",
-        "con_ofvXvw",
-        "con_cPcStB",
-        "con_sF0Zfw"
+        "pro_vy9E1H",
+        "pro_wE4Hzg",
+        "pro_QB5Y2F",
+        "pro_BJSGqd",
+        "con_OkylZj",
+        "con_KCa9JI",
+        "con_CbB6Z5",
+        "con_K2Byob"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -323,6 +329,8 @@
         "bg_color": "#faf9f7",
         "number": "#4",
         "badge_text": "",
+        "highlight": false,
+        "highlight_label": "",
         "brand_name": "Forever Bloom",
         "rating": "4.3",
         "price_text": "$42.49",
@@ -332,58 +340,58 @@
         "image_position": "left"
       }
     },
-    "bl_brand_review_wSo4A4": {
+    "bl_brand_review_AxYh6q": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_46EXoc": {
+        "pro_AF1Vmk": {
           "type": "pro",
           "settings": {
             "text": "Best raw coverage for age spots and discoloration"
           }
         },
-        "pro_kvoxq3": {
+        "pro_G1rf8A": {
           "type": "pro",
           "settings": {
             "text": "Smooth, polished initial application"
           }
         },
-        "pro_KnrJE1": {
+        "pro_Dv4FCu": {
           "type": "pro",
           "settings": {
             "text": "Premium packaging and unboxing experience"
           }
         },
-        "pro_Bgq9Kd": {
+        "pro_e2XPCg": {
           "type": "pro",
           "settings": {
             "text": "Good for concealing specific imperfections"
           }
         },
-        "con_OVS4FO": {
+        "con_scO6fi": {
           "type": "con",
           "settings": {
             "text": "Most expensive option at $54.90"
           }
         },
-        "con_UPUGfj": {
+        "con_yUM4ZK": {
           "type": "con",
           "settings": {
             "text": "Minimal actual color-changing effect"
           }
         },
-        "con_DJvYc8": {
+        "con_hltVwN": {
           "type": "con",
           "settings": {
             "text": "Thick formula feels heavy and aging on mature skin"
           }
         },
-        "con_Bj8Kgg": {
+        "con_gJCgco": {
           "type": "con",
           "settings": {
             "text": "Tight, drying feeling after 6 hours"
           }
         },
-        "con_bXgta2": {
+        "con_87TXC3": {
           "type": "con",
           "settings": {
             "text": "Premium price doesn't match color-changing delivery"
@@ -391,15 +399,15 @@
         }
       },
       "block_order": [
-        "pro_46EXoc",
-        "pro_kvoxq3",
-        "pro_KnrJE1",
-        "pro_Bgq9Kd",
-        "con_OVS4FO",
-        "con_UPUGfj",
-        "con_DJvYc8",
-        "con_Bj8Kgg",
-        "con_bXgta2"
+        "pro_AF1Vmk",
+        "pro_G1rf8A",
+        "pro_Dv4FCu",
+        "pro_e2XPCg",
+        "con_scO6fi",
+        "con_yUM4ZK",
+        "con_hltVwN",
+        "con_gJCgco",
+        "con_87TXC3"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -407,6 +415,8 @@
         "bg_color": "#faf9f7",
         "number": "#5",
         "badge_text": "",
+        "highlight": false,
+        "highlight_label": "",
         "brand_name": "Luxe",
         "rating": "4.0",
         "price_text": "$54.90",
@@ -416,10 +426,10 @@
         "image_position": "right"
       }
     },
-    "bl_comparison_table_gkuXNJ": {
+    "bl_comparison_table_jKNEkw": {
       "type": "bl-comparison-table",
       "blocks": {
-        "criterion_8lDT8p": {
+        "criterion_7sS0Jx": {
           "type": "criterion",
           "settings": {
             "criterion": "Coverage",
@@ -430,7 +440,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_YDkNYP": {
+        "criterion_dq1IzF": {
           "type": "criterion",
           "settings": {
             "criterion": "Shade Matching",
@@ -441,7 +451,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_DkfM0M": {
+        "criterion_eh6wwb": {
           "type": "criterion",
           "settings": {
             "criterion": "Longevity",
@@ -452,7 +462,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_dsG8Ea": {
+        "criterion_xdrocc": {
           "type": "criterion",
           "settings": {
             "criterion": "Ingredients",
@@ -463,7 +473,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_UyFMgw": {
+        "criterion_VVOZ44": {
           "type": "criterion",
           "settings": {
             "criterion": "Price",
@@ -474,7 +484,7 @@
             "brand_5_value": "$54.90"
           }
         },
-        "criterion_tXyYTy": {
+        "criterion_JXsBIT": {
           "type": "criterion",
           "settings": {
             "criterion": "Skin Feel",
@@ -485,7 +495,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_0d0Nn4": {
+        "criterion_IY9lB6": {
           "type": "criterion",
           "settings": {
             "criterion": "Ease of Use",
@@ -496,7 +506,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_vKrNyg": {
+        "criterion_tl6xjR": {
           "type": "criterion",
           "settings": {
             "criterion": "Oxidation Resistance",
@@ -507,7 +517,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_8Mq7zD": {
+        "criterion_q7X67z": {
           "type": "criterion",
           "settings": {
             "criterion": "Overall Rating",
@@ -520,15 +530,15 @@
         }
       },
       "block_order": [
-        "criterion_8lDT8p",
-        "criterion_YDkNYP",
-        "criterion_DkfM0M",
-        "criterion_dsG8Ea",
-        "criterion_UyFMgw",
-        "criterion_tXyYTy",
-        "criterion_0d0Nn4",
-        "criterion_vKrNyg",
-        "criterion_8Mq7zD"
+        "criterion_7sS0Jx",
+        "criterion_dq1IzF",
+        "criterion_eh6wwb",
+        "criterion_xdrocc",
+        "criterion_VVOZ44",
+        "criterion_JXsBIT",
+        "criterion_IY9lB6",
+        "criterion_tl6xjR",
+        "criterion_q7X67z"
       ],
       "name": "BL - Comparison Table",
       "settings": {
@@ -543,34 +553,34 @@
         "brand_5_name": "Luxe"
       }
     },
-    "bl_product_card_split_Go9Ckn": {
+    "bl_product_card_split_wqLCL8": {
       "type": "bl-product-card-split",
       "blocks": {
-        "feature_ecEHjn": {
+        "feature_YR5jWr": {
           "type": "feature",
           "settings": {
             "label": "Tone-Adapting"
           }
         },
-        "feature_jz52rC": {
+        "feature_wfvWcK": {
           "type": "feature",
           "settings": {
             "label": "Hydrating Formula"
           }
         },
-        "feature_FSeIWk": {
+        "feature_1P9xcT": {
           "type": "feature",
           "settings": {
             "label": "SPF 15 Protection"
           }
         },
-        "feature_jiv8Jr": {
+        "feature_Hiky5H": {
           "type": "feature",
           "settings": {
             "label": "Lightweight Feel"
           }
         },
-        "feature_OD0f2p": {
+        "feature_kxtAEH": {
           "type": "feature",
           "settings": {
             "label": "Anti-Aging"
@@ -578,11 +588,11 @@
         }
       },
       "block_order": [
-        "feature_ecEHjn",
-        "feature_jz52rC",
-        "feature_FSeIWk",
-        "feature_jiv8Jr",
-        "feature_OD0f2p"
+        "feature_YR5jWr",
+        "feature_wfvWcK",
+        "feature_1P9xcT",
+        "feature_Hiky5H",
+        "feature_kxtAEH"
       ],
       "name": "BL - Product Card Split",
       "settings": {
@@ -601,7 +611,7 @@
         "cta_text_color": "#ffffff"
       }
     },
-    "bl_sticky_cta_DChAHr": {
+    "bl_sticky_cta_7FvkIe": {
       "type": "bl-sticky-cta",
       "name": "BL - Sticky CTA",
       "settings": {
@@ -621,14 +631,14 @@
     }
   },
   "order": [
-    "bl_hero_cyQSa2",
-    "bl_brand_review_xL0mqp",
-    "bl_brand_review_rgIGpJ",
-    "bl_brand_review_itT177",
-    "bl_brand_review_moKlF9",
-    "bl_brand_review_wSo4A4",
-    "bl_comparison_table_gkuXNJ",
-    "bl_product_card_split_Go9Ckn",
-    "bl_sticky_cta_DChAHr"
+    "bl_hero_1Q4gvD",
+    "bl_brand_review_GYhW1g",
+    "bl_brand_review_IHYcRK",
+    "bl_brand_review_Q9Il3V",
+    "bl_brand_review_dtH83b",
+    "bl_brand_review_AxYh6q",
+    "bl_comparison_table_jKNEkw",
+    "bl_product_card_split_wqLCL8",
+    "bl_sticky_cta_7FvkIe"
   ]
 }
