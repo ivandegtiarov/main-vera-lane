@@ -1,25 +1,26 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "bl_hero_C6QtBv": {
+    "bl_hero_R7bVh3": {
       "type": "bl-hero",
       "name": "BL - Hero",
       "settings": {
         "section_id": "",
-        "bg_image_asset": "lp-social-proof-hero.jpg",
+        "bg_image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+        "bg_image_asset": "",
         "bg_color": "#2d2d2d",
         "overlay_opacity": 35,
         "category": "REAL REVIEWS",
-        "headline": "What 5,000+ Women Over 40 Are Saying About This Foundation",
+        "headline": "What 1000s of Women Over 40 Are Saying About This Foundation",
         "subheadline": "Real reviews from real women who've made the switch to Vera Lane's Tone Adapting Foundation",
         "show_rating": true,
-        "review_count": "5,247 Verified Reviews",
+        "review_count": "1000s of Verified Reviews",
         "cta_text": "READ THE REVIEWS",
         "cta_type": "anchor",
         "cta_anchor": "reviews"
       }
     },
-    "vl_rich_text_C0ZcCC": {
+    "vl_rich_text_jqI4Ql": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -32,24 +33,24 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_testimonial_centered_cIPKWl": {
+    "vl_testimonial_centered_as9zIj": {
       "type": "vl-testimonial-centered",
       "blocks": {
-        "testimonial_YGcKKr": {
+        "testimonial_pqu0JR": {
           "type": "testimonial",
           "settings": {
             "quote": "I've spent 30 years searching for a foundation that doesn't make me look older by lunchtime. This is the first one that actually looks better as the day goes on. I'm 58 and I finally feel like my makeup is working with me, not against me.",
             "name": "Margaret S., 58"
           }
         },
-        "testimonial_t2Fb5P": {
+        "testimonial_68Go6Q": {
           "type": "testimonial",
           "settings": {
             "quote": "My daughter convinced me to try this after I'd given up on foundation entirely. The colour-matching is real — it genuinely adapts to my skin. I don't understand the science, but I understand the results. I look like myself on my best day.",
             "name": "Patricia L., 63"
           }
         },
-        "testimonial_J8TaaD": {
+        "testimonial_7h1TZo": {
           "type": "testimonial",
           "settings": {
             "quote": "As a woman of colour, finding a foundation that actually matches my skin has been a lifelong struggle. One shade that works? I was sceptical. But it matched my deeper olive tone beautifully. I cried the first time I applied it. That's not an exaggeration.",
@@ -58,9 +59,9 @@
         }
       },
       "block_order": [
-        "testimonial_YGcKKr",
-        "testimonial_t2Fb5P",
-        "testimonial_J8TaaD"
+        "testimonial_pqu0JR",
+        "testimonial_68Go6Q",
+        "testimonial_7h1TZo"
       ],
       "name": "VL Testimonial Centered",
       "settings": {
@@ -72,10 +73,10 @@
         "star_color": "#F7A81B"
       }
     },
-    "vl_review_cards_qV7Ioq": {
+    "vl_review_cards_ly9cA1": {
       "type": "vl-review-cards",
       "blocks": {
-        "review_YFzPtH": {
+        "review_W1y7jm": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -86,7 +87,7 @@
             "verified": true
           }
         },
-        "review_UwNHk7": {
+        "review_G2EVRA": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -97,7 +98,7 @@
             "verified": true
           }
         },
-        "review_6jsywd": {
+        "review_Ie5IxW": {
           "type": "review",
           "settings": {
             "rating": 4,
@@ -108,7 +109,7 @@
             "verified": true
           }
         },
-        "review_6ONSTX": {
+        "review_9wsHGZ": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -119,7 +120,7 @@
             "verified": true
           }
         },
-        "review_WtFFfL": {
+        "review_aL0IIg": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -130,7 +131,7 @@
             "verified": true
           }
         },
-        "review_M7GS0m": {
+        "review_gtMWiv": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -141,7 +142,7 @@
             "verified": true
           }
         },
-        "review_1UaRfK": {
+        "review_bZx9f5": {
           "type": "review",
           "settings": {
             "rating": 4,
@@ -152,7 +153,7 @@
             "verified": true
           }
         },
-        "review_3CdDLR": {
+        "review_JiXkRJ": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -163,7 +164,7 @@
             "verified": true
           }
         },
-        "review_Afhirx": {
+        "review_0Lgmy0": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -174,7 +175,7 @@
             "verified": true
           }
         },
-        "review_aQJx7W": {
+        "review_v5snie": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -185,7 +186,7 @@
             "verified": true
           }
         },
-        "review_0T7FHu": {
+        "review_HPZc3t": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -196,7 +197,7 @@
             "verified": true
           }
         },
-        "review_4VR2oi": {
+        "review_TYhvDU": {
           "type": "review",
           "settings": {
             "rating": 4,
@@ -209,18 +210,18 @@
         }
       },
       "block_order": [
-        "review_YFzPtH",
-        "review_UwNHk7",
-        "review_6jsywd",
-        "review_6ONSTX",
-        "review_WtFFfL",
-        "review_M7GS0m",
-        "review_1UaRfK",
-        "review_3CdDLR",
-        "review_Afhirx",
-        "review_aQJx7W",
-        "review_0T7FHu",
-        "review_4VR2oi"
+        "review_W1y7jm",
+        "review_G2EVRA",
+        "review_Ie5IxW",
+        "review_9wsHGZ",
+        "review_aL0IIg",
+        "review_gtMWiv",
+        "review_bZx9f5",
+        "review_JiXkRJ",
+        "review_0Lgmy0",
+        "review_v5snie",
+        "review_HPZc3t",
+        "review_TYhvDU"
       ],
       "name": "VL - Review Cards",
       "settings": {
@@ -239,7 +240,7 @@
         "name_color": "#374151"
       }
     },
-    "bl_customer_quote_2BtvfK": {
+    "bl_customer_quote_bMfkcz": {
       "type": "bl-customer-quote",
       "name": "BL - Customer Quote",
       "settings": {
@@ -251,10 +252,10 @@
         "verified": true
       }
     },
-    "vl_review_cards_ai5AGU": {
+    "vl_review_cards_YVLKoK": {
       "type": "vl-review-cards",
       "blocks": {
-        "review_OiAuRu": {
+        "review_tsRZdZ": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -265,7 +266,7 @@
             "verified": true
           }
         },
-        "review_5RwpMN": {
+        "review_EDKMdQ": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -276,7 +277,7 @@
             "verified": true
           }
         },
-        "review_iPYZN4": {
+        "review_fV6v3A": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -287,7 +288,7 @@
             "verified": true
           }
         },
-        "review_31HmtS": {
+        "review_XM2Z62": {
           "type": "review",
           "settings": {
             "rating": 4,
@@ -298,7 +299,7 @@
             "verified": true
           }
         },
-        "review_Bcqs57": {
+        "review_1pjg0O": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -309,7 +310,7 @@
             "verified": true
           }
         },
-        "review_uMnLfS": {
+        "review_U1YuJr": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -320,7 +321,7 @@
             "verified": true
           }
         },
-        "review_3JpHE9": {
+        "review_JELG1A": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -331,7 +332,7 @@
             "verified": true
           }
         },
-        "review_Yf7UBZ": {
+        "review_Bj2RQB": {
           "type": "review",
           "settings": {
             "rating": 5,
@@ -344,14 +345,14 @@
         }
       },
       "block_order": [
-        "review_OiAuRu",
-        "review_5RwpMN",
-        "review_iPYZN4",
-        "review_31HmtS",
-        "review_Bcqs57",
-        "review_uMnLfS",
-        "review_3JpHE9",
-        "review_Yf7UBZ"
+        "review_tsRZdZ",
+        "review_EDKMdQ",
+        "review_fV6v3A",
+        "review_XM2Z62",
+        "review_1pjg0O",
+        "review_U1YuJr",
+        "review_JELG1A",
+        "review_Bj2RQB"
       ],
       "name": "VL - Review Cards",
       "settings": {
@@ -370,31 +371,31 @@
         "name_color": "#374151"
       }
     },
-    "bl_trust_bar_HgIvSr": {
+    "bl_trust_bar_Mhrw7y": {
       "type": "bl-trust-bar",
       "blocks": {
-        "badge_BSxbEE": {
+        "badge_5gmaFU": {
           "type": "badge",
           "settings": {
             "title": "30-Day Money Back",
             "description": "Full refund if you're not completely satisfied"
           }
         },
-        "badge_ilueJX": {
+        "badge_Ej5c7Z": {
           "type": "badge",
           "settings": {
             "title": "Free Shipping",
             "description": "Complimentary shipping on every order"
           }
         },
-        "badge_AoGrP7": {
+        "badge_SuIOqA": {
           "type": "badge",
           "settings": {
-            "title": "5,000+ Happy Customers",
+            "title": "1000s of Happy Customers",
             "description": "Rated 4.9/5 by women over 40"
           }
         },
-        "badge_BUEXem": {
+        "badge_ExrMF6": {
           "type": "badge",
           "settings": {
             "title": "Clean Ingredients",
@@ -403,10 +404,10 @@
         }
       },
       "block_order": [
-        "badge_BSxbEE",
-        "badge_ilueJX",
-        "badge_AoGrP7",
-        "badge_BUEXem"
+        "badge_5gmaFU",
+        "badge_Ej5c7Z",
+        "badge_SuIOqA",
+        "badge_ExrMF6"
       ],
       "name": "BL - Trust Bar",
       "settings": {
@@ -418,11 +419,11 @@
         "cta_url": "/products/color-changing-foundation"
       }
     },
-    "vl_cta_block_R4lyY6": {
+    "vl_cta_block_DElVEz": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
-        "text": "Join 5,000+ women who've made the switch to foundation that works with their skin.",
+        "text": "Join 1000s of women who've made the switch to foundation that works with their skin.",
         "button_url": "/products/color-changing-foundation",
         "button_text": "TRY VERA LANE TODAY",
         "subtext": "30-day money-back guarantee • Free shipping",
@@ -432,7 +433,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_sticky_cta_cy7UX5": {
+    "vl_sticky_cta_Hz307W": {
       "type": "vl-sticky-cta",
       "name": "VL Sticky CTA",
       "settings": {
@@ -447,14 +448,14 @@
     }
   },
   "order": [
-    "bl_hero_C6QtBv",
-    "vl_rich_text_C0ZcCC",
-    "vl_testimonial_centered_cIPKWl",
-    "vl_review_cards_qV7Ioq",
-    "bl_customer_quote_2BtvfK",
-    "vl_review_cards_ai5AGU",
-    "bl_trust_bar_HgIvSr",
-    "vl_cta_block_R4lyY6",
-    "vl_sticky_cta_cy7UX5"
+    "bl_hero_R7bVh3",
+    "vl_rich_text_jqI4Ql",
+    "vl_testimonial_centered_as9zIj",
+    "vl_review_cards_ly9cA1",
+    "bl_customer_quote_bMfkcz",
+    "vl_review_cards_YVLKoK",
+    "bl_trust_bar_Mhrw7y",
+    "vl_cta_block_DElVEz",
+    "vl_sticky_cta_Hz307W"
   ]
 }

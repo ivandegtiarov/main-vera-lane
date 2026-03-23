@@ -48,6 +48,7 @@ function buildTemplate(content) {
     name: 'BL - Hero',
     settings: {
       section_id: '',
+      bg_image: content.hero.bg_image || '',
       bg_image_asset: content.hero.bg_image_asset || '',
       bg_color: '#2d2d2d',
       overlay_opacity: content.hero.overlay_opacity || 35,
@@ -55,7 +56,7 @@ function buildTemplate(content) {
       headline: content.hero.headline,
       subheadline: content.hero.subheadline || '',
       show_rating: content.hero.show_rating !== false,
-      review_count: content.hero.review_count || '5,000+ Reviews',
+      review_count: content.hero.review_count || '1000s of Reviews',
       cta_text: content.hero.cta_text || 'SEE THE REVIEWS',
       cta_type: 'anchor',
       cta_anchor: content.hero.cta_anchor || 'reviews',
