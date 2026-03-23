@@ -1,0 +1,434 @@
+{%- comment -%} ── BL - BRAND REVIEW ── {%- endcomment -%}
+{%- liquid
+  if section.settings.image != blank
+    assign review_img_url = section.settings.image | image_url: width: 500
+    assign review_img_alt = section.settings.image.alt | default: section.settings.brand_name | escape
+  elsif section.settings.image_asset != blank
+    assign review_img_url = section.settings.image_asset | asset_url
+    assign review_img_alt = section.settings.brand_name | escape
+  endif
+
+  assign rating_val = section.settings.rating | times: 1.0
+  assign rating_int = rating_val | floor
+  assign rating_decimal = rating_val | minus: rating_int
+-%}
+<article class="bl-brand-review bl-brand-review--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--review-bg: {{ section.settings.bg_color }};">
+  <div class="bl-brand-review__container">
+    {%- if review_img_url -%}
+      <figure class="bl-brand-review__figure">
+        <img src="{{ review_img_url }}" alt="{{ review_img_alt }}" loading="lazy" class="bl-brand-review__image">
+      </figure>
+    {%- endif -%}
+
+    <div class="bl-brand-review__content">
+      <header class="bl-brand-review__header">
+        <div class="bl-brand-review__meta">
+          <span class="bl-brand-review__number">{{ section.settings.number }}</span>
+          {%- if section.settings.badge_text != blank -%}
+            <span class="bl-brand-review__badge">{{ section.settings.badge_text }}</span>
+          {%- endif -%}
+        </div>
+        <h2 class="bl-brand-review__brand-name">{{ section.settings.brand_name }}</h2>
+      </header>
+
+      <div class="bl-brand-review__rating">
+        <div class="bl-brand-review__stars">
+          {%- for i in (1..5) -%}
+            {%- if i <= rating_int -%}
+              <svg class="bl-brand-review__star bl-brand-review__star--filled" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {%- elsif rating_decimal > 0 and i == rating_int | plus: 1 -%}
+              <svg class="bl-brand-review__star bl-brand-review__star--half" width="18" height="18" viewBox="0 0 24 24">
+                <defs><clipPath id="half-{{ section.id }}-{{ i }}"><rect x="0" y="0" width="12" height="24"/></clipPath></defs>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8E6E3"/>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" clip-path="url(#half-{{ section.id }}-{{ i }})"/>
+              </svg>
+            {%- else -%}
+              <svg class="bl-brand-review__star bl-brand-review__star--empty" width="18" height="18" viewBox="0 0 24 24" fill="#E8E6E3">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <span class="bl-brand-review__rating-text">{{ section.settings.rating }}/5</span>
+      </div>
+
+      {%- if section.settings.price_text != blank -%}
+        <p class="bl-brand-review__price">{{ section.settings.price_text }}</p>
+      {%- endif -%}
+
+      <div class="bl-brand-review__body">{{ section.settings.review_text }}</div>
+
+      {%- assign pro_blocks = section.blocks | where: 'type', 'pro' -%}
+      {%- assign con_blocks = section.blocks | where: 'type', 'con' -%}
+      {%- if pro_blocks.size > 0 or con_blocks.size > 0 -%}
+        <div class="bl-brand-review__pros-cons">
+          {%- if pro_blocks.size > 0 -%}
+            <div class="bl-brand-review__pros">
+              <h4 class="bl-brand-review__list-heading">Pros</h4>
+              <ul class="bl-brand-review__list bl-brand-review__list--pro">
+                {%- for block in pro_blocks -%}
+                  <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          {%- if con_blocks.size > 0 -%}
+            <div class="bl-brand-review__cons">
+              <h4 class="bl-brand-review__list-heading">Cons</h4>
+              <ul class="bl-brand-review__list bl-brand-review__list--con">
+                {%- for block in con_blocks -%}
+                  <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.verdict != blank -%}
+        <p class="bl-brand-review__verdict"><strong>Verdict:</strong> {{ section.settings.verdict }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</article>
+
+{% stylesheet %}
+.bl-brand-review {
+  background: var(--review-bg, #FAF9F7);
+  padding: 3.5rem 2rem;
+  border-block-end: 1px solid #E8E6E3;
+}
+
+.bl-brand-review__container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 700px) {
+  .bl-brand-review--left .bl-brand-review__container,
+  .bl-brand-review--right .bl-brand-review__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .bl-brand-review--right .bl-brand-review__figure {
+    order: 2;
+  }
+
+  .bl-brand-review--right .bl-brand-review__content {
+    order: 1;
+  }
+
+  .bl-brand-review--left .bl-brand-review__figure {
+    order: 1;
+  }
+
+  .bl-brand-review--left .bl-brand-review__content {
+    order: 2;
+  }
+}
+
+.bl-brand-review__header {
+  margin-bottom: 1rem;
+}
+
+.bl-brand-review__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.bl-brand-review__number {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #8B3A3A;
+}
+
+.bl-brand-review__badge {
+  display: inline-block;
+  background: #8B3A3A;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+}
+
+.bl-brand-review__brand-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #2D2D2D;
+  margin: 0;
+}
+
+.bl-brand-review__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+}
+
+.bl-brand-review__stars {
+  display: flex;
+  gap: 0.125rem;
+  color: #D4A574;
+}
+
+.bl-brand-review__rating-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.bl-brand-review__price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2D2D2D;
+  margin: 0 0 1.25rem;
+}
+
+.bl-brand-review__body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+}
+
+.bl-brand-review__body p {
+  margin-bottom: 1.25rem;
+}
+
+.bl-brand-review__body p:last-child {
+  margin-bottom: 0;
+}
+
+.bl-brand-review__body strong {
+  font-weight: 600;
+  color: #2D2D2D;
+}
+
+.bl-brand-review__pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .bl-brand-review__pros-cons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bl-brand-review__list-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2D2D2D;
+  margin: 0 0 0.625rem;
+}
+
+.bl-brand-review__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bl-brand-review__list li {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #444;
+  padding: 0.25rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.bl-brand-review__list--pro li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: #4a8c4a;
+  font-weight: 600;
+}
+
+.bl-brand-review__list--con li::before {
+  content: '\2717';
+  position: absolute;
+  left: 0;
+  color: #8B3A3A;
+  font-weight: 600;
+}
+
+.bl-brand-review__verdict {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #2D2D2D;
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid #E8E6E3;
+}
+
+.bl-brand-review__figure {
+  margin: 0;
+}
+
+.bl-brand-review__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Brand Review",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'brand-1')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Brand number",
+      "default": "#1"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "e.g. 'Best Overall' or 'Editor's Pick'. Leave blank for no badge."
+    },
+    {
+      "type": "textarea",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "Brand Name"
+    },
+    {
+      "type": "select",
+      "id": "rating",
+      "label": "Star rating",
+      "options": [
+        { "value": "1", "label": "1 star" },
+        { "value": "1.5", "label": "1.5 stars" },
+        { "value": "2", "label": "2 stars" },
+        { "value": "2.5", "label": "2.5 stars" },
+        { "value": "3", "label": "3 stars" },
+        { "value": "3.5", "label": "3.5 stars" },
+        { "value": "4", "label": "4 stars" },
+        { "value": "4.5", "label": "4.5 stars" },
+        { "value": "5", "label": "5 stars" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price text",
+      "info": "e.g. '$29.99'"
+    },
+    {
+      "type": "richtext",
+      "id": "review_text",
+      "label": "Review body"
+    },
+    {
+      "type": "textarea",
+      "id": "verdict",
+      "label": "Verdict line"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image (asset filename)",
+      "info": "Use instead of image picker for theme asset images (e.g., 'my-image.jpg')"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pro",
+      "name": "Pro",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Pro text",
+          "default": "Great coverage"
+        }
+      ]
+    },
+    {
+      "type": "con",
+      "name": "Con",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Con text",
+          "default": "Limited shades"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Brand Review",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}
