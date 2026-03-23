@@ -1,0 +1,418 @@
+{%- comment -%} ── BL - REVIEW SUMMARY ── {%- endcomment -%}
+{%- liquid
+  if section.settings.image != blank
+    assign summary_img_url = section.settings.image | image_url: width: 500
+    assign summary_img_alt = section.settings.image.alt | default: section.settings.product_name | escape
+  elsif section.settings.image_asset != blank
+    assign summary_img_url = section.settings.image_asset | asset_url
+    assign summary_img_alt = section.settings.product_name | escape
+  endif
+
+  assign rating_val = section.settings.rating | times: 1.0
+  assign rating_int = rating_val | floor
+  assign rating_decimal = rating_val | minus: rating_int
+  assign rating_next = rating_int | plus: 1
+-%}
+<section class="bl-review-summary bl-review-summary--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--summary-bg: {{ section.settings.bg_color }};">
+  <div class="bl-review-summary__container">
+    {%- if summary_img_url -%}
+      <figure class="bl-review-summary__figure">
+        <img src="{{ summary_img_url }}" alt="{{ summary_img_alt }}" loading="lazy" class="bl-review-summary__image">
+      </figure>
+    {%- endif -%}
+
+    <div class="bl-review-summary__content">
+      {%- if section.settings.label != blank -%}
+        <span class="bl-review-summary__label">{{ section.settings.label }}</span>
+      {%- endif -%}
+
+      <h2 class="bl-review-summary__product-name">{{ section.settings.product_name }}</h2>
+
+      <div class="bl-review-summary__rating">
+        <div class="bl-review-summary__stars">
+          {%- for i in (1..5) -%}
+            {%- if i <= rating_int -%}
+              <svg class="bl-review-summary__star bl-review-summary__star--filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {%- elsif rating_decimal > 0 and i == rating_next -%}
+              <svg class="bl-review-summary__star bl-review-summary__star--half" width="20" height="20" viewBox="0 0 24 24">
+                <defs><clipPath id="summary-half-{{ section.id }}-{{ i }}"><rect x="0" y="0" width="12" height="24"/></clipPath></defs>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8E6E3"/>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" clip-path="url(#summary-half-{{ section.id }}-{{ i }})"/>
+              </svg>
+            {%- else -%}
+              <svg class="bl-review-summary__star bl-review-summary__star--empty" width="20" height="20" viewBox="0 0 24 24" fill="#E8E6E3">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <span class="bl-review-summary__rating-text">{{ section.settings.rating }}/5</span>
+      </div>
+
+      {%- if section.settings.price_text != blank -%}
+        <p class="bl-review-summary__price">{{ section.settings.price_text }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.verdict_line != blank -%}
+        <p class="bl-review-summary__verdict">{{ section.settings.verdict_line }}</p>
+      {%- endif -%}
+
+      {%- assign pro_blocks = section.blocks | where: 'type', 'pro' -%}
+      {%- assign con_blocks = section.blocks | where: 'type', 'con' -%}
+      {%- if pro_blocks.size > 0 or con_blocks.size > 0 -%}
+        <div class="bl-review-summary__pros-cons">
+          {%- if pro_blocks.size > 0 -%}
+            <div class="bl-review-summary__pros">
+              <h4 class="bl-review-summary__list-heading">What We Loved</h4>
+              <ul class="bl-review-summary__list bl-review-summary__list--pro">
+                {%- for block in pro_blocks -%}
+                  <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          {%- if con_blocks.size > 0 -%}
+            <div class="bl-review-summary__cons">
+              <h4 class="bl-review-summary__list-heading">Worth Noting</h4>
+              <ul class="bl-review-summary__list bl-review-summary__list--con">
+                {%- for block in con_blocks -%}
+                  <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_text != blank and section.settings.cta_anchor != blank -%}
+        <a href="#{{ section.settings.cta_anchor }}" class="bl-review-summary__cta">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.bl-review-summary {
+  background: var(--summary-bg, #FAF9F7);
+  padding: 3rem 2rem;
+  border-block-end: 1px solid #E8E6E3;
+}
+
+.bl-review-summary__container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .bl-review-summary--left .bl-review-summary__container,
+  .bl-review-summary--right .bl-review-summary__container {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+  }
+
+  .bl-review-summary--right .bl-review-summary__figure {
+    order: 2;
+  }
+
+  .bl-review-summary--right .bl-review-summary__content {
+    order: 1;
+  }
+
+  .bl-review-summary--left .bl-review-summary__figure {
+    order: 1;
+  }
+
+  .bl-review-summary--left .bl-review-summary__content {
+    order: 2;
+  }
+}
+
+.bl-review-summary__label {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #8B3A3A;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bl-review-summary__product-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.625rem, 4.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #2D2D2D;
+  margin: 0 0 0.75rem;
+}
+
+.bl-review-summary__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+.bl-review-summary__stars {
+  display: flex;
+  gap: 0.125rem;
+  color: #D4A574;
+}
+
+.bl-review-summary__rating-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.bl-review-summary__price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2D2D2D;
+  margin: 0 0 1rem;
+}
+
+.bl-review-summary__verdict {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #444;
+  margin: 0 0 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid #D4A574;
+}
+
+.bl-review-summary__pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .bl-review-summary__pros-cons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bl-review-summary__list-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2D2D2D;
+  margin: 0 0 0.5rem;
+}
+
+.bl-review-summary__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bl-review-summary__list li {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #444;
+  padding: 0.2rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.bl-review-summary__list--pro li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: #4a8c4a;
+  font-weight: 600;
+}
+
+.bl-review-summary__list--con li::before {
+  content: '\2717';
+  position: absolute;
+  left: 0;
+  color: #8B3A3A;
+  font-weight: 600;
+}
+
+.bl-review-summary__cta {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B3A3A;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 200ms ease;
+}
+
+.bl-review-summary__cta:hover {
+  color: #6B2A2A;
+}
+
+.bl-review-summary__figure {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #E8E6E3;
+}
+
+.bl-review-summary__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Review Summary",
+  "tag": "section",
+  "class": "bl-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'quick-verdict')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "info": "Small badge above the product name (e.g., 'QUICK VERDICT')",
+      "default": "QUICK VERDICT"
+    },
+    {
+      "type": "textarea",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Product Name"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Star rating",
+      "info": "e.g. '4.7' — any decimal value from 1 to 5",
+      "default": "4.5"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price text",
+      "info": "e.g. '$39.99'"
+    },
+    {
+      "type": "textarea",
+      "id": "verdict_line",
+      "label": "Verdict line",
+      "info": "One-line summary shown in italic with gold left border"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image (asset filename)",
+      "info": "Use instead of image picker for theme asset images (e.g., 'my-image.jpg')"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Link text",
+      "default": "Read Full Review"
+    },
+    {
+      "type": "text",
+      "id": "cta_anchor",
+      "label": "Scroll to section ID",
+      "info": "Section ID to scroll to (e.g., 'section-1')",
+      "default": "section-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pro",
+      "name": "Pro",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Pro text",
+          "default": "Great coverage"
+        }
+      ]
+    },
+    {
+      "type": "con",
+      "name": "Con",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Con text",
+          "default": "Premium price"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Review Summary",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}

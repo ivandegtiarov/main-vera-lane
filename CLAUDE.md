@@ -46,6 +46,16 @@ The correct deployment workflow is:
 
 **`shopify theme dev` is fine** for local preview/testing.
 
+## Landing Page URL Convention — IMPORTANT
+All landing pages (advertorials, listicles, reviews, etc.) MUST use URLs starting with `/lp-`. The `/lp-` prefix is used by the store to trigger specific popups and tracking.
+
+- Template naming: `page.lp-<article-title>.json`
+- Content JSON slug: `lp-<article-title>`
+- Shopify page handle: `lp-<article-title>`
+- Example: `page.lp-vera-lane-foundation-review.json` → URL becomes `/pages/lp-vera-lane-foundation-review`
+
+Never create a landing page without the `lp-` prefix.
+
 ## Landing Page Generator Workflow
 1. Write content JSON in `scripts/content/<slug>.json` (hero, 5 reasons, product card)
 2. Run `node scripts/create-landing-page.js scripts/content/<file>.json` to generate template
