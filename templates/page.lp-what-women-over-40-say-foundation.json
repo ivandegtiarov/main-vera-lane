@@ -1,0 +1,460 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "bl_hero_C6QtBv": {
+      "type": "bl-hero",
+      "name": "BL - Hero",
+      "settings": {
+        "section_id": "",
+        "bg_image_asset": "lp-social-proof-hero.jpg",
+        "bg_color": "#2d2d2d",
+        "overlay_opacity": 35,
+        "category": "REAL REVIEWS",
+        "headline": "What 5,000+ Women Over 40 Are Saying About This Foundation",
+        "subheadline": "Real reviews from real women who've made the switch to Vera Lane's Tone Adapting Foundation",
+        "show_rating": true,
+        "review_count": "5,247 Verified Reviews",
+        "cta_text": "READ THE REVIEWS",
+        "cta_type": "anchor",
+        "cta_anchor": "reviews"
+      }
+    },
+    "vl_rich_text_C0ZcCC": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "section_id": "reviews",
+        "subheading": "",
+        "content": "<p>We didn't ask for these reviews. We didn't offer discounts for them. These are honest, unfiltered opinions from women who bought the Vera Lane Tone Adapting Foundation and took the time to share what they thought.</p><p>Some loved it immediately. Some were sceptical at first. A few had minor critiques. We're sharing all of it — because if a product works, the reviews speak for themselves.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_testimonial_centered_cIPKWl": {
+      "type": "vl-testimonial-centered",
+      "blocks": {
+        "testimonial_YGcKKr": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've spent 30 years searching for a foundation that doesn't make me look older by lunchtime. This is the first one that actually looks better as the day goes on. I'm 58 and I finally feel like my makeup is working with me, not against me.",
+            "name": "Margaret S., 58"
+          }
+        },
+        "testimonial_t2Fb5P": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My daughter convinced me to try this after I'd given up on foundation entirely. The colour-matching is real — it genuinely adapts to my skin. I don't understand the science, but I understand the results. I look like myself on my best day.",
+            "name": "Patricia L., 63"
+          }
+        },
+        "testimonial_J8TaaD": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a woman of colour, finding a foundation that actually matches my skin has been a lifelong struggle. One shade that works? I was sceptical. But it matched my deeper olive tone beautifully. I cried the first time I applied it. That's not an exaggeration.",
+            "name": "Denise R., 52"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_YGcKKr",
+        "testimonial_t2Fb5P",
+        "testimonial_J8TaaD"
+      ],
+      "name": "VL Testimonial Centered",
+      "settings": {
+        "heading": "FEATURED REVIEWS",
+        "bg_color": "#F5EDE8",
+        "heading_color": "#000000",
+        "card_bg_color": "#ffffff",
+        "quote_color": "#333333",
+        "star_color": "#F7A81B"
+      }
+    },
+    "vl_review_cards_qV7Ioq": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_YFzPtH": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 18, 2026",
+            "title": "Finally — foundation that doesn't settle into lines",
+            "quote": "I have deep smile lines and every foundation I've tried collects in them by midday. This one stays smooth. At 62, that feels like a small miracle.",
+            "name": "Carol B.",
+            "verified": true
+          }
+        },
+        "review_UwNHk7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 15, 2026",
+            "title": "Natural coverage without the mask feeling",
+            "quote": "One layer evens everything out without looking heavy. I can still see my freckles, which I actually want. It's coverage where you need it and nothing where you don't.",
+            "name": "Susan K.",
+            "verified": true
+          }
+        },
+        "review_6jsywd": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Mar 12, 2026",
+            "title": "Very good but needs primer on dry patches",
+            "quote": "Love the texture and coverage but it can look slightly uneven on very dry skin around my nose. With a hydrating primer it's perfect. Knocked off one star only because of that.",
+            "name": "Linda T.",
+            "verified": true
+          }
+        },
+        "review_6ONSTX": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 10, 2026",
+            "title": "Buildable coverage is the real deal",
+            "quote": "One layer for weekdays, two for events. I've never had a foundation that lets me go from natural to full coverage without caking. My rosacea is completely covered with two thin layers.",
+            "name": "Janet W.",
+            "verified": true
+          }
+        },
+        "review_WtFFfL": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 8, 2026",
+            "title": "My skin looks better WITH this on",
+            "quote": "I don't know what they put in this but after wearing it daily for three weeks, my bare skin actually looks better on my days off. The hyaluronic acid is doing something right.",
+            "name": "Barbara M.",
+            "verified": true
+          }
+        },
+        "review_M7GS0m": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 5, 2026",
+            "title": "Goodbye cakey foundation forever",
+            "quote": "At 55 I'd accepted that foundation just looks bad on mature skin. This proved me completely wrong. It sits on my skin like a second skin. My husband asked what was different — he never notices anything!",
+            "name": "Donna P.",
+            "verified": true
+          }
+        },
+        "review_1UaRfK": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Mar 3, 2026",
+            "title": "Lovely lightweight feel",
+            "quote": "It's so light you forget you're wearing it. Coverage is medium at best with one layer — if you need heavy concealment, you'll want a concealer too. But for everyday wear it's gorgeous.",
+            "name": "Nancy H.",
+            "verified": true
+          }
+        },
+        "review_3CdDLR": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 28, 2026",
+            "title": "Covers my age spots without looking painted on",
+            "quote": "Sun damage from my 20s has left me with dark spots that most foundations either can't cover or make look worse. This evens them out while still looking like skin. Genuinely impressed.",
+            "name": "Karen D.",
+            "verified": true
+          }
+        },
+        "review_Afhirx": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 25, 2026",
+            "title": "The satin finish is perfect for mature skin",
+            "quote": "Not too matte, not too dewy. It's exactly the right finish for skin that's lost some moisture. I look healthy and natural, not shiny or flat.",
+            "name": "Sharon R.",
+            "verified": true
+          }
+        },
+        "review_aQJx7W": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 22, 2026",
+            "title": "My go-to for two months now",
+            "quote": "Replaced my MAC Studio Fix which I'd used for 15 years. This feels like nothing on my skin and looks ten times better. I genuinely don't understand why I waited so long.",
+            "name": "Ruth A.",
+            "verified": true
+          }
+        },
+        "review_0T7FHu": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 18, 2026",
+            "title": "Best foundation I've used in my 60s",
+            "quote": "At 64 I've tried everything from drugstore to department store. Nothing compares. Light, comfortable, and it doesn't make my pores look bigger. Quite the opposite.",
+            "name": "Helen G.",
+            "verified": true
+          }
+        },
+        "review_4VR2oi": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Feb 15, 2026",
+            "title": "Great product, slow shipping",
+            "quote": "The foundation itself is wonderful — silky texture, great coverage, doesn't crease. Took 8 days to arrive though. Would order again but plan ahead.",
+            "name": "Marie C.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_YFzPtH",
+        "review_UwNHk7",
+        "review_6jsywd",
+        "review_6ONSTX",
+        "review_WtFFfL",
+        "review_M7GS0m",
+        "review_1UaRfK",
+        "review_3CdDLR",
+        "review_Afhirx",
+        "review_aQJx7W",
+        "review_0T7FHu",
+        "review_4VR2oi"
+      ],
+      "name": "VL - Review Cards",
+      "settings": {
+        "section_id": "review-cards",
+        "headline": "What They Say About Coverage & Comfort",
+        "show_rating_summary": true,
+        "rating_summary_text": "4.9/5 — Based on 2,100+ reviews about coverage",
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "",
+        "see_all_url": "",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "star_color": "#fbbf24",
+        "text_color": "#4b5563",
+        "name_color": "#374151"
+      }
+    },
+    "bl_customer_quote_2BtvfK": {
+      "type": "bl-customer-quote",
+      "name": "BL - Customer Quote",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#FAF9F7",
+        "eyebrow": "MOST LOVED REVIEW",
+        "quote": "I'm 67 years old and I've worn foundation since I was 19. I've tried everything — department store, drugstore, direct sales, you name it. This is the first foundation in almost 50 years that makes me feel like I'm not wearing foundation at all. My skin looks like my skin. Just better.",
+        "author": "Eleanor V., Verified Customer",
+        "verified": true
+      }
+    },
+    "vl_review_cards_ai5AGU": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_OiAuRu": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 17, 2026",
+            "title": "The colour-matching actually works",
+            "quote": "I was deeply sceptical about one shade fitting everyone. But I watched it change colour on my hand in about 30 seconds. On my face it matched perfectly within two minutes. Science is wild.",
+            "name": "Elizabeth F.",
+            "verified": true
+          }
+        },
+        "review_5RwpMN": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 14, 2026",
+            "title": "Still looks good at 6pm",
+            "quote": "Applied at 7am, checked at noon (still perfect), checked at 6pm (slightly faded but still presentable). That's 11 hours. No other foundation has lasted half that long on me.",
+            "name": "Catherine J.",
+            "verified": true
+          }
+        },
+        "review_iPYZN4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 11, 2026",
+            "title": "No oxidation — finally!",
+            "quote": "Every foundation I've tried turns orange on me within a few hours. This one? Same shade at 5pm as it was at 8am. I could cry with relief. This is the one.",
+            "name": "Dorothy S.",
+            "verified": true
+          }
+        },
+        "review_31HmtS": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Mar 9, 2026",
+            "title": "Matched my fair skin better than expected",
+            "quote": "I'm very fair with pink undertones and was worried one shade wouldn't work for me. It adapted to a perfect light neutral. Not quite as full coverage as I'd like but the shade match is spot-on.",
+            "name": "Ann W.",
+            "verified": true
+          }
+        },
+        "review_Bcqs57": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 6, 2026",
+            "title": "Wore it to my daughter's wedding — perfection",
+            "quote": "13 hours. Ceremony, photos, dancing, crying happy tears. Still looked beautiful. The photographer even asked what foundation I was wearing. Best $40 I've ever spent.",
+            "name": "Judith L.",
+            "verified": true
+          }
+        },
+        "review_uMnLfS": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 2, 2026",
+            "title": "Works across seasons",
+            "quote": "My skin is noticeably different between winter and summer. Instead of buying two shades like I used to, this one adapts. It's slightly lighter in winter and warmer in summer. One bottle year-round.",
+            "name": "Sandra M.",
+            "verified": true
+          }
+        },
+        "review_3JpHE9": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 26, 2026",
+            "title": "Minimal transfer, maximum staying power",
+            "quote": "Barely anything came off on my collar. I usually ruin every scarf and pillow I own. This sets properly and stays put without feeling stiff or dry.",
+            "name": "Virginia N.",
+            "verified": true
+          }
+        },
+        "review_Yf7UBZ": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 20, 2026",
+            "title": "My olive skin tone is finally matched",
+            "quote": "Finding foundation as a 53-year-old woman with olive undertones has been impossible. Every 'universal' shade has been too pink or too yellow. This one nailed it. Absolutely nailed it.",
+            "name": "Rosa P.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_OiAuRu",
+        "review_5RwpMN",
+        "review_iPYZN4",
+        "review_31HmtS",
+        "review_Bcqs57",
+        "review_uMnLfS",
+        "review_3JpHE9",
+        "review_Yf7UBZ"
+      ],
+      "name": "VL - Review Cards",
+      "settings": {
+        "section_id": "",
+        "headline": "What They Say About Shade Matching & Longevity",
+        "show_rating_summary": true,
+        "rating_summary_text": "4.8/5 — Based on 1,800+ reviews about shade match",
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "",
+        "see_all_url": "",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "star_color": "#fbbf24",
+        "text_color": "#4b5563",
+        "name_color": "#374151"
+      }
+    },
+    "bl_trust_bar_HgIvSr": {
+      "type": "bl-trust-bar",
+      "blocks": {
+        "badge_BSxbEE": {
+          "type": "badge",
+          "settings": {
+            "title": "30-Day Money Back",
+            "description": "Full refund if you're not completely satisfied"
+          }
+        },
+        "badge_ilueJX": {
+          "type": "badge",
+          "settings": {
+            "title": "Free Shipping",
+            "description": "Complimentary shipping on every order"
+          }
+        },
+        "badge_AoGrP7": {
+          "type": "badge",
+          "settings": {
+            "title": "5,000+ Happy Customers",
+            "description": "Rated 4.9/5 by women over 40"
+          }
+        },
+        "badge_BUEXem": {
+          "type": "badge",
+          "settings": {
+            "title": "Clean Ingredients",
+            "description": "No parabens, sulfates, or synthetic fragrance"
+          }
+        }
+      },
+      "block_order": [
+        "badge_BSxbEE",
+        "badge_ilueJX",
+        "badge_AoGrP7",
+        "badge_BUEXem"
+      ],
+      "name": "BL - Trust Bar",
+      "settings": {
+        "section_id": "",
+        "bg_color": "#2D2D2D",
+        "headline": "Your Satisfaction, Guaranteed",
+        "cta_label": "Shop Now",
+        "cta_link_type": "url",
+        "cta_url": "/products/color-changing-foundation"
+      }
+    },
+    "vl_cta_block_R4lyY6": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "Join 5,000+ women who've made the switch to foundation that works with their skin.",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY VERA LANE TODAY",
+        "subtext": "30-day money-back guarantee • Free shipping",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_sticky_cta_cy7UX5": {
+      "type": "vl-sticky-cta",
+      "name": "VL Sticky CTA",
+      "settings": {
+        "url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": false,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "bl_hero_C6QtBv",
+    "vl_rich_text_C0ZcCC",
+    "vl_testimonial_centered_cIPKWl",
+    "vl_review_cards_qV7Ioq",
+    "bl_customer_quote_2BtvfK",
+    "vl_review_cards_ai5AGU",
+    "bl_trust_bar_HgIvSr",
+    "vl_cta_block_R4lyY6",
+    "vl_sticky_cta_cy7UX5"
+  ]
+}
