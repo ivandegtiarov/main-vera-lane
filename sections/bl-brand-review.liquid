@@ -11,6 +11,7 @@
   assign rating_val = section.settings.rating | times: 1.0
   assign rating_int = rating_val | floor
   assign rating_decimal = rating_val | minus: rating_int
+  assign rating_next = rating_int | plus: 1
 -%}
 <article class="bl-brand-review bl-brand-review--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--review-bg: {{ section.settings.bg_color }};">
   <div class="bl-brand-review__container">
@@ -38,7 +39,7 @@
               <svg class="bl-brand-review__star bl-brand-review__star--filled" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-            {%- elsif rating_decimal > 0 and i == rating_int | plus: 1 -%}
+            {%- elsif rating_decimal > 0 and i == rating_next -%}
               <svg class="bl-brand-review__star bl-brand-review__star--half" width="18" height="18" viewBox="0 0 24 24">
                 <defs><clipPath id="half-{{ section.id }}-{{ i }}"><rect x="0" y="0" width="12" height="24"/></clipPath></defs>
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8E6E3"/>
