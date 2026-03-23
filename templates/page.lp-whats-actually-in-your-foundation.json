@@ -1,0 +1,279 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "vl_editorial_hero_7WZgfC": {
+      "type": "vl-editorial-hero",
+      "name": "VL Editorial Hero",
+      "settings": {
+        "meta_text": "CLEAN BEAUTY BREAKDOWN",
+        "headline": "What's Actually In Your Foundation? A Clean Beauty Guide for Women Over 40",
+        "intro_text": "We break down every ingredient in the Vera Lane Tone Adapting Foundation — what it does, why it's there, and what we deliberately left out.",
+        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+        "image_alt": "Vera Lane Tone Adapting Foundation with makeup brush",
+        "caption": "The Vera Lane Tone Adapting Foundation — clean ingredients designed for mature skin.",
+        "bg_color": "#ffffff",
+        "headline_color": "#000000",
+        "text_color": "#333333",
+        "meta_color": "#666666"
+      }
+    },
+    "bl_review_summary_v4FIQi": {
+      "type": "bl-review-summary",
+      "blocks": {
+        "pro_4Gjivs": {
+          "type": "pro",
+          "settings": {
+            "text": "Free from parabens, sulfates, and synthetic fragrance"
+          }
+        },
+        "pro_YVGxBv": {
+          "type": "pro",
+          "settings": {
+            "text": "Hyaluronic acid actively hydrates while you wear it"
+          }
+        },
+        "pro_ZVFXdF": {
+          "type": "pro",
+          "settings": {
+            "text": "Jojoba oil mimics skin's natural sebum"
+          }
+        },
+        "pro_jQR736": {
+          "type": "pro",
+          "settings": {
+            "text": "No heavy silicones that clog pores"
+          }
+        },
+        "con_WfRYzF": {
+          "type": "con",
+          "settings": {
+            "text": "Clean formulations cost more than synthetic alternatives"
+          }
+        },
+        "con_lDkW8r": {
+          "type": "con",
+          "settings": {
+            "text": "Only available online — can't swatch in store"
+          }
+        }
+      },
+      "block_order": [
+        "pro_4Gjivs",
+        "pro_YVGxBv",
+        "pro_ZVFXdF",
+        "pro_jQR736",
+        "con_WfRYzF",
+        "con_lDkW8r"
+      ],
+      "name": "BL - Review Summary",
+      "settings": {
+        "section_id": "quick-verdict",
+        "bg_color": "#faf9f7",
+        "label": "AT A GLANCE",
+        "product_name": "Vera Lane Tone Adapting Foundation",
+        "rating": "4.9",
+        "price_text": "$39.99",
+        "verdict_line": "A genuinely clean foundation built around four powerhouse ingredients — hyaluronic acid, vitamin E, jojoba oil, and colour-adapting pigments — with none of the harsh chemicals that damage mature skin over time.",
+        "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
+        "image_asset": "",
+        "image_position": "left",
+        "cta_text": "Read Full Review",
+        "cta_anchor": "full-review"
+      }
+    },
+    "vl_rich_text_rb1yXf": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Why Ingredients Matter More After 40",
+        "content": "<p>Here's something the beauty industry doesn't talk about enough: your skin at 45 is fundamentally different from your skin at 25. It's thinner. It's drier. It's more reactive. The products that worked perfectly in your twenties and thirties can actively harm your skin now.</p><p>Foundations loaded with alcohol strip what little moisture your skin produces naturally. Heavy silicones create an impermeable film that suffocates pores and accelerates the very ageing signs you're trying to cover. Synthetic fragrances that never bothered you before can now trigger redness and irritation.</p><p><strong>After 40, your foundation shouldn't just cover your skin — it should support it.</strong> That means every ingredient needs to earn its place. Not because it's trendy. Not because it sounds impressive on a label. Because it genuinely benefits mature skin.</p><p>That's the philosophy behind the Vera Lane Tone Adapting Foundation. We didn't start with a formula and add \"clean\" claims later. We started with what mature skin actually needs and built backwards from there.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33",
+        "section_id": "full-review"
+      }
+    },
+    "vl_pull_quote_oKAYKe": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "Your skin at 45 is fundamentally different from your skin at 25. The products that worked perfectly then can actively harm your skin now.",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_rNsHUg": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "The Star Ingredient: Hyaluronic Acid",
+        "content": "<p>Hyaluronic acid isn't new. It's been a skincare staple for years. But most foundations treat it as a marketing afterthought — a trace amount added so they can put it on the label.</p><p>In the Vera Lane formula, hyaluronic acid is a core functional ingredient. Here's what it actually does:</p><p><strong>It holds up to 1,000 times its weight in water.</strong> That's not a marketing exaggeration — it's established biochemistry. When applied to skin, hyaluronic acid draws moisture from the environment and locks it into the upper layers of your epidermis. For mature skin that's lost much of its natural moisture-retention capacity, this is significant.</p><p>The practical result? Your foundation doesn't just sit on top of dry, flaky skin. It actively hydrates as you wear it. Fine lines appear less pronounced — not because they're filled with product, but because the skin itself is plumper and more hydrated.</p><p>Women who've worn the Vera Lane foundation daily for several weeks consistently report that their bare skin looks better on days off. That's the hyaluronic acid doing its job even after you've washed the foundation off.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_image_text_6MFeN4": {
+      "type": "vl-image-text",
+      "name": "VL Image + Text",
+      "settings": {
+        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_3.jpg",
+        "image_alt": "Vera Lane Foundation texture close-up",
+        "image_caption": "The lightweight, serum-like texture allows active ingredients to absorb into skin rather than sitting on top.",
+        "heading": "Vitamin E: Your Skin's Daily Shield",
+        "text": "<p>Vitamin E (tocopherol) serves two critical functions in the Vera Lane formula. First, it's a potent antioxidant that neutralises free radicals — the unstable molecules generated by UV exposure, pollution, and environmental stress that accelerate skin ageing.</p><p>Second, it strengthens the skin's natural moisture barrier. As we age, this barrier weakens, allowing moisture to escape and irritants to penetrate more easily. Vitamin E helps reinforce it, keeping hydration in and damage out.</p><p>Think of it as a daily shield you're applying every time you put on your foundation. You're not just covering imperfections — you're actively protecting your skin from the environmental factors that create them.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
+      }
+    },
+    "vl_rich_text_IwBdSY": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Jojoba Oil: The Ingredient Your Skin Recognises",
+        "content": "<p>Jojoba oil is remarkable because it's not technically an oil at all — it's a liquid wax ester. And its molecular structure is nearly identical to the sebum your skin produces naturally.</p><p><strong>Why does this matter?</strong> Because your skin recognises it. Instead of sitting on top of your skin like a foreign substance (the way mineral oil or heavy silicones do), jojoba oil is absorbed and integrated. It doesn't clog pores. It doesn't create a greasy film. It simply supplements what your skin is already trying to do.</p><p>For women over 40, this is particularly relevant. Natural sebum production decreases with age, which is why mature skin tends toward dryness. Jojoba oil helps compensate without triggering the excess oil production that can lead to breakouts — a common problem with heavier moisturising agents.</p><p>It also has natural anti-inflammatory properties, which means it can help calm the redness and sensitivity that become more common with mature skin. Several customers have noted that their rosacea appears less prominent when wearing the foundation regularly.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_pull_quote_EZFqm8": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "Jojoba oil's molecular structure is nearly identical to the sebum your skin produces naturally. Your skin doesn't treat it as a foreign substance — it recognises it.",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_vGkq8m": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "The Science Behind Colour Adaptation",
+        "content": "<p>This is the question everyone asks: how can one shade match every skin tone?</p><p>The Vera Lane Tone Adapting Foundation uses encapsulated colour-adapting pigments that respond to two factors: your skin's surface pH and its natural warmth. When the foundation makes contact with your skin, these micro-encapsulated pigments release and blend to match your unique undertone.</p><p>The process takes roughly 60–90 seconds. You'll see the foundation shift from its initial neutral tone to a shade that matches your natural skin colour. It's not magic — it's chemistry. The same principle has been used in colour-changing materials for decades, refined here specifically for cosmetic application.</p><p><strong>Why this matters for mature skin:</strong> Your skin tone isn't static. It changes with the seasons, with hormonal shifts, with medication, even with how much sleep you got last night. A traditional fixed-shade foundation can't account for these variations. The Vera Lane formula adjusts every time you apply it, matching the skin you have today — not the skin you had when you bought it.</p><p>This also eliminates oxidation — that frustrating phenomenon where your foundation turns orange a few hours after application. Because the pigments are calibrated to your actual skin chemistry, they maintain their colour throughout the day.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_block_Z0deEn": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "See the science in action on your own skin.",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY — RISK FREE",
+        "subtext": "Free shipping • 30-day money-back guarantee",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_rich_text_7PElhv": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "What We Left Out (And Why)",
+        "content": "<p>What's not in a formula matters just as much as what is — especially for skin that's becoming more sensitive with age. Here's what you won't find in the Vera Lane Tone Adapting Foundation:</p><p><strong>No parabens.</strong> These synthetic preservatives have been linked to hormone disruption in multiple studies. While the beauty industry debates the significance of those findings, we decided the risk wasn't worth taking — particularly for women going through or past menopause, when hormonal balance is already delicate.</p><p><strong>No sulfates.</strong> Sulfates are aggressive cleansing agents that strip natural oils from skin. They have no place in a foundation. Yet you'd be surprised how many formulas include them as emulsifiers. We use gentler plant-derived alternatives instead.</p><p><strong>No synthetic fragrance.</strong> \"Fragrance\" on a label can represent dozens of undisclosed chemicals. It's one of the most common causes of contact dermatitis, and sensitivity to fragrance increases with age. The Vera Lane foundation is completely unscented.</p><p><strong>No heavy silicones.</strong> Dimethicone and cyclomethicone create that \"smooth\" feeling many foundations have — but they do it by forming an occlusive layer over your skin. For mature skin that's already struggling with hydration and cell turnover, that's counterproductive. Our formula uses lightweight alternatives that allow skin to breathe.</p><p><strong>No alcohol.</strong> Denatured alcohol is used in many foundations to help them dry quickly and feel lightweight. But it achieves this by evaporating moisture from your skin. For anyone over 40, that's the last thing you need.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_rich_text_SACHHq": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "How Clean Ingredients Affect Long-Term Skin Health",
+        "content": "<p>There's a difference between a foundation that looks good today and a foundation that's good for your skin over time. Many conventional foundations deliver impressive short-term results while quietly damaging your skin's natural functions.</p><p>Heavy silicones can disrupt your skin's microbiome — the ecosystem of beneficial bacteria that keeps skin healthy. Synthetic preservatives can accumulate in tissue over years of daily use. Alcohol-based formulas progressively weaken your moisture barrier, making skin drier and more reactive over time.</p><p><strong>The Vera Lane approach is different.</strong> Every ingredient was chosen not just for its cosmetic benefit today, but for its effect on skin health over months and years of daily wear. Hyaluronic acid improves hydration. Vitamin E strengthens the moisture barrier. Jojoba oil supports natural sebum balance.</p><p>The result is a foundation that makes your bare skin look better over time — not worse. Multiple customers have reported that after several weeks of daily wear, their skin appears healthier, more even, and less dry even on makeup-free days. That's not a coincidence. That's what happens when your foundation works with your skin's biology instead of against it.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_pull_quote_GZckbK": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "There's a difference between a foundation that looks good today and a foundation that's good for your skin over time. We built for both.",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_3jdI2J": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Reading Foundation Labels: What to Watch For",
+        "content": "<p>If you're now looking more carefully at your current foundation's ingredient list, here are the key things to watch for:</p><p><strong>\"Fragrance\" or \"Parfum\"</strong> — This single word can hide 50+ undisclosed chemicals. If a product lists fragrance without specifying the source, treat it as a red flag.</p><p><strong>Anything ending in \"-paraben\"</strong> — Methylparaben, propylparaben, butylparaben. These are synthetic preservatives you may want to avoid, particularly if you have sensitive or hormonally reactive skin.</p><p><strong>\"Dimethicone\" or \"Cyclomethicone\"</strong> — Heavy silicones that create an artificial smooth feel but can trap debris and prevent skin from functioning normally.</p><p><strong>\"SD Alcohol\" or \"Denatured Alcohol\"</strong> — Drying agents that strip moisture. Different from fatty alcohols like cetearyl alcohol, which are actually beneficial moisturisers.</p><p><strong>\"SLS\" or \"SLES\"</strong> — Sodium Lauryl Sulfate and Sodium Laureth Sulfate. Aggressive surfactants that can irritate skin and compromise the moisture barrier.</p><p>A simple rule of thumb: if an ingredient list is longer than your thumb, or if you can't pronounce more than half the ingredients, it's worth questioning whether all of them are necessary.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_block_ZtwJk1": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "Ready to switch to foundation that works with your skin — not against it?",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY VERA LANE TODAY",
+        "subtext": "30-day money-back guarantee • Free shipping on every order",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_sticky_cta_ghBMCc": {
+      "type": "vl-sticky-cta",
+      "name": "VL Sticky CTA",
+      "settings": {
+        "url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": false,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "vl_editorial_hero_7WZgfC",
+    "bl_review_summary_v4FIQi",
+    "vl_rich_text_rb1yXf",
+    "vl_pull_quote_oKAYKe",
+    "vl_rich_text_rNsHUg",
+    "vl_image_text_6MFeN4",
+    "vl_rich_text_IwBdSY",
+    "vl_pull_quote_EZFqm8",
+    "vl_rich_text_vGkq8m",
+    "vl_cta_block_Z0deEn",
+    "vl_rich_text_7PElhv",
+    "vl_rich_text_SACHHq",
+    "vl_pull_quote_GZckbK",
+    "vl_rich_text_3jdI2J",
+    "vl_cta_block_ZtwJk1",
+    "vl_sticky_cta_ghBMCc"
+  ]
+}
