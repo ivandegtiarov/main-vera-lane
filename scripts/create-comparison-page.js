@@ -97,6 +97,8 @@ function buildTemplate(content) {
         bg_color: '#faf9f7',
         number: brand.number || `#${i + 1}`,
         badge_text: brand.badge_text || '',
+        highlight: brand.highlight || false,
+        highlight_label: brand.highlight_label || '',
         brand_name: brand.name,
         rating: brand.rating || '4',
         price_text: brand.price_text || '',

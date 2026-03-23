@@ -13,7 +13,13 @@
   assign rating_decimal = rating_val | minus: rating_int
   assign rating_next = rating_int | plus: 1
 -%}
-<article class="bl-brand-review bl-brand-review--{{ section.settings.image_position }}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--review-bg: {{ section.settings.bg_color }};">
+<article class="bl-brand-review bl-brand-review--{{ section.settings.image_position }}{% if section.settings.highlight %} bl-brand-review--winner{% endif %}" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--review-bg: {{ section.settings.bg_color }};">
+  {%- if section.settings.highlight and section.settings.highlight_label != blank -%}
+    <div class="bl-brand-review__winner-banner">
+      <svg class="bl-brand-review__trophy" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14v2H5zm0 2v4a7 7 0 0 0 5.5 6.83V18H8v2h8v-2h-2.5v-2.17A7 7 0 0 0 19 9V5h2V3h-2V1H5v2H3v2h2zm2 0h10v4a5 5 0 0 1-10 0V5zM3 5h2v4a2 2 0 0 1-2-2V5zm16 0h2v2a2 2 0 0 1-2 2V5z"/></svg>
+      <span>{{ section.settings.highlight_label }}</span>
+    </div>
+  {%- endif -%}
   <div class="bl-brand-review__container">
     {%- if review_img_url -%}
       <figure class="bl-brand-review__figure">
@@ -289,6 +295,39 @@
   border-top: 1px solid #E8E6E3;
 }
 
+/* Winner highlight */
+.bl-brand-review--winner {
+  background: #F7F3EE;
+  border-left: 4px solid #D4A574;
+  padding-top: 0;
+}
+
+.bl-brand-review__winner-banner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: #2D2D2D;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.bl-brand-review__trophy {
+  color: #D4A574;
+  flex-shrink: 0;
+}
+
+.bl-brand-review--winner .bl-brand-review__container {
+  padding-top: 2rem;
+}
+
 .bl-brand-review__figure {
   margin: 0;
   aspect-ratio: 1 / 1;
@@ -339,6 +378,20 @@
       "id": "badge_text",
       "label": "Badge text",
       "info": "e.g. 'Best Overall' or 'Editor's Pick'. Leave blank for no badge."
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight",
+      "label": "Highlight as winner",
+      "info": "Adds gold border, warm background, and winner banner",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "highlight_label",
+      "label": "Winner banner text",
+      "info": "Shown in the dark banner above the review (e.g. 'Editor's Choice — Best Overall')",
+      "default": "EDITOR'S CHOICE — BEST OVERALL"
     },
     {
       "type": "textarea",
