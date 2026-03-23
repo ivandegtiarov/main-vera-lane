@@ -13,17 +13,17 @@
     "product_name": "Vera Lane Tone Adapting Foundation",
     "rating": "4.9",
     "price_text": "$39.99",
-    "verdict_line": "A thoughtfully formulated foundation built around glycerin for hydration, vitamin E for antioxidant protection, bisabolol for soothing sensitive skin, and colour-adapting iron oxide pigments — with no parabens, no sulfates, and no drying alcohols.",
+    "verdict_line": "A thoughtfully formulated foundation built around glycerin for hydration, vitamin E for antioxidant protection, bisabolol for soothing sensitive skin, and colour-adapting iron oxide pigments — with no parabens, no sulfates, no fragrance, and no drying alcohols.",
     "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
     "image_position": "left",
     "pros": [
-      "Free from parabens, sulfates, and drying alcohols",
+      "Free from parabens, sulfates, fragrance, and drying alcohols",
       "Glycerin actively hydrates skin throughout the day",
       "Vitamin E provides antioxidant protection against environmental damage",
       "Built-in UV protection with titanium dioxide"
     ],
     "cons": [
-      "Contains fragrance (Parfum) — not suitable for fragrance-free seekers",
+      "Higher price point than drugstore options",
       "Only available online — can't swatch in store"
     ]
   },
@@ -90,13 +90,8 @@
     },
     {
       "type": "rich_text",
-      "subheading": "A Note About Fragrance",
-      "content": "<p>The ingredient list includes <strong>Parfum</strong> (fragrance). We want to be upfront about this.</p><p>The fragrance in the Vera Lane formula is present at a very low concentration — it's near the end of the ingredient list, which means it's one of the smallest components by volume. It provides a subtle, light scent that most users don't notice once the foundation is applied and set.</p><p>That said, if you have a known fragrance sensitivity or allergy, or if you strictly prefer fragrance-free products, this is something to be aware of. We believe in giving you the information to make the right choice for your skin — not hiding ingredients in fine print.</p>"
-    },
-    {
-      "type": "rich_text",
       "subheading": "What We Did Leave Out",
-      "content": "<p>While we've been transparent about what IS in the formula, there are several common foundation ingredients you won't find here:</p><p><strong>No parabens.</strong> These synthetic preservatives have been linked to potential hormone disruption in multiple studies. Instead, the formula uses Phenoxyethanol — a preservative widely considered safer and gentler, commonly found in products formulated for sensitive skin.</p><p><strong>No sulfates.</strong> Sodium Lauryl Sulfate and Sodium Laureth Sulfate are aggressive surfactants that can strip natural oils and irritate skin. They have no place in a foundation, yet some formulas still include them. You won't find them here.</p><p><strong>No drying alcohols.</strong> SD Alcohol and Denatured Alcohol are used in many foundations to help them dry quickly, but they achieve this by evaporating moisture from your skin. For mature skin that's already struggling with hydration, that's counterproductive. The Vera Lane formula avoids them entirely.</p><p><strong>No mineral oil.</strong> A petroleum-derived occlusive that can feel heavy on skin and potentially interfere with natural skin functions over time. The formula uses lighter, more skin-compatible alternatives.</p>"
+      "content": "<p>What's not in a formula matters just as much as what is — especially for skin that's becoming more sensitive with age. Here are the common foundation ingredients you won't find in the Vera Lane Tone Adapting Foundation:</p><p><strong>No parabens.</strong> These synthetic preservatives have been linked to potential hormone disruption in multiple studies. Instead, the formula uses Phenoxyethanol — a preservative widely considered safer and gentler, commonly found in products formulated for sensitive skin.</p><p><strong>No fragrance.</strong> \"Fragrance\" or \"Parfum\" on a label can represent dozens of undisclosed chemicals. It's one of the most common causes of contact dermatitis, and sensitivity to fragrance increases with age. The Vera Lane foundation is completely fragrance-free — making it suitable for even the most reactive, sensitive skin.</p><p><strong>No sulfates.</strong> Sodium Lauryl Sulfate and Sodium Laureth Sulfate are aggressive surfactants that can strip natural oils and irritate skin. They have no place in a foundation, yet some formulas still include them. You won't find them here.</p><p><strong>No drying alcohols.</strong> SD Alcohol and Denatured Alcohol are used in many foundations to help them dry quickly, but they achieve this by evaporating moisture from your skin. For mature skin that's already struggling with hydration, that's counterproductive. The Vera Lane formula avoids them entirely.</p><p><strong>No mineral oil.</strong> A petroleum-derived occlusive that can feel heavy on skin and potentially interfere with natural skin functions over time. The formula uses lighter, more skin-compatible alternatives.</p>"
     },
     {
       "type": "cta",

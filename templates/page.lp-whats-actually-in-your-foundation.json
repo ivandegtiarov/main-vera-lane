@@ -1,7 +1,7 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "vl_editorial_hero_2jkuFA": {
+    "vl_editorial_hero_uSL5p6": {
       "type": "vl-editorial-hero",
       "name": "VL Editorial Hero",
       "settings": {
@@ -17,40 +17,40 @@
         "meta_color": "#666666"
       }
     },
-    "bl_review_summary_RCY2Rn": {
+    "bl_review_summary_jwD3rf": {
       "type": "bl-review-summary",
       "blocks": {
-        "pro_pEs5ze": {
+        "pro_tlSV68": {
           "type": "pro",
           "settings": {
-            "text": "Free from parabens, sulfates, and drying alcohols"
+            "text": "Free from parabens, sulfates, fragrance, and drying alcohols"
           }
         },
-        "pro_LXvFD5": {
+        "pro_eBwRDV": {
           "type": "pro",
           "settings": {
             "text": "Glycerin actively hydrates skin throughout the day"
           }
         },
-        "pro_NCy6sm": {
+        "pro_a034pm": {
           "type": "pro",
           "settings": {
             "text": "Vitamin E provides antioxidant protection against environmental damage"
           }
         },
-        "pro_huLgVB": {
+        "pro_zH1pLt": {
           "type": "pro",
           "settings": {
             "text": "Built-in UV protection with titanium dioxide"
           }
         },
-        "con_FnFYz9": {
+        "con_MqiJwJ": {
           "type": "con",
           "settings": {
-            "text": "Contains fragrance (Parfum) — not suitable for fragrance-free seekers"
+            "text": "Higher price point than drugstore options"
           }
         },
-        "con_QORYwt": {
+        "con_70F1IF": {
           "type": "con",
           "settings": {
             "text": "Only available online — can't swatch in store"
@@ -58,12 +58,12 @@
         }
       },
       "block_order": [
-        "pro_pEs5ze",
-        "pro_LXvFD5",
-        "pro_NCy6sm",
-        "pro_huLgVB",
-        "con_FnFYz9",
-        "con_QORYwt"
+        "pro_tlSV68",
+        "pro_eBwRDV",
+        "pro_a034pm",
+        "pro_zH1pLt",
+        "con_MqiJwJ",
+        "con_70F1IF"
       ],
       "name": "BL - Review Summary",
       "settings": {
@@ -73,7 +73,7 @@
         "product_name": "Vera Lane Tone Adapting Foundation",
         "rating": "4.9",
         "price_text": "$39.99",
-        "verdict_line": "A thoughtfully formulated foundation built around glycerin for hydration, vitamin E for antioxidant protection, bisabolol for soothing sensitive skin, and colour-adapting iron oxide pigments — with no parabens, no sulfates, and no drying alcohols.",
+        "verdict_line": "A thoughtfully formulated foundation built around glycerin for hydration, vitamin E for antioxidant protection, bisabolol for soothing sensitive skin, and colour-adapting iron oxide pigments — with no parabens, no sulfates, no fragrance, and no drying alcohols.",
         "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
         "image_asset": "",
         "image_position": "left",
@@ -81,7 +81,7 @@
         "cta_anchor": "full-review"
       }
     },
-    "vl_rich_text_MW54l4": {
+    "vl_rich_text_EE8rH1": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -94,7 +94,7 @@
         "section_id": "full-review"
       }
     },
-    "vl_pull_quote_py6oZO": {
+    "vl_pull_quote_SNVc91": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -106,7 +106,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_T3tbPe": {
+    "vl_rich_text_Ii7Oor": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -118,7 +118,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_image_text_BcGPtY": {
+    "vl_image_text_F81tDi": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -132,7 +132,7 @@
         "text_color": "#333333"
       }
     },
-    "vl_rich_text_wrotlu": {
+    "vl_rich_text_VBBPyq": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -144,7 +144,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_pull_quote_fHwJM6": {
+    "vl_pull_quote_ZqHs2u": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -156,7 +156,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_uTwtVH": {
+    "vl_rich_text_VBbQv3": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -168,7 +168,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_cta_block_dLXFVz": {
+    "vl_cta_block_DOgCZh": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
@@ -182,7 +182,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_rich_text_4HyiPt": {
+    "vl_rich_text_9umv1o": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -194,7 +194,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_rich_text_kHr27W": {
+    "vl_rich_text_OfU9v7": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -206,7 +206,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_pull_quote_SZT0AC": {
+    "vl_pull_quote_CFLdrj": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -218,31 +218,19 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_tls7iJ": {
-      "type": "vl-rich-text",
-      "name": "VL Rich Text",
-      "settings": {
-        "subheading": "A Note About Fragrance",
-        "content": "<p>The ingredient list includes <strong>Parfum</strong> (fragrance). We want to be upfront about this.</p><p>The fragrance in the Vera Lane formula is present at a very low concentration — it's near the end of the ingredient list, which means it's one of the smallest components by volume. It provides a subtle, light scent that most users don't notice once the foundation is applied and set.</p><p>That said, if you have a known fragrance sensitivity or allergy, or if you strictly prefer fragrance-free products, this is something to be aware of. We believe in giving you the information to make the right choice for your skin — not hiding ingredients in fine print.</p>",
-        "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#5C1A33"
-      }
-    },
-    "vl_rich_text_xIZzNE": {
+    "vl_rich_text_eHN5Cd": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
         "subheading": "What We Did Leave Out",
-        "content": "<p>While we've been transparent about what IS in the formula, there are several common foundation ingredients you won't find here:</p><p><strong>No parabens.</strong> These synthetic preservatives have been linked to potential hormone disruption in multiple studies. Instead, the formula uses Phenoxyethanol — a preservative widely considered safer and gentler, commonly found in products formulated for sensitive skin.</p><p><strong>No sulfates.</strong> Sodium Lauryl Sulfate and Sodium Laureth Sulfate are aggressive surfactants that can strip natural oils and irritate skin. They have no place in a foundation, yet some formulas still include them. You won't find them here.</p><p><strong>No drying alcohols.</strong> SD Alcohol and Denatured Alcohol are used in many foundations to help them dry quickly, but they achieve this by evaporating moisture from your skin. For mature skin that's already struggling with hydration, that's counterproductive. The Vera Lane formula avoids them entirely.</p><p><strong>No mineral oil.</strong> A petroleum-derived occlusive that can feel heavy on skin and potentially interfere with natural skin functions over time. The formula uses lighter, more skin-compatible alternatives.</p>",
+        "content": "<p>What's not in a formula matters just as much as what is — especially for skin that's becoming more sensitive with age. Here are the common foundation ingredients you won't find in the Vera Lane Tone Adapting Foundation:</p><p><strong>No parabens.</strong> These synthetic preservatives have been linked to potential hormone disruption in multiple studies. Instead, the formula uses Phenoxyethanol — a preservative widely considered safer and gentler, commonly found in products formulated for sensitive skin.</p><p><strong>No fragrance.</strong> \"Fragrance\" or \"Parfum\" on a label can represent dozens of undisclosed chemicals. It's one of the most common causes of contact dermatitis, and sensitivity to fragrance increases with age. The Vera Lane foundation is completely fragrance-free — making it suitable for even the most reactive, sensitive skin.</p><p><strong>No sulfates.</strong> Sodium Lauryl Sulfate and Sodium Laureth Sulfate are aggressive surfactants that can strip natural oils and irritate skin. They have no place in a foundation, yet some formulas still include them. You won't find them here.</p><p><strong>No drying alcohols.</strong> SD Alcohol and Denatured Alcohol are used in many foundations to help them dry quickly, but they achieve this by evaporating moisture from your skin. For mature skin that's already struggling with hydration, that's counterproductive. The Vera Lane formula avoids them entirely.</p><p><strong>No mineral oil.</strong> A petroleum-derived occlusive that can feel heavy on skin and potentially interfere with natural skin functions over time. The formula uses lighter, more skin-compatible alternatives.</p>",
         "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "link_color": "#5C1A33"
       }
     },
-    "vl_cta_block_MfMXfV": {
+    "vl_cta_block_8YDLH7": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
@@ -256,7 +244,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_sticky_cta_l74p4M": {
+    "vl_sticky_cta_PklavS": {
       "type": "vl-sticky-cta",
       "name": "VL Sticky CTA",
       "settings": {
@@ -271,22 +259,21 @@
     }
   },
   "order": [
-    "vl_editorial_hero_2jkuFA",
-    "bl_review_summary_RCY2Rn",
-    "vl_rich_text_MW54l4",
-    "vl_pull_quote_py6oZO",
-    "vl_rich_text_T3tbPe",
-    "vl_image_text_BcGPtY",
-    "vl_rich_text_wrotlu",
-    "vl_pull_quote_fHwJM6",
-    "vl_rich_text_uTwtVH",
-    "vl_cta_block_dLXFVz",
-    "vl_rich_text_4HyiPt",
-    "vl_rich_text_kHr27W",
-    "vl_pull_quote_SZT0AC",
-    "vl_rich_text_tls7iJ",
-    "vl_rich_text_xIZzNE",
-    "vl_cta_block_MfMXfV",
-    "vl_sticky_cta_l74p4M"
+    "vl_editorial_hero_uSL5p6",
+    "bl_review_summary_jwD3rf",
+    "vl_rich_text_EE8rH1",
+    "vl_pull_quote_SNVc91",
+    "vl_rich_text_Ii7Oor",
+    "vl_image_text_F81tDi",
+    "vl_rich_text_VBBPyq",
+    "vl_pull_quote_ZqHs2u",
+    "vl_rich_text_VBbQv3",
+    "vl_cta_block_DOgCZh",
+    "vl_rich_text_9umv1o",
+    "vl_rich_text_OfU9v7",
+    "vl_pull_quote_CFLdrj",
+    "vl_rich_text_eHN5Cd",
+    "vl_cta_block_8YDLH7",
+    "vl_sticky_cta_PklavS"
   ]
 }
