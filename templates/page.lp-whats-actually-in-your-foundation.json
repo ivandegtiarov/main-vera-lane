@@ -1,7 +1,7 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "vl_editorial_hero_TXhQgE": {
+    "vl_editorial_hero_2jkuFA": {
       "type": "vl-editorial-hero",
       "name": "VL Editorial Hero",
       "settings": {
@@ -17,40 +17,40 @@
         "meta_color": "#666666"
       }
     },
-    "bl_review_summary_CIq1p5": {
+    "bl_review_summary_RCY2Rn": {
       "type": "bl-review-summary",
       "blocks": {
-        "pro_w9f8EB": {
+        "pro_pEs5ze": {
           "type": "pro",
           "settings": {
             "text": "Free from parabens, sulfates, and drying alcohols"
           }
         },
-        "pro_9zvm1f": {
+        "pro_LXvFD5": {
           "type": "pro",
           "settings": {
             "text": "Glycerin actively hydrates skin throughout the day"
           }
         },
-        "pro_CAR18o": {
+        "pro_NCy6sm": {
           "type": "pro",
           "settings": {
             "text": "Vitamin E provides antioxidant protection against environmental damage"
           }
         },
-        "pro_CeEOyV": {
+        "pro_huLgVB": {
           "type": "pro",
           "settings": {
             "text": "Built-in UV protection with titanium dioxide"
           }
         },
-        "con_eSZDCh": {
+        "con_FnFYz9": {
           "type": "con",
           "settings": {
             "text": "Contains fragrance (Parfum) — not suitable for fragrance-free seekers"
           }
         },
-        "con_C9ox9f": {
+        "con_QORYwt": {
           "type": "con",
           "settings": {
             "text": "Only available online — can't swatch in store"
@@ -58,12 +58,12 @@
         }
       },
       "block_order": [
-        "pro_w9f8EB",
-        "pro_9zvm1f",
-        "pro_CAR18o",
-        "pro_CeEOyV",
-        "con_eSZDCh",
-        "con_C9ox9f"
+        "pro_pEs5ze",
+        "pro_LXvFD5",
+        "pro_NCy6sm",
+        "pro_huLgVB",
+        "con_FnFYz9",
+        "con_QORYwt"
       ],
       "name": "BL - Review Summary",
       "settings": {
@@ -81,7 +81,7 @@
         "cta_anchor": "full-review"
       }
     },
-    "vl_rich_text_UBPfvu": {
+    "vl_rich_text_MW54l4": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -94,7 +94,7 @@
         "section_id": "full-review"
       }
     },
-    "vl_pull_quote_0s6ccV": {
+    "vl_pull_quote_py6oZO": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -106,7 +106,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_fcyPiA": {
+    "vl_rich_text_T3tbPe": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -118,7 +118,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_image_text_0imgJ4": {
+    "vl_image_text_BcGPtY": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -132,7 +132,7 @@
         "text_color": "#333333"
       }
     },
-    "vl_rich_text_YJlRn7": {
+    "vl_rich_text_wrotlu": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -144,7 +144,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_pull_quote_WF7V4B": {
+    "vl_pull_quote_fHwJM6": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -156,7 +156,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_KLPLqB": {
+    "vl_rich_text_uTwtVH": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -168,7 +168,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_cta_block_Y5p9n7": {
+    "vl_cta_block_dLXFVz": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
@@ -182,7 +182,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_rich_text_sb4Pm7": {
+    "vl_rich_text_4HyiPt": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -194,7 +194,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_rich_text_CUzkmG": {
+    "vl_rich_text_kHr27W": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -206,7 +206,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_pull_quote_RRNLhp": {
+    "vl_pull_quote_SZT0AC": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -218,7 +218,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_UWc1rO": {
+    "vl_rich_text_tls7iJ": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -230,7 +230,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_rich_text_oH2NXf": {
+    "vl_rich_text_xIZzNE": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -242,23 +242,11 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_rich_text_HOuAcG": {
-      "type": "vl-rich-text",
-      "name": "VL Rich Text",
-      "settings": {
-        "subheading": "The Full Ingredient List",
-        "content": "<p>Because we believe in full transparency, here's the complete ingredient list:</p><p><strong>Aqua, Cyclopentasiloxane, Glycerin, Titanium Dioxide, Butylene Glycol, Ethylhexyl Methoxycinnamate, Cetyl Peg/Ppg-10/1 Dimethicone, C12-15 Alkyl Benzoate, Butylene Glycol Dicaprylate/Dicaprate, Caprylic/Capric Triglyceride, Methyl Hydrogenated Rosinate, Dimethicone, Synthetic Fluorphlogopite, Hydrogenated Polyisobutene, Phenylbenzimidazole Sulfonic Acid, Sodium Chloride, Tocopheryl Acetate, Bisabolol, Hydroxyacetophenone, Lecithin, Buddleja Officinalis Extract, Isopropyl Myristate, Ethylhexyl Palmitate, Polyglyceryl-3 Diisostearate, Stearic Acid, BHT, Propanediol, Methicone, Silica, Aluminum Hydroxide, Dimethicone/Vinyl Dimethicone Crosspolymer, Sorbitan Sesquioleate, Polyglyceryl-3 Polyricinoleate, Silica Silylate, Disteardimonium Hectorite, Aminomethyl Propanol, Triethoxycaprylylsilane, Phenoxyethanol, Silica Dimethyl Silylate, Isostearic Acid, Sodium Citrate, Polyhydroxystearic Acid, Polyester-1, Disodium EDTA, Mica, Alumina, Parfum, CI 77891, CI 77492, CI 77491, CI 77499</strong></p><p>Ingredients are listed in descending order of concentration. The first few ingredients make up the bulk of the formula, while those near the end are present in very small amounts.</p>",
-        "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#5C1A33"
-      }
-    },
-    "vl_cta_block_AnHHQl": {
+    "vl_cta_block_MfMXfV": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
-        "text": "Now you know exactly what's in it. Ready to see how it works on your skin?",
+        "text": "Ready to see how the formula works on your skin?",
         "button_url": "/products/color-changing-foundation",
         "button_text": "TRY VERA LANE TODAY",
         "subtext": "30-day money-back guarantee • Free shipping on every order",
@@ -268,7 +256,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_sticky_cta_uWb2n1": {
+    "vl_sticky_cta_l74p4M": {
       "type": "vl-sticky-cta",
       "name": "VL Sticky CTA",
       "settings": {
@@ -283,23 +271,22 @@
     }
   },
   "order": [
-    "vl_editorial_hero_TXhQgE",
-    "bl_review_summary_CIq1p5",
-    "vl_rich_text_UBPfvu",
-    "vl_pull_quote_0s6ccV",
-    "vl_rich_text_fcyPiA",
-    "vl_image_text_0imgJ4",
-    "vl_rich_text_YJlRn7",
-    "vl_pull_quote_WF7V4B",
-    "vl_rich_text_KLPLqB",
-    "vl_cta_block_Y5p9n7",
-    "vl_rich_text_sb4Pm7",
-    "vl_rich_text_CUzkmG",
-    "vl_pull_quote_RRNLhp",
-    "vl_rich_text_UWc1rO",
-    "vl_rich_text_oH2NXf",
-    "vl_rich_text_HOuAcG",
-    "vl_cta_block_AnHHQl",
-    "vl_sticky_cta_uWb2n1"
+    "vl_editorial_hero_2jkuFA",
+    "bl_review_summary_RCY2Rn",
+    "vl_rich_text_MW54l4",
+    "vl_pull_quote_py6oZO",
+    "vl_rich_text_T3tbPe",
+    "vl_image_text_BcGPtY",
+    "vl_rich_text_wrotlu",
+    "vl_pull_quote_fHwJM6",
+    "vl_rich_text_uTwtVH",
+    "vl_cta_block_dLXFVz",
+    "vl_rich_text_4HyiPt",
+    "vl_rich_text_kHr27W",
+    "vl_pull_quote_SZT0AC",
+    "vl_rich_text_tls7iJ",
+    "vl_rich_text_xIZzNE",
+    "vl_cta_block_MfMXfV",
+    "vl_sticky_cta_l74p4M"
   ]
 }
