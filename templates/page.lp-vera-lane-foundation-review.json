@@ -1,61 +1,56 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "bl_hero_1pDol4": {
-      "type": "bl-hero",
-      "name": "BL - Hero",
+    "vl_editorial_hero_15YJ2H": {
+      "type": "vl-editorial-hero",
+      "name": "VL Editorial Hero",
       "settings": {
-        "section_id": "",
-        "bg_image_asset": "lp-vera-lane-review-hero.jpg",
-        "bg_color": "#2d2d2d",
-        "overlay_opacity": 80,
-        "category": "HONEST REVIEW",
+        "meta_text": "HONEST REVIEW",
         "headline": "I Wore Vera Lane's Tone Adapting Foundation Every Day for a Month — Here's My Honest Review",
-        "subheadline": "A 30-day test of the foundation that claims to adapt to any skin tone — tested on mature skin",
-        "show_rating": false,
-        "review_count": "",
-        "cta_text": "Skip to Verdict",
-        "cta_type": "anchor",
-        "cta_anchor": "quick-verdict",
-        "cta_url": "",
-        "cta_text_color": "#ffffff",
-        "cta_border_color": "#ffffff"
+        "intro_text": "A 30-day test of the foundation that claims to adapt to any skin tone — tested on mature skin over 40.",
+        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+        "image_alt": "Vera Lane Tone Adapting Foundation with makeup brush",
+        "caption": "The Vera Lane Tone Adapting Foundation — one shade that claims to match everyone.",
+        "bg_color": "#ffffff",
+        "headline_color": "#000000",
+        "text_color": "#333333",
+        "meta_color": "#666666"
       }
     },
-    "bl_review_summary_qt4CsA": {
+    "bl_review_summary_yBO1t5": {
       "type": "bl-review-summary",
       "blocks": {
-        "pro_xhZ8FE": {
+        "pro_ih0Ez4": {
           "type": "pro",
           "settings": {
             "text": "Genuinely adapts to skin tone within minutes"
           }
         },
-        "pro_hOrGJ2": {
+        "pro_dmxMjA": {
           "type": "pro",
           "settings": {
             "text": "Doesn't settle into fine lines or wrinkles"
           }
         },
-        "pro_Dpn2MH": {
+        "pro_uqfDEn": {
           "type": "pro",
           "settings": {
             "text": "Clean, skin-friendly ingredient list"
           }
         },
-        "pro_jlUcQK": {
+        "pro_hJFDMu": {
           "type": "pro",
           "settings": {
             "text": "Buildable medium-to-full coverage"
           }
         },
-        "con_VFSs2u": {
+        "con_6Cekz3": {
           "type": "con",
           "settings": {
             "text": "Higher price point than drugstore options"
           }
         },
-        "con_sJTW5u": {
+        "con_ifChJ8": {
           "type": "con",
           "settings": {
             "text": "Only available online"
@@ -63,12 +58,12 @@
         }
       },
       "block_order": [
-        "pro_xhZ8FE",
-        "pro_hOrGJ2",
-        "pro_Dpn2MH",
-        "pro_jlUcQK",
-        "con_VFSs2u",
-        "con_sJTW5u"
+        "pro_ih0Ez4",
+        "pro_dmxMjA",
+        "pro_uqfDEn",
+        "pro_hJFDMu",
+        "con_6Cekz3",
+        "con_ifChJ8"
       ],
       "name": "BL - Review Summary",
       "settings": {
@@ -82,197 +77,176 @@
         "image_asset": "lp-vera-lane-review-product.jpg",
         "image_position": "left",
         "cta_text": "Read Full Review",
-        "cta_anchor": "section-1"
+        "cta_anchor": "full-review"
       }
     },
-    "bl_reason_item_fVDMlv": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_rich_text_RJwVCQ": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
       "settings": {
-        "section_id": "section-1",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "01",
-        "title": "First Impressions: Out of the Bottle",
-        "body_text": "<p>The first thing you notice about the Vera Lane Tone Adapting Foundation is its unusual white-to-pink appearance in the tube. It's a bit unnerving if you're used to picking a shade from a lineup — there's only one shade here, and it claims to match everyone.</p><p>The texture is lightweight, almost serum-like. It doesn't feel heavy or greasy the way many full-coverage foundations do. When you pump a small amount onto the back of your hand, the color begins shifting within about 30 seconds — responding to your skin's natural pH and warmth.</p><p><strong>The packaging itself is simple and clean.</strong> No overwrought branding or excessive claims on the bottle. It feels like a product that's confident enough to let results speak for themselves. The pump dispenses a controlled amount, which is helpful when you're building coverage.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-1.jpg",
-        "image_position": "right"
+        "subheading": "First Impressions",
+        "content": "<p>The first thing you notice about the Vera Lane Tone Adapting Foundation is its unusual white-to-pink appearance in the tube. It's a bit unnerving if you're used to picking a shade from a lineup — there's only one shade here, and it claims to match everyone.</p><p>The texture is lightweight, almost serum-like. It doesn't feel heavy or greasy the way many full-coverage foundations do. When you pump a small amount onto the back of your hand, the color begins shifting within about 30 seconds — responding to your skin's natural pH and warmth.</p><p>The packaging itself is simple and clean. No overwrought branding or excessive claims on the bottle. It feels like a product that's confident enough to let results speak for themselves. The pump dispenses a controlled amount, which is helpful when you're building coverage.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33",
+        "section_id": "full-review"
       }
     },
-    "bl_reason_item_CejByL": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_image_text_GOSGm2": {
+      "type": "vl-image-text",
+      "name": "VL Image + Text",
       "settings": {
-        "section_id": "section-2",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "02",
-        "title": "Coverage & Texture",
-        "body_text": "<p>This is where the Vera Lane foundation really earns its keep. One thin layer gives you a natural, skin-like finish that evens out tone without looking like you're wearing foundation at all. Two layers build to a medium coverage that conceals redness, sun spots, and minor hyperpigmentation without caking.</p><p>The texture stays smooth once applied — it doesn't get patchy or separate as the day goes on. For mature skin, that's not a small thing. Many foundations that look beautiful at 8am start breaking down by noon, collecting in creases around the eyes and mouth. This one held up remarkably well.</p><p><strong>The finish is satin-matte</strong> — not dewy enough to look oily, not matte enough to emphasise dry patches. It's that rare middle ground that works well on skin that's lost some of its natural moisture with age. Over moisturised skin, it looked genuinely luminous without being shiny.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-2.jpg",
-        "image_position": "left"
+        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_3.jpg",
+        "image_alt": "Vera Lane Tone Adapting Foundation texture close-up",
+        "image_caption": "The satin-matte finish sits naturally on mature skin without emphasising dry patches.",
+        "heading": "Coverage & Texture",
+        "text": "<p>This is where the Vera Lane foundation really earns its keep. One thin layer gives you a natural, skin-like finish that evens out tone without looking like you're wearing foundation at all. Two layers build to a medium coverage that conceals redness, sun spots, and minor hyperpigmentation without caking.</p><p>The texture stays smooth once applied — it doesn't get patchy or separate as the day goes on. For mature skin, that's not a small thing.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
       }
     },
-    "bl_reason_item_i5v9w0": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_rich_text_WYCkHa": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
       "settings": {
-        "section_id": "section-3",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "03",
-        "title": "Shade Matching: Does It Actually Work?",
-        "body_text": "<p>This was the claim we were most sceptical about. A single shade that adapts to any skin tone? It sounds like the kind of marketing promise that falls apart under scrutiny.</p><p>We tested it across three different skin tones in our office — fair with pink undertones, medium with warm undertones, and deeper olive. In every case, the foundation adapted to a believable, natural-looking shade within two to three minutes of application. It wasn't a perfect match for the deepest skin tone tested, but it was remarkably close.</p><p><strong>For the 40+ demographic specifically,</strong> shade matching matters more than people realise. Skin tone shifts with age — hormonal changes, sun damage, and reduced circulation all alter your natural colouring. A foundation that can adjust with those changes rather than locking you into a shade you picked five years ago has genuine practical value.</p><p>One note: the adaptation works best on well-moisturised skin. On dry patches, the colour can look slightly uneven. A good hydrating primer underneath solves this entirely.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-3.jpg",
-        "image_position": "right"
+        "subheading": "",
+        "content": "<p>Many foundations that look beautiful at 8am start breaking down by noon, collecting in creases around the eyes and mouth. This one held up remarkably well.</p><p><strong>The finish is satin-matte</strong> — not dewy enough to look oily, not matte enough to emphasise dry patches. It's that rare middle ground that works well on skin that's lost some of its natural moisture with age. Over moisturised skin, it looked genuinely luminous without being shiny.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
       }
     },
-    "bl_reason_item_IqZyG1": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_pull_quote_oCsrYU": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
       "settings": {
-        "section_id": "section-4",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "04",
-        "title": "All-Day Wear: The 8-Hour Test",
-        "body_text": "<p>We applied the foundation at 7:30am and checked in at noon, 3pm, and 5:30pm. Here's what we found.</p><p><strong>At noon (4.5 hours):</strong> Still looked fresh. No visible settling into smile lines or forehead creases. A slight natural dewiness had developed around the T-zone, but nothing that required blotting. Coverage remained consistent.</p><p><strong>At 3pm (7.5 hours):</strong> The first signs of wear appeared — very slight fading around the nose where glasses sit. But the rest of the face still looked put-together. No patchiness, no oxidation. The shade hadn't shifted or turned orange, which is a common complaint with colour-adapting products.</p><p><strong>At 5:30pm (10 hours):</strong> Honestly impressive. The foundation had worn down naturally rather than breaking apart. It still provided light-to-medium coverage and looked like skin, not like melting makeup. Transfer onto a white tissue was minimal.</p><p>For a foundation marketed toward mature skin, this longevity matters. Nobody wants to reapply at lunch or carry a full makeup bag for touch-ups.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-4.jpg",
-        "image_position": "left"
+        "quote": "After testing dozens of foundations marketed to women over 40, this is the first one that actually looked better at the end of the day than at the start.",
+        "attribution": "— Our Testing Team",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
       }
     },
-    "bl_reason_item_H516bg": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_rich_text_bXHpoE": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
       "settings": {
-        "section_id": "section-5",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "05",
-        "title": "Ingredients & Skin Health",
-        "body_text": "<p>The ingredient list is one of the strongest selling points. The Vera Lane foundation is free from parabens, sulfates, and synthetic fragrances — all common irritants that become more problematic as skin matures and grows more sensitive.</p><p>Key ingredients include <strong>hyaluronic acid</strong> for hydration (a genuine workhorse ingredient, not just a buzzword), <strong>vitamin E</strong> for antioxidant protection, and <strong>jojoba oil</strong> which closely mimics the skin's natural sebum. These aren't revolutionary ingredients individually, but combined in the right proportions they create a formula that actually supports skin health while providing coverage.</p><p>What's absent matters too. There are no heavy silicones that can clog pores or create that suffocating film some foundations leave. No alcohol that strips moisture. No artificial dyes.</p><p><strong>After 30 days of daily wear,</strong> we noticed our skin actually looked better on bare-face days. Less dryness, more even tone. That's the mark of a foundation that works with your skin rather than just sitting on top of it.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-5.jpg",
-        "image_position": "right"
+        "subheading": "Shade Matching: Does It Actually Work?",
+        "content": "<p>This was the claim we were most sceptical about. A single shade that adapts to any skin tone? It sounds like the kind of marketing promise that falls apart under scrutiny.</p><p>We tested it across three different skin tones in our office — fair with pink undertones, medium with warm undertones, and deeper olive. In every case, the foundation adapted to a believable, natural-looking shade within two to three minutes of application. It wasn't a perfect match for the deepest skin tone tested, but it was remarkably close.</p><p><strong>For the 40+ demographic specifically,</strong> shade matching matters more than people realise. Skin tone shifts with age — hormonal changes, sun damage, and reduced circulation all alter your natural colouring. A foundation that can adjust with those changes rather than locking you into a shade you picked five years ago has genuine practical value.</p><p>One note: the adaptation works best on well-moisturised skin. On dry patches, the colour can look slightly uneven. A good hydrating primer underneath solves this entirely.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
       }
     },
-    "bl_reason_item_CApmBs": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "vl_cta_block_4hLa8d": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
       "settings": {
-        "section_id": "section-6",
-        "bg_color": "#faf9f7",
-        "number_prefix": "",
-        "number": "06",
-        "title": "Final Verdict: Is It Worth $39.99?",
-        "body_text": "<p>After a full month of daily wear, the answer is a clear yes — with a few caveats.</p><p><strong>The Vera Lane Tone Adapting Foundation does what it promises.</strong> It adapts to your skin tone, provides buildable coverage, lasts through a full day, and uses ingredients that are genuinely good for mature skin. At $39.99, it sits in the mid-range — more expensive than drugstore options, but well below prestige brands charging $60-80 for similar performance.</p><p>It's best suited for women who want a natural, skin-like finish rather than full-glam coverage. If you're looking for something to completely mask every imperfection, this probably isn't it. But if you want to look like yourself on a really good skin day — with a formula that won't punish your skin for wearing it — this delivers.</p><p><strong>Who should buy it:</strong> Women 40+ who want a low-maintenance, one-shade foundation that looks natural and supports skin health. Anyone frustrated by foundations that oxidise, settle into lines, or require constant touch-ups.</p><p><strong>Who should skip it:</strong> Anyone who needs very heavy, full-coverage concealment. Those who prefer a strongly matte or strongly dewy finish. If you can easily swatch and match shades in store, the tone-adapting technology isn't as necessary.</p>",
-        "link_text": "Check Availability",
-        "link_type": "anchor",
-        "link_anchor": "offer",
-        "link_url": "",
-        "image_asset": "lp-vera-lane-review-6.jpg",
-        "image_position": "left"
+        "text": "Ready to see if it works for your skin tone?",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY — RISK FREE",
+        "subtext": "Free shipping on all orders",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
       }
     },
-    "bl_product_card_split_WV8CLq": {
-      "type": "bl-product-card-split",
-      "blocks": {
-        "feature_6mbIw8": {
-          "type": "feature",
-          "settings": {
-            "label": "Adapts to Your Skin Tone"
-          }
-        },
-        "feature_PNRWTC": {
-          "type": "feature",
-          "settings": {
-            "label": "Clean Ingredients"
-          }
-        },
-        "feature_2yMsK8": {
-          "type": "feature",
-          "settings": {
-            "label": "All-Day Wear"
-          }
-        },
-        "feature_jt0DR0": {
-          "type": "feature",
-          "settings": {
-            "label": "For Mature Skin"
-          }
-        }
-      },
-      "block_order": [
-        "feature_6mbIw8",
-        "feature_PNRWTC",
-        "feature_2yMsK8",
-        "feature_jt0DR0"
-      ],
-      "name": "BL - Product Card Split",
+    "vl_rich_text_1OoY8z": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
       "settings": {
-        "section_id": "offer",
-        "bg_color": "#faf9f7",
-        "sale_badge": "EDITOR'S PICK",
-        "badge_bg": "#d4a574",
-        "badge_text": "#2d2d2d",
-        "product_name": "Vera Lane Tone Adapting Foundation",
-        "description": "<p>The foundation that adapts to your unique skin tone. One shade fits all — powered by colour-adapting technology designed specifically for mature skin. Clean ingredients. All-day wear. No oxidation.</p>",
-        "image": "shopify://shop_images/color-changing-foundation.jpg",
-        "more_colors_text": "+12 More Shades",
-        "cta_text": "Try It Today — Risk Free",
-        "cta_url": "/products/color-changing-foundation",
-        "cta_bg": "#000000",
-        "cta_text_color": "#ffffff"
+        "subheading": "All-Day Wear: The 8-Hour Test",
+        "content": "<p>We applied the foundation at 7:30am and checked in at noon, 3pm, and 5:30pm. Here's what we found.</p><p><strong>At noon (4.5 hours):</strong> Still looked fresh. No visible settling into smile lines or forehead creases. A slight natural dewiness had developed around the T-zone, but nothing that required blotting. Coverage remained consistent.</p><p><strong>At 3pm (7.5 hours):</strong> The first signs of wear appeared — very slight fading around the nose where glasses sit. But the rest of the face still looked put-together. No patchiness, no oxidation. The shade hadn't shifted or turned orange, which is a common complaint with colour-adapting products.</p><p><strong>At 5:30pm (10 hours):</strong> Honestly impressive. The foundation had worn down naturally rather than breaking apart. It still provided light-to-medium coverage and looked like skin, not like melting makeup. Transfer onto a white tissue was minimal.</p><p>For a foundation marketed toward mature skin, this longevity matters. Nobody wants to reapply at lunch or carry a full makeup bag for touch-ups.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
       }
     },
-    "bl_sticky_cta_5FeawT": {
-      "type": "bl-sticky-cta",
-      "name": "BL - Sticky CTA",
+    "vl_pull_quote_y63Ph6": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
       "settings": {
-        "badge_text": "HONEST REVIEW",
-        "promo_text": "Rated 4.7/5 — Tone Adapting Foundation",
-        "button_text": "Try It Today — Risk Free",
-        "link_url": "/products/color-changing-foundation",
-        "show_after_scroll": true,
-        "dismiss_enabled": false,
-        "bg_color": "#2D2D2D",
-        "text_color": "#ffffff",
-        "button_bg": "#D4A574",
-        "button_text_color": "#2D2D2D",
-        "badge_bg": "#8B3A3A",
-        "badge_text_color": "#ffffff"
+        "quote": "At 10 hours, it still looked like skin — not like melting makeup. That's genuinely rare for a foundation in this price range.",
+        "attribution": "— 30-Day Wear Test",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_BPJisz": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Ingredients & Skin Health",
+        "content": "<p>The ingredient list is one of the strongest selling points. The Vera Lane foundation is free from parabens, sulfates, and synthetic fragrances — all common irritants that become more problematic as skin matures and grows more sensitive.</p><p>Key ingredients include <strong>hyaluronic acid</strong> for hydration (a genuine workhorse ingredient, not just a buzzword), <strong>vitamin E</strong> for antioxidant protection, and <strong>jojoba oil</strong> which closely mimics the skin's natural sebum. These aren't revolutionary ingredients individually, but combined in the right proportions they create a formula that actually supports skin health while providing coverage.</p><p>What's absent matters too. There are no heavy silicones that can clog pores or create that suffocating film some foundations leave. No alcohol that strips moisture. No artificial dyes.</p><p><strong>After 30 days of daily wear,</strong> we noticed our skin actually looked better on bare-face days. Less dryness, more even tone. That's the mark of a foundation that works with your skin rather than just sitting on top of it.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_rich_text_ycCbMH": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Final Verdict: Is It Worth $39.99?",
+        "content": "<p>After a full month of daily wear, the answer is a clear yes — with a few caveats.</p><p><strong>The Vera Lane Tone Adapting Foundation does what it promises.</strong> It adapts to your skin tone, provides buildable coverage, lasts through a full day, and uses ingredients that are genuinely good for mature skin. At $39.99, it sits in the mid-range — more expensive than drugstore options, but well below prestige brands charging $60-80 for similar performance.</p><p>It's best suited for women who want a natural, skin-like finish rather than full-glam coverage. If you're looking for something to completely mask every imperfection, this probably isn't it. But if you want to look like yourself on a really good skin day — with a formula that won't punish your skin for wearing it — this delivers.</p><p><strong>Who should buy it:</strong> Women 40+ who want a low-maintenance, one-shade foundation that looks natural and supports skin health. Anyone frustrated by foundations that oxidise, settle into lines, or require constant touch-ups.</p><p><strong>Who should skip it:</strong> Anyone who needs very heavy, full-coverage concealment. Those who prefer a strongly matte or strongly dewy finish. If you can easily swatch and match shades in store, the tone-adapting technology isn't as necessary.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_block_BtZ0Pj": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "See why thousands of women over 40 are making the switch.",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY VERA LANE TODAY",
+        "subtext": "30-day money-back guarantee",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_sticky_cta_LyLS1R": {
+      "type": "vl-sticky-cta",
+      "name": "VL Sticky CTA",
+      "settings": {
+        "url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": false,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
       }
     }
   },
   "order": [
-    "bl_hero_1pDol4",
-    "bl_review_summary_qt4CsA",
-    "bl_reason_item_fVDMlv",
-    "bl_reason_item_CejByL",
-    "bl_reason_item_i5v9w0",
-    "bl_reason_item_IqZyG1",
-    "bl_reason_item_H516bg",
-    "bl_reason_item_CApmBs",
-    "bl_product_card_split_WV8CLq",
-    "bl_sticky_cta_5FeawT"
+    "vl_editorial_hero_15YJ2H",
+    "bl_review_summary_yBO1t5",
+    "vl_rich_text_RJwVCQ",
+    "vl_image_text_GOSGm2",
+    "vl_rich_text_WYCkHa",
+    "vl_pull_quote_oCsrYU",
+    "vl_rich_text_bXHpoE",
+    "vl_cta_block_4hLa8d",
+    "vl_rich_text_1OoY8z",
+    "vl_pull_quote_y63Ph6",
+    "vl_rich_text_BPJisz",
+    "vl_rich_text_ycCbMH",
+    "vl_cta_block_BtZ0Pj",
+    "vl_sticky_cta_LyLS1R"
   ]
 }

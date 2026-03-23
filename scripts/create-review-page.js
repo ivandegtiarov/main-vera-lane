@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 /**
- * Vera Lane Single Product Review Landing Page Generator
+ * Vera Lane Editorial Product Review Landing Page Generator
  *
- * Creates a Shopify template JSON for an editorial product review page.
+ * Creates a Shopify template JSON using vl-* editorial sections
+ * for a long-form single-product review page.
  *
  * Usage:
  *   node scripts/create-review-page.js <content-file.json>
@@ -11,16 +12,15 @@
  * Content file format:
  * {
  *   "slug": "lp-vera-lane-foundation-review",
- *   "hero": { "headline", "subheadline", "category", "bg_image_asset" },
- *   "summary": {
- *     "product_name", "rating", "price_text", "verdict_line",
- *     "image_asset", "label",
- *     "pros": [...], "cons": [...]
- *   },
- *   "sections": [
- *     { "number", "title", "body_text", "image_asset", "image_position" }
+ *   "hero": { "meta_text", "headline", "intro_text", "image", "caption" },
+ *   "summary": { "product_name", "rating", "price_text", "verdict_line", "image_asset", "pros": [...], "cons": [...] },
+ *   "body": [
+ *     { "type": "rich_text", "subheading", "content" },
+ *     { "type": "image_text", "image", "image_caption", "heading", "text" },
+ *     { "type": "pull_quote", "quote", "attribution" },
+ *     { "type": "cta", "text", "button_text", "button_url", "subtext" }
  *   ],
- *   "product": { "name", "description", "image", "badge", "cta_text", "cta_url", "features" }
+ *   "sticky_cta": { "button_text", "url" }
  * }
  */
 
@@ -42,148 +42,169 @@ function buildTemplate(content) {
   const sections = {};
   const order = [];
 
-  // 1. Hero (reuse bl-hero)
-  const heroId = `bl_hero_${generateId()}`;
+  // 1. Editorial Hero
+  const heroId = `vl_editorial_hero_${generateId()}`;
   sections[heroId] = {
-    type: 'bl-hero',
-    name: 'BL - Hero',
+    type: 'vl-editorial-hero',
+    name: 'VL Editorial Hero',
     settings: {
-      section_id: '',
-      bg_image_asset: content.hero.bg_image_asset || '',
-      bg_color: '#2d2d2d',
-      overlay_opacity: 80,
-      category: content.hero.category || 'HONEST REVIEW',
+      meta_text: content.hero.meta_text || 'HONEST REVIEW',
       headline: content.hero.headline,
-      subheadline: content.hero.subheadline || '',
-      show_rating: content.hero.show_rating || false,
-      review_count: content.hero.review_count || '',
-      cta_text: content.hero.cta_text || 'Read The Review',
-      cta_type: 'anchor',
-      cta_anchor: 'quick-verdict',
-      cta_url: '',
-      cta_text_color: '#ffffff',
-      cta_border_color: '#ffffff',
+      intro_text: content.hero.intro_text || '',
+      image: content.hero.image || '',
+      image_alt: content.hero.image_alt || '',
+      caption: content.hero.caption || '',
+      bg_color: '#ffffff',
+      headline_color: '#000000',
+      text_color: '#333333',
+      meta_color: '#666666',
     },
   };
   order.push(heroId);
 
-  // 2. Review summary (bl-review-summary)
-  const summaryId = `bl_review_summary_${generateId()}`;
-  const summaryBlocks = {};
-  const summaryBlockOrder = [];
+  // 2. Review Summary (bl-review-summary — keeps the quick verdict card)
+  if (content.summary) {
+    const summaryId = `bl_review_summary_${generateId()}`;
+    const summaryBlocks = {};
+    const summaryBlockOrder = [];
 
-  (content.summary.pros || []).forEach((text) => {
-    const id = `pro_${generateId()}`;
-    summaryBlocks[id] = { type: 'pro', settings: { text } };
-    summaryBlockOrder.push(id);
-  });
+    (content.summary.pros || []).forEach((text) => {
+      const id = `pro_${generateId()}`;
+      summaryBlocks[id] = { type: 'pro', settings: { text } };
+      summaryBlockOrder.push(id);
+    });
 
-  (content.summary.cons || []).forEach((text) => {
-    const id = `con_${generateId()}`;
-    summaryBlocks[id] = { type: 'con', settings: { text } };
-    summaryBlockOrder.push(id);
-  });
+    (content.summary.cons || []).forEach((text) => {
+      const id = `con_${generateId()}`;
+      summaryBlocks[id] = { type: 'con', settings: { text } };
+      summaryBlockOrder.push(id);
+    });
 
-  sections[summaryId] = {
-    type: 'bl-review-summary',
-    blocks: summaryBlocks,
-    block_order: summaryBlockOrder,
-    name: 'BL - Review Summary',
-    settings: {
-      section_id: 'quick-verdict',
-      bg_color: '#faf9f7',
-      label: content.summary.label || 'QUICK VERDICT',
-      product_name: content.summary.product_name,
-      rating: content.summary.rating || '4.5',
-      price_text: content.summary.price_text || '',
-      verdict_line: content.summary.verdict_line || '',
-      image_asset: content.summary.image_asset || '',
-      image_position: content.summary.image_position || 'left',
-      cta_text: 'Read Full Review',
-      cta_anchor: 'section-1',
-    },
-  };
-  order.push(summaryId);
-
-  // 3. Review sections (bl-reason-item, alternating left/right)
-  (content.sections || []).forEach((section, i) => {
-    const sectionId = `bl_reason_item_${generateId()}`;
-    sections[sectionId] = {
-      type: 'bl-reason-item',
-      name: 'BL - Reason Item',
+    sections[summaryId] = {
+      type: 'bl-review-summary',
+      blocks: summaryBlocks,
+      block_order: summaryBlockOrder,
+      name: 'BL - Review Summary',
       settings: {
-        section_id: `section-${i + 1}`,
+        section_id: 'quick-verdict',
         bg_color: '#faf9f7',
-        number_prefix: '',
-        number: section.number || `${String(i + 1).padStart(2, '0')}`,
-        title: section.title,
-        body_text: section.body_text,
-        link_text: section.link_text || '',
-        link_type: section.link_type || 'anchor',
-        link_anchor: section.link_anchor || '',
-        link_url: section.link_url || '',
-        image_asset: section.image_asset || '',
-        image_position: section.image_position || (i % 2 === 0 ? 'right' : 'left'),
+        label: content.summary.label || 'QUICK VERDICT',
+        product_name: content.summary.product_name,
+        rating: content.summary.rating || '4.5',
+        price_text: content.summary.price_text || '',
+        verdict_line: content.summary.verdict_line || '',
+        image_asset: content.summary.image_asset || '',
+        image_position: content.summary.image_position || 'left',
+        cta_text: 'Read Full Review',
+        cta_anchor: 'full-review',
       },
     };
-    order.push(sectionId);
+    order.push(summaryId);
+  }
+
+  // 3. Body sections — mixed vl-rich-text, vl-image-text, vl-pull-quote, vl-cta-block
+  (content.body || []).forEach((block, i) => {
+    switch (block.type) {
+      case 'rich_text': {
+        const id = `vl_rich_text_${generateId()}`;
+        sections[id] = {
+          type: 'vl-rich-text',
+          name: 'VL Rich Text',
+          settings: {
+            subheading: block.subheading || '',
+            content: block.content,
+            bg_color: block.bg_color || '#ffffff',
+            heading_color: '#000000',
+            text_color: '#333333',
+            link_color: '#5C1A33',
+          },
+        };
+        // First body section gets the anchor
+        if (i === 0) {
+          sections[id].settings.section_id = 'full-review';
+        }
+        order.push(id);
+        break;
+      }
+
+      case 'image_text': {
+        const id = `vl_image_text_${generateId()}`;
+        sections[id] = {
+          type: 'vl-image-text',
+          name: 'VL Image + Text',
+          settings: {
+            image: block.image || '',
+            image_alt: block.image_alt || '',
+            image_caption: block.image_caption || '',
+            heading: block.heading || '',
+            text: block.text || '',
+            bg_color: block.bg_color || '#ffffff',
+            heading_color: '#000000',
+            text_color: '#333333',
+          },
+        };
+        order.push(id);
+        break;
+      }
+
+      case 'pull_quote': {
+        const id = `vl_pull_quote_${generateId()}`;
+        sections[id] = {
+          type: 'vl-pull-quote',
+          name: 'VL Pull Quote',
+          settings: {
+            quote: block.quote,
+            attribution: block.attribution || '',
+            bg_color: block.bg_color || '#F5EDE8',
+            quote_color: '#333333',
+            accent_color: '#5C1A33',
+            attribution_color: '#666666',
+          },
+        };
+        order.push(id);
+        break;
+      }
+
+      case 'cta': {
+        const id = `vl_cta_block_${generateId()}`;
+        sections[id] = {
+          type: 'vl-cta-block',
+          name: 'VL CTA Block',
+          settings: {
+            text: block.text || '',
+            button_url: block.button_url || '/products/color-changing-foundation',
+            button_text: block.button_text || 'TRY IT TODAY',
+            subtext: block.subtext || '',
+            bg_color: block.bg_color || '#ffffff',
+            text_color: '#333333',
+            button_bg_color: '#5C1A33',
+            button_text_color: '#ffffff',
+          },
+        };
+        order.push(id);
+        break;
+      }
+    }
   });
 
-  // 4. Product card (reuse bl-product-card-split)
-  const productId = `bl_product_card_split_${generateId()}`;
-  const featureBlocks = {};
-  const featureOrder = [];
-
-  (content.product.features || []).forEach((label) => {
-    const id = `feature_${generateId()}`;
-    featureBlocks[id] = { type: 'feature', settings: { label } };
-    featureOrder.push(id);
-  });
-
-  sections[productId] = {
-    type: 'bl-product-card-split',
-    blocks: featureBlocks,
-    block_order: featureOrder,
-    name: 'BL - Product Card Split',
-    settings: {
-      section_id: 'offer',
-      bg_color: '#faf9f7',
-      sale_badge: content.product.badge || "EDITOR'S PICK",
-      badge_bg: '#d4a574',
-      badge_text: '#2d2d2d',
-      product_name: content.product.name || 'Vera Lane Tone Adapting Foundation',
-      description: content.product.description || '',
-      image: content.product.image || '',
-      more_colors_text: '+12 More Shades',
-      cta_text: content.product.cta_text || 'Try It Today',
-      cta_url: content.product.cta_url || '/products/color-changing-foundation',
-      cta_bg: '#000000',
-      cta_text_color: '#ffffff',
-    },
-  };
-  order.push(productId);
-
-  // 5. Sticky CTA (reuse bl-sticky-cta)
-  const stickyCtaId = `bl_sticky_cta_${generateId()}`;
-  sections[stickyCtaId] = {
-    type: 'bl-sticky-cta',
-    name: 'BL - Sticky CTA',
-    settings: {
-      badge_text: 'HONEST REVIEW',
-      promo_text: content.product.promo_text || '#1 Rated Tone Adapting Foundation',
-      button_text: content.product.cta_text || 'Try It Today',
-      link_url: content.product.cta_url || '/products/color-changing-foundation',
-      show_after_scroll: true,
-      dismiss_enabled: false,
-      bg_color: '#2D2D2D',
-      text_color: '#ffffff',
-      button_bg: '#D4A574',
-      button_text_color: '#2D2D2D',
-      badge_bg: '#8B3A3A',
-      badge_text_color: '#ffffff',
-    },
-  };
-  order.push(stickyCtaId);
+  // 4. Sticky CTA
+  if (content.sticky_cta) {
+    const stickyId = `vl_sticky_cta_${generateId()}`;
+    sections[stickyId] = {
+      type: 'vl-sticky-cta',
+      name: 'VL Sticky CTA',
+      settings: {
+        url: content.sticky_cta.url || '/products/color-changing-foundation',
+        button_text: content.sticky_cta.button_text || 'TRY IT TODAY',
+        show_amazon_icon: false,
+        bg_color: '#ffffff',
+        button_bg_color: '#5C1A33',
+        button_text_color: '#ffffff',
+        icon_bg_color: '#ffffff',
+      },
+    };
+    order.push(stickyId);
+  }
 
   return {
     layout: 'theme.vl-landing',
