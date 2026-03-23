@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.vl-landing",
   "sections": {
@@ -37,7 +46,6 @@
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
-        "section_id": "reviews",
         "subheading": "",
         "content": "<p>We didn't ask for these reviews. We didn't offer discounts for them. These are honest, unfiltered opinions from women who bought the Vera Lane Tone Adapting Foundation and took the time to share what they thought.</p><p>Some loved it immediately. Some were sceptical at first. A few had minor critiques. We're sharing all of it — because if a product works, the reviews speak for themselves.</p>",
         "bg_color": "#ffffff",

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.vl-landing",
   "sections": {
@@ -89,8 +98,7 @@
         "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
-        "link_color": "#5C1A33",
-        "section_id": "full-review"
+        "link_color": "#5C1A33"
       }
     },
     "vl_image_text_GOSGm2": {
