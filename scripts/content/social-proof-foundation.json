@@ -4,11 +4,16 @@
     "headline": "What 1000s of Women Over 40 Are Saying About This Foundation",
     "subheadline": "Real reviews from real women who've made the switch to Vera Lane's Tone Adapting Foundation",
     "category": "REAL REVIEWS",
-    "bg_image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+    "bg_image_asset": "lp-social-proof-hero.jpg",
     "show_rating": true,
     "review_count": "1000s of Verified Reviews",
     "cta_text": "READ THE REVIEWS",
     "cta_anchor": "reviews"
+  },
+  "product_image": {
+    "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
+    "image_alt": "Vera Lane Tone Adapting Foundation",
+    "image_caption": "Vera Lane Tone Adapting Foundation — $39.99"
   },
   "intro": {
     "content": "<p>We didn't ask for these reviews. We didn't offer discounts for them. These are honest, unfiltered opinions from women who bought the Vera Lane Tone Adapting Foundation and took the time to share what they thought.</p><p>Some loved it immediately. Some were sceptical at first. A few had minor critiques. We're sharing all of it — because if a product works, the reviews speak for themselves.</p>"

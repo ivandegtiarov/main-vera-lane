@@ -48,7 +48,6 @@ function buildTemplate(content) {
     name: 'BL - Hero',
     settings: {
       section_id: '',
-      bg_image: content.hero.bg_image || '',
       bg_image_asset: content.hero.bg_image_asset || '',
       bg_color: '#2d2d2d',
       overlay_opacity: content.hero.overlay_opacity || 35,
@@ -64,7 +63,27 @@ function buildTemplate(content) {
   };
   order.push(heroId);
 
-  // 2. Intro (vl-rich-text)
+  // 2. Product image (vl-image-text — inline product shot)
+  if (content.product_image) {
+    const imgId = `vl_image_text_${generateId()}`;
+    sections[imgId] = {
+      type: 'vl-image-text',
+      name: 'VL Image + Text',
+      settings: {
+        image: content.product_image.image || '',
+        image_alt: content.product_image.image_alt || '',
+        image_caption: content.product_image.image_caption || '',
+        heading: content.product_image.heading || '',
+        text: content.product_image.text || '',
+        bg_color: '#ffffff',
+        heading_color: '#000000',
+        text_color: '#333333',
+      },
+    };
+    order.push(imgId);
+  }
+
+  // 3. Intro (vl-rich-text)
   if (content.intro) {
     const introId = `vl_rich_text_${generateId()}`;
     sections[introId] = {
