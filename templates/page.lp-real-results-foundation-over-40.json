@@ -1,0 +1,277 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "vl_editorial_hero_uIOIy1": {
+      "type": "vl-editorial-hero",
+      "name": "VL Editorial Hero",
+      "settings": {
+        "meta_text": "REAL RESULTS",
+        "headline": "Real Women. Real Skin. Real Results.",
+        "intro_text": "No filters. No professional lighting. Just honest before-and-after photos from women over 40 who tried the Vera Lane Tone Adapting Foundation.",
+        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
+        "image_alt": "Vera Lane Tone Adapting Foundation",
+        "caption": "The Vera Lane Tone Adapting Foundation — see what it looks like on real skin.",
+        "bg_color": "#ffffff",
+        "headline_color": "#000000",
+        "text_color": "#333333",
+        "meta_color": "#666666"
+      }
+    },
+    "bl_review_summary_08SCXD": {
+      "type": "bl-review-summary",
+      "blocks": {
+        "pro_R9SIZA": {
+          "type": "pro",
+          "settings": {
+            "text": "One shade that genuinely adapts to every skin tone"
+          }
+        },
+        "pro_1GkAGf": {
+          "type": "pro",
+          "settings": {
+            "text": "Doesn't settle into fine lines or wrinkles"
+          }
+        },
+        "pro_ElQHrd": {
+          "type": "pro",
+          "settings": {
+            "text": "Buildable coverage — sheer to medium-full"
+          }
+        },
+        "pro_BH2IeY": {
+          "type": "pro",
+          "settings": {
+            "text": "Looks like skin, not like makeup"
+          }
+        },
+        "con_mfVfsF": {
+          "type": "con",
+          "settings": {
+            "text": "Higher price point than drugstore options"
+          }
+        },
+        "con_sZjNqA": {
+          "type": "con",
+          "settings": {
+            "text": "Only available online — can't swatch in store"
+          }
+        }
+      },
+      "block_order": [
+        "pro_R9SIZA",
+        "pro_1GkAGf",
+        "pro_ElQHrd",
+        "pro_BH2IeY",
+        "con_mfVfsF",
+        "con_sZjNqA"
+      ],
+      "name": "BL - Review Summary",
+      "settings": {
+        "section_id": "quick-verdict",
+        "bg_color": "#faf9f7",
+        "label": "WHY BEFORE & AFTERS MATTER",
+        "product_name": "Vera Lane Tone Adapting Foundation",
+        "rating": "4.9",
+        "price_text": "$39.99",
+        "verdict_line": "Every foundation looks good on a 22-year-old model in studio lighting. What matters is how it looks on real skin, with real texture, real lines, and real imperfections. That's what this page shows.",
+        "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
+        "image_asset": "",
+        "image_position": "left",
+        "cta_text": "Read Full Review",
+        "cta_anchor": "full-review"
+      }
+    },
+    "vl_rich_text_cgAvZ8": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Why We're Showing You Unfiltered Photos",
+        "content": "<p>The beauty industry has a problem with honesty. Foundation ads show airbrushed skin on women in their twenties, photographed in controlled studio lighting with professional makeup artists on hand. Then they wonder why real women are disappointed when the product arrives.</p><p>We're doing something different. Every photo on this page is from an actual customer. No filters. No retouching. No professional lighting rigs. Just a phone camera, a mirror, and the truth about how the Vera Lane Tone Adapting Foundation looks on real mature skin.</p><p><strong>Some of these women have rosacea.</strong> Some have deep smile lines. Some have sun damage, age spots, or uneven texture. That's the point. If a foundation can't handle real skin concerns, it doesn't deserve your money.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33",
+        "section_id": "full-review"
+      }
+    },
+    "vl_pull_quote_WWepEP": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "Every foundation looks good on a 22-year-old model. What matters is how it looks on real skin, with real lines and real imperfections.",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_0tWy5d": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Margaret, 58 — Rosacea & Fine Lines",
+        "content": "<p><strong>Skin concerns:</strong> Persistent rosacea across cheeks and nose. Deep smile lines. Dry patches around the mouth.</p><p><strong>Previous foundation:</strong> Clinique Even Better — needed two shades mixed together to get close to her skin tone. Settled into lines by noon.</p><p><strong>Her experience:</strong> \"I was sceptical about one shade fitting me because my rosacea makes my cheeks very red while my forehead is quite pale. The foundation adapted to both areas differently — it matched the redness on my cheeks with more coverage and sat more sheer on my forehead. I've never had a foundation do that before.\"</p><p><strong>The result:</strong> Even coverage across her face without the heavy, mask-like finish she'd accepted as normal. Rosacea redness visibly reduced. Fine lines around her mouth didn't collect product even after 8 hours of wear. She's been using it daily for three months and says her bare skin looks calmer on days off.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_rich_text_tvtAGd": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Denise, 52 — Deeper Olive Skin & Sun Damage",
+        "content": "<p><strong>Skin concerns:</strong> Deeper olive undertone. Significant sun damage from her twenties and thirties. Dark spots on forehead and cheeks. Uneven texture.</p><p><strong>Previous foundation:</strong> Fenty Pro Filt'r — loved the shade range but found it too matte and drying for her now-mature skin.</p><p><strong>Her experience:</strong> \"As a woman of colour, I've spent decades struggling with shade matching. Every 'universal' product has been too pink or too yellow. When this one actually matched my olive undertone, I genuinely cried. That's not an exaggeration.\"</p><p><strong>The result:</strong> The colour-adapting pigments matched her deeper olive tone within about 90 seconds. Sun spots were visibly reduced without heavy layering. The satin finish gave her skin a healthy glow rather than the flat, chalky look she'd gotten from matte foundations. One layer for daily wear, two for events.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_block_rKw5oC": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "See how it adapts to your skin tone.",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY — RISK FREE",
+        "subtext": "Free shipping • 30-day money-back guarantee",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_rich_text_ZrFF3l": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Patricia, 63 — Very Fair Skin & Sensitivity",
+        "content": "<p><strong>Skin concerns:</strong> Very fair skin with pink undertones. Extreme sensitivity — reacts to most fragranced products. Thin, papery skin texture around eyes and temples.</p><p><strong>Previous foundation:</strong> Had given up on foundation entirely after years of reactions. Used only tinted moisturiser.</p><p><strong>Her experience:</strong> \"My daughter bought this for me after I'd sworn off foundation. I was nervous because almost everything irritates my skin. But it's fragrance-free, and the texture is so light I genuinely forget I'm wearing it. No stinging, no redness, nothing.\"</p><p><strong>The result:</strong> The foundation adapted to her very fair, pink-toned skin within a minute. Coverage was natural and light — she could still see her freckles, which she wanted. No irritation after full-day wear, even on her most sensitive areas. She now wears it daily after a five-year break from foundation.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_rich_text_wYvwnh": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Sandra, 47 — Oily T-Zone & Visible Pores",
+        "content": "<p><strong>Skin concerns:</strong> Combination skin — oily T-zone with dry cheeks. Enlarged pores on nose and inner cheeks. Mild hormonal acne along jawline.</p><p><strong>Previous foundation:</strong> MAC Studio Fix Fluid — good coverage but caked into pores and made her T-zone look greasy by midday.</p><p><strong>Her experience:</strong> \"I've always had this frustrating combo where my nose is an oil slick but my cheeks are the Sahara. Most foundations either control the oil and make my cheeks look terrible, or hydrate the cheeks and make my nose look worse. This is the first one that seems to work differently on different parts of my face.\"</p><p><strong>The result:</strong> The satin-matte finish controlled shine on her T-zone without emphasising dry patches on her cheeks. Pores were visibly less prominent — the lightweight formula didn't settle into them the way heavier foundations had. Her mild breakouts along the jawline didn't worsen, and the non-comedogenic formula let her skin breathe.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_pull_quote_dRsRmd": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "I've always had this frustrating combo where my nose is an oil slick but my cheeks are the Sahara. This is the first foundation that works differently on different parts of my face.",
+        "attribution": "— Sandra, 47",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_YVblXy": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Helen, 64 — Deep Wrinkles & Mature Texture",
+        "content": "<p><strong>Skin concerns:</strong> Deep forehead lines. Pronounced crow's feet. Crepey skin texture on cheeks. Loss of firmness around jawline.</p><p><strong>Previous foundation:</strong> Estée Lauder Double Wear — reliable coverage but sat heavily in every wrinkle, making her look older rather than more polished.</p><p><strong>Her experience:</strong> \"At 64, I've accepted my wrinkles. I'm not trying to look 40. I just want to look like a well-rested version of myself. Every foundation I've tried in the last ten years has settled into my lines within a few hours and made me look worse than bare skin. This one doesn't.\"</p><p><strong>The result:</strong> The lightweight, serum-like texture sat on top of her skin without sinking into wrinkles or creases. After 10 hours, product hadn't collected in her forehead lines or crow's feet. The finish was natural enough that she looked polished without looking \"done.\" Her daughter told her she looked rested — the highest compliment for a foundation on mature skin.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_rich_text_FdbSOn": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Carol, 55 — Hormonal Changes & Shifting Skin Tone",
+        "content": "<p><strong>Skin concerns:</strong> Skin tone has shifted noticeably since menopause — sallower, less rosy. Increased dryness. Occasional hot flushes cause temporary redness.</p><p><strong>Previous foundation:</strong> L'Oréal True Match — the shade she'd worn for years suddenly looked wrong after her skin tone changed. Couldn't find a new match.</p><p><strong>Her experience:</strong> \"Menopause changed my skin completely. My old shade looked yellow on me, but when I tried to match in store, nothing looked right. A friend told me about this foundation and the colour-adapting thing sounded like exactly what I needed. She was right.\"</p><p><strong>The result:</strong> The foundation adapted to her new, post-menopausal skin tone — something no fixed shade had managed. On days when hot flushes brought temporary redness, the foundation still looked natural rather than mismatched. The hydrating formula counteracted the dryness she'd been experiencing. She no longer dreads foundation shopping because there's nothing to match.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_pull_quote_N5eduD": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "Menopause changed my skin completely. My old shade looked yellow on me. This foundation adapts every time I apply it — I no longer dread foundation shopping.",
+        "attribution": "— Carol, 55",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_rich_text_w7hVAX": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "What These Results Have in Common",
+        "content": "<p>Every woman on this page has different skin. Different concerns. Different ages. Different undertones. And every one of them found something in the Vera Lane Tone Adapting Foundation that their previous products couldn't deliver.</p><p><strong>The colour adaptation works.</strong> Whether fair with pink undertones or deeper olive, the pigments adjusted to each woman's unique skin chemistry. No shade matching required.</p><p><strong>It doesn't settle into lines.</strong> From fine lines to deep wrinkles, the lightweight formula sits on top of skin rather than sinking into creases. Multiple women reported looking better at the end of the day than the start.</p><p><strong>One product, flexible coverage.</strong> Some wanted sheer, barely-there coverage. Others wanted to conceal rosacea or sun damage. The buildable formula let each woman customise to her needs without caking.</p><p><strong>Skin improved over time.</strong> Several women noted that their bare skin looked better after weeks of daily wear — calmer, more hydrated, more even. That's the glycerin, vitamin E, and bisabolol doing their work even after the foundation comes off.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "vl_cta_block_3IiFFo": {
+      "type": "vl-cta-block",
+      "name": "VL CTA Block",
+      "settings": {
+        "text": "See what it looks like on your skin.",
+        "button_url": "/products/color-changing-foundation",
+        "button_text": "TRY VERA LANE TODAY",
+        "subtext": "30-day money-back guarantee • Free shipping on every order",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "vl_sticky_cta_fRPfij": {
+      "type": "vl-sticky-cta",
+      "name": "VL Sticky CTA",
+      "settings": {
+        "url": "/products/color-changing-foundation",
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": false,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "vl_editorial_hero_uIOIy1",
+    "bl_review_summary_08SCXD",
+    "vl_rich_text_cgAvZ8",
+    "vl_pull_quote_WWepEP",
+    "vl_rich_text_0tWy5d",
+    "vl_rich_text_tvtAGd",
+    "vl_cta_block_rKw5oC",
+    "vl_rich_text_ZrFF3l",
+    "vl_rich_text_wYvwnh",
+    "vl_pull_quote_dRsRmd",
+    "vl_rich_text_YVblXy",
+    "vl_rich_text_FdbSOn",
+    "vl_pull_quote_N5eduD",
+    "vl_rich_text_w7hVAX",
+    "vl_cta_block_3IiFFo",
+    "vl_sticky_cta_fRPfij"
+  ]
+}
