@@ -17,6 +17,18 @@
           <p class="vl-image-text__caption">{{ section.settings.image_caption }}</p>
         {% endif %}
       </div>
+    {% elsif section.settings.image_asset != blank %}
+      <div class="vl-image-text__image">
+        <img
+          src="{{ section.settings.image_asset | asset_url }}"
+          alt="{{ section.settings.image_alt | default: 'Image' }}"
+          loading="lazy"
+          width="800"
+        >
+        {% if section.settings.image_caption != blank %}
+          <p class="vl-image-text__caption">{{ section.settings.image_caption }}</p>
+        {% endif %}
+      </div>
     {% else %}
       <div class="vl-image-text__placeholder">
         {{ 'product-1' | placeholder_svg_tag: 'vl-image-text__placeholder-svg' }}
@@ -116,6 +128,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image asset filename",
+      "info": "Fallback: enter a theme asset filename (e.g. my-image.jpg)"
     },
     {
       "type": "text",
