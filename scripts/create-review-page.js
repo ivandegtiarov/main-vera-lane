@@ -93,6 +93,7 @@ function buildTemplate(content) {
         rating: content.summary.rating || '4.5',
         price_text: content.summary.price_text || '',
         verdict_line: content.summary.verdict_line || '',
+        image: content.summary.image || '',
         image_asset: content.summary.image_asset || '',
         image_position: content.summary.image_position || 'left',
         cta_text: 'Read Full Review',
