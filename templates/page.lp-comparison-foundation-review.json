@@ -1,7 +1,7 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "bl_hero_oemjHj": {
+    "bl_hero_cyQSa2": {
       "type": "bl-hero",
       "name": "BL - Hero",
       "settings": {
@@ -22,60 +22,60 @@
         "cta_border_color": "#ffffff"
       }
     },
-    "bl_brand_review_YA806O": {
+    "bl_brand_review_xL0mqp": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_vSmrZQ": {
+        "pro_iO0ESI": {
           "type": "pro",
           "settings": {
-            "text": "Adapts to your exact skin tone and undertone"
+            "text": "Most accurate shade-matching of the five tested"
           }
         },
-        "pro_ptTWqS": {
+        "pro_hxGlCI": {
           "type": "pro",
           "settings": {
             "text": "Hydrating formula with hyaluronic acid and vitamin E"
           }
         },
-        "pro_AMFO4k": {
+        "pro_OtT6qX": {
           "type": "pro",
           "settings": {
-            "text": "Doesn't settle into fine lines or wrinkles"
+            "text": "Doesn't settle into fine lines — even after 8 hours"
           }
         },
-        "pro_WhbCxA": {
+        "pro_TCwWI7": {
           "type": "pro",
           "settings": {
             "text": "Lightweight, buildable coverage"
           }
         },
-        "pro_zIMX5u": {
+        "pro_JH658p": {
           "type": "pro",
           "settings": {
-            "text": "Best performance-to-price ratio"
+            "text": "Mid-range price for premium performance"
           }
         },
-        "con_mTMn9f": {
+        "con_9LXnKn": {
           "type": "con",
           "settings": {
-            "text": "Only available online"
+            "text": "Only available online — no in-store option"
           }
         },
-        "con_VUM5Gh": {
+        "con_VUkUdv": {
           "type": "con",
           "settings": {
-            "text": "Can sell out quickly due to demand"
+            "text": "Frequently goes out of stock"
           }
         }
       },
       "block_order": [
-        "pro_vSmrZQ",
-        "pro_ptTWqS",
-        "pro_AMFO4k",
-        "pro_WhbCxA",
-        "pro_zIMX5u",
-        "con_mTMn9f",
-        "con_VUM5Gh"
+        "pro_iO0ESI",
+        "pro_hxGlCI",
+        "pro_OtT6qX",
+        "pro_TCwWI7",
+        "pro_JH658p",
+        "con_9LXnKn",
+        "con_VUkUdv"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -86,66 +86,73 @@
         "brand_name": "Vera Lane Color Changing Foundation",
         "rating": "4.6",
         "price_text": "$39.99",
-        "review_text": "<p>Vera Lane's Color Changing Foundation genuinely surprised me. The moment you apply it, the formula shifts from white to a shade that matches your exact undertone — and it does this better than anything else I tested. On mature skin, the difference was immediately obvious: it didn't settle into fine lines, it didn't cake around the nose, and it actually looked better as the day went on.</p><p>The formula includes hyaluronic acid and vitamin E, which means it's doing double duty as skincare. My skin felt hydrated at the end of an 8-hour wear test — something none of the other foundations managed. The coverage is buildable from light to medium, and the finish is that coveted \"your skin but better\" look that women over 40 actually want.</p><p>At $39.99, it offers the best balance of performance and value on this list. The only downside? It's only available online, and it does sell out frequently.</p>",
-        "verdict": "The clear winner for mature skin. Vera Lane delivers the most natural-looking, comfortable wear of any foundation I tested. If you're over 40 and tired of foundation that works against you, this is it.",
+        "review_text": "<p>I'll be honest — I wasn't expecting much from a brand I hadn't heard of before. But Vera Lane's Color Changing Foundation earned the top spot on this list fair and square. The white-to-skin transformation is the most accurate of the five I tested. It read my undertone correctly on the first try, which is saying something for my tricky neutral-warm complexion.</p><p>What sets it apart for mature skin is how the formula behaves over time. Most foundations look their best for the first hour and then start working against you. This one actually seemed to settle in and look more natural as the day went on. After eight hours, there was no caking around my nose, no creasing around my eyes, and my skin still felt comfortable — not tight or dried out.</p><p>The ingredient list is genuinely impressive for this price point: hyaluronic acid and vitamin E are doing real work here, not just sitting on the label. Coverage builds from sheer to medium without ever looking heavy. At $39.99, it's mid-range pricing for a formula that outperforms products costing $15 more.</p><p>The downsides: it's only sold online, and it does seem to go in and out of stock. Not dealbreakers, but worth knowing.</p>",
+        "verdict": "The clear winner. Vera Lane delivered the most natural finish, the most comfortable wear, and the most accurate shade match of anything I tested. If you've been burned by foundations that look good for an hour and then betray you, this one's worth trying.",
         "image_asset": "lp-comparison-foundation-brand-1.jpg",
         "image_position": "right"
       }
     },
-    "bl_brand_review_ymeyND": {
+    "bl_brand_review_rgIGpJ": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_mFMbjR": {
+        "pro_9rawCv": {
           "type": "pro",
           "settings": {
-            "text": "Decent shade-matching technology"
+            "text": "Designed specifically for mature skin"
           }
         },
-        "pro_HH7fJy": {
+        "pro_5D5k8X": {
           "type": "pro",
           "settings": {
-            "text": "Contains skincare ingredients"
+            "text": "Smooth, creamy application"
           }
         },
-        "pro_AHMfGh": {
+        "pro_jImD66": {
           "type": "pro",
           "settings": {
-            "text": "Good for dry skin types"
+            "text": "Contains quality skincare ingredients"
           }
         },
-        "con_Zc2jWE": {
-          "type": "con",
+        "pro_9uDfSu": {
+          "type": "pro",
           "settings": {
-            "text": "More expensive than Vera Lane at $44.00"
+            "text": "Strong brand reputation and loyal customer base"
           }
         },
-        "con_zdy91U": {
+        "con_zPehrn": {
           "type": "con",
           "settings": {
-            "text": "Leans warm on cool-toned skin"
+            "text": "Leans warm — may not suit cool undertones"
           }
         },
-        "con_Zo1iA8": {
+        "con_9lzhiK": {
           "type": "con",
           "settings": {
-            "text": "Feels heavier by mid-afternoon"
+            "text": "Feels noticeably heavier by afternoon"
           }
         },
-        "con_haG39l": {
+        "con_ccnde7": {
           "type": "con",
           "settings": {
-            "text": "Can emphasize texture on mature skin"
+            "text": "Can emphasize skin texture as the day goes on"
+          }
+        },
+        "con_yV8ysb": {
+          "type": "con",
+          "settings": {
+            "text": "Higher price point at $44.00"
           }
         }
       },
       "block_order": [
-        "pro_mFMbjR",
-        "pro_HH7fJy",
-        "pro_AHMfGh",
-        "con_Zc2jWE",
-        "con_zdy91U",
-        "con_Zo1iA8",
-        "con_haG39l"
+        "pro_9rawCv",
+        "pro_5D5k8X",
+        "pro_jImD66",
+        "pro_9uDfSu",
+        "con_zPehrn",
+        "con_9lzhiK",
+        "con_ccnde7",
+        "con_yV8ysb"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -156,66 +163,73 @@
         "brand_name": "Prime Prometics",
         "rating": "4.1",
         "price_text": "$44.00",
-        "review_text": "<p>Prime Prometics markets itself as a premium color-changing foundation for mature women, and it does deliver decent shade matching. The formula adapts reasonably well, though I noticed it leaned slightly warm on my cool-toned skin — something Vera Lane handled perfectly.</p><p>Coverage is medium and the texture is pleasant, though it felt heavier than I'd like by mid-afternoon. On the positive side, it does contain some good skincare ingredients and the packaging feels luxe. However, at $44.00, you're paying more than Vera Lane for a formula that doesn't match as accurately and feels heavier on the skin.</p><p>For women with warmer undertones and normal-to-dry skin, this is a reasonable option. But it doesn't outperform Vera Lane in any category that matters for mature skin.</p>",
-        "verdict": "A solid runner-up with good shade matching, but the heavier formula and higher price make it hard to recommend over Vera Lane — especially for mature skin that needs lightweight hydration.",
+        "review_text": "<p>Prime Prometics has built a loyal following among women over 50, and I can see why. The brand clearly understands its audience — the marketing, packaging, and formula are all designed with mature skin in mind. That kind of focus is refreshing in a market that treats 40+ women as an afterthought.</p><p>The color-changing technology works well. Not perfectly — it leaned slightly warm on my cool-toned skin, which meant it wasn't an exact match — but it got close enough that most people wouldn't notice. The texture on application is lovely: creamy, smooth, and easy to blend.</p><p>My main issue is the weight. By mid-afternoon, I could feel it sitting on my skin in a way that became uncomfortable. It also started to emphasize some texture around my cheeks that wasn't visible in the morning. For women with drier skin who don't mind a richer formula, this probably won't bother you. For oily or combination skin, it could be an issue.</p><p>At $44.00, it's a premium price, but the quality of the formula and the brand's genuine commitment to mature skin makes it feel justified — even if it's not the best performer on this list overall.</p>",
+        "verdict": "A genuinely good foundation from a brand that takes mature skin seriously. The heavier formula won't suit everyone, but if you run dry and want something with real substance, Prime Prometics delivers.",
         "image_asset": "lp-comparison-foundation-brand-2.jpg",
         "image_position": "left"
       }
     },
-    "bl_brand_review_D2eaIQ": {
+    "bl_brand_review_itT177": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_mB1oAU": {
+        "pro_6FgJU2": {
           "type": "pro",
           "settings": {
-            "text": "Dramatic color-change effect"
+            "text": "Most dramatic and impressive color-change effect"
           }
         },
-        "pro_x7GDIN": {
+        "pro_hu1fUL": {
           "type": "pro",
           "settings": {
-            "text": "Lightweight, thin formula"
+            "text": "Lightweight, easy-to-apply formula"
           }
         },
-        "pro_NEnrVn": {
+        "pro_Ab5H6y": {
           "type": "pro",
           "settings": {
-            "text": "Slightly lower price point"
+            "text": "Most affordable option at $36.00"
           }
         },
-        "con_HYp9y7": {
-          "type": "con",
+        "pro_VLouMU": {
+          "type": "pro",
           "settings": {
-            "text": "Shade matching is inconsistent"
+            "text": "Entertaining to use — great visual transformation"
           }
         },
-        "con_yS2R6w": {
+        "con_FOZb6J": {
           "type": "con",
           "settings": {
-            "text": "Oxidizes and darkens over 4-5 hours"
+            "text": "Shade matching is inconsistent — slightly ashy finish"
           }
         },
-        "con_CXLnpL": {
+        "con_Qjvo4N": {
           "type": "con",
           "settings": {
-            "text": "Not enough coverage for age spots"
+            "text": "Oxidizes and darkens noticeably after 4-5 hours"
           }
         },
-        "con_Af5vNC": {
+        "con_ReTBAX": {
           "type": "con",
           "settings": {
-            "text": "Slightly ashy finish on some skin tones"
+            "text": "Too sheer for age spots and discoloration"
+          }
+        },
+        "con_nRu1Sg": {
+          "type": "con",
+          "settings": {
+            "text": "Needs powder to correct the finish"
           }
         }
       },
       "block_order": [
-        "pro_mB1oAU",
-        "pro_x7GDIN",
-        "pro_NEnrVn",
-        "con_HYp9y7",
-        "con_yS2R6w",
-        "con_CXLnpL",
-        "con_Af5vNC"
+        "pro_6FgJU2",
+        "pro_hu1fUL",
+        "pro_Ab5H6y",
+        "pro_VLouMU",
+        "con_FOZb6J",
+        "con_Qjvo4N",
+        "con_ReTBAX",
+        "con_nRu1Sg"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -226,66 +240,73 @@
         "brand_name": "Meroda Cosmetics",
         "rating": "4.2",
         "price_text": "$36.00",
-        "review_text": "<p>Meroda's color-changing foundation has an eye-catching transformation — the white-to-color shift is dramatic and fun to watch. But once the novelty wears off, the results are mixed. The shade it settled on was close to my skin tone but not exact, with a slightly ashy finish that needed correcting with powder.</p><p>The formula is thinner than the others, which sounds good in theory but meant it didn't provide enough coverage to even out age spots and discoloration — a common concern for women over 40. It also oxidized noticeably over 4-5 hours, turning a shade darker than where it started.</p><p>At $36.00, it's slightly cheaper than Vera Lane but delivers noticeably less in shade matching and longevity. The color-changing effect is more gimmick than science here.</p>",
-        "verdict": "Fun to watch but disappointing to wear. The shade-matching technology isn't refined enough, and the oxidation issue is a dealbreaker for all-day wear.",
+        "review_text": "<p>Meroda's color-changing foundation puts on a great show. The white-to-skin transformation is the most dramatic and visually impressive of any product on this list — if you're buying for the novelty factor, this is your pick. My teenage daughter was fascinated watching it shift color on my hand.</p><p>Unfortunately, the performance doesn't quite match the spectacle. The shade it settled on was in the right ballpark but slightly ashy, which needed correcting with a light dusting of powder. The formula itself is thinner than I expected, which made it easy to apply but meant it didn't provide enough coverage to address age spots and uneven pigmentation — things I'd really want a foundation to handle at my age.</p><p>The bigger concern is oxidation. Around the four-hour mark, the foundation started to shift darker. By hour five, I was a noticeably different shade than when I'd started the morning. That's a problem for anyone who needs their foundation to hold steady through a workday.</p><p>At $36.00, it's the most affordable option I tested. But the shade-matching inconsistency and oxidation issue mean you're getting what you pay for.</p>",
+        "verdict": "The color-changing effect is genuinely impressive to watch, but the actual shade-matching technology needs work. The oxidation issue makes it unreliable for all-day wear.",
         "image_asset": "lp-comparison-foundation-brand-3.jpg",
         "image_position": "right"
       }
     },
-    "bl_brand_review_tXOM00": {
+    "bl_brand_review_moKlF9": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_73xGiv": {
+        "pro_va9eRd": {
           "type": "pro",
           "settings": {
-            "text": "SPF 50 sun protection"
+            "text": "SPF 50 — highest sun protection on this list"
           }
         },
-        "pro_NDJbbL": {
+        "pro_4AauMZ": {
           "type": "pro",
           "settings": {
-            "text": "Decent initial color-change effect"
+            "text": "Strong initial application and coverage"
           }
         },
-        "pro_cgcekL": {
+        "pro_gCGWTo": {
           "type": "pro",
           "settings": {
-            "text": "Popular with strong Amazon reviews"
+            "text": "Highly rated on Amazon (4.3 stars, 1000+ reviews)"
           }
         },
-        "con_yiIjqh": {
+        "pro_eQvKB2": {
+          "type": "pro",
+          "settings": {
+            "text": "Decent color-matching technology"
+          }
+        },
+        "con_9OH4I7": {
           "type": "con",
           "settings": {
-            "text": "Settles into fine lines after a few hours"
+            "text": "Settles into fine lines after 2-3 hours"
           }
         },
-        "con_5BdMcI": {
+        "con_ofvXvw": {
           "type": "con",
           "settings": {
             "text": "Oxidizes to a warmer tone by afternoon"
           }
         },
-        "con_7BNJB5": {
+        "con_cPcStB": {
           "type": "con",
           "settings": {
-            "text": "Pricier than Vera Lane at $42.49"
+            "text": "Early promise fades as the day goes on"
           }
         },
-        "con_X2Ed5N": {
+        "con_sF0Zfw": {
           "type": "con",
           "settings": {
-            "text": "Shade matching less precise than Vera Lane"
+            "text": "Premium pricing at $42.49"
           }
         }
       },
       "block_order": [
-        "pro_73xGiv",
-        "pro_NDJbbL",
-        "pro_cgcekL",
-        "con_yiIjqh",
-        "con_5BdMcI",
-        "con_7BNJB5",
-        "con_X2Ed5N"
+        "pro_va9eRd",
+        "pro_4AauMZ",
+        "pro_gCGWTo",
+        "pro_eQvKB2",
+        "con_9OH4I7",
+        "con_ofvXvw",
+        "con_cPcStB",
+        "con_sF0Zfw"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -296,73 +317,80 @@
         "brand_name": "Forever Bloom",
         "rating": "4.3",
         "price_text": "$42.49",
-        "review_text": "<p>Forever Bloom's Bio Mimic Foundation has strong Amazon ratings and SPF 50 protection, which is a nice bonus. The color-changing effect works reasonably well — better than Meroda — but it still doesn't match Vera Lane's precision. The shade landed close but slightly off on my skin.</p><p>Where it falls short for mature skin is longevity and texture. Within a few hours, the foundation had visibly settled into fine lines around my eyes and mouth, creating that crepe-paper effect we all dread. The formula also oxidized noticeably by mid-afternoon, shifting to an unflattering warmer tone.</p><p>At $42.49, it's priced higher than Vera Lane without delivering the same level of shade accuracy or comfortable all-day wear. The SPF 50 is genuinely appealing, but not enough to offset the other issues for mature skin.</p>",
-        "verdict": "The SPF 50 is a real selling point, but the line-settling and oxidation make it a tough recommendation for mature skin. Vera Lane outperforms it where it matters most.",
+        "review_text": "<p>Forever Bloom's Bio Mimic Foundation has a lot going for it on paper. The 4.3-star Amazon rating comes from over a thousand reviews, the SPF 50 protection is the highest of any foundation on this list, and the color-changing technology works reasonably well. The shade it found for me was close — not perfect, but close.</p><p>On first application, I was optimistic. The formula felt light, blended easily, and the coverage was natural without looking like I was wearing makeup. For the first two to three hours, this was genuinely competing for the top spot on my list.</p><p>Then things went sideways. The foundation started settling into the fine lines around my eyes and the creases around my mouth, creating that papery, textured look that ages you instead of helping. By afternoon, it had also oxidized to a noticeably warmer tone — not drastically, but enough that I could see the shift in bathroom lighting.</p><p>The SPF 50 is a real differentiator, and if sun protection is your top priority, this deserves consideration. But for all-day wear on mature skin, the line-settling is hard to overlook. At $42.49, it's a solid product with one significant flaw.</p>",
+        "verdict": "A frustrating near-miss. Forever Bloom starts beautifully but doesn't hold up where it counts for mature skin. The SPF 50 is excellent — I just wish the staying power matched it.",
         "image_asset": "lp-comparison-foundation-brand-4.jpg",
         "image_position": "left"
       }
     },
-    "bl_brand_review_D63Z9Z": {
+    "bl_brand_review_wSo4A4": {
       "type": "bl-brand-review",
       "blocks": {
-        "pro_sLsgum": {
+        "pro_46EXoc": {
           "type": "pro",
           "settings": {
-            "text": "Good coverage for age spots and discoloration"
+            "text": "Best raw coverage for age spots and discoloration"
           }
         },
-        "pro_w0S9DO": {
+        "pro_kvoxq3": {
           "type": "pro",
           "settings": {
-            "text": "Smooth initial application"
+            "text": "Smooth, polished initial application"
           }
         },
-        "pro_4zik6D": {
+        "pro_KnrJE1": {
           "type": "pro",
           "settings": {
-            "text": "Premium packaging and feel"
+            "text": "Premium packaging and unboxing experience"
           }
         },
-        "con_DEZDil": {
+        "pro_Bgq9Kd": {
+          "type": "pro",
+          "settings": {
+            "text": "Good for concealing specific imperfections"
+          }
+        },
+        "con_OVS4FO": {
           "type": "con",
           "settings": {
-            "text": "Most expensive at $54.90"
+            "text": "Most expensive option at $54.90"
           }
         },
-        "con_mAyG5P": {
+        "con_UPUGfj": {
           "type": "con",
           "settings": {
             "text": "Minimal actual color-changing effect"
           }
         },
-        "con_BmQOF2": {
+        "con_DJvYc8": {
           "type": "con",
           "settings": {
-            "text": "Thick formula looks heavy on mature skin"
+            "text": "Thick formula feels heavy and aging on mature skin"
           }
         },
-        "con_gIKDK2": {
+        "con_Bj8Kgg": {
           "type": "con",
           "settings": {
-            "text": "Feels tight and drying after 6 hours"
+            "text": "Tight, drying feeling after 6 hours"
           }
         },
-        "con_UGsfJM": {
+        "con_bXgta2": {
           "type": "con",
           "settings": {
-            "text": "Doesn't justify the premium price"
+            "text": "Premium price doesn't match color-changing delivery"
           }
         }
       },
       "block_order": [
-        "pro_sLsgum",
-        "pro_w0S9DO",
-        "pro_4zik6D",
-        "con_DEZDil",
-        "con_mAyG5P",
-        "con_BmQOF2",
-        "con_gIKDK2",
-        "con_UGsfJM"
+        "pro_46EXoc",
+        "pro_kvoxq3",
+        "pro_KnrJE1",
+        "pro_Bgq9Kd",
+        "con_OVS4FO",
+        "con_UPUGfj",
+        "con_DJvYc8",
+        "con_Bj8Kgg",
+        "con_bXgta2"
       ],
       "name": "BL - Brand Review",
       "settings": {
@@ -373,16 +401,16 @@
         "brand_name": "Luxe",
         "rating": "4.0",
         "price_text": "$54.90",
-        "review_text": "<p>Luxe positions itself as the premium choice in color-changing foundations, and the $54.90 price tag reflects that ambition. The formula does provide good coverage and a reasonably smooth application. However, the color-changing effect is subtle to the point of being questionable — it barely shifted on my skin, functioning more like a traditional medium-coverage foundation.</p><p>For mature skin, the formula is a mixed bag. Coverage is good and it handled age spots better than Meroda or Forever Bloom. But the texture is thick and sits on top of the skin rather than melting in, which can look heavy and aging on mature complexions. It also felt tight and drying by hour six.</p><p>At nearly $55, it's by far the most expensive option and doesn't deliver the tone-adapting benefits you'd expect from a color-changing foundation. You're essentially paying luxury prices for a decent — but ordinary — foundation.</p>",
-        "verdict": "Premium price without premium color-changing performance. It's a decent traditional foundation, but if you're paying for tone-adapting technology, Vera Lane delivers far more at a fraction of the cost.",
+        "review_text": "<p>At $54.90, Luxe is by far the most expensive foundation on this list. The packaging is beautiful — heavy glass bottle, magnetic cap, the whole luxury experience. Opening it feels like an event. But I'm reviewing the formula, not the packaging, and that's where things get complicated.</p><p>The color-changing effect is… subtle. So subtle that I'm not entirely convinced it's doing much at all. On my skin, it barely shifted from its initial beige tone, functioning more like a traditional medium-coverage foundation than the tone-adapting technology it advertises. If the color-change is what you're paying for, this undersells that promise.</p><p>Coverage is actually quite good — the best of the five for concealing age spots and discoloration. The initial application is smooth and the finish looks polished. Where it loses points for mature skin is texture and comfort. The formula is noticeably thicker than the others, and it sits on top of the skin rather than blending in. By hour six, my skin felt tight and dry, and the heavier texture started to look aging rather than perfecting.</p><p>If you want pure coverage and don't care about the color-changing aspect, Luxe is a competent (if overpriced) foundation. But at nearly $55 for a product that barely delivers on its main selling point, it's hard to feel like you're getting value here.</p>",
+        "verdict": "Beautiful packaging, solid coverage, but the color-changing technology barely shows up. At this price, you're paying luxury money for a decent traditional foundation that doesn't deliver on its key promise.",
         "image_asset": "lp-comparison-foundation-brand-5.jpg",
         "image_position": "right"
       }
     },
-    "bl_comparison_table_55Fmnx": {
+    "bl_comparison_table_gkuXNJ": {
       "type": "bl-comparison-table",
       "blocks": {
-        "criterion_8vUfur": {
+        "criterion_8lDT8p": {
           "type": "criterion",
           "settings": {
             "criterion": "Coverage",
@@ -393,7 +421,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_qv1Haq": {
+        "criterion_YDkNYP": {
           "type": "criterion",
           "settings": {
             "criterion": "Shade Matching",
@@ -404,7 +432,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_eqjjUp": {
+        "criterion_DkfM0M": {
           "type": "criterion",
           "settings": {
             "criterion": "Longevity",
@@ -415,7 +443,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_VrOZpT": {
+        "criterion_dsG8Ea": {
           "type": "criterion",
           "settings": {
             "criterion": "Ingredients",
@@ -426,7 +454,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_s1XRav": {
+        "criterion_UyFMgw": {
           "type": "criterion",
           "settings": {
             "criterion": "Price",
@@ -437,7 +465,7 @@
             "brand_5_value": "$54.90"
           }
         },
-        "criterion_waZ1Eg": {
+        "criterion_tXyYTy": {
           "type": "criterion",
           "settings": {
             "criterion": "Skin Feel",
@@ -448,7 +476,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_xkFiYL": {
+        "criterion_0d0Nn4": {
           "type": "criterion",
           "settings": {
             "criterion": "Ease of Use",
@@ -459,7 +487,7 @@
             "brand_5_value": "Good"
           }
         },
-        "criterion_cBEg1p": {
+        "criterion_vKrNyg": {
           "type": "criterion",
           "settings": {
             "criterion": "Oxidation Resistance",
@@ -470,7 +498,7 @@
             "brand_5_value": "Average"
           }
         },
-        "criterion_cSrmIl": {
+        "criterion_8Mq7zD": {
           "type": "criterion",
           "settings": {
             "criterion": "Overall Rating",
@@ -483,15 +511,15 @@
         }
       },
       "block_order": [
-        "criterion_8vUfur",
-        "criterion_qv1Haq",
-        "criterion_eqjjUp",
-        "criterion_VrOZpT",
-        "criterion_s1XRav",
-        "criterion_waZ1Eg",
-        "criterion_xkFiYL",
-        "criterion_cBEg1p",
-        "criterion_cSrmIl"
+        "criterion_8lDT8p",
+        "criterion_YDkNYP",
+        "criterion_DkfM0M",
+        "criterion_dsG8Ea",
+        "criterion_UyFMgw",
+        "criterion_tXyYTy",
+        "criterion_0d0Nn4",
+        "criterion_vKrNyg",
+        "criterion_8Mq7zD"
       ],
       "name": "BL - Comparison Table",
       "settings": {
@@ -506,34 +534,34 @@
         "brand_5_name": "Luxe"
       }
     },
-    "bl_product_card_split_TmJSBF": {
+    "bl_product_card_split_Go9Ckn": {
       "type": "bl-product-card-split",
       "blocks": {
-        "feature_vk6Xol": {
+        "feature_ecEHjn": {
           "type": "feature",
           "settings": {
             "label": "Tone-Adapting"
           }
         },
-        "feature_w7nENG": {
+        "feature_jz52rC": {
           "type": "feature",
           "settings": {
             "label": "Hydrating Formula"
           }
         },
-        "feature_3PzE2I": {
+        "feature_FSeIWk": {
           "type": "feature",
           "settings": {
             "label": "SPF 15 Protection"
           }
         },
-        "feature_uL5zhG": {
+        "feature_jiv8Jr": {
           "type": "feature",
           "settings": {
             "label": "Lightweight Feel"
           }
         },
-        "feature_XgngTI": {
+        "feature_OD0f2p": {
           "type": "feature",
           "settings": {
             "label": "Anti-Aging"
@@ -541,11 +569,11 @@
         }
       },
       "block_order": [
-        "feature_vk6Xol",
-        "feature_w7nENG",
-        "feature_3PzE2I",
-        "feature_uL5zhG",
-        "feature_XgngTI"
+        "feature_ecEHjn",
+        "feature_jz52rC",
+        "feature_FSeIWk",
+        "feature_jiv8Jr",
+        "feature_OD0f2p"
       ],
       "name": "BL - Product Card Split",
       "settings": {
@@ -564,7 +592,7 @@
         "cta_text_color": "#ffffff"
       }
     },
-    "bl_sticky_cta_9tBZ8U": {
+    "bl_sticky_cta_DChAHr": {
       "type": "bl-sticky-cta",
       "name": "BL - Sticky CTA",
       "settings": {
@@ -584,14 +612,14 @@
     }
   },
   "order": [
-    "bl_hero_oemjHj",
-    "bl_brand_review_YA806O",
-    "bl_brand_review_ymeyND",
-    "bl_brand_review_D2eaIQ",
-    "bl_brand_review_tXOM00",
-    "bl_brand_review_D63Z9Z",
-    "bl_comparison_table_55Fmnx",
-    "bl_product_card_split_TmJSBF",
-    "bl_sticky_cta_9tBZ8U"
+    "bl_hero_cyQSa2",
+    "bl_brand_review_xL0mqp",
+    "bl_brand_review_rgIGpJ",
+    "bl_brand_review_itT177",
+    "bl_brand_review_moKlF9",
+    "bl_brand_review_wSo4A4",
+    "bl_comparison_table_gkuXNJ",
+    "bl_product_card_split_Go9Ckn",
+    "bl_sticky_cta_DChAHr"
   ]
 }
