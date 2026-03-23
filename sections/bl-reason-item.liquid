@@ -3,7 +3,11 @@
   <div class="bl-reason-item__container">
     <div class="bl-reason-item__content">
       <header class="bl-reason-item__header">
-        <span class="bl-reason-item__number">{{ section.settings.number }}</span>
+        {%- if section.settings.number != blank -%}
+          <span class="bl-reason-item__number">
+            {%- if section.settings.number_prefix != blank -%}{{ section.settings.number_prefix }} {%- endif -%}{{ section.settings.number }}
+          </span>
+        {%- endif -%}
         <h2 class="bl-reason-item__title">{{ section.settings.title }}</h2>
       </header>
 
@@ -103,9 +107,6 @@
   margin-bottom: 0.75rem;
 }
 
-.bl-reason-item__number::before {
-  content: 'Reason ';
-}
 
 .bl-reason-item__title {
   font-family: Georgia, 'Times New Roman', serif;
@@ -201,8 +202,15 @@
     },
     {
       "type": "text",
+      "id": "number_prefix",
+      "label": "Number prefix",
+      "info": "Text shown before the number (e.g., 'Reason'). Leave blank for no prefix.",
+      "default": "Reason"
+    },
+    {
+      "type": "text",
       "id": "number",
-      "label": "Reason number",
+      "label": "Number",
       "default": "1"
     },
     {
