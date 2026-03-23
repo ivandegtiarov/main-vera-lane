@@ -1,12 +1,12 @@
 {
   "slug": "lp-what-women-over-40-say-foundation",
   "hero": {
-    "headline": "What 5,000+ Women Over 40 Are Saying About This Foundation",
+    "headline": "What 1000s of Women Over 40 Are Saying About This Foundation",
     "subheadline": "Real reviews from real women who've made the switch to Vera Lane's Tone Adapting Foundation",
     "category": "REAL REVIEWS",
-    "bg_image_asset": "lp-social-proof-hero.jpg",
+    "bg_image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
     "show_rating": true,
-    "review_count": "5,247 Verified Reviews",
+    "review_count": "1000s of Verified Reviews",
     "cta_text": "READ THE REVIEWS",
     "cta_anchor": "reviews"
   },
@@ -213,11 +213,11 @@
   "trust_badges": [
     { "title": "30-Day Money Back", "description": "Full refund if you're not completely satisfied" },
     { "title": "Free Shipping", "description": "Complimentary shipping on every order" },
-    { "title": "5,000+ Happy Customers", "description": "Rated 4.9/5 by women over 40" },
+    { "title": "1000s of Happy Customers", "description": "Rated 4.9/5 by women over 40" },
     { "title": "Clean Ingredients", "description": "No parabens, sulfates, or synthetic fragrance" }
   ],
   "cta": {
-    "text": "Join 5,000+ women who've made the switch to foundation that works with their skin.",
+    "text": "Join 1000s of women who've made the switch to foundation that works with their skin.",
     "button_text": "TRY VERA LANE TODAY",
     "button_url": "/products/color-changing-foundation",
     "subtext": "30-day money-back guarantee • Free shipping"
