@@ -1,0 +1,249 @@
+{%- comment -%} ── BL - COMPARISON TABLE ── {%- endcomment -%}
+<div class="bl-comparison-table" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--table-bg: {{ section.settings.bg_color }};">
+  <div class="bl-comparison-table__container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="bl-comparison-table__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="bl-comparison-table__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="bl-comparison-table__scroll-wrap">
+      <table class="bl-comparison-table__table">
+        <thead>
+          <tr>
+            <th class="bl-comparison-table__th bl-comparison-table__th--criterion"></th>
+            <th class="bl-comparison-table__th bl-comparison-table__th--highlight">{{ section.settings.brand_1_name }}</th>
+            <th class="bl-comparison-table__th">{{ section.settings.brand_2_name }}</th>
+            <th class="bl-comparison-table__th">{{ section.settings.brand_3_name }}</th>
+            <th class="bl-comparison-table__th">{{ section.settings.brand_4_name }}</th>
+            <th class="bl-comparison-table__th">{{ section.settings.brand_5_name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="bl-comparison-table__td bl-comparison-table__td--criterion">{{ block.settings.criterion }}</td>
+              <td class="bl-comparison-table__td bl-comparison-table__td--highlight">{{ block.settings.brand_1_value }}</td>
+              <td class="bl-comparison-table__td">{{ block.settings.brand_2_value }}</td>
+              <td class="bl-comparison-table__td">{{ block.settings.brand_3_value }}</td>
+              <td class="bl-comparison-table__td">{{ block.settings.brand_4_value }}</td>
+              <td class="bl-comparison-table__td">{{ block.settings.brand_5_value }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.bl-comparison-table {
+  background: var(--table-bg, #FAF9F7);
+  padding: 4rem 2rem;
+}
+
+.bl-comparison-table__container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.bl-comparison-table__heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  text-align: center;
+  color: #2D2D2D;
+  margin: 0 0 0.75rem;
+}
+
+.bl-comparison-table__subheading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
+  color: #666;
+  margin: 0 0 2.5rem;
+}
+
+.bl-comparison-table__scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bl-comparison-table__table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+.bl-comparison-table__th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  background: #2D2D2D;
+  color: #fff;
+}
+
+.bl-comparison-table__th--criterion {
+  text-align: left;
+  width: 140px;
+}
+
+.bl-comparison-table__th--highlight {
+  background: #3D3D3D;
+  border-top: 3px solid #D4A574;
+}
+
+.bl-comparison-table__td {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.875rem 0.75rem;
+  border-bottom: 1px solid #E8E6E3;
+  color: #444;
+}
+
+.bl-comparison-table__td--criterion {
+  text-align: left;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: #2D2D2D;
+}
+
+.bl-comparison-table__td--highlight {
+  background: rgba(212, 165, 116, 0.08);
+  font-weight: 600;
+  color: #2D2D2D;
+}
+
+tr:nth-child(even) .bl-comparison-table__td {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+tr:nth-child(even) .bl-comparison-table__td--highlight {
+  background: rgba(212, 165, 116, 0.12);
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BL - Comparison Table",
+  "tag": "section",
+  "class": "bl-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "For anchor links (e.g., 'comparison')"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How They Compare"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "header",
+      "content": "Brand Names (left to right)"
+    },
+    {
+      "type": "text",
+      "id": "brand_1_name",
+      "label": "Brand 1 (highlighted)",
+      "default": "Vera Lane"
+    },
+    {
+      "type": "text",
+      "id": "brand_2_name",
+      "label": "Brand 2",
+      "default": "Brand 2"
+    },
+    {
+      "type": "text",
+      "id": "brand_3_name",
+      "label": "Brand 3",
+      "default": "Brand 3"
+    },
+    {
+      "type": "text",
+      "id": "brand_4_name",
+      "label": "Brand 4",
+      "default": "Brand 4"
+    },
+    {
+      "type": "text",
+      "id": "brand_5_name",
+      "label": "Brand 5",
+      "default": "Brand 5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "criterion",
+      "name": "Criterion Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "criterion",
+          "label": "Criterion name",
+          "default": "Coverage"
+        },
+        {
+          "type": "text",
+          "id": "brand_1_value",
+          "label": "Brand 1 rating",
+          "default": "Excellent"
+        },
+        {
+          "type": "text",
+          "id": "brand_2_value",
+          "label": "Brand 2 rating",
+          "default": "Good"
+        },
+        {
+          "type": "text",
+          "id": "brand_3_value",
+          "label": "Brand 3 rating",
+          "default": "Good"
+        },
+        {
+          "type": "text",
+          "id": "brand_4_value",
+          "label": "Brand 4 rating",
+          "default": "Average"
+        },
+        {
+          "type": "text",
+          "id": "brand_5_value",
+          "label": "Brand 5 rating",
+          "default": "Average"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL - Comparison Table",
+      "category": "t:categories.blissy_listicle"
+    }
+  ]
+}
+{% endschema %}
