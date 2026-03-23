@@ -135,6 +135,7 @@ function buildTemplate(content) {
           name: 'VL Image + Text',
           settings: {
             image: block.image || '',
+            image_asset: block.image_asset || '',
             image_alt: block.image_alt || '',
             image_caption: block.image_caption || '',
             heading: block.heading || '',
