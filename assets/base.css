@@ -4282,3 +4282,14 @@ text-component {
   font-family: "Playfair Display" !important;
   font-style: italic !important;
 }
+
+/* Hide hCaptcha floating badge — protection still active */
+.h-captcha,
+iframe[src*="hcaptcha"],
+[data-hcaptcha-widget-id] {
+  visibility: hidden !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
