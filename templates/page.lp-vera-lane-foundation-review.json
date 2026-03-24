@@ -158,7 +158,7 @@
         "text": "Ready to see if it works for your skin tone?",
         "button_url": "/products/color-changing-foundation",
         "button_text": "TRY IT TODAY — RISK FREE",
-        "subtext": "Free shipping on all orders",
+        "subtext": "Free shipping on orders over $[threshold]",
         "bg_color": "#ffffff",
         "text_color": "#333333",
         "button_bg_color": "#5C1A33",

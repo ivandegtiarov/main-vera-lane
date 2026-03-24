@@ -406,7 +406,7 @@
           "type": "badge",
           "settings": {
             "title": "Free Shipping",
-            "description": "Complimentary shipping on every order"
+            "description": "Free shipping on orders over $[threshold]"
           }
         },
         "badge_vnTQf6": {
@@ -447,7 +447,7 @@
         "text": "Join 1000s of women who've made the switch to foundation that works with their skin.",
         "button_url": "/products/color-changing-foundation",
         "button_text": "TRY VERA LANE TODAY",
-        "subtext": "30-day money-back guarantee • Free shipping",
+        "subtext": "30-day money-back guarantee • Free shipping over $[threshold]",
         "bg_color": "#ffffff",
         "text_color": "#333333",
         "button_bg_color": "#5C1A33",
