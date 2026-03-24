@@ -410,6 +410,13 @@
             background-color: #FFFBFA;
         }
 
+        /* Don't show burgundy hover border on Amazon-offer variant — the promo
+           banner already uses the same color, making it look permanently selected */
+        .lumen-pdp-hero__variant--amazon-offer:not(.lumen-pdp-hero__variant--selected):hover {
+            border-color: #E1DCD8;
+            background-color: #FFFBFA;
+        }
+
         .lumen-pdp-hero__variant--amazon-offer {
             overflow: hidden;
             gap: 10px;

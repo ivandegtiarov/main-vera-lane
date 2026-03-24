@@ -417,19 +417,18 @@
         "bundle_fyxzq3": {
           "type": "bundle",
           "settings": {
-            "bundle_product": "bundle-tone-adapting-foundation-makeup-brush",
+            "bundle_product": "makeup-bag-1",
             "bundle_title": "",
-            "bundle_image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
-            "product_1": "color-changing-foundation",
+            "product_1": "makeup-bag-1",
             "product_1_quantity": 1,
-            "product_2": "makeup-brush",
-            "product_2_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 0,
             "product_3": "",
-            "product_3_quantity": 1,
+            "product_3_quantity": 0,
             "add_bundle_property": false,
-            "add_vera2_bundle_property": true,
+            "add_vera2_bundle_property": false,
             "show_badge": false,
-            "show_corner_badge": true,
+            "show_corner_badge": false,
             "corner_badge_text": "GREAT DEAL",
             "corner_badge_bg_color": "#000000",
             "corner_badge_text_color": "#ffffff",
@@ -448,7 +447,7 @@
           "type": "bundle",
           "settings": {
             "bundle_product": "makeup-bag-bundle",
-            "bundle_title": "Bundle: Foundation, Makeup Brush & Makeup Bag",
+            "bundle_title": "Starter Kit: Foundation, Makeup Brush & Makeup Bag",
             "bundle_image": "shopify://shop_images/Gemini_Generated_Image_7hejds7hejds7hej.png",
             "product_1": "color-changing-foundation",
             "product_1_quantity": 1,
@@ -801,6 +800,7 @@
       "blocks": {
         "slider_card_1": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/european-female-headshot-perspective-shift.jpg",
             "card_name": "Ivana",
@@ -837,6 +837,7 @@
         },
         "slider_card_4": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/late-60s-european-woman-headshot-json.jpg",
             "card_name": "Anastasia",
@@ -855,6 +856,7 @@
         },
         "slider_card_tnKajB": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slavic-female-portrait-skin-retouch.jpg",
             "card_name": "Ivana",
@@ -864,6 +866,7 @@
         },
         "slider_card_RetchT": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_66.png",
             "card_name": "Sarah",
@@ -873,6 +876,7 @@
         },
         "slider_card_PnCdCC": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_67.png",
             "card_name": "Dr Stephanie",
@@ -891,6 +895,7 @@
         },
         "slider_card_C7PMnL": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slavic-woman-smooth-skin-portrait.jpg",
             "card_name": "Jessica",
