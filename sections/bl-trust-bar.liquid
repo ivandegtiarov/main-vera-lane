@@ -1,4 +1,7 @@
 {%- comment -%} ── BL - TRUST BAR ── {%- endcomment -%}
+{%- liquid
+  assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round
+-%}
 <div class="bl-trust-bar" {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %} style="--trust-bg: {{ section.settings.bg_color }};">
   <div class="bl-trust-bar__container">
     {%- if section.settings.headline != blank -%}
@@ -7,10 +10,12 @@
 
     <div class="bl-trust-bar__badges">
       {%- for block in section.blocks -%}
+        {%- assign badge_title = block.settings.title | replace: '[threshold]', free_shipping_threshold -%}
+        {%- assign badge_desc = block.settings.description | replace: '[threshold]', free_shipping_threshold -%}
         <div class="bl-trust-bar__badge" {{ block.shopify_attributes }}>
-          <span class="bl-trust-bar__badge-title">{{ block.settings.title }}</span>
-          {%- if block.settings.description != blank -%}
-            <span class="bl-trust-bar__badge-desc">{{ block.settings.description }}</span>
+          <span class="bl-trust-bar__badge-title">{{ badge_title }}</span>
+          {%- if badge_desc != blank -%}
+            <span class="bl-trust-bar__badge-desc">{{ badge_desc }}</span>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -175,7 +180,7 @@
           "type": "text",
           "id": "description",
           "label": "Description",
-          "info": "Optional"
+          "info": "Optional. Use [threshold] to insert the free shipping threshold."
         }
       ]
     }
@@ -186,7 +191,7 @@
       "category": "t:categories.blissy_listicle",
       "blocks": [
         { "type": "badge", "settings": { "title": "30-Day Returns", "description": "Full refund if you're not completely satisfied" } },
-        { "type": "badge", "settings": { "title": "Free Shipping", "description": "Complimentary shipping on all orders" } },
+        { "type": "badge", "settings": { "title": "Free Shipping", "description": "Free shipping on orders over $[threshold]" } },
         { "type": "badge", "settings": { "title": "Secure Checkout", "description": "Your information is always protected" } }
       ]
     }
