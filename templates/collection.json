@@ -219,7 +219,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Is this product suitable for sensitive skin?",
-            "answer": "Yes, our products are dermatologist-tested and formulated for all skin types, including sensitive skin."
+            "answer": "Yes, our products are dermatologist-tested and formulated for most skin types, including sensitive skin. If your skin is particularly sensitive, a patch test is recommended."
           }
         },
         "faq_item_iatPU8": {
@@ -233,7 +233,7 @@
           "type": "faq_item",
           "settings": {
             "question": "What ingredients are in this product?",
-            "answer": "Our products contain nourishing ingredients like Glycerin, Sodium Hyaluronate, and Vitamin E for healthy, hydrated skin."
+            "answer": "Our foundation contains nourishing ingredients like Glycerin, Bisabolol, and Vitamin E for healthy, comfortable-looking skin."
           }
         },
         "faq_item_YJJ4p4": {
