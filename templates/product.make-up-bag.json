@@ -1001,7 +1001,7 @@
             "name": "Marilyn R.",
             "rating": 5,
             "title": "Just the right size",
-            "date": "Mar 10, 2025",
+            "date": "Mar 16, 2026",
             "quote": "Fits my foundation, brush, lipstick and reading glasses perfectly. Not too big, not too small. I keep it on my bathroom counter and it looks lovely there.",
             "verified": true
           }
@@ -1013,7 +1013,7 @@
             "name": "Phyllis T.",
             "rating": 5,
             "title": "Feels expensive",
-            "date": "Mar 6, 2025",
+            "date": "Mar 1, 2026",
             "quote": "The leather is so soft and the gold zipper gives it a touch of elegance. My daughter asked where I got it because she wants one too.",
             "verified": true
           }
@@ -1025,7 +1025,7 @@
             "name": "Shirley K.",
             "rating": 5,
             "title": "Perfect for my cruise",
-            "date": "Feb 28, 2025",
+            "date": "Feb 15, 2026",
             "quote": "Took this on a two-week cruise and it held up beautifully. Compact enough for my cabin but fits everything I need. The structured shape is perfect.",
             "verified": true
           }
@@ -1037,7 +1037,7 @@
             "name": "Gloria L.",
             "rating": 5,
             "title": "Easy to clean",
-            "date": "Feb 22, 2025",
+            "date": "Feb 2, 2026",
             "quote": "Had a lipstick open inside and it wiped right out. At my age I've had enough makeup bags ruined by spills. This one is practical.",
             "verified": true
           }
@@ -1049,7 +1049,7 @@
             "name": "Judith H.",
             "rating": 5,
             "title": "Lovely on my vanity",
-            "date": "Feb 15, 2025",
+            "date": "Jan 20, 2026",
             "quote": "The embossed logo is subtle and classy. I've had this sitting on my dressing table for a month now and it still makes me smile every morning.",
             "verified": true
           }
@@ -1061,7 +1061,7 @@
             "name": "Evelyn M.",
             "rating": 5,
             "title": "Complete set now",
-            "date": "Feb 10, 2025",
+            "date": "Jan 8, 2026",
             "quote": "I have the foundation and brush already. Now with this bag, my whole routine is Vera Lane. They all look beautiful together.",
             "verified": true
           }
@@ -1073,7 +1073,7 @@
             "name": "Frances P.",
             "rating": 5,
             "title": "Stays upright",
-            "date": "Feb 3, 2025",
+            "date": "Dec 26, 2025",
             "quote": "I'm 67 and have owned dozens of makeup bags over the years. This is the first one that actually holds its shape and stays standing. So practical.",
             "verified": true
           }
@@ -1085,7 +1085,7 @@
             "name": "Joan W.",
             "rating": 5,
             "title": "Holds up well",
-            "date": "Jan 28, 2025",
+            "date": "Dec 12, 2025",
             "quote": "I've had this for three months now and use it every day. The texture hides any little marks and it still looks like new.",
             "verified": true
           }
@@ -1097,7 +1097,7 @@
             "name": "Norma C.",
             "rating": 5,
             "title": "Got extras for friends",
-            "date": "Jan 22, 2025",
+            "date": "Nov 28, 2025",
             "quote": "Bought one for myself and then went back for two more. Gave them to my sisters for their birthdays and they both loved them.",
             "verified": true
           }
@@ -1109,7 +1109,7 @@
             "name": "Virginia S.",
             "rating": 5,
             "title": "Wide opening is key",
-            "date": "Jan 15, 2025",
+            "date": "Nov 15, 2025",
             "quote": "The zipper opens all the way so I can see everything inside. At my age, I need good lighting and easy access. This bag gives me both.",
             "verified": true
           }
@@ -1121,7 +1121,7 @@
             "name": "Edith B.",
             "rating": 5,
             "title": "Quality you can feel",
-            "date": "Jan 8, 2025",
+            "date": "Nov 2, 2025",
             "quote": "I can tell this is well made just by touching it. The stitching is perfect and the leather feels substantial. A little luxury for my morning routine.",
             "verified": true
           }
@@ -1133,7 +1133,7 @@
             "name": "Mildred J.",
             "rating": 5,
             "title": "Everything I wanted",
-            "date": "Jan 2, 2025",
+            "date": "Oct 20, 2025",
             "quote": "Simple, elegant, and works perfectly. I keep my Vera Lane products in here and it sits on my counter looking beautiful. Just what I needed.",
             "verified": true
           }
@@ -1160,8 +1160,8 @@
         "rating_summary_text": "Based on 256 reviews",
         "initial_count": 8,
         "load_more_text": "Load More Reviews",
-        "see_all_text": "See All 256 Reviews",
-        "see_all_url": "#judgeme_product_reviews"
+        "see_all_text": "",
+        "see_all_url": ""
       }
     },
     "lumen_usp_mjAcCK": {
