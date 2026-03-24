@@ -417,6 +417,11 @@
             background-color: #FFFBFA;
         }
 
+        /* Dim the Amazon promo banner when this variant is not selected */
+        .lumen-pdp-hero__variant--amazon-offer:not(.lumen-pdp-hero__variant--selected) .lumen-pdp-hero__amazon-banner {
+            opacity: 0.7;
+        }
+
         .lumen-pdp-hero__variant--amazon-offer {
             overflow: hidden;
             gap: 10px;
