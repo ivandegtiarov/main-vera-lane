@@ -2448,45 +2448,59 @@
           {% endif %}
         {% endfor %}
         
-        // Auto-select the first bundle option if available
-        {% assign first_bundle_option = section.blocks | where: 'type', 'bundle_option' | first %}
-        {% assign first_bundle = section.blocks | where: 'type', 'bundle' | first %}
-        
-        {% if first_bundle_option %}
-          {% assign first_quantity = first_bundle_option.settings.quantity | default: 1 %}
-          this.selectedBundleId = '{{ first_bundle_option.id }}';
-          this.selectedVariantId = {{ selected_variant.id }};
-          this.selectedQuantity = {{ first_quantity }};
-          this.bundleType = 'bundle_option';
-        {% elsif first_bundle %}
-          {% assign product_1 = first_bundle.settings.product_1 %}
-          {% assign product_2 = first_bundle.settings.product_2 %}
-          {% assign product_3 = first_bundle.settings.product_3 %}
-          {% assign product_1_quantity = first_bundle.settings.product_1_quantity | default: 1 %}
-          {% assign product_2_quantity = first_bundle.settings.product_2_quantity | default: 1 %}
-          {% assign product_3_quantity = first_bundle.settings.product_3_quantity | default: 1 %}
-          {% assign first_bundle_property = first_bundle.settings.add_bundle_property | default: false %}
-          {% assign first_vera2_bundle_property = first_bundle.settings.add_vera2_bundle_property | default: false %}
-          this.selectedBundleId = '{{ first_bundle.id }}';
-          this.bundleType = 'bundle';
-          this.product1VariantId = {{ product_1.variants.first.id | default: 0 }};
-          this.product1Quantity = {{ product_1_quantity }};
-          this.product2VariantId = {{ product_2.variants.first.id | default: 0 }};
-          this.product2Quantity = {{ product_2_quantity }};
-          this.product3VariantId = {{ product_3.variants.first.id | default: 0 }};
-          this.product3Quantity = {{ product_3_quantity }};
-          this.addBundleProperty = {{ first_bundle_property }};
-          this.addVera2BundleProperty = {{ first_vera2_bundle_property }};
-          // Load bundle images, title, and price for first bundle
-          if (this.bundleImagesData['{{ first_bundle.id }}']) {
-            this.currentImages = this.bundleImagesData['{{ first_bundle.id }}'];
+        // Check if user already made a selection (persisted on DOM to survive re-init)
+        const persistedBundle = this.$el.getAttribute('data-selected-bundle');
+        if (persistedBundle) {
+          this.selectedBundleId = persistedBundle;
+          if (this.bundleImagesData[persistedBundle]) {
+            this.currentImages = this.bundleImagesData[persistedBundle];
           }
-          if (this.bundleProductData['{{ first_bundle.id }}']) {
-            this.currentTitle = this.bundleProductData['{{ first_bundle.id }}'].title;
-            this.currentPrice = this.bundleProductData['{{ first_bundle.id }}'].price;
+          if (this.bundleProductData[persistedBundle]) {
+            this.currentTitle = this.bundleProductData[persistedBundle].title;
+            this.currentPrice = this.bundleProductData[persistedBundle].price;
           }
           this.$nextTick(() => this.reinitializeGallery());
-        {% endif %}
+        } else {
+          // Auto-select the first bundle option if available
+          {% assign first_bundle_option = section.blocks | where: 'type', 'bundle_option' | first %}
+          {% assign first_bundle = section.blocks | where: 'type', 'bundle' | first %}
+
+          {% if first_bundle_option %}
+            {% assign first_quantity = first_bundle_option.settings.quantity | default: 1 %}
+            this.selectedBundleId = '{{ first_bundle_option.id }}';
+            this.selectedVariantId = {{ selected_variant.id }};
+            this.selectedQuantity = {{ first_quantity }};
+            this.bundleType = 'bundle_option';
+          {% elsif first_bundle %}
+            {% assign product_1 = first_bundle.settings.product_1 %}
+            {% assign product_2 = first_bundle.settings.product_2 %}
+            {% assign product_3 = first_bundle.settings.product_3 %}
+            {% assign product_1_quantity = first_bundle.settings.product_1_quantity | default: 1 %}
+            {% assign product_2_quantity = first_bundle.settings.product_2_quantity | default: 1 %}
+            {% assign product_3_quantity = first_bundle.settings.product_3_quantity | default: 1 %}
+            {% assign first_bundle_property = first_bundle.settings.add_bundle_property | default: false %}
+            {% assign first_vera2_bundle_property = first_bundle.settings.add_vera2_bundle_property | default: false %}
+            this.selectedBundleId = '{{ first_bundle.id }}';
+            this.bundleType = 'bundle';
+            this.product1VariantId = {{ product_1.variants.first.id | default: 0 }};
+            this.product1Quantity = {{ product_1_quantity }};
+            this.product2VariantId = {{ product_2.variants.first.id | default: 0 }};
+            this.product2Quantity = {{ product_2_quantity }};
+            this.product3VariantId = {{ product_3.variants.first.id | default: 0 }};
+            this.product3Quantity = {{ product_3_quantity }};
+            this.addBundleProperty = {{ first_bundle_property }};
+            this.addVera2BundleProperty = {{ first_vera2_bundle_property }};
+            // Load bundle images, title, and price for first bundle
+            if (this.bundleImagesData['{{ first_bundle.id }}']) {
+              this.currentImages = this.bundleImagesData['{{ first_bundle.id }}'];
+            }
+            if (this.bundleProductData['{{ first_bundle.id }}']) {
+              this.currentTitle = this.bundleProductData['{{ first_bundle.id }}'].title;
+              this.currentPrice = this.bundleProductData['{{ first_bundle.id }}'].price;
+            }
+            this.$nextTick(() => this.reinitializeGallery());
+          {% endif %}
+        }
         
         // Listen for cart success/error to reset loading state
         document.addEventListener('cart:updated', () => {
@@ -2509,6 +2523,7 @@
       
       selectBundle(bundleId, variantId, quantity, type) {
         this.selectedBundleId = bundleId;
+        this.$el.setAttribute('data-selected-bundle', bundleId);
         this.selectedVariantId = variantId;
         this.selectedQuantity = quantity;
         this.bundleType = type || 'bundle_option';
@@ -2533,6 +2548,7 @@
       
       selectMultiProductBundle(bundleId, product1VariantId, product1Quantity, product2VariantId, product2Quantity, product3VariantId, product3Quantity, addBundleProperty = false, addVera2BundleProperty = false, isSubscription = false) {
         this.selectedBundleId = bundleId;
+        this.$el.setAttribute('data-selected-bundle', bundleId);
         this.bundleType = 'bundle';
         this.product1VariantId = product1VariantId;
         this.product1Quantity = product1Quantity;
