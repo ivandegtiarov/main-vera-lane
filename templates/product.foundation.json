@@ -575,7 +575,7 @@
           "type": "faq_item",
           "settings": {
             "title": "Ingredients",
-            "content": "<p>Contains nourishing, skin-first ingredients: </p><p>1. <strong>Glycerin</strong> - Attracts moisture for a soft, supple feel. </p><p>2. <strong>Sodium Hyaluronate</strong> - Provides deep hydration for a firm, youthful glow. </p><p>3. <strong>Tocopherol (Vitamin E)</strong> - Nourishes and protects for a healthy complexion.</p>",
+            "content": "<p>Contains nourishing, skin-first ingredients: </p><p><strong>1. Glycerin</strong> - Attracts moisture for a soft, supple feel.</p><p><strong>2. Bisabolol & Tone-Evening Pigments</strong> - Help reduce the appearance of redness and uneven tone for a more balanced, natural-looking complexion.</p><p><strong>3. Tocopheryl Acetate (Vitamin E)</strong> - Nourishes and supports a fresh, healthy-looking complexion.</p>",
             "faq_show_image": false,
             "faq_enable_popup": true,
             "faq_popup_trigger_text": "View full list",
