@@ -1003,7 +1003,7 @@
           "settings": {
             "review_image_asset": "review-image-7.jpg",
             "rating": 5,
-            "date": "Mar 14, 2025",
+            "date": "Mar 18, 2026",
             "title": "Finally found my perfect match",
             "quote": "I'm 58 and have tried everything. This actually blends into my skin without settling into lines. My daughter asked what I was doing differently!",
             "name": "Margaret S.",
@@ -1015,7 +1015,7 @@
           "settings": {
             "review_image_asset": "review-image-2.jpg",
             "rating": 5,
-            "date": "Mar 11, 2025",
+            "date": "Mar 5, 2026",
             "title": "No more orange face!",
             "quote": "At 52, I've tried every foundation that promises to match. The color-matching on this one is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
             "name": "Patricia L.",
@@ -1027,7 +1027,7 @@
           "settings": {
             "review_image_asset": "review-image-3.jpg",
             "rating": 5,
-            "date": "Mar 8, 2025",
+            "date": "Feb 20, 2026",
             "title": "Worth every penny",
             "quote": "At 50, I've wasted so much money on foundations that cake or crease. This one doesn't. It just works. Finally found something that makes my skin look natural.",
             "name": "Linda K.",
@@ -1039,7 +1039,7 @@
           "settings": {
             "review_image_asset": "review-image-1.jpg",
             "rating": 4,
-            "date": "Mar 5, 2025",
+            "date": "Feb 8, 2026",
             "title": "Good but wish it had more shades",
             "quote": "At 60, I'd given up on foundation. This changed that. Lightweight and natural. Would love to see more shade options for deeper skin tones.",
             "name": "Susan M.",
@@ -1051,7 +1051,7 @@
           "settings": {
             "review_image_asset": "review-image-4.jpg",
             "rating": 5,
-            "date": "Feb 28, 2025",
+            "date": "Jan 25, 2026",
             "title": "Finally something for rosacea",
             "quote": "At 52, my rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer for mature skin.",
             "name": "Carol B.",
@@ -1063,7 +1063,7 @@
           "settings": {
             "review_image_asset": "review-image-5.jpg",
             "rating": 5,
-            "date": "Feb 22, 2025",
+            "date": "Jan 12, 2026",
             "title": "Skeptic turned believer",
             "quote": "At 55, I rolled my eyes at 'adapts to your skin tone' but it actually does. Perfect match every time. Bought 3 more for backup.",
             "name": "Barbara R.",
@@ -1075,7 +1075,7 @@
           "settings": {
             "review_image_asset": "review-image-6.jpg",
             "rating": 5,
-            "date": "Feb 18, 2025",
+            "date": "Dec 28, 2025",
             "title": "Perfect for hot flashes",
             "quote": "At 55, hot flashes were melting my makeup off by noon. This stays put even when I'm having a moment. Absolute lifesaver.",
             "name": "Nancy W.",
@@ -1087,7 +1087,7 @@
           "settings": {
             "review_image_asset": "",
             "rating": 5,
-            "date": "Feb 15, 2025",
+            "date": "Dec 15, 2025",
             "title": "My go-to now",
             "quote": "Threw out my other foundations. This is the only one I need. Matches perfectly, doesn't cake, and my skin can breathe.",
             "name": "Dorothy H.",
@@ -1099,7 +1099,7 @@
           "settings": {
             "review_image_asset": "",
             "rating": 5,
-            "date": "Feb 10, 2025",
+            "date": "Nov 30, 2025",
             "title": "Finally looks natural",
             "quote": "I've always looked 'made up' with foundation. This actually looks like my skin, just better. My husband noticed immediately!",
             "name": "Helen J.",
@@ -1111,7 +1111,7 @@
           "settings": {
             "review_image_asset": "",
             "rating": 4,
-            "date": "Feb 5, 2025",
+            "date": "Nov 18, 2025",
             "title": "Great coverage",
             "quote": "Covers my age spots without looking heavy. Takes a minute to blend but once it sets, it's gorgeous. Would love SPF added.",
             "name": "Ruth T.",
@@ -1123,7 +1123,7 @@
           "settings": {
             "review_image_asset": "",
             "rating": 5,
-            "date": "Jan 28, 2025",
+            "date": "Nov 5, 2025",
             "title": "Daughter bought it for me",
             "quote": "My daughter surprised me with this. Best gift ever! At 67, I'd given up on foundation. Now I wear it every day.",
             "name": "Mary E.",
@@ -1135,7 +1135,7 @@
           "settings": {
             "review_image_asset": "",
             "rating": 5,
-            "date": "Jan 20, 2025",
+            "date": "Oct 22, 2025",
             "title": "Ordering more for friends",
             "quote": "This is what mature skin needs. Light, breathable, and somehow makes wrinkles less visible. Already ordered gifts for my book club!",
             "name": "Jean M.",
@@ -1165,8 +1165,8 @@
         "rating_summary_text": "Based on 1,356 reviews",
         "initial_count": 8,
         "load_more_text": "Load More Reviews",
-        "see_all_text": "See All 1,356 Reviews",
-        "see_all_url": "#judgeme_product_reviews",
+        "see_all_text": "",
+        "see_all_url": "",
         "bg_color": "#ffffff",
         "card_bg_color": "#ffffff",
         "star_color": "#fbbf24",
