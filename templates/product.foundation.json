@@ -801,6 +801,7 @@
       "blocks": {
         "slider_card_1": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/european-female-headshot-perspective-shift.jpg",
             "card_name": "Ivana",
@@ -837,6 +838,7 @@
         },
         "slider_card_4": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/late-60s-european-woman-headshot-json.jpg",
             "card_name": "Anastasia",
@@ -855,6 +857,7 @@
         },
         "slider_card_tnKajB": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slavic-female-portrait-skin-retouch.jpg",
             "card_name": "Ivana",
@@ -864,6 +867,7 @@
         },
         "slider_card_RetchT": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_66.png",
             "card_name": "Sarah",
@@ -873,6 +877,7 @@
         },
         "slider_card_PnCdCC": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_67.png",
             "card_name": "Dr Stephanie",
@@ -891,6 +896,7 @@
         },
         "slider_card_C7PMnL": {
           "type": "slider_card",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slavic-woman-smooth-skin-portrait.jpg",
             "card_name": "Jessica",
