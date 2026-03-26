@@ -289,21 +289,28 @@
           "type": "description_item",
           "settings": {
             "title": "Instantly Adapts to Your Exact Shade",
-            "content": "<p>The white cream transforms upon application to match your unique skin tone perfectly.</p>"
+            "content": "<p>No more guessing between 50 shades at the counter. This color-adapting formula reads your unique skin tone and adjusts on contact — so you get a perfect match every single time, on every skin tone.</p>"
           }
         },
         "description_item_BwXRQq": {
           "type": "description_item",
           "settings": {
-            "title": "Ideal for Mature Skin (Floats Over Fine Lines):",
-            "content": "<p>The hydrating formula doesn't cake or crease into wrinkles, creating a smooth finish that looks like skin, not makeup.</p>"
+            "title": "Smooths Over Fine Lines & Wrinkles",
+            "content": "<p>Most foundations settle into creases and make lines more visible. This hydrating formula floats over fine lines instead of sinking into them — giving you a smooth, natural finish that looks like skin, not makeup.</p>"
           }
         },
         "description_item_c9mQXG": {
           "type": "description_item",
           "settings": {
             "title": "Weightless, \"Second-Skin\" Feel",
-            "content": "<p>Say goodbye to that heavy, \"mask-like\" sensation. Neutralizes redness and age spots while letting your skin breathe, giving you a healthy, lit-from-within glow.</p>"
+            "content": "<p>Say goodbye to that heavy, cakey sensation. This breathable formula neutralizes redness and evens out age spots while feeling like you're wearing nothing at all — just a healthy, lit-from-within glow.</p>"
+          }
+        },
+        "description_item_fRgFr3": {
+          "type": "description_item",
+          "settings": {
+            "title": "Fragrance-Free & Gentle on Sensitive Skin",
+            "content": "<p>No synthetic fragrances, no harsh chemicals, no irritation. Formulated for even the most sensitive skin types so you get flawless coverage without the worry.</p>"
           }
         },
         "magazine_logo_7qjcEx": {
@@ -642,6 +649,7 @@
         "description_item_3PU4Mz",
         "description_item_BwXRQq",
         "description_item_c9mQXG",
+        "description_item_fRgFr3",
         "magazine_logo_7qjcEx",
         "magazine_logo_NxJ67z",
         "magazine_logo_7MRWYQ",
