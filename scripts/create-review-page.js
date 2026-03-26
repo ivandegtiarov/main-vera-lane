@@ -186,6 +186,47 @@ function buildTemplate(content) {
         order.push(id);
         break;
       }
+
+      case 'summary': {
+        const id = `bl_review_summary_${generateId()}`;
+        const summaryBlocks = {};
+        const summaryBlockOrder = [];
+
+        (block.pros || []).forEach((text) => {
+          const pid = `pro_${generateId()}`;
+          summaryBlocks[pid] = { type: 'pro', settings: { text } };
+          summaryBlockOrder.push(pid);
+        });
+
+        (block.cons || []).forEach((text) => {
+          const cid = `con_${generateId()}`;
+          summaryBlocks[cid] = { type: 'con', settings: { text } };
+          summaryBlockOrder.push(cid);
+        });
+
+        sections[id] = {
+          type: 'bl-review-summary',
+          blocks: summaryBlocks,
+          block_order: summaryBlockOrder,
+          name: 'BL - Review Summary',
+          settings: {
+            section_id: block.section_id || 'quick-verdict',
+            bg_color: block.bg_color || '#faf9f7',
+            label: block.label || 'QUICK VERDICT',
+            product_name: block.product_name,
+            rating: block.rating || '4.5',
+            price_text: block.price_text || '',
+            verdict_line: block.verdict_line || '',
+            image: block.image || '',
+            image_asset: block.image_asset || '',
+            image_position: block.image_position || 'left',
+            cta_text: block.cta_text || 'Read Full Review',
+            cta_anchor: block.cta_anchor || 'full-review',
+          },
+        };
+        order.push(id);
+        break;
+      }
     }
   });
 

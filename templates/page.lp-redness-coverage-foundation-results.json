@@ -1,112 +1,23 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "vl_editorial_hero_M04sR8": {
+    "vl_editorial_hero_rQogGG": {
       "type": "vl-editorial-hero",
       "name": "VL Editorial Hero",
       "settings": {
         "meta_text": "REAL RESULTS",
         "headline": "I Used to Love Pictures. Now I Hide From Them.",
         "intro_text": "Redness steals more than your complexion — it steals your confidence. Flushing, rosacea, irritation. These four women know exactly what that feels like. Here's what happened when they tried a foundation designed to neutralize redness without making it worse.",
-        "image": "shopify://shop_images/Tone_Adapting_Foundation_Makeup_brush_-_Image_2.jpg",
-        "image_alt": "Vera Lane Tone Adapting Foundation",
-        "caption": "Vera Lane Tone Adapting Foundation — redness coverage that looks like skin.",
+        "image": "",
+        "image_alt": "",
+        "caption": "",
         "bg_color": "#ffffff",
         "headline_color": "#000000",
         "text_color": "#333333",
         "meta_color": "#666666"
       }
     },
-    "bl_review_summary_eAPVbC": {
-      "type": "bl-review-summary",
-      "blocks": {
-        "pro_1bXGkw": {
-          "type": "pro",
-          "settings": {
-            "text": "Neutralizes redness and evens out blotchy skin tone"
-          }
-        },
-        "pro_bb3UTG": {
-          "type": "pro",
-          "settings": {
-            "text": "Fragrance-free — won't trigger sensitive skin flare-ups"
-          }
-        },
-        "pro_K6j44G": {
-          "type": "pro",
-          "settings": {
-            "text": "Doesn't settle into fine lines or accentuate texture"
-          }
-        },
-        "pro_5XlaD9": {
-          "type": "pro",
-          "settings": {
-            "text": "Buildable coverage from sheer to medium-full"
-          }
-        },
-        "con_QFBg0g": {
-          "type": "con",
-          "settings": {
-            "text": "Higher price point than drugstore options"
-          }
-        },
-        "con_1dBYRo": {
-          "type": "con",
-          "settings": {
-            "text": "Only available online — can't swatch in store"
-          }
-        }
-      },
-      "block_order": [
-        "pro_1bXGkw",
-        "pro_bb3UTG",
-        "pro_K6j44G",
-        "pro_5XlaD9",
-        "con_QFBg0g",
-        "con_1dBYRo"
-      ],
-      "name": "BL - Review Summary",
-      "settings": {
-        "section_id": "quick-verdict",
-        "bg_color": "#faf9f7",
-        "label": "WHY THIS WORKS FOR REDNESS",
-        "product_name": "Vera Lane Tone Adapting Foundation",
-        "rating": "4.9",
-        "price_text": "$39.99",
-        "verdict_line": "The only foundation we've tested that neutralizes redness without looking like a mask. No green correctors. No heavy layering. Just one product that adapts to your skin and calms the appearance of redness on contact.",
-        "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
-        "image_asset": "",
-        "image_position": "left",
-        "cta_text": "Read Full Review",
-        "cta_anchor": "full-review"
-      }
-    },
-    "vl_rich_text_39CDQy": {
-      "type": "vl-rich-text",
-      "name": "VL Rich Text",
-      "settings": {
-        "subheading": "Why Redness Is So Hard to Cover",
-        "content": "<p>If you've dealt with redness — whether it's rosacea, flushing, irritation, or sun damage — you already know the frustrating cycle. Green colour correctors look unnatural. Heavy full-coverage foundations feel like a mask and draw more attention to your skin, not less. And most products contain fragrance that triggers even more flushing.</p><p>Then there's the midday problem. You spend 20 minutes getting your redness under control in the morning, and by lunchtime it's bleeding through again. The coverage shifts, settles into lines, and suddenly the redness is more visible than if you'd worn nothing at all.</p><p><strong>These four women were stuck in that exact cycle.</strong> Different ages. Different types of redness. The same frustration. Here's what changed.</p>",
-        "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#5C1A33",
-        "section_id": "full-review"
-      }
-    },
-    "vl_pull_quote_1hCbRD": {
-      "type": "vl-pull-quote",
-      "name": "VL Pull Quote",
-      "settings": {
-        "quote": "Every foundation I tried either made my rosacea flare up or looked so thick you could tell I was covering something. This is the first one that just... looks like skin.",
-        "attribution": "",
-        "bg_color": "#F5EDE8",
-        "quote_color": "#333333",
-        "accent_color": "#5C1A33",
-        "attribution_color": "#666666"
-      }
-    },
-    "vl_image_text_sEgecb": {
+    "vl_image_text_JVnqbQ": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -121,7 +32,19 @@
         "text_color": "#333333"
       }
     },
-    "vl_image_text_pBqYjG": {
+    "vl_pull_quote_lHgjYg": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "Every foundation I tried either made my rosacea flare up or looked so thick you could tell I was covering something. This is the first one that just... looks like skin.",
+        "attribution": "— Linda, 54",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_image_text_y2p0YD": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -136,33 +59,83 @@
         "text_color": "#333333"
       }
     },
-    "vl_cta_block_Yz7mU1": {
-      "type": "vl-cta-block",
-      "name": "VL CTA Block",
+    "bl_review_summary_iWaUZm": {
+      "type": "bl-review-summary",
+      "blocks": {
+        "pro_A2IjNI": {
+          "type": "pro",
+          "settings": {
+            "text": "Neutralizes redness and evens out blotchy skin tone"
+          }
+        },
+        "pro_nLHNE1": {
+          "type": "pro",
+          "settings": {
+            "text": "Fragrance-free — won't trigger sensitive skin flare-ups"
+          }
+        },
+        "pro_g79gCE": {
+          "type": "pro",
+          "settings": {
+            "text": "Doesn't settle into fine lines or accentuate texture"
+          }
+        },
+        "pro_ZcpEv8": {
+          "type": "pro",
+          "settings": {
+            "text": "Buildable coverage from sheer to medium-full"
+          }
+        },
+        "con_WcIDrT": {
+          "type": "con",
+          "settings": {
+            "text": "Higher price point than drugstore options"
+          }
+        },
+        "con_68gPHj": {
+          "type": "con",
+          "settings": {
+            "text": "Only available online — can't swatch in store"
+          }
+        }
+      },
+      "block_order": [
+        "pro_A2IjNI",
+        "pro_nLHNE1",
+        "pro_g79gCE",
+        "pro_ZcpEv8",
+        "con_WcIDrT",
+        "con_68gPHj"
+      ],
+      "name": "BL - Review Summary",
       "settings": {
-        "text": "See how it looks on your redness.",
-        "button_url": "/products/color-changing-foundation",
-        "button_text": "TRY IT TODAY — RISK FREE",
-        "subtext": "Free shipping • 30-day money-back guarantee",
+        "section_id": "quick-verdict",
+        "bg_color": "#faf9f7",
+        "label": "WHY THIS WORKS FOR REDNESS",
+        "product_name": "Vera Lane Tone Adapting Foundation",
+        "rating": "4.9",
+        "price_text": "$39.99",
+        "verdict_line": "The only foundation we've tested that neutralizes redness without looking like a mask. No green correctors. No heavy layering. Just one product that adapts to your skin and calms the appearance of redness on contact.",
+        "image": "shopify://shop_images/3_7ab1d15e-f568-40a5-8fa8-fa44461674e4.png",
+        "image_asset": "",
+        "image_position": "left",
+        "cta_text": "Keep Reading",
+        "cta_anchor": "full-review"
+      }
+    },
+    "vl_rich_text_kluys7": {
+      "type": "vl-rich-text",
+      "name": "VL Rich Text",
+      "settings": {
+        "subheading": "Why Redness Is So Hard to Cover",
+        "content": "<p>If you've dealt with redness — whether it's rosacea, flushing, irritation, or sun damage — you already know the frustrating cycle. Green colour correctors look unnatural. Heavy full-coverage foundations feel like a mask and draw more attention to your skin, not less. And most products contain fragrance that triggers even more flushing.</p><p>Then there's the midday problem. You spend 20 minutes getting your redness under control in the morning, and by lunchtime it's bleeding through again. The coverage shifts, settles into lines, and suddenly the redness is more visible than if you'd worn nothing at all.</p><p><strong>These four women were stuck in that exact cycle.</strong> Different ages. Different types of redness. The same frustration. Here's what changed.</p>",
         "bg_color": "#ffffff",
+        "heading_color": "#000000",
         "text_color": "#333333",
-        "button_bg_color": "#5C1A33",
-        "button_text_color": "#ffffff"
+        "link_color": "#5C1A33"
       }
     },
-    "vl_pull_quote_kjHLL0": {
-      "type": "vl-pull-quote",
-      "name": "VL Pull Quote",
-      "settings": {
-        "quote": "The worst part of hot flushes isn't the heat — it's looking in the mirror afterwards and seeing a bright red face staring back. This foundation doesn't budge, even during a flush.",
-        "attribution": "— Barbara, 61",
-        "bg_color": "#F5EDE8",
-        "quote_color": "#333333",
-        "accent_color": "#5C1A33",
-        "attribution_color": "#666666"
-      }
-    },
-    "vl_image_text_DMcfxj": {
+    "vl_image_text_W9Q0ey": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -177,7 +150,19 @@
         "text_color": "#333333"
       }
     },
-    "vl_image_text_gvAqFb": {
+    "vl_pull_quote_AMPphA": {
+      "type": "vl-pull-quote",
+      "name": "VL Pull Quote",
+      "settings": {
+        "quote": "The worst part of hot flushes isn't the heat — it's looking in the mirror afterwards and seeing a bright red face staring back. This foundation doesn't budge, even during a flush.",
+        "attribution": "— Barbara, 61",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "vl_image_text_7q13uT": {
       "type": "vl-image-text",
       "name": "VL Image + Text",
       "settings": {
@@ -192,7 +177,7 @@
         "text_color": "#333333"
       }
     },
-    "vl_pull_quote_XrGZhl": {
+    "vl_pull_quote_h5mBmq": {
       "type": "vl-pull-quote",
       "name": "VL Pull Quote",
       "settings": {
@@ -204,7 +189,7 @@
         "attribution_color": "#666666"
       }
     },
-    "vl_rich_text_AR2HWt": {
+    "vl_rich_text_omZYTC": {
       "type": "vl-rich-text",
       "name": "VL Rich Text",
       "settings": {
@@ -216,7 +201,7 @@
         "link_color": "#5C1A33"
       }
     },
-    "vl_cta_block_PZTRQd": {
+    "vl_cta_block_4tGMG3": {
       "type": "vl-cta-block",
       "name": "VL CTA Block",
       "settings": {
@@ -230,7 +215,7 @@
         "button_text_color": "#ffffff"
       }
     },
-    "vl_sticky_cta_kjO2ZH": {
+    "vl_sticky_cta_YRDLJJ": {
       "type": "vl-sticky-cta",
       "name": "VL Sticky CTA",
       "settings": {
@@ -245,19 +230,18 @@
     }
   },
   "order": [
-    "vl_editorial_hero_M04sR8",
-    "bl_review_summary_eAPVbC",
-    "vl_rich_text_39CDQy",
-    "vl_pull_quote_1hCbRD",
-    "vl_image_text_sEgecb",
-    "vl_image_text_pBqYjG",
-    "vl_cta_block_Yz7mU1",
-    "vl_pull_quote_kjHLL0",
-    "vl_image_text_DMcfxj",
-    "vl_image_text_gvAqFb",
-    "vl_pull_quote_XrGZhl",
-    "vl_rich_text_AR2HWt",
-    "vl_cta_block_PZTRQd",
-    "vl_sticky_cta_kjO2ZH"
+    "vl_editorial_hero_rQogGG",
+    "vl_image_text_JVnqbQ",
+    "vl_pull_quote_lHgjYg",
+    "vl_image_text_y2p0YD",
+    "bl_review_summary_iWaUZm",
+    "vl_rich_text_kluys7",
+    "vl_image_text_W9Q0ey",
+    "vl_pull_quote_AMPphA",
+    "vl_image_text_7q13uT",
+    "vl_pull_quote_h5mBmq",
+    "vl_rich_text_omZYTC",
+    "vl_cta_block_4tGMG3",
+    "vl_sticky_cta_YRDLJJ"
   ]
 }
