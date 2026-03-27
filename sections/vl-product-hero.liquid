@@ -122,13 +122,16 @@
   document.addEventListener('DOMContentLoaded', function() {
     var ctaBtn = document.querySelector('.vl-product-hero__cta');
     if (ctaBtn && ctaBtn.href && ctaBtn.href.indexOf('amazon.com') > -1) {
-      ctaBtn.addEventListener('click', function() {
+      ctaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var dest = ctaBtn.href;
         if (typeof fbq === 'function') {
           fbq('trackCustom', 'AmazonLinkClick', {
             button_type: 'product_hero',
             page_url: window.location.pathname
           });
         }
+        setTimeout(function() { window.open(dest, '_blank'); }, 300);
       });
     }
 
