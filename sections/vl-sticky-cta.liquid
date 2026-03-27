@@ -26,13 +26,16 @@
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.querySelector('.vl-sticky-cta__button');
     if (btn && btn.href && btn.href.indexOf('amazon.com') > -1) {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var dest = btn.href;
         if (typeof fbq === 'function') {
           fbq('trackCustom', 'AmazonLinkClick', {
             button_type: 'sticky_cta',
             page_url: window.location.pathname
           });
         }
+        setTimeout(function() { window.open(dest, '_blank'); }, 300);
       });
     }
   });
