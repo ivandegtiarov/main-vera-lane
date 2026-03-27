@@ -120,6 +120,18 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    var ctaBtn = document.querySelector('.vl-product-hero__cta');
+    if (ctaBtn && ctaBtn.href && ctaBtn.href.indexOf('amazon.com') > -1) {
+      ctaBtn.addEventListener('click', function() {
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'AmazonLinkClick', {
+            button_type: 'product_hero',
+            page_url: window.location.pathname
+          });
+        }
+      });
+    }
+
     const hero = document.querySelector('.vl-product-hero');
     if (!hero) return;
 
