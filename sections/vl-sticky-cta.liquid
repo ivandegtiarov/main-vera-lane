@@ -29,13 +29,20 @@
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         var dest = btn.href;
+        // Direct pixel beacon — works regardless of how the pixel is loaded
+        try {
+          var img = new Image();
+          img.src = 'https://www.facebook.com/tr?id=2280168542489572'
+            + '&ev=AmazonLinkClick'
+            + '&cd[button_type]=sticky_cta'
+            + '&cd[page_url]=' + encodeURIComponent(window.location.pathname)
+            + '&noscript=1';
+        } catch(err) {}
+        // Also try fbq if available
         if (typeof fbq === 'function') {
-          fbq('trackCustom', 'AmazonLinkClick', {
-            button_type: 'sticky_cta',
-            page_url: window.location.pathname
-          });
+          fbq('trackCustom', 'AmazonLinkClick', { button_type: 'sticky_cta', page_url: window.location.pathname });
         }
-        setTimeout(function() { window.open(dest, '_blank'); }, 300);
+        setTimeout(function() { window.open(dest, '_blank'); }, 400);
       });
     }
   });
