@@ -702,7 +702,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "quick-add-dialog {display: none;}"
+      "@media(max-width: 768px) {quick-add-dialog {display: none;}}"
     ]
   }
 }
