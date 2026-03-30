@@ -1,0 +1,1301 @@
+{
+  "sections": {
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Browse our latest products</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "lumen_pdp_hero_WWxn3E": {
+      "type": "lumen-pdp-hero",
+      "blocks": {
+        "description_item_3PU4Mz": {
+          "type": "description_item",
+          "settings": {
+            "title": "Instantly Adapts to Your Exact Shade",
+            "content": "<p>The white cream transforms upon application to match your unique skin tone perfectly.</p>"
+          }
+        },
+        "description_item_BwXRQq": {
+          "type": "description_item",
+          "settings": {
+            "title": "Ideal for Mature Skin (Floats Over Fine Lines):",
+            "content": "<p>The hydrating formula doesn't cake or crease into wrinkles, creating a smooth finish that looks like skin, not makeup.</p>"
+          }
+        },
+        "description_item_c9mQXG": {
+          "type": "description_item",
+          "settings": {
+            "title": "Weightless, \"Second-Skin\" Feel",
+            "content": "<p>Say goodbye to that heavy, \"mask-like\" sensation. Neutralizes redness and age spots while letting your skin breathe, giving you a healthy, lit-from-within glow.</p>"
+          }
+        },
+        "magazine_logo_7qjcEx": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/cosmopolitan_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_NxJ67z": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/grazia_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_7MRWYQ": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/elle_magazine_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "magazine_logo_4XVyTp": {
+          "type": "magazine_logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue_magazine_logo_svg.svg",
+            "alt_text": "Magazine logo"
+          }
+        },
+        "trust_badge_hYWKi7": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1.svg",
+            "text": "<p>30 Day Money Back Guarantee</p>"
+          }
+        },
+        "trust_badge_wT3BMT": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1_1.svg",
+            "text": "<p>Free Shipping</p>"
+          }
+        },
+        "trust_badge_KVy3Dw": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_1_2.svg",
+            "text": "<p>Free Return</p>"
+          }
+        },
+        "bundle_KbEXwe": {
+          "type": "bundle",
+          "settings": {
+            "bundle_product": "color-changing-foundation",
+            "bundle_title": "",
+            "product_1": "color-changing-foundation",
+            "product_1_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 1,
+            "product_3": "",
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BUNDLE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
+            "amazon_icon": "shopify://shop_images/amazon_icon_logo-logo_brandlogos.net_fgndw-200x200_1_4e9b7b8f-a922-468f-b049-0c8146a90fe5.png",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_rkAfB6": {
+          "type": "bundle",
+          "settings": {
+            "bundle_product": "makeup-brush",
+            "bundle_title": "",
+            "product_1": "makeup-brush",
+            "product_1_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 1,
+            "product_3": "",
+            "product_3_quantity": 1,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BUNDLE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_fyxzq3": {
+          "type": "bundle",
+          "settings": {
+            "bundle_product": "makeup-bag-1",
+            "bundle_title": "",
+            "product_1": "makeup-bag-1",
+            "product_1_quantity": 1,
+            "product_2": "",
+            "product_2_quantity": 0,
+            "product_3": "",
+            "product_3_quantity": 0,
+            "add_bundle_property": false,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": false,
+            "corner_badge_text": "GREAT DEAL",
+            "corner_badge_bg_color": "#000000",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "BEST",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_MdzXij": {
+          "type": "bundle",
+          "settings": {
+            "bundle_product": "makeup-bag-bundle",
+            "bundle_title": "Starter Kit: Foundation, Makeup Brush & Makeup Bag",
+            "bundle_image": "shopify://shop_images/Gemini_Generated_Image_7hejds7hejds7hej.png",
+            "product_1": "color-changing-foundation",
+            "product_1_quantity": 1,
+            "product_2": "makeup-brush",
+            "product_2_quantity": 1,
+            "product_3": "makeup-bag-1",
+            "product_3_quantity": 1,
+            "add_bundle_property": true,
+            "add_vera2_bundle_property": false,
+            "show_badge": false,
+            "show_corner_badge": true,
+            "corner_badge_text": "MOST POPULAR",
+            "corner_badge_bg_color": "#7a0036",
+            "corner_badge_text_color": "#ffffff",
+            "badge_text": "MOST POPULAR",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": true,
+            "show_amazon_offer": false,
+            "amazon_url": "",
+            "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
+            "amazon_banner_bg_color": "#7a0036",
+            "amazon_banner_text_color": "#ffffff"
+          }
+        },
+        "bundle_option_HyygYU": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "1 Piece",
+            "quantity": 1,
+            "use_percentage": false,
+            "discount_percentage": 0,
+            "show_badge": false,
+            "badge_text": "POPULAR",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false
+          }
+        },
+        "bundle_option_GXBwQL": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "2 Pieces",
+            "quantity": 2,
+            "use_percentage": true,
+            "discount_percentage": 10,
+            "show_badge": true,
+            "badge_text": "",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": false
+          }
+        },
+        "bundle_option_VnCjay": {
+          "type": "bundle_option",
+          "disabled": true,
+          "settings": {
+            "bundle_title": "3 Pieces",
+            "quantity": 3,
+            "use_percentage": true,
+            "discount_percentage": 40,
+            "show_badge": true,
+            "badge_text": "BEST VALUE",
+            "badge_bg_color": "",
+            "badge_text_color": "",
+            "show_free_delivery_badge": true
+          }
+        },
+        "upsell_product_KVyK9f": {
+          "type": "upsell_product",
+          "settings": {
+            "product": "makeup-brush",
+            "title_override": "",
+            "button_label": ""
+          }
+        },
+        "upsell_product_3DPeqL": {
+          "type": "upsell_product",
+          "settings": {
+            "product": "makeup-bag-1",
+            "title_override": "",
+            "button_label": ""
+          }
+        },
+        "faq_item_U8Vae4": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How does the guarantee work?",
+            "content": "<p><strong>Our 100% Shade Match Guarantee:</strong> We want you to test your new foundation without any risk. If the formula does not adapt perfectly to your skin tone, you will receive 100% of your money back\u2014no questions asked.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "faq_item_BaHyjk": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Description",
+            "content": "<p>Experience a foundation that does the work for you. This white cream transforms upon application to match your unique skin tone perfectly. The hydrating formula provides buildable coverage that hides redness and imperfections while remaining weightless and breathable all day.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "faq_item_m8GzcM": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Does this work for my skin?",
+            "content": "<p>Yes. Our adaptive formula is suitable for all fair to medium skin tones and is specifically formulated for mature skin types. It is designed to float over fine lines and wrinkles rather than settling into them, making it ideal for skin with texture, rosacea, or age spots.</p>",
+            "faq_show_image": true,
+            "faq_image": "shopify://shop_images/Untitled_design_9.png",
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "faq_item_fkJYQr": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>Contains nourishing, skin-first ingredients: </p><p><strong>1. Glycerin</strong> - Attracts moisture for a soft, supple feel.</p><p><strong>2. Bisabolol & Tone-Evening Pigments</strong> - Help reduce the appearance of redness and uneven tone for a more balanced, natural-looking complexion.</p><p><strong>3. Tocopheryl Acetate (Vitamin E)</strong> - Nourishes and supports a fresh, healthy-looking complexion.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": true,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": "<p>Aqua, Cyclopentasiloxane, Glycerin, Titanium Dioxide, Butylene Glycol, Ethylhexyl Methoxycinnamate, Cetyl Peg/Ppg-10/1, Dimethicone, C12-15 Alkyl Benzoate, Butylene Glycol Dicaprylate/Dicaprate, Caprylic/Capric Triglyceride, Methyl Hydrogenated Rosinate, Dimethicone, Synthetic Fluorphlogopite, Hydrogenated Polyisobutene, Phenylbenzimidazole Sulfonic Acid, Sodium Chloride, Tocopheryl Acetate, Bisabolol, Hydroxyacetophenone, Lecithin, Buddleja Officinalis Extract, Isopropyl Myristate, Ethylhexyl Palmitate, Polyglyceryl-3 Diisostearate, Stearic Acid, BHT, Propanediol, Methicone, Silica, Aluminum Hydroxide, Dimethicone/Vinyl Dimethicone Crosspolymer, Sorbitan Sesquioleate, Polyglyceryl-3 Polyricinoleate, Silica Silylate, Disteardimonium Hectorite, Aminomethyl Propanol, Triethoxycaprylylsilane, Phenoxyethanol, Silica Dimethyl Silylate, Isostearic Acid, Sodium Citrate, Polyhydroxystearic Acid, Polyester-1, Disodium Edta, Mica, Alumina, Parfum, Ci 77891, Ci 77492, Ci 77491, Ci 77499</p>"
+          }
+        },
+        "faq_item_TgaEiB": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p><strong>Love It or It's Free.</strong> Try it for 30 days. If it doesn't float over your lines or match your shade exactly as promised, just let us know for a full refund.</p><p><strong>Fast & Secure Delivery.</strong> We ship your order within 1 business day. Free shipping on all orders over \u00a330. Tracked shipping so you know exactly when your glow arrives.</p><p><strong>Zero-Stress Returns.</strong> No complicated forms. No hidden fees. If you aren't happy, we aren't happy. Just reach out to our friendly support team for a quick resolution.</p>",
+            "faq_show_image": false,
+            "faq_enable_popup": false,
+            "faq_popup_trigger_text": "View full list",
+            "faq_popup_title": "FULL LIST OF INGREDIENTS",
+            "faq_popup_content": ""
+          }
+        },
+        "ugc_video_iWF9GK": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/HOOK 3 Ondertiteling.mov"
+          }
+        },
+        "ugc_video_LcRNAT": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
+          }
+        },
+        "ugc_video_nddcgM": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
+          }
+        },
+        "ugc_video_D6aqDY": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
+          }
+        },
+        "ugc_video_DwBbJX": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
+          }
+        },
+        "ugc_video_kqgQKE": {
+          "type": "ugc_video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Kopie van Kopie van Kopie van Ontwerp zonder titel (1300 x 1625 px)-4.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "description_item_3PU4Mz",
+        "description_item_BwXRQq",
+        "description_item_c9mQXG",
+        "magazine_logo_7qjcEx",
+        "magazine_logo_NxJ67z",
+        "magazine_logo_7MRWYQ",
+        "magazine_logo_4XVyTp",
+        "trust_badge_hYWKi7",
+        "trust_badge_wT3BMT",
+        "trust_badge_KVy3Dw",
+        "bundle_KbEXwe",
+        "bundle_rkAfB6",
+        "bundle_fyxzq3",
+        "bundle_MdzXij",
+        "bundle_option_HyygYU",
+        "bundle_option_GXBwQL",
+        "bundle_option_VnCjay",
+        "upsell_product_KVyK9f",
+        "upsell_product_3DPeqL",
+        "faq_item_U8Vae4",
+        "faq_item_BaHyjk",
+        "faq_item_m8GzcM",
+        "faq_item_fkJYQr",
+        "faq_item_TgaEiB",
+        "ugc_video_iWF9GK",
+        "ugc_video_LcRNAT",
+        "ugc_video_nddcgM",
+        "ugc_video_D6aqDY",
+        "ugc_video_DwBbJX",
+        "ugc_video_kqgQKE"
+      ],
+      "name": "\u26a1 Lumen PDP Hero",
+      "settings": {
+        "product": "color-changing-foundation",
+        "custom_title": "",
+        "rating_text": "(4.6) 1,356 Reviews",
+        "rating_link": "#reviews",
+        "size_text": "1 FL OZ / 30 ML",
+        "description": "<ul><li><strong>Instantly Adapts to Your Exact Shade: </strong>The white cream transforms upon application to match your unique skin tone perfectly.</li><li><strong>Ideal for Mature Skin (Floats Over Fine Lines): </strong>The hydrating formula doesn't cake or crease into wrinkles, creating a smooth finish that looks like skin, not makeup.</li><li><strong>Weightless, \"Second-Skin\" Feel: </strong>Say goodbye to that heavy, \"mask-like\" sensation. Neutralizes redness and age spots while letting your skin breathe, giving you a healthy, lit-from-within glow.</li></ul>",
+        "add_to_cart_label": "ADD TO BAG",
+        "adding_to_cart_label": "ADDING...",
+        "delivery_text": "4-5 BUSINESS DAYS DELIVERY",
+        "free_delivery_text": "FREE DELIVERY",
+        "badge_bg_color": "#ffd4cd",
+        "badge_text_color": "#7a0036",
+        "show_payment_icons": true,
+        "enable_animation": true,
+        "show_ugc": true,
+        "ugc_heading": "SEE HOW IT WORKS ON DIFFERENT PEOPLE",
+        "ugc_close_on_outside": true,
+        "ugc_pause_on_click": true,
+        "show_upsell": true,
+        "upsell_heading": "Choose what works best for you",
+        "upsell_button_label": "ADD TO BAG"
+      }
+    },
+    "lumen_benefits_section": {
+      "type": "lumen-benefits",
+      "name": "\u26a1Benefits Section",
+      "settings": {
+        "section_label": "Key benefits of Vera Lane",
+        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
+        "benefit_1_title": "Custom-Fit Color Technology",
+        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
+        "benefit_2_title": "Flawless, Ageless Finish",
+        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
+        "benefit_3_title": "Protective Skincare Hybrid",
+        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
+        "benefit_4_title": "16-Hour Weightless Wear",
+        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
+        "enable_animation": true,
+        "title_font_size_mobile": 22,
+        "title_font_size_desktop": 28,
+        "text_font_size_mobile": 14,
+        "text_font_size_desktop": 14,
+        "show_pointers_mobile": "none",
+        "show_pointers_tablet": "none",
+        "show_pointers_desktop": "block",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80
+      }
+    },
+    "lumen_grid_benefits_section": {
+      "type": "lumen-grid-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Adaptive Color Technology",
+            "description": "Our Intelligent Capsule Technology recognizes your unique undertones on contact. The white cream breaks down as you blend, releasing pigments that mirror your exact skin tone for a match that is yours and yours alone."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Engineered for Mature Texture",
+            "description": "Traditional makeup often highlights what you want to hide. Our formula is specifically designed to float over fine lines and enlarged pores rather than settling into them, creating a lifted, soft-focus effect that lasts all day."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "The \"Second Skin\" Glow",
+            "description": "Conceal redness, age spots, and uneven patches without the heavy \"mask\" feel of full-coverage foundation. This breathable, lightweight finish allows your natural radiance to shine through while providing a balanced, uniform complexion."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "16-Hour Hydration Lock",
+            "description": "Formulated to combat the \"mid-day dry out\" common with aging skin. This long-wear formula stays flexible and luminous for up to 16 hours, ensuring your skin looks as fresh in the evening as it did in the morning."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Clean & Breathable Pore Care",
+            "description": "A skin-first approach that won't lead to breakouts or irritation. Our non-comedogenic ingredients nourish the skin barrier while letting your pores breathe, making it safe and comfortable for daily wear."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ],
+      "name": "\u26a1Grid Benefits Section",
+      "settings": {
+        "section_label": "Grid benefits section",
+        "main_title": "Beautiful Benefits",
+        "image": "shopify://shop_images/Untitled_design_62.png",
+        "enable_animation": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "item_title_font_size_mobile": 16,
+        "item_title_font_size_desktop": 18,
+        "item_text_font_size_mobile": 14,
+        "item_text_font_size_desktop": 14,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 96
+      }
+    },
+    "lumen_image_slider_section": {
+      "type": "lumen-image-slider",
+      "blocks": {
+        "slider_card_1": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/european-female-headshot-perspective-shift.jpg",
+            "card_name": "Ivana",
+            "card_subtitle": "Copywriter",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_2": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_66.png",
+            "card_name": "Sarah",
+            "card_subtitle": "Art Teacher",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_3": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_67.png",
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_WGJdmc": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/60s-female-foundation-makeup-portrait.jpg",
+            "card_name": "Monica",
+            "card_subtitle": "Grandmother",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_4": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/late-60s-european-woman-headshot-json.jpg",
+            "card_name": "Anastasia",
+            "card_subtitle": "Marketing Manager",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_5": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/foundation-makeup-application-prompt.jpg",
+            "card_name": "Jessica",
+            "card_subtitle": "Grandmother",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_tnKajB": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/slavic-female-portrait-skin-retouch.jpg",
+            "card_name": "Ivana",
+            "card_subtitle": "Copywriter",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_RetchT": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_66.png",
+            "card_name": "Sarah",
+            "card_subtitle": "Art Teacher",
+            "show_speaker_icon": false
+          }
+        },
+        "slider_card_PnCdCC": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_67.png",
+            "card_name": "Dr Stephanie",
+            "card_subtitle": "Dermatologist",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_bBGcit": {
+          "type": "slider_card",
+          "settings": {
+            "image": "shopify://shop_images/late-60s-slavic-female-portrait-json.jpg",
+            "card_name": "Anastasia",
+            "card_subtitle": "Marketing Manager",
+            "show_speaker_icon": true
+          }
+        },
+        "slider_card_C7PMnL": {
+          "type": "slider_card",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/slavic-woman-smooth-skin-portrait.jpg",
+            "card_name": "Jessica",
+            "card_subtitle": "Makeup Artist",
+            "show_speaker_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "slider_card_1",
+        "slider_card_2",
+        "slider_card_3",
+        "slider_card_WGJdmc",
+        "slider_card_4",
+        "slider_card_5",
+        "slider_card_tnKajB",
+        "slider_card_RetchT",
+        "slider_card_PnCdCC",
+        "slider_card_bBGcit",
+        "slider_card_C7PMnL"
+      ],
+      "name": "\u26a1Image Slider Section",
+      "settings": {
+        "section_label": "Trusted by 1000s of Women",
+        "main_title": "Trusted by 1000s of Women",
+        "background_color": "#fbf8f6",
+        "title_color": "#000000",
+        "card_name_color": "#ffffff",
+        "card_subtitle_color": "#ffffff",
+        "enable_animation": true,
+        "scroll_mode": "arrows",
+        "autoscroll_duration": 30,
+        "show_arrows": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "card_name_font_size_mobile": 18,
+        "card_name_font_size_desktop": 20,
+        "card_title_font_size_mobile": 14,
+        "card_title_font_size_desktop": 16,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 112,
+        "padding_bottom_desktop": 112
+      }
+    },
+    "lumen_before_after_section": {
+      "type": "lumen-before-after",
+      "blocks": {
+        "before_after_card_1": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png",
+            "image_before": "shopify://shop_images/Untitled_design_68.png",
+            "card_name": "Linda, 62",
+            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color\u2014usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
+          }
+        },
+        "testimonial_card_WAUUWU": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/6.png",
+            "image_before": "shopify://shop_images/2.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Michelle, 57",
+            "card_description": "I have tricky undertones and struggling with redness, so buying makeup online terrified me. I took a chance on this, and I'm shocked. It neutralized my redness immediately and blended right into my neck. No more 'floating head' effect!"
+          }
+        },
+        "testimonial_card_pkT3Gh": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/woman-13.jpg",
+            "image_before": "shopify://shop_images/3.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Diane, 54",
+            "card_description": "Being very fair, 'universal' shades usually turn dark or orange on me within an hour. This one actually stayed true to my pale complexion. It gives me a healthy, warm glow without looking fake. Finally, a perfect match for fair skin."
+          }
+        },
+        "testimonial_card_BGPEhn": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/8_460d018c-39c2-4345-baba-bbf6b6e2a747.png",
+            "image_before": "shopify://shop_images/1.png",
+            "image_after": "shopify://shop_images/CleanShot2025-09-11at22.41.55_2x_58285bd6-1b08-4051-8b2c-b005b1881927.png",
+            "card_name": "Amanda, 47",
+            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly\u2014no orange line, just calm, even skin."
+          }
+        }
+      },
+      "block_order": [
+        "before_after_card_1",
+        "testimonial_card_WAUUWU",
+        "testimonial_card_pkT3Gh",
+        "testimonial_card_BGPEhn"
+      ],
+      "name": "\u26a1Before & After Section",
+      "settings": {
+        "section_title": "Before & After",
+        "enable_animation": true
+      }
+    },
+    "vl_review_cards_section": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-7.jpg",
+            "rating": 5,
+            "date": "Mar 18, 2026",
+            "title": "Finally found my perfect match",
+            "quote": "I'm 58 and have tried everything. This actually blends into my skin without settling into lines. My daughter asked what I was doing differently!",
+            "name": "Margaret S.",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-2.jpg",
+            "rating": 5,
+            "date": "Mar 5, 2026",
+            "title": "No more orange face!",
+            "quote": "At 52, I've tried every foundation that promises to match. The color-matching on this one is real. It adapts to my skin throughout the day. No more checking mirrors worried I look orange by lunch.",
+            "name": "Patricia L.",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-3.jpg",
+            "rating": 5,
+            "date": "Feb 20, 2026",
+            "title": "Worth every penny",
+            "quote": "At 50, I've wasted so much money on foundations that cake or crease. This one doesn't. It just works. Finally found something that makes my skin look natural.",
+            "name": "Linda K.",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-1.jpg",
+            "rating": 4,
+            "date": "Feb 8, 2026",
+            "title": "Good but wish it had more shades",
+            "quote": "At 60, I'd given up on foundation. This changed that. Lightweight and natural. Would love to see more shade options for deeper skin tones.",
+            "name": "Susan M.",
+            "verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-4.jpg",
+            "rating": 5,
+            "date": "Jan 25, 2026",
+            "title": "Finally something for rosacea",
+            "quote": "At 52, my rosacea has always made foundation tricky. This neutralizes redness without looking like I'm wearing a mask. Game changer for mature skin.",
+            "name": "Carol B.",
+            "verified": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-5.jpg",
+            "rating": 5,
+            "date": "Jan 12, 2026",
+            "title": "Skeptic turned believer",
+            "quote": "At 55, I rolled my eyes at 'adapts to your skin tone' but it actually does. Perfect match every time. Bought 3 more for backup.",
+            "name": "Barbara R.",
+            "verified": true
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "review-image-6.jpg",
+            "rating": 5,
+            "date": "Dec 28, 2025",
+            "title": "Perfect for hot flashes",
+            "quote": "At 55, hot flashes were melting my makeup off by noon. This stays put even when I'm having a moment. Absolute lifesaver.",
+            "name": "Nancy W.",
+            "verified": true
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "",
+            "rating": 5,
+            "date": "Dec 15, 2025",
+            "title": "My go-to now",
+            "quote": "Threw out my other foundations. This is the only one I need. Matches perfectly, doesn't cake, and my skin can breathe.",
+            "name": "Dorothy H.",
+            "verified": true
+          }
+        },
+        "review_9": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "",
+            "rating": 5,
+            "date": "Nov 30, 2025",
+            "title": "Finally looks natural",
+            "quote": "I've always looked 'made up' with foundation. This actually looks like my skin, just better. My husband noticed immediately!",
+            "name": "Helen J.",
+            "verified": true
+          }
+        },
+        "review_10": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "",
+            "rating": 4,
+            "date": "Nov 18, 2025",
+            "title": "Great coverage",
+            "quote": "Covers my age spots without looking heavy. Takes a minute to blend but once it sets, it's gorgeous. Would love SPF added.",
+            "name": "Ruth T.",
+            "verified": true
+          }
+        },
+        "review_11": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "",
+            "rating": 5,
+            "date": "Nov 5, 2025",
+            "title": "Daughter bought it for me",
+            "quote": "My daughter surprised me with this. Best gift ever! At 67, I'd given up on foundation. Now I wear it every day.",
+            "name": "Mary E.",
+            "verified": true
+          }
+        },
+        "review_12": {
+          "type": "review",
+          "settings": {
+            "review_image_asset": "",
+            "rating": 5,
+            "date": "Oct 22, 2025",
+            "title": "Ordering more for friends",
+            "quote": "This is what mature skin needs. Light, breathable, and somehow makes wrinkles less visible. Already ordered gifts for my book club!",
+            "name": "Jean M.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12"
+      ],
+      "name": "VL - Review Cards",
+      "settings": {
+        "section_id": "reviews",
+        "headline": "Customer Reviews",
+        "show_rating_summary": true,
+        "rating_summary_text": "Based on 1,356 reviews",
+        "initial_count": 8,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "",
+        "see_all_url": "",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "star_color": "#fbbf24",
+        "text_color": "#4b5563",
+        "name_color": "#374151"
+      }
+    },
+    "lumen_faq_section": {
+      "type": "lumen-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day money-back guarantee on all products. If you're not completely satisfied with your purchase, contact us for a full refund."
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Standard shipping takes 4-5 business days."
+          }
+        },
+        "faq_item_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this product suitable for sensitive skin?",
+            "answer": "Yes, our products are dermatologist-tested and formulated for most skin types, including sensitive skin. If your skin is particularly sensitive, a patch test is recommended."
+          }
+        },
+        "faq_item_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know which shade to choose?",
+            "answer": "Our foundation adapts to your skin tone within seconds. It works for fair to medium skin tones."
+          }
+        },
+        "faq_item_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What ingredients are in this product?",
+            "answer": "Our foundation contains nourishing ingredients like Glycerin, Bisabolol, and Vitamin E for healthy, comfortable-looking skin."
+          }
+        },
+        "faq_item_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "Yes, we offer free shipping on orders to the UK. Standard delivery takes 7-10 business days."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4",
+        "faq_item_5",
+        "faq_item_6"
+      ],
+      "name": "\u26a1FAQ Section",
+      "settings": {
+        "section_label": "FAQ Section",
+        "main_heading": "Frequently Asked Questions",
+        "sticky_heading": true,
+        "first_item_open": 0,
+        "enable_animation": true,
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "question_color": "#000000",
+        "answer_color": "#333333",
+        "icon_color": "#000000",
+        "border_color": "#e5e5e5",
+        "heading_font_size_mobile": 40,
+        "heading_font_size_desktop": 64,
+        "question_font_size_mobile": 16,
+        "question_font_size_desktop": 18,
+        "question_text_transform": "uppercase",
+        "answer_font_size_mobile": 16,
+        "answer_font_size_desktop": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal_mobile": 24,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 100,
+        "padding_horizontal_desktop": 80
+      }
+    },
+    "lumen_trustpilot_section": {
+      "type": "lumen-trustpilot",
+      "name": "\u26a1Trustpilot Section",
+      "settings": {
+        "stars_image": "shopify://shop_images/Frame_523.png",
+        "stars_image_alt": "Trustpilot star rating",
+        "rating_text": "4.6 OUT OF 5 BASED ON 245 REVIEWS",
+        "enable_animation": true,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_left_right": 20
+      }
+    },
+    "lumen_usp_mjAcCK": {
+      "type": "lumen-usp",
+      "name": "\u26a1USP Section",
+      "settings": {
+        "aria_label": "Reasons to choose us",
+        "background_color": "#fbf8f6",
+        "enable_animation": true,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_left_right_mobile": 20,
+        "padding_top_tablet": 56,
+        "padding_bottom_tablet": 56,
+        "padding_left_right_tablet": 40,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_left_right_desktop": 72
+      }
+    }
+  },
+  "order": [
+    "hero_jVaWmY",
+    "product_list_fa6P9H",
+    "lumen_pdp_hero_WWxn3E",
+    "lumen_benefits_section",
+    "lumen_grid_benefits_section",
+    "lumen_image_slider_section",
+    "lumen_before_after_section",
+    "vl_review_cards_section",
+    "lumen_faq_section",
+    "lumen_trustpilot_section",
+    "lumen_usp_mjAcCK"
+  ],
+  "layout": "theme.vl-landing"
+}
