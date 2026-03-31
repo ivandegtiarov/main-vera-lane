@@ -139,7 +139,11 @@
           Get the free shipping threshold for dynamic replacement.
           Use [threshold] in announcement text to insert this value.
         {%- endcomment -%}
-        {%- assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round -%}
+        {%- if section.settings.free_shipping_threshold_override != blank -%}
+          {%- assign free_shipping_threshold = section.settings.free_shipping_threshold_override -%}
+        {%- else -%}
+          {%- assign free_shipping_threshold = settings.cart_goal_1_threshold | default: 60 | round -%}
+        {%- endif -%}
 
         <!-- Desktop: Show all items -->
         <div class="announcement-slider__desktop">
@@ -315,6 +319,16 @@
       "unit": "ms",
       "label": "Transition Speed (Mobile)",
       "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Shipping"
+    },
+    {
+      "type": "text",
+      "id": "free_shipping_threshold_override",
+      "label": "Free shipping threshold override",
+      "info": "Override the global threshold (e.g., 35 for £35). Leave blank to use global setting."
     },
     {
       "type": "header",

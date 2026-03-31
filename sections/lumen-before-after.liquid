@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<section class="before-after-section before-after-{{ section.id }}{% if section.settings.enable_animation %} before-after--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+<section class="before-after-section before-after-{{ section.id }}{% if section.settings.enable_animation %} before-after--animate{% endif %}"{% if section.settings.section_id != blank %} id="{{ section.settings.section_id }}"{% endif %} data-animation-enabled="{{ section.settings.enable_animation }}">
   <div class="section-container">
     <h2 class="section-title">{{ section.settings.section_title }}</h2>
     
@@ -583,6 +583,12 @@
   "class": "section",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Optional anchor ID for in-page navigation (e.g., results)"
+    },
     {
       "type": "text",
       "id": "section_title",
