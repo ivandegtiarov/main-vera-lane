@@ -230,7 +230,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<div id="{% if section.settings.section_id != blank %}{{ section.settings.section_id }}{% else %}lumen-faq-{{ section.id }}{% endif %}" class="faq-section{% if section.settings.enable_animation %} lumen-faq--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+{% if section.settings.section_id != blank %}<div id="{{ section.settings.section_id }}"></div>{% endif %}
+<div id="lumen-faq-{{ section.id }}" class="faq-section{% if section.settings.enable_animation %} lumen-faq--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
     <div class="faq-container">
         {% if section.settings.main_heading != blank %}
         <h2 class="faq-heading">{{ section.settings.main_heading }}</h2>
