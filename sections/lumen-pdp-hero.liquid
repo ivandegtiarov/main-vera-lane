@@ -1686,7 +1686,7 @@
         }
 </style>
 
-<div class="lumen-pdp-hero-wrapper">
+<div class="lumen-pdp-hero-wrapper"{% if section.settings.section_id != blank %} id="{{ section.settings.section_id }}"{% endif %}>
   <section
     class="lumen-pdp-hero{% if section.settings.enable_animation %} lumen-pdp-hero--animate{% endif %}"
     x-data="lumenPdpHero()"
@@ -3253,6 +3253,12 @@
   "name": "⚡ Lumen PDP Hero",
   "class": "lumen-pdp-hero-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Optional anchor ID for in-page navigation (e.g., product)"
+    },
     {
       "type": "product",
       "id": "product",

@@ -11,6 +11,7 @@
 
 <section
   class="vera-benefits section-{{ section.id }}-padding{% if section.settings.enable_animation %} vera-benefits--animate{% endif %}"
+  {% if section.settings.section_id != blank %}id="{{ section.settings.section_id }}"{% endif %}
   aria-label="{{ section.settings.section_label }}"
   role="region"
   data-animation-enabled="{{ section.settings.enable_animation }}"
@@ -540,6 +541,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Optional anchor ID for in-page navigation (e.g., benefits)"
+    },
     {
       "type": "text",
       "id": "section_label",

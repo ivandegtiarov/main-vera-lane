@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<div id="lumen-faq-{{ section.id }}" class="faq-section{% if section.settings.enable_animation %} lumen-faq--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
+<div id="{% if section.settings.section_id != blank %}{{ section.settings.section_id }}{% else %}lumen-faq-{{ section.id }}{% endif %}" class="faq-section{% if section.settings.enable_animation %} lumen-faq--animate{% endif %}" data-animation-enabled="{{ section.settings.enable_animation }}">
     <div class="faq-container">
         {% if section.settings.main_heading != blank %}
         <h2 class="faq-heading">{{ section.settings.main_heading }}</h2>
@@ -269,6 +269,12 @@ document.addEventListener('DOMContentLoaded', function() {
   "tag": "section",
   "class": "lumen-faq-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "Optional anchor ID for in-page navigation (e.g., faq)"
+    },
     {
       "type": "text",
       "id": "section_label",

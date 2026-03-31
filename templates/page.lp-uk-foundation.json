@@ -59,6 +59,7 @@
       ],
       "name": "Lumen Header Slider (UK)",
       "settings": {
+        "free_shipping_threshold_override": "35",
         "background_color": "#ffffff",
         "border_color": "#e1dcd8",
         "text_color": "#000000",
@@ -731,6 +732,7 @@
       ],
       "name": "⚡ Lumen PDP Hero",
       "settings": {
+        "section_id": "product",
         "product": "color-changing-foundation",
         "custom_title": "",
         "rating_text": "(4.6) 1,356 Reviews",
@@ -758,6 +760,7 @@
       "type": "lumen-benefits",
       "name": "⚡Benefits Section",
       "settings": {
+        "section_id": "benefits",
         "section_label": "Key benefits of Vera Lane",
         "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
         "benefit_1_title": "Custom-Fit Color Technology",
@@ -1055,6 +1058,7 @@
       ],
       "name": "⚡Before & After Section",
       "settings": {
+        "section_id": "results",
         "section_title": "Before & After",
         "enable_animation": true
       }
@@ -1294,6 +1298,7 @@
       ],
       "name": "⚡FAQ Section",
       "settings": {
+        "section_id": "faq",
         "section_label": "FAQ Section",
         "main_heading": "Frequently Asked Questions",
         "sticky_heading": true,
