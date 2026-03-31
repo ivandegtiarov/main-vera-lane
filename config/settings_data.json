@@ -115,6 +115,20 @@
       "lumen-header-slider-uk": {
         "type": "lumen-header-slider-uk",
         "blocks": {
+          "announcement_G6Lrhw": {
+            "type": "announcement",
+            "settings": {
+              "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
+              "text": "30 Days Money Back Guarantee"
+            }
+          },
+          "announcement_VFBkam": {
+            "type": "announcement",
+            "settings": {
+              "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
+              "text": "FREE SHIPPING OVER $[threshold]"
+            }
+          },
           "announcement_gbXKzH": {
             "type": "announcement",
             "settings": {
@@ -124,6 +138,8 @@
           }
         },
         "block_order": [
+          "announcement_G6Lrhw",
+          "announcement_VFBkam",
           "announcement_gbXKzH"
         ],
         "settings": {
