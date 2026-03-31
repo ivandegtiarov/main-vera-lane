@@ -143,9 +143,9 @@
           "announcement_gbXKzH"
         ],
         "settings": {
-          "background_color": "#7a0036",
+          "background_color": "#ffffff",
           "border_color": "#e1dcd8",
-          "text_color": "#ffffff",
+          "text_color": "#000000",
           "font_size": 14,
           "autoplay_delay": 3000,
           "transition_speed": 500,
