@@ -37,5 +37,20 @@
     >
       {{ content_for_layout }}
     </main>
+
+    <script>
+      // Map Shopify section wrapper IDs to clean anchor targets for header nav
+      var anchors = {
+        'lumen_pdp_hero_WWxn3E': 'product',
+        'lumen_benefits_section': 'benefits',
+        'lumen_before_after_section': 'results',
+        'vl_review_cards_section': 'reviews',
+        'lumen_faq_section': 'faq'
+      };
+      Object.keys(anchors).forEach(function(key) {
+        var el = document.getElementById('shopify-section-' + key);
+        if (el) el.id = anchors[key];
+      });
+    </script>
   </body>
 </html>
