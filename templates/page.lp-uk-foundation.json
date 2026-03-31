@@ -41,7 +41,7 @@
           "type": "announcement",
           "settings": {
             "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.3333 4L6 11.3333L2.66667 8\" stroke=\"#000000\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path></svg>",
-            "text": "FREE SHIPPING OVER £[threshold]"
+            "text": "FREE SHIPPING OVER \u00a3[threshold]"
           }
         },
         "announcement_yc3gV8": {
@@ -597,7 +597,7 @@
           "type": "faq_item",
           "settings": {
             "title": "How does the guarantee work?",
-            "content": "<p><strong>Our 100% Shade Match Guarantee:</strong> We want you to test your new foundation without any risk. If the formula does not adapt perfectly to your skin tone, you will receive 100% of your money back—no questions asked.</p>",
+            "content": "<p><strong>Our 100% Shade Match Guarantee:</strong> We want you to test your new foundation without any risk. If the formula does not adapt perfectly to your skin tone, you will receive 100% of your money back\u2014no questions asked.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -646,7 +646,7 @@
           "type": "faq_item",
           "settings": {
             "title": "Shipping & Returns",
-            "content": "<p><strong>Love It or It's Free.</strong> Try it for 30 days. If it doesn't float over your lines or match your shade exactly as promised, just let us know for a full refund.</p><p><strong>Fast & Secure Delivery.</strong> We ship your order within 1 business day. Free shipping on all orders over £30. Tracked shipping so you know exactly when your glow arrives.</p><p><strong>Zero-Stress Returns.</strong> No complicated forms. No hidden fees. If you aren't happy, we aren't happy. Just reach out to our friendly support team for a quick resolution.</p>",
+            "content": "<p><strong>Love It or It's Free.</strong> Try it for 30 days. If it doesn't float over your lines or match your shade exactly as promised, just let us know for a full refund.</p><p><strong>Fast & Secure Delivery.</strong> We ship your order within 1 business day. Free shipping on all orders over \u00a330. Tracked shipping so you know exactly when your glow arrives.</p><p><strong>Zero-Stress Returns.</strong> No complicated forms. No hidden fees. If you aren't happy, we aren't happy. Just reach out to our friendly support team for a quick resolution.</p>",
             "faq_show_image": false,
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
@@ -729,7 +729,7 @@
         "ugc_video_DwBbJX",
         "ugc_video_kqgQKE"
       ],
-      "name": "⚡ Lumen PDP Hero",
+      "name": "\u26a1 Lumen PDP Hero",
       "settings": {
         "product": "color-changing-foundation",
         "custom_title": "",
@@ -756,7 +756,7 @@
     },
     "lumen_benefits_section": {
       "type": "lumen-benefits",
-      "name": "⚡Benefits Section",
+      "name": "\u26a1Benefits Section",
       "settings": {
         "section_label": "Key benefits of Vera Lane",
         "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
@@ -836,7 +836,7 @@
         "benefit_5",
         "benefit_6"
       ],
-      "name": "⚡Grid Benefits Section",
+      "name": "\u26a1Grid Benefits Section",
       "settings": {
         "section_label": "Grid benefits section",
         "main_title": "Beautiful Benefits",
@@ -976,7 +976,7 @@
         "slider_card_bBGcit",
         "slider_card_C7PMnL"
       ],
-      "name": "⚡Image Slider Section",
+      "name": "\u26a1Image Slider Section",
       "settings": {
         "section_label": "Trusted by 1000s of Women",
         "main_title": "Trusted by 1000s of Women",
@@ -1010,7 +1010,7 @@
             "image_single": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png",
             "image_before": "shopify://shop_images/Untitled_design_68.png",
             "card_name": "Linda, 62",
-            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color—usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
+            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color\u2014usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
           }
         },
         "testimonial_card_WAUUWU": {
@@ -1043,7 +1043,7 @@
             "image_before": "shopify://shop_images/1.png",
             "image_after": "shopify://shop_images/CleanShot2025-09-11at22.41.55_2x_58285bd6-1b08-4051-8b2c-b005b1881927.png",
             "card_name": "Amanda, 47",
-            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly—no orange line, just calm, even skin."
+            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly\u2014no orange line, just calm, even skin."
           }
         }
       },
@@ -1053,7 +1053,7 @@
         "testimonial_card_pkT3Gh",
         "testimonial_card_BGPEhn"
       ],
-      "name": "⚡Before & After Section",
+      "name": "\u26a1Before & After Section",
       "settings": {
         "section_title": "Before & After",
         "enable_animation": true
@@ -1292,7 +1292,7 @@
         "faq_item_5",
         "faq_item_6"
       ],
-      "name": "⚡FAQ Section",
+      "name": "\u26a1FAQ Section",
       "settings": {
         "section_label": "FAQ Section",
         "main_heading": "Frequently Asked Questions",
@@ -1322,7 +1322,7 @@
     },
     "lumen_trustpilot_section": {
       "type": "lumen-trustpilot",
-      "name": "⚡Trustpilot Section",
+      "name": "\u26a1Trustpilot Section",
       "settings": {
         "stars_image": "shopify://shop_images/Frame_523.png",
         "stars_image_alt": "Trustpilot star rating",
@@ -1335,7 +1335,7 @@
     },
     "lumen_usp_mjAcCK": {
       "type": "lumen-usp",
-      "name": "⚡USP Section",
+      "name": "\u26a1USP Section",
       "settings": {
         "aria_label": "Reasons to choose us",
         "background_color": "#fbf8f6",
@@ -1349,6 +1349,39 @@
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_left_right_desktop": 72
+      }
+    },
+    "uk_footer": {
+      "type": "lumen-footer-uk",
+      "settings": {
+        "aria_label": "Site footer",
+        "background_color": "#222222",
+        "padding_vertical_desktop": 64,
+        "padding_horizontal_desktop": 96,
+        "padding_vertical_mobile": 56,
+        "padding_horizontal_mobile": 20,
+        "logo": "shopify://shop_images/VERA_LANE.png",
+        "logo_alt": "Vera Lane",
+        "address_text": "hello@veralanecosmetics.com<br>We ship directly to the UK",
+        "instagram_url": "https://instagram.com/veralanecosmetics",
+        "facebook_url": "",
+        "tiktok_url": "",
+        "column_1_heading": "PRODUCT",
+        "menu_1": "customer-account-main-menu",
+        "column_2_heading": "About",
+        "menu_2": "footer",
+        "column_3_heading": "HELP & SUPPORT",
+        "menu_3": "main-menu",
+        "newsletter_heading": "Never Miss an Update",
+        "newsletter_placeholder": "Enter email address",
+        "newsletter_button_label": "SUBSCRIBE",
+        "copyright_text": "<p>\u00a9 2025, Vera Lane</p>",
+        "privacy_link": "shopify://policies/privacy-policy",
+        "privacy_label": "Privacy Policy",
+        "terms_link": "shopify://pages/shipping-returns-refunds",
+        "terms_label": "Shipping, Returns & Refunds",
+        "show_payment_icons": true,
+        "enable_animation": true
       }
     }
   },
@@ -1365,7 +1398,8 @@
     "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
-    "lumen_usp_mjAcCK"
+    "lumen_usp_mjAcCK",
+    "uk_footer"
   ],
   "layout": "theme.vl-landing-uk"
 }
