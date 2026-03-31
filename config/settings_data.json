@@ -111,6 +111,37 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "sections": {
+      "lumen-header-slider-uk": {
+        "type": "lumen-header-slider-uk",
+        "settings": {
+          "background_color": "#ffffff",
+          "border_color": "#e1dcd8",
+          "text_color": "#000000",
+          "font_size": 14,
+          "autoplay_delay": 3000,
+          "transition_speed": 500,
+          "enable_animation": true
+        }
+      },
+      "lumin-header-uk": {
+        "type": "lumin-header-uk",
+        "settings": {
+          "logo": "shopify://shop_images/Untitled_design_58.png",
+          "logo_width": 200,
+          "menu": "main-menu",
+          "show_account_icon": false,
+          "background_color": "#ffffff",
+          "text_color": "#000000",
+          "border_color": "#e1dcd8",
+          "padding_top_desktop": 12,
+          "padding_bottom_desktop": 12,
+          "padding_top_mobile": 20,
+          "padding_bottom_mobile": 20,
+          "enable_sticky_header": "always"
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "855628211100114053": {
@@ -702,7 +733,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "@media(max-width: 768px) {quick-add-dialog {display: none;}}"
+      "@media (max-width: 768px) {quick-add-dialog {display: none; }}"
     ]
   }
 }
