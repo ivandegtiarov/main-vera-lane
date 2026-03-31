@@ -683,7 +683,8 @@
         "ugc_pause_on_click": true,
         "show_upsell": true,
         "upsell_heading": "Choose what works best for you",
-        "upsell_button_label": "ADD TO BAG"
+        "upsell_button_label": "ADD TO BAG",
+        "section_id": "product"
       }
     },
     "lumen_benefits_section": {
@@ -711,7 +712,8 @@
         "padding_top_mobile": 56,
         "padding_bottom_mobile": 56,
         "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80
+        "padding_bottom_desktop": 80,
+        "section_id": "benefits"
       }
     },
     "lumen_grid_benefits_section": {
@@ -988,7 +990,8 @@
       "name": "\u26a1Before & After Section",
       "settings": {
         "section_title": "Before & After",
-        "enable_animation": true
+        "enable_animation": true,
+        "section_id": "results"
       }
     },
     "vl_review_cards_section": {
@@ -1249,7 +1252,8 @@
         "padding_horizontal_mobile": 24,
         "padding_top_desktop": 100,
         "padding_bottom_desktop": 100,
-        "padding_horizontal_desktop": 80
+        "padding_horizontal_desktop": 80,
+        "section_id": "faq"
       }
     },
     "lumen_trustpilot_section": {

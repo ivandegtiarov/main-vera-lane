@@ -26,7 +26,7 @@
     <!-- Left side: Logo and Navigation -->
     <div class="lumen-header__left">
       <!-- Logo -->
-      <a href="{{ routes.root_url }}" class="lumen-header__logo">
+      <a href="#product" class="lumen-header__logo">
         {% if logo %}
           <img
             src="{{ logo | image_url: width: logo_width }}"
@@ -41,13 +41,13 @@
         {% endif %}
       </a>
       
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation (anchor links for landing page) -->
       <nav class="lumen-header__nav" aria-label="Main navigation">
-        {% for link in menu.links %}
-          <a href="{{ link.url }}" class="lumen-header__nav-link" {% if link.current %}aria-current="page"{% endif %}>
-            {{ link.title }}
-          </a>
-        {% endfor %}
+        <a href="#product" class="lumen-header__nav-link">Shop</a>
+        <a href="#benefits" class="lumen-header__nav-link">Benefits</a>
+        <a href="#results" class="lumen-header__nav-link">Results</a>
+        <a href="#reviews" class="lumen-header__nav-link">Reviews</a>
+        <a href="#faq" class="lumen-header__nav-link">FAQ</a>
       </nav>
     </div>
     
@@ -81,13 +81,13 @@
     </div>
   </div>
   
-  <!-- Mobile Menu Dropdown -->
+  <!-- Mobile Menu Dropdown (anchor links for landing page) -->
   <nav class="lumen-header__mobile-menu-nav" id="lumenMobileMenu-{{ section.id }}" aria-label="Mobile navigation">
-    {% for link in menu.links %}
-      <a href="{{ link.url }}" class="lumen-header__mobile-menu-link" {% if link.current %}aria-current="page"{% endif %}>
-        {{ link.title }}
-      </a>
-    {% endfor %}
+    <a href="#product" class="lumen-header__mobile-menu-link">Shop</a>
+    <a href="#benefits" class="lumen-header__mobile-menu-link">Benefits</a>
+    <a href="#results" class="lumen-header__mobile-menu-link">Results</a>
+    <a href="#reviews" class="lumen-header__mobile-menu-link">Reviews</a>
+    <a href="#faq" class="lumen-header__mobile-menu-link">FAQ</a>
   </nav>
 </header>
 
@@ -143,6 +143,20 @@
       link.addEventListener('click', closeMenu);
     });
     
+    // Smooth scroll for anchor links
+    document.querySelectorAll('.lumen-header__nav-link[href^="#"], .lumen-header__mobile-menu-link[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href').substring(1);
+        var target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          var headerHeight = document.querySelector('.lumen-header')?.offsetHeight || 0;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
     // Enable sticky behavior on the whole section wrapper
     if (sectionEl && stickyEnabled) {
       sectionEl.classList.add('lumen-header-section--sticky');
