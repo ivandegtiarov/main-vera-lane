@@ -1,0 +1,46 @@
+<!doctype html>
+<html
+  class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    {%- render 'stylesheets' -%}
+
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {%- render 'meta-tags' -%}
+    {%- render 'fonts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="vl-landing-page vl-landing-page--uk">
+    {% section 'lumen-header-slider-uk' %}
+    {% section 'lumin-header-uk' %}
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'lumen-footer-uk' %}
+  </body>
+</html>
