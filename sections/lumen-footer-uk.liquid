@@ -116,6 +116,16 @@
     text-align: left;
   }
 
+  .lumen-footer-{{ section.id }} .lumen-footer__column-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    text-align: left;
+    margin: 0;
+    opacity: 0.85;
+  }
+
   .lumen-footer-{{ section.id }} .lumen-footer__link-list {
     display: flex;
     flex-direction: column;
@@ -478,7 +488,7 @@
 
       <!-- Links section (right) -->
       <div class="lumen-footer__links">
-        <!-- PRODUCT column -->
+        <!-- Column 1 -->
         <div class="lumen-footer__link-column">
           {% if section.settings.column_1_heading != blank %}
             <h3 class="lumen-footer__link-heading">
@@ -489,16 +499,16 @@
             <div class="lumen-footer__link-list">
               {% for link in section.settings.menu_1.links %}
                 <a href="{{ link.url }}" class="lumen-footer__link">
-                  <span class="lumen-footer__link-label">
-                    {{ link.title }}
-                  </span>
+                  <span class="lumen-footer__link-label">{{ link.title }}</span>
                 </a>
               {% endfor %}
             </div>
+          {% elsif section.settings.column_1_text != blank %}
+            <p class="lumen-footer__column-text">{{ section.settings.column_1_text }}</p>
           {% endif %}
         </div>
 
-        <!-- About column -->
+        <!-- Column 2 -->
         <div class="lumen-footer__link-column">
           {% if section.settings.column_2_heading != blank %}
             <h3 class="lumen-footer__link-heading">
@@ -509,16 +519,16 @@
             <div class="lumen-footer__link-list">
               {% for link in section.settings.menu_2.links %}
                 <a href="{{ link.url }}" class="lumen-footer__link">
-                  <span class="lumen-footer__link-label">
-                    {{ link.title }}
-                  </span>
+                  <span class="lumen-footer__link-label">{{ link.title }}</span>
                 </a>
               {% endfor %}
             </div>
+          {% elsif section.settings.column_2_text != blank %}
+            <p class="lumen-footer__column-text">{{ section.settings.column_2_text }}</p>
           {% endif %}
         </div>
 
-        <!-- HELP & support column -->
+        <!-- Column 3 -->
         <div class="lumen-footer__link-column">
           {% if section.settings.column_3_heading != blank %}
             <h3 class="lumen-footer__link-heading">
@@ -529,12 +539,12 @@
             <div class="lumen-footer__link-list">
               {% for link in section.settings.menu_3.links %}
                 <a href="{{ link.url }}" class="lumen-footer__link">
-                  <span class="lumen-footer__link-label">
-                    {{ link.title }}
-                  </span>
+                  <span class="lumen-footer__link-label">{{ link.title }}</span>
                 </a>
               {% endfor %}
             </div>
+          {% elsif section.settings.column_3_text != blank %}
+            <p class="lumen-footer__column-text">{{ section.settings.column_3_text }}</p>
           {% endif %}
         </div>
 
@@ -776,6 +786,12 @@
       "label": "Menu"
     },
     {
+      "type": "textarea",
+      "id": "column_1_text",
+      "label": "Text (shown if no menu)",
+      "info": "Displayed when menu is empty"
+    },
+    {
       "type": "header",
       "content": "Column 2"
     },
@@ -791,6 +807,12 @@
       "label": "Menu"
     },
     {
+      "type": "textarea",
+      "id": "column_2_text",
+      "label": "Text (shown if no menu)",
+      "info": "Displayed when menu is empty"
+    },
+    {
       "type": "header",
       "content": "Column 3"
     },
@@ -804,6 +826,12 @@
       "type": "link_list",
       "id": "menu_3",
       "label": "Menu"
+    },
+    {
+      "type": "textarea",
+      "id": "column_3_text",
+      "label": "Text (shown if no menu)",
+      "info": "Displayed when menu is empty"
     },
     {
       "type": "header",
