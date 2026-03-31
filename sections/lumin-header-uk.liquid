@@ -1,0 +1,601 @@
+{% liquid
+  assign logo = section.settings.logo
+  assign logo_width = section.settings.logo_width
+  assign logo_width_2x = logo_width | times: 2
+  assign logo_width_3x = logo_width | times: 3
+  assign menu = section.settings.menu
+  assign background_color = section.settings.background_color
+  assign text_color = section.settings.text_color
+  assign border_color = section.settings.border_color
+%}
+
+<header
+  class="lumen-header{% if section.settings.enable_sticky_header != 'never' %} lumen-header--sticky{% endif %}"
+  style="
+    --lumen-bg: {{ background_color }};
+    --lumen-text: {{ text_color }};
+    --lumen-border: {{ border_color }};
+    --lumen-padding-desktop-top: {{ section.settings.padding_top_desktop }}px;
+    --lumen-padding-desktop-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    --lumen-padding-mobile-top: {{ section.settings.padding_top_mobile }}px;
+    --lumen-padding-mobile-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  "
+>
+  <!-- Main header container -->
+  <div class="lumen-header__container">
+    <!-- Left side: Logo and Navigation -->
+    <div class="lumen-header__left">
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="lumen-header__logo">
+        {% if logo %}
+          <img
+            src="{{ logo | image_url: width: logo_width }}"
+            srcset="{{ logo | image_url: width: logo_width }} 1x, {{ logo | image_url: width: logo_width_2x }} 2x, {{ logo | image_url: width: logo_width_3x }} 3x"
+            alt="{{ shop.name }}"
+            width="{{ logo_width }}"
+            height="auto"
+            loading="eager"
+          >
+        {% else %}
+          <span class="lumen-header__logo-text">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="lumen-header__nav" aria-label="Main navigation">
+        {% for link in menu.links %}
+          <a href="{{ link.url }}" class="lumen-header__nav-link" {% if link.current %}aria-current="page"{% endif %}>
+            {{ link.title }}
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+    
+    <!-- Right side: Actions and Menu Toggle -->
+    <div class="lumen-header__right">
+      <!-- Mobile Menu Toggle (Hamburger / Close) -->
+      <button
+        class="lumen-header__menu-toggle"
+        id="lumenMenuToggle-{{ section.id }}"
+        aria-label="{{ 'accessibility.menu' | t }}"
+        aria-expanded="false"
+        aria-controls="lumenMobileMenu-{{ section.id }}"
+      >
+        <span class="lumen-header__menu-toggle-icon lumen-header__menu-toggle-icon--burger" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 6H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 18H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="lumen-header__menu-toggle-icon lumen-header__menu-toggle-icon--close" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      
+      <!-- Header actions: cart, account, etc. - Rendered ONCE to avoid duplicate cart drawer -->
+      {% render 'header-actions', show_account_icon: section.settings.show_account_icon %}
+    </div>
+  </div>
+  
+  <!-- Mobile Menu Dropdown -->
+  <nav class="lumen-header__mobile-menu-nav" id="lumenMobileMenu-{{ section.id }}" aria-label="Mobile navigation">
+    {% for link in menu.links %}
+      <a href="{{ link.url }}" class="lumen-header__mobile-menu-link" {% if link.current %}aria-current="page"{% endif %}>
+        {{ link.title }}
+      </a>
+    {% endfor %}
+  </nav>
+</header>
+
+<!-- Mobile Menu Overlay (only covers content below header) -->
+<div class="lumen-header__mobile-backdrop" id="lumenMobileBackdrop-{{ section.id }}"></div>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const stickyMode = {{ section.settings.enable_sticky_header | json }};
+    const stickyEnabled = stickyMode && stickyMode !== 'never';
+    const menuToggle = document.getElementById('lumenMenuToggle-' + sectionId);
+    const mobileMenu = document.getElementById('lumenMobileMenu-' + sectionId);
+    const mobileBackdrop = document.getElementById('lumenMobileBackdrop-' + sectionId);
+    const mobileMenuLinks = mobileMenu?.querySelectorAll('.lumen-header__mobile-menu-link');
+    const sectionEl = document.getElementById('shopify-section-' + sectionId) || menuToggle?.closest('.lumen-header-section');
+
+    function toggleMenu() {
+      const isOpen = mobileMenu?.classList.contains('lumen-header__mobile-menu-nav--open');
+      
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+    
+    function openMenu() {
+      // Calculate header height to position backdrop below it
+      const headerEl = menuToggle?.closest('.lumen-header');
+      if (headerEl && mobileBackdrop) {
+        const headerHeight = headerEl.offsetHeight;
+        mobileBackdrop.style.top = headerHeight + 'px';
+      }
+      
+      mobileMenu?.classList.add('lumen-header__mobile-menu-nav--open');
+      mobileBackdrop?.classList.add('lumen-header__mobile-backdrop--open');
+      menuToggle?.setAttribute('aria-expanded', 'true');
+      menuToggle?.classList.add('lumen-header__menu-toggle--open');
+    }
+    
+    function closeMenu() {
+      mobileMenu?.classList.remove('lumen-header__mobile-menu-nav--open');
+      mobileBackdrop?.classList.remove('lumen-header__mobile-backdrop--open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      menuToggle?.classList.remove('lumen-header__menu-toggle--open');
+    }
+    
+    menuToggle?.addEventListener('click', toggleMenu);
+    mobileBackdrop?.addEventListener('click', closeMenu);
+    
+    mobileMenuLinks?.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Enable sticky behavior on the whole section wrapper
+    if (sectionEl && stickyEnabled) {
+      sectionEl.classList.add('lumen-header-section--sticky');
+    }
+  })();
+</script>
+
+{% stylesheet %}
+  .lumen-header {
+    width: 100%;
+    background-color: var(--lumen-bg, #FFFFFF);
+    border-bottom: 1px solid var(--lumen-border, #E1DCD8);
+    color: var(--lumen-text, #000000);
+    position: relative;
+  }
+
+  /* Sticky behavior */
+  .lumen-header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .lumen-header-section--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .lumen-header__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--lumen-padding-desktop-top, 12px) 96px var(--lumen-padding-desktop-bottom, 12px);
+    gap: 24px;
+  }
+  
+  .lumen-header__left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  .lumen-header__logo {
+    height: 43px;
+    flex-shrink: 0;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .lumen-header__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lumen-header__logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--lumen-text, #000000);
+    white-space: nowrap;
+  }
+  
+  .lumen-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .lumen-header__nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--lumen-text, #000000);
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+    position: relative;
+    transition: opacity 0.2s ease;
+  }
+
+  .lumen-header__nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s ease-out;
+  }
+
+  .lumen-header__nav-link:hover {
+    opacity: 0.7;
+    /* underline animation */
+  }
+
+  .lumen-header__nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .lumen-header__cart,
+  .lumen-header__cart-button,
+  .lumen-header__cart-link {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--lumen-text, #000000);
+  }
+  
+  .lumen-header__cart svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .lumen-header__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .lumen-header__menu-toggle {
+    display: none;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--lumen-text, #000000);
+  }
+  
+  .lumen-header__menu-toggle svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lumen-header__menu-toggle-icon {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lumen-header__menu-toggle-icon--close {
+    display: none;
+  }
+
+  .lumen-header__menu-toggle[aria-expanded="true"] .lumen-header__menu-toggle-icon--burger {
+    display: none;
+  }
+
+  .lumen-header__menu-toggle[aria-expanded="true"] .lumen-header__menu-toggle-icon--close {
+    display: flex;
+  }
+  
+  /* Mobile menu dropdown - HIDDEN by default */
+  .lumen-header__mobile-menu-nav {
+    display: none;
+  }
+  
+  /* Mobile menu dropdown - shown on mobile only */
+  @media screen and (max-width: 768px) {
+    .lumen-header__mobile-menu-nav {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background-color: var(--lumen-bg, #FFFFFF);
+      border-bottom: 1px solid var(--lumen-border, #E1DCD8);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      z-index: 101;
+      transition: 
+        max-height 280ms ease-out,
+        opacity 220ms ease-out;
+    }
+    
+    .lumen-header__mobile-menu-nav--open {
+      max-height: 80vh;
+      opacity: 1;
+      overflow-y: auto;
+    }
+  }
+  
+  /* Mobile backdrop - HIDDEN by default */
+  .lumen-header__mobile-backdrop {
+    display: none;
+  }
+  
+  /* Mobile backdrop - only covers content below header on mobile */
+  @media screen and (max-width: 768px) {
+    .lumen-header__mobile-backdrop {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 90;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 250ms ease-out, visibility 250ms ease-out;
+    }
+    
+    .lumen-header__mobile-backdrop--open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+  
+  .lumen-header__mobile-menu-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--lumen-text, #000000);
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    padding: 16px;
+    text-transform: uppercase;
+    display: block;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    border-bottom: 1px solid var(--lumen-border, #E1DCD8);
+  }
+  
+  .lumen-header__mobile-menu-link:last-child {
+    border-bottom: none;
+  }
+
+  .lumen-header__mobile-menu-link:hover,
+  .lumen-header__mobile-menu-link:active {
+    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .lumen-header__container {
+      padding: var(--lumen-padding-mobile-top, 20px) 16px var(--lumen-padding-mobile-bottom, 20px);
+      gap: 0;
+    }
+    
+    .lumen-header__left {
+      gap: 0;
+      flex: 0;
+    }
+    .lumen-header__right {
+      gap: 12px;
+      order: 2;
+    }
+
+    .lumen-header__logo {
+      width: 129px;
+      height: 28px;
+    }
+    
+    .lumen-header__nav {
+      display: none;
+    }
+    
+    .lumen-header__menu-toggle {
+      display: flex;
+      order: 2;
+    }
+    
+    /* Ensure cart icon is visible and comes before menu toggle */
+    .lumen-header__right header-actions {
+      order: 1;
+      display: flex;
+    }
+  }
+  
+  /* Tablet adjustments */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .lumen-header__container {
+      padding: 12px 48px;
+    }
+  }
+  
+  /* Large screens */
+  @media screen and (min-width: 1440px) {
+    .lumen-header__container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Lumin Header (UK)",
+  "tag": "header",
+  "class": "lumen-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Navigation Settings"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "label": "Show account icon",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#E1DCD8"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop padding top",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop padding bottom",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile padding bottom",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "select",
+      "id": "enable_sticky_header",
+      "label": "Sticky header behavior",
+      "options": [
+        {
+          "value": "always",
+          "label": "Always"
+        },
+        {
+          "value": "scroll-up",
+          "label": "On scroll up"
+        },
+        {
+          "value": "never",
+          "label": "Never"
+        }
+      ],
+      "default": "always"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumin Header (UK)"
+    }
+  ]
+}
+{% endschema %}
