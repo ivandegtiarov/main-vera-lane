@@ -2741,11 +2741,16 @@
           
           if (response.ok) {
             const data = await response.json();
-            
+
+            {% if section.settings.skip_cart_go_to_checkout %}
+              window.location.href = '/checkout';
+              return;
+            {% endif %}
+
             // Fetch updated cart state
             const cartResponse = await fetch('/cart.js');
             const cart = await cartResponse.json();
-            
+
             // Dispatch the proper cart:update event that the cart drawer listens for
             const cartAddEvent = new CustomEvent('cart:update', {
               bubbles: true,
@@ -3308,6 +3313,13 @@
       "label": "Adding to cart button label",
       "default": "ADDING...",
       "info": "Text shown while adding to cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "skip_cart_go_to_checkout",
+      "label": "Go straight to checkout",
+      "default": false,
+      "info": "After adding to cart, redirect to checkout instead of opening the cart drawer"
     },
     {
       "type": "text",
