@@ -66,5 +66,14 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+    <script>
+      window.addEventListener("klaviyoForms", function(e) {
+        if (e.detail.type === "submit") {
+          if (typeof fbq !== "undefined") {
+            fbq("track", "Lead", { content_name: "Klaviyo Form Signup" });
+          }
+        }
+      });
+    </script>
   </body>
 </html>
