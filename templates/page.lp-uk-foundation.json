@@ -59,13 +59,13 @@
       ],
       "name": "Lumen Header Slider (UK)",
       "settings": {
-        "free_shipping_threshold_override": "35",
         "background_color": "#ffffff",
         "border_color": "#e1dcd8",
         "text_color": "#000000",
         "font_size": 14,
         "autoplay_delay": 3000,
         "transition_speed": 500,
+        "free_shipping_threshold_override": "35",
         "enable_animation": true
       }
     },
@@ -447,6 +447,7 @@
         },
         "bundle_rkAfB6": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-brush",
             "bundle_title": "",
@@ -476,6 +477,7 @@
         },
         "bundle_fyxzq3": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-bag-1",
             "bundle_title": "",
@@ -505,6 +507,7 @@
         },
         "bundle_MdzXij": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-bag-bundle",
             "bundle_title": "Starter Kit: Foundation, Makeup Brush & Makeup Bag",
@@ -580,6 +583,7 @@
         },
         "upsell_product_KVyK9f": {
           "type": "upsell_product",
+          "disabled": true,
           "settings": {
             "product": "makeup-brush",
             "title_override": "",
@@ -588,6 +592,7 @@
         },
         "upsell_product_3DPeqL": {
           "type": "upsell_product",
+          "disabled": true,
           "settings": {
             "product": "makeup-bag-1",
             "title_override": "",
