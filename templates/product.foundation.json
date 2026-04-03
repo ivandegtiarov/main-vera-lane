@@ -692,7 +692,8 @@
         "ugc_pause_on_click": true,
         "show_upsell": true,
         "upsell_heading": "Choose what works best for you",
-        "upsell_button_label": "ADD TO BAG"
+        "upsell_button_label": "ADD TO BAG",
+        "skip_cart_go_to_checkout": true
       }
     },
     "lumen_benefits_section": {
