@@ -523,6 +523,7 @@
         },
         "upsell_product_KVyK9f": {
           "type": "upsell_product",
+          "disabled": true,
           "settings": {
             "product": "makeup-brush",
             "title_override": "",
@@ -531,6 +532,7 @@
         },
         "upsell_product_3DPeqL": {
           "type": "upsell_product",
+          "disabled": true,
           "settings": {
             "product": "makeup-bag-1",
             "title_override": "",
