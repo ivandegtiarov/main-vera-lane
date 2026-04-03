@@ -731,78 +731,6 @@
         "padding_bottom_desktop": 80
       }
     },
-    "lumen_grid_benefits_section": {
-      "type": "lumen-grid-benefits",
-      "blocks": {
-        "benefit_1": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Adaptive Color Technology",
-            "description": "Our Intelligent Capsule Technology recognizes your unique undertones on contact. The white cream breaks down as you blend, releasing pigments that mirror your exact skin tone for a match that is yours and yours alone."
-          }
-        },
-        "benefit_2": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Engineered for Mature Texture",
-            "description": "Traditional makeup often highlights what you want to hide. Our formula is specifically designed to float over fine lines and enlarged pores rather than settling into them, creating a lifted, soft-focus effect that lasts all day."
-          }
-        },
-        "benefit_3": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "The \"Second Skin\" Glow",
-            "description": "Conceal redness, age spots, and uneven patches without the heavy \"mask\" feel of full-coverage foundation. This breathable, lightweight finish allows your natural radiance to shine through while providing a balanced, uniform complexion."
-          }
-        },
-        "benefit_4": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "16-Hour Hydration Lock",
-            "description": "Formulated to combat the \"mid-day dry out\" common with aging skin. This long-wear formula stays flexible and luminous for up to 16 hours, ensuring your skin looks as fresh in the evening as it did in the morning."
-          }
-        },
-        "benefit_5": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Clean & Breathable Pore Care",
-            "description": "A skin-first approach that won't lead to breakouts or irritation. Our non-comedogenic ingredients nourish the skin barrier while letting your pores breathe, making it safe and comfortable for daily wear."
-          }
-        },
-        "benefit_6": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Cruelty-Free",
-            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_1",
-        "benefit_2",
-        "benefit_3",
-        "benefit_4",
-        "benefit_5",
-        "benefit_6"
-      ],
-      "name": "⚡Grid Benefits Section",
-      "settings": {
-        "section_label": "Grid benefits section",
-        "main_title": "Beautiful Benefits",
-        "image": "shopify://shop_images/Untitled_design_62.png",
-        "enable_animation": true,
-        "title_font_size_mobile": 30,
-        "title_font_size_desktop": 40,
-        "item_title_font_size_mobile": 16,
-        "item_title_font_size_desktop": 18,
-        "item_text_font_size_mobile": 14,
-        "item_text_font_size_desktop": 14,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "padding_top_desktop": 96,
-        "padding_bottom_desktop": 96
-      }
-    },
     "lumen_image_slider_section": {
       "type": "lumen-image-slider",
       "blocks": {
@@ -947,6 +875,78 @@
         "padding_bottom_mobile": 56,
         "padding_top_desktop": 112,
         "padding_bottom_desktop": 112
+      }
+    },
+    "lumen_grid_benefits_section": {
+      "type": "lumen-grid-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Adaptive Color Technology",
+            "description": "Our Intelligent Capsule Technology recognizes your unique undertones on contact. The white cream breaks down as you blend, releasing pigments that mirror your exact skin tone for a match that is yours and yours alone."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Engineered for Mature Texture",
+            "description": "Traditional makeup often highlights what you want to hide. Our formula is specifically designed to float over fine lines and enlarged pores rather than settling into them, creating a lifted, soft-focus effect that lasts all day."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "The \"Second Skin\" Glow",
+            "description": "Conceal redness, age spots, and uneven patches without the heavy \"mask\" feel of full-coverage foundation. This breathable, lightweight finish allows your natural radiance to shine through while providing a balanced, uniform complexion."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "16-Hour Hydration Lock",
+            "description": "Formulated to combat the \"mid-day dry out\" common with aging skin. This long-wear formula stays flexible and luminous for up to 16 hours, ensuring your skin looks as fresh in the evening as it did in the morning."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Clean & Breathable Pore Care",
+            "description": "A skin-first approach that won't lead to breakouts or irritation. Our non-comedogenic ingredients nourish the skin barrier while letting your pores breathe, making it safe and comfortable for daily wear."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ],
+      "name": "⚡Grid Benefits Section",
+      "settings": {
+        "section_label": "Grid benefits section",
+        "main_title": "Beautiful Benefits",
+        "image": "shopify://shop_images/Untitled_design_62.png",
+        "enable_animation": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "item_title_font_size_mobile": 16,
+        "item_title_font_size_desktop": 18,
+        "item_text_font_size_mobile": 14,
+        "item_text_font_size_desktop": 14,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 96
       }
     },
     "lumen_before_after_section": {
@@ -1307,10 +1307,10 @@
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "lumen_pdp_hero_WWxn3E",
+    "lumen_before_after_section",
+    "lumen_image_slider_section",
     "lumen_benefits_section",
     "lumen_grid_benefits_section",
-    "lumen_image_slider_section",
-    "lumen_before_after_section",
     "vl_review_cards_section",
     "lumen_faq_section",
     "lumen_trustpilot_section",
