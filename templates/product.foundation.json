@@ -387,6 +387,7 @@
         },
         "bundle_rkAfB6": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-brush",
             "bundle_title": "",
@@ -416,6 +417,7 @@
         },
         "bundle_fyxzq3": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-bag-1",
             "bundle_title": "",
@@ -445,6 +447,7 @@
         },
         "bundle_MdzXij": {
           "type": "bundle",
+          "disabled": true,
           "settings": {
             "bundle_product": "makeup-bag-bundle",
             "bundle_title": "Starter Kit: Foundation, Makeup Brush & Makeup Bag",
@@ -672,6 +675,7 @@
       ],
       "name": "⚡ Lumen PDP Hero",
       "settings": {
+        "section_id": "",
         "product": "color-changing-foundation",
         "custom_title": "",
         "rating_text": "(4.6) 1,356 Reviews",
@@ -680,6 +684,7 @@
         "description": "<ul><li><strong>Instantly Adapts to Your Exact Shade: </strong>The white cream transforms upon application to match your unique skin tone perfectly.</li><li><strong>Ideal for Mature Skin (Floats Over Fine Lines): </strong>The hydrating formula doesn't cake or crease into wrinkles, creating a smooth finish that looks like skin, not makeup.</li><li><strong>Weightless, \"Second-Skin\" Feel: </strong>Say goodbye to that heavy, \"mask-like\" sensation. Neutralizes redness and age spots while letting your skin breathe, giving you a healthy, lit-from-within glow.</li></ul>",
         "add_to_cart_label": "ADD TO BAG",
         "adding_to_cart_label": "ADDING...",
+        "skip_cart_go_to_checkout": true,
         "delivery_text": "4-5 BUSINESS DAYS DELIVERY",
         "free_delivery_text": "FREE DELIVERY",
         "badge_bg_color": "#ffd4cd",
@@ -692,14 +697,14 @@
         "ugc_pause_on_click": true,
         "show_upsell": true,
         "upsell_heading": "Choose what works best for you",
-        "upsell_button_label": "ADD TO BAG",
-        "skip_cart_go_to_checkout": true
+        "upsell_button_label": "ADD TO BAG"
       }
     },
     "lumen_benefits_section": {
       "type": "lumen-benefits",
       "name": "⚡Benefits Section",
       "settings": {
+        "section_id": "",
         "section_label": "Key benefits of Vera Lane",
         "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
         "benefit_1_title": "Custom-Fit Color Technology",
@@ -997,6 +1002,7 @@
       ],
       "name": "⚡Before & After Section",
       "settings": {
+        "section_id": "",
         "section_title": "Before & After",
         "enable_animation": true
       }
@@ -1236,6 +1242,7 @@
       ],
       "name": "⚡FAQ Section",
       "settings": {
+        "section_id": "",
         "section_label": "FAQ Section",
         "main_heading": "Frequently Asked Questions",
         "sticky_heading": true,
