@@ -908,6 +908,19 @@
         "padding_bottom_desktop": 112
       }
     },
+    "lumen_trustpilot_section": {
+      "type": "lumen-trustpilot",
+      "name": "⚡Trustpilot Section",
+      "settings": {
+        "stars_image": "shopify://shop_images/Frame_523.png",
+        "stars_image_alt": "Trustpilot star rating",
+        "rating_text": "4.6 OUT OF 5 BASED ON 245 REVIEWS",
+        "enable_animation": true,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_left_right": 20
+      }
+    },
     "lumen_benefits_section": {
       "type": "lumen-benefits",
       "name": "⚡Benefits Section",
@@ -1271,19 +1284,6 @@
         "padding_horizontal_desktop": 80
       }
     },
-    "lumen_trustpilot_section": {
-      "type": "lumen-trustpilot",
-      "name": "⚡Trustpilot Section",
-      "settings": {
-        "stars_image": "shopify://shop_images/Frame_523.png",
-        "stars_image_alt": "Trustpilot star rating",
-        "rating_text": "4.6 OUT OF 5 BASED ON 245 REVIEWS",
-        "enable_animation": true,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_left_right": 20
-      }
-    },
     "lumen_usp_mjAcCK": {
       "type": "lumen-usp",
       "name": "⚡USP Section",
@@ -1309,11 +1309,11 @@
     "lumen_pdp_hero_WWxn3E",
     "lumen_before_after_section",
     "lumen_image_slider_section",
+    "lumen_trustpilot_section",
+    "vl_review_cards_section",
     "lumen_benefits_section",
     "lumen_grid_benefits_section",
-    "vl_review_cards_section",
     "lumen_faq_section",
-    "lumen_trustpilot_section",
     "lumen_usp_mjAcCK"
   ]
 }
