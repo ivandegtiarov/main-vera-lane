@@ -684,7 +684,7 @@
         "rating_link": "#reviews",
         "size_text": "1 FL OZ / 30 ML",
         "description": "<ul><li><strong>Instantly Adapts to Your Exact Shade: </strong>The white cream transforms upon application to match your unique skin tone perfectly.</li><li><strong>Ideal for Mature Skin (Floats Over Fine Lines): </strong>The hydrating formula doesn't cake or crease into wrinkles, creating a smooth finish that looks like skin, not makeup.</li><li><strong>Weightless, \"Second-Skin\" Feel: </strong>Say goodbye to that heavy, \"mask-like\" sensation. Neutralizes redness and age spots while letting your skin breathe, giving you a healthy, lit-from-within glow.</li></ul>",
-        "add_to_cart_label": "ADD TO BAG",
+        "add_to_cart_label": "ADD TO CART",
         "adding_to_cart_label": "ADDING...",
         "skip_cart_go_to_checkout": true,
         "delivery_text": "4-5 BUSINESS DAYS DELIVERY",
@@ -702,33 +702,64 @@
         "upsell_button_label": "ADD TO BAG"
       }
     },
-    "lumen_benefits_section": {
-      "type": "lumen-benefits",
-      "name": "⚡Benefits Section",
+    "lumen_before_after_section": {
+      "type": "lumen-before-after",
+      "blocks": {
+        "before_after_card_1": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png",
+            "image_before": "shopify://shop_images/Untitled_design_68.png",
+            "card_name": "Linda, 62",
+            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color—usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
+          }
+        },
+        "testimonial_card_WAUUWU": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/6.png",
+            "image_before": "shopify://shop_images/2.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Michelle, 57",
+            "card_description": "I have tricky undertones and struggling with redness, so buying makeup online terrified me. I took a chance on this, and I'm shocked. It neutralized my redness immediately and blended right into my neck. No more 'floating head' effect!"
+          }
+        },
+        "testimonial_card_pkT3Gh": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/woman-13.jpg",
+            "image_before": "shopify://shop_images/3.png",
+            "image_after": "shopify://shop_images/image_2_2.png",
+            "card_name": "Diane, 54",
+            "card_description": "Being very fair, 'universal' shades usually turn dark or orange on me within an hour. This one actually stayed true to my pale complexion. It gives me a healthy, warm glow without looking fake. Finally, a perfect match for fair skin."
+          }
+        },
+        "testimonial_card_BGPEhn": {
+          "type": "testimonial_card",
+          "settings": {
+            "image_mode": "single",
+            "image_single": "shopify://shop_images/8_460d018c-39c2-4345-baba-bbf6b6e2a747.png",
+            "image_before": "shopify://shop_images/1.png",
+            "image_after": "shopify://shop_images/CleanShot2025-09-11at22.41.55_2x_58285bd6-1b08-4051-8b2c-b005b1881927.png",
+            "card_name": "Amanda, 47",
+            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly—no orange line, just calm, even skin."
+          }
+        }
+      },
+      "block_order": [
+        "before_after_card_1",
+        "testimonial_card_WAUUWU",
+        "testimonial_card_pkT3Gh",
+        "testimonial_card_BGPEhn"
+      ],
+      "name": "⚡Before & After Section",
       "settings": {
         "section_id": "",
-        "section_label": "Key benefits of Vera Lane",
-        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
-        "benefit_1_title": "Custom-Fit Color Technology",
-        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
-        "benefit_2_title": "Flawless, Ageless Finish",
-        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
-        "benefit_3_title": "Protective Skincare Hybrid",
-        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
-        "benefit_4_title": "16-Hour Weightless Wear",
-        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
-        "enable_animation": true,
-        "title_font_size_mobile": 22,
-        "title_font_size_desktop": 28,
-        "text_font_size_mobile": 14,
-        "text_font_size_desktop": 14,
-        "show_pointers_mobile": "none",
-        "show_pointers_tablet": "none",
-        "show_pointers_desktop": "block",
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80
+        "section_title": "Before & After",
+        "enable_animation": true
       }
     },
     "lumen_image_slider_section": {
@@ -877,6 +908,35 @@
         "padding_bottom_desktop": 112
       }
     },
+    "lumen_benefits_section": {
+      "type": "lumen-benefits",
+      "name": "⚡Benefits Section",
+      "settings": {
+        "section_id": "",
+        "section_label": "Key benefits of Vera Lane",
+        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
+        "benefit_1_title": "Custom-Fit Color Technology",
+        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
+        "benefit_2_title": "Flawless, Ageless Finish",
+        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
+        "benefit_3_title": "Protective Skincare Hybrid",
+        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
+        "benefit_4_title": "16-Hour Weightless Wear",
+        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
+        "enable_animation": true,
+        "title_font_size_mobile": 22,
+        "title_font_size_desktop": 28,
+        "text_font_size_mobile": 14,
+        "text_font_size_desktop": 14,
+        "show_pointers_mobile": "none",
+        "show_pointers_tablet": "none",
+        "show_pointers_desktop": "block",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80
+      }
+    },
     "lumen_grid_benefits_section": {
       "type": "lumen-grid-benefits",
       "blocks": {
@@ -947,66 +1007,6 @@
         "padding_bottom_mobile": 56,
         "padding_top_desktop": 96,
         "padding_bottom_desktop": 96
-      }
-    },
-    "lumen_before_after_section": {
-      "type": "lumen-before-after",
-      "blocks": {
-        "before_after_card_1": {
-          "type": "testimonial_card",
-          "settings": {
-            "image_mode": "single",
-            "image_single": "shopify://shop_images/1_f148cab1-78ca-4668-b580-6ad71b71f4e6.png",
-            "image_before": "shopify://shop_images/Untitled_design_68.png",
-            "card_name": "Linda, 62",
-            "card_description": "I stopped wearing foundation because it always settled into my fine lines or looked the wrong color—usually too orange. This formula matched my skin tone instantly and feels so light. It doesn't look like makeup; it just looks like I have great skin again."
-          }
-        },
-        "testimonial_card_WAUUWU": {
-          "type": "testimonial_card",
-          "settings": {
-            "image_mode": "single",
-            "image_single": "shopify://shop_images/6.png",
-            "image_before": "shopify://shop_images/2.png",
-            "image_after": "shopify://shop_images/image_2_2.png",
-            "card_name": "Michelle, 57",
-            "card_description": "I have tricky undertones and struggling with redness, so buying makeup online terrified me. I took a chance on this, and I'm shocked. It neutralized my redness immediately and blended right into my neck. No more 'floating head' effect!"
-          }
-        },
-        "testimonial_card_pkT3Gh": {
-          "type": "testimonial_card",
-          "settings": {
-            "image_mode": "single",
-            "image_single": "shopify://shop_images/woman-13.jpg",
-            "image_before": "shopify://shop_images/3.png",
-            "image_after": "shopify://shop_images/image_2_2.png",
-            "card_name": "Diane, 54",
-            "card_description": "Being very fair, 'universal' shades usually turn dark or orange on me within an hour. This one actually stayed true to my pale complexion. It gives me a healthy, warm glow without looking fake. Finally, a perfect match for fair skin."
-          }
-        },
-        "testimonial_card_BGPEhn": {
-          "type": "testimonial_card",
-          "settings": {
-            "image_mode": "single",
-            "image_single": "shopify://shop_images/8_460d018c-39c2-4345-baba-bbf6b6e2a747.png",
-            "image_before": "shopify://shop_images/1.png",
-            "image_after": "shopify://shop_images/CleanShot2025-09-11at22.41.55_2x_58285bd6-1b08-4051-8b2c-b005b1881927.png",
-            "card_name": "Amanda, 47",
-            "card_description": "I have fair skin with a lot of natural redness, so finding a shade that covers without looking like a thick mask is impossible. This neutralized my complexion instantly! It adapted to my pale tone perfectly—no orange line, just calm, even skin."
-          }
-        }
-      },
-      "block_order": [
-        "before_after_card_1",
-        "testimonial_card_WAUUWU",
-        "testimonial_card_pkT3Gh",
-        "testimonial_card_BGPEhn"
-      ],
-      "name": "⚡Before & After Section",
-      "settings": {
-        "section_id": "",
-        "section_title": "Before & After",
-        "enable_animation": true
       }
     },
     "vl_review_cards_section": {
