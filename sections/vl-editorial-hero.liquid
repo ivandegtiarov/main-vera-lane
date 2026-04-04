@@ -25,6 +25,15 @@
           height="{{ 800 | divided_by: section.settings.image.aspect_ratio | round }}"
         >
       </div>
+    {% elsif section.settings.image_asset != blank %}
+      <div class="vl-editorial-hero__image">
+        <img
+          src="{{ section.settings.image_asset | asset_url }}"
+          alt="{{ section.settings.image_alt | default: section.settings.headline }}"
+          loading="eager"
+          width="800"
+        >
+      </div>
     {% endif %}
 
     {% if section.settings.caption != blank %}
@@ -119,6 +128,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image asset filename",
+      "info": "Fallback: enter a theme asset filename (e.g. my-image.jpg)"
     },
     {
       "type": "text",
