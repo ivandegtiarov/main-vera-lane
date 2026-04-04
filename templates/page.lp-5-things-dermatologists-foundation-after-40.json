@@ -10,140 +10,338 @@
 {
   "layout": "theme.vl-landing",
   "sections": {
-    "bl_hero_N6fT0F": {
-      "type": "bl-hero",
-      "name": "BL - Hero",
+    "editorial_hero_001": {
+      "type": "vl-editorial-hero",
       "settings": {
-        "section_id": "",
-        "bg_image_asset": "lp-derm-foundation-hero.jpg",
-        "bg_color": "#2d2d2d",
-        "overlay_opacity": 80,
-        "category": "BEAUTY",
+        "meta_text": "DERMATOLOGIST INSIGHTS",
         "headline": "5 Things Dermatologists Wish You Knew About Foundation After 40",
-        "subheadline": "",
-        "show_rating": true,
-        "review_count": "12,400+ Reviews",
-        "cta_text": "Read More",
-        "cta_type": "anchor",
-        "cta_anchor": "offer",
-        "cta_url": "",
-        "cta_text_color": "#ffffff",
-        "cta_border_color": "#ffffff"
+        "intro_text": "Board-certified dermatologists see the same foundation mistakes every week in their clinics. Here's what they want you to know — and what they tell their own patients to do differently.",
+        "image_asset": "lp-derm-foundation-hero.jpg",
+        "image_alt": "Woman with radiant, healthy-looking skin",
+        "caption": "What dermatologists actually recommend may surprise you.",
+        "bg_color": "#ffffff",
+        "headline_color": "#000000",
+        "text_color": "#333333",
+        "meta_color": "#666666"
       }
     },
-    "bl_reason_item_VqzS5L": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "rich_text_intro_002": {
+      "type": "vl-rich-text",
       "settings": {
-        "section_id": "",
-        "bg_color": "#faf9f7",
-        "number": "1",
-        "title": "Your Skin Barrier Is Thinner Than You Think — And Most Foundations Damage It Further",
-        "body_text": "<p>After 40, the outermost layer of your skin — the stratum corneum — begins to thin. It loses roughly 10% of its protective capacity every decade. This barrier is what keeps moisture in and irritants out. When it weakens, everything changes: your skin becomes more reactive, drier, and far less forgiving of what you put on it.</p><p>Most foundations contain ingredients that actively compromise this already fragile barrier. Denatured alcohol evaporates moisture. Synthetic fragrances trigger low-grade inflammation. Heavy silicones create an occlusive seal that traps bacteria against skin that can no longer defend itself as efficiently. Dermatologists see the results in their clinics every week — women who think they have a \"skin condition\" when what they actually have is a foundation problem.</p><p>What dermatologists recommend instead is a formula that treats the skin barrier as something to protect, not override. Foundations with hyaluronic acid, ceramides, and vitamin E don't just sit on top of your skin — they reinforce the barrier while providing coverage. Your foundation should be the best thing you put on your face, not the worst.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
+        "subheading": "Your Skin Changed. Your Foundation Didn't.",
+        "content": "<p>After 40, your skin undergoes real physiological changes. The protective barrier thins. Oil production drops. Sensitivity increases. Yet most women are still reaching for the same foundations they wore a decade ago — formulas designed for younger skin that can actually accelerate the signs of ageing.</p><p>We spoke to board-certified dermatologists about the foundation mistakes they see most often — and the simple changes that make the biggest difference. No product pitches. Just the science they share with their own patients.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "image_text_tip1_003": {
+      "type": "vl-image-text",
+      "settings": {
         "image_asset": "lp-derm-foundation-reason-1.jpg",
-        "image_position": "right"
+        "image_alt": "Woman gently touching her face, healthy skin texture",
+        "image_caption": "Your skin barrier changes significantly after 40.",
+        "heading": "1. Your Skin Barrier Is Thinner Than You Think",
+        "text": "<p>After 40, the outermost layer of your skin — the stratum corneum — begins to thin. It loses roughly 10% of its protective capacity every decade. This barrier is what keeps moisture in and irritants out. When it weakens, everything changes.</p><p>Most foundations contain ingredients that actively compromise this already fragile barrier. Denatured alcohol evaporates moisture. Synthetic fragrances trigger low-grade inflammation. Heavy silicones trap bacteria against skin that can no longer defend itself efficiently.</p><p>Dermatologists recommend formulas with hyaluronic acid, ceramides, and vitamin E that reinforce the barrier while providing coverage. Your foundation should be the best thing you put on your face, not the worst.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
       }
     },
-    "bl_reason_item_PHB3Br": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "pull_quote_barrier_004": {
+      "type": "vl-pull-quote",
       "settings": {
-        "section_id": "",
-        "bg_color": "#faf9f7",
-        "number": "2",
-        "title": "The SPF in Your Foundation Isn't Doing What You Think It Is",
-        "body_text": "<p>Dermatologists have a phrase they use behind closed doors: \"SPF theatre.\" It describes the false sense of security most women get from the SPF rating printed on their foundation bottle. SPF 15. SPF 20. It sounds protective. It isn't — at least not the way you're using it.</p><p>To achieve the SPF level advertised on a foundation, you would need to apply roughly seven times the amount any normal person uses. A thin, blended layer of SPF 20 foundation delivers, in practice, an SPF of about 2 to 4. That's functionally useless against UVA rays — the ones that cause the deep collagen breakdown responsible for wrinkles, sagging, and age spots. You're getting a tan through your makeup and don't even know it.</p><p>The solution isn't to stop wearing SPF foundation — it's to choose a foundation that treats sun protection seriously. Look for broad-spectrum UVA/UVB filters combined with physical blockers like zinc oxide in concentrations that actually work at normal application thickness. A properly formulated foundation should deliver real protection without requiring you to cake it on.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-derm-foundation-reason-2.jpg",
-        "image_position": "right"
+        "quote": "Most women who think they have a skin condition actually have a foundation problem. The barrier is being compromised every day by ingredients their skin can no longer tolerate.",
+        "attribution": "Board-Certified Dermatologist",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
       }
     },
-    "bl_reason_item_tZHzTH": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "rich_text_tip2_005": {
+      "type": "vl-rich-text",
       "settings": {
-        "section_id": "",
-        "bg_color": "#faf9f7",
-        "number": "3",
-        "title": "\"Anti-Aging\" Foundations Are Usually Just Marketing — Here's What Actually Works",
-        "body_text": "<p>The beauty industry discovered something lucrative about fifteen years ago: put \"anti-aging\" on the label and women over 40 will pay 30% more for essentially the same formula. Dermatologists will tell you that the vast majority of foundations labelled \"anti-aging\" contain active ingredients in concentrations too low to have any measurable effect on skin. It's a label, not a treatment.</p><p>Real anti-aging results from a foundation require specific ingredients at specific concentrations. Retinol needs to be stabilised and present at 0.1% minimum to stimulate collagen production. Niacinamide works at 2-5% concentration. Peptides need to be bioavailable, not just listed on the back of a box. Most \"anti-aging\" foundations contain trace amounts of these ingredients — enough to justify the claim legally, not enough to change your skin.</p><p>The foundations dermatologists actually recommend to their patients blur the line between makeup and skincare. They contain clinical-grade concentrations of active ingredients that deliver visible results over weeks of wear. Your foundation is on your face for 10-14 hours a day — that's an enormous treatment window being wasted by formulas that promise everything and deliver nothing.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
+        "subheading": "2. The SPF in Your Foundation Is Doing Almost Nothing",
+        "content": "<p>Dermatologists have a phrase for it: <strong>\"SPF theatre.\"</strong> It describes the false sense of security most women get from the SPF rating on their foundation. SPF 15. SPF 20. It sounds protective. It isn't — at least not the way you're using it.</p><p>To achieve the advertised SPF level, you'd need to apply roughly <strong>seven times</strong> the normal amount. A thin, blended layer of SPF 20 foundation delivers, in practice, an SPF of about 2 to 4. That's functionally useless against UVA rays — the ones responsible for wrinkles, sagging, and age spots.</p><p>The solution isn't to stop wearing SPF foundation — it's to choose one that treats sun protection seriously. Look for broad-spectrum UVA/UVB filters with physical blockers like zinc oxide or titanium dioxide at concentrations that work at normal application thickness.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "image_text_tip3_006": {
+      "type": "vl-image-text",
+      "settings": {
         "image_asset": "lp-derm-foundation-reason-3.jpg",
-        "image_position": "right"
+        "image_alt": "Foundation bottles with anti-aging marketing labels",
+        "image_caption": "The 'anti-aging' label lets brands charge 30% more for the same formula.",
+        "heading": "3. 'Anti-Aging' Foundations Are Usually Just Marketing",
+        "text": "<p>The beauty industry discovered something lucrative: put \"anti-aging\" on the label and women over 40 will pay 30% more for essentially the same formula. Dermatologists will tell you the vast majority contain active ingredients in concentrations too low to have any measurable effect.</p><p>Real results require specific ingredients at specific concentrations. Retinol needs 0.1% minimum. Niacinamide works at 2-5%. Most \"anti-aging\" foundations contain trace amounts — legally sufficient, dermatologically useless.</p><p>Your foundation is on your face for 10-14 hours a day. That's an enormous treatment window being wasted by formulas that promise everything and deliver nothing.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
       }
     },
-    "bl_reason_item_99oVyF": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "pull_quote_treatment_007": {
+      "type": "vl-pull-quote",
       "settings": {
-        "section_id": "",
-        "bg_color": "#faf9f7",
-        "number": "4",
-        "title": "You're Probably Allergic to Your Foundation and Don't Realise It",
-        "body_text": "<p>Dermatologists report that low-grade contact dermatitis from cosmetics is one of the most underdiagnosed conditions in women over 40. The symptoms don't look like a typical allergic reaction — there's no dramatic rash or swelling. Instead, there's persistent dryness that no moisturiser fixes. A slight roughness to the texture. Occasional redness that comes and goes. Skin that just never looks \"right\" no matter what you do.</p><p>The culprits are usually preservatives (methylisothiazolinone, formaldehyde releasers), fragrance compounds (which can contain up to 200 individual chemicals under a single label listing), and certain dyes. Your skin tolerated these ingredients at 25 because your barrier was strong enough to handle them. After 40, that tolerance drops. You're not developing sensitive skin — you're developing a sensitivity to ingredients your skin can no longer process.</p><p>Switching to a hypoallergenic, fragrance-free foundation formulated specifically for mature skin is one of the single biggest improvements dermatologists see in their patients' skin. Within two weeks, the persistent dryness often resolves. The texture improves. The redness fades. It looks like a skincare miracle, but it's actually just removing the thing that was causing the problem.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
-        "image_asset": "lp-derm-foundation-reason-4.jpg",
-        "image_position": "right"
+        "quote": "Your foundation is on your face for 10-14 hours a day. That's an enormous treatment window being wasted by formulas that promise everything and deliver nothing.",
+        "attribution": "",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
       }
     },
-    "bl_reason_item_CtN9zQ": {
-      "type": "bl-reason-item",
-      "name": "BL - Reason Item",
+    "rich_text_tip4_008": {
+      "type": "vl-rich-text",
       "settings": {
-        "section_id": "",
-        "bg_color": "#faf9f7",
-        "number": "5",
-        "title": "The Right Foundation Can Actually Improve Your Skin — Not Just Cover It",
-        "body_text": "<p>There's a belief that foundation is inherently bad for your skin. That wearing it every day clogs pores, accelerates ageing, and prevents your skin from \"breathing.\" Dermatologists hear this constantly — and they'll tell you it's outdated thinking based on formulas that haven't existed for a decade.</p><p>Modern foundations, when properly formulated, can function as a leave-on treatment. A foundation containing hyaluronic acid at effective concentrations will measurably increase skin hydration over the course of a wearing day. Niacinamide strengthens the skin barrier and reduces hyperpigmentation. Antioxidants like vitamin C and E neutralise free radical damage from UV exposure and pollution. Your skin doesn't need to be bare to be healthy — it needs to be protected.</p><p>The women who visit dermatologists looking ten years younger than their age often share one thing in common: they wear foundation every day, but they wear the right one. A formula that hydrates, protects, and treats their skin while providing natural-looking coverage. It's the most powerful anti-aging tool hiding in plain sight — a product you already use every day, working for you instead of against you.</p>",
-        "link_text": "",
-        "link_type": "anchor",
-        "link_anchor": "",
-        "link_url": "",
+        "subheading": "4. You Might Be Allergic to Your Foundation and Not Realise It",
+        "content": "<p>Low-grade contact dermatitis from cosmetics is one of the most underdiagnosed conditions in women over 40. The symptoms don't look like a typical allergic reaction — no dramatic rash or swelling. Instead: <strong>persistent dryness</strong> that no moisturiser fixes. A slight roughness. Occasional redness that comes and goes.</p><p>The culprits are usually preservatives (methylisothiazolinone, formaldehyde releasers), fragrance compounds (up to 200 individual chemicals under a single label listing), and certain dyes. Your skin tolerated these at 25 because your barrier was strong enough. After 40, that tolerance drops.</p><p>Switching to a hypoallergenic, fragrance-free foundation is one of the single biggest improvements dermatologists see. Within two weeks, the persistent dryness often resolves. The texture improves. The redness fades. It looks like a skincare miracle, but it's actually just removing the thing that was causing the problem.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "image_text_tip5_009": {
+      "type": "vl-image-text",
+      "settings": {
         "image_asset": "lp-derm-foundation-reason-5.jpg",
-        "image_position": "right"
+        "image_alt": "Woman over 50 with radiant, natural-looking skin",
+        "image_caption": "The right foundation works for your skin, not against it.",
+        "heading": "5. The Right Foundation Can Actually Improve Your Skin",
+        "text": "<p>The belief that foundation is inherently bad for your skin is outdated. Modern foundations, when properly formulated, function as a leave-on treatment.</p><p>Hyaluronic acid at effective concentrations measurably increases skin hydration throughout the day. Niacinamide strengthens the barrier and reduces hyperpigmentation. Antioxidants like vitamin E neutralise free radical damage from UV and pollution.</p><p>Women who visit dermatologists looking ten years younger often share one thing: they wear foundation every day, but they wear <strong>the right one</strong>. A formula that hydrates, protects, and treats while providing natural coverage. It's the most powerful anti-aging tool hiding in plain sight.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
       }
     },
-    "bl_product_card_split_GffaQl": {
+    "cta_mid_010": {
+      "type": "vl-cta-block",
+      "settings": {
+        "text": "Ready to find a foundation that works with your skin, not against it?",
+        "button_url": "shopify://products/color-changing-foundation",
+        "button_text": "SEE THE FOUNDATION DERMATOLOGISTS RECOMMEND",
+        "subtext": "Free shipping over $[threshold] · 30-day money-back guarantee",
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "section_heading_011": {
+      "type": "vl-section-heading",
+      "settings": {
+        "heading": "So What Does a Dermatologist-Recommended Foundation Actually Look Like?",
+        "italic": true,
+        "bg_color": "#ffffff",
+        "text_color": "#5C1A33"
+      }
+    },
+    "rich_text_problems_012": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "If This Sounds Familiar...",
+        "content": "<p>You've spent years dealing with foundations that don't work the way they should:</p><ul><li>A shade that looked perfect in-store but completely wrong at home</li><li>Coverage that settles into fine lines and pores by noon</li><li>Foundation that oxidises and turns orange within hours</li><li>Skin that feels drier at the end of the day than when you started</li><li>Products that promise \"anti-aging\" but deliver nothing measurable</li><li>The nagging feeling that every foundation is made for someone 20 years younger</li></ul><p>You're not imagining it. And it's not your skin's fault.</p>",
+        "bg_color": "#faf9f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "image_text_product_013": {
+      "type": "vl-image-text",
+      "settings": {
+        "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
+        "image_alt": "Vera Lane Tone Adapting Foundation",
+        "image_caption": "One formula. Your unique shade. Every time.",
+        "heading": "Meet the Tone Adapting Foundation",
+        "text": "<p>Everything the dermatologists above recommend — in a single formula. Tone-adapting pigments that match your unique skin chemistry in 60 seconds. Hyaluronic acid and glycerin for clinical-grade hydration. Vitamin E for antioxidant protection. Bisabolol to soothe reactive skin.</p><p>Fragrance-free. Dermatologist-tested. No parabens, sulfates, or drying alcohols. A foundation built around what your skin actually needs after 40 — not what a marketing team thinks you'll pay for.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333"
+      }
+    },
+    "icon_grid_benefits_014": {
+      "type": "vl-icon-grid",
+      "blocks": {
+        "icon_shield": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "shield",
+            "label": "Barrier-Protecting",
+            "description": "Reinforces your skin's natural defence"
+          }
+        },
+        "icon_droplet": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "droplet",
+            "label": "Actively Hydrating",
+            "description": "Hyaluronic acid + glycerin"
+          }
+        },
+        "icon_sun": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "sun",
+            "label": "Broad-Spectrum SPF",
+            "description": "Real UV protection"
+          }
+        },
+        "icon_leaf": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "leaf",
+            "label": "Fragrance-Free",
+            "description": "No hidden irritants"
+          }
+        },
+        "icon_heart": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "heart",
+            "label": "Dermatologist-Tested",
+            "description": "Safe for sensitive skin"
+          }
+        },
+        "icon_star": {
+          "type": "icon_item",
+          "settings": {
+            "icon": "star",
+            "label": "Tone-Adapting",
+            "description": "Matches your unique skin chemistry"
+          }
+        }
+      },
+      "block_order": [
+        "icon_shield",
+        "icon_droplet",
+        "icon_sun",
+        "icon_leaf",
+        "icon_heart",
+        "icon_star"
+      ],
+      "settings": {
+        "heading": "Formulated for What Dermatologists Recommend",
+        "bg_color": "#F5F5F5",
+        "icon_color": "#5C1A33",
+        "icon_bg_color": "#ffffff",
+        "label_color": "#000000",
+        "text_color": "#666666"
+      }
+    },
+    "feature_table_015": {
+      "type": "vl-feature-table",
+      "blocks": {
+        "feat_1": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Adapts to your unique skin tone in 60 seconds",
+            "has_feature": true
+          }
+        },
+        "feat_2": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Hyaluronic acid actively hydrates throughout the day",
+            "has_feature": true
+          }
+        },
+        "feat_3": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Vitamin E provides antioxidant protection",
+            "has_feature": true
+          }
+        },
+        "feat_4": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Fragrance-free — no hidden allergens",
+            "has_feature": true
+          }
+        },
+        "feat_5": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Broad-spectrum UV protection",
+            "has_feature": true
+          }
+        },
+        "feat_6": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Lightweight formula that won't settle into lines",
+            "has_feature": true
+          }
+        },
+        "feat_7": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Bisabolol soothes sensitive, reactive skin",
+            "has_feature": true
+          }
+        },
+        "feat_8": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "No parabens, sulfates, or drying alcohols",
+            "has_feature": true
+          }
+        }
+      },
+      "block_order": [
+        "feat_1",
+        "feat_2",
+        "feat_3",
+        "feat_4",
+        "feat_5",
+        "feat_6",
+        "feat_7",
+        "feat_8"
+      ],
+      "settings": {
+        "heading": "What Makes This Different",
+        "subheading": "Every feature addresses what dermatologists recommend",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "check_color": "#5C1A33",
+        "row_border_color": "#E5E5E5"
+      }
+    },
+    "product_card_016": {
       "type": "bl-product-card-split",
       "blocks": {
-        "feature_S98rP3": {
+        "feat_derm": {
           "type": "feature",
           "settings": {
             "label": "Dermatologist-Tested"
           }
         },
-        "feature_Xa6l7M": {
+        "feat_hydra": {
           "type": "feature",
           "settings": {
             "label": "Hydrating Formula"
           }
         },
-        "feature_LRbyU5": {
+        "feat_spf": {
           "type": "feature",
           "settings": {
             "label": "Broad-Spectrum SPF"
           }
         },
-        "feature_C8xBQe": {
+        "feat_tone": {
           "type": "feature",
           "settings": {
             "label": "Tone-Adapting"
           }
         },
-        "feature_WJp2sC": {
+        "feat_actives": {
           "type": "feature",
           "settings": {
             "label": "Anti-Aging Actives"
@@ -151,13 +349,12 @@
         }
       },
       "block_order": [
-        "feature_S98rP3",
-        "feature_Xa6l7M",
-        "feature_LRbyU5",
-        "feature_C8xBQe",
-        "feature_WJp2sC"
+        "feat_derm",
+        "feat_hydra",
+        "feat_spf",
+        "feat_tone",
+        "feat_actives"
       ],
-      "name": "BL - Product Card Split",
       "settings": {
         "section_id": "offer",
         "bg_color": "#faf9f7",
@@ -167,39 +364,200 @@
         "product_name": "Tone-Adapting Foundation",
         "description": "<p>Dermatologist-informed. Clinically hydrating. A lightweight, buildable formula with tone-adapting pigments, broad-spectrum protection, and skincare-grade actives that improve your skin with every wear.</p>",
         "image": "shopify://shop_images/freepik__add-the-two-products-together-into-a-studiostyle-p__90794.png",
-        "more_colors_text": "+12 More Shades",
+        "more_colors_text": "",
         "cta_text": "Check Availability",
         "cta_url": "shopify://products/color-changing-foundation",
         "cta_bg": "#000000",
         "cta_text_color": "#ffffff"
       }
     },
-    "bl_sticky_cta_D5thRg": {
-      "type": "bl-sticky-cta",
+    "review_cards_017": {
+      "type": "vl-review-cards",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 15, 2025",
+            "title": "My skin has never looked better",
+            "quote": "I've been wearing this for three weeks and the difference is unbelievable. My skin actually looks healthier at the end of the day than when I put it on. No dryness, no settling into lines. Wish I'd found this years ago.",
+            "name": "Margaret S.",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Mar 8, 2025",
+            "title": "The colour matching is incredible",
+            "quote": "I've tried dozens of foundations and never found my shade. This one actually adapts to my skin tone — it looked slightly off when I first applied it, then 60 seconds later it was a perfect match. Like magic.",
+            "name": "Patricia L.",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 28, 2025",
+            "title": "My dermatologist noticed the difference",
+            "quote": "At my last skin check, my dermatologist asked what I'd changed in my routine. When I told her it was just my foundation, she said 'whatever you're doing, keep doing it.' That's never happened before.",
+            "name": "Linda K.",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 20, 2025",
+            "title": "No more redness or irritation",
+            "quote": "I didn't even realise my old foundation was causing problems until I switched. The persistent redness I'd been fighting for years? Gone within two weeks. My skin just calmed down completely.",
+            "name": "Susan H.",
+            "verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 14, 2025",
+            "title": "Finally stopped oxidising by noon",
+            "quote": "Every foundation I've ever worn turned orange by lunchtime. This one stays true to my skin tone all day. I actually checked in the mirror at 4pm expecting the worst — still perfect.",
+            "name": "Barbara T.",
+            "verified": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Feb 5, 2025",
+            "title": "Better than any 'anti-aging' foundation",
+            "quote": "I've spent a fortune on foundations that claim to be anti-aging. This is the first one where I can actually see a difference in my skin. It's hydrating, it doesn't crease, and my fine lines are genuinely less visible.",
+            "name": "Dorothy R.",
+            "verified": true
+          }
+        },
+        "review_7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "Jan 28, 2025",
+            "title": "Sensitive skin finally has a foundation",
+            "quote": "I have incredibly reactive skin and most foundations leave me red and itchy by afternoon. This is the first one I can wear all day with zero irritation. The fragrance-free formula makes all the difference.",
+            "name": "Carol M.",
+            "verified": true
+          }
+        },
+        "review_8": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "Jan 20, 2025",
+            "title": "I look younger than I did five years ago",
+            "quote": "My friends keep asking what I've done — they think I've had work done. It's just this foundation. It makes my skin look luminous and healthy in a way no other product has managed.",
+            "name": "Nancy W.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8"
+      ],
       "settings": {
-        "badge_text": "LIMITED TIME",
-        "promo_text": "Up to 50% Off Today",
-        "button_text": "Check Availability",
-        "link_url": "shopify://products/color-changing-foundation",
-        "show_after_scroll": true,
-        "dismiss_enabled": false,
-        "bg_color": "#2D2D2D",
-        "text_color": "#ffffff",
-        "button_bg": "#D4A574",
-        "button_text_color": "#2D2D2D",
-        "badge_bg": "#8B3A3A",
-        "badge_text_color": "#ffffff"
+        "section_id": "reviews",
+        "headline": "What Women Over 40 Are Saying",
+        "show_rating_summary": true,
+        "rating_summary_text": "Based on 12,400+ reviews",
+        "initial_count": 4,
+        "load_more_text": "Load More Reviews",
+        "see_all_text": "See All Reviews",
+        "see_all_url": "",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "star_color": "#fbbf24",
+        "text_color": "#4b5563",
+        "name_color": "#374151"
+      }
+    },
+    "pull_quote_testimonial_018": {
+      "type": "vl-pull-quote",
+      "settings": {
+        "quote": "I showed my dermatologist and she said 'whatever you're doing, keep doing it.' That's never happened before with a foundation.",
+        "attribution": "Carol, 59",
+        "bg_color": "#F5EDE8",
+        "quote_color": "#333333",
+        "accent_color": "#5C1A33",
+        "attribution_color": "#666666"
+      }
+    },
+    "rich_text_guarantee_019": {
+      "type": "vl-rich-text",
+      "settings": {
+        "subheading": "Try It Risk-Free. 100% Money-Back Guarantee.",
+        "content": "<p>Price and hesitation should never come between you and a foundation that actually improves your skin. That's why every order comes with a <strong>30-day money-back guarantee</strong>, no questions asked.</p><p>If the Tone Adapting Foundation doesn't match your skin, doesn't hydrate the way we promised, or doesn't earn its place on your face — send it back. We'll refund every penny.</p><p>Most women see visible improvement within two weeks. We're confident you will too.</p>",
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#5C1A33"
+      }
+    },
+    "cta_final_020": {
+      "type": "vl-cta-block",
+      "settings": {
+        "text": "See what a dermatologist-recommended foundation can do for your skin.",
+        "button_url": "shopify://products/color-changing-foundation",
+        "button_text": "TRY VERA LANE TODAY — RISK FREE",
+        "subtext": "30-day money-back guarantee · Free shipping over $[threshold]",
+        "bg_color": "#faf9f7",
+        "text_color": "#333333",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "sticky_cta_021": {
+      "type": "vl-sticky-cta",
+      "settings": {
+        "url": "shopify://products/color-changing-foundation",
+        "button_text": "TRY IT TODAY",
+        "show_amazon_icon": false,
+        "bg_color": "#ffffff",
+        "button_bg_color": "#5C1A33",
+        "button_text_color": "#ffffff",
+        "icon_bg_color": "#ffffff"
       }
     }
   },
   "order": [
-    "bl_hero_N6fT0F",
-    "bl_reason_item_VqzS5L",
-    "bl_reason_item_PHB3Br",
-    "bl_reason_item_tZHzTH",
-    "bl_reason_item_99oVyF",
-    "bl_reason_item_CtN9zQ",
-    "bl_product_card_split_GffaQl",
-    "bl_sticky_cta_D5thRg"
+    "editorial_hero_001",
+    "rich_text_intro_002",
+    "image_text_tip1_003",
+    "pull_quote_barrier_004",
+    "rich_text_tip2_005",
+    "image_text_tip3_006",
+    "pull_quote_treatment_007",
+    "rich_text_tip4_008",
+    "image_text_tip5_009",
+    "cta_mid_010",
+    "section_heading_011",
+    "rich_text_problems_012",
+    "image_text_product_013",
+    "icon_grid_benefits_014",
+    "feature_table_015",
+    "product_card_016",
+    "review_cards_017",
+    "pull_quote_testimonial_018",
+    "rich_text_guarantee_019",
+    "cta_final_020",
+    "sticky_cta_021"
   ]
 }
