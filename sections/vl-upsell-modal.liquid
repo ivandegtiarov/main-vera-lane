@@ -15,8 +15,8 @@
   {% assign upsell_variant = upsell_product.selected_or_first_available_variant %}
   {% assign discount_pct = section.settings.discount_percentage | default: 50 %}
   {% assign original_price = upsell_variant.price %}
-  {% assign discounted_price = original_price | times: 100 | minus: 0 | times: discount_pct | divided_by: 100 %}
-  {% assign discounted_price = original_price | minus: discounted_price %}
+  {% assign discount_amount = original_price | times: discount_pct | divided_by: 100 %}
+  {% assign discounted_price = original_price | minus: discount_amount %}
 
   <style>
     .vl-upsell-overlay {
@@ -134,6 +134,30 @@
       color: #d4372c;
     }
 
+    .vl-upsell-modal__timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #d4372c;
+      margin-bottom: 16px;
+    }
+
+    .vl-upsell-modal__timer svg {
+      flex-shrink: 0;
+    }
+
+    .vl-upsell-modal__timer.is-urgent {
+      animation: vlUpsellPulse 1s ease infinite;
+    }
+
+    @keyframes vlUpsellPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
     .vl-upsell-modal__cta {
       display: block;
       width: 100%;
@@ -210,6 +234,14 @@
         <p class="vl-upsell-modal__subheading">{{ section.settings.subheading }}</p>
       {% endif %}
 
+      <div class="vl-upsell-modal__timer" id="vl-upsell-timer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>Offer expires in <strong id="vl-upsell-countdown">5:00</strong></span>
+      </div>
+
       {% if upsell_product.featured_media %}
         <div class="vl-upsell-modal__image-wrapper">
           {{ upsell_product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', alt: upsell_product.title }}
@@ -260,9 +292,33 @@
         window.location.href = '/checkout';
       }
 
+      // Countdown timer
+      var countdownEl = document.getElementById('vl-upsell-countdown');
+      var timerContainer = document.getElementById('vl-upsell-timer');
+      var timerInterval = null;
+      var totalSeconds = {{ section.settings.timer_minutes | default: 5 | times: 60 }};
+
+      function startCountdown() {
+        timerInterval = setInterval(function() {
+          totalSeconds--;
+          if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            goToCheckout();
+            return;
+          }
+          var mins = Math.floor(totalSeconds / 60);
+          var secs = totalSeconds % 60;
+          countdownEl.textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+          if (totalSeconds <= 60) {
+            timerContainer.classList.add('is-urgent');
+          }
+        }, 1000);
+      }
+
       // Listen for the upsell trigger event from lumen-pdp-hero
       document.addEventListener('vl:upsell:show', function() {
         show();
+        startCountdown();
       });
 
       // Close buttons (X and backdrop)
@@ -381,6 +437,16 @@
       "id": "skip_text",
       "label": "Skip button text",
       "default": "No thanks, continue to checkout"
+    },
+    {
+      "type": "range",
+      "id": "timer_minutes",
+      "label": "Countdown timer (minutes)",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 5,
+      "info": "Offer expires after this many minutes. Redirects to checkout when timer hits zero."
     }
   ],
   "presets": [
