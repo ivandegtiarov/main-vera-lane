@@ -277,9 +277,30 @@
       const declineBtn = document.getElementById('vl-upsell-decline');
       const closeBtns = overlay.querySelectorAll('[data-vl-upsell-close]');
 
+      // Analytics helper — fires both GA4 and Meta Pixel
+      var upsellProduct = {{ upsell_product.title | json }};
+      var upsellVariantId = {{ upsell_variant.id | json }};
+      var upsellDiscount = {{ discount_pct }};
+      var upsellPrice = {{ discounted_price | money_without_currency | json }};
+      var didAccept = false;
+
+      function trackUpsell(eventName, extraData) {
+        var data = Object.assign({ product_title: upsellProduct }, extraData || {});
+        // GA4
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, data);
+        }
+        // Meta Pixel
+        if (typeof fbq === 'function') {
+          var fbEventName = eventName.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); }).replace(/ /g, '');
+          fbq('trackCustom', fbEventName, data);
+        }
+      }
+
       function show() {
         overlay.classList.add('is-visible');
         document.body.style.overflow = 'hidden';
+        trackUpsell('upsell_modal_shown', { discount_percentage: upsellDiscount });
       }
 
       function hide() {
@@ -288,6 +309,9 @@
       }
 
       function goToCheckout() {
+        if (!didAccept) {
+          trackUpsell('upsell_declined');
+        }
         hide();
         window.location.href = '/checkout';
       }
@@ -303,6 +327,7 @@
           totalSeconds--;
           if (totalSeconds <= 0) {
             clearInterval(timerInterval);
+            trackUpsell('upsell_timer_expired');
             goToCheckout();
             return;
           }
@@ -335,6 +360,8 @@
 
       // Accept — add upsell product to cart, then checkout
       acceptBtn.addEventListener('click', function() {
+        didAccept = true;
+        trackUpsell('upsell_accepted', { variant_id: upsellVariantId, discounted_price: upsellPrice });
         var variantId = acceptBtn.getAttribute('data-variant-id');
         acceptBtn.disabled = true;
         acceptBtn.textContent = 'ADDING...';
