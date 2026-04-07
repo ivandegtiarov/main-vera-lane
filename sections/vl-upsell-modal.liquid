@@ -1,0 +1,392 @@
+{% comment %}
+  VL Upsell Modal
+  ----------------
+  Shown after add-to-cart on the PDP. Offers an upsell product at a discount
+  before redirecting to checkout.
+
+  Listens for: 'vl:upsell:show' custom event (dispatched by lumen-pdp-hero after cart add)
+  Dispatches: 'vl:upsell:done' when user accepts or declines
+{% endcomment %}
+
+{% assign upsell_product = section.settings.upsell_product %}
+{% if upsell_product == blank %}
+  {% comment %} No upsell product configured — section renders nothing {% endcomment %}
+{% else %}
+  {% assign upsell_variant = upsell_product.selected_or_first_available_variant %}
+  {% assign discount_pct = section.settings.discount_percentage | default: 50 %}
+  {% assign original_price = upsell_variant.price %}
+  {% assign discounted_price = original_price | times: 100 | minus: 0 | times: discount_pct | divided_by: 100 %}
+  {% assign discounted_price = original_price | minus: discounted_price %}
+
+  <style>
+    .vl-upsell-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .vl-upsell-overlay.is-visible {
+      display: flex;
+    }
+
+    .vl-upsell-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      animation: vlUpsellFadeIn 0.25s ease;
+    }
+
+    .vl-upsell-modal {
+      position: relative;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      padding: 28px 24px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      animation: vlUpsellSlideUp 0.3s ease;
+      text-align: center;
+      font-family: var(--font-body--family, sans-serif);
+    }
+
+    .vl-upsell-modal__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: #666;
+      line-height: 1;
+    }
+
+    .vl-upsell-modal__close:hover {
+      color: #000;
+    }
+
+    .vl-upsell-modal__badge {
+      display: inline-block;
+      background: #d4372c;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .vl-upsell-modal__heading {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: #1a1a1a;
+      line-height: 1.3;
+    }
+
+    .vl-upsell-modal__subheading {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 20px;
+    }
+
+    .vl-upsell-modal__image-wrapper {
+      margin: 0 auto 16px;
+      max-width: 180px;
+    }
+
+    .vl-upsell-modal__image-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .vl-upsell-modal__product-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      color: #1a1a1a;
+    }
+
+    .vl-upsell-modal__price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .vl-upsell-modal__price-original {
+      font-size: 15px;
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .vl-upsell-modal__price-sale {
+      font-size: 20px;
+      font-weight: 700;
+      color: #d4372c;
+    }
+
+    .vl-upsell-modal__cta {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+      background: #1a1a1a;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .vl-upsell-modal__cta:hover {
+      opacity: 0.88;
+    }
+
+    .vl-upsell-modal__cta:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .vl-upsell-modal__skip {
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      font-size: 13px;
+      color: #888;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .vl-upsell-modal__skip:hover {
+      color: #333;
+    }
+
+    @keyframes vlUpsellFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes vlUpsellSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <div id="vl-upsell-overlay" class="vl-upsell-overlay" role="dialog" aria-modal="true" aria-label="Special offer">
+    <div class="vl-upsell-backdrop" data-vl-upsell-close></div>
+    <div class="vl-upsell-modal">
+      <button class="vl-upsell-modal__close" data-vl-upsell-close aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      {% if section.settings.badge_text != blank %}
+        <div class="vl-upsell-modal__badge">{{ section.settings.badge_text }}</div>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="vl-upsell-modal__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="vl-upsell-modal__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if upsell_product.featured_media %}
+        <div class="vl-upsell-modal__image-wrapper">
+          {{ upsell_product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', alt: upsell_product.title }}
+        </div>
+      {% endif %}
+
+      <div class="vl-upsell-modal__product-title">{{ upsell_product.title }}</div>
+
+      <div class="vl-upsell-modal__price">
+        <span class="vl-upsell-modal__price-original">{{ original_price | money }}</span>
+        <span class="vl-upsell-modal__price-sale">{{ discounted_price | money }}</span>
+      </div>
+
+      <button
+        class="vl-upsell-modal__cta"
+        id="vl-upsell-accept"
+        data-variant-id="{{ upsell_variant.id }}"
+        {% unless upsell_variant.available %}disabled{% endunless %}
+      >
+        {{ section.settings.cta_text | default: 'YES, ADD TO MY ORDER' }}
+      </button>
+
+      <button class="vl-upsell-modal__skip" id="vl-upsell-decline">
+        {{ section.settings.skip_text | default: 'No thanks, continue to checkout' }}
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const overlay = document.getElementById('vl-upsell-overlay');
+      const acceptBtn = document.getElementById('vl-upsell-accept');
+      const declineBtn = document.getElementById('vl-upsell-decline');
+      const closeBtns = overlay.querySelectorAll('[data-vl-upsell-close]');
+
+      function show() {
+        overlay.classList.add('is-visible');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hide() {
+        overlay.classList.remove('is-visible');
+        document.body.style.overflow = '';
+      }
+
+      function goToCheckout() {
+        hide();
+        window.location.href = '/checkout';
+      }
+
+      // Listen for the upsell trigger event from lumen-pdp-hero
+      document.addEventListener('vl:upsell:show', function() {
+        show();
+      });
+
+      // Close buttons (X and backdrop)
+      closeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          goToCheckout();
+        });
+      });
+
+      // Decline — go straight to checkout
+      declineBtn.addEventListener('click', function() {
+        goToCheckout();
+      });
+
+      // Accept — add upsell product to cart, then checkout
+      acceptBtn.addEventListener('click', function() {
+        var variantId = acceptBtn.getAttribute('data-variant-id');
+        acceptBtn.disabled = true;
+        acceptBtn.textContent = 'ADDING...';
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [{
+              id: parseInt(variantId, 10),
+              quantity: 1,
+              properties: {
+                _upsell_discount: '{{ discount_pct }}'
+              }
+            }]
+          })
+        })
+        .then(function(response) {
+          if (!response.ok) throw new Error('Failed to add upsell item');
+          return response.json();
+        })
+        .then(function() {
+          var discountCode = {{ section.settings.discount_code | json }};
+          window.location.href = discountCode
+            ? '/checkout?discount=' + encodeURIComponent(discountCode)
+            : '/checkout';
+        })
+        .catch(function(err) {
+          console.error('Upsell add error:', err);
+          // Still go to checkout even if upsell fails
+          window.location.href = '/checkout';
+        });
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-visible')) {
+          goToCheckout();
+        }
+      });
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "VL Upsell Modal",
+  "tag": "section",
+  "class": "vl-upsell-modal-section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "upsell_product",
+      "label": "Upsell product"
+    },
+    {
+      "type": "range",
+      "id": "discount_percentage",
+      "label": "Discount percentage",
+      "min": 5,
+      "max": 75,
+      "step": 5,
+      "default": 50,
+      "unit": "%",
+      "info": "Controls the displayed discount price in the modal"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code",
+      "default": "BRUSH50",
+      "info": "Shopify discount code to auto-apply at checkout. Create this in Settings > Discounts, limited to the upsell product only."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "WAIT! SPECIAL OFFER"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Complete Your Look"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Add this to your order at an exclusive discount"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Accept button text",
+      "default": "YES, ADD TO MY ORDER"
+    },
+    {
+      "type": "text",
+      "id": "skip_text",
+      "label": "Skip button text",
+      "default": "No thanks, continue to checkout"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Upsell Modal"
+    }
+  ]
+}
+{% endschema %}

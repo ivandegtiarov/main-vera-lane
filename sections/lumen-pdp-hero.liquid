@@ -2743,7 +2743,13 @@
             const data = await response.json();
 
             {% if section.settings.skip_cart_go_to_checkout %}
-              window.location.href = '/checkout';
+              // Check if an upsell modal is present on the page
+              const upsellOverlay = document.getElementById('vl-upsell-overlay');
+              if (upsellOverlay) {
+                document.dispatchEvent(new CustomEvent('vl:upsell:show'));
+              } else {
+                window.location.href = '/checkout';
+              }
               return;
             {% endif %}
 
