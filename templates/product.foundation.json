@@ -1301,6 +1301,19 @@
         "padding_bottom_desktop": 80,
         "padding_left_right_desktop": 72
       }
+    },
+    "vl_upsell_modal": {
+      "type": "vl-upsell-modal",
+      "settings": {
+        "upsell_product": "makeup-brush",
+        "discount_percentage": 50,
+        "discount_code": "BRUSH50",
+        "badge_text": "WAIT! SPECIAL OFFER",
+        "heading": "Complete Your Look",
+        "subheading": "Add our professional makeup brush to your order",
+        "cta_text": "YES, ADD FOR 50% OFF",
+        "skip_text": "No thanks, continue to checkout"
+      }
     }
   },
   "order": [
@@ -1314,6 +1327,7 @@
     "lumen_benefits_section",
     "lumen_grid_benefits_section",
     "lumen_faq_section",
-    "lumen_usp_mjAcCK"
+    "lumen_usp_mjAcCK",
+    "vl_upsell_modal"
   ]
 }
