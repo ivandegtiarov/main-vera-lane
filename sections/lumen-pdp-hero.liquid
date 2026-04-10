@@ -2743,6 +2743,22 @@
             const data = await response.json();
 
             {% if section.settings.skip_cart_go_to_checkout %}
+              // Auto-add shipping protection if enabled and default on
+              {% if settings.shipping_protection_enabled and settings.shipping_protection_default_on and settings.shipping_protection_product %}
+                {% assign sp_variant = settings.shipping_protection_product.selected_or_first_available_variant %}
+                {% if sp_variant %}
+                  try {
+                    await fetch('/cart/add.js', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ items: [{ id: {{ sp_variant.id }}, quantity: 1 }] })
+                    });
+                  } catch (e) {
+                    console.error('Failed to add shipping protection:', e);
+                  }
+                {% endif %}
+              {% endif %}
+
               // Check if an upsell modal is present on the page
               const upsellOverlay = document.getElementById('vl-upsell-overlay');
               if (upsellOverlay) {
