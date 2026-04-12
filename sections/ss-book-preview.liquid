@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+<section class="ss-book-preview">
+  <div class="ss-book-preview__container">
+    <h2 class="ss-book-preview__heading">See What's Inside</h2>
+
+    <div class="swiper ss-book-preview__swiper">
+      <div class="swiper-wrapper">
+
+        {%- assign slides = "Sun Sign|Core Identity and Ego|ss-page-sun-sign.webp,Jupiter Sign|Luck and Growth|ss-page-jupiter-sign.webp,Rising Sign|Outer Persona|ss-page-rising-sign.webp,Saturn Sign|Responsibility|ss-page-saturn-sign.webp,Moon Sign|Emotions and Instincts|ss-page-moon-sign.webp,Uranus Sign|Innovation|ss-page-uranus-sign.webp,Mercury Sign|Communications|ss-page-mercury-sign.webp,Neptune Sign|Dreams and Spirituality|ss-page-neptune-sign.webp,Venus Sign|Love and Beauty|ss-page-venus-sign.webp,Pluto Sign|Transformation|ss-page-pluto-sign.webp,Mars Sign|Drive and Ambition|ss-page-mars-sign.webp,Midheaven|Career and Reputation|ss-page-midheaven.webp" | split: "," -%}
+
+        {%- for slide in slides -%}
+          {%- assign parts = slide | split: "|" -%}
+          {%- assign slide_title = parts[0] -%}
+          {%- assign slide_desc = parts[1] -%}
+          {%- assign slide_image = parts[2] -%}
+          <div class="swiper-slide ss-book-preview__slide">
+            <div class="ss-book-preview__image-wrap">
+              <img
+                class="ss-book-preview__image"
+                src="{{ slide_image | asset_url }}"
+                alt="{{ slide_title }} — {{ slide_desc }}"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="ss-book-preview__title">{{ slide_title }}</h3>
+            <p class="ss-book-preview__description">{{ slide_desc }}</p>
+          </div>
+        {%- endfor -%}
+
+      </div>
+
+      <div class="swiper-pagination ss-book-preview__pagination"></div>
+      <div class="swiper-button-prev ss-book-preview__nav ss-book-preview__nav--prev"></div>
+      <div class="swiper-button-next ss-book-preview__nav ss-book-preview__nav--next"></div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.ss-book-preview__swiper', {
+      slidesPerView: 1,
+      centeredSlides: true,
+      spaceBetween: 24,
+      loop: true,
+      pagination: {
+        el: '.ss-book-preview__pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.ss-book-preview__nav--next',
+        prevEl: '.ss-book-preview__nav--prev'
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 1.4
+        }
+      }
+    });
+  });
+</script>
+
+{% stylesheet %}
+  .ss-book-preview {
+    background-color: #f0ebe1;
+    padding: 60px 0;
+  }
+
+  .ss-book-preview__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ss-book-preview__heading {
+    font-family: 'Noto Serif', serif;
+    color: #1a3050;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 0 40px;
+    font-weight: 700;
+  }
+
+  .ss-book-preview__swiper {
+    position: relative;
+    padding-bottom: 50px;
+  }
+
+  .ss-book-preview__slide {
+    max-width: 70%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ss-book-preview__image-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .ss-book-preview__image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .ss-book-preview__title {
+    font-family: 'Noto Serif', serif;
+    color: #1a3050;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  .ss-book-preview__description {
+    font-family: 'DM Sans', sans-serif;
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Navigation arrows */
+  .ss-book-preview__nav {
+    width: 44px;
+    height: 44px;
+    background-color: #1a3050;
+    border-radius: 50%;
+    color: #fff;
+  }
+
+  .ss-book-preview__nav::after {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Pagination dots */
+  .ss-book-preview__swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #1a3050;
+    opacity: 0.3;
+  }
+
+  .ss-book-preview__swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 767px) {
+    .ss-book-preview {
+      padding: 40px 0;
+    }
+
+    .ss-book-preview__slide {
+      max-width: 90%;
+    }
+
+    .ss-book-preview__heading {
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+    }
+
+    .ss-book-preview__nav {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SS - Book Preview",
+  "settings": []
+}
+{% endschema %}

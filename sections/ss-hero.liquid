@@ -1,0 +1,375 @@
+{%- comment -%} ── SS - HERO ── {%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<section class="ss-hero">
+  <div class="ss-hero__container">
+    {%- comment -%} ── LEFT COLUMN: Image Gallery ── {%- endcomment -%}
+    <div class="ss-hero__gallery">
+      <div class="ss-hero__main-image-wrap">
+        <img
+          class="ss-hero__main-image"
+          src="{{ 'ss-product-main.png' | asset_url }}"
+          alt="Personalized Astrology Book"
+          loading="eager"
+          id="ss-hero-main-img"
+        >
+      </div>
+
+      <div class="ss-hero__thumbnails">
+        {%- assign thumb_images = 'ss-product-main.png,ss-lifestyle-5.webp,ss-lifestyle-6.webp,ss-lifestyle-1.webp,ss-lifestyle-4.webp,ss-lifestyle-3.webp,ss-lifestyle-2.webp' | split: ',' -%}
+        {%- for img in thumb_images -%}
+          <button
+            class="ss-hero__thumb{% if forloop.first %} ss-hero__thumb--active{% endif %}"
+            type="button"
+            data-ss-thumb
+            data-ss-image="{{ img | asset_url }}"
+            aria-label="View image {{ forloop.index }}"
+          >
+            <img
+              src="{{ img | asset_url }}"
+              alt="Product image {{ forloop.index }}"
+              loading="lazy"
+              width="80"
+              height="80"
+            >
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} ── RIGHT COLUMN: Product Info ── {%- endcomment -%}
+    <div class="ss-hero__info">
+      <h1 class="ss-hero__title">Personalized Astrology Book</h1>
+
+      {%- comment -%} ── Rating ── {%- endcomment -%}
+      <div class="ss-hero__rating">
+        <div class="ss-hero__stars">
+          {%- for i in (1..5) -%}
+            <svg class="ss-hero__star" width="16" height="16" viewBox="0 0 24 24" fill="#F5A623">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+        <span class="ss-hero__rating-text">4.88 (98+ reviews)</span>
+      </div>
+
+      {%- comment -%} ── Price ── {%- endcomment -%}
+      <div class="ss-hero__price">
+        <span class="ss-hero__price-current">A$119.00</span>
+        <span class="ss-hero__price-compare">A$145.00</span>
+      </div>
+
+      {%- comment -%} ── Description ── {%- endcomment -%}
+      <p class="ss-hero__description">
+        Dive deep into your character, strengths, and life's path with a personalized guide created from your unique birth chart.
+      </p>
+
+      {%- comment -%} ── Trust Badges ── {%- endcomment -%}
+      <div class="ss-hero__trust-badges">
+        <div class="ss-hero__badge">
+          <svg class="ss-hero__badge-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00354B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span class="ss-hero__badge-label">Printed in Australia</span>
+        </div>
+
+        <div class="ss-hero__badge">
+          <svg class="ss-hero__badge-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00354B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span class="ss-hero__badge-label">Astrologer Approved</span>
+        </div>
+
+        <div class="ss-hero__badge">
+          <svg class="ss-hero__badge-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00354B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span class="ss-hero__badge-label">Secure Checkout</span>
+        </div>
+      </div>
+
+      {%- comment -%} ── CTA Button ── {%- endcomment -%}
+      <a href="#personalize" class="ss-hero__cta">
+        Start Personalizing &mdash; A$119
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const mainImg = document.getElementById('ss-hero-main-img');
+    const thumbs = document.querySelectorAll('[data-ss-thumb]');
+
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        const src = this.getAttribute('data-ss-image');
+        if (mainImg && src) {
+          mainImg.src = src;
+        }
+        thumbs.forEach(function(t) { t.classList.remove('ss-hero__thumb--active'); });
+        this.classList.add('ss-hero__thumb--active');
+      });
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  /* ── SS Hero ── */
+  .ss-hero {
+    width: 100%;
+    background: #ffffff;
+    padding: 40px 20px;
+    font-family: 'DM Sans', sans-serif;
+    color: #292929;
+    box-sizing: border-box;
+  }
+
+  .ss-hero *,
+  .ss-hero *::before,
+  .ss-hero *::after {
+    box-sizing: border-box;
+  }
+
+  .ss-hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Gallery ── */
+  .ss-hero__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ss-hero__main-image-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ss-hero__main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .ss-hero__thumbnails {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .ss-hero__thumbnails::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ss-hero__thumb {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    background: #f7f7f7;
+    transition: border-color 0.2s ease;
+  }
+
+  .ss-hero__thumb:hover {
+    border-color: #00354B;
+  }
+
+  .ss-hero__thumb--active {
+    border-color: #00354B;
+  }
+
+  .ss-hero__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Product Info ── */
+  .ss-hero__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ss-hero__title {
+    font-family: 'Noto Serif', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #00354B;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  /* ── Rating ── */
+  .ss-hero__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ss-hero__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .ss-hero__star {
+    display: block;
+  }
+
+  .ss-hero__rating-text {
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* ── Price ── */
+  .ss-hero__price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .ss-hero__price-current {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #00354B;
+  }
+
+  .ss-hero__price-compare {
+    font-size: 18px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  /* ── Description ── */
+  .ss-hero__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #292929;
+    margin: 0;
+  }
+
+  /* ── Trust Badges ── */
+  .ss-hero__trust-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .ss-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ss-hero__badge-icon {
+    flex-shrink: 0;
+  }
+
+  .ss-hero__badge-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #00354B;
+    white-space: nowrap;
+  }
+
+  /* ── CTA Button ── */
+  .ss-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 32px;
+    background: #00354B;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+  }
+
+  .ss-hero__cta:hover {
+    background: #004d6b;
+    color: #ffffff;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .ss-hero {
+      padding: 24px 16px;
+    }
+
+    .ss-hero__container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .ss-hero__title {
+      font-size: 26px;
+    }
+
+    .ss-hero__price-current {
+      font-size: 24px;
+    }
+
+    .ss-hero__trust-badges {
+      gap: 12px;
+    }
+
+    .ss-hero__thumb {
+      width: 60px;
+      height: 60px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SS - Hero",
+  "tag": "section",
+  "class": "ss-hero-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SS - Hero"
+    }
+  ]
+}
+{% endschema %}
