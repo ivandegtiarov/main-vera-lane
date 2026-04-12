@@ -1,182 +1,120 @@
-<div class="ss-gift-reasons">
-  <div class="ss-gift-reasons__container">
-    <div class="ss-gift-reasons__text">
-      <h2 class="ss-gift-reasons__heading">3 Reasons Why Star Story Book Makes the Most Thoughtful Gift</h2>
-      <ol class="ss-gift-reasons__list">
-        <li class="ss-gift-reasons__item">
-          <span class="ss-gift-reasons__number">1</span>
-          <div class="ss-gift-reasons__item-content">
-            <strong class="ss-gift-reasons__item-title">It's Deeply Personal</strong>
-            <p class="ss-gift-reasons__item-desc">Unlike generic gifts, a Star Story book is crafted from their unique birth chart, making it a one-of-a-kind treasure.</p>
-          </div>
-        </li>
-        <li class="ss-gift-reasons__item">
-          <span class="ss-gift-reasons__number">2</span>
-          <div class="ss-gift-reasons__item-content">
-            <strong class="ss-gift-reasons__item-title">It Shows You Care</strong>
-            <p class="ss-gift-reasons__item-desc">Giving someone their personalized astrology book shows you've put thought into understanding what makes them special.</p>
-          </div>
-        </li>
-        <li class="ss-gift-reasons__item">
-          <span class="ss-gift-reasons__number">3</span>
-          <div class="ss-gift-reasons__item-content">
-            <strong class="ss-gift-reasons__item-title">It Lasts Forever</strong>
-            <p class="ss-gift-reasons__item-desc">A beautifully printed book they'll return to again and again, discovering new insights about themselves.</p>
-          </div>
-        </li>
-      </ol>
-      <a href="#" class="ss-gift-reasons__cta">Order Now and Gift the Stars</a>
+<!-- SS Gift Reasons — rebuilt from star-story-theme/sections/image-text.liquid -->
+<!-- Settings hardcoded from product.json image_text_8TwU9w -->
+<!-- back_image: shopify://shop_images/1_20_1_1.png — using a dark background fallback -->
+<!-- image: Screenshot_2024-08-14... -> ss-astrologer-1.png (reuse) -->
+
+<div class="ws-img-text-shopify-section">
+    <div class="ws-img-text-container">
+        <div class="ws-img-text-container-text text-mobile">
+            <div class="ws-img-text-number">3 Reasons Why Star Story Book Makes the Most Thoughtful Gift</div>
+        </div>
+        <div class="ws-img-text-container-text order">
+            <div class="ws-img-text-number text-desktop">3 Reasons Why Star Story Book Makes the Most Thoughtful Gift</div>
+            <div class="ws-img-text-content"><p>Tailored to their unique birth chart, this beautifully crafted keepsake offers deep insights into their personality, strengths, and life path. It's the perfect gift for anyone fascinated by the stars and planets, providing a timeless treasure they will cherish forever.</p><ol><li>Custom-crafted to the recipient's birth chart</li><li>Book made to last forever</li><li>Detailed astrological readings for self discovery</li></ol></div>
+            <a class="ws-img-text-button" href="#product-id">Order Now and Gift the Stars</a>
+        </div>
+        <div class="ws-img-text-container-image">
+            <img class="ws-img-text-img" src="{{ 'ss-astrologer-1.png' | asset_url }}">
+        </div>
     </div>
-    <div class="ss-gift-reasons__image">
-      <img
-        src="{{ 'ss-group-299.png' | asset_url }}"
-        alt="Star Story personalized astrology books"
-        class="ss-gift-reasons__img"
-        loading="lazy"
-      >
-    </div>
-  </div>
 </div>
 
-{% stylesheet %}
-.ss-gift-reasons {
-  background-color: #1A3050;
-  padding: 80px 20px;
+<style>
+.ws-img-text-shopify-section {
+    background-color: #1a3050;
+    background-size: cover;
+    background-position: center;
 }
-
-.ss-gift-reasons__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 60px;
+.ws-img-text-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 100px 0;
 }
-
-.ss-gift-reasons__image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.ss-gift-reasons__img {
-  max-width: 450px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.ss-gift-reasons__text {
-  flex: 1;
-}
-
-.ss-gift-reasons__heading {
-  font-family: "Noto Serif", serif;
-  font-size: 32px;
-  color: #ffffff;
-  margin: 0 0 36px;
-  line-height: 1.3;
-}
-
-.ss-gift-reasons__list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.ss-gift-reasons__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.ss-gift-reasons__number {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Noto Serif", serif;
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 700;
-  margin-top: 2px;
-}
-
-.ss-gift-reasons__item-title {
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  color: #ffffff;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.ss-gift-reasons__item-desc {
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.6;
-  opacity: 0.85;
-}
-
-.ss-gift-reasons__cta {
-  display: inline-block;
-  background-color: #ffffff;
-  color: #1A3050;
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 14px 32px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.ss-gift-reasons__cta:hover {
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .ss-gift-reasons {
-    padding: 60px 20px;
-  }
-
-  .ss-gift-reasons__container {
+.ws-img-text-container-text {
+    display: flex;
     flex-direction: column;
-    gap: 40px;
-  }
-
-  .ss-gift-reasons__image {
-    order: -1;
-  }
-
-  .ss-gift-reasons__img {
-    max-width: 350px;
-  }
-
-  .ss-gift-reasons__heading {
-    font-size: 26px;
-    text-align: center;
-  }
-
-  .ss-gift-reasons__cta {
-    display: block;
-    text-align: center;
-  }
+    justify-content: center;
 }
-{% endstylesheet %}
+.ws-img-text-number {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Noto Serif";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.5px;
+    max-width: 365px;
+}
+.ws-img-text-content {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    max-width: 570px;
+}
+.ws-img-text-button {
+    border-radius: 50px;
+    background: #FFF;
+    padding: 12px 20px;
+    display: flex;
+    width: fit-content;
+    color: #0E1311;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2;
+    letter-spacing: 0.5px;
+    text-decoration: unset;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+.text-mobile {
+    display: none;
+}
+.text-desktop {
+    display: block;
+}
+@media screen and (max-width: 990px) {
+    .text-mobile { display: block; }
+    .text-desktop { display: none; }
+    .ws-img-text-container {
+        flex-direction: column;
+        padding: 0 13px;
+    }
+    img.ws-img-text-img {
+        display: block;
+        width: 100%;
+    }
+    .ws-img-text-container-text.order {
+        order: 1;
+    }
+    .ws-img-text-number {
+        text-align: center;
+        margin: 0 auto;
+        padding: 35px 0;
+        font-size: 26px;
+    }
+    .ws-img-text-content p {
+        text-align: center;
+    }
+    a.ws-img-text-button {
+        margin: 30px auto;
+    }
+}
+</style>
 
 {% schema %}
 {
-  "name": "SS - Gift Reasons",
+  "name": "SS Gift Reasons",
   "settings": []
 }
 {% endschema %}

@@ -1,114 +1,160 @@
-<section class="ss-logos">
-  <p class="ss-logos__heading">As Seen On</p>
-  <div class="ss-logos__marquee">
-    <div class="ss-logos__track">
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-quentin.png' | asset_url }}" alt="Quentin De Monge" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-buzzfeed.svg' | asset_url }}" alt="BuzzFeed" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-cosmopolitan.svg' | asset_url }}" alt="Cosmopolitan" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-the-skimm.svg' | asset_url }}" alt="The Skimm" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-people.svg' | asset_url }}" alt="People" loading="lazy">
-      </div>
+<!-- SS Scrolling Logos — rebuilt from star-story-theme/sections/scrolling-logo.liquid -->
+<!-- Settings hardcoded from product.json scrolling_logo_9HmJhn -->
 
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-quentin.png' | asset_url }}" alt="Quentin De Monge" loading="lazy">
+<style>
+  .ss-scrolling-logo-section {
+    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    background: #ffffff;
+    max-width: 120rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .ss-scrolling-logo-section {
+      padding-top: 36px;
+      padding-bottom: 36px;
+    }
+  }
+
+  .ss-scrolling-logo-title {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    padding: 0 15px;
+    font-size: 22px;
+    color: #121212;
+  }
+
+  @media screen and (min-width: 768px) {
+    .ss-scrolling-logo-title {
+      font-size: 30px;
+    }
+  }
+
+  .ss-scrolling-logo-cloud {
+    margin-top: 14px;
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .ss-scrolling-logo-cloud .slide-item {
+    display: block;
+    width: 100%;
+  }
+
+  .ss-scrolling-logo-cloud .slide-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .ss-marquee-horizontal {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .ss-track-horizontal {
+    padding: 0 10px;
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee-horizontal-left 10000ms linear infinite;
+  }
+
+  @keyframes marquee-horizontal-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  #ss-scrolling-logo-cloud-mobile {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .ss-scrolling-logo-cloud .slide-item {
+      flex: 0 0 140px;
+      width: 100%;
+    }
+    .ss-track-horizontal {
+      padding-left: 30px;
+      width: 100%;
+      gap: 30px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .ss-scrolling-logo-cloud {
+      padding: 0 15px;
+    }
+    #ss-scrolling-logo-cloud-mobile {
+      display: block;
+      font-size: 16px;
+    }
+    .ss-as-seen-image {
+      display: none !important;
+    }
+  }
+</style>
+
+<section class="ss-scrolling-logo-section">
+  <h2 class="ss-scrolling-logo-title" id="ss-scrolling-logo-cloud-mobile">As Seen On</h2>
+  <div class="ss-scrolling-logo-cloud" id="ss-scrolling-logo-cloud">
+    <div class="ss-marquee-horizontal">
+      <div class="ss-track-horizontal">
+        <a class="slide-item ss-as-seen-image" href="">
+          <img src="{{ 'ss-logo-quentin.png' | asset_url }}" alt="Quentin De Monge" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-buzzfeed.svg' | asset_url }}" alt="BuzzFeed" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-cosmopolitan.svg' | asset_url }}" alt="Cosmopolitan" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-the-skimm.svg' | asset_url }}" alt="The Skimm" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-people.svg' | asset_url }}" alt="People" loading="lazy">
+        </a>
       </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-buzzfeed.svg' | asset_url }}" alt="BuzzFeed" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-cosmopolitan.svg' | asset_url }}" alt="Cosmopolitan" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-the-skimm.svg' | asset_url }}" alt="The Skimm" loading="lazy">
-      </div>
-      <div class="ss-logos__item">
-        <img src="{{ 'ss-logo-people.svg' | asset_url }}" alt="People" loading="lazy">
+      <div class="ss-track-horizontal" aria-hidden="true">
+        <a class="slide-item ss-as-seen-image" href="">
+          <img src="{{ 'ss-logo-quentin.png' | asset_url }}" alt="Quentin De Monge" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-buzzfeed.svg' | asset_url }}" alt="BuzzFeed" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-cosmopolitan.svg' | asset_url }}" alt="Cosmopolitan" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-the-skimm.svg' | asset_url }}" alt="The Skimm" loading="lazy">
+        </a>
+        <a class="slide-item" href="">
+          <img src="{{ 'ss-logo-people.svg' | asset_url }}" alt="People" loading="lazy">
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-{% stylesheet %}
-.ss-logos {
-  background: #ffffff;
-  padding: 27px 0;
-  overflow: hidden;
-  width: 100%;
-}
-
-@media (min-width: 750px) {
-  .ss-logos {
-    padding: 36px 0;
-  }
-}
-
-.ss-logos__heading {
-  font-family: "DM Sans", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-align: center;
-  color: #888;
-  margin: 0 0 16px;
-}
-
-.ss-logos__marquee {
-  overflow: hidden;
-  width: 100%;
-}
-
-.ss-logos__track {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  width: max-content;
-  animation: marquee-scroll 20s linear infinite;
-}
-
-.ss-logos__item {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ss-logos__item img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: filter 0.3s, opacity 0.3s;
-}
-
-.ss-logos__item img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-{% endstylesheet %}
-
 {% schema %}
 {
-  "name": "SS - Scrolling Logos",
+  "name": "SS Scrolling Logos",
   "settings": []
 }
 {% endschema %}
