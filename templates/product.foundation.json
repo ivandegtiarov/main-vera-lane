@@ -569,7 +569,7 @@
             "title": "Does this work for my skin?",
             "content": "<p>Yes. Our adaptive formula is suitable for all fair to medium skin tones and is specifically formulated for mature skin types. It is designed to float over fine lines and wrinkles rather than settling into them, making it ideal for skin with texture, rosacea, or age spots.</p>",
             "faq_show_image": true,
-            "faq_image": "shopify://shop_images/Untitled_design_9.png",
+            "faq_image": "shopify://shop_images/Untitled_design_13.png",
             "faq_enable_popup": false,
             "faq_popup_trigger_text": "View full list",
             "faq_popup_title": "FULL LIST OF INGREDIENTS",
@@ -921,107 +921,6 @@
         "padding_left_right": 20
       }
     },
-    "lumen_benefits_section": {
-      "type": "lumen-benefits",
-      "name": "⚡Benefits Section",
-      "settings": {
-        "section_id": "",
-        "section_label": "Key benefits of Vera Lane",
-        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
-        "benefit_1_title": "Custom-Fit Color Technology",
-        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
-        "benefit_2_title": "Flawless, Ageless Finish",
-        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
-        "benefit_3_title": "Protective Skincare Hybrid",
-        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
-        "benefit_4_title": "16-Hour Weightless Wear",
-        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
-        "enable_animation": true,
-        "title_font_size_mobile": 22,
-        "title_font_size_desktop": 28,
-        "text_font_size_mobile": 14,
-        "text_font_size_desktop": 14,
-        "show_pointers_mobile": "none",
-        "show_pointers_tablet": "none",
-        "show_pointers_desktop": "block",
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80
-      }
-    },
-    "lumen_grid_benefits_section": {
-      "type": "lumen-grid-benefits",
-      "blocks": {
-        "benefit_1": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Adaptive Color Technology",
-            "description": "Our Intelligent Capsule Technology recognizes your unique undertones on contact. The white cream breaks down as you blend, releasing pigments that mirror your exact skin tone for a match that is yours and yours alone."
-          }
-        },
-        "benefit_2": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Engineered for Mature Texture",
-            "description": "Traditional makeup often highlights what you want to hide. Our formula is specifically designed to float over fine lines and enlarged pores rather than settling into them, creating a lifted, soft-focus effect that lasts all day."
-          }
-        },
-        "benefit_3": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "The \"Second Skin\" Glow",
-            "description": "Conceal redness, age spots, and uneven patches without the heavy \"mask\" feel of full-coverage foundation. This breathable, lightweight finish allows your natural radiance to shine through while providing a balanced, uniform complexion."
-          }
-        },
-        "benefit_4": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "16-Hour Hydration Lock",
-            "description": "Formulated to combat the \"mid-day dry out\" common with aging skin. This long-wear formula stays flexible and luminous for up to 16 hours, ensuring your skin looks as fresh in the evening as it did in the morning."
-          }
-        },
-        "benefit_5": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Clean & Breathable Pore Care",
-            "description": "A skin-first approach that won't lead to breakouts or irritation. Our non-comedogenic ingredients nourish the skin barrier while letting your pores breathe, making it safe and comfortable for daily wear."
-          }
-        },
-        "benefit_6": {
-          "type": "benefit_item",
-          "settings": {
-            "title": "Cruelty-Free",
-            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_1",
-        "benefit_2",
-        "benefit_3",
-        "benefit_4",
-        "benefit_5",
-        "benefit_6"
-      ],
-      "name": "⚡Grid Benefits Section",
-      "settings": {
-        "section_label": "Grid benefits section",
-        "main_title": "Beautiful Benefits",
-        "image": "shopify://shop_images/Untitled_design_62.png",
-        "enable_animation": true,
-        "title_font_size_mobile": 30,
-        "title_font_size_desktop": 40,
-        "item_title_font_size_mobile": 16,
-        "item_title_font_size_desktop": 18,
-        "item_text_font_size_mobile": 14,
-        "item_text_font_size_desktop": 14,
-        "padding_top_mobile": 56,
-        "padding_bottom_mobile": 56,
-        "padding_top_desktop": 96,
-        "padding_bottom_desktop": 96
-      }
-    },
     "vl_review_cards_section": {
       "type": "vl-review-cards",
       "blocks": {
@@ -1201,6 +1100,107 @@
         "name_color": "#374151"
       }
     },
+    "lumen_benefits_section": {
+      "type": "lumen-benefits",
+      "name": "⚡Benefits Section",
+      "settings": {
+        "section_id": "",
+        "section_label": "Key benefits of Vera Lane",
+        "image": "shopify://shop_images/AdaptstoYourSkinToneInstantly_1.png",
+        "benefit_1_title": "Custom-Fit Color Technology",
+        "benefit_1_text": "Say goodbye to the guesswork of shade matching. Our innovative formula releases micro-encapsulated pigments upon application, seamlessly transforming from white to your exact skin tone for a match that feels uniquely yours.",
+        "benefit_2_title": "Flawless, Ageless Finish",
+        "benefit_2_text": "Designed specifically for mature skin, this lightweight foundation glides over fine lines and wrinkles rather than settling into them. It instantly neutralizes redness and blurs imperfections, leaving you with a smooth, radiant, and youthful complexion.",
+        "benefit_3_title": "Protective Skincare Hybrid",
+        "benefit_3_text": "More than just makeup, this is daily defense. Enriched with SPF 15 and hydrating botanicals, it shields your delicate skin from sun damage while locking in moisture, ensuring you look fresh and feel nourished all day long.",
+        "benefit_4_title": "16-Hour Weightless Wear",
+        "benefit_4_text": "Enjoy confidence that lasts from morning to night. Our breathable, non-comedogenic formula resists heat and humidity for up to 16 hours, delivering durable coverage that never feels heavy, cakey, or mask-like.",
+        "enable_animation": true,
+        "title_font_size_mobile": 22,
+        "title_font_size_desktop": 28,
+        "text_font_size_mobile": 14,
+        "text_font_size_desktop": 14,
+        "show_pointers_mobile": "none",
+        "show_pointers_tablet": "none",
+        "show_pointers_desktop": "block",
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80
+      }
+    },
+    "lumen_grid_benefits_section": {
+      "type": "lumen-grid-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Adaptive Color Technology",
+            "description": "Our Intelligent Capsule Technology recognizes your unique undertones on contact. The white cream breaks down as you blend, releasing pigments that mirror your exact skin tone for a match that is yours and yours alone."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Engineered for Mature Texture",
+            "description": "Traditional makeup often highlights what you want to hide. Our formula is specifically designed to float over fine lines and enlarged pores rather than settling into them, creating a lifted, soft-focus effect that lasts all day."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "The \"Second Skin\" Glow",
+            "description": "Conceal redness, age spots, and uneven patches without the heavy \"mask\" feel of full-coverage foundation. This breathable, lightweight finish allows your natural radiance to shine through while providing a balanced, uniform complexion."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "16-Hour Hydration Lock",
+            "description": "Formulated to combat the \"mid-day dry out\" common with aging skin. This long-wear formula stays flexible and luminous for up to 16 hours, ensuring your skin looks as fresh in the evening as it did in the morning."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Clean & Breathable Pore Care",
+            "description": "A skin-first approach that won't lead to breakouts or irritation. Our non-comedogenic ingredients nourish the skin barrier while letting your pores breathe, making it safe and comfortable for daily wear."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "Kindness is beautiful. We are proud to be 100% cruelty-free, meaning we never test our products or ingredients on animals at any stage of production."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ],
+      "name": "⚡Grid Benefits Section",
+      "settings": {
+        "section_label": "Grid benefits section",
+        "main_title": "Beautiful Benefits",
+        "image": "shopify://shop_images/Untitled_design_62.png",
+        "enable_animation": true,
+        "title_font_size_mobile": 30,
+        "title_font_size_desktop": 40,
+        "item_title_font_size_mobile": 16,
+        "item_title_font_size_desktop": 18,
+        "item_text_font_size_mobile": 14,
+        "item_text_font_size_desktop": 14,
+        "padding_top_mobile": 56,
+        "padding_bottom_mobile": 56,
+        "padding_top_desktop": 96,
+        "padding_bottom_desktop": 96
+      }
+    },
     "lumen_faq_section": {
       "type": "lumen-faq",
       "blocks": {
@@ -1312,7 +1312,8 @@
         "heading": "Complete Your Look",
         "subheading": "Add our professional makeup brush to your order",
         "cta_text": "YES, ADD FOR 50% OFF",
-        "skip_text": "No thanks, continue to checkout"
+        "skip_text": "No thanks, continue to checkout",
+        "timer_minutes": 5
       }
     }
   },
