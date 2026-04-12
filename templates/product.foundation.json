@@ -1302,6 +1302,69 @@
         "padding_left_right_desktop": 72
       }
     },
+    "vl_message_match_hero": {
+      "type": "vl-message-match-hero",
+      "blocks": {
+        "variant_a": {
+          "type": "variant",
+          "settings": {
+            "variant_key": "a",
+            "headline": "If you gave up on foundation, there was probably a good reason. Three of them, actually.",
+            "subhead": "Settled into every fine line. Turned orange by lunch. Felt like a mask by noon. We know — because that's what the women who wear Vera Lane told us before they tried it.",
+            "cta_text": "Try it risk-free — 30-day shade match guarantee",
+            "use_columns": false,
+            "col_1_title": "",
+            "col_1_text": "",
+            "col_2_title": "",
+            "col_2_text": ""
+          }
+        },
+        "variant_b": {
+          "type": "variant",
+          "settings": {
+            "variant_key": "b",
+            "headline": "Foundation that doesn't turn orange by lunch. Not because of a better shade — because of a different mechanism.",
+            "subhead": "Traditional foundations contain pre-mixed pigments that oxidize throughout the day, which is why your shade keeps drifting darker. Vera Lane releases pigment on contact with your skin — so there's no pre-mixed shade to drift.",
+            "cta_text": "See the shade match guarantee",
+            "use_columns": false,
+            "col_1_title": "",
+            "col_1_text": "",
+            "col_2_title": "",
+            "col_2_text": ""
+          }
+        },
+        "variant_c": {
+          "type": "variant",
+          "settings": {
+            "variant_key": "c",
+            "headline": "Not a new face. Just your own face on a good day.",
+            "subhead": "A foundation that looks like skin, not makeup. It doesn't promise to turn back the clock — it just covers what you want covered and disappears into your own tone.",
+            "cta_text": "Try it for 30 days",
+            "use_columns": false,
+            "col_1_title": "",
+            "col_1_text": "",
+            "col_2_title": "",
+            "col_2_text": ""
+          }
+        },
+        "variant_d": {
+          "type": "variant",
+          "settings": {
+            "variant_key": "d",
+            "headline": "Here's what this foundation is. And isn't.",
+            "subhead": "",
+            "cta_text": "Try it — if it doesn't work, send it back",
+            "use_columns": true,
+            "col_1_title": "What it is",
+            "col_1_text": "Fair to medium tones only. Light to medium buildable coverage. Designed to not settle into fine lines. Formulated for mature skin with bisabolol, glycerin, and vitamin E. Backed by a 30-day money-back guarantee if it doesn't match your shade.",
+            "col_2_title": "What it isn't",
+            "col_2_text": "Not for deep skin tones. Not a full-coverage foundation. Not a retinol or peptide treatment. Not a miracle. Not revolutionary. Just good."
+          }
+        }
+      },
+      "block_order": ["variant_a", "variant_b", "variant_c", "variant_d"],
+      "settings": {}
+    },
     "vl_upsell_modal": {
       "type": "vl-upsell-modal",
       "settings": {
@@ -1320,6 +1383,7 @@
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
+    "vl_message_match_hero",
     "lumen_pdp_hero_WWxn3E",
     "lumen_before_after_section",
     "lumen_image_slider_section",

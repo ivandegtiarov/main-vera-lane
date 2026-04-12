@@ -1,0 +1,264 @@
+{% comment %}
+  VL Message Match Hero
+  ---------------------
+  Shows a variant-specific hero headline/subhead when ?v=a/b/c/d is in the URL.
+  Hides the default title in lumen-pdp-hero so there's no redundancy.
+  When no ?v= param, section is invisible and the default PDP renders normally.
+{% endcomment %}
+
+<style>
+  .vl-mmh {
+    display: none;
+    padding: 48px 24px 32px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: var(--font-body--family, 'Montserrat', sans-serif);
+  }
+
+  .vl-mmh.is-active {
+    display: block;
+  }
+
+  .vl-mmh__headline {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1a1a1a;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .vl-mmh__subhead {
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 28px;
+    font-weight: 400;
+  }
+
+  .vl-mmh__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    text-align: left;
+    margin: 0 0 28px;
+  }
+
+  .vl-mmh__col-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+  }
+
+  .vl-mmh__col-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+  }
+
+  .vl-mmh__cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  .vl-mmh__cta:hover {
+    opacity: 0.85;
+  }
+
+  .vl-mmh__divider {
+    width: 40px;
+    height: 2px;
+    background: #e0d6cf;
+    margin: 0 auto 24px;
+  }
+
+  /* Hide the default title and description in lumen-pdp-hero when variant is active */
+  body.has-mmh .lumen-pdp-hero__title {
+    display: none;
+  }
+
+  body.has-mmh .lumen-pdp-hero__description {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vl-mmh {
+      padding: 32px 20px 24px;
+    }
+
+    .vl-mmh__columns {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>
+
+{% for block in section.blocks %}
+  <div
+    class="vl-mmh"
+    data-mmh-variant="{{ block.settings.variant_key }}"
+    id="vl-mmh-{{ block.settings.variant_key }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="vl-mmh__divider"></div>
+
+    {% if block.settings.headline != blank %}
+      <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+    {% endif %}
+
+    {% if block.settings.use_columns %}
+      <div class="vl-mmh__columns">
+        <div>
+          {% if block.settings.col_1_title != blank %}
+            <p class="vl-mmh__col-title">{{ block.settings.col_1_title }}</p>
+          {% endif %}
+          {% if block.settings.col_1_text != blank %}
+            <p class="vl-mmh__col-text">{{ block.settings.col_1_text }}</p>
+          {% endif %}
+        </div>
+        <div>
+          {% if block.settings.col_2_title != blank %}
+            <p class="vl-mmh__col-title">{{ block.settings.col_2_title }}</p>
+          {% endif %}
+          {% if block.settings.col_2_text != blank %}
+            <p class="vl-mmh__col-text">{{ block.settings.col_2_text }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      {% if block.settings.subhead != blank %}
+        <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
+      {% endif %}
+    {% endif %}
+
+    <a href="#shopify-section-lumen_pdp_hero_WWxn3E" class="vl-mmh__cta" data-mmh-cta>
+      {{ block.settings.cta_text | default: 'Shop Now' }}
+    </a>
+  </div>
+{% endfor %}
+
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var variant = params.get('v');
+    if (!variant) return;
+
+    var hero = document.querySelector('[data-mmh-variant="' + variant + '"]');
+    if (!hero) return;
+
+    // Show the matching hero
+    hero.classList.add('is-active');
+    document.body.classList.add('has-mmh');
+
+    // Smooth scroll CTA
+    hero.querySelector('[data-mmh-cta]').addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector('.lumen-pdp-hero__button');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // GA4 tracking
+    if (typeof gtag === 'function') {
+      gtag('event', 'message_match_variant_viewed', {
+        variant_key: variant
+      });
+    }
+
+    // Meta Pixel tracking
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'MessageMatchVariantViewed', {
+        variant_key: variant
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "VL Message Match Hero",
+  "tag": "section",
+  "class": "vl-message-match-hero-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "variant",
+      "name": "Hero Variant",
+      "settings": [
+        {
+          "type": "text",
+          "id": "variant_key",
+          "label": "Variant key",
+          "info": "Matches the ?v= URL parameter (e.g., a, b, c, d)"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline"
+        },
+        {
+          "type": "textarea",
+          "id": "subhead",
+          "label": "Subhead"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA button text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_columns",
+          "label": "Use two-column layout",
+          "default": false,
+          "info": "For the skeptic variant (what it is / what it isn't)"
+        },
+        {
+          "type": "text",
+          "id": "col_1_title",
+          "label": "Column 1 title",
+          "info": "Only used when two-column layout is enabled"
+        },
+        {
+          "type": "textarea",
+          "id": "col_1_text",
+          "label": "Column 1 text"
+        },
+        {
+          "type": "text",
+          "id": "col_2_title",
+          "label": "Column 2 title"
+        },
+        {
+          "type": "textarea",
+          "id": "col_2_text",
+          "label": "Column 2 text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VL Message Match Hero"
+    }
+  ]
+}
+{% endschema %}
