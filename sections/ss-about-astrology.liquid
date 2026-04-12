@@ -1,0 +1,90 @@
+<div class="ss-about-astrology">
+  <div class="ss-about-astrology__container">
+    <div class="ss-about-astrology__grid">
+      <div class="ss-about-astrology__item">
+        <img class="ss-about-astrology__icon" src="{{ 'ss-icon-frame-1.svg' | asset_url }}" alt="What Is Astrology">
+        <h3 class="ss-about-astrology__title">What Is Astrology</h3>
+        <p class="ss-about-astrology__desc">Astrology is the study of the movements and relative positions of celestial bodies and their influence on human affairs and natural events. It is one of the oldest sciences, dating back thousands of years.</p>
+      </div>
+      <div class="ss-about-astrology__item">
+        <img class="ss-about-astrology__icon" src="{{ 'ss-icon-frame-2.svg' | asset_url }}" alt="How Does Astrology Work">
+        <h3 class="ss-about-astrology__title">How Does Astrology Work</h3>
+        <p class="ss-about-astrology__desc">Astrology works by mapping the positions of the Sun, Moon, planets, and other celestial bodies at the exact time and place of your birth. This creates your natal chart — a unique cosmic fingerprint.</p>
+      </div>
+      <div class="ss-about-astrology__item">
+        <img class="ss-about-astrology__icon" src="{{ 'ss-icon-frame-3.svg' | asset_url }}" alt="The Science">
+        <h3 class="ss-about-astrology__title">The Science</h3>
+        <p class="ss-about-astrology__desc">Modern astrology draws on centuries of astronomical observation and psychological insight. While not a hard science, it provides a framework for self-reflection and understanding personality patterns.</p>
+      </div>
+      <div class="ss-about-astrology__item">
+        <img class="ss-about-astrology__icon" src="{{ 'ss-icon-frame-4.svg' | asset_url }}" alt="How Astrology Can Help You">
+        <h3 class="ss-about-astrology__title">How Astrology Can Help You</h3>
+        <p class="ss-about-astrology__desc">Understanding your birth chart can illuminate your strengths, challenges, and life themes. Many people find astrology helpful for self-awareness, decision-making, and understanding their relationships.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.ss-about-astrology {
+  background: #fff;
+  padding: 60px 20px;
+  margin-bottom: 70px;
+}
+
+.ss-about-astrology__container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.ss-about-astrology__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.ss-about-astrology__item {
+  text-align: center;
+}
+
+.ss-about-astrology__icon {
+  height: 40px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.ss-about-astrology__title {
+  font-family: "Noto Serif", serif;
+  color: #1a3050;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.ss-about-astrology__desc {
+  font-family: "DM Sans", sans-serif;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .ss-about-astrology__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ss-about-astrology__grid {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SS - About Astrology",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "ss_hero": {
+      "type": "ss-hero",
+      "settings": {}
+    },
+    "ss_scrolling_logos": {
+      "type": "ss-scrolling-logos",
+      "settings": {}
+    },
+    "ss_book_preview": {
+      "type": "ss-book-preview",
+      "settings": {}
+    },
+    "ss_video_testimonials": {
+      "type": "ss-video-testimonials",
+      "settings": {}
+    },
+    "ss_how_it_works": {
+      "type": "ss-how-it-works",
+      "settings": {}
+    },
+    "ss_features": {
+      "type": "ss-features",
+      "settings": {}
+    },
+    "ss_gift_reasons": {
+      "type": "ss-gift-reasons",
+      "settings": {}
+    },
+    "ss_astrologers": {
+      "type": "ss-astrologers",
+      "settings": {}
+    },
+    "ss_before_after": {
+      "type": "ss-before-after",
+      "settings": {}
+    },
+    "ss_about_astrology": {
+      "type": "ss-about-astrology",
+      "settings": {}
+    },
+    "ss_faq": {
+      "type": "ss-faq",
+      "settings": {}
+    },
+    "ss_footer": {
+      "type": "ss-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "ss_hero",
+    "ss_scrolling_logos",
+    "ss_book_preview",
+    "ss_video_testimonials",
+    "ss_how_it_works",
+    "ss_features",
+    "ss_gift_reasons",
+    "ss_astrologers",
+    "ss_before_after",
+    "ss_about_astrology",
+    "ss_faq",
+    "ss_footer"
+  ]
+}

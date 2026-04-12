@@ -1,0 +1,92 @@
+<section class="ss-video-testimonials">
+  <div class="ss-video-testimonials__container">
+    <h2 class="ss-video-testimonials__title">What Our Customers Say</h2>
+    <div class="ss-video-testimonials__grid">
+      {%- for i in (1..4) -%}
+        <div class="ss-video-testimonials__card">
+          <img
+            class="ss-video-testimonials__thumbnail"
+            src="{{ 'ss-video-thumb-' | append: i | append: '.jpg' | asset_url }}"
+            alt="Customer video testimonial {{ i }}"
+            loading="lazy"
+          >
+          <div class="ss-video-testimonials__play">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.5)"/>
+              <polygon points="24,18 24,42 44,30" fill="#ffffff"/>
+            </svg>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.ss-video-testimonials {
+  background: #ffffff;
+  padding: 60px 20px;
+}
+
+.ss-video-testimonials__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ss-video-testimonials__title {
+  font-family: "Noto Serif", serif;
+  color: #1a3050;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 40px;
+}
+
+.ss-video-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.ss-video-testimonials__card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ss-video-testimonials__thumbnail {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.ss-video-testimonials__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .ss-video-testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .ss-video-testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SS - Video Testimonials",
+  "settings": []
+}
+{% endschema %}

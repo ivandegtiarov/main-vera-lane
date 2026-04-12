@@ -1,0 +1,168 @@
+<div class="ss-how-it-works">
+  <div class="ss-how-it-works__container">
+    <h2 class="ss-how-it-works__title">How It Works</h2>
+    <div class="ss-how-it-works__steps">
+      <div class="ss-how-it-works__step">
+        <div class="ss-how-it-works__icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 8H9L11 20H23L25 10H13" stroke="#1a3050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="13" cy="24" r="2" stroke="#1a3050" stroke-width="2"/>
+            <circle cx="21" cy="24" r="2" stroke="#1a3050" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3 class="ss-how-it-works__step-title">Place Your Order</h3>
+        <p class="ss-how-it-works__step-desc">Provide your birth details and begin your cosmic journey</p>
+      </div>
+      <div class="ss-how-it-works__connector"></div>
+      <div class="ss-how-it-works__step">
+        <div class="ss-how-it-works__icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="12" r="5" stroke="#1a3050" stroke-width="2"/>
+            <path d="M6 28C6 22.48 10.48 18 16 18C21.52 18 26 22.48 26 28" stroke="#1a3050" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ss-how-it-works__step-title">Our Astrologers Review</h3>
+        <p class="ss-how-it-works__step-desc">Expert analysis of your natal chart by certified astrologers</p>
+      </div>
+      <div class="ss-how-it-works__connector"></div>
+      <div class="ss-how-it-works__step">
+        <div class="ss-how-it-works__icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 4H20L24 8V28H8V4Z" stroke="#1a3050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 14H20M12 18H20M12 22H16" stroke="#1a3050" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 4V8H24" stroke="#1a3050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="ss-how-it-works__step-title">Your Book Is Created</h3>
+        <p class="ss-how-it-works__step-desc">Custom-designed and printed based on your unique birth chart</p>
+      </div>
+      <div class="ss-how-it-works__connector"></div>
+      <div class="ss-how-it-works__step">
+        <div class="ss-how-it-works__icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="20" height="16" rx="2" stroke="#1a3050" stroke-width="2"/>
+            <path d="M6 14L16 20L26 14" stroke="#1a3050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 10V6H20V10" stroke="#1a3050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="ss-how-it-works__step-title">You Receive Your Masterpiece</h3>
+        <p class="ss-how-it-works__step-desc">A beautiful, personalized astrology book delivered to your door</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.ss-how-it-works {
+  background: #fff;
+  padding: 80px 20px;
+}
+
+.ss-how-it-works__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ss-how-it-works__title {
+  font-family: "Noto Serif", serif;
+  color: #1a3050;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 60px;
+}
+
+.ss-how-it-works__steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ss-how-it-works__step {
+  flex: 1;
+  max-width: 240px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.ss-how-it-works__connector {
+  flex: 0 0 auto;
+  width: 60px;
+  border-top: 2px dashed #ccc;
+  margin-top: 24px;
+}
+
+.ss-how-it-works__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid #d0d5dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  background: #fff;
+}
+
+.ss-how-it-works__number {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #1a3050;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: "Noto Serif", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3050;
+}
+
+.ss-how-it-works__step-title {
+  font-family: "Noto Serif", serif;
+  color: #1a3050;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.ss-how-it-works__step-desc {
+  font-family: "DM Sans", sans-serif;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ss-how-it-works__steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ss-how-it-works__step {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .ss-how-it-works__connector {
+    width: 0;
+    height: 40px;
+    border-top: none;
+    border-left: 2px dashed #ccc;
+    margin-top: 0;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SS - How It Works",
+  "settings": []
+}
+{% endschema %}
