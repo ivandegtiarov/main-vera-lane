@@ -1,173 +1,154 @@
-<div class="ss-astrologers">
-  <div class="ss-astrologers__container">
-    <div class="ss-astrologers__text">
-      <h2 class="ss-astrologers__heading">Designed by Expert Astrologers</h2>
-      <p class="ss-astrologers__description">Every Star Story book is crafted under the guidance of certified astrologers who bring decades of experience in natal chart interpretation. Our team ensures that each page of your personalized book reflects accurate, meaningful insights drawn from the positions of celestial bodies at the exact moment of your birth.</p>
-      <h3 class="ss-astrologers__subheading">Meet Our Astrologers</h3>
+<!-- SS Astrologers — rebuilt from star-story-theme/sections/author-text.liquid -->
+<!-- Settings hardcoded from product.json author_text_m3KF7Y -->
+
+<div class="ws-author-text-shopify-section">
+    <div class="ws-author-text-container">
+        <div class="ws-author-text-container-text">
+            <div class="ws-author-text-header">Designed by Expert Astrologers</div>
+            <div class="ws-author-text-content text-desktop"><p>Our astrology book is expertly personalized just for you. Using your birth details, skilled astrologers craft a unique guide that's tailored to your astrological profile, offering insights and guidance that truly reflect your cosmic journey.</p></div>
+            <div class="ws-author-text-smalltext text-desktop">It's more than a book—it's a reflection of your personal star map.</div>
+        </div>
+        <div class="ws-author-text-container-images">
+            <div class="ws-author-text-container-image img-1">
+                <img class="ws-author-text-img" src="{{ 'ss-astrologer-2.png' | asset_url }}">
+                <div class="ws-author-text-name">Sophia Hartley</div>
+                <div class="ws-author-text-title-label">Professional Astrologer</div>
+            </div>
+            <div class="ws-author-text-container-image img-2">
+                <img class="ws-author-text-img" src="{{ 'ss-astrologer-3.png' | asset_url }}">
+                <div class="ws-author-text-name">Maya Fitzgerald</div>
+                <div class="ws-author-text-title-label">Astrological Consultant and Author</div>
+            </div>
+        </div>
+        <div class="ws-author-text-container-text">
+            <div class="ws-author-text-content text-mobile"><p>Our astrology book is expertly personalized just for you. Using your birth details, skilled astrologers craft a unique guide that's tailored to your astrological profile, offering insights and guidance that truly reflect your cosmic journey.</p></div>
+            <div class="ws-author-text-smalltext text-mobile">It's more than a book—it's a reflection of your personal star map.</div>
+        </div>
     </div>
-    <div class="ss-astrologers__cards">
-      <div class="ss-astrologers__card ss-astrologers__card--first">
-        <img
-          class="ss-astrologers__card-image"
-          src="{{ 'ss-astrologer-1.png' | asset_url }}"
-          alt="Sophia Hartley"
-          loading="lazy"
-          width="200"
-          height="200"
-        >
-        <p class="ss-astrologers__card-name">Sophia Hartley</p>
-        <p class="ss-astrologers__card-title">Professional Astrologer</p>
-      </div>
-      <div class="ss-astrologers__card ss-astrologers__card--second">
-        <img
-          class="ss-astrologers__card-image"
-          src="{{ 'ss-astrologer-2.png' | asset_url }}"
-          alt="Maya Fitzgerald"
-          loading="lazy"
-          width="200"
-          height="200"
-        >
-        <p class="ss-astrologers__card-name">Maya Fitzgerald</p>
-        <p class="ss-astrologers__card-title">Astrological Consultant and Author</p>
-      </div>
-    </div>
-  </div>
 </div>
 
-{% stylesheet %}
-.ss-astrologers {
-  background-color: #f0ebe1;
-  padding: 100px 20px;
+<style>
+.ws-author-text-shopify-section {
+    background: #f0ebe1;
 }
-
-.ss-astrologers__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 60px;
+.ws-author-text-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 100px 0;
 }
-
-.ss-astrologers__text {
-  flex: 1;
-}
-
-.ss-astrologers__heading {
-  font-family: "Noto Serif", serif;
-  color: #1a3050;
-  font-size: 32px;
-  line-height: 1.3;
-  margin: 0 0 20px;
-}
-
-.ss-astrologers__description {
-  font-family: "DM Sans", sans-serif;
-  color: #292929;
-  font-size: 16px;
-  line-height: 1.7;
-  margin: 0 0 28px;
-}
-
-.ss-astrologers__subheading {
-  font-family: "Noto Serif", serif;
-  color: #1a3050;
-  font-size: 22px;
-  margin: 0;
-}
-
-.ss-astrologers__cards {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.ss-astrologers__card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 16px;
-  text-align: center;
-  width: 230px;
-}
-
-.ss-astrologers__card--first {
-  position: relative;
-  bottom: 49px;
-  z-index: 2;
-}
-
-.ss-astrologers__card--second {
-  position: relative;
-  top: 49px;
-  margin-left: -30px;
-  z-index: 1;
-}
-
-.ss-astrologers__card-image {
-  width: 200px;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-  margin: 0 auto 12px;
-}
-
-.ss-astrologers__card-name {
-  font-family: "DM Sans", sans-serif;
-  color: #1a3050;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 4px;
-}
-
-.ss-astrologers__card-title {
-  font-family: "DM Sans", sans-serif;
-  color: #292929;
-  font-size: 14px;
-  margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .ss-astrologers {
-    padding: 45px 20px;
-  }
-
-  .ss-astrologers__container {
+.ws-author-text-container-text {
+    display: flex;
     flex-direction: column;
-    gap: 40px;
-  }
-
-  .ss-astrologers__heading {
-    font-size: 26px;
-  }
-
-  .ss-astrologers__cards {
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  .ss-astrologers__card--first {
-    bottom: 0;
-  }
-
-  .ss-astrologers__card--second {
-    top: 0;
-    margin-left: 0;
-  }
-
-  .ss-astrologers__card {
-    width: 48%;
-  }
-
-  .ss-astrologers__card-image {
-    width: 100%;
-  }
+    justify-content: center;
 }
-{% endstylesheet %}
+.ws-author-text-container-images {
+    display: flex;
+    gap: 44px;
+}
+.ws-author-text-name {
+    color: #00026E;
+    font-family: "DM Sans";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 13px 0;
+}
+.ws-author-text-title-label {
+    color: #292929;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+}
+.ws-author-text-smalltext {
+    color: #292929;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24.7px;
+}
+.ws-author-text-container-image {
+    padding: 24px;
+    background: white;
+}
+.ws-author-text-header {
+    color: #000;
+    font-family: "Noto Serif";
+    font-size: 35.38px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.1;
+    max-width: 400px;
+    letter-spacing: -1px;
+}
+.ws-author-text-content {
+    color: #292929;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 340px;
+}
+.ws-author-text-container-image.img-1 {
+    bottom: 49px;
+    position: relative;
+}
+.ws-author-text-container-image.img-2 {
+    top: 49px;
+    position: relative;
+}
+.text-mobile {
+    display: none;
+}
+.text-desktop {
+    display: block;
+}
+@media screen and (max-width: 990px) {
+    .text-mobile { display: block; }
+    .text-desktop { display: none; }
+    .ws-author-text-container {
+        padding: 45px 0;
+        flex-direction: column;
+    }
+    .ws-author-text-header {
+        padding-bottom: 45px;
+        text-align: center;
+    }
+    .ws-author-text-container-image.img-1 {
+        bottom: 0;
+    }
+    .ws-author-text-container-image.img-2 {
+        top: 0;
+    }
+    .ws-author-text-container-images {
+        overflow-x: scroll;
+        gap: 26px;
+        padding-left: 20px;
+    }
+    .ws-author-text-container-text {
+        text-align: center;
+    }
+    .ws-author-text-content {
+        max-width: 100%;
+        padding: 0 20px;
+        margin-top: 20px;
+    }
+    img.ws-author-text-img {
+        display: block;
+        width: 238px;
+    }
+}
+</style>
 
 {% schema %}
 {
-  "name": "SS - Astrologers",
+  "name": "SS Astrologers",
   "settings": []
 }
 {% endschema %}

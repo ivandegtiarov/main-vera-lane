@@ -1,178 +1,353 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<!-- SS Book Preview — rebuilt from star-story-theme/sections/ws-inside.liquid -->
+<!-- Settings hardcoded from product.json ws_inside_yrfRUf -->
 
-<section class="ss-book-preview">
-  <div class="ss-book-preview__container">
-    <h2 class="ss-book-preview__heading">See What's Inside</h2>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
 
-    <div class="swiper ss-book-preview__swiper">
-      <div class="swiper-wrapper">
+<div class="whats_inside">
+    <h1>See What's Inside</h1>
 
-        {%- assign slides = "Sun Sign|Core Identity and Ego|ss-page-sun-sign.webp,Jupiter Sign|Luck and Growth|ss-page-jupiter-sign.webp,Rising Sign|Outer Persona|ss-page-rising-sign.webp,Saturn Sign|Responsibility|ss-page-saturn-sign.webp,Moon Sign|Emotions and Instincts|ss-page-moon-sign.webp,Uranus Sign|Innovation|ss-page-uranus-sign.webp,Mercury Sign|Communications|ss-page-mercury-sign.webp,Neptune Sign|Dreams and Spirituality|ss-page-neptune-sign.webp,Venus Sign|Love and Beauty|ss-page-venus-sign.webp,Pluto Sign|Transformation|ss-page-pluto-sign.webp,Mars Sign|Drive and Ambition|ss-page-mars-sign.webp,Midheaven|Career and Reputation|ss-page-midheaven.webp" | split: "," -%}
+    <div class="whats_inside-slider-wrapper">
+        <div class="whats_inside-slider swiper">
+            <div class="swiper-wrapper">
 
-        {%- for slide in slides -%}
-          {%- assign parts = slide | split: "|" -%}
-          {%- assign slide_title = parts[0] -%}
-          {%- assign slide_desc = parts[1] -%}
-          {%- assign slide_image = parts[2] -%}
-          <div class="swiper-slide ss-book-preview__slide">
-            <div class="ss-book-preview__image-wrap">
-              <img
-                class="ss-book-preview__image"
-                src="{{ slide_image | asset_url }}"
-                alt="{{ slide_title }} — {{ slide_desc }}"
-                loading="lazy"
-              />
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-sun-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Core Identity and Ego</div>
+                    <div class="whats_inside-slide-content"><p>The Sun represents your core identity and ego. It governs your sense of self, purpose, and what drives you in life. Your Sun Sign is the essence of who you are, revealing your primary motivations and the central themes of your life.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-jupiter-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Luck and Growth</div>
+                    <div class="whats_inside-slide-content"><p>Jupiter symbolizes luck, growth, and expansion. It influences your optimism, belief systems, and opportunities for abundance. Your Jupiter Sign reflects where you seek personal growth and how you attract fortune.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-rising-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Outer Persona and First Impressions</div>
+                    <div class="whats_inside-slide-content"><p>The Ascendant represents your outer persona and first impressions. It influences how you present yourself and interact with the world. Your Rising Sign shows how others perceive you and the energy you project outward.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-saturn-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Responsibility and Discipline</div>
+                    <div class="whats_inside-slide-content"><p>Saturn embodies responsibility, discipline, and structure. It governs your sense of duty, boundaries, and long-term goals. Your Saturn Sign reveals where you face challenges, learn life lessons, and build lasting achievements.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-moon-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Emotions and Instincts</div>
+                    <div class="whats_inside-slide-content"><p>Your Moon Sign governs your emotional landscape. It reflects your deepest instincts, feelings, and how you nurture yourself and others. It shapes your emotional responses and reveals what makes you feel secure.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-uranus-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Innovation and Creativity</div>
+                    <div class="whats_inside-slide-content"><p>Uranus represents innovation, uniqueness, and creativity. It governs sudden changes, breakthroughs, and your quest for freedom. Your Uranus Sign shows where you seek originality and how you embrace change and independence.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-mercury-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Communications and Thought Process</div>
+                    <div class="whats_inside-slide-content"><p>Mercury rules communication, thought, and intellect. It influences how you express ideas, process information, and connect with others. Your Mercury Sign reveals your mental approach and style of communication.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-neptune-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Dreams and Spirituality</div>
+                    <div class="whats_inside-slide-content"><p>Neptune symbolizes dreams, imagination, and spirituality. It influences your intuition, creativity, and idealism. Your Neptune Sign reflects your spiritual insights, artistic inspiration, and how you connect with the mystical.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-venus-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Love, Beauty, and Values</div>
+                    <div class="whats_inside-slide-content"><p>Venus symbolizes love, beauty, and values. It governs your approach to relationships, your sense of aesthetics, and what you find pleasurable. Your Venus Sign indicates your style of love and how you attract what you desire.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-pluto-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Transformation and Rebirth</div>
+                    <div class="whats_inside-slide-content"><p>Pluto represents transformation, power, and rebirth. It governs deep change, personal growth, and your capacity for regeneration. Your Pluto Sign reveals where you experience profound shifts and how you harness power for renewal.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-mars-sign.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Drive and Ambition</div>
+                    <div class="whats_inside-slide-content"><p>Mars represents your drive, ambition, and assertiveness. It governs your physical energy, how you take action, and your approach to challenges. Your Mars Sign shows how you assert yourself and pursue your desires.</p></div>
+                </div>
+
+                <div class="whats_inside-slide swiper-slide">
+                    <img class="whats_inside-slide-img" src="{{ 'ss-page-midheaven.webp' | asset_url }}">
+                    <div class="whats_inside-slide-title">Career and Reputation</div>
+                    <div class="whats_inside-slide-content"><p>The Midheaven signifies your career, public image, and life goals. It governs your aspirations, achievements, and how you are perceived in the wider world. Your Midheaven reveals your professional path and your approach to success.</p></div>
+                </div>
+
             </div>
-            <h3 class="ss-book-preview__title">{{ slide_title }}</h3>
-            <p class="ss-book-preview__description">{{ slide_desc }}</p>
-          </div>
-        {%- endfor -%}
-
-      </div>
-
-      <div class="swiper-pagination ss-book-preview__pagination"></div>
-      <div class="swiper-button-prev ss-book-preview__nav ss-book-preview__nav--prev"></div>
-      <div class="swiper-button-next ss-book-preview__nav ss-book-preview__nav--next"></div>
+        </div>
+        <div class="whats_inside-pagination swiper-pagination"></div>
     </div>
-  </div>
-</section>
+    <div class="whats_inside-navigation">
+        <div class="whats_inside-navigation-inner swiper-button-prev"></div>
+        <div class="whats_inside-navigation-inner swiper-button-next"></div>
+        <div class="whats_inside-navigation--text">Use Arrows To explore book</div>
+    </div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js" defer></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    new Swiper('.ss-book-preview__swiper', {
-      slidesPerView: 1,
-      centeredSlides: true,
-      spaceBetween: 24,
-      loop: true,
-      pagination: {
-        el: '.ss-book-preview__pagination',
-        clickable: true
+  var ssBookMenu = [
+    "Core Identity and Ego",
+    "Luck and Growth",
+    "Outer Persona and First Impressions",
+    "Responsibility and Discipline",
+    "Emotions and Instincts",
+    "Innovation and Creativity",
+    "Communications and Thought Process",
+    "Dreams and Spirituality",
+    "Love, Beauty, and Values",
+    "Transformation and Rebirth",
+    "Drive and Ambition",
+    "Career and Reputation"
+  ];
+  var ssBookSwiper = new Swiper('.whats_inside-slider', {
+    navigation: {
+      nextEl: '.whats_inside-navigation-inner.swiper-button-next',
+      prevEl: '.whats_inside-navigation-inner.swiper-button-prev',
+    },
+    pagination: {
+      el: '.whats_inside-pagination',
+      type: 'bullets',
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<div class="' + className + '">' +
+          '<span class="whats_inside_icon"></span>' +
+          '<span class="whats-inside-pag-title"> ' + (ssBookMenu[index] || '') + '</span>' +
+          '</div>';
       },
-      navigation: {
-        nextEl: '.ss-book-preview__nav--next',
-        prevEl: '.ss-book-preview__nav--prev'
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 1.4
-        }
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 1
       }
-    });
+    }
   });
 </script>
 
-{% stylesheet %}
-  .ss-book-preview {
-    background-color: #f0ebe1;
-    padding: 60px 0;
-  }
-
-  .ss-book-preview__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .ss-book-preview__heading {
-    font-family: 'Noto Serif', serif;
-    color: #1a3050;
-    font-size: 2rem;
-    text-align: center;
-    margin: 0 0 40px;
-    font-weight: 700;
-  }
-
-  .ss-book-preview__swiper {
-    position: relative;
-    padding-bottom: 50px;
-  }
-
-  .ss-book-preview__slide {
-    max-width: 70%;
+<style>
+.whats_inside {
+    background: #f0ebe1;
+    padding: 80px 0;
+}
+.whats_inside h1 {
+    max-width: 1160px;
     margin: 0 auto;
     text-align: center;
-  }
-
-  .ss-book-preview__image-wrap {
+    padding-bottom: 45px;
+}
+.whats_inside-slider-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    gap: 45px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .ss-book-preview__image {
+}
+img.whats_inside-slide-img {
+    display: block;
     width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .ss-book-preview__title {
-    font-family: 'Noto Serif', serif;
-    color: #1a3050;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 8px;
-  }
-
-  .ss-book-preview__description {
-    font-family: 'DM Sans', sans-serif;
-    color: #666;
-    font-size: 0.95rem;
-    margin: 0;
-  }
-
-  /* Navigation arrows */
-  .ss-book-preview__nav {
-    width: 44px;
-    height: 44px;
-    background-color: #1a3050;
-    border-radius: 50%;
-    color: #fff;
-  }
-
-  .ss-book-preview__nav::after {
+}
+.whats_inside-pagination.swiper-pagination {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30%;
+    gap: 15px;
+    height: fit-content;
+    top: 0 !important;
+}
+.whats_inside-pagination .swiper-pagination-bullet {
+    width: 100% !important;
+    background: unset !important;
+    opacity: unset !important;
+    height: fit-content;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    border-radius: unset !important;
+}
+span.whats_inside_icon {
+    display: flex;
+    align-items: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9.5" fill="%23F0EBE1" stroke="%2300354B"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+span.whats_inside_icon:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+}
+.whats_inside-slider {
+    flex: 1 1 70%;
+}
+.whats_inside-pagination .swiper-pagination-bullet-active span.whats_inside_icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" fill="%23F0EBE1" stroke="%2300354B" stroke-width="6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.whats-inside-pag-title {
+    color: var(--Main-4, #1A3050);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.7;
+    text-align: left;
+}
+.whats_inside-navigation .swiper-button-next {
+    position: relative !important;
+}
+.whats_inside-navigation .swiper-button-next,
+.whats_inside-navigation .swiper-button-prev {
+    position: relative !important;
+    display: flex !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+.whats_inside-navigation {
+    display: flex;
+    max-width: 1160px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+    left: 16px;
+    position: relative;
+    padding: 20px 0;
+    margin-top: 35px;
+}
+.whats_inside-navigation-inner.swiper-button-prev:after,
+.whats_inside-navigation-inner.swiper-button-next:after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none"><circle cx="29.5" cy="29.5" r="29.5" fill="white"/><path d="M22.6464 29.3536C22.4512 29.1583 22.4512 28.8417 22.6464 28.6464L25.8284 25.4645C26.0237 25.2692 26.3403 25.2692 26.5355 25.4645C26.7308 25.6597 26.7308 25.9763 26.5355 26.1716L23.7071 29L26.5355 31.8284C26.7308 32.0237 26.7308 32.3403 26.5355 32.5355C26.3403 32.7308 26.0237 32.7308 25.8284 32.5355L22.6464 29.3536ZM36 29.5H23V28.5H36V29.5Z" fill="black"/></svg>') !important;
+    width: 59px;
+    height: 59px;
+    align-self: baseline;
+}
+.whats_inside-navigation-inner.swiper-button-next {
+    margin-left: 19px;
+}
+.whats_inside-navigation-inner.swiper-button-next:after {
+    transform: rotate(180deg);
+}
+.whats_inside-pagination:before {
+    content: "";
+    width: 2px;
+    height: calc(100% - 20px);
+    position: absolute;
+    left: 13px;
+    top: 10px;
+    border: 1px dashed;
+}
+.whats_inside-slide-title {
+    margin-top: 25px;
+    color: var(--Dark-blue, #00354B);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
     font-size: 18px;
+    font-style: normal;
     font-weight: 700;
-    color: #fff;
-  }
-
-  /* Pagination dots */
-  .ss-book-preview__swiper .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background: #1a3050;
-    opacity: 0.3;
-  }
-
-  .ss-book-preview__swiper .swiper-pagination-bullet-active {
-    opacity: 1;
-  }
-
-  @media screen and (max-width: 767px) {
-    .ss-book-preview {
-      padding: 40px 0;
+    line-height: 27px;
+}
+.whats_inside-slide-content {
+    color: var(--Dark-blue, #00354B);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    opacity: 1 !important;
+}
+.whats_inside-navigation--text {
+    color: #00354B;
+    font-family: "DM Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active .whats-inside-pag-title {
+    font-weight: 600;
+}
+@media screen and (max-width: 990px) {
+    .whats_inside {
+        position: relative;
     }
-
-    .ss-book-preview__slide {
-      max-width: 90%;
+    .whats_inside-slider-wrapper {
+        display: block;
+        padding: 0 20px;
     }
-
-    .ss-book-preview__heading {
-      font-size: 1.5rem;
-      margin-bottom: 28px;
+    .whats_inside-pagination:before {
+        content: "";
+        height: 2px;
+        width: calc(100% - 30px);
+        position: absolute;
+        left: 13px;
+        top: 10px;
+        border-top: 1px dashed;
     }
-
-    .ss-book-preview__nav {
-      display: none;
+    .whats_inside-pagination.swiper-pagination {
+        flex-direction: row;
     }
-  }
-{% endstylesheet %}
+    span.whats-inside-pag-title {
+        display: none;
+    }
+    .whats_inside-pagination.swiper-pagination {
+        top: -270px !important;
+        gap: 0;
+    }
+    .whats_inside-navigation {
+        padding: 20px 0;
+        top: 311px;
+        justify-content: space-between;
+        left: 0;
+        max-width: 100%;
+        padding: 20px 34px;
+        position: absolute;
+        z-index: 1;
+    }
+    .whats_inside-slide-title {
+        margin-top: 160px;
+    }
+    .whats_inside {
+        padding-bottom: 0;
+    }
+    span.whats_inside_icon {
+        background-size: 15px;
+    }
+    .whats_inside-navigation-inner.swiper-button-next {
+        margin-left: 0;
+        order: 3;
+    }
+    .whats_inside-navigation--text {
+        text-align: center;
+    }
+    .whats_inside-pagination .swiper-pagination-bullet {
+        margin: 0 2px !important;
+    }
+}
+</style>
 
 {% schema %}
 {
-  "name": "SS - Book Preview",
+  "name": "SS Book Preview",
   "settings": []
 }
 {% endschema %}

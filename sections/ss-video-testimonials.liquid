@@ -1,92 +1,222 @@
-<section class="ss-video-testimonials">
-  <div class="ss-video-testimonials__container">
-    <h2 class="ss-video-testimonials__title">What Our Customers Say</h2>
-    <div class="ss-video-testimonials__grid">
-      {%- for i in (1..4) -%}
-        <div class="ss-video-testimonials__card">
-          <img
-            class="ss-video-testimonials__thumbnail"
-            src="{{ 'ss-video-thumb-' | append: i | append: '.jpg' | asset_url }}"
-            alt="Customer video testimonial {{ i }}"
-            loading="lazy"
-          >
-          <div class="ss-video-testimonials__play">
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.5)"/>
-              <polygon points="24,18 24,42 44,30" fill="#ffffff"/>
-            </svg>
+<!-- SS Video Testimonials — rebuilt from star-story-theme/sections/ws-video-slider.liquid -->
+<!-- Settings hardcoded from product.json ws_video_slider_VwbJWK -->
+<!-- Videos cannot be served from theme assets; using poster thumbnails with placeholder play buttons -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+<style>
+  .ss-video-section {
+    background-color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .ss-video-section-settings {
+    margin: 0 auto;
+    padding-top: 72px;
+    padding-bottom: 72px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 130rem;
+  }
+
+  @media(min-width: 768px) {
+    .ss-video-section-settings {
+      padding-top: 96px;
+      padding-bottom: 96px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  .ss-video-heading {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 30px;
+    color: #120a0a;
+    line-height: 200%;
+    text-transform: unset;
+    text-align: center;
+  }
+
+  @media(min-width: 768px) {
+    .ss-video-heading {
+      font-size: 36px;
+    }
+  }
+
+  .ss-video-body {
+    margin-top: 20px;
+  }
+
+  @media(min-width: 768px) {
+    .ss-video-body {
+      margin-top: 40px;
+    }
+  }
+
+  .ss-video-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+
+  @media(min-width: 768px) {
+    .ss-video-grid {
+      grid-template-columns: repeat(2, minmax(0px, 1fr));
+    }
+  }
+
+  @media(min-width: 992px) {
+    .ss-video-grid {
+      grid-template-columns: repeat(4, minmax(0px, 1fr));
+    }
+  }
+
+  .ss-video-item {
+    position: relative;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-sizing: border-box !important;
+    overflow: hidden;
+  }
+
+  .ss-video-poster {
+    height: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ss-video-poster img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .ss-video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #121212;
+    color: #ffffff;
+    opacity: 0.9;
+    transition: all 0.25s ease 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media(min-width: 768px) {
+    .ss-video-play-btn {
+      width: 80px;
+      height: 80px;
+      padding: 20px;
+    }
+  }
+
+  .ss-video-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .ss-video-play-btn svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .ss-video-play-btn svg path {
+    fill: #ffffff;
+  }
+
+  .ss-video-pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .ss-video-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: transparent !important;
+    border: 1px solid #1a3050;
+  }
+
+  .ss-video-pagination .swiper-pagination-bullet-active {
+    background: #1a3050 !important;
+  }
+</style>
+
+<div class="ss-video-section">
+  <div class="ss-video-section-settings">
+    <h2 class="ss-video-heading">Customer Stories</h2>
+    <div class="ss-video-body">
+      <div class="ss-video-grid">
+        <div class="ss-video-item">
+          <div class="ss-video-poster">
+            <img src="{{ 'ss-video-thumb-1.jpg' | asset_url }}" alt="Customer testimonial" loading="lazy">
+            <div class="ss-video-play-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+              </svg>
+            </div>
           </div>
         </div>
-      {%- endfor -%}
+
+        <div class="ss-video-item">
+          <div class="ss-video-poster">
+            <img src="{{ 'ss-video-thumb-2.jpg' | asset_url }}" alt="Customer testimonial" loading="lazy">
+            <div class="ss-video-play-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="ss-video-item">
+          <div class="ss-video-poster">
+            <img src="{{ 'ss-video-thumb-3.jpg' | asset_url }}" alt="Customer testimonial" loading="lazy">
+            <div class="ss-video-play-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="ss-video-item">
+          <div class="ss-video-poster">
+            <img src="{{ 'ss-video-thumb-4.jpg' | asset_url }}" alt="Customer testimonial" loading="lazy">
+            <div class="ss-video-play-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-
-{% stylesheet %}
-.ss-video-testimonials {
-  background: #ffffff;
-  padding: 60px 20px;
-}
-
-.ss-video-testimonials__container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.ss-video-testimonials__title {
-  font-family: "Noto Serif", serif;
-  color: #1a3050;
-  text-align: center;
-  font-size: 2rem;
-  margin: 0 0 40px;
-}
-
-.ss-video-testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.ss-video-testimonials__card {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.ss-video-testimonials__thumbnail {
-  display: block;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.ss-video-testimonials__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  pointer-events: none;
-}
-
-@media (max-width: 991px) {
-  .ss-video-testimonials__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 599px) {
-  .ss-video-testimonials__grid {
-    grid-template-columns: 1fr;
-  }
-}
-{% endstylesheet %}
+</div>
 
 {% schema %}
 {
-  "name": "SS - Video Testimonials",
+  "name": "SS Video Testimonials",
   "settings": []
 }
 {% endschema %}
