@@ -20,6 +20,35 @@
     display: block;
   }
 
+  .vl-mmh--with-image {
+    max-width: 1040px;
+  }
+
+  .vl-mmh__hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    text-align: left;
+    margin: 0 0 24px;
+  }
+
+  .vl-mmh__image-wrap {
+    display: block;
+    line-height: 0;
+  }
+
+  .vl-mmh__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .vl-mmh--with-image .vl-mmh__headline {
+    margin: 0 0 16px;
+  }
+
   .vl-mmh__headline {
     font-size: clamp(24px, 4vw, 36px);
     font-weight: 700;
@@ -61,26 +90,6 @@
     margin: 0;
   }
 
-  .vl-mmh__cta {
-    display: inline-block;
-    padding: 14px 32px;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-  }
-
-  .vl-mmh__cta:hover {
-    opacity: 0.85;
-  }
-
   .vl-mmh__divider {
     width: 40px;
     height: 2px;
@@ -88,11 +97,7 @@
     margin: 0 auto 24px;
   }
 
-  /* Hide the default title and description in lumen-pdp-hero when variant is active */
-  body.has-mmh .lumen-pdp-hero__title {
-    display: none;
-  }
-
+  /* Hide the default description in lumen-pdp-hero when variant is active. Keep the title visible. */
   body.has-mmh .lumen-pdp-hero__description {
     display: none;
   }
@@ -106,20 +111,60 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
+
+    .vl-mmh__hero {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
   }
 </style>
 
 {% for block in section.blocks %}
+  {%- assign has_image = false -%}
+  {%- if block.settings.hero_image != blank -%}
+    {%- assign has_image = true -%}
+  {%- endif -%}
   <div
-    class="vl-mmh"
+    class="vl-mmh{% if has_image %} vl-mmh--with-image{% endif %}"
     data-mmh-variant="{{ block.settings.variant_key }}"
     id="vl-mmh-{{ block.settings.variant_key }}"
     {{ block.shopify_attributes }}
   >
     <div class="vl-mmh__divider"></div>
 
-    {% if block.settings.headline != blank %}
-      <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+    {% if has_image %}
+      <div class="vl-mmh__hero">
+        <div class="vl-mmh__image-wrap">
+          <img
+            class="vl-mmh__image"
+            src="{{ block.settings.hero_image | image_url: width: 800 }}"
+            alt="{{ block.settings.hero_image.alt | default: block.settings.headline | escape }}"
+            width="{{ block.settings.hero_image.width }}"
+            height="{{ block.settings.hero_image.height }}"
+            loading="lazy"
+          />
+        </div>
+        <div class="vl-mmh__text">
+          {% if block.settings.headline != blank %}
+            <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+          {% endif %}
+          {% unless block.settings.use_columns %}
+            {% if block.settings.subhead != blank %}
+              <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
+            {% endif %}
+          {% endunless %}
+        </div>
+      </div>
+    {% else %}
+      {% if block.settings.headline != blank %}
+        <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+      {% endif %}
+      {% unless block.settings.use_columns %}
+        {% if block.settings.subhead != blank %}
+          <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
+        {% endif %}
+      {% endunless %}
     {% endif %}
 
     {% if block.settings.use_columns %}
@@ -141,15 +186,8 @@
           {% endif %}
         </div>
       </div>
-    {% else %}
-      {% if block.settings.subhead != blank %}
-        <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
-      {% endif %}
     {% endif %}
 
-    <a href="#shopify-section-lumen_pdp_hero_WWxn3E" class="vl-mmh__cta" data-mmh-cta>
-      {{ block.settings.cta_text | default: 'Shop Now' }}
-    </a>
   </div>
 {% endfor %}
 
@@ -165,15 +203,6 @@
     // Show the matching hero
     hero.classList.add('is-active');
     document.body.classList.add('has-mmh');
-
-    // Smooth scroll CTA
-    hero.querySelector('[data-mmh-cta]').addEventListener('click', function(e) {
-      e.preventDefault();
-      var target = document.querySelector('.lumen-pdp-hero__button');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
 
     // GA4 tracking
     if (typeof gtag === 'function') {
@@ -209,6 +238,12 @@
           "info": "Matches the ?v= URL parameter (e.g., a, b, c, d)"
         },
         {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Hero image",
+          "info": "Optional. Shown left of the headline on desktop, stacked on mobile."
+        },
+        {
           "type": "text",
           "id": "headline",
           "label": "Headline"
@@ -217,12 +252,6 @@
           "type": "textarea",
           "id": "subhead",
           "label": "Subhead"
-        },
-        {
-          "type": "text",
-          "id": "cta_text",
-          "label": "CTA button text",
-          "default": "Shop Now"
         },
         {
           "type": "checkbox",
