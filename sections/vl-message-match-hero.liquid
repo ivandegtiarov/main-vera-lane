@@ -61,26 +61,6 @@
     margin: 0;
   }
 
-  .vl-mmh__cta {
-    display: inline-block;
-    padding: 14px 32px;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-  }
-
-  .vl-mmh__cta:hover {
-    opacity: 0.85;
-  }
-
   .vl-mmh__divider {
     width: 40px;
     height: 2px;
@@ -88,11 +68,7 @@
     margin: 0 auto 24px;
   }
 
-  /* Hide the default title and description in lumen-pdp-hero when variant is active */
-  body.has-mmh .lumen-pdp-hero__title {
-    display: none;
-  }
-
+  /* Hide the default description in lumen-pdp-hero when variant is active. Keep the title visible. */
   body.has-mmh .lumen-pdp-hero__description {
     display: none;
   }
@@ -147,9 +123,6 @@
       {% endif %}
     {% endif %}
 
-    <a href="#shopify-section-lumen_pdp_hero_WWxn3E" class="vl-mmh__cta" data-mmh-cta>
-      {{ block.settings.cta_text | default: 'Shop Now' }}
-    </a>
   </div>
 {% endfor %}
 
@@ -165,15 +138,6 @@
     // Show the matching hero
     hero.classList.add('is-active');
     document.body.classList.add('has-mmh');
-
-    // Smooth scroll CTA
-    hero.querySelector('[data-mmh-cta]').addEventListener('click', function(e) {
-      e.preventDefault();
-      var target = document.querySelector('.lumen-pdp-hero__button');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
 
     // GA4 tracking
     if (typeof gtag === 'function') {
@@ -217,12 +181,6 @@
           "type": "textarea",
           "id": "subhead",
           "label": "Subhead"
-        },
-        {
-          "type": "text",
-          "id": "cta_text",
-          "label": "CTA button text",
-          "default": "Shop Now"
         },
         {
           "type": "checkbox",
