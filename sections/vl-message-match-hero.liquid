@@ -20,6 +20,35 @@
     display: block;
   }
 
+  .vl-mmh--with-image {
+    max-width: 1040px;
+  }
+
+  .vl-mmh__hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    text-align: left;
+    margin: 0 0 24px;
+  }
+
+  .vl-mmh__image-wrap {
+    display: block;
+    line-height: 0;
+  }
+
+  .vl-mmh__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .vl-mmh--with-image .vl-mmh__headline {
+    margin: 0 0 16px;
+  }
+
   .vl-mmh__headline {
     font-size: clamp(24px, 4vw, 36px);
     font-weight: 700;
@@ -82,20 +111,60 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
+
+    .vl-mmh__hero {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
   }
 </style>
 
 {% for block in section.blocks %}
+  {%- assign has_image = false -%}
+  {%- if block.settings.hero_image != blank -%}
+    {%- assign has_image = true -%}
+  {%- endif -%}
   <div
-    class="vl-mmh"
+    class="vl-mmh{% if has_image %} vl-mmh--with-image{% endif %}"
     data-mmh-variant="{{ block.settings.variant_key }}"
     id="vl-mmh-{{ block.settings.variant_key }}"
     {{ block.shopify_attributes }}
   >
     <div class="vl-mmh__divider"></div>
 
-    {% if block.settings.headline != blank %}
-      <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+    {% if has_image %}
+      <div class="vl-mmh__hero">
+        <div class="vl-mmh__image-wrap">
+          <img
+            class="vl-mmh__image"
+            src="{{ block.settings.hero_image | image_url: width: 800 }}"
+            alt="{{ block.settings.hero_image.alt | default: block.settings.headline | escape }}"
+            width="{{ block.settings.hero_image.width }}"
+            height="{{ block.settings.hero_image.height }}"
+            loading="lazy"
+          />
+        </div>
+        <div class="vl-mmh__text">
+          {% if block.settings.headline != blank %}
+            <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+          {% endif %}
+          {% unless block.settings.use_columns %}
+            {% if block.settings.subhead != blank %}
+              <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
+            {% endif %}
+          {% endunless %}
+        </div>
+      </div>
+    {% else %}
+      {% if block.settings.headline != blank %}
+        <h2 class="vl-mmh__headline">{{ block.settings.headline }}</h2>
+      {% endif %}
+      {% unless block.settings.use_columns %}
+        {% if block.settings.subhead != blank %}
+          <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
+        {% endif %}
+      {% endunless %}
     {% endif %}
 
     {% if block.settings.use_columns %}
@@ -117,10 +186,6 @@
           {% endif %}
         </div>
       </div>
-    {% else %}
-      {% if block.settings.subhead != blank %}
-        <p class="vl-mmh__subhead">{{ block.settings.subhead }}</p>
-      {% endif %}
     {% endif %}
 
   </div>
@@ -171,6 +236,12 @@
           "id": "variant_key",
           "label": "Variant key",
           "info": "Matches the ?v= URL parameter (e.g., a, b, c, d)"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Hero image",
+          "info": "Optional. Shown left of the headline on desktop, stacked on mobile."
         },
         {
           "type": "text",
