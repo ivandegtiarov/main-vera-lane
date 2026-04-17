@@ -890,10 +890,14 @@ class CartDrawerComponent extends DialogComponent {
    * @param {boolean} shouldRefresh - Whether to refresh cart after adding
    */
   async #addShippingProtection(variantId, shouldRefresh = true) {
+    // Prevent concurrent add calls — if one is already in-flight, skip.
+    if (this._spAddInProgress) return;
+    this._spAddInProgress = true;
+
     try {
       this.#setLoading(true);
 
-      // Wait for any ongoing operations
+      // Wait for any ongoing cart operation to finish
       if (this.#cartOperationLock) {
         await this.#cartOperationLock;
       }
@@ -903,8 +907,9 @@ class CartDrawerComponent extends DialogComponent {
       const lockResolvers = [];
       this.#cartOperationLock = new Promise(resolve => lockResolvers.push(resolve));
 
-      // Get current cart to determine if the variant is already present
-      const cart = await this.#fetchCartData(false);
+      // Always fetch fresh cart data (no cache) to avoid stale reads
+      const cartResponse = await fetch('/cart.js');
+      const cart = await cartResponse.json();
       const items = Array.isArray(cart?.items) ? cart.items : [];
 
       /** @type {any[]} */
@@ -914,21 +919,10 @@ class CartDrawerComponent extends DialogComponent {
 
       if (matchingItems.length === 0) {
         // Not in cart yet: add once
-        const addBody = JSON.stringify({
-          items: [
-            {
-              id: variantId,
-              quantity: 1,
-            },
-          ],
-        });
-
         const addResponse = await fetch('/cart/add.js', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: addBody,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] }),
         });
 
         if (!addResponse.ok) {
@@ -943,13 +937,8 @@ class CartDrawerComponent extends DialogComponent {
         if (primary && primary.key && primary.quantity !== 1) {
           await fetch('/cart/change.js', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: primary.key,
-              quantity: 1,
-            }),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: primary.key, quantity: 1 }),
           });
         }
 
@@ -958,28 +947,23 @@ class CartDrawerComponent extends DialogComponent {
           if (!dup || !dup.key) continue;
           await fetch('/cart/change.js', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: dup.key,
-              quantity: 0,
-            }),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: dup.key, quantity: 0 }),
           });
         }
       }
 
       // Invalidate cache
       this.#cachedCartData = null;
-      
+
       // Only refresh if requested (to prevent infinite loops)
       if (shouldRefresh) {
         await this.#refreshCart('shipping-protection');
       }
-      
+
       // Update checkbox to reflect successful add
       this.#updateShippingProtectionCheckbox(true);
-      
+
       // Release lock
       lockResolvers.forEach(resolve => resolve());
       this.#cartOperationLock = null;
@@ -990,6 +974,7 @@ class CartDrawerComponent extends DialogComponent {
         this.#cartOperationLock = Promise.resolve();
       }
     } finally {
+      this._spAddInProgress = false;
       this.#setLoading(false);
     }
   }
