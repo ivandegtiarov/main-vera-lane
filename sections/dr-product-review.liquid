@@ -4,8 +4,8 @@
 
 <div class="dr-review {% if section.settings.badge_text == 'Best Overall' %}dr-review--highlighted{% endif %}">
   <div class="dr-review__header">
-    {% if section.settings.rank != blank %}
-      <div class="dr-review__rank">{{ section.settings.rank }}</div>
+    {% if section.settings.rank_label != blank %}
+      <div class="dr-review__rank">{{ section.settings.rank_label }}</div>
     {% endif %}
     {% if section.settings.badge_text != blank %}
       <span class="dr-review__badge">{{ section.settings.badge_text }}</span>
@@ -334,7 +334,7 @@
     },
     {
       "type": "text",
-      "id": "rank",
+      "id": "rank_label",
       "label": "Rank",
       "info": "e.g. #1, #2, #3"
     },
