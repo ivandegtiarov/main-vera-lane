@@ -30,13 +30,14 @@
       {% assign rating_float = section.settings.rating | plus: 0.0 %}
       {% assign full_stars = rating_float | floor %}
       {% assign decimal = rating_float | minus: full_stars %}
+      {% assign next_star = full_stars | plus: 1 %}
       <span class="dr-review__stars">
         {% for i in (1..5) %}
           {% if i <= full_stars %}
             <span class="dr-review__star dr-review__star--full">&#9733;</span>
-          {% elsif i == full_stars | plus: 1 and decimal >= 0.3 and decimal <= 0.7 %}
+          {% elsif i == next_star and decimal >= 0.3 and decimal <= 0.7 %}
             <span class="dr-review__star dr-review__star--half">&#9733;</span>
-          {% elsif i == full_stars | plus: 1 and decimal > 0.7 %}
+          {% elsif i == next_star and decimal > 0.7 %}
             <span class="dr-review__star dr-review__star--full">&#9733;</span>
           {% else %}
             <span class="dr-review__star dr-review__star--empty">&#9733;</span>
