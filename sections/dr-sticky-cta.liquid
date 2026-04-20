@@ -1,0 +1,144 @@
+<div class="dr-sticky-cta" id="dr-sticky-cta-{{ section.id }}">
+  <div class="dr-sticky-cta__container">
+    <div class="dr-sticky-cta__left">
+      <span class="dr-sticky-cta__product">{{ section.settings.product_text }}</span>
+      <span class="dr-sticky-cta__rating">{{ section.settings.rating_text }}</span>
+    </div>
+    <div class="dr-sticky-cta__right">
+      <a href="{{ section.settings.cta_url }}" class="dr-sticky-cta__button">{{ section.settings.cta_text }}</a>
+      {% if section.settings.guarantee_text != blank %}
+        <span class="dr-sticky-cta__guarantee">{{ section.settings.guarantee_text }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var bar = document.getElementById('dr-sticky-cta-{{ section.id }}');
+    function toggleBar() {
+      if (window.scrollY > 600) {
+        bar.classList.add('dr-sticky-cta--visible');
+      } else {
+        bar.classList.remove('dr-sticky-cta--visible');
+      }
+    }
+    window.addEventListener('scroll', toggleBar);
+    toggleBar();
+  })();
+</script>
+
+{% stylesheet %}
+.dr-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+  padding: 12px 24px;
+  z-index: 999;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.dr-sticky-cta--visible {
+  transform: translateY(0);
+}
+
+.dr-sticky-cta__container {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dr-sticky-cta__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dr-sticky-cta__product {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.dr-sticky-cta__rating {
+  font-size: 13px;
+  color: #666;
+}
+
+.dr-sticky-cta__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dr-sticky-cta__button {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.dr-sticky-cta__button:hover {
+  opacity: 0.85;
+}
+
+.dr-sticky-cta__guarantee {
+  font-size: 11px;
+  color: #999;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "DR - Sticky CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_text",
+      "label": "Product Name",
+      "default": "Vera Lane Foundation"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "★★★★★ 4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Try Vera Lane Risk-Free →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30-Day Money-Back Guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "DR - Sticky CTA"
+    }
+  ]
+}
+{% endschema %}

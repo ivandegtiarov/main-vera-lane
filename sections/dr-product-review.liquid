@@ -1,0 +1,421 @@
+{% if section.settings.section_id != blank %}
+  <div id="{{ section.settings.section_id }}"></div>
+{% endif %}
+
+<div class="dr-review {% if section.settings.badge_text == 'Best Overall' %}dr-review--highlighted{% endif %}">
+  <div class="dr-review__header">
+    {% if section.settings.rank != blank %}
+      <div class="dr-review__rank">{{ section.settings.rank }}</div>
+    {% endif %}
+    {% if section.settings.badge_text != blank %}
+      <span class="dr-review__badge">{{ section.settings.badge_text }}</span>
+    {% endif %}
+  </div>
+
+  {% if section.settings.hero_image != blank %}
+    <div class="dr-review__image">
+      {{ section.settings.hero_image | image_url: width: 720 | image_tag: loading: 'lazy', class: 'dr-review__img' }}
+    </div>
+  {% endif %}
+
+  <h2 class="dr-review__product-name">
+    {% if section.settings.brand != blank %}
+      <span class="dr-review__brand">{{ section.settings.brand }}</span>
+    {% endif %}
+    {{ section.settings.product_name }}
+  </h2>
+
+  {% if section.settings.rating != blank %}
+    <div class="dr-review__rating">
+      {% assign rating_float = section.settings.rating | plus: 0.0 %}
+      {% assign full_stars = rating_float | floor %}
+      {% assign decimal = rating_float | minus: full_stars %}
+      <span class="dr-review__stars">
+        {% for i in (1..5) %}
+          {% if i <= full_stars %}
+            <span class="dr-review__star dr-review__star--full">&#9733;</span>
+          {% elsif i == full_stars | plus: 1 and decimal >= 0.3 and decimal <= 0.7 %}
+            <span class="dr-review__star dr-review__star--half">&#9733;</span>
+          {% elsif i == full_stars | plus: 1 and decimal > 0.7 %}
+            <span class="dr-review__star dr-review__star--full">&#9733;</span>
+          {% else %}
+            <span class="dr-review__star dr-review__star--empty">&#9733;</span>
+          {% endif %}
+        {% endfor %}
+      </span>
+      <span class="dr-review__rating-number">{{ section.settings.rating }}/5</span>
+    </div>
+  {% endif %}
+
+  {% if section.settings.price != blank %}
+    <div class="dr-review__price">{{ section.settings.price }}</div>
+  {% endif %}
+
+  {% if section.settings.verdict != blank %}
+    <blockquote class="dr-review__verdict">
+      {{ section.settings.verdict }}
+    </blockquote>
+  {% endif %}
+
+  {% assign pros = section.blocks | where: "type", "pro" %}
+  {% assign cons = section.blocks | where: "type", "con" %}
+
+  {% if pros.size > 0 %}
+    <div class="dr-review__pros">
+      <h3 class="dr-review__pros-heading">
+        <svg class="dr-review__icon dr-review__icon--check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2d8a4e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        What I Love
+      </h3>
+      <ul class="dr-review__pros-list">
+        {% for block in pros %}
+          <li class="dr-review__pros-item" {{ block.shopify_attributes }}>
+            <svg class="dr-review__icon dr-review__icon--check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2d8a4e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {{ block.settings.text }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if cons.size > 0 %}
+    <div class="dr-review__cons">
+      <h3 class="dr-review__cons-heading">
+        <svg class="dr-review__icon dr-review__icon--x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        What Could Be Better
+      </h3>
+      <ul class="dr-review__cons-list">
+        {% for block in cons %}
+          <li class="dr-review__cons-item" {{ block.shopify_attributes }}>
+            <svg class="dr-review__icon dr-review__icon--x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            {{ block.settings.text }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if section.settings.cta_text != blank %}
+    <div class="dr-review__cta-wrap">
+      <a href="{{ section.settings.cta_url }}" class="dr-review__cta">{{ section.settings.cta_text }}</a>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+.dr-review {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dr-review--highlighted {
+  border: 2px solid #d4a853;
+  box-shadow: 0 0 0 1px rgba(212, 168, 83, 0.2);
+}
+
+.dr-review__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.dr-review__rank {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.dr-review__badge {
+  display: inline-block;
+  background: #d4a853;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+.dr-review__image {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dr-review__img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.dr-review__brand {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.dr-review__product-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 0 12px;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.dr-review__rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dr-review__stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.dr-review__star {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dr-review__star--full {
+  color: #d4a853;
+}
+
+.dr-review__star--half {
+  color: #d4a853;
+  opacity: 0.6;
+}
+
+.dr-review__star--empty {
+  color: #ddd;
+}
+
+.dr-review__rating-number {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.dr-review__price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.dr-review__verdict {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  border-left: 3px solid #d4a853;
+  margin: 20px 0;
+  padding: 12px 20px;
+  background: #fafafa;
+  border-radius: 0 4px 4px 0;
+}
+
+.dr-review__pros,
+.dr-review__cons {
+  margin-bottom: 20px;
+}
+
+.dr-review__pros-heading,
+.dr-review__cons-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #1a1a1a;
+}
+
+.dr-review__pros-list,
+.dr-review__cons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dr-review__pros-item,
+.dr-review__cons-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.dr-review__pros-item svg,
+.dr-review__cons-item svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.dr-review__icon {
+  flex-shrink: 0;
+}
+
+.dr-review__cta-wrap {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.dr-review__cta {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.dr-review__cta:hover {
+  background: #333;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .dr-review {
+    padding: 20px 16px;
+    margin-bottom: 24px;
+  }
+
+  .dr-review__product-name {
+    font-size: 20px;
+  }
+
+  .dr-review__verdict {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "DR - Product Review",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section Anchor ID",
+      "info": "Used for linking from rankings bar (e.g. product-1)"
+    },
+    {
+      "type": "text",
+      "id": "rank",
+      "label": "Rank",
+      "info": "e.g. #1, #2, #3"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "info": "e.g. Best Overall, Runner Up"
+    },
+    {
+      "type": "text",
+      "id": "brand",
+      "label": "Brand Name"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product Name"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Rating",
+      "info": "Numeric rating out of 5 (e.g. 4.8)"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "info": "e.g. $39.99"
+    },
+    {
+      "type": "textarea",
+      "id": "verdict",
+      "label": "Verdict",
+      "info": "Editorial review paragraph"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "info": "Leave blank to hide button"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Product Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pro",
+      "name": "Pro",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Pro Text"
+        }
+      ]
+    },
+    {
+      "type": "con",
+      "name": "Con",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Con Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "DR - Product Review"
+    }
+  ]
+}
+{% endschema %}
