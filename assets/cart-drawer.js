@@ -1084,10 +1084,13 @@ class CartDrawerComponent extends DialogComponent {
     // Auto-add shipping protection on add-to-cart when globally enabled by
     // default and the customer has not explicitly turned it off. This keeps
     // the logic tied to add events instead of every cart:update.
+    // Set a timestamp so open() knows an add-to-cart just happened and can
+    // skip its own redundant auto-add check.
     const spVariantId = this._shippingProtectionVariantId;
     const defaultOn = Boolean(this._shippingProtectionDefaultOn);
     const userDisabled = Boolean(this._shippingProtectionUserDisabled);
     if (spVariantId && defaultOn && !userDisabled) {
+      this._spLastAutoAddAt = Date.now();
       this.#addShippingProtection(spVariantId);
     }
   };
@@ -1179,9 +1182,16 @@ class CartDrawerComponent extends DialogComponent {
       // Сбрасываем флаг что пользователь отключил
       this._shippingProtectionUserDisabled = false;
     } else if (defaultOn && !userDisabled && hasOtherItems && !hasShippingProtection) {
-      // Авто-добавляем если: есть товары, default ON, пользователь не отключал, ещё не в корзине
-      console.log('Auto-adding shipping protection');
-      await this.#addShippingProtection(spVariantId, true);
+      // Skip if the add-to-cart handler already triggered an auto-add
+      // within the last 3 seconds — it will handle it, and our cart fetch
+      // here may be reading stale state before that add has landed.
+      const recentAutoAdd = this._spLastAutoAddAt && (Date.now() - this._spLastAutoAddAt) < 3000;
+      if (!recentAutoAdd) {
+        console.log('Auto-adding shipping protection from open()');
+        await this.#addShippingProtection(spVariantId, true);
+      } else {
+        console.log('Skipping open() auto-add — add-to-cart handler already triggered it');
+      }
     }
 
     /**
