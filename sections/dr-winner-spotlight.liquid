@@ -1,0 +1,100 @@
+<div class="dr-winner-spotlight">
+  <div class="dr-winner-spotlight__container">
+    <h2 class="dr-winner-spotlight__heading">{{ section.settings.heading }}</h2>
+    <div class="dr-winner-spotlight__body">
+      {{ section.settings.body | newline_to_br }}
+    </div>
+    {% if section.settings.cta_text != blank %}
+      <div class="dr-winner-spotlight__cta-wrap">
+        <a href="{{ section.settings.cta_url }}" class="dr-winner-spotlight__cta">{{ section.settings.cta_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+.dr-winner-spotlight {
+  background: #f4f1ec;
+  padding: 60px 24px;
+}
+
+.dr-winner-spotlight__container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.dr-winner-spotlight__heading {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0 0 32px;
+  font-weight: normal;
+}
+
+.dr-winner-spotlight__body {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.dr-winner-spotlight__cta-wrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.dr-winner-spotlight__cta {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.dr-winner-spotlight__cta:hover {
+  opacity: 0.85;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "DR - Winner Spotlight",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Vera Lane Won This Review"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "After weeks of testing, one product consistently outperformed the rest..."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Try Vera Lane Risk-Free"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "DR - Winner Spotlight"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,179 @@
+<div class="dr-article-hero">
+  <div class="dr-article-hero__inner">
+    <p class="dr-article-hero__category">{{ section.settings.category }}</p>
+    <h1 class="dr-article-hero__headline">{{ section.settings.headline }}</h1>
+    <p class="dr-article-hero__subheadline">{{ section.settings.subheadline }}</p>
+    <p class="dr-article-hero__updated">{{ section.settings.last_updated }}</p>
+
+    <div class="dr-article-hero__author">
+      <div class="dr-article-hero__author-avatar"></div>
+      <div class="dr-article-hero__author-info">
+        <p class="dr-article-hero__author-name">{{ section.settings.author_name }}</p>
+        <p class="dr-article-hero__author-title">{{ section.settings.author_title }}</p>
+        <p class="dr-article-hero__author-bio">{{ section.settings.author_bio }}</p>
+      </div>
+    </div>
+
+    <div class="dr-article-hero__divider"></div>
+  </div>
+</div>
+
+{% stylesheet %}
+.dr-article-hero {
+  background: #fff;
+  padding: 48px 24px;
+}
+
+.dr-article-hero__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dr-article-hero__category {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  margin: 0 0 16px;
+}
+
+.dr-article-hero__headline {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+
+.dr-article-hero__subheadline {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+
+.dr-article-hero__updated {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 32px;
+}
+
+.dr-article-hero__author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.dr-article-hero__author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  flex-shrink: 0;
+}
+
+.dr-article-hero__author-info {
+  text-align: left;
+}
+
+.dr-article-hero__author-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.dr-article-hero__author-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #777;
+  margin: 0 0 4px;
+}
+
+.dr-article-hero__author-bio {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+.dr-article-hero__divider {
+  height: 1px;
+  background: #e5e5e5;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dr-article-hero__headline {
+    font-size: 28px;
+  }
+
+  .dr-article-hero__author {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dr-article-hero__author-info {
+    text-align: center;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "DR - Article Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "category",
+      "label": "Category Label",
+      "default": "EXPERT BEAUTY REVIEW"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The 5 Best Foundations for Mature Skin in 2026"
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "I spent 12 weeks testing foundations on clients aged 45–72. Most failed by lunch. Here's what actually worked."
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last Updated",
+      "default": "Last updated: April 2026"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author Name",
+      "default": "Elena Vasquez, L.E."
+    },
+    {
+      "type": "text",
+      "id": "author_title",
+      "label": "Author Title",
+      "default": "Licensed Esthetician & Mature Skin Specialist"
+    },
+    {
+      "type": "text",
+      "id": "author_bio",
+      "label": "Author Bio",
+      "default": "15+ years helping women find their perfect foundation match."
+    }
+  ]
+}
+{% endschema %}

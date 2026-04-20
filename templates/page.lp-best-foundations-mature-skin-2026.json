@@ -1,0 +1,327 @@
+{
+  "layout": "theme.vl-landing",
+  "sections": {
+    "dr_header": {
+      "type": "dr-header",
+      "settings": {}
+    },
+    "dr_article_hero": {
+      "type": "dr-article-hero",
+      "settings": {
+        "category": "EXPERT BEAUTY REVIEW",
+        "headline": "The 5 Best Foundations for Mature Skin in 2026",
+        "subheadline": "I spent 12 weeks testing foundations on clients aged 45–72. Most failed by lunch. Here's what actually worked.",
+        "last_updated": "Last updated: April 2026",
+        "author_name": "Elena Vasquez, L.E.",
+        "author_title": "Licensed Esthetician & Mature Skin Specialist",
+        "author_bio": "Elena has spent 18 years working with women over 40, specializing in foundation matching for mature skin. She consults for three dermatology practices in New York."
+      }
+    },
+    "dr_intro": {
+      "type": "dr-intro-text",
+      "settings": {
+        "body": "<p>If you're over 45, you already know the problem. You apply your foundation in the morning and it looks fine. By noon, it's settled into every fine line, oxidized two shades darker, or started cracking like dry paint.</p><p>I've watched this happen to hundreds of clients. The foundation industry has spent decades formulating for 25-year-old skin and slapping \"for mature skin\" on the label. Most of what's on the market doesn't account for the three things that actually matter after 45: pH-driven oxidation, moisture loss throughout the day, and how pigment interacts with thinning skin.</p><p>Over the past 12 weeks, I tested five foundations on 30 clients aged 45 to 72. Each product was worn for a full day — not a two-hour photo shoot. I evaluated oxidation, fine-line settling, texture at the 8-hour mark, and how each formula performed without primer.</p>"
+      }
+    },
+    "dr_methodology": {
+      "type": "dr-methodology",
+      "blocks": {
+        "c1": {
+          "type": "criterion",
+          "settings": {
+            "title": "Oxidation Resistance",
+            "description": "Does the shade stay true from application to the 8-hour mark? I photographed each client at 0, 4, and 8 hours under consistent lighting."
+          }
+        },
+        "c2": {
+          "type": "criterion",
+          "settings": {
+            "title": "Fine Line Performance",
+            "description": "Does the formula settle into crow's feet, smile lines, and forehead creases? I examined this at the 4-hour mark when settling typically begins."
+          }
+        },
+        "c3": {
+          "type": "criterion",
+          "settings": {
+            "title": "Texture and Finish",
+            "description": "Does it feel like a second skin or a mask? Mature skin needs hydration without heaviness. I tracked comfort ratings throughout the day."
+          }
+        },
+        "c4": {
+          "type": "criterion",
+          "settings": {
+            "title": "Shade Accuracy",
+            "description": "Can women with fair to medium skin find a genuine match? This is where most 'universal' claims fall apart."
+          }
+        }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {
+        "heading": "How I Evaluated Each Foundation"
+      }
+    },
+    "dr_rankings": {
+      "type": "dr-rankings-bar",
+      "blocks": {
+        "p1": {
+          "type": "product",
+          "settings": {
+            "rank": "#1",
+            "brand": "Vera Lane",
+            "product_name": "Tone Adapting Foundation",
+            "rating": "4.9",
+            "badge_text": "Best Overall",
+            "anchor_id": "review-1"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "rank": "#2",
+            "brand": "IT Cosmetics",
+            "product_name": "CC+ Cream SPF 50+",
+            "rating": "4.2",
+            "badge_text": "Runner Up",
+            "anchor_id": "review-2"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "rank": "#3",
+            "brand": "Laura Mercier",
+            "product_name": "Flawless Lumière Foundation",
+            "rating": "3.9",
+            "badge_text": "",
+            "anchor_id": "review-3"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "rank": "#4",
+            "brand": "L'Oréal Paris",
+            "product_name": "Age Perfect Serum Foundation",
+            "rating": "3.6",
+            "badge_text": "",
+            "anchor_id": "review-4"
+          }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "rank": "#5",
+            "brand": "Clinique",
+            "product_name": "Even Better Clinical Foundation",
+            "rating": "3.4",
+            "badge_text": "",
+            "anchor_id": "review-5"
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"],
+      "settings": {}
+    },
+    "review_1": {
+      "type": "dr-product-review",
+      "blocks": {
+        "pro_1": { "type": "pro", "settings": { "text": "Zero oxidation across all 30 clients — the shade-adapting technology means there's no pre-mixed pigment to drift" } },
+        "pro_2": { "type": "pro", "settings": { "text": "Didn't settle into fine lines even at the 8-hour mark. The formula stays flexible instead of drying rigid" } },
+        "pro_3": { "type": "pro", "settings": { "text": "Formulated specifically for mature skin with bisabolol, glycerin, and vitamin E — ingredients that hydrate without clogging" } },
+        "pro_4": { "type": "pro", "settings": { "text": "Light-to-medium buildable coverage that looks like skin, not makeup" } },
+        "pro_5": { "type": "pro", "settings": { "text": "30-day money-back guarantee eliminates the risk of buying the wrong shade (because there are no shades to get wrong)" } },
+        "con_1": { "type": "con", "settings": { "text": "Only available online — you can't swatch it at a counter" } },
+        "con_2": { "type": "con", "settings": { "text": "Fair to medium skin tones only. If you have a deep skin tone, this won't work for you" } },
+        "con_3": { "type": "con", "settings": { "text": "Not full coverage. If you need to conceal significant hyperpigmentation, you'll want a separate concealer" } }
+      },
+      "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "pro_5", "con_1", "con_2", "con_3"],
+      "settings": {
+        "section_id": "review-1",
+        "rank": "#1",
+        "badge_text": "Best Overall",
+        "brand": "Vera Lane",
+        "product_name": "Tone Adapting Foundation",
+        "rating": "4.9",
+        "price": "$39.95",
+        "verdict": "This is the only foundation I've tested that genuinely solves the oxidation problem — not by choosing a better shade, but by eliminating pre-mixed pigment entirely. The white-to-skin-tone technology means there's no pigment to oxidize. At the 8-hour check, every single client was still wearing the shade they started with. That has never happened in 18 years of testing.",
+        "cta_text": "Try Vera Lane Risk-Free",
+        "cta_url": "/products/color-changing-foundation"
+      }
+    },
+    "review_2": {
+      "type": "dr-product-review",
+      "blocks": {
+        "pro_1": { "type": "pro", "settings": { "text": "Built-in SPF 50+ — one of the best sun-protective foundations available" } },
+        "pro_2": { "type": "pro", "settings": { "text": "Hydrating formula with collagen, peptides, niacin, and hyaluronic acid" } },
+        "pro_3": { "type": "pro", "settings": { "text": "Anti-aging ingredients built into the formula" } },
+        "pro_4": { "type": "pro", "settings": { "text": "Good shade range for fair to medium skin" } },
+        "con_1": { "type": "con", "settings": { "text": "Oxidizes noticeably on some skin types after 5–6 hours" } },
+        "con_2": { "type": "con", "settings": { "text": "Can feel heavy in humid conditions" } },
+        "con_3": { "type": "con", "settings": { "text": "Shade matching still requires trial and error — I'd recommend getting matched at a counter" } },
+        "con_4": { "type": "con", "settings": { "text": "At $47, it's more expensive than Vera Lane for a product that doesn't solve oxidation" } }
+      },
+      "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "con_1", "con_2", "con_3", "con_4"],
+      "settings": {
+        "section_id": "review-2",
+        "rank": "#2",
+        "badge_text": "Runner Up",
+        "brand": "IT Cosmetics",
+        "product_name": "CC+ Cream with SPF 50+",
+        "rating": "4.2",
+        "price": "$47.00",
+        "verdict": "A solid choice with excellent SPF protection and a forgiving, hydrating formula. The shade range has improved significantly, and the CC+ formulation does blur minor imperfections. However, it still oxidizes on about 40% of my clients by the 6-hour mark, particularly those with oilier T-zones.",
+        "cta_text": "",
+        "cta_url": ""
+      }
+    },
+    "review_3": {
+      "type": "dr-product-review",
+      "blocks": {
+        "pro_1": { "type": "pro", "settings": { "text": "Gorgeous luminous finish that makes skin look healthy and lit from within" } },
+        "pro_2": { "type": "pro", "settings": { "text": "Lightweight formula that doesn't feel heavy or cakey" } },
+        "pro_3": { "type": "pro", "settings": { "text": "Excellent shade range across undertones" } },
+        "con_1": { "type": "con", "settings": { "text": "Luminous finish turns to oily-looking shine by hour 5 on mature skin" } },
+        "con_2": { "type": "con", "settings": { "text": "Moderate fine-line settling, especially around the eyes" } },
+        "con_3": { "type": "con", "settings": { "text": "Requires primer for all-day wear — adding cost and steps" } },
+        "con_4": { "type": "con", "settings": { "text": "At $48, premium pricing for a foundation that needs supporting products" } }
+      },
+      "block_order": ["pro_1", "pro_2", "pro_3", "con_1", "con_2", "con_3", "con_4"],
+      "settings": {
+        "section_id": "review-3",
+        "rank": "#3",
+        "badge_text": "",
+        "brand": "Laura Mercier",
+        "product_name": "Flawless Lumière Radiance-Perfecting Foundation",
+        "rating": "3.9",
+        "price": "$48.00",
+        "verdict": "Beautiful luminous finish that photographs well, but the radiance can turn to shine by afternoon on mature skin. Fine-line settling was moderate — better than drugstore options but not in the same league as the top two. Best for clients who prioritize a dewy, glowing look over longevity.",
+        "cta_text": "",
+        "cta_url": ""
+      }
+    },
+    "review_4": {
+      "type": "dr-product-review",
+      "blocks": {
+        "pro_1": { "type": "pro", "settings": { "text": "Outstanding value at $15.99" } },
+        "pro_2": { "type": "pro", "settings": { "text": "Serum-like texture that feels comfortable on dry, mature skin" } },
+        "pro_3": { "type": "pro", "settings": { "text": "Contains vitamin B3 and hydrating serum base" } },
+        "pro_4": { "type": "pro", "settings": { "text": "Available at every drugstore — easy to buy and return" } },
+        "con_1": { "type": "con", "settings": { "text": "Significant oxidation on 50% of clients by hour 4" } },
+        "con_2": { "type": "con", "settings": { "text": "Limited shade range, particularly for warm undertones" } },
+        "con_3": { "type": "con", "settings": { "text": "Settles into deep lines around the mouth and forehead" } },
+        "con_4": { "type": "con", "settings": { "text": "Packaging is basic — dropper allows too much product and causes waste" } }
+      },
+      "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "con_1", "con_2", "con_3", "con_4"],
+      "settings": {
+        "section_id": "review-4",
+        "rank": "#4",
+        "badge_text": "",
+        "brand": "L'Oréal Paris",
+        "product_name": "Age Perfect Radiant Serum Foundation",
+        "rating": "3.6",
+        "price": "$15.99",
+        "verdict": "The best budget option for mature skin, and a genuine effort by L'Oréal to formulate for women over 50. The serum texture is comfortable and hydrating. But oxidation remains a problem — roughly half my clients went a shade darker by afternoon. Impressive for the price, but you get what you pay for.",
+        "cta_text": "",
+        "cta_url": ""
+      }
+    },
+    "review_5": {
+      "type": "dr-product-review",
+      "blocks": {
+        "pro_1": { "type": "pro", "settings": { "text": "Dermatologist-developed with salicylic acid for skin clarity over time" } },
+        "pro_2": { "type": "pro", "settings": { "text": "Lightweight, non-comedogenic formula" } },
+        "pro_3": { "type": "pro", "settings": { "text": "Good option for sensitive skin" } },
+        "con_1": { "type": "con", "settings": { "text": "Too thin for mature skin — coverage is minimal and doesn't last" } },
+        "con_2": { "type": "con", "settings": { "text": "The salicylic acid, while good for skin, can be drying for women over 50" } },
+        "con_3": { "type": "con", "settings": { "text": "Significant settling into fine lines by hour 3" } },
+        "con_4": { "type": "con", "settings": { "text": "Oxidation issues on fair skin tones — turns pink/orange" } },
+        "con_5": { "type": "con", "settings": { "text": "At $37, mid-range pricing for below-average mature skin performance" } }
+      },
+      "block_order": ["pro_1", "pro_2", "pro_3", "con_1", "con_2", "con_3", "con_4", "con_5"],
+      "settings": {
+        "section_id": "review-5",
+        "rank": "#5",
+        "badge_text": "",
+        "brand": "Clinique",
+        "product_name": "Even Better Clinical Serum Foundation",
+        "rating": "3.4",
+        "price": "$37.00",
+        "verdict": "Clinique has excellent skincare credentials, but this foundation leans too heavily on the 'clinical' positioning and not enough on the 'foundation' performance. The formula is thin and watery, which is fine for younger skin but doesn't provide enough coverage or structure for mature skin that needs a bit more support.",
+        "cta_text": "",
+        "cta_url": ""
+      }
+    },
+    "dr_winner": {
+      "type": "dr-winner-spotlight",
+      "settings": {
+        "heading": "Why Vera Lane Won This Review",
+        "body": "I've tested over 200 foundations in 18 years. Most of them rely on the same basic approach: mix pigment into a base, add some moisturizing ingredients, hope the shade doesn't shift. Vera Lane is the first product I've tested that fundamentally changes how shade matching works.\n\nThe formula starts as a white cream. When it contacts your skin, it releases pigment based on your individual skin chemistry — your pH, your melanin, your undertone. There's no pre-mixed shade to oxidize. There's no shade chart to get wrong.\n\nFor my clients over 45, this matters more than any other feature. Oxidation isn't just a cosmetic annoyance — it's the reason most of them stopped wearing foundation entirely. They got tired of looking in the mirror at 2 PM and seeing a shade that wasn't theirs.\n\nVera Lane eliminates that problem at the molecular level. Not with a better shade range. Not with better pigments. By removing the thing that causes oxidation in the first place.\n\nCombined with the hydrating formula (bisabolol, glycerin, vitamin E) that keeps mature skin comfortable without settling into lines, and the 30-day money-back guarantee that removes any purchase risk — this is the foundation I now recommend to every client over 45 with fair to medium skin.",
+        "cta_text": "Try Vera Lane — 30-Day Money-Back Guarantee",
+        "cta_url": "/products/color-changing-foundation"
+      }
+    },
+    "dr_faq": {
+      "type": "dr-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I trust this review? Is the author affiliated with Vera Lane?",
+            "answer": "This page contains affiliate links. If you purchase through our links, we may receive a commission at no additional cost to you. However, every product was tested under the same conditions and evaluated using the same criteria. Our rankings reflect genuine testing results."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What if Vera Lane doesn't match my skin tone?",
+            "answer": "Vera Lane's tone-adapting technology works by reacting to your skin chemistry rather than relying on a pre-selected shade. That said, it's currently designed for fair to medium skin tones. If you have a deeper skin tone, IT Cosmetics CC+ Cream (#2 on our list) offers a wider shade range."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I still need primer with Vera Lane?",
+            "answer": "No. In our testing, Vera Lane performed just as well without primer — which is unusual. Most foundations for mature skin need a smoothing primer to prevent settling. The Vera Lane formula stays flexible throughout the day, which is why it doesn't crack or settle."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does one bottle of Vera Lane last?",
+            "answer": "A 30ml bottle typically lasts 6–8 weeks with daily use. At $39.95, that works out to roughly $0.71–$0.95 per day — less than a cup of coffee and less per ounce than most prestige foundations."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4"],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "disclosure_text": "Affiliate Disclosure: This page contains affiliate links. If you make a purchase through these links, we may earn a commission at no extra cost to you. All products were evaluated independently and our opinions are our own."
+      }
+    },
+    "dr_sticky": {
+      "type": "dr-sticky-cta",
+      "settings": {
+        "product_text": "Vera Lane Foundation",
+        "rating_text": "★★★★★ 4.9",
+        "cta_text": "Try Vera Lane Risk-Free →",
+        "cta_url": "/products/color-changing-foundation",
+        "guarantee_text": "30-Day Money-Back Guarantee"
+      }
+    }
+  },
+  "order": [
+    "dr_header",
+    "dr_article_hero",
+    "dr_intro",
+    "dr_methodology",
+    "dr_rankings",
+    "review_1",
+    "review_2",
+    "review_3",
+    "review_4",
+    "review_5",
+    "dr_winner",
+    "dr_faq",
+    "dr_sticky"
+  ]
+}
