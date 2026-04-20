@@ -11,6 +11,10 @@
             <div class="dr-rankings__image-wrap">
               {{ block.settings.image | image_url: width: 240 | image_tag: class: 'dr-rankings__image', loading: 'lazy' }}
             </div>
+          {% elsif block.settings.image_asset != blank %}
+            <div class="dr-rankings__image-wrap">
+              <img class="dr-rankings__image" src="{{ block.settings.image_asset | asset_url }}" loading="lazy" alt="{{ block.settings.product_name }}">
+            </div>
           {% endif %}
           <div class="dr-rankings__name">{{ block.settings.product_name }}</div>
           <div class="dr-rankings__stars">
@@ -159,6 +163,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Image asset filename",
+          "info": "Fallback if no image uploaded. e.g. dr-product-vera-lane.jpg"
         },
         {
           "type": "text",

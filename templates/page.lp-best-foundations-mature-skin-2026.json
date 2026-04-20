@@ -71,7 +71,8 @@
             "product_name": "Tone Adapting Foundation",
             "rating": "4.9",
             "badge_text": "★ Winner ★",
-            "anchor_id": "review-1"
+            "anchor_id": "review-1",
+            "image_asset": "dr-product-vera-lane.jpg"
           }
         },
         "p2": {
@@ -82,7 +83,8 @@
             "product_name": "CC+ Cream SPF 50+",
             "rating": "4.2",
             "badge_text": "Runner Up",
-            "anchor_id": "review-2"
+            "anchor_id": "review-2",
+            "image_asset": "dr-product-it-cosmetics.jpg"
           }
         },
         "p3": {
@@ -93,7 +95,8 @@
             "product_name": "Flawless Lumière Foundation",
             "rating": "3.9",
             "badge_text": "",
-            "anchor_id": "review-3"
+            "anchor_id": "review-3",
+            "image_asset": "dr-product-laura-mercier.jpg"
           }
         },
         "p4": {
@@ -104,7 +107,8 @@
             "product_name": "Age Perfect Serum Foundation",
             "rating": "3.6",
             "badge_text": "",
-            "anchor_id": "review-4"
+            "anchor_id": "review-4",
+            "image_asset": "dr-product-loreal.jpg"
           }
         },
         "p5": {
@@ -115,7 +119,8 @@
             "product_name": "Even Better Clinical Foundation",
             "rating": "3.4",
             "badge_text": "",
-            "anchor_id": "review-5"
+            "anchor_id": "review-5",
+            "image_asset": "dr-product-clinique.jpg"
           }
         }
       },
@@ -145,7 +150,8 @@
         "price": "$39.95",
         "verdict": "This is the only foundation I've tested that genuinely solves the oxidation problem — not by choosing a better shade, but by eliminating pre-mixed pigment entirely. The white-to-skin-tone technology means there's no pigment to oxidize. At the 8-hour check, every single client was still wearing the shade they started with. That has never happened in 18 years of testing.",
         "cta_text": "Try Vera Lane Risk-Free",
-        "cta_url": "/products/color-changing-foundation"
+        "cta_url": "/products/color-changing-foundation",
+        "image_asset": "dr-product-vera-lane.jpg"
       }
     },
     "review_2": {
@@ -171,7 +177,8 @@
         "price": "$47.00",
         "verdict": "A solid choice with excellent SPF protection and a forgiving, hydrating formula. The shade range has improved significantly, and the CC+ formulation does blur minor imperfections. However, it still oxidizes on about 40% of my clients by the 6-hour mark, particularly those with oilier T-zones.",
         "cta_text": "",
-        "cta_url": ""
+        "cta_url": "",
+        "image_asset": "dr-product-it-cosmetics.jpg"
       }
     },
     "review_3": {
@@ -196,7 +203,8 @@
         "price": "$48.00",
         "verdict": "Beautiful luminous finish that photographs well, but the radiance can turn to shine by afternoon on mature skin. Fine-line settling was moderate — better than drugstore options but not in the same league as the top two. Best for clients who prioritize a dewy, glowing look over longevity.",
         "cta_text": "",
-        "cta_url": ""
+        "cta_url": "",
+        "image_asset": "dr-product-laura-mercier.jpg"
       }
     },
     "review_4": {
@@ -222,7 +230,8 @@
         "price": "$15.99",
         "verdict": "The best budget option for mature skin, and a genuine effort by L'Oréal to formulate for women over 50. The serum texture is comfortable and hydrating. But oxidation remains a problem — roughly half my clients went a shade darker by afternoon. Impressive for the price, but you get what you pay for.",
         "cta_text": "",
-        "cta_url": ""
+        "cta_url": "",
+        "image_asset": "dr-product-loreal.jpg"
       }
     },
     "review_5": {
@@ -248,7 +257,8 @@
         "price": "$37.00",
         "verdict": "Clinique has excellent skincare credentials, but this foundation leans too heavily on the 'clinical' positioning and not enough on the 'foundation' performance. The formula is thin and watery, which is fine for younger skin but doesn't provide enough coverage or structure for mature skin that needs a bit more support.",
         "cta_text": "",
-        "cta_url": ""
+        "cta_url": "",
+        "image_asset": "dr-product-clinique.jpg"
       }
     },
     "dr_winner": {

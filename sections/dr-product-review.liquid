@@ -36,6 +36,10 @@
     <div class="dr-review__image">
       {{ section.settings.hero_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'dr-review__img' }}
     </div>
+  {% elsif section.settings.image_asset != blank %}
+    <div class="dr-review__image">
+      <img class="dr-review__img" src="{{ section.settings.image_asset | asset_url }}" loading="lazy" alt="{{ section.settings.product_name }}">
+    </div>
   {% endif %}
 
   {% if section.settings.sale_text != blank %}
@@ -333,6 +337,12 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image asset filename",
+      "info": "Fallback if no image uploaded. e.g. dr-product-vera-lane.jpg"
     }
   ],
   "blocks": [
