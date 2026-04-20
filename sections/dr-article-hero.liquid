@@ -1,129 +1,128 @@
-<div class="dr-article-hero">
-  <div class="dr-article-hero__inner">
-    <p class="dr-article-hero__category">{{ section.settings.category }}</p>
-    <h1 class="dr-article-hero__headline">{{ section.settings.headline }}</h1>
-    <p class="dr-article-hero__subheadline">{{ section.settings.subheadline }}</p>
-    <p class="dr-article-hero__updated">{{ section.settings.last_updated }}</p>
+<div class="dr-hero">
+  <div class="dr-hero__inner">
 
-    <div class="dr-article-hero__author">
-      <div class="dr-article-hero__author-avatar"></div>
-      <div class="dr-article-hero__author-info">
-        <p class="dr-article-hero__author-name">{{ section.settings.author_name }}</p>
-        <p class="dr-article-hero__author-title">{{ section.settings.author_title }}</p>
-        <p class="dr-article-hero__author-bio">{{ section.settings.author_bio }}</p>
+    <div class="dr-hero__author">
+      <div class="dr-hero__author-photo">
+        {% if section.settings.author_image != blank %}
+          <img src="{{ section.settings.author_image | image_url: width: 160 }}" alt="{{ section.settings.author_name }}" width="80" height="80" loading="eager">
+        {% endif %}
+      </div>
+      <div class="dr-hero__author-text">
+        <p class="dr-hero__author-greeting">Hi, I'm {{ section.settings.author_name }}</p>
+        <p class="dr-hero__author-bio">{{ section.settings.author_bio }}</p>
       </div>
     </div>
 
-    <div class="dr-article-hero__divider"></div>
+    <hr class="dr-hero__hr">
+
+    <h1 class="dr-hero__headline">{{ section.settings.headline }}</h1>
+
+    <p class="dr-hero__date">{{ section.settings.last_updated }}</p>
+
+    <div class="dr-hero__intro">
+      {{ section.settings.intro_body }}
+    </div>
+
   </div>
 </div>
 
 {% stylesheet %}
-.dr-article-hero {
+.dr-hero {
   background: #fff;
-  padding: 48px 24px;
+  padding: 32px 24px;
 }
 
-.dr-article-hero__inner {
-  max-width: 720px;
+.dr-hero__inner {
+  max-width: 700px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.dr-article-hero__category {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #888;
-  margin: 0 0 16px;
+.dr-hero__author {
+  overflow: hidden;
+  margin-bottom: 24px;
 }
 
-.dr-article-hero__headline {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.25;
-  margin: 0 0 20px;
-}
-
-.dr-article-hero__subheadline {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  color: #555;
-  line-height: 1.6;
-  max-width: 640px;
-  margin: 0 auto 20px;
-}
-
-.dr-article-hero__updated {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  color: #999;
-  margin: 0 0 32px;
-}
-
-.dr-article-hero__author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.dr-article-hero__author-avatar {
+.dr-hero__author-photo {
+  float: left;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background: #e0e0e0;
+  margin-right: 16px;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.dr-article-hero__author-info {
-  text-align: left;
+.dr-hero__author-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.dr-article-hero__author-name {
+.dr-hero__author-text {
+  overflow: hidden;
+}
+
+.dr-hero__author-greeting {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 6px;
+}
+
+.dr-hero__author-bio {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 0 0 4px;
-}
-
-.dr-article-hero__author-title {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  color: #777;
-  margin: 0 0 4px;
-}
-
-.dr-article-hero__author-bio {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  color: #999;
+  color: #555;
+  line-height: 1.5;
   margin: 0;
 }
 
-.dr-article-hero__divider {
-  height: 1px;
-  background: #e5e5e5;
-  width: 100%;
+.dr-hero__hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 24px 0;
+}
+
+.dr-hero__headline {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+.dr-hero__date {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+  margin: 0 0 20px;
+}
+
+.dr-hero__intro {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.dr-hero__intro p {
+  margin: 0 0 16px;
+}
+
+.dr-hero__intro p:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  .dr-article-hero__headline {
-    font-size: 28px;
-  }
-
-  .dr-article-hero__author {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .dr-article-hero__author-info {
-    text-align: center;
+  .dr-hero__headline {
+    font-size: 24px;
   }
 }
 {% endstylesheet %}
@@ -133,46 +132,45 @@
   "name": "DR - Article Hero",
   "settings": [
     {
-      "type": "text",
-      "id": "category",
-      "label": "Category Label",
-      "default": "EXPERT BEAUTY REVIEW"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "Headline",
-      "default": "The 5 Best Foundations for Mature Skin in 2026"
-    },
-    {
-      "type": "textarea",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "I spent 12 weeks testing foundations on clients aged 45–72. Most failed by lunch. Here's what actually worked."
-    },
-    {
-      "type": "text",
-      "id": "last_updated",
-      "label": "Last Updated",
-      "default": "Last updated: April 2026"
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Author Photo"
     },
     {
       "type": "text",
       "id": "author_name",
       "label": "Author Name",
-      "default": "Elena Vasquez, L.E."
+      "default": "Dr. Sarah Mitchell"
     },
     {
       "type": "text",
       "id": "author_title",
       "label": "Author Title",
-      "default": "Licensed Esthetician & Mature Skin Specialist"
+      "default": "Board-Certified Dermatologist"
+    },
+    {
+      "type": "textarea",
+      "id": "author_bio",
+      "label": "Author Bio",
+      "default": "I'm a board-certified dermatologist with 18 years of experience helping women over 40 find skincare and makeup that actually works with their changing skin."
     },
     {
       "type": "text",
-      "id": "author_bio",
-      "label": "Author Bio",
-      "default": "15+ years helping women find their perfect foundation match."
+      "id": "headline",
+      "label": "Headline",
+      "default": "I Tested 12 Foundations on Patients Over 40. Only One Didn't Settle Into Fine Lines."
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last Updated",
+      "default": "Last updated: April 12, 2026"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_body",
+      "label": "Intro Paragraph",
+      "default": "<p>After years of watching patients struggle with foundations that cake, oxidize, or emphasize every line, I decided to run my own informal test. Here's what I found.</p>"
     }
   ]
 }

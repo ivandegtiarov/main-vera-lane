@@ -6,36 +6,42 @@
 
 {% stylesheet %}
 .dr-intro {
-  background: #ffffff;
-  padding: 32px 24px;
+  padding: 0 24px 24px;
 }
 
 .dr-intro__body {
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto;
-  font-family: Georgia, serif;
-  font-size: 17px;
-  line-height: 1.8;
-  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  text-align: left;
 }
 
 .dr-intro__body p {
-  margin-bottom: 24px;
-}
-
-.dr-intro__body p:first-of-type::first-letter {
-  float: left;
-  font-family: Georgia, serif;
-  font-size: 3.5em;
-  font-weight: bold;
-  color: #222;
-  line-height: 0.8;
-  margin-right: 8px;
+  margin: 0 0 16px;
 }
 
 .dr-intro__body a {
-  color: #333;
+  color: #4A90D9;
   text-decoration: underline;
+}
+
+.dr-intro__body strong,
+.dr-intro__body b {
+  font-weight: 700;
+  color: #333;
+}
+
+.dr-intro__body ul {
+  padding-left: 24px;
+  margin: 0 0 16px;
+  list-style-type: disc;
+}
+
+.dr-intro__body li {
+  margin-bottom: 8px;
 }
 {% endstylesheet %}
 

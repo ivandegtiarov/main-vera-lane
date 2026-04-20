@@ -1,15 +1,9 @@
 <div class="dr-sticky-cta" id="dr-sticky-cta-{{ section.id }}">
   <div class="dr-sticky-cta__container">
-    <div class="dr-sticky-cta__left">
-      <span class="dr-sticky-cta__product">{{ section.settings.product_text }}</span>
-      <span class="dr-sticky-cta__rating">{{ section.settings.rating_text }}</span>
-    </div>
-    <div class="dr-sticky-cta__right">
-      <a href="{{ section.settings.cta_url }}" class="dr-sticky-cta__button">{{ section.settings.cta_text }}</a>
-      {% if section.settings.guarantee_text != blank %}
-        <span class="dr-sticky-cta__guarantee">{{ section.settings.guarantee_text }}</span>
-      {% endif %}
-    </div>
+    <a href="{{ section.settings.cta_url }}" class="dr-sticky-cta__button">{{ section.settings.cta_text }}</a>
+    {% if section.settings.guarantee_text != blank %}
+      <span class="dr-sticky-cta__guarantee">{{ section.settings.guarantee_text }}</span>
+    {% endif %}
   </div>
 </div>
 
@@ -34,8 +28,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: #fff;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
   padding: 12px 24px;
   z-index: 999;
   transform: translateY(100%);
@@ -47,57 +41,36 @@
 }
 
 .dr-sticky-cta__container {
-  max-width: 720px;
+  max-width: 700px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dr-sticky-cta__left {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.dr-sticky-cta__product {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1a1a1a;
-}
-
-.dr-sticky-cta__rating {
-  font-size: 13px;
-  color: #666;
-}
-
-.dr-sticky-cta__right {
-  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .dr-sticky-cta__button {
   display: inline-block;
-  background: #1a1a1a;
-  color: #fff;
+  background: #4A90D9;
+  color: #ffffff;
   text-decoration: none;
-  padding: 12px 24px;
+  padding: 14px 32px;
   border-radius: 6px;
-  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
-  transition: opacity 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .dr-sticky-cta__button:hover {
-  opacity: 0.85;
+  background: #3a7bc8;
 }
 
 .dr-sticky-cta__guarantee {
-  font-size: 11px;
-  color: #999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #888;
 }
 {% endstylesheet %}
 
@@ -107,21 +80,9 @@
   "settings": [
     {
       "type": "text",
-      "id": "product_text",
-      "label": "Product Name",
-      "default": "Vera Lane Foundation"
-    },
-    {
-      "type": "text",
-      "id": "rating_text",
-      "label": "Rating Text",
-      "default": "★★★★★ 4.9/5"
-    },
-    {
-      "type": "text",
       "id": "cta_text",
       "label": "CTA Text",
-      "default": "Try Vera Lane Risk-Free →"
+      "default": "Try Vera Lane Now \u2192"
     },
     {
       "type": "url",

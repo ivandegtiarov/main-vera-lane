@@ -1,91 +1,54 @@
 <section class="dr-methodology">
   <div class="dr-methodology__container">
     <h2 class="dr-methodology__heading">{{ section.settings.heading }}</h2>
-    <div class="dr-methodology__grid">
+    <ul class="dr-methodology__list">
       {% for block in section.blocks %}
-        <div class="dr-methodology__item" {{ block.shopify_attributes }}>
-          <div class="dr-methodology__number">{{ forloop.index }}</div>
-          <div class="dr-methodology__content">
-            <h3 class="dr-methodology__title">{{ block.settings.title }}</h3>
-            <p class="dr-methodology__description">{{ block.settings.description }}</p>
-          </div>
-        </div>
+        <li class="dr-methodology__item" {{ block.shopify_attributes }}>
+          <strong class="dr-methodology__title">{{ block.settings.title }}:</strong> {{ block.settings.description }}
+        </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </section>
 
 {% stylesheet %}
 .dr-methodology {
-  background: #f9f8f6;
-  padding: 48px 24px;
+  background: #ffffff;
+  padding: 24px;
 }
 
 .dr-methodology__container {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .dr-methodology__heading {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 28px;
-  font-weight: 400;
-  text-align: center;
-  margin: 0 0 40px;
-  color: #1a1a1a;
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 20px;
+  text-align: left;
 }
 
-.dr-methodology__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-@media (max-width: 749px) {
-  .dr-methodology__grid {
-    grid-template-columns: 1fr;
-  }
+.dr-methodology__list {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin: 0;
 }
 
 .dr-methodology__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.dr-methodology__number {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #2c2c2c;
-  color: #fff;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 16px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dr-methodology__content {
-  flex: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 12px;
 }
 
 .dr-methodology__title {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 16px;
   font-weight: 700;
-  margin: 0 0 6px;
-  color: #1a1a1a;
-}
-
-.dr-methodology__description {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-  color: #6b6b6b;
+  color: #222;
 }
 {% endstylesheet %}
 

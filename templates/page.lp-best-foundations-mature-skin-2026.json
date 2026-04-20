@@ -70,7 +70,7 @@
             "brand": "Vera Lane",
             "product_name": "Tone Adapting Foundation",
             "rating": "4.9",
-            "badge_text": "Best Overall",
+            "badge_text": "★ Winner ★",
             "anchor_id": "review-1"
           }
         },
@@ -125,20 +125,20 @@
     "review_1": {
       "type": "dr-product-review",
       "blocks": {
-        "pro_1": { "type": "pro", "settings": { "text": "Zero oxidation across all 30 clients — the shade-adapting technology means there's no pre-mixed pigment to drift" } },
-        "pro_2": { "type": "pro", "settings": { "text": "Didn't settle into fine lines even at the 8-hour mark. The formula stays flexible instead of drying rigid" } },
-        "pro_3": { "type": "pro", "settings": { "text": "Formulated specifically for mature skin with bisabolol, glycerin, and vitamin E — ingredients that hydrate without clogging" } },
-        "pro_4": { "type": "pro", "settings": { "text": "Light-to-medium buildable coverage that looks like skin, not makeup" } },
-        "pro_5": { "type": "pro", "settings": { "text": "30-day money-back guarantee eliminates the risk of buying the wrong shade (because there are no shades to get wrong)" } },
-        "con_1": { "type": "con", "settings": { "text": "Only available online — you can't swatch it at a counter" } },
-        "con_2": { "type": "con", "settings": { "text": "Fair to medium skin tones only. If you have a deep skin tone, this won't work for you" } },
-        "con_3": { "type": "con", "settings": { "text": "Not full coverage. If you need to conceal significant hyperpigmentation, you'll want a separate concealer" } }
+        "pro_1": { "type": "pro", "settings": { "title": "Zero oxidation:", "description": "The shade-adapting technology means there's no pre-mixed pigment to drift. Tested across all 30 clients." } },
+        "pro_2": { "type": "pro", "settings": { "title": "No fine-line settling:", "description": "Even at the 8-hour mark, the formula stays flexible instead of drying rigid." } },
+        "pro_3": { "type": "pro", "settings": { "title": "Mature skin formula:", "description": "Formulated with bisabolol, glycerin, and vitamin E — ingredients that hydrate without clogging." } },
+        "pro_4": { "type": "pro", "settings": { "title": "Buildable coverage:", "description": "Light-to-medium coverage that looks like skin, not makeup." } },
+        "pro_5": { "type": "pro", "settings": { "title": "Risk-free guarantee:", "description": "30-day money-back guarantee eliminates the risk of buying the wrong shade (because there are no shades to get wrong)." } },
+        "con_1": { "type": "con", "settings": { "title": "Online only:", "description": "You can't swatch it at a counter." } },
+        "con_2": { "type": "con", "settings": { "title": "Limited shade range:", "description": "Fair to medium skin tones only. If you have a deep skin tone, this won't work for you." } },
+        "con_3": { "type": "con", "settings": { "title": "Not full coverage:", "description": "If you need to conceal significant hyperpigmentation, you'll want a separate concealer." } }
       },
       "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "pro_5", "con_1", "con_2", "con_3"],
       "settings": {
         "section_id": "review-1",
         "rank_label": "#1",
-        "badge_text": "Best Overall",
+        "badge_text": "★ Winner ★",
         "brand": "Vera Lane",
         "product_name": "Tone Adapting Foundation",
         "rating": "4.9",
@@ -151,14 +151,14 @@
     "review_2": {
       "type": "dr-product-review",
       "blocks": {
-        "pro_1": { "type": "pro", "settings": { "text": "Built-in SPF 50+ — one of the best sun-protective foundations available" } },
-        "pro_2": { "type": "pro", "settings": { "text": "Hydrating formula with collagen, peptides, niacin, and hyaluronic acid" } },
-        "pro_3": { "type": "pro", "settings": { "text": "Anti-aging ingredients built into the formula" } },
-        "pro_4": { "type": "pro", "settings": { "text": "Good shade range for fair to medium skin" } },
-        "con_1": { "type": "con", "settings": { "text": "Oxidizes noticeably on some skin types after 5–6 hours" } },
-        "con_2": { "type": "con", "settings": { "text": "Can feel heavy in humid conditions" } },
-        "con_3": { "type": "con", "settings": { "text": "Shade matching still requires trial and error — I'd recommend getting matched at a counter" } },
-        "con_4": { "type": "con", "settings": { "text": "At $47, it's more expensive than Vera Lane for a product that doesn't solve oxidation" } }
+        "pro_1": { "type": "pro", "settings": { "title": "Built-in SPF 50+:", "description": "One of the best sun-protective foundations available." } },
+        "pro_2": { "type": "pro", "settings": { "title": "Hydrating formula:", "description": "Contains collagen, peptides, niacin, and hyaluronic acid." } },
+        "pro_3": { "type": "pro", "settings": { "title": "Anti-aging ingredients:", "description": "Built into the formula for long-term skin benefits." } },
+        "pro_4": { "type": "pro", "settings": { "title": "Good shade range:", "description": "Solid options for fair to medium skin." } },
+        "con_1": { "type": "con", "settings": { "title": "Oxidation issues:", "description": "Oxidizes noticeably on some skin types after 5–6 hours." } },
+        "con_2": { "type": "con", "settings": { "title": "Heavy in humidity:", "description": "Can feel heavy in humid conditions." } },
+        "con_3": { "type": "con", "settings": { "title": "Shade matching difficulty:", "description": "Still requires trial and error — I'd recommend getting matched at a counter." } },
+        "con_4": { "type": "con", "settings": { "title": "Expensive for what it offers:", "description": "At $47, it's more expensive than Vera Lane for a product that doesn't solve oxidation." } }
       },
       "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "con_1", "con_2", "con_3", "con_4"],
       "settings": {
@@ -177,13 +177,13 @@
     "review_3": {
       "type": "dr-product-review",
       "blocks": {
-        "pro_1": { "type": "pro", "settings": { "text": "Gorgeous luminous finish that makes skin look healthy and lit from within" } },
-        "pro_2": { "type": "pro", "settings": { "text": "Lightweight formula that doesn't feel heavy or cakey" } },
-        "pro_3": { "type": "pro", "settings": { "text": "Excellent shade range across undertones" } },
-        "con_1": { "type": "con", "settings": { "text": "Luminous finish turns to oily-looking shine by hour 5 on mature skin" } },
-        "con_2": { "type": "con", "settings": { "text": "Moderate fine-line settling, especially around the eyes" } },
-        "con_3": { "type": "con", "settings": { "text": "Requires primer for all-day wear — adding cost and steps" } },
-        "con_4": { "type": "con", "settings": { "text": "At $48, premium pricing for a foundation that needs supporting products" } }
+        "pro_1": { "type": "pro", "settings": { "title": "Gorgeous luminous finish:", "description": "Makes skin look healthy and lit from within." } },
+        "pro_2": { "type": "pro", "settings": { "title": "Lightweight formula:", "description": "Doesn't feel heavy or cakey on the skin." } },
+        "pro_3": { "type": "pro", "settings": { "title": "Excellent shade range:", "description": "Strong options across undertones." } },
+        "con_1": { "type": "con", "settings": { "title": "Turns oily by hour 5:", "description": "Luminous finish turns to oily-looking shine on mature skin." } },
+        "con_2": { "type": "con", "settings": { "title": "Fine-line settling:", "description": "Moderate settling, especially around the eyes." } },
+        "con_3": { "type": "con", "settings": { "title": "Requires primer:", "description": "Needs primer for all-day wear — adding cost and steps." } },
+        "con_4": { "type": "con", "settings": { "title": "Premium pricing:", "description": "At $48, expensive for a foundation that needs supporting products." } }
       },
       "block_order": ["pro_1", "pro_2", "pro_3", "con_1", "con_2", "con_3", "con_4"],
       "settings": {
@@ -202,14 +202,14 @@
     "review_4": {
       "type": "dr-product-review",
       "blocks": {
-        "pro_1": { "type": "pro", "settings": { "text": "Outstanding value at $15.99" } },
-        "pro_2": { "type": "pro", "settings": { "text": "Serum-like texture that feels comfortable on dry, mature skin" } },
-        "pro_3": { "type": "pro", "settings": { "text": "Contains vitamin B3 and hydrating serum base" } },
-        "pro_4": { "type": "pro", "settings": { "text": "Available at every drugstore — easy to buy and return" } },
-        "con_1": { "type": "con", "settings": { "text": "Significant oxidation on 50% of clients by hour 4" } },
-        "con_2": { "type": "con", "settings": { "text": "Limited shade range, particularly for warm undertones" } },
-        "con_3": { "type": "con", "settings": { "text": "Settles into deep lines around the mouth and forehead" } },
-        "con_4": { "type": "con", "settings": { "text": "Packaging is basic — dropper allows too much product and causes waste" } }
+        "pro_1": { "type": "pro", "settings": { "title": "Outstanding value:", "description": "At $15.99, the best price-to-performance ratio in this list." } },
+        "pro_2": { "type": "pro", "settings": { "title": "Serum-like texture:", "description": "Feels comfortable on dry, mature skin." } },
+        "pro_3": { "type": "pro", "settings": { "title": "Skincare ingredients:", "description": "Contains vitamin B3 and hydrating serum base." } },
+        "pro_4": { "type": "pro", "settings": { "title": "Widely available:", "description": "Available at every drugstore — easy to buy and return." } },
+        "con_1": { "type": "con", "settings": { "title": "Significant oxidation:", "description": "50% of clients showed shade shift by hour 4." } },
+        "con_2": { "type": "con", "settings": { "title": "Limited shade range:", "description": "Particularly lacking for warm undertones." } },
+        "con_3": { "type": "con", "settings": { "title": "Settles into deep lines:", "description": "Noticeable settling around the mouth and forehead." } },
+        "con_4": { "type": "con", "settings": { "title": "Poor packaging:", "description": "Dropper allows too much product and causes waste." } }
       },
       "block_order": ["pro_1", "pro_2", "pro_3", "pro_4", "con_1", "con_2", "con_3", "con_4"],
       "settings": {
@@ -228,14 +228,14 @@
     "review_5": {
       "type": "dr-product-review",
       "blocks": {
-        "pro_1": { "type": "pro", "settings": { "text": "Dermatologist-developed with salicylic acid for skin clarity over time" } },
-        "pro_2": { "type": "pro", "settings": { "text": "Lightweight, non-comedogenic formula" } },
-        "pro_3": { "type": "pro", "settings": { "text": "Good option for sensitive skin" } },
-        "con_1": { "type": "con", "settings": { "text": "Too thin for mature skin — coverage is minimal and doesn't last" } },
-        "con_2": { "type": "con", "settings": { "text": "The salicylic acid, while good for skin, can be drying for women over 50" } },
-        "con_3": { "type": "con", "settings": { "text": "Significant settling into fine lines by hour 3" } },
-        "con_4": { "type": "con", "settings": { "text": "Oxidation issues on fair skin tones — turns pink/orange" } },
-        "con_5": { "type": "con", "settings": { "text": "At $37, mid-range pricing for below-average mature skin performance" } }
+        "pro_1": { "type": "pro", "settings": { "title": "Dermatologist-developed:", "description": "Contains salicylic acid for skin clarity over time." } },
+        "pro_2": { "type": "pro", "settings": { "title": "Lightweight formula:", "description": "Non-comedogenic and won't clog pores." } },
+        "pro_3": { "type": "pro", "settings": { "title": "Sensitive skin friendly:", "description": "Good option for reactive or easily irritated skin." } },
+        "con_1": { "type": "con", "settings": { "title": "Too thin for mature skin:", "description": "Coverage is minimal and doesn't last through the day." } },
+        "con_2": { "type": "con", "settings": { "title": "Can be drying:", "description": "The salicylic acid, while good for skin, can be drying for women over 50." } },
+        "con_3": { "type": "con", "settings": { "title": "Early settling:", "description": "Significant settling into fine lines by hour 3." } },
+        "con_4": { "type": "con", "settings": { "title": "Oxidation on fair skin:", "description": "Turns pink/orange on fair skin tones." } },
+        "con_5": { "type": "con", "settings": { "title": "Overpriced for performance:", "description": "At $37, mid-range pricing for below-average mature skin performance." } }
       },
       "block_order": ["pro_1", "pro_2", "pro_3", "con_1", "con_2", "con_3", "con_4", "con_5"],
       "settings": {

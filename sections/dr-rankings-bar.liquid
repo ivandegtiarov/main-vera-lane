@@ -1,23 +1,26 @@
-<section class="dr-rankings-bar">
-  <div class="dr-rankings-bar__container">
-    <div class="dr-rankings-bar__scroll">
+<section class="dr-rankings">
+  <div class="dr-rankings__container">
+    <div class="dr-rankings__badges">
+      <span class="dr-rankings__badge dr-rankings__badge--winner">★ Winner ★</span>
+      <span class="dr-rankings__badge dr-rankings__badge--runner-up">Runner Up</span>
+    </div>
+    <div class="dr-rankings__scroll">
       {% for block in section.blocks %}
-        <div class="dr-rankings-bar__card {% if block.settings.rank == 1 %}dr-rankings-bar__card--highlighted{% endif %}" {{ block.shopify_attributes }}>
-          {% if block.settings.badge_text != blank %}
-            <span class="dr-rankings-bar__badge {% if block.settings.rank == 1 %}dr-rankings-bar__badge--gold{% endif %}">{{ block.settings.badge_text }}</span>
+        <div class="dr-rankings__card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <div class="dr-rankings__image-wrap">
+              {{ block.settings.image | image_url: width: 240 | image_tag: class: 'dr-rankings__image', loading: 'lazy' }}
+            </div>
           {% endif %}
-          <div class="dr-rankings-bar__rank">#{{ block.settings.rank }}</div>
-          <div class="dr-rankings-bar__name">{{ block.settings.product_name }}</div>
-          <div class="dr-rankings-bar__brand">{{ block.settings.brand }}</div>
-          <div class="dr-rankings-bar__rating">
-            <span class="dr-rankings-bar__stars">
-              {% assign full_stars = block.settings.rating | floor %}
-              {% for i in (1..full_stars) %}★{% endfor %}{% if full_stars < 5 %}{% assign empty = 5 | minus: full_stars %}{% for i in (1..empty) %}☆{% endfor %}{% endif %}
-            </span>
-            <span class="dr-rankings-bar__rating-number">{{ block.settings.rating }}</span>
+          <div class="dr-rankings__name">{{ block.settings.product_name }}</div>
+          <div class="dr-rankings__stars">
+            {% assign rating_float = block.settings.rating | plus: 0 %}
+            {% assign full_stars = rating_float | floor %}
+            {% for i in (1..full_stars) %}★{% endfor %}{% if full_stars < 5 %}{% assign empty = 5 | minus: full_stars %}{% for i in (1..empty) %}☆{% endfor %}{% endif %}
           </div>
+          <div class="dr-rankings__rating-number">{{ block.settings.rating }}</div>
           {% if block.settings.anchor_id != blank %}
-            <a href="#{{ block.settings.anchor_id }}" class="dr-rankings-bar__link">See Review ↓</a>
+            <a href="#{{ block.settings.anchor_id }}" class="dr-rankings__link">See details</a>
           {% endif %}
         </div>
       {% endfor %}
@@ -26,132 +29,108 @@
 </section>
 
 {% stylesheet %}
-.dr-rankings-bar {
+.dr-rankings {
   background: #fff;
-  padding: 32px 24px;
+  padding: 24px;
 }
 
-.dr-rankings-bar__container {
-  max-width: 900px;
+.dr-rankings__container {
+  max-width: 700px;
   margin: 0 auto;
 }
 
-.dr-rankings-bar__scroll {
+.dr-rankings__badges {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-@media (max-width: 749px) {
-  .dr-rankings-bar__scroll {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 8px;
-    justify-content: flex-start;
-  }
-
-  .dr-rankings-bar__scroll::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .dr-rankings-bar__scroll::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 2px;
-  }
-}
-
-.dr-rankings-bar__card {
-  position: relative;
-  flex: 0 0 auto;
-  width: 160px;
-  padding: 20px 16px;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  text-align: center;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  scroll-snap-align: start;
-}
-
-.dr-rankings-bar__card--highlighted {
-  border-color: #c9a84c;
-  border-width: 2px;
-  box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15);
-}
-
-.dr-rankings-bar__badge {
+.dr-rankings__badge {
   display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 3px 8px;
-  border-radius: 3px;
-  background: #eee;
-  color: #555;
+  padding: 4px 12px;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+.dr-rankings__badge--winner {
+  background: #FFD700;
+  color: #333;
+}
+
+.dr-rankings__badge--runner-up {
+  background: #4A90D9;
+  color: #fff;
+}
+
+.dr-rankings__scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.dr-rankings__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.dr-rankings__scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
+
+.dr-rankings__card {
+  flex: 0 0 140px;
+  width: 140px;
+  text-align: center;
+}
+
+.dr-rankings__image-wrap {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 8px;
 }
 
-.dr-rankings-bar__badge--gold {
-  background: #fdf6e3;
-  color: #b8860b;
+.dr-rankings__image {
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: contain;
 }
 
-.dr-rankings-bar__rank {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 24px;
+.dr-rankings__name {
+  font-size: 13px;
   font-weight: 700;
   color: #1a1a1a;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.dr-rankings__stars {
+  color: #FFB800;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.dr-rankings__rating-number {
+  font-size: 12px;
+  color: #666;
   margin-bottom: 6px;
 }
 
-.dr-rankings-bar__name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 2px;
-  line-height: 1.3;
-}
-
-.dr-rankings-bar__brand {
+.dr-rankings__link {
   font-size: 12px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.dr-rankings-bar__rating {
-  margin-bottom: 12px;
-}
-
-.dr-rankings-bar__stars {
-  color: #c9a84c;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.dr-rankings-bar__rating-number {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-top: 2px;
-}
-
-.dr-rankings-bar__link {
-  font-size: 12px;
-  color: #2c2c2c;
+  color: #4A90D9;
   text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px solid #2c2c2c;
-  padding-bottom: 1px;
 }
 
-.dr-rankings-bar__link:hover {
-  color: #c9a84c;
-  border-color: #c9a84c;
+.dr-rankings__link:hover {
+  text-decoration: underline;
 }
 {% endstylesheet %}
 
@@ -165,18 +144,6 @@
       "name": "Product",
       "settings": [
         {
-          "type": "number",
-          "id": "rank",
-          "label": "Rank",
-          "default": 1
-        },
-        {
-          "type": "text",
-          "id": "brand",
-          "label": "Brand",
-          "default": "Vera Lane"
-        },
-        {
           "type": "text",
           "id": "product_name",
           "label": "Product Name",
@@ -189,6 +156,11 @@
           "default": "4.9"
         },
         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
           "type": "text",
           "id": "badge_text",
           "label": "Badge Text (optional)"
@@ -196,7 +168,7 @@
         {
           "type": "text",
           "id": "anchor_id",
-          "label": "Anchor ID (for See Review link)"
+          "label": "Anchor ID (for See details link)"
         }
       ]
     }
@@ -208,19 +180,15 @@
         {
           "type": "product",
           "settings": {
-            "rank": 1,
-            "brand": "Vera Lane",
             "product_name": "Color Changing Foundation",
             "rating": "4.9",
-            "badge_text": "Best Overall",
+            "badge_text": "Winner",
             "anchor_id": "review-1"
           }
         },
         {
           "type": "product",
           "settings": {
-            "rank": 2,
-            "brand": "Brand B",
             "product_name": "Adaptive Tint SPF",
             "rating": "4.5",
             "badge_text": "Runner Up",
@@ -230,34 +198,10 @@
         {
           "type": "product",
           "settings": {
-            "rank": 3,
-            "brand": "Brand C",
             "product_name": "Smart Shade Serum",
             "rating": "4.2",
             "badge_text": "",
             "anchor_id": "review-3"
-          }
-        },
-        {
-          "type": "product",
-          "settings": {
-            "rank": 4,
-            "brand": "Brand D",
-            "product_name": "Chameleon Base",
-            "rating": "3.8",
-            "badge_text": "",
-            "anchor_id": "review-4"
-          }
-        },
-        {
-          "type": "product",
-          "settings": {
-            "rank": 5,
-            "brand": "Brand E",
-            "product_name": "Tone Match Cream",
-            "rating": "3.5",
-            "badge_text": "",
-            "anchor_id": "review-5"
           }
         }
       ]
