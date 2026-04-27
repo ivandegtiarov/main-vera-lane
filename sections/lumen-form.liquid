@@ -47,18 +47,12 @@
           </p>
         </header>
 
-        {%- form 'contact', id: form_id, class: 'vl-contact__form' -%}
-          {%- if form.posted_successfully? -%}
-            <p class="vl-contact__notice" id="vl-contact-success" role="status" tabindex="-1">
-              Thanks for reaching out — we'll get back to you soon. A confirmation has been sent to your email.
-            </p>
-          {%- endif -%}
+        <form id="{{ form_id }}" class="vl-contact__form" novalidate>
+          <p class="vl-contact__notice" id="vl-contact-success" role="status" tabindex="-1" style="display:none;">
+            Thanks for reaching out — we'll get back to you soon. A confirmation has been sent to your email.
+          </p>
 
-          {%- if form.errors -%}
-            <div class="vl-contact__errors" role="alert" tabindex="-1">
-              {{ form.errors | default_errors }}
-            </div>
-          {%- endif -%}
+          <div class="vl-contact__errors" id="vl-contact-error" role="alert" tabindex="-1" style="display:none;"></div>
 
           <div class="vl-contact__field">
             <label class="vl-contact__label" for="vlContactName-{{ section.id }}">Your Name</label>
@@ -66,11 +60,11 @@
               <input
                 class="vl-contact__input"
                 id="vlContactName-{{ section.id }}"
-                name="contact[name]"
+                name="name"
                 type="text"
                 placeholder="John Doe"
                 autocomplete="name"
-                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                value="{% if customer %}{{ customer.name }}{% endif %}"
                 required
               >
             </div>
@@ -83,13 +77,13 @@
                 <input
                   class="vl-contact__input"
                   id="vlContactEmail-{{ section.id }}"
-                  name="contact[email]"
+                  name="email"
                   type="email"
                   placeholder="example@email.com"
                   autocomplete="email"
                   spellcheck="false"
                   autocapitalize="off"
-                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  value="{% if customer %}{{ customer.email }}{% endif %}"
                   required
                 >
               </div>
@@ -101,12 +95,12 @@
                 <input
                   class="vl-contact__input vl-contact__input--phone"
                   id="vlContactNumber-{{ section.id }}"
-                  name="contact[phone]"
+                  name="phone"
                   type="tel"
                   placeholder="(555) 555-5555"
                   autocomplete="tel"
                   maxlength="14"
-                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                  value="{% if customer %}{{ customer.phone }}{% endif %}"
                 >
               </div>
             </div>
@@ -118,17 +112,17 @@
               <textarea
                 class="vl-contact__textarea"
                 id="vlContactMessage-{{ section.id }}"
-                name="contact[body]"
+                name="message"
                 placeholder="Write your message here"
                 required
-              >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              ></textarea>
             </div>
           </div>
 
           <button class="vl-contact__cta" type="submit">
             {{ section.settings.button_label | escape }}
           </button>
-        {%- endform -%}
+        </form>
       </div>
     </div>
   </div>
@@ -139,32 +133,84 @@
     var form = document.getElementById('{{ form_id }}');
     if (!form) return;
 
-    form.addEventListener('submit', function() {
-      var emailInput = form.querySelector('[name="contact[email]"]');
-      var nameInput = form.querySelector('[name="contact[name]"]');
-      var email = emailInput ? emailInput.value.trim() : '';
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var nameInput = form.querySelector('[name="name"]');
+      var emailInput = form.querySelector('[name="email"]');
+      var phoneInput = form.querySelector('[name="phone"]');
+      var messageInput = form.querySelector('[name="message"]');
+
       var name = nameInput ? nameInput.value.trim() : '';
-      if (!email) return;
+      var email = emailInput ? emailInput.value.trim() : '';
+      var phone = phoneInput ? phoneInput.value.trim() : '';
+      var message = messageInput ? messageInput.value.trim() : '';
 
-      // Fire Klaviyo event before Shopify redirects to CAPTCHA
-      // Use sendBeacon so it completes even during page navigation
-      var payload = JSON.stringify({
-        token: 'VhFhDd',
-        event: 'Contact Form Submitted',
-        customer_properties: { '$email': email, '$first_name': name },
-        properties: { Name: name, Email: email, Source: 'Contact Page' }
-      });
-
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('https://a.klaviyo.com/api/track', new Blob([payload], { type: 'application/json' }));
-      } else {
-        fetch('https://a.klaviyo.com/api/track', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: payload,
-          keepalive: true
-        }).catch(function() {});
+      // Basic validation
+      if (!name || !email || !message) {
+        var errorEl = document.getElementById('vl-contact-error');
+        if (errorEl) {
+          errorEl.textContent = 'Please fill in all required fields.';
+          errorEl.style.display = 'block';
+        }
+        return;
       }
+
+      var btn = form.querySelector('.vl-contact__cta');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+      }
+
+      // Send to Klaviyo as a tracked event
+      fetch('https://a.klaviyo.com/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: 'VhFhDd',
+          event: 'Contact Form Submitted',
+          customer_properties: {
+            '$email': email,
+            '$first_name': name,
+            '$phone_number': phone
+          },
+          properties: {
+            Name: name,
+            Email: email,
+            Phone: phone,
+            Message: message,
+            Source: 'Contact Page'
+          }
+        })
+      })
+      .then(function(response) {
+        if (response.ok) {
+          // Show success
+          var successEl = document.getElementById('vl-contact-success');
+          if (successEl) {
+            successEl.style.display = 'block';
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          form.reset();
+          // Hide form fields
+          var fields = form.querySelectorAll('.vl-contact__field, .vl-contact__row');
+          fields.forEach(function(f) { f.style.display = 'none'; });
+          if (btn) btn.style.display = 'none';
+        } else {
+          throw new Error('Failed');
+        }
+      })
+      .catch(function() {
+        var errorEl = document.getElementById('vl-contact-error');
+        if (errorEl) {
+          errorEl.textContent = 'Something went wrong. Please email us at {{ section.settings.support_email }}.';
+          errorEl.style.display = 'block';
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '{{ section.settings.button_label | escape }}';
+        }
+      });
     });
   })();
 </script>
