@@ -49,11 +49,19 @@
 
         {%- form 'contact', id: form_id, class: 'vl-contact__form' -%}
           {%- if form.posted_successfully? -%}
-            <p class="vl-contact__notice" role="status" tabindex="-1">
+            <p class="vl-contact__notice" id="vl-contact-success" role="status" tabindex="-1">
               Thanks for reaching out — we'll get back to you soon. A confirmation has been sent to your email.
             </p>
             <script>
               (function() {
+                // Scroll the success message into view, clearing the sticky header
+                var notice = document.getElementById('vl-contact-success');
+                if (notice) {
+                  setTimeout(function() {
+                    notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }, 100);
+                }
+
                 var email = '{{ form.email | escape }}';
                 var name = '{{ form.name | escape }}';
                 if (!email) return;
