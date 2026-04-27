@@ -54,16 +54,44 @@
             </p>
             <script>
               (function() {
-                var klaviyo = window.klaviyo || window._klOnsite || [];
                 var email = '{{ form.email | escape }}';
                 var name = '{{ form.name | escape }}';
-                if (email && typeof klaviyo.push === 'function') {
-                  klaviyo.push(['identify', { '$email': email, '$first_name': name }]);
-                  klaviyo.push(['track', 'Contact Form Submitted', {
-                    'Name': name,
-                    'Email': email,
-                    'Source': 'Contact Page'
-                  }]);
+                if (!email) return;
+
+                function fireKlaviyoEvent() {
+                  if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
+                    window.klaviyo.identify({ '$email': email, '$first_name': name });
+                    window.klaviyo.track('Contact Form Submitted', {
+                      'Name': name,
+                      'Email': email,
+                      'Source': 'Contact Page'
+                    });
+                  } else {
+                    // Fallback: queue via _klOnsite for older Klaviyo versions
+                    var q = window._klOnsite || [];
+                    q.push(['identify', { '$email': email, '$first_name': name }]);
+                    q.push(['track', 'Contact Form Submitted', {
+                      'Name': name,
+                      'Email': email,
+                      'Source': 'Contact Page'
+                    }]);
+                  }
+                }
+
+                // Klaviyo JS may not be fully loaded yet — retry briefly
+                if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
+                  fireKlaviyoEvent();
+                } else {
+                  var attempts = 0;
+                  var interval = setInterval(function() {
+                    attempts++;
+                    if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
+                      clearInterval(interval);
+                      fireKlaviyoEvent();
+                    } else if (attempts > 20) {
+                      clearInterval(interval);
+                    }
+                  }, 250);
                 }
               })();
             </script>
