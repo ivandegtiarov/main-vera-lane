@@ -180,32 +180,23 @@
         }
       }));
 
+      // Fire the tracking pixel — Klaviyo returns "1" (not an image),
+      // so we show success immediately after sending the request.
       var img = new Image();
-      img.onload = function() {
-        // Show success
-        var successEl = document.getElementById('vl-contact-success');
-        if (successEl) {
-          successEl.style.display = 'block';
-          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        form.reset();
-        // Hide form fields
-        var fields = form.querySelectorAll('.vl-contact__field, .vl-contact__row');
-        fields.forEach(function(f) { f.style.display = 'none'; });
-        if (btn) btn.style.display = 'none';
-      };
-      img.onerror = function() {
-        var errorEl = document.getElementById('vl-contact-error');
-        if (errorEl) {
-          errorEl.textContent = 'Something went wrong. Please email us at {{ section.settings.support_email }}.';
-          errorEl.style.display = 'block';
-        }
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = '{{ section.settings.button_label | escape }}';
-        }
-      };
       img.src = 'https://a.klaviyo.com/api/track?data=' + encodeURIComponent(data);
+
+      // Show success immediately — the pixel fires in the background
+      var successEl = document.getElementById('vl-contact-success');
+      if (successEl) {
+        successEl.style.display = 'block';
+        setTimeout(function() {
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+      form.reset();
+      var fields = form.querySelectorAll('.vl-contact__field, .vl-contact__row');
+      fields.forEach(function(f) { f.style.display = 'none'; });
+      if (btn) btn.style.display = 'none';
     });
   })();
 </script>
