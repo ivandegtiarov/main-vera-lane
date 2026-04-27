@@ -52,34 +52,6 @@
             <p class="vl-contact__notice" id="vl-contact-success" role="status" tabindex="-1">
               Thanks for reaching out — we'll get back to you soon. A confirmation has been sent to your email.
             </p>
-            <script>
-              (function() {
-                // Scroll the success message into view, clearing the sticky header
-                var notice = document.getElementById('vl-contact-success');
-                if (notice) {
-                  setTimeout(function() {
-                    var rect = notice.getBoundingClientRect();
-                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    window.scrollTo({ top: scrollTop + rect.top - 150, behavior: 'smooth' });
-                  }, 300);
-                }
-
-                var email = '{{ form.email | escape }}';
-                var name = '{{ form.name | escape }}';
-                if (!email) return;
-
-                fetch('https://a.klaviyo.com/api/track', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    token: 'VhFhDd',
-                    event: 'Contact Form Submitted',
-                    customer_properties: { '$email': email, '$first_name': name },
-                    properties: { Name: name, Email: email, Source: 'Contact Page' }
-                  })
-                }).catch(function() {});
-              })();
-            </script>
           {%- endif -%}
 
           {%- if form.errors -%}
@@ -161,6 +133,41 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    var form = document.getElementById('{{ form_id }}');
+    if (!form) return;
+
+    form.addEventListener('submit', function() {
+      var emailInput = form.querySelector('[name="contact[email]"]');
+      var nameInput = form.querySelector('[name="contact[name]"]');
+      var email = emailInput ? emailInput.value.trim() : '';
+      var name = nameInput ? nameInput.value.trim() : '';
+      if (!email) return;
+
+      // Fire Klaviyo event before Shopify redirects to CAPTCHA
+      // Use sendBeacon so it completes even during page navigation
+      var payload = JSON.stringify({
+        token: 'VhFhDd',
+        event: 'Contact Form Submitted',
+        customer_properties: { '$email': email, '$first_name': name },
+        properties: { Name: name, Email: email, Source: 'Contact Page' }
+      });
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('https://a.klaviyo.com/api/track', new Blob([payload], { type: 'application/json' }));
+      } else {
+        fetch('https://a.klaviyo.com/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true
+        }).catch(function() {});
+      }
+    });
+  })();
+</script>
 
 <style>
   /* Lumen – Contact Form (scoped) */
