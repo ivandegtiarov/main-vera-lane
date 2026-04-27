@@ -50,8 +50,23 @@
         {%- form 'contact', id: form_id, class: 'vl-contact__form' -%}
           {%- if form.posted_successfully? -%}
             <p class="vl-contact__notice" role="status" tabindex="-1">
-              Thanks for reaching out — we'll get back to you soon.
+              Thanks for reaching out — we'll get back to you soon. A confirmation has been sent to your email.
             </p>
+            <script>
+              (function() {
+                var klaviyo = window.klaviyo || window._klOnsite || [];
+                var email = '{{ form.email | escape }}';
+                var name = '{{ form.name | escape }}';
+                if (email && typeof klaviyo.push === 'function') {
+                  klaviyo.push(['identify', { '$email': email, '$first_name': name }]);
+                  klaviyo.push(['track', 'Contact Form Submitted', {
+                    'Name': name,
+                    'Email': email,
+                    'Source': 'Contact Page'
+                  }]);
+                }
+              })();
+            </script>
           {%- endif -%}
 
           {%- if form.errors -%}
