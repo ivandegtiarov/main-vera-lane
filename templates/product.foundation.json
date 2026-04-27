@@ -442,7 +442,7 @@
             "badge_bg_color": "",
             "badge_text_color": "",
             "show_free_delivery_badge": false,
-            "show_amazon_offer": true,
+            "show_amazon_offer": false,
             "amazon_url": "https://www.amazon.com/dp/B0G1LN69YL?maas=maas_adg_7FE4351E283CF8B10091DC1D274AAB19_afap_abs&ref_=aa_maas&tag=maas&th=1",
             "amazon_icon": "shopify://shop_images/amazon_icon_logo-logo_brandlogos.net_fgndw-200x200_1_4e9b7b8f-a922-468f-b049-0c8146a90fe5.png",
             "amazon_promo_text": "Get a 50% Discount When You Buy On Amazon - 3 Days Only",
