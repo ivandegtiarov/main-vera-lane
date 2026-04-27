@@ -162,45 +162,39 @@
         btn.textContent = 'Sending...';
       }
 
-      // Send to Klaviyo as a tracked event
-      fetch('https://a.klaviyo.com/api/track', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          token: 'VhFhDd',
-          event: 'Contact Form Submitted',
-          customer_properties: {
-            '$email': email,
-            '$first_name': name,
-            '$phone_number': phone
-          },
-          properties: {
-            Name: name,
-            Email: email,
-            Phone: phone,
-            Message: message,
-            Source: 'Contact Page'
-          }
-        })
-      })
-      .then(function(response) {
-        if (response.ok) {
-          // Show success
-          var successEl = document.getElementById('vl-contact-success');
-          if (successEl) {
-            successEl.style.display = 'block';
-            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-          form.reset();
-          // Hide form fields
-          var fields = form.querySelectorAll('.vl-contact__field, .vl-contact__row');
-          fields.forEach(function(f) { f.style.display = 'none'; });
-          if (btn) btn.style.display = 'none';
-        } else {
-          throw new Error('Failed');
+      // Send to Klaviyo via GET endpoint (avoids CORS issues with POST)
+      var data = btoa(JSON.stringify({
+        token: 'VhFhDd',
+        event: 'Contact Form Submitted',
+        customer_properties: {
+          '$email': email,
+          '$first_name': name,
+          '$phone_number': phone
+        },
+        properties: {
+          Name: name,
+          Email: email,
+          Phone: phone,
+          Message: message,
+          Source: 'Contact Page'
         }
-      })
-      .catch(function() {
+      }));
+
+      var img = new Image();
+      img.onload = function() {
+        // Show success
+        var successEl = document.getElementById('vl-contact-success');
+        if (successEl) {
+          successEl.style.display = 'block';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        form.reset();
+        // Hide form fields
+        var fields = form.querySelectorAll('.vl-contact__field, .vl-contact__row');
+        fields.forEach(function(f) { f.style.display = 'none'; });
+        if (btn) btn.style.display = 'none';
+      };
+      img.onerror = function() {
         var errorEl = document.getElementById('vl-contact-error');
         if (errorEl) {
           errorEl.textContent = 'Something went wrong. Please email us at {{ section.settings.support_email }}.';
@@ -210,7 +204,8 @@
           btn.disabled = false;
           btn.textContent = '{{ section.settings.button_label | escape }}';
         }
-      });
+      };
+      img.src = 'https://a.klaviyo.com/api/track?data=' + encodeURIComponent(data);
     });
   })();
 </script>
