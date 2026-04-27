@@ -58,41 +58,51 @@
                 var name = '{{ form.name | escape }}';
                 if (!email) return;
 
-                function fireKlaviyoEvent() {
-                  if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
-                    window.klaviyo.identify({ '$email': email, '$first_name': name });
-                    window.klaviyo.track('Contact Form Submitted', {
-                      'Name': name,
-                      'Email': email,
-                      'Source': 'Contact Page'
-                    });
-                  } else {
-                    // Fallback: queue via _klOnsite for older Klaviyo versions
-                    var q = window._klOnsite || [];
-                    q.push(['identify', { '$email': email, '$first_name': name }]);
-                    q.push(['track', 'Contact Form Submitted', {
-                      'Name': name,
-                      'Email': email,
-                      'Source': 'Contact Page'
-                    }]);
-                  }
-                }
+                // Use Klaviyo Client API directly — no dependency on window.klaviyo loading
+                var companyId = 'RgcfA7';
 
-                // Klaviyo JS may not be fully loaded yet — retry briefly
-                if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
-                  fireKlaviyoEvent();
-                } else {
-                  var attempts = 0;
-                  var interval = setInterval(function() {
-                    attempts++;
-                    if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
-                      clearInterval(interval);
-                      fireKlaviyoEvent();
-                    } else if (attempts > 20) {
-                      clearInterval(interval);
-                    }
-                  }, 250);
-                }
+                // Create/update the profile
+                fetch('https://a.klaviyo.com/client/profiles/', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'revision': '2024-02-15'
+                  },
+                  body: JSON.stringify({
+                    data: {
+                      type: 'profile',
+                      attributes: {
+                        email: email,
+                        first_name: name
+                      }
+                    },
+                    company_id: companyId
+                  })
+                }).catch(function() {});
+
+                // Track the event
+                fetch('https://a.klaviyo.com/client/events/', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'revision': '2024-02-15'
+                  },
+                  body: JSON.stringify({
+                    data: {
+                      type: 'event',
+                      attributes: {
+                        metric: { data: { type: 'metric', attributes: { name: 'Contact Form Submitted' } } },
+                        profile: { data: { type: 'profile', attributes: { email: email, first_name: name } } },
+                        properties: {
+                          Name: name,
+                          Email: email,
+                          Source: 'Contact Page'
+                        }
+                      }
+                    },
+                    company_id: companyId
+                  })
+                }).catch(function() {});
               })();
             </script>
           {%- endif -%}
