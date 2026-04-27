@@ -58,49 +58,14 @@
                 var name = '{{ form.name | escape }}';
                 if (!email) return;
 
-                // Use Klaviyo Client API directly — no dependency on window.klaviyo loading
-                var companyId = 'RgcfA7';
-
-                // Create/update the profile
-                fetch('https://a.klaviyo.com/client/profiles/', {
+                fetch('https://a.klaviyo.com/api/track', {
                   method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'revision': '2024-02-15'
-                  },
+                  headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
-                    data: {
-                      type: 'profile',
-                      attributes: {
-                        email: email,
-                        first_name: name
-                      }
-                    },
-                    company_id: companyId
-                  })
-                }).catch(function() {});
-
-                // Track the event
-                fetch('https://a.klaviyo.com/client/events/', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'revision': '2024-02-15'
-                  },
-                  body: JSON.stringify({
-                    data: {
-                      type: 'event',
-                      attributes: {
-                        metric: { data: { type: 'metric', attributes: { name: 'Contact Form Submitted' } } },
-                        profile: { data: { type: 'profile', attributes: { email: email, first_name: name } } },
-                        properties: {
-                          Name: name,
-                          Email: email,
-                          Source: 'Contact Page'
-                        }
-                      }
-                    },
-                    company_id: companyId
+                    token: 'VhFhDd',
+                    event: 'Contact Form Submitted',
+                    customer_properties: { '$email': email, '$first_name': name },
+                    properties: { Name: name, Email: email, Source: 'Contact Page' }
                   })
                 }).catch(function() {});
               })();
