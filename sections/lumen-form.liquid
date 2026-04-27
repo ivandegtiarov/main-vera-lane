@@ -58,8 +58,10 @@
                 var notice = document.getElementById('vl-contact-success');
                 if (notice) {
                   setTimeout(function() {
-                    notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }, 100);
+                    var rect = notice.getBoundingClientRect();
+                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    window.scrollTo({ top: scrollTop + rect.top - 150, behavior: 'smooth' });
+                  }, 300);
                 }
 
                 var email = '{{ form.email | escape }}';
@@ -321,6 +323,7 @@
 
   .vl-contact.{{ section_root_class }} .vl-contact__notice {
     background: rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 150px;
   }
 
   .vl-contact.{{ section_root_class }} .vl-contact__errors {
