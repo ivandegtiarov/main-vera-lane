@@ -38,8 +38,8 @@
           "settings": {
             "image": "shopify://shop_images/Generated_Image_April_03_2026_-_5_32PM.jpg",
             "image_alt": "",
-            "title": "Identity Restored",
-            "copy": "Vera Lane exists for the woman who has stopped wearing foundation because it started to feel like a betrayal. We believe your makeup should be infrastructure that stays out of the way, not a mask that hides who you are. We design for that moment of self-recognition—formulating products that disappear into your skin so that people notice your glow, not your makeup."
+            "title": "Where we started",
+            "copy": "Vera Lane Cosmetics began with a frustrating gap: foundations were either too heavy, settled into fine lines, or never matched the skin they were sitting on. We set out to build a single, dependable foundation that adapts to its wearer rather than asking the wearer to adapt to it. Today, that one product has grown into a small range used by over 1,000 customers — every formula still designed around skin that has changed."
           }
         },
         "card_2": {
@@ -47,8 +47,8 @@
           "settings": {
             "image": "shopify://shop_images/Generated_Image_April_03_2026_-_5_33PM.jpg",
             "image_alt": "",
-            "title": "Texture-First Integrity",
-            "copy": "We reject the \"anti-aging\" shame of the beauty industry. Instead, we prioritize the physical reality of skin that has changed—skin that is more sensitive and where products often settle into lines. Our \"second skin\" formulas are engineered to float over texture rather than emphasizing it, giving you the invisible confidence of a healthy, \"lit-from-within\" radiance."
+            "title": "Who's behind Vera Lane",
+            "copy": "Vera Lane Cosmetics is owned and operated by Paper Plan LLC, a small independent company headquartered in Central, Hong Kong. We're a tight team of formulators, designers and customer-care humans — not a faceless brand. Every email to hello@veralanecosmetics.com is read and answered by one of us, usually within a day."
           }
         },
         "card_3": {
@@ -56,8 +56,8 @@
           "settings": {
             "image": "shopify://shop_images/Generated_Image_April_03_2026_-_5_34PM.jpg",
             "image_alt": "",
-            "title": "Certainty over Complexity",
-            "copy": "We believe your morning routine should give you mental bandwidth back, not take it away. By removing the \"shade guessing game\" and the anxiety of the wrong match, we provide a reliable standard for women who value presence over performance. We create simple, dependable tools that let you get ready in minutes and move through the world with self-respect."
+            "title": "Our promise",
+            "copy": "Try anything we sell for 30 days. If it doesn't float over your lines or match your shade exactly, we'll send you a free prepaid return label and refund the order in full — no restocking fee, no questions, no rebuttal email. We'd rather lose a sale than lose your trust."
           }
         }
       },
@@ -67,7 +67,7 @@
         "card_3"
       ],
       "settings": {
-        "heading": "What Makes Us Different",
+        "heading": "Our story",
         "bg_color": "#fbf8f6",
         "bg_gradient_start": "#fbf8f6",
         "bg_gradient_end": "#fbf8f6",

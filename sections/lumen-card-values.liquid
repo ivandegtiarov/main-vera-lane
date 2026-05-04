@@ -59,7 +59,7 @@
 
               {% if block.settings.body != blank %}
                 <p class="vl-lumen-card-values__body">
-                  {{ block.settings.body | escape }}
+                  {{ block.settings.body | newline_to_br }}
                 </p>
               {% endif %}
             </article>
