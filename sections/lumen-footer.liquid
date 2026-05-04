@@ -593,12 +593,21 @@
           </span>
         {% endif %}
 
-        {% if section.settings.privacy_link != blank %}
+        {% if section.settings.shipping_link != blank %}
           <a
-            href="{{ section.settings.privacy_link }}"
+            href="{{ section.settings.shipping_link }}"
             class="lumen-footer__copyright-link"
           >
-            {{ section.settings.privacy_label | default: 'Privacy Policy' }}
+            {{ section.settings.shipping_label | default: 'Shipping Policy' }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.refund_link != blank %}
+          <a
+            href="{{ section.settings.refund_link }}"
+            class="lumen-footer__copyright-link"
+          >
+            {{ section.settings.refund_label | default: 'Refund Policy' }}
           </a>
         {% endif %}
 
@@ -608,6 +617,15 @@
             class="lumen-footer__copyright-link"
           >
             {{ section.settings.terms_label | default: 'Terms of Service' }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.privacy_link != blank %}
+          <a
+            href="{{ section.settings.privacy_link }}"
+            class="lumen-footer__copyright-link"
+          >
+            {{ section.settings.privacy_label | default: 'Privacy Policy' }}
           </a>
         {% endif %}
       </div>
@@ -842,14 +860,25 @@
     },
     {
       "type": "url",
-      "id": "privacy_link",
-      "label": "Privacy policy link"
+      "id": "shipping_link",
+      "label": "Shipping policy link"
     },
     {
       "type": "text",
-      "id": "privacy_label",
-      "label": "Privacy policy label",
-      "default": "Privacy Policy"
+      "id": "shipping_label",
+      "label": "Shipping policy label",
+      "default": "Shipping Policy"
+    },
+    {
+      "type": "url",
+      "id": "refund_link",
+      "label": "Refund policy link"
+    },
+    {
+      "type": "text",
+      "id": "refund_label",
+      "label": "Refund policy label",
+      "default": "Refund Policy"
     },
     {
       "type": "url",
@@ -861,6 +890,17 @@
       "id": "terms_label",
       "label": "Terms of service label",
       "default": "Terms of Service"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy policy link"
+    },
+    {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Privacy policy label",
+      "default": "Privacy Policy"
     },
     {
       "type": "checkbox",
