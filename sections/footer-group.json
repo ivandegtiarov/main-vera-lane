@@ -40,10 +40,6 @@
         "privacy_label": "Privacy Policy",
         "terms_link": "shopify://policies/terms-of-service",
         "terms_label": "Terms of Service",
-        "shipping_link": "shopify://policies/shipping-policy",
-        "shipping_label": "Shipping Policy",
-        "refund_link": "shopify://policies/refund-policy",
-        "refund_label": "Refund Policy",
         "show_payment_icons": true,
         "enable_animation": true
       }

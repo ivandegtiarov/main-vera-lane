@@ -96,7 +96,7 @@
       "settings": {
         "logo": "shopify://shop_images/Untitled_design_58.png",
         "logo_width": 200,
-        "menu": "main-menu",
+        "menu": "header-menu",
         "show_account_icon": false,
         "background_color": "#ffffff",
         "text_color": "#000000",
